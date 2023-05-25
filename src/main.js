@@ -5,8 +5,8 @@ import feed from "./view/feed/feed.js";
 
 const main = document.querySelector("#main")
 
-/* const init = () => {
-  window.addEventListener("hashchange", () => {
+const changeScreen = () => {
+  window.addEventListener("hashchange", () =>{
     main.innerHTML = "";
     switch(window.location.hash){
       case "":
@@ -15,12 +15,20 @@ const main = document.querySelector("#main")
       case "#login":
         main.appendChild(login());
         break;
-      case "#cadastro":
+      case "#register":
         main.appendChild(register());
+        break;
+      case "#feed":
+        main.appendChild(feed());
         break;  
       default: 
         main.appendChild(home());
     }
   })
 }
-*/
+
+window.addEventListener("load", () =>{
+  main.appendChild(home());
+  changeScreen();
+})
+
