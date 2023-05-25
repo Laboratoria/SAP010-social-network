@@ -1,7 +1,7 @@
-import home from "./view/homee/home.js";
+//import home from "./view/homee/home.js";
 import login from "./view/login/login.js";
-import register from "./view/register/register.js";
-import feed from "./view/feed/feed.js";
+//import register from "./view/register/register.js";
+//import feed from "./view/feed/feed.js";
 
 const main = document.querySelector("#main")
 
@@ -11,7 +11,7 @@ const changeScreen = () => {
     switch(window.location.hash){
       case "":
         main.appendChild(home());
-        break;
+        break; 
       case "#login":
         main.appendChild(login());
         break;
@@ -28,7 +28,7 @@ const changeScreen = () => {
 }
 
 window.addEventListener("load", () =>{
-  main.appendChild(home());
+  main.appendChild(login());
   changeScreen();
 })
 
