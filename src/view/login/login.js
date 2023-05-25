@@ -1,5 +1,6 @@
 export default () => {
   const container = document.createElement("section");
+  container.classList.add("container_login")
   const templateLogin = `
     <div class="img-entrar">
       <img src="public/images/login-mobile.gif" alt="login-animation">
