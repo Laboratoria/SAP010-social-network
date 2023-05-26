@@ -2,7 +2,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getDatabase } from 'firebase/database';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCnAt2p03OMLja3F4Py_O3K3t7si5vSDrQ',
@@ -14,6 +14,6 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getDatabase(app);
+const db = getFirestore(app);
 
-export { app, auth, db };
+export { app, auth, db, collection, addDoc };
