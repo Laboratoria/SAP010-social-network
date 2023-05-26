@@ -4,7 +4,7 @@ export default () => {
 
     const template = `
         <div id="container-image-welcome">
-            <img src="assets/images/menina-home.gif" alt="menina usando desktop">
+            <img src="/images/menina-home.gif" alt="menina usando desktop">
         </div>
         <div>
             <h1>Bem-vindo(a) ao &lt;GAMEE&gt;!</h1>
