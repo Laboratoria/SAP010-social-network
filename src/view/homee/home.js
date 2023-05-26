@@ -1,19 +1,22 @@
+import './home.css'
 export default () => {
 
     const container = document.createElement('section');
+    container.classList.add("container-main");
+    container.classList.add("letter-color");
 
     const template = `
-        <div id="container-image-welcome">
+        <div class="container-image-welcome">
             <img src="/images/menina-home.gif" alt="menina usando desktop">
         </div>
-        <div>
-            <h1>Bem-vindo(a) ao &lt;GAMEE&gt;!</h1>
-            <nav>
-                <a href="#login">Entrar</a>
+        <div class="container space-between">
+            <h1 class="welcome">Bem-vindo(a) ao <br/>&lt;GAMEE&gt;!</h1>
+            <nav class="btn signIn">
+                <a href="#login" class="letter-color color-welcome">Entrar</a>
             </nav>
             <p>ou</p>
-            <nav>
-                <a href="#register">Cadastrar</a>
+            <nav class="btn">
+                <a href="#register" class="letter-color">Cadastrar</a>
             </nav>
         </div>
     `;
