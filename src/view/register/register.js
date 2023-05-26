@@ -16,7 +16,7 @@ export default () => {
           <input type="email" id="email" required placeholder="E-mail">
           <input type="password" id="password" required placeholder="Senha">
           <input type="password" id="confirm-password" required placeholder="Confirmar senha">
-          <a href="#" class="btn-register">Inscreva-se</a>
+          <button type="submit" class="btn-register" disabled>Inscreva-se</button>
           <h2>ou continue com</h2>
           <img>
         </form>
