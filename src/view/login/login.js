@@ -1,14 +1,14 @@
 export default () => {
   const container = document.createElement("section");
-  container.classList.add("container_login")
+  container.classList.add("container-login")
   const templateLogin = `
     <div class="img-entrar">
       <img src="public/images/login-mobile.gif" alt="login-animation">
       <h1>ENTRAR</h1>
     </div>
-    <div class="form_login">
+    <div class="form-login">
       <form action="">
-        <input type="email" class="input_email_login">
+        <input type="email" class="input-email-login">
         <input type="password" class="input_pass_login">
         <a class="btn_entrar" href="/#feed"></a>
       </form>

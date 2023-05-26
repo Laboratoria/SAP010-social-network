@@ -13,5 +13,9 @@
   },
   "dependencies": {
     "firebase": "^9.22.0"
-  }
+  },
+  "main": "main.js",
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
