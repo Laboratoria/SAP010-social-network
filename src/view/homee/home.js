@@ -2,11 +2,11 @@ import './home.css'
 export default () => {
 
     const container = document.createElement('section');
-    container.classList.add("container");
+    container.classList.add("container-main");
     container.classList.add("letter-color");
 
     const template = `
-        <div id="container-image-welcome">
+        <div class="container-image-welcome">
             <img src="/images/menina-home.gif" alt="menina usando desktop">
         </div>
         <div class="container space-between">

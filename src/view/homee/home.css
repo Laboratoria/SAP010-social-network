@@ -2,13 +2,19 @@ body {
     background-color: var(--bgColor);
 }
 
-.container {
+.container-main .container{
     align-items: center;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 20px;
+}
+
+.container-image-welcome{
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .letter-color {
@@ -68,4 +74,19 @@ nav a:hover {
 
 p{
     font-size: 20px;
+}
+
+@media screen and (min-width: 992px) {
+    img {
+        height: 529.22px;
+        width: 552.14px;
+    }
+    .container-main {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        justify-content: center;
+    }
+    
 }
