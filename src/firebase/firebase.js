@@ -1,7 +1,14 @@
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth';
 import { app, db, collection, addDoc  } from './firebase.config';
 
 const auth = getAuth(app);
+
+const logIn = async (email, password) => {
+  signInWithEmailAndPassword(auth, email, password)
+  .then(() =>{
+    alert('Login efetuado com sucesso');
+  }) .catch(error => console.log(error.message))
+}
 
 const registerUser = async (name, username, email, password) => {
   try {
@@ -23,4 +30,5 @@ const registerUser = async (name, username, email, password) => {
   }
 };
 
-export { registerUser };
+export { registerUser, logIn, auth };
+
