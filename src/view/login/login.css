@@ -1,0 +1,18 @@
+
+div.img-entrar h1, .form-login p{
+    color: var(--white);
+}
+
+.btn_entrar{
+    color: var(--secondColor);
+    background-color: var(--white);
+    border-radius: 20px;
+    height: 45px;
+    margin-top: 20px;
+    padding: 10px;
+
+}
+
+.form-login img{
+    height: 30px;
+}
