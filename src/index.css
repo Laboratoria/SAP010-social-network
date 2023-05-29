@@ -6,6 +6,7 @@
     --secondColor: #6F69EF;
     --thirdColor: #678BFC;
     --white: #FFFFFF;
+    --fontColorLogin: #D5B4F5;
 }
 
 *{
@@ -16,6 +17,9 @@
 }
 
 body{
+    align-items: center;
     background-color: var(--bgColor);
+    display: flex;
     height: 100%;
+    justify-content: center;
 }
