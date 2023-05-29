@@ -1,3 +1,7 @@
+import './register.css'
+import registerImageMobile from '../../images/register-mobile.gif'
+import googleImg from '../../images/google.svg'
+import githubImg from '../../images/github-mobile.svg'
 import { registerUser } from '../../firebase/firebase.js';
 
 export default () => {
@@ -6,7 +10,7 @@ export default () => {
     userRegister.classList.add('container-register');
     const template = `
       <section class="register-top">
-        <img>
+      <img class="register-image-mobile" src=${registerImageMobile} alt="register-animation">
         <h1>CADASTRO</h1>
       </section>
       <section class="register-box">
@@ -18,7 +22,10 @@ export default () => {
           <input type="password" id="confirm-password" required placeholder="Confirmar senha">
           <button type="submit" class="btn-register" disabled>Inscreva-se</button>
           <h2>ou continue com</h2>
-          <img>
+          <picture class="register-icons">
+          <img class="btn-google" src=${googleImg} alt="google icon">
+          <img class="btn-github" src=${githubImg} alt="github icon">
+          </picture>
         </form>
       </section>
     `;
