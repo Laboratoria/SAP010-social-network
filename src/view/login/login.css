@@ -3,7 +3,7 @@ div.img-entrar h1, .form-login p{
     color: var(--white);
 }
 
-.btn_entrar{
+.btn-entrar{
     color: var(--secondColor);
     background-color: var(--white);
     border-radius: 20px;
@@ -11,6 +11,30 @@ div.img-entrar h1, .form-login p{
     margin-top: 20px;
     padding: 10px;
 
+}
+
+.container-login{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.img-entrar{
+    border-radius: 10px 10px 50px 50px;
+}
+
+
+
+.form-login form{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-login p{
+    text-align: center;
 }
 
 .form-login img{
