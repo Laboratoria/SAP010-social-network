@@ -18,9 +18,17 @@
     width: 100%;
 }
 
-.container-img-entrar img{
-    height: 150px;
-    width: 150px;
+.container-img-entrar .img-mobile-version{
+    height: 170px;
+    width: 170px;
+}
+
+.text-desktop-version{
+    display: none;
+}
+
+.img-desktop-version{
+    display: none;
 }
 
 .container-img-entrar h1{
@@ -46,7 +54,6 @@ div.container-img-entrar h1, .form-login p{
     height: 45px;
     outline-color: none;
     width: 300px;
-
 }
 
 input[type=email]{outline:none}
@@ -90,4 +97,40 @@ input[type=password]{outline:none}
     background-color: var(--secondColor);
     color: var(--white);
     transition: .4s;
+}
+
+/* Responsive */
+
+@media screen and (min-width: 1015px) {
+    .container-login{
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+    }
+
+    .container-img-entrar{
+        background-color: var(--bgColor);
+        height: 100%;
+        justify-content: center;
+    }
+
+    .img-mobile-version{
+        display: none;
+    }
+
+    .text-mobile-version{
+        display: none;
+    }
+
+    .text-desktop-version{
+        color: var(--white);
+        display: block;
+        font-weight: 300;
+    }
+
+    .container-img-entrar .img-desktop-version{
+        display: block;
+        height: 500px;
+        width: 500px;
+    }
 }
