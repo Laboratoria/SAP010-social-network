@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider} from 'firebase/auth';
 import { app, db, collection, addDoc } from './firebase.config';
 import { async } from 'regenerator-runtime';
 
@@ -50,6 +50,22 @@ const signInWithGoogle = async () => {
   });
 }
 
+const signInWithGitHub = async () => {
+
+  const provider = new GithubAuthProvider();
+
+  await signInWithPopup(auth, provider)
+  .then((result) => {
+
+    const credential = GithubAuthProvider.credentialFromResult(result);
+    console.log(`credential ${credential}`)
+    isUserLoggedIn();
+  }).catch((error) => {
+
+    console.log(error.message);
+  });
+}
+
 
 const registerUser = async (name, username, email, password) => {
   try {
@@ -71,5 +87,5 @@ const registerUser = async (name, username, email, password) => {
   }
 };
 
-export { registerUser, logIn, signInWithGoogle };
+export { registerUser, logIn, signInWithGoogle, signInWithGitHub };
 
