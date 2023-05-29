@@ -8,19 +8,21 @@ export default () => {
   const userLogin = document.createElement("section");
   userLogin.classList.add("container-login")
   const templateLogin = `
-    <div class="img-entrar">
+    <div class="container-img-entrar">
       <img src=${meninaLogin} alt="login-animation">
       <h1>ENTRAR</h1>
     </div>
     <div class="form-login">
-      <form action="">
+      <form>
         <input type="email" class="input-email-login" placeholder="E-MAIL" required>
         <input type="password" class="input-pass-login" placeholder="SENHA" required>
         <a class="btn-entrar" href="/#feed">Entrar</a>
       </form>
       <p>ou continue com</p>
-      <img class="btn-google" src=${googleImg} alt="google icon">
-      <img class="btn-github" src=${githubImg} alt="github icon">
+      <picture class="login-icons">
+        <img class="btn-google" src=${googleImg} alt="google icon">
+        <img class="btn-github" src=${githubImg} alt="github icon">
+      </picture>
     </div>
   `;
   userLogin.innerHTML = templateLogin;

@@ -1,6 +1,80 @@
+.container-login{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100vw;
+}
 
-div.img-entrar h1, .form-login p{
+.container-img-entrar{
+    align-items: center;
+    background-color: var(--secondColor);
+    border-radius: 10px 10px 50px 50px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    width: 100%;
+}
+
+.container-img-entrar img{
+    height: 150px;
+    width: 150px;
+}
+
+.container-img-entrar h1{
+    font-weight: 300;
+}
+
+div.container-img-entrar h1, .form-login p{
     color: var(--white);
+}
+
+.form-login form{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-login form input{
+    background-color: var(--bgColor);
+    border: none;
+    border-bottom: 2px solid #010006;
+    color: var(--fontColorLogin);
+    height: 45px;
+    outline-color: none;
+    width: 300px;
+
+}
+
+input[type=email]{outline:none}
+input[type=password]{outline:none}
+
+.form-login form input::placeholder{
+    color: var(--fontColorLogin);
+}
+
+.form-login p{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.login-icons{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.login-icons img{
+    height: 40px;
+    width: 40px;
+}
+
+.login-icons img:hover{
+    cursor: pointer;
 }
 
 .btn-entrar{
@@ -8,35 +82,12 @@ div.img-entrar h1, .form-login p{
     background-color: var(--white);
     border-radius: 20px;
     height: 45px;
-    margin-top: 20px;
     padding: 10px;
-
+    width: 140px;
 }
 
-.container-login{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.img-entrar{
-    border-radius: 10px 10px 50px 50px;
-}
-
-
-
-.form-login form{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-login p{
-    text-align: center;
-}
-
-.form-login img{
-    height: 30px;
+.btn-entrar:hover{
+    background-color: var(--secondColor);
+    color: var(--white);
+    transition: .4s;
 }
