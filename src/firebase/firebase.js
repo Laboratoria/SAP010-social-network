@@ -1,14 +1,55 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth';
-import { app, db, collection, addDoc  } from './firebase.config';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { app, db, collection, addDoc } from './firebase.config';
+import { async } from 'regenerator-runtime';
 
 const auth = getAuth(app);
 
 const logIn = async (email, password) => {
-  signInWithEmailAndPassword(auth, email, password)
-  .then(() =>{
-    alert('Login efetuado com sucesso');
-  }) .catch(error => console.log(error.message))
+  await signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      alert('Login efetuado com sucesso');
+    }).then(()=> isUserLoggedIn())
+    .catch(error => console.log(error.message))
 }
+
+const isUserLoggedIn = async () => {
+
+  console.log(auth)
+
+  const user = auth.currentUser;
+
+  if (user !== null) {
+
+    const displayName = user.displayName;
+    const email = user.email;
+    const photoURL = user.photoURL;
+    const emailVerified = user.emailVerified;
+    const uid = user.uid;
+
+    console.log(`Nome do usuário ${displayName}`);
+    console.log(`O e-mail do usuário é ${email}`);
+    console.log(`O id do usuário é ${uid}`);
+
+  }//endIf
+
+}//endIsUserLoggedIn
+
+const signInWithGoogle = async () => {
+
+  const provider = new GoogleAuthProvider();
+
+  await signInWithPopup(auth, provider)
+  .then((result) => {
+
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    console.log(`credential ${credential}`)
+    isUserLoggedIn();
+  }).catch((error) => {
+
+    console.log(error.message);
+  });
+}
+
 
 const registerUser = async (name, username, email, password) => {
   try {
@@ -30,5 +71,5 @@ const registerUser = async (name, username, email, password) => {
   }
 };
 
-export { registerUser, logIn, auth };
+export { registerUser, logIn, signInWithGoogle };
 

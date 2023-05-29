@@ -1,5 +1,5 @@
 import './login.css'
-import {logIn} from '../../firebase/firebase.js'
+import {logIn, signInWithGoogle} from '../../firebase/firebase.js'
 
 export default () => {
   const userLogin = document.createElement("section");
@@ -16,7 +16,7 @@ export default () => {
         <a class="btn-entrar" href="/#feed">Entrar</a>
       </form>
       <p>ou continue com</p>
-      <img src="/images/google.svg" alt="google icon">
+      <img class="btn-google" src="/images/google.svg" alt="google icon">
       <img src="/images/github-mobile.svg" alt="github icon">
     </div>
   `;
@@ -25,6 +25,7 @@ export default () => {
   const emailInput = userLogin.querySelector(".input-email-login");
   const passInput = userLogin.querySelector(".input-pass-login");
   const btnLogin = userLogin.querySelector(".btn-entrar");
+  const loginGoogle = userLogin.querySelector(".btn-google");
   
   btnLogin.addEventListener('click', () => {
     const email = emailInput.value;
@@ -33,6 +34,13 @@ export default () => {
     const promise = logIn(email, password);
     promise.catch(e => console.log(e.message)); 
   }) 
+
+  loginGoogle.addEventListener('click', () => {
+
+    signInWithGoogle();
+
+  })
+
 
   return userLogin;
 }; 
