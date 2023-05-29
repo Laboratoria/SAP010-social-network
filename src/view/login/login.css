@@ -53,6 +53,7 @@ div.container-img-entrar h1, .form-login p{
     color: var(--fontColorLogin);
     height: 45px;
     outline-color: none;
+    padding: 5px;
     width: 300px;
 }
 
@@ -84,7 +85,7 @@ input[type=password]{outline:none}
     cursor: pointer;
 }
 
-.btn-entrar{
+form .btn-entrar{
     color: var(--secondColor);
     background-color: var(--white);
     border-radius: 20px;
@@ -93,7 +94,7 @@ input[type=password]{outline:none}
     width: 140px;
 }
 
-.btn-entrar:hover{
+form .btn-entrar:hover{
     background-color: var(--secondColor);
     color: var(--white);
     transition: .4s;
@@ -122,16 +123,58 @@ input[type=password]{outline:none}
         display: none;
     }
 
-    .text-desktop-version{
-        color: var(--white);
-        display: block;
-        font-weight: 300;
-    }
-
     .container-img-entrar .img-desktop-version{
         display: block;
         height: 500px;
         width: 500px;
-        
     }
+
+    .form-login{
+        background-color: var(--white);
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        height: 470px;
+        margin-right: 20px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .form-login .text-desktop-version{
+        color: var(--bgColor);
+        display: block;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+
+    .form-login form{
+        padding: 0px 10px;
+    }
+
+    .form-login form input{
+        background-color: var(--white);
+        border-bottom: 2px solid #010006b4;
+        color: var(--secondColor);
+        font-size: 16px;
+    }
+
+    .form-login form input::placeholder{
+        color: var(--secondColor);
+    }
+
+    .form-login p{
+        color: var(--bgColor);
+        margin: 20px 0px;
+    }
+
+    form .btn-entrar{
+        background-color: var(--secondColor);
+        color: var(--white);
+        margin-top: 20px;
+    }
+
+    form .btn-entrar:hover{
+        background-color: var(--firstColor);
+    }
+
 }

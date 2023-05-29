@@ -3,6 +3,7 @@ import meninaLoginMobile from '../../images/login-mobile.gif'
 import meninaLoginDesktop from '../../images/login-desktop.gif'
 import googleImg from '../../images/google.svg'
 import githubImg from '../../images/github-mobile.svg'
+import githubImgDesktop from '../../images/github.svg'
 import {logIn, signInWithGoogle, signInWithGitHub} from '../../firebase/firebase.js'
 
 export default () => {
