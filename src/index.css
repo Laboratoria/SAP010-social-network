@@ -9,13 +9,13 @@
 }
 
 *{
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
     font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
 }
 
 body{
-    height: 100%;
     background-color: var(--bgColor);
+    height: 100%;
 }

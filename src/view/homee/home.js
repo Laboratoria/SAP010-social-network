@@ -1,4 +1,6 @@
 import './home.css'
+import meninaHome from '../../images/menina-home.gif'
+
 export default () => {
 
     const container = document.createElement('section');
@@ -7,7 +9,7 @@ export default () => {
 
     const template = `
         <div class="container-image-welcome">
-            <img src="/images/menina-home.gif" alt="menina usando desktop">
+            <img src=${meninaHome} alt="menina usando desktop">
         </div>
         <div class="container space-between">
             <h1 class="welcome">Bem-vindo(a) ao <br/>&lt;GAMEE&gt;!</h1>

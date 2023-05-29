@@ -1,4 +1,7 @@
 import './login.css'
+import meninaLogin from '../../images/login-mobile.gif'
+import googleImg from '../../images/google.svg'
+import githubImg from '../../images/github-mobile.svg'
 import {logIn, signInWithGoogle, signInWithGitHub} from '../../firebase/firebase.js'
 
 export default () => {
@@ -6,7 +9,7 @@ export default () => {
   userLogin.classList.add("container-login")
   const templateLogin = `
     <div class="img-entrar">
-      <img src="/images/login-mobile.gif" alt="login-animation">
+      <img src=${meninaLogin} alt="login-animation">
       <h1>ENTRAR</h1>
     </div>
     <div class="form-login">
@@ -16,8 +19,8 @@ export default () => {
         <a class="btn-entrar" href="/#feed">Entrar</a>
       </form>
       <p>ou continue com</p>
-      <img class="btn-google" src="/images/google.svg" alt="google icon">
-      <img class="btn-github" src="/images/github-mobile.svg" alt="github icon">
+      <img class="btn-google" src=${googleImg} alt="google icon">
+      <img class="btn-github" src=${githubImg} alt="github icon">
     </div>
   `;
   userLogin.innerHTML = templateLogin;
