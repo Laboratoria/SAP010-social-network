@@ -24,7 +24,7 @@ export default () => {
           <input type="password" id="password" required placeholder="Senha">
           <input type="password" id="confirm-password" required placeholder="Confirmar senha">
           <button type="submit" class="btn-register" disabled>Inscreva-se</button>
-          <h2>ou continue com</h2>
+          <p>ou continue com</p>
           <picture class="register-icons">
           <img class="btn-google" src=${googleImg} alt="google icon">
           <img class="btn-github" src=${githubImg} alt="github icon">

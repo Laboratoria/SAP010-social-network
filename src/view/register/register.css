@@ -16,13 +16,13 @@ TV: 1015px pra cima
 
 
 .container-register {
-
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
+  justify-content: center;
   max-width: 1200px;
   width: 100vw;
-  margin: 0 auto;
-  padding: 20px;
-  box-sizing: border-box;
 }
 .register-top {
   align-items: center;
@@ -44,6 +44,8 @@ TV: 1015px pra cima
   width: 170px;
 }
 .register-image-desktop{
+  max-width: 100%;
+  height: auto; 
   display: none;
 }
 .register-box {
@@ -84,8 +86,8 @@ TV: 1015px pra cima
 }
 
 .btn-register:disabled {
-  color: #6F69EF;
-  background-color:#fff ;
+  color: #7069ef81;
+  background-color:#dfdfdfec ;
   transition: .4s;
 }
 
@@ -94,9 +96,8 @@ TV: 1015px pra cima
   background-color:#6F69EF ;
 }
 
-h2 {
+.register-form p {
   text-align: center;
-  margin-top: 20px;
   color:#fff;
   font-weight: 300;
   font-size: 20px;
@@ -106,7 +107,7 @@ h2 {
   display: flex;
   gap: 20px;
   justify-content: center;
-  margin-top: 20px;
+  
 }
 
 .register-icons img {
@@ -121,28 +122,23 @@ h2 {
 
 /* Responsive */
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 600px) {
   #main{
     display: flex;
     justify-content: center;
 }
 
   .container-register{
-  gap: 20px;
-  display: flex;
-  flex-direction: row;
-  height: 100vh;
-  justify-content: center;
-  margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
   }
 
   .register-top{
-  background-color: var(--bgColor);
-  height: 100%;
-  justify-content: center;
-  flex-direction: row;    
-  gap: 20px;
-  
+    align-items: center;
+    background-color: var(--bgColor);
+    height: 100%;
+    justify-content: center;
   }
 
   .register-image-mobile {
@@ -151,8 +147,8 @@ h2 {
 
   .register-top, .register-image-desktop{
     display: block;
-    height: 600px;
-    width: 600px;
+    height: 410px;
+    width:410px;
     margin: 0 auto;
     max-width: 100%; 
 }
@@ -162,28 +158,45 @@ h2 {
   }
 
   .register-box h1{
-  color: #010006;
-  font-weight: 300;
-  display: flex;
+  color: var(--bgColor);
+  display: block;
+  font-weight: 600;
+  margin-bottom: 20px;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 10px;
   }
-  .register-box h2{
-    color: #010006;
+  .register-form p{
+    color: var(--bgColor);
+    margin: 0px 0px;
   }
   .register-box {
-  background-color: #fff;
-  border-radius: 20px 20px 20px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 600px;
-  width: 450px;
+    background-color: var(--white);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    justify-content: center;
+    margin-right: 30px;
+    padding: 0px 20px;
+    text-align: center;
+    width: 280px;
+  
+  }
+  .register-form{
+    padding: 0px 10px;
   }
   .register-form input{
   background-color: #fff;
+  border-bottom: 2px solid #010006b4;
+  color: var(--secondColor);
+  font-size: 16px;
+  width: 230px;
+  height: 32px;
+  }
+
+  .register-form form input::placeholder{
+    color: var(--secondColor);
   }
   .btn-register {
     color:#fff ;
@@ -191,8 +204,8 @@ h2 {
   }
   
   .btn-register:disabled {
-    color:#fff ;
-    background-color: #6F69EF;
+    color:#ffffffd0 ;
+    background-color: #7069efc9;
   
   }
   
@@ -200,4 +213,33 @@ h2 {
     color:#6F69EF ;
     background-color:#fff ;
   }
+  .register-icons img {
+    height: 35px;
+    width: 35px;
+  }
+}
+@media screen and (min-width: 992px) {
+ 
+  .register-top, .register-image-desktop{
+    display: block;
+    height: 600px;
+    width:600px;
+    margin: 0 auto;
+    
+  }
+  .register-form input{
+  width: 250px;
+  height: 45px;
+  
+  }
+  .register-box {
+    height: 580px;
+    width: 300px;
+  
+  }
+  .register-icons img {
+    height: 40px;
+    width: 40px;
+  }
+
 }
