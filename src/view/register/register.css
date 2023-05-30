@@ -16,7 +16,7 @@ TV: 1015px pra cima
 
 
 .conteiner-register {
- 
+
   gap: 20px;
   max-width: 1200px;
   width: 100vw;
@@ -71,8 +71,8 @@ TV: 1015px pra cima
 }
 
 .btn-register {
-  color: #fff;
-  background-color:#6F69EF ;
+  color: #6F69EF;
+  background-color:#fff ;
   border-radius: 20px;
   height: 45px;
   padding: 10px;
@@ -126,6 +126,7 @@ h2 {
       background-color: var(--bgColor);
       height: 100%;
       justify-content: center;
+      
   }
 
   .register-image-mobile {

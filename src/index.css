@@ -19,7 +19,7 @@
 body{
     align-items: center;
     background-color: var(--bgColor);
-    display: flex;
+   /* display: flex; */
     height: 100%;
     justify-content: center;
 }
