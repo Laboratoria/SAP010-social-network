@@ -14,7 +14,7 @@ export default () => {
         <div class="container space-between">
             <h1 class="welcome">Bem-vindo(a) ao <br/>&lt;GAMEE&gt;!</h1>
             <nav class="btn signIn">
-                <a href="#login" class="letter-color color-welcome">Entrar</a>
+                <a href="#login" class="color-welcome">Entrar</a>
             </nav>
             <p>ou</p>
             <nav class="btn">
