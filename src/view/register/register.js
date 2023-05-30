@@ -8,7 +8,7 @@ import { registerUser, signInWithGoogle, signInWithGitHub } from '../../firebase
 export default () => {
   const register = () => {
     const userRegister = document.createElement('div');
-    userRegister.classList.add('container-register');
+    userRegister.classList.add("container-register");
     const template = `
       <section class="register-top">
       <img class="register-image-mobile" src=${registerImageMobile} alt="register-animation">
@@ -16,7 +16,7 @@ export default () => {
         <h1>CADASTRO</h1>
       </section>
       <section class="register-box">
-        <h1>ENTRAR</h1>
+        <h1>CADASTRO</h1>
         <form class="register-form">
           <input type="text" id="name" required placeholder="Nome e Sobrenome">
           <input type="text" id="username" required placeholder="Username">

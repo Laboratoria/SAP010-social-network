@@ -15,7 +15,7 @@ TV: 1015px pra cima
 */
 
 
-.conteiner-register {
+.container-register {
 
   gap: 20px;
   max-width: 1200px;
@@ -71,6 +71,7 @@ TV: 1015px pra cima
 }
 
 .btn-register {
+  
   color: #6F69EF;
   background-color:#fff ;
   border-radius: 20px;
@@ -83,9 +84,14 @@ TV: 1015px pra cima
 }
 
 .btn-register:disabled {
-  color: #fff;
-  background-color:#6F69EF ;
+  color: #6F69EF;
+  background-color:#fff ;
   transition: .4s;
+}
+
+.btn-register:enabled:hover{
+  color:#fff ;
+  background-color:#6F69EF ;
 }
 
 h2 {
@@ -115,46 +121,83 @@ h2 {
 
 /* Responsive */
 
-@media screen and (min-width: 1015px) {
-  .conteiner-register{
-      display: flex;
-      flex-direction: row;
-      height: 100vh;
+@media screen and (min-width: 992px) {
+  #main{
+    display: flex;
+    justify-content: center;
+}
+
+  .container-register{
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  justify-content: center;
+  margin: 0 auto;
   }
 
   .register-top{
-      background-color: var(--bgColor);
-      height: 100%;
-      justify-content: center;
-      
+  background-color: var(--bgColor);
+  height: 100%;
+  justify-content: center;
+  flex-direction: row;    
+  gap: 20px;
+  
   }
 
   .register-image-mobile {
-      display: none;
+  display: none;
   }
 
+  .register-top, .register-image-desktop{
+    display: block;
+    height: 600px;
+    width: 600px;
+    margin: 0 auto;
+    max-width: 100%; 
+}
+
   .register-top h1{
-    display: none;
+  display: none;
   }
 
   .register-box h1{
-      color: var(--white);
-      display: block;
-      font-weight: 300;
+  color: #010006;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
   }
-
-  .register-top  .register-image-desktop{
-      display: block;
-      height: 500px;
-      width: 500px;
-      
+  .register-box h2{
+    color: #010006;
   }
-
   .register-box {
-    background-color: #fff;
-    border-radius: 20px 20px 20px 20px;
+  background-color: #fff;
+  border-radius: 20px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 600px;
+  width: 450px;
   }
   .register-form input{
-    background-color: #fff;
+  background-color: #fff;
+  }
+  .btn-register {
+    color:#fff ;
+    background-color: #6F69EF;
+  }
+  
+  .btn-register:disabled {
+    color:#fff ;
+    background-color: #6F69EF;
+  
+  }
+  
+  .btn-register:enabled:hover{
+    color:#6F69EF ;
+    background-color:#fff ;
   }
 }
