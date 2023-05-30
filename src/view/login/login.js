@@ -1,6 +1,5 @@
 import './login.css'
-import meninaLoginMobile from '../../images/login-mobile.gif'
-import meninaLoginDesktop from '../../images/login-desktop.gif'
+import meninaLogin from '../../images/login.svg'
 import googleImg from '../../images/google.svg'
 import githubImg from '../../images/github-mobile.svg'
 import {logIn, signInWithGoogle, signInWithGitHub} from '../../firebase/firebase.js'
@@ -10,8 +9,7 @@ export default () => {
   userLogin.classList.add("container-login")
   const templateLogin = `
     <div class="container-img-entrar">
-      <img class="img-mobile-version" src=${meninaLoginMobile} alt="login-animation">
-      <img class="img-desktop-version" src=${meninaLoginDesktop} alt="login-animation">
+      <img class="img-menina-login" src=${meninaLogin} alt="login-animation">
       <h1 class="text-mobile-version">ENTRAR</h1>
     </div>
     <div class="form-login">
