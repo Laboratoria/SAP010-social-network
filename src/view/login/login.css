@@ -99,12 +99,6 @@ form .btn-entrar:hover{
 /* Responsive */
 
 @media screen and (min-width: 600px){
-
-    #main{
-        display: flex;
-        justify-content: center;
-    }
-
     .container-login{
         display: flex;
         flex-direction: row;
@@ -112,7 +106,7 @@ form .btn-entrar:hover{
     }
 
     .container-img-entrar{
-        align-items: start;
+        align-items: center;
         background-color: var(--bgColor);
         height: 100%;
         justify-content: center;
@@ -123,8 +117,8 @@ form .btn-entrar:hover{
     }
 
     .container-img-entrar .img-menina-login{
-        height: 450px;
-        width: 450px;
+        height: 410px;
+        width: 410px;
     }
 
     .form-login{
@@ -132,11 +126,12 @@ form .btn-entrar:hover{
         border-radius: 20px;
         display: flex;
         flex-direction: column;
-        height: 430px;
+        height: 470px;
         justify-content: center;
         margin-right: 20px;
+        padding: 0px 20px;
         text-align: center;
-        width: 300px;
+        width: 270px;
     }
 
     .form-login .text-desktop-version{
@@ -193,21 +188,14 @@ form .btn-entrar:hover{
         justify-content: center;
     }
 
-    .container-img-entrar .img-desktop-version{
-        display: block;
+    .container-img-entrar .img-menina-login{
         height: 600px;
         width: 600px;
     }
 
     .form-login{
-        background-color: var(--white);
-        border-radius: 20px;
-        display: flex;
-        flex-direction: column;
         height: 530px;
-        justify-content: center;
-        margin-right: 20px;
-        text-align: center;
+        padding: 0px 20px;
         width: 400px;
     }
 
