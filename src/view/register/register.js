@@ -1,8 +1,9 @@
 import './register.css'
 import registerImageMobile from '../../images/register-mobile.gif'
+import registerImageDesktop from '../../images/register-desktop.gif'
 import googleImg from '../../images/google.svg'
 import githubImg from '../../images/github-mobile.svg'
-import { registerUser } from '../../firebase/firebase.js';
+import { registerUser, signInWithGoogle, signInWithGitHub } from '../../firebase/firebase.js';
 
 export default () => {
   const register = () => {
@@ -11,9 +12,11 @@ export default () => {
     const template = `
       <section class="register-top">
       <img class="register-image-mobile" src=${registerImageMobile} alt="register-animation">
+      <img class="register-image-desktop" src=${registerImageDesktop} alt="register-animation">
         <h1>CADASTRO</h1>
       </section>
       <section class="register-box">
+        <h1>ENTRAR</h1>
         <form class="register-form">
           <input type="text" id="name" required placeholder="Nome e Sobrenome">
           <input type="text" id="username" required placeholder="Username">
@@ -63,6 +66,12 @@ export default () => {
         alert(`Erro ao registrar usuário: ${error.message}`);
       }
     });
+
+    const signInWithGoogleButton = form.querySelector('.btn-google');
+    const signInWithGitHubButton = form.querySelector('.btn-github');
+
+    signInWithGoogleButton.addEventListener('click', signInWithGoogle);
+    signInWithGitHubButton.addEventListener('click', signInWithGitHub);
   };
 
   register();

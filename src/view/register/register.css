@@ -14,21 +14,10 @@ desktop: 992px ate 1015px
 TV: 1015px pra cima
 */
 
-body {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #141627;
-  font-family: 'Lato', sans-serif;
-  color: #fff;
-}
 
 .conteiner-register {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+ 
   gap: 20px;
-  justify-content: center;
   max-width: 1200px;
   width: 100vw;
   margin: 0 auto;
@@ -36,57 +25,75 @@ body {
   box-sizing: border-box;
 }
 .register-top {
-  text-align: center;
-  background: #6F69EF;
-  border-radius: 0 0 30px 30px;
-  padding: 20px;
+  align-items: center;
+  background-color: #6F69EF;
+  border-radius: 10px 10px 50px 50px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  width: 100%;
+  
+}
+.register-top h1 {
+  color: #fff;
+  font-weight: 300;
 }
 
 .register-image-mobile {
   height: 170px;
   width: 170px;
 }
-
+.register-image-desktop{
+  display: none;
+}
 .register-box {
   margin-top: 20px;
+}
+.register-box h1 {
+  display: none;
 }
 
 .register-form {
   display: flex;
+  align-items: center;
   flex-direction: column;
+  gap: 20px;
 }
 
 .register-form input {
-  margin-bottom: 20px;
-  background: transparent;
+  background-color: var(--bgColor);
   border: none;
-  border-bottom: 1px solid rgb(0, 0, 0);
-  color: rgb(247, 227, 255);
-  padding: 10px;
-  font-size: 16px;
-  outline: none;
-  width: 100%;
+  border-bottom: 2px solid #010006;
+  color: var(--fontColorLogin);
+  height: 45px;
+  outline-color: none;
+  width: 300px;
 }
 
 .btn-register {
-  color: #6F69EF;
-  background-color: #fff;
+  color: #fff;
+  background-color:#6F69EF ;
   border-radius: 20px;
   height: 45px;
   padding: 10px;
   width: 140px;
   margin: 0 auto;
+  font-weight: 500;
+  font-size: 20px;
 }
 
 .btn-register:disabled {
-  background-color: #6F69EF;
   color: #fff;
+  background-color:#6F69EF ;
   transition: .4s;
 }
 
 h2 {
   text-align: center;
   margin-top: 20px;
+  color:#fff;
+  font-weight: 300;
+  font-size: 20px;
 }
 
 .register-icons {
@@ -103,4 +110,50 @@ h2 {
 
 .register-icons :hover {
   cursor: pointer;
+}
+
+
+/* Responsive */
+
+@media screen and (min-width: 1015px) {
+  .conteiner-register{
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+  }
+
+  .register-top{
+      background-color: var(--bgColor);
+      height: 100%;
+      justify-content: center;
+  }
+
+  .register-image-mobile {
+      display: none;
+  }
+
+  .register-top h1{
+    display: none;
+  }
+
+  .register-box h1{
+      color: var(--white);
+      display: block;
+      font-weight: 300;
+  }
+
+  .register-top  .register-image-desktop{
+      display: block;
+      height: 500px;
+      width: 500px;
+      
+  }
+
+  .register-box {
+    background-color: #fff;
+    border-radius: 20px 20px 20px 20px;
+  }
+  .register-form input{
+    background-color: #fff;
+  }
 }
