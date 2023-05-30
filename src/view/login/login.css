@@ -6,6 +6,7 @@
     justify-content: center;
     max-width: 1200px;
     width: 100vw;
+    background-color: aquamarine;
 }
 
 .container-img-entrar{
@@ -103,10 +104,16 @@ form .btn-entrar:hover{
 /* Responsive */
 
 @media screen and (min-width: 1015px) {
+    #main{
+        display: flex;
+        justify-content: center;
+    }
     .container-login{
+        align-items: center;
         display: flex;
         flex-direction: row;
         height: 100vh;
+        justify-content: center;
     }
 
     .container-img-entrar{
