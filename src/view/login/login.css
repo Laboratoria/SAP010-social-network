@@ -6,7 +6,6 @@
     justify-content: center;
     max-width: 1200px;
     width: 100vw;
-    background-color: aquamarine;
 }
 
 .container-img-entrar{
@@ -19,16 +18,12 @@
     width: 100%;
 }
 
-.container-img-entrar .img-mobile-version{
+.container-img-entrar .img-menina-login{
     height: 170px;
     width: 170px;
 }
 
 .text-desktop-version{
-    display: none;
-}
-
-.img-desktop-version{
     display: none;
 }
 
@@ -103,37 +98,33 @@ form .btn-entrar:hover{
 
 /* Responsive */
 
-@media screen and (min-width: 1015px) {
+@media screen and (min-width: 600px){
+
     #main{
         display: flex;
         justify-content: center;
     }
+
     .container-login{
-        align-items: center;
         display: flex;
         flex-direction: row;
         height: 100vh;
-        justify-content: center;
     }
 
     .container-img-entrar{
+        align-items: start;
         background-color: var(--bgColor);
         height: 100%;
         justify-content: center;
-    }
-
-    .img-mobile-version{
-        display: none;
     }
 
     .text-mobile-version{
         display: none;
     }
 
-    .container-img-entrar .img-desktop-version{
-        display: block;
-        height: 500px;
-        width: 500px;
+    .container-img-entrar .img-menina-login{
+        height: 450px;
+        width: 450px;
     }
 
     .form-login{
@@ -141,10 +132,11 @@ form .btn-entrar:hover{
         border-radius: 20px;
         display: flex;
         flex-direction: column;
-        height: 470px;
+        height: 430px;
+        justify-content: center;
         margin-right: 20px;
         text-align: center;
-        justify-content: center;
+        width: 300px;
     }
 
     .form-login .text-desktop-version{
@@ -163,6 +155,7 @@ form .btn-entrar:hover{
         border-bottom: 2px solid #010006b4;
         color: var(--secondColor);
         font-size: 16px;
+        width: 230px;
     }
 
     .form-login form input::placeholder{
@@ -182,6 +175,40 @@ form .btn-entrar:hover{
 
     form .btn-entrar:hover{
         background-color: var(--firstColor);
+    }
+}
+
+@media screen and (min-width: 992px) {
+
+    .container-login{
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+    }
+
+    .container-img-entrar{
+        align-items: start;
+        background-color: var(--bgColor);
+        height: 100%;
+        justify-content: center;
+    }
+
+    .container-img-entrar .img-desktop-version{
+        display: block;
+        height: 600px;
+        width: 600px;
+    }
+
+    .form-login{
+        background-color: var(--white);
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        height: 530px;
+        justify-content: center;
+        margin-right: 20px;
+        text-align: center;
+        width: 400px;
     }
 
 }
