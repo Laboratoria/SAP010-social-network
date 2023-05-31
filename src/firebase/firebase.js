@@ -2,7 +2,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
 import { app, db, collection, addDoc } from './firebase.config';
 import { async } from 'regenerator-runtime';
 
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 const logIn = async (email, password) => {
   await signInWithEmailAndPassword(auth, email, password)
@@ -66,13 +66,12 @@ const signInWithGitHub = async () => {
   });
 }
 
-
-const registerUser = async (name, username, email, password) => {
+const registerUserWithAnotherProvider = async (id, name, username, email ) => {
   try {
-    const userRegister = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userRegister.user;
+    
     const userData = {
 
+      id: id,
       name: name,
       username: username,
       email: email,
@@ -85,7 +84,29 @@ const registerUser = async (name, username, email, password) => {
   } catch (error) {
     console.log('Erro ao cadastrar usuário:', error.message);
   }
+}
+
+  const registerUser = async (name, username, email, password) => {
+    try {
+      
+      await createUserWithEmailAndPassword(auth, email, password);
+
+      const userData = {
+
+        id: auth.currentUser.uid,
+        name: name,
+        username: username,
+        email: email,
+  
+      };
+  
+      await addDoc(collection(db, 'users'), userData);
+  
+      console.log('Usuário cadastrado com sucesso');
+    } catch (error) {
+      console.log('Erro ao cadastrar usuário:', error.message);
+    }
+
 };
 
-export { registerUser, logIn, signInWithGoogle, signInWithGitHub };
-
+export { registerUserWithAnotherProvider, registerUser, logIn, signInWithGoogle, signInWithGitHub };

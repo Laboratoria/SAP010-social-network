@@ -3,10 +3,10 @@ import registerImageMobile from '../../images/register-mobile.gif'
 import registerImageDesktop from '../../images/register-desktop.gif'
 import googleImg from '../../images/google.svg'
 import githubImg from '../../images/github-mobile.svg'
-import { registerUser, signInWithGoogle, signInWithGitHub } from '../../firebase/firebase.js';
+import { registerUserWithAnotherProvider, registerUser, signInWithGoogle, signInWithGitHub, auth } from '../../firebase/firebase.js';
 
 export default () => {
-  const register = () => {
+  //const register = () => {
     const userRegister = document.createElement('div');
     userRegister.classList.add("container-register");
     const template = `
@@ -70,9 +70,20 @@ export default () => {
     const signInWithGoogleButton = form.querySelector('.btn-google');
     const signInWithGitHubButton = form.querySelector('.btn-github');
 
-    signInWithGoogleButton.addEventListener('click', signInWithGoogle);
-    signInWithGitHubButton.addEventListener('click', signInWithGitHub);
+    signInWithGoogleButton.addEventListener('click', async () => {
+      await signInWithGoogle();
+      console.log(auth);
+      registerUserWithAnotherProvider(auth.currentUser.uid, auth.currentUser.displayName, auth.currentUser.displayName, auth.currentUser.email);
+    });
+    signInWithGitHubButton.addEventListener('click', async () => {
+      await signInWithGitHub();
+      console.log(auth);
+      registerUserWithAnotherProvider(auth.currentUser.uid, auth.currentUser.displayName, auth.currentUser.displayName, auth.currentUser.email);
+    });
+
+    return userRegister;
   };
 
-  register();
-};
+  //register();
+  
+//};
