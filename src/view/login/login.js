@@ -36,22 +36,34 @@ export default () => {
   const btnLogin = userLogin.querySelector(".btn-entrar");
   const loginGoogle = userLogin.querySelector(".btn-google");
   const loginGitHub = userLogin.querySelector(".btn-github");
-  const validateEmailErrorInput = userLogin.querySelector(".input-email-login").value;
+  const EmailErrorInputValue = userLogin.querySelector(".input-email-login").value;
+  const EmailErrorInput = userLogin.querySelector(".input-email-login");
   const emailAlert = userLogin.querySelector("#email-alert");
-  const validatePassErrorInput = userLogin.querySelector(".input-pass-login").value;
+
+  const PassErrorInputValue = userLogin.querySelector(".input-pass-login").value;
+  const PassErrorInput = userLogin.querySelector(".input-pass-login")
   const passAlert = userLogin.querySelector("#pass-alert");
   
   function validateEmail(){
-    if(!validateEmailErrorInput){
-      emailAlert.textContent = "Insira um e-mail válido"
+    if(!EmailErrorInputValue){
+      emailAlert.textContent = "Insira um e-mail válido";
     }
-  }
+  };
 
   function validatePassword(){
-    if(!validatePassErrorInput){
-      passAlert.textContent = "Insira uma senha válida"
+    if(!PassErrorInputValue){
+      passAlert.textContent = "Insira uma senha válida";
     }
-  }
+  };
+
+  EmailErrorInput.addEventListener("input", ()=> {
+    emailAlert.textContent = "";
+  });
+
+  PassErrorInput.addEventListener("input", ()=> {
+    passAlert.textContent = "";
+  });
+
 
   btnLogin.addEventListener('click', (e) => {
     e.preventDefault();
