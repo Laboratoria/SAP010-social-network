@@ -1,14 +1,21 @@
+#main {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+}
 
-.container-main .container{
+.container-main .container {
     align-items: center;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    height: 100%;
     justify-content: center;
-    margin: 20px;
+    width: 320px;
 }
 
-.container-image-welcome{
+.container-image-welcome {
     align-items: center;
     display: flex;
     justify-content: center;
@@ -19,12 +26,12 @@
 }
 
 img {
-    height: 176px;
-    width: 197px;
+    height: 320px;
+    width: 320px;
 }
 
 .welcome {
-    line-height: 29px;
+    line-height: 38px;
     font-size: 24px;
     font-weight: 300;
     padding: 5px;
@@ -48,12 +55,12 @@ img {
     background: var(--white);
 }
 
-.color-welcome{
+.color-welcome {
     color: var(--secondColor);
 }
 
 a {
-    font-size: 20px;
+    font-size: 18px;
     padding: 5px;
     text-align: center;
     text-decoration: none;
@@ -68,16 +75,11 @@ nav a:hover {
     color: var(--firstColor);
 }
 
-p{
-    font-size: 20px;
+p {
+    font-size: 18px;
 }
 
 @media screen and (min-width: 600px) {
-    #main{
-        display: flex;
-        height: 100vh;
-        justify-content: center;
-    }
 
     .container-main {
         align-items: center;
@@ -88,15 +90,12 @@ p{
     }
 
     img {
-        height: 450px;
-        width: 450px;
-    }
-
-    .welcome{
-        font-size: 20px;
+        height: 100%;
+        width: 100%;
     }
 
 }
+
 
 @media screen and (min-width: 992px) {
 
@@ -112,14 +111,20 @@ p{
         height: 600px;
         width: 600px;
     }
-    
-    .welcome{
-        font-size: 32px;
-        margin-bottom: 80px;
+
+    .welcome {
+        font-size: 28px;
     }
 
-    .btn{
-        width: 200px;
+    .btn {
+        width: 180px;
     }
-    
+
+    a {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 20px;
+    }
 }

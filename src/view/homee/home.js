@@ -11,7 +11,7 @@ export default () => {
         <div class="container-image-welcome">
             <img src=${meninaHome} alt="menina usando desktop">
         </div>
-        <div class="container space-between">
+        <div class="container space-between width">
             <h1 class="welcome">Bem-vindo(a) ao <br/>&lt;GAMEE&gt;!</h1>
             <nav class="btn signIn">
                 <a href="#login" class="color-welcome">Entrar</a>
