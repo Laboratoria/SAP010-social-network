@@ -55,10 +55,22 @@ export default () => {
       const password = document.getElementById('password').value;
       const confirmPassword = document.getElementById('confirm-password').value;
 
+      const validatePassword = () => {
+        const password = document.getElementById('password').value;
+        const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]\\|:;'<>,.?/~]).{6,}$/;
+        const isValidPassword = strongPassword.test(password);
+        return isValidPassword;
+      };
+  
+      if (!validatePassword()) {
+        alert('A senha não atende aos requisitos mínimos');
+        return;
+      }
       if (password !== confirmPassword) {
         alert('As senhas informadas são diferentes');
         return;
       }
+      
       try {
         await registerUser(name, username, email, password);
         alert('Usuário registrado com sucesso');
