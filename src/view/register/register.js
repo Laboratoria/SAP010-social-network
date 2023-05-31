@@ -1,6 +1,5 @@
 import './register.css'
-import registerImageMobile from '../../images/register-mobile.gif'
-import registerImageDesktop from '../../images/register-desktop.gif'
+import registerImage from '../../images/register.svg'
 import googleImg from '../../images/google.svg'
 import githubImg from '../../images/github-mobile.svg'
 import { registerUserWithAnotherProvider, registerUser, signInWithGoogle, signInWithGitHub, auth } from '../../firebase/firebase.js';
@@ -11,8 +10,7 @@ export default () => {
     userRegister.classList.add("container-register");
     const template = `
       <section class="register-top">
-      <img class="register-image-mobile" src=${registerImageMobile} alt="register-animation">
-      <img class="register-image-desktop" src=${registerImageDesktop} alt="register-animation">
+      <img class="register-image" src=${registerImage} alt="register-animation">
         <h1>CADASTRO</h1>
       </section>
       <section class="register-box">
@@ -22,7 +20,9 @@ export default () => {
           <input type="text" id="username" required placeholder="Username">
           <input type="email" id="email" required placeholder="E-mail">
           <input type="password" id="password" required placeholder="Senha">
+          <span id='password-alert' class='alert'></span>
           <input type="password" id="confirm-password" required placeholder="Confirmar senha">
+          <span id='password-different' class='alert'></span>
           <button type="submit" class="btn-register" disabled>Inscreva-se</button>
           <p>ou continue com</p>
           <picture class="register-icons">
@@ -39,6 +39,7 @@ export default () => {
     const form = document.querySelector('.register-form');
     const inputs = form.querySelectorAll('input');
     const btnRegister = form.querySelector('.btn-register');
+
     const verifyForm = () => {
       const allInputs = Array.from(inputs).every((input) => input.value !== '');
       btnRegister.disabled = !allInputs;
@@ -63,12 +64,12 @@ export default () => {
       };
   
       if (!validatePassword()) {
-        alert('A senha não atende aos requisitos mínimos');
-        return;
+        const passwordAlert = document.getElementById('password-alert');
+        passwordAlert.textContent = 'A senha não atende aos requisitos mínimos';
       }
       if (password !== confirmPassword) {
-        alert('As senhas informadas são diferentes');
-        return;
+        const passwordDifferent = document.getElementById('password-different');
+        passwordDifferent.textContent = 'As senhas informadas são diferentes';
       }
       
       try {
