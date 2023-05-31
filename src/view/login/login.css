@@ -132,6 +132,7 @@ form .btn-entrar:hover{
         padding: 0px 20px;
         text-align: center;
         width: 270px;
+        box-shadow: 5px 5px 9px 0px rgba(0, 0, 0, 0.39);
     }
 
     .form-login .text-desktop-version{

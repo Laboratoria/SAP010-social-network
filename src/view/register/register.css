@@ -181,6 +181,7 @@ TV: 1015px pra cima
     padding: 0px 20px;
     text-align: center;
     width: 280px;
+    box-shadow: 5px 5px 9px 0px rgba(0, 0, 0, 0.39);
   
   }
   .register-form{
