@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 // Follow this pattern to import other Firebase services
 // import { } from 'firebase/<service>';
 
@@ -19,3 +19,10 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
+export async function getUsers(db) {
+  const usersCol = collection(db, 'users');
+  const usereSnapahot = await getDocs(usersCol);
+  const usereList = usereSnapahot.docs.maps((doc => doc.data()));
+  return usereList;
+}
