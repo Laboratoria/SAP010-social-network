@@ -16,7 +16,9 @@ export default () => {
       <h1 class="text-desktop-version">ENTRAR</h1>
       <form>
         <input type="email" class="input-email-login" placeholder="E-MAIL" required>
+        <span id="email-alert" class="input-error"></span>
         <input type="password" class="input-pass-login" placeholder="SENHA" required>
+        <span id="pass-alert" class="input-error"></span>
         <a class="btn-entrar" href="/#feed">Entrar</a>
       </form>
       <p>ou continue com</p>
@@ -24,6 +26,7 @@ export default () => {
         <img class="btn-google" src=${googleImg} alt="google icon">
         <img class="btn-github" src=${githubImg} alt="github icon">
       </picture>
+      <p class="dont-have-an-account">Não possui uma conta?<a class="create-account" href="/#register">Criar conta agora</a></p>
     </div>
   `;
   userLogin.innerHTML = templateLogin;
@@ -33,25 +36,39 @@ export default () => {
   const btnLogin = userLogin.querySelector(".btn-entrar");
   const loginGoogle = userLogin.querySelector(".btn-google");
   const loginGitHub = userLogin.querySelector(".btn-github");
+  const validateEmailErrorInput = userLogin.querySelector(".input-email-login").value;
+  const emailAlert = userLogin.querySelector("#email-alert");
+  const validatePassErrorInput = userLogin.querySelector(".input-pass-login").value;
+  const passAlert = userLogin.querySelector("#pass-alert");
   
-  btnLogin.addEventListener('click', () => {
+  function validateEmail(){
+    if(!validateEmailErrorInput){
+      emailAlert.textContent = "Insira um e-mail válido"
+    }
+  }
+
+  function validatePassword(){
+    if(!validatePassErrorInput){
+      passAlert.textContent = "Insira uma senha válida"
+    }
+  }
+
+  btnLogin.addEventListener('click', (e) => {
+    e.preventDefault();
     const email = emailInput.value;
     const password = passInput.value;
-
     const promise = logIn(email, password);
     promise.catch(e => console.log(e.message)); 
+    validateEmail();
+    validatePassword();
   }) 
 
   loginGoogle.addEventListener('click', () => {
-
     signInWithGoogle();
-
   })
 
   loginGitHub.addEventListener('click', () => {
-
     signInWithGitHub();
-
   })
 
   return userLogin;
