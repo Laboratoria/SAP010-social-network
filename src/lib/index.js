@@ -4,7 +4,7 @@ import {
   getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider,
 } from 'firebase/auth';
 
-import { getUsers } from 'firebase/firestore';
+import { } from 'firebase/firestore';
 
 import { } from './firebase.js';
 
