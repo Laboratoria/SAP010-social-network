@@ -4,13 +4,12 @@ import {
   getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider,
 } from 'firebase/auth';
 
-import { } from 'firebase/firestore';
+import { getUsers, collection, getDocs } from 'firebase/firestore';
 
-import { } from './firebase.js';
+import { auth, db } from './firebase.js';
 
 //CRIAR USUÁRIO
-const authCreate = getAuth();
-createUserWithEmailAndPassword(authCreate, email, password)
+createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user;
   })
@@ -20,8 +19,7 @@ createUserWithEmailAndPassword(authCreate, email, password)
   });
 
 //LOGAR COM USUÁRIO EXISTENTE
-const authLogin = getAuth();
-signInWithEmailAndPassword(authLogin, email, password)
+signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user;
   })
@@ -33,8 +31,7 @@ signInWithEmailAndPassword(authLogin, email, password)
 //LOGAR COM CONTA GOOGLE
 const provider = new GoogleAuthProvider();
 
-const authGoogle = getAuth();
-signInWithPopup(authGoogle, provider)
+signInWithPopup(auth, provider)
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     const credential = GoogleAuthProvider.credentialFromResult(result);
