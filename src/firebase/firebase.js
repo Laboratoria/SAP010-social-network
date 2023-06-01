@@ -1,8 +1,7 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider} from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signOut} from 'firebase/auth';
 import { app, db, collection, addDoc } from './firebase.config';
-import { async } from 'regenerator-runtime';
 
-export const auth = getAuth(app);
+const auth = getAuth(app);
 
 const logIn = async (email, password) => {
   await signInWithEmailAndPassword(auth, email, password)
@@ -10,6 +9,10 @@ const logIn = async (email, password) => {
       alert('Login efetuado com sucesso');
     }).then(()=> isUserLoggedIn())
     .catch(error => console.log(error.message))
+}
+
+const logOut = async () => {
+  await signOut(auth);
 }
 
 const isUserLoggedIn = async () => {
@@ -30,7 +33,11 @@ const isUserLoggedIn = async () => {
     console.log(`O e-mail do usuário é ${email}`);
     console.log(`O id do usuário é ${uid}`);
 
+    return true;
+    
   }//endIf
+
+  return false;
 
 }//endIsUserLoggedIn
 
@@ -109,4 +116,4 @@ const registerUserWithAnotherProvider = async (id, name, username, email ) => {
 
 };
 
-export { registerUserWithAnotherProvider, registerUser, logIn, signInWithGoogle, signInWithGitHub };
+export { registerUserWithAnotherProvider, registerUser, logIn, signInWithGoogle, signInWithGitHub, isUserLoggedIn, logOut, auth };

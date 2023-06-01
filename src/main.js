@@ -6,13 +6,16 @@ import feed from "./view/feed/feed.js";
 const main = document.querySelector("#main")
 
 const changeScreen = () => {
+
   window.addEventListener("hashchange", () =>{
     main.innerHTML = "";
+
     switch(window.location.hash){
       case "":
         main.appendChild(home());
         break; 
       case "#login":
+        window.history.back();
         main.appendChild(login());
         break;
       case "#register":
@@ -25,7 +28,10 @@ const changeScreen = () => {
         main.appendChild(home());
     }
   })
+  
 }
+
+
 
 window.addEventListener("load", () =>{
   main.appendChild(home());
