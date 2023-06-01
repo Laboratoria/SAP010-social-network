@@ -1,30 +1,30 @@
 // aqui exportaras las funciones que necesites
 
 import {
-  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider,
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup, GoogleAuthProvider,
 } from 'firebase/auth';
 
 import { getUsers, collection, getDocs } from 'firebase/firestore';
 
 import { auth } from './firebase.js';
 
-//CRIAR USUÁRIO
+// CRIAR USUÁRIO
 export const loginCreate = () => {
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => { // o "then" tem acesso a informações relacionadas ao login bem-sucedido
+createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+  // o "then" tem acesso a informações relacionadas ao login bem-sucedido
     const user = userCredential.user; // Contém as informações do usuário logado.
-  })
-  .catch((error) => { // trata os erros que possam ocorrer durante a autenticação
+  }).catch((error) => { // trata os erros que possam ocorrer durante a autenticação
     const errorCode = error.code; // Representa o código de erro específico.
     const errorMessage = error.message; // Contém a mensagem de erro associada.
   });
 };
 
-
-
-//LOGAR COM USUÁRIO EXISTENTE
+// LOGAR COM USUÁRIO EXISTENTE
 export const loginUser = () => {
-signInWithEmailAndPassword(auth, email, password)
+  signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => { // o "then" tem acesso a informações relacionadas ao login bem-sucedido
     const user = userCredential.user; // Contém as informações do usuário logado.
   })
@@ -34,9 +34,7 @@ signInWithEmailAndPassword(auth, email, password)
   });
 };
 
-
-
-//LOGAR COM CONTA GOOGLE
+// LOGAR COM CONTA GOOGLE
 export const loginGoogle = () => {
   const auth = getAuth(); // realiza a autenticação do usuário.
   const provider = new GoogleAuthProvider(); // indicando que a autenticação será realizada usando a conta do Google
