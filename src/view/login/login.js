@@ -44,23 +44,27 @@ export default () => {
   const emailErrorInputValue = userLogin.querySelector(".input-email-login").value;
   const emailAlert = userLogin.querySelector("#email-alert");
 
-  const passErrorInputValue = userLogin.querySelector(".input-pass-login").value;
+  const passInputValue = userLogin.querySelector(".input-pass-login").value;
   const passAlert = userLogin.querySelector("#pass-alert");
 
-  const passCheckbox = userLogin.querySelector("#password-checkbox")
+  const passCheckbox = userLogin.querySelector("#password-checkbox");
+  const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]\\|:;'<>,.?/~]).{6,}$/;
 
+  //validar se o input email e senha estão vazios
   function validateEmail() {
+    const emailErrorInputValue = passInput.value
     if (!emailErrorInputValue) {
       emailAlert.textContent = "Insira um e-mail válido";
     }
   };
 
   function validatePassword() {
-    if (!passErrorInputValue) {
-      passAlert.textContent = "Insira uma senha válida";
+    if (!passInputValue) {
+      passAlert.textContent = "Senha inválida";
     }
   };
 
+  //limpar o erro ao digitar no input
   emailInput.addEventListener("input", () => {
     emailAlert.textContent = "";
   });
@@ -89,7 +93,7 @@ export default () => {
     } else {
       validateEmail();
     }
-    if (password !== "") {
+    if (password !== "" && strongPassword.test(password)) {
       passAlert.textContent = "";
     } else {
       validatePassword();
@@ -105,6 +109,7 @@ export default () => {
     };
   })
 
+  //login com google e github
   loginGoogle.addEventListener('click', async () => {
     try{
       await signInWithGoogle();
