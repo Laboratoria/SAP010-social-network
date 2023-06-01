@@ -5,7 +5,7 @@ export const welcome = () => {
 
   const signInHTML = `
     <div class="divSignIn">
-      <img src="img/logo_petchat.jpeg" class="logo">
+      <img src="img/logo_petchat.png" class="logo">
       <p class="introSignIn">Benvindo(a) ao PetChat</p>
       <input type="email" class="inputSignIn" placeholder="example@youremail.com" required>
       <input type="password" class="inputSignIn" placeholder="*******" required minlength= 6>

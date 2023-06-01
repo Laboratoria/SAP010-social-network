@@ -7,7 +7,7 @@ import {
   signInWithPopup, GoogleAuthProvider,
 } from 'firebase/auth';
 
-import { getUsers, collection, getDocs } from 'firebase/firestore';
+/*import { getUsers, collection, getDocs } from 'firebase/firestore';*/
 
 import { auth } from './firebase.js';
 
