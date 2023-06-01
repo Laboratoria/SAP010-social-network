@@ -64,7 +64,7 @@ TV: 1015px pra cima
   color: var(--fontColorLogin);
   height: 45px;
   outline-color: none;
-  width: 300px;
+  width: 320px;
 }
 
 .btn-register {
@@ -164,15 +164,31 @@ TV: 1015px pra cima
 
 #password-checkbox:checked + .btn-checkbox::before {
   transform: translateX(16px);
+
 }
+.register-form .have-an-account{
+  margin-bottom: 15px;
+  margin-top: -10px;
+  font-size: 14px;
+  font-weight: 400; 
+  color: #fff;
+}
+
+.register-form .have-an-account .login-account {
+  font-size: 14px;
+}
+
 /* Responsive */
 
 @media screen and (min-width: 600px) {
   #main{
     display: flex;
     justify-content: center;
-}
-
+  }
+  .register-form .have-an-account{
+  color: #000000;
+    }
+ 
   .container-register{
     display: flex;
     flex-direction: row;
@@ -273,7 +289,7 @@ TV: 1015px pra cima
   }
   .register-box {
     height: 580px;
-    width: 300px;
+    width: 350px;
   
   }
   .register-icons img {
