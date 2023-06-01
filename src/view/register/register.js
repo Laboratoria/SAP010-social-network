@@ -89,6 +89,9 @@ export default () => {
     } 
        // Registrar o usuário usando as informações fornecidas
         await registerUser(name, username, email, password);
+        if(auth.currentUser){
+          window.location.href = "#feed";
+        } 
     });
 
     // Adicionar evento de clique no checkbox para mostrar/esconder a senha
@@ -108,12 +111,18 @@ export default () => {
     signInWithGoogleButton.addEventListener('click', async () => {
       await signInWithGoogle();
       console.log(auth);
-      registerUserWithAnotherProvider(auth.currentUser.uid, auth.currentUser.displayName, auth.currentUser.displayName, auth.currentUser.email);
+      await registerUserWithAnotherProvider(auth.currentUser.uid, auth.currentUser.displayName, auth.currentUser.displayName, auth.currentUser.email);
+      if(auth.currentUser){
+        window.location.href = "#feed";
+      } 
     });
     signInWithGitHubButton.addEventListener('click', async () => {
       await signInWithGitHub();
       console.log(auth);
-      registerUserWithAnotherProvider(auth.currentUser.uid, auth.currentUser.displayName, auth.currentUser.displayName, auth.currentUser.email);
+      await registerUserWithAnotherProvider(auth.currentUser.uid, auth.currentUser.displayName, auth.currentUser.displayName, auth.currentUser.email);
+      if(auth.currentUser){
+        window.location.href = "#feed";
+      } 
     });
 
     return userRegister;

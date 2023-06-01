@@ -2,7 +2,7 @@ import './login.css'
 import meninaLogin from '../../images/login.svg'
 import googleImg from '../../images/google.svg'
 import githubImg from '../../images/github-mobile.svg'
-import {logIn, signInWithGoogle, signInWithGitHub} from '../../firebase/firebase.js'
+import { logIn, signInWithGoogle, signInWithGitHub, auth } from '../../firebase/firebase.js'
 
 export default () => {
   const userLogin = document.createElement("section");
@@ -30,7 +30,7 @@ export default () => {
     </div>
   `;
   userLogin.innerHTML = templateLogin;
- 
+
   const emailInput = userLogin.querySelector(".input-email-login");
   const passInput = userLogin.querySelector(".input-pass-login");
   const btnLogin = userLogin.querySelector(".btn-entrar");
@@ -43,56 +43,97 @@ export default () => {
   const PassErrorInputValue = userLogin.querySelector(".input-pass-login").value;
   const PassErrorInput = userLogin.querySelector(".input-pass-login")
   const passAlert = userLogin.querySelector("#pass-alert");
-  
-  function validateEmail(){
-    if(!EmailErrorInputValue){
+
+  function validateEmail() {
+    if (!EmailErrorInputValue) {
       emailAlert.textContent = "Insira um e-mail válido";
     }
   };
 
-  function validatePassword(){
-    if(!PassErrorInputValue){
+  function validatePassword() {
+    if (!PassErrorInputValue) {
       passAlert.textContent = "Insira uma senha válida";
     }
   };
 
-  EmailErrorInput.addEventListener("input", ()=> {
+  EmailErrorInput.addEventListener("input", () => {
     emailAlert.textContent = "";
   });
 
-  PassErrorInput.addEventListener("input", ()=> {
+  PassErrorInput.addEventListener("input", () => {
     passAlert.textContent = "";
   });
 
-  btnLogin.addEventListener('click', (e) => {
+  btnLogin.addEventListener('click', async (e) => {
     e.preventDefault();
     const email = emailInput.value;
     const password = passInput.value;
-    const promise = logIn(email, password);
-    promise.catch(e => console.log(e.message)); 
-    if(email !== ""){
+
+    if (email !== "") {
       emailAlert.textContent = "";
-    }else{
+    } else {
       validateEmail();
     }
-    if(password !== ""){
+    if (password !== "") {
       passAlert.textContent = "";
-     
-    }else{
+
+    } else {
       validatePassword();
     }
-  
-  }) 
 
-  loginGoogle.addEventListener('click', () => {
-    signInWithGoogle();
+    try {
+
+      await logIn(email, password);
+
+      if(auth.currentUser){
+        window.location.href = "#feed";
+      } 
+
+    } catch(error) {
+
+      console.log(error.message);
+
+    };
+
   })
 
-  loginGitHub.addEventListener('click', () => {
-    signInWithGitHub();
+  loginGoogle.addEventListener('click', async () => {
+    
+    try{
+
+      await signInWithGoogle();
+
+      if(auth.currentUser){
+        window.location.href = "#feed";
+      } 
+
+    } catch(error) {
+
+      console.log(error.message);
+
+    }
+    
+  })
+
+  loginGitHub.addEventListener('click', async () => {
+    
+    try {
+      
+      await signInWithGitHub();
+
+      if(auth.currentUser){
+        window.location.href = "#feed";
+      } 
+
+    } catch(error){
+
+      console.log(error.message);
+
+    }
+  
   })
 
   return userLogin;
-}; 
+};
 
 
