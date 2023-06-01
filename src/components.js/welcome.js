@@ -1,1 +1,1 @@
-import { loginCreate, loginGoogle } from '/firebase.js';
+import { loginUser, loginGoogle } from '/firebase.js';
