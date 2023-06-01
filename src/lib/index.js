@@ -6,47 +6,50 @@ import {
 
 import { getUsers, collection, getDocs } from 'firebase/firestore';
 
-import { auth, db } from './firebase.js';
+import { auth } from './firebase.js';
 
 //CRIAR USUÁRIO
+export const loginCreate = () => {
 createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    const user = userCredential.user;
+  .then((userCredential) => { // o "then" tem acesso a informações relacionadas ao login bem-sucedido
+    const user = userCredential.user; // Contém as informações do usuário logado.
   })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+  .catch((error) => { // trata os erros que possam ocorrer durante a autenticação
+    const errorCode = error.code; // Representa o código de erro específico.
+    const errorMessage = error.message; // Contém a mensagem de erro associada.
   });
+};
+
+
 
 //LOGAR COM USUÁRIO EXISTENTE
+export const loginUser = () => {
 signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    const user = userCredential.user;
+  .then((userCredential) => { // o "then" tem acesso a informações relacionadas ao login bem-sucedido
+    const user = userCredential.user; // Contém as informações do usuário logado.
   })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+  .catch((error) => { // trata os erros que possam ocorrer durante a autenticação
+    const errorCode = error.code; // Representa o código de erro específico.
+    const errorMessage = error.message; // Contém a mensagem de erro associada.
   });
+};
+
+
 
 //LOGAR COM CONTA GOOGLE
-const provider = new GoogleAuthProvider();
+export const loginGoogle = () => {
+  const auth = getAuth(); // realiza a autenticação do usuário.
+  const provider = new GoogleAuthProvider(); // indicando que a autenticação será realizada usando a conta do Google
 
 signInWithPopup(auth, provider)
   .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    // IdP data available using getAdditionalUserInfo(result)
-    // ...
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
+    const credential = GoogleAuthProvider.credentialFromResult(result); // Fornece um token de acesso do Google, que pode ser usado para acessar as APIs do Google.
+    const token = credential.accessToken; // Representa o token de acesso do Google.
+    const user = result.user; // Contém as informações do usuário logado.
+  }).catch((error) => { // trata os erros que possam ocorrer durante a autenticação
+    const errorCode = error.code; // Representa o código de erro específico.
+    const errorMessage = error.message; // Contém a mensagem de erro associada.
+    const email = error.customData.email; // Armazena o endereço de e-mail da conta do usuário utilizado.
+    const credential = GoogleAuthProvider.credentialFromError(error); // Fornece informações adicionais sobre o tipo de credencial usado na autenticação.
   });
+};
