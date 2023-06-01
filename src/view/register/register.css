@@ -123,7 +123,48 @@ TV: 1015px pra cima
   margin-bottom: -15px;
 }
 
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
+#password-checkbox {
+  display: none;
+}
+
+.btn-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 16px;
+  border-radius: 8px;
+  background-color: #678bfc;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: -32px;
+}
+
+#password-checkbox:checked + .btn-checkbox {
+  background-color: #6F69EF;
+}
+
+.btn-checkbox::before {
+  content: ""; /*é a bolinha*/
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: transform 0.3s;
+}
+
+#password-checkbox:checked + .btn-checkbox::before {
+  transform: translateX(16px);
+}
 /* Responsive */
 
 @media screen and (min-width: 600px) {
