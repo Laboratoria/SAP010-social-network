@@ -15,7 +15,6 @@ const changeScreen = () => {
         main.appendChild(home());
         break; 
       case "#login":
-        window.history.back();
         main.appendChild(login());
         break;
       case "#register":
