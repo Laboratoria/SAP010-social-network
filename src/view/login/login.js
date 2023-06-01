@@ -17,7 +17,11 @@ export default () => {
       <form>
         <input type="email" class="input-email-login" placeholder="E-MAIL" required>
         <span id="email-alert" class="input-error"></span>
-        <input type="password" class="input-pass-login" placeholder="SENHA" required>
+        <div class="container-pass-checkbox">
+          <input type="password" class="input-pass-login" placeholder="SENHA" required>
+          <input type="checkbox" id="password-checkbox">
+          <label for="password-checkbox" class="btn-checkbox"></label>
+        </div>
         <span id="pass-alert" class="input-error"></span>
         <a class="btn-entrar" href="/#feed">Entrar</a>
       </form>
@@ -36,34 +40,45 @@ export default () => {
   const btnLogin = userLogin.querySelector(".btn-entrar");
   const loginGoogle = userLogin.querySelector(".btn-google");
   const loginGitHub = userLogin.querySelector(".btn-github");
-  const EmailErrorInputValue = userLogin.querySelector(".input-email-login").value;
-  const EmailErrorInput = userLogin.querySelector(".input-email-login");
+
+  const emailErrorInputValue = userLogin.querySelector(".input-email-login").value;
   const emailAlert = userLogin.querySelector("#email-alert");
 
-  const PassErrorInputValue = userLogin.querySelector(".input-pass-login").value;
-  const PassErrorInput = userLogin.querySelector(".input-pass-login")
+  const passErrorInputValue = userLogin.querySelector(".input-pass-login").value;
   const passAlert = userLogin.querySelector("#pass-alert");
 
+  const passCheckbox = userLogin.querySelector("#password-checkbox")
+
   function validateEmail() {
-    if (!EmailErrorInputValue) {
+    if (!emailErrorInputValue) {
       emailAlert.textContent = "Insira um e-mail válido";
     }
   };
 
   function validatePassword() {
-    if (!PassErrorInputValue) {
+    if (!passErrorInputValue) {
       passAlert.textContent = "Insira uma senha válida";
     }
   };
 
-  EmailErrorInput.addEventListener("input", () => {
+  emailInput.addEventListener("input", () => {
     emailAlert.textContent = "";
   });
 
-  PassErrorInput.addEventListener("input", () => {
+  passInput.addEventListener("input", () => {
     passAlert.textContent = "";
   });
 
+  // Adicionar evento de clique no checkbox para mostrar/esconder a senha
+  passCheckbox.addEventListener("change", ()=>{
+    if (passCheckbox.checked){
+      passInput.type = "text";
+    }else{
+      passInput.type = "password";
+    }
+  });
+
+  //Adicionar evento de clique no botão para validar os inputs email e senha
   btnLogin.addEventListener('click', async (e) => {
     e.preventDefault();
     const email = emailInput.value;
@@ -76,61 +91,40 @@ export default () => {
     }
     if (password !== "") {
       passAlert.textContent = "";
-
     } else {
       validatePassword();
     }
 
     try {
-
       await logIn(email, password);
-
       if(auth.currentUser){
         window.location.href = "#feed";
       } 
-
     } catch(error) {
-
       console.log(error.message);
-
     };
-
   })
 
   loginGoogle.addEventListener('click', async () => {
-    
     try{
-
       await signInWithGoogle();
-
       if(auth.currentUser){
         window.location.href = "#feed";
       } 
-
     } catch(error) {
-
       console.log(error.message);
-
     }
-    
   })
 
   loginGitHub.addEventListener('click', async () => {
-    
     try {
-      
       await signInWithGitHub();
-
       if(auth.currentUser){
         window.location.href = "#feed";
       } 
-
     } catch(error){
-
       console.log(error.message);
-
     }
-  
   })
 
   return userLogin;
