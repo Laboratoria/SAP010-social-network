@@ -64,15 +64,24 @@ export default () => {
     passAlert.textContent = "";
   });
 
-
   btnLogin.addEventListener('click', (e) => {
     e.preventDefault();
     const email = emailInput.value;
     const password = passInput.value;
     const promise = logIn(email, password);
     promise.catch(e => console.log(e.message)); 
-    validateEmail();
-    validatePassword();
+    if(email !== ""){
+      emailAlert.textContent = "";
+    }else{
+      validateEmail();
+    }
+    if(password !== ""){
+      passAlert.textContent = "";
+     
+    }else{
+      validatePassword();
+    }
+  
   }) 
 
   loginGoogle.addEventListener('click', () => {
