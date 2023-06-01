@@ -1,10 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-// Follow this pattern to import other Firebase services
-// import { } from 'firebase/<service>';
 
-// TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyCAS54cKJAeG89RM6F7I4Z_FebhCmPi65o',
   authDomain: 'social-network-5b868.firebaseapp.com',
@@ -20,7 +17,7 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-export async function getUsers(db) {
+export async function getUsers(db) { // essa função utiliza as funções "collection" e "getDocs" do Firestore Lite para obter a coleção de usuários do banco de dados e retorna uma lista com os dados desses usuários.
   const usersCol = collection(db, 'users');
   const usereSnapahot = await getDocs(usersCol);
   const usereList = usereSnapahot.docs.maps((doc => doc.data()));
