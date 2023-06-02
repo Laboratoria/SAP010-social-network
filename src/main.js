@@ -1,31 +1,32 @@
-import home from "./view/homee/home.js";
-import login from "./view/login/login.js";
-import register from "./view/register/register.js";
-import feed from "./view/feed/feed.js";
-import { isUserLoggedIn } from "./firebase/firebase.js";
+import home from './view/homee/home.js';
+import login from './view/login/login.js';
+import register from './view/register/register.js';
+import feed from './view/feed/feed.js';
+import { isUserLoggedIn } from './firebase/firebase.js';
 
-
-const main = document.querySelector("#main");
+const main = document.querySelector('#main');
 
 const changeScreen = async () => {
-  main.innerHTML = "";
+  main.innerHTML = '';
 
   switch (window.location.hash) {
-    case "":
+    case '':
       main.appendChild(home());
       break;
-    case "#login":
+    case '#login':
       main.appendChild(login());
       break;
-    case "#register":
+    case '#register':
       main.appendChild(register());
       break;
-    case "#feed":
-      const user = await isUserLoggedIn();
-      if (user) {
-        main.appendChild(feed());
-      } else {
-        window.location.hash = "#login";
+    case '#feed':
+      {
+        const user = await isUserLoggedIn();
+        if (user) {
+          main.appendChild(feed());
+        } else {
+          window.location.hash = '#login';
+        }
       }
       break;
     default:
@@ -33,8 +34,8 @@ const changeScreen = async () => {
   }
 };
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   changeScreen();
 });
 
-window.addEventListener("hashchange", changeScreen);
+window.addEventListener('hashchange', changeScreen);
