@@ -2,7 +2,7 @@ import './login.css'
 import meninaLogin from '../../images/login.svg'
 import googleImg from '../../images/google.svg'
 import githubImg from '../../images/github-mobile.svg'
-import { logIn, signInWithGoogle, signInWithGitHub, auth } from '../../firebase/firebase.js'
+import { logIn, signInWithGoogle, signInWithGitHub, auth, registerUserWithAnotherProvider, emailAlreadyRegistered} from '../../firebase/firebase.js'
 
 export default () => {
   const userLogin = document.createElement("section");
@@ -114,7 +114,10 @@ export default () => {
   //login com google e github
   loginGoogle.addEventListener('click', async () => {
     try{
+      
       await signInWithGoogle();
+ 
+      await registerUserWithAnotherProvider(auth.currentUser.uid, auth.currentUser.displayName, auth.currentUser.displayName, auth.currentUser.email);
       if(auth.currentUser){
         window.location.href = "#feed";
       } 
@@ -125,11 +128,17 @@ export default () => {
 
   loginGitHub.addEventListener('click', async () => {
     try {
+
       await signInWithGitHub();
+      
+      await registerUserWithAnotherProvider(auth.currentUser.uid, auth.currentUser.displayName, auth.currentUser.displayName, auth.currentUser.email);
       if(auth.currentUser){
         window.location.href = "#feed";
       } 
     } catch(error){
+      if(error.message === "Cannot read properties of null (reading 'uid')"){
+        alert("Usuário já cadastrado com provedor do Google")
+      }
       console.log(error.message);
     }
   })
