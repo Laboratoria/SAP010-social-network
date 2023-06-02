@@ -117,7 +117,10 @@ export default () => {
   loginGoogle.addEventListener('click', async () => {
     try {
       await signInWithGoogle();
-      await registerUserWithAnotherProvider(auth.currentUser.uid, auth.currentUser.displayName, auth.currentUser.displayName, auth.currentUser.email);
+      const uid = auth.currentUser.uid;
+      const name = auth.currentUser.displayName;
+      const email = auth.currentUser.email;
+      await registerUserWithAnotherProvider(uid, name, name, email);
       if (auth.currentUser) {
         window.location.href = '#feed';
       }
@@ -129,7 +132,10 @@ export default () => {
   loginGitHub.addEventListener('click', async () => {
     try {
       await signInWithGitHub();
-      await registerUserWithAnotherProvider(auth.currentUser.uid, auth.currentUser.displayName, auth.currentUser.displayName, auth.currentUser.email);
+      const uid = auth.currentUser.uid;
+      const name = auth.currentUser.displayName;
+      const email = auth.currentUser.email;
+      await registerUserWithAnotherProvider(uid, name, name, email);
       if (auth.currentUser) {
         window.location.href = '#feed';
       }
