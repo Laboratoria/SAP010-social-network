@@ -1,11 +1,11 @@
-import './register.css'
-import registerImage from '../../images/register.svg'
-import { registerUser, auth} from '../../firebase/firebase.js';
+import './register.css';
+import registerImage from '../../images/register.svg';
+import { registerUser, auth } from '../../firebase/firebase.js';
 
 export default () => {
   // Definindo o HTML do formulário de cadastro
   const userRegister = document.createElement('div');
-  userRegister.classList.add("container-register");
+  userRegister.classList.add('container-register');
   const template = `
       <section class="register-top">
       <img class="register-image" src=${registerImage} alt="register-animation">
@@ -30,7 +30,7 @@ export default () => {
           </div>
           <span id='password-different' class='alert'></span>
           <button type="submit" class="btn-register" disabled>Inscreva-se</button>
-          <h6 class="have-an-account">Já possui uma conta?<a class="login-account" href="/#login">Acesse sua conta agora</a></h6>
+          <p class="have-an-account">Já possui uma conta?<a class="login-account" href="/#login">Acesse sua conta agora</a></p>
         </form>
       </section>
     `;
@@ -71,7 +71,6 @@ export default () => {
     const confirmPassword = document.getElementById('confirm-password').value;
     // Verificar se a senha atende aos requisitos mínimos
     if (!validatePassword()) {
-
       passwordAlert.textContent = 'A senha não atende aos requisitos mínimos';
     }
     // Limpar os alertas de senha quando o campo é modificado
@@ -88,7 +87,7 @@ export default () => {
     // Registrar o usuário usando as informações fornecidas
     await registerUser(name, username, email, password);
     if (auth.currentUser) {
-      window.location.href = "#feed";
+      window.location.href = '#feed';
     }
   });
 
