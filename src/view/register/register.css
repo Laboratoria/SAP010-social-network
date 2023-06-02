@@ -130,7 +130,7 @@ TV: 1015px pra cima
   margin-bottom: 10px;
 }
 
-#password-checkbox {
+#password-checkbox, #confirm-password-checkbox {
   display: none;
 }
 
@@ -150,6 +150,10 @@ TV: 1015px pra cima
   background-color: #6F69EF;
 }
 
+#confirm-password-checkbox:checked + .btn-checkbox {
+  background-color: #6F69EF;
+}
+
 .btn-checkbox::before {
   content: ""; /*é a bolinha*/
   position: absolute;
@@ -166,6 +170,11 @@ TV: 1015px pra cima
   transform: translateX(16px);
 
 }
+
+#confirm-password-checkbox:checked + .btn-checkbox::before{
+  transform: translateX(16px);
+}
+
 .register-form .have-an-account{
   margin-bottom: 15px;
   margin-top: -10px;
@@ -176,6 +185,28 @@ TV: 1015px pra cima
 
 .register-form .have-an-account .login-account {
   font-size: 14px;
+}
+
+
+#confirm-password-checkbox:checked + .btn-checkbox::before{
+  transform: translateX(16px);
+
+}
+.register-form .have-an-account{
+  margin-bottom: 15px;
+  margin-top: -10px;
+  font-size: 14px;
+  font-weight: 400; 
+  color: #fff;
+}
+
+.register-form .have-an-account .login-account {
+  font-size: 14px;
+}
+
+
+#confirm-password-checkbox:checked + .btn-checkbox::before{
+  transform: translateX(16px);
 }
 
 /* Responsive */
