@@ -23,6 +23,7 @@ export default () => {
           <label for="password-checkbox" class="btn-checkbox"></label>
         </div>
         <span id="pass-alert" class="input-error"></span>
+        <span id="user-alert" class="input-error"></span>
         <a class="btn-entrar" href="/#feed">Entrar</a>
       </form>
       <p>ou continue com</p>
@@ -41,24 +42,23 @@ export default () => {
   const loginGoogle = userLogin.querySelector(".btn-google");
   const loginGitHub = userLogin.querySelector(".btn-github");
 
-  const emailErrorInputValue = userLogin.querySelector(".input-email-login").value;
   const emailAlert = userLogin.querySelector("#email-alert");
-
-  const passInputValue = userLogin.querySelector(".input-pass-login").value;
   const passAlert = userLogin.querySelector("#pass-alert");
+  const userAlert = userLogin.querySelector("#user-alert");
 
   const passCheckbox = userLogin.querySelector("#password-checkbox");
   const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]\\|:;'<>,.?/~]).{6,}$/;
 
   //validar se o input email e senha estão vazios
   function validateEmail() {
-    const emailErrorInputValue = passInput.value
+    const emailErrorInputValue = emailInput.value
     if (!emailErrorInputValue) {
       emailAlert.textContent = "Insira um e-mail válido";
     }
   };
 
   function validatePassword() {
+    const passInputValue = passInput.value
     if (!passInputValue) {
       passAlert.textContent = "Senha inválida";
     }
@@ -103,9 +103,11 @@ export default () => {
       await logIn(email, password);
       if(auth.currentUser){
         window.location.href = "#feed";
-      } 
+      }else{
+        userAlert.textContent = "Usuário não cadastrado!"
+      }
     } catch(error) {
-      console.log(error.message);
+      console.log(error.message)
     };
   })
 
