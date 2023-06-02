@@ -1,33 +1,110 @@
-// Este es el punto de entrada de tu aplicacion - só manipulação de DOM - elements HTML
+// import { myFunction } from '../lib/index.js';
+// // Este es el punto de entrada de tu aplicacion - só manipulação de DOM - elements HTML
 
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBY3UkDzyQQt6bkMRjawouhmYdhqfv_Tag",
-  authDomain: "exemplo-89631.firebaseapp.com",
-  projectId: "exemplo-89631",
-  storageBucket: "exemplo-89631.appspot.com",
-  messagingSenderId: "489576568604",
-  appId: "1:489576568604:web:bd304747c79b7e2f498cd9",
-  measurementId: "G-JXS5G494MK"
-};
+// myFunction();
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
 
-const email = "abacatee@frutas.com"
-const password = "123456"
+window.onload = function() {
+  const body = document.getElementsByTagName("body")[0];
 
-createUserWithEmailAndPassword(auth, email, password)
-myFunction();
+  const titulo = document.createElement("h1");
+  titulo.innerHTML = "ExploraAí!";
+  body.appendChild(titulo);
 
-test
+  const loginBtn = createButton("ENTRAR", mostrarFormularioLogin);
+  body.appendChild(loginBtn);
+
+  const registerBtn = createButton("CRIAR CONTA", mostrarFormularioRegistro);
+  body.appendChild(registerBtn);
+}
+
+function mostrarFormularioLogin() {
+  const body = document.getElementsByTagName("body")[0];
+  body.innerHTML = "";
+
+  const formularioLogin = createDiv("formularioLogin");
+
+  const loginTitulo = createHeading("h2", "Login");
+  formularioLogin.appendChild(loginTitulo);
+
+  const emailInput = createInput("email", "E-MAIL");
+  formularioLogin.appendChild(emailInput);
+
+  const senhaInput = createInput("password", "SENHA");
+  formularioLogin.appendChild(senhaInput);
+
+  const entrarBtn = createButton("ENTRAR");
+  formularioLogin.appendChild(entrarBtn);
+
+  const criarNovaConta = createButton("CRIAR NOVA CONTA");
+  formularioLogin.appendChild(criarNovaConta);
+
+  body.appendChild(formularioLogin);
+}
+
+function mostrarFormularioRegistro() {
+  const body = document.getElementsByTagName("body")[0];
+  body.innerHTML = "";
+
+  const formularioRegistro = createDiv("formularioRegistro");
+
+  const registroTitulo = createHeading("h2", "Cadastre-se");
+  formularioRegistro.appendChild(registroTitulo);
+
+  const nomeInput = createInput("text", "Nome");
+  formularioRegistro.appendChild(nomeInput);
+
+  const sobrenomeInput = createInput("text", "Sobrenome");
+  formularioRegistro.appendChild(sobrenomeInput);
+
+  const senhaInput = createInput("password", "Senha", "br");
+  formularioRegistro.appendChild(senhaInput);
+
+  const cadastrar = createButton("CADASTRAR");
+  formularioRegistro.appendChild(cadastrar);
+
+  const textoOu = createElement("p", "ou", "br");
+  formularioRegistro.appendChild(textoOu);
+
+  const entrarCom = createElement("p", "ENTRAR COM");
+  formularioRegistro.appendChild(entrarCom);
+
+  const googleBtn = createButton("Google");
+  formularioRegistro.appendChild(googleBtn);
+
+  body.appendChild(formularioRegistro);
+}
+
+function createButton(text, onclick) {
+  const button = document.createElement("button");
+  button.innerHTML = text;
+  button.onclick = onclick;
+  return button;
+}
+
+function createDiv(id) {
+  const div = document.createElement("div");
+  div.id = id;
+  return div;
+}
+
+function createHeading(type, text) {
+  const heading = document.createElement(type);
+  heading.innerHTML = text;
+  return heading;
+}
+
+function createInput(type, placeholder) {
+  const input = document.createElement("input");
+  input.type = type;
+  input.placeholder = placeholder;
+  return input;
+}
+
+function createElement(type, text) {
+  const element = document.createElement(type);
+  element.innerHTML = text;
+  return element;
+
+}
