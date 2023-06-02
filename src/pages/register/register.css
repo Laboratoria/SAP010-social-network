@@ -1,16 +1,25 @@
+/*--bgColor: #30A2FF;
+    --firstColor:  
+    --white: #FFFFFF;
+    --fontColor: #1d3c75;
+    */
+
+
 html {
+    background-color: var(--bgColor);
     text-align: center;
     justify-content: center;
     font-family: Georgia, 'Times New Roman', Times, serif ;
-    color: #1d3c75;
+    color: var(--fontColor);
     box-sizing: border-box;
     display: flex;
-    background-color: #30A2FF;
-    
+     
 }
+
 body {
     padding: 20px;
 }
+
 button {
     color: white;
     background-color: rgb(11, 11, 68);
@@ -21,10 +30,7 @@ button {
     margin-top: 50px;
 }
 
-img{
-    width: 300px;
-    height: 300px;
-}
+
 @media (max-width: 768px) {
 
 

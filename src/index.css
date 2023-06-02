@@ -1,18 +1,27 @@
+:root{
+    --bgColor: #30A2FF;
+    --firstColor:  
+    --white: #FFFFFF;
+    --fontColor: #1d3c75;
+}
+
+
+
 html {
     text-align: center;
     justify-content: center;
     font-family: Georgia, 'Times New Roman', Times, serif ;
-    color: #1d3c75;
+    color: var(--fontColor);
     box-sizing: border-box;
     display: flex;
-    background-color: #30A2FF;
+    background-color: var(--bgColor);
     
 }
 body {
     padding: 20px;
 }
 button {
-    color: white;
+    color: var(--white);
     background-color: rgb(11, 11, 68);
     width: 130px;
     height: 30px;
@@ -32,3 +41,4 @@ img{
         font-size: 10px;
     }
 }
+
