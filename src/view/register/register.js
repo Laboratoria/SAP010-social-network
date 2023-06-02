@@ -37,6 +37,7 @@ export default () => {
           <img class="btn-google" src=${googleImg} alt="google icon">
           <img class="btn-github" src=${githubImg} alt="github icon">
           </picture>
+          <h6 class="have-an-account">Já possui uma conta?<a class="login-account" href="/#login">Acesse sua conta agora</a></h6>
         </form>
       </section>
     `;

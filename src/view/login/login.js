@@ -17,7 +17,11 @@ export default () => {
       <form>
         <input type="email" class="input-email-login" placeholder="E-MAIL" required>
         <span id="email-alert" class="input-error"></span>
-        <input type="password" class="input-pass-login" placeholder="SENHA" required>
+        <div class="container-pass-checkbox">
+          <input type="password" class="input-pass-login" placeholder="SENHA" required>
+          <input type="checkbox" id="password-checkbox">
+          <label for="password-checkbox" class="btn-checkbox"></label>
+        </div>
         <span id="pass-alert" class="input-error"></span>
         <a class="btn-entrar" href="/#feed">Entrar</a>
       </form>
@@ -36,34 +40,49 @@ export default () => {
   const btnLogin = userLogin.querySelector(".btn-entrar");
   const loginGoogle = userLogin.querySelector(".btn-google");
   const loginGitHub = userLogin.querySelector(".btn-github");
-  const EmailErrorInputValue = userLogin.querySelector(".input-email-login").value;
-  const EmailErrorInput = userLogin.querySelector(".input-email-login");
+
+  const emailErrorInputValue = userLogin.querySelector(".input-email-login").value;
   const emailAlert = userLogin.querySelector("#email-alert");
 
-  const PassErrorInputValue = userLogin.querySelector(".input-pass-login").value;
-  const PassErrorInput = userLogin.querySelector(".input-pass-login")
+  const passInputValue = userLogin.querySelector(".input-pass-login").value;
   const passAlert = userLogin.querySelector("#pass-alert");
 
+  const passCheckbox = userLogin.querySelector("#password-checkbox");
+  const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]\\|:;'<>,.?/~]).{6,}$/;
+
+  //validar se o input email e senha estão vazios
   function validateEmail() {
-    if (!EmailErrorInputValue) {
+    const emailErrorInputValue = passInput.value
+    if (!emailErrorInputValue) {
       emailAlert.textContent = "Insira um e-mail válido";
     }
   };
 
   function validatePassword() {
-    if (!PassErrorInputValue) {
-      passAlert.textContent = "Insira uma senha válida";
+    if (!passInputValue) {
+      passAlert.textContent = "Senha inválida";
     }
   };
 
-  EmailErrorInput.addEventListener("input", () => {
+  //limpar o erro ao digitar no input
+  emailInput.addEventListener("input", () => {
     emailAlert.textContent = "";
   });
 
-  PassErrorInput.addEventListener("input", () => {
+  passInput.addEventListener("input", () => {
     passAlert.textContent = "";
   });
 
+  // Adicionar evento de clique no checkbox para mostrar/esconder a senha
+  passCheckbox.addEventListener("change", ()=>{
+    if (passCheckbox.checked){
+      passInput.type = "text";
+    }else{
+      passInput.type = "password";
+    }
+  });
+
+  //Adicionar evento de clique no botão para validar os inputs email e senha
   btnLogin.addEventListener('click', async (e) => {
     e.preventDefault();
     const email = emailInput.value;
@@ -74,63 +93,43 @@ export default () => {
     } else {
       validateEmail();
     }
-    if (password !== "") {
+    if (password !== "" && strongPassword.test(password)) {
       passAlert.textContent = "";
-
     } else {
       validatePassword();
     }
 
     try {
-
       await logIn(email, password);
-
       if(auth.currentUser){
         window.location.href = "#feed";
       } 
-
     } catch(error) {
-
       console.log(error.message);
-
     };
-
   })
 
+  //login com google e github
   loginGoogle.addEventListener('click', async () => {
-    
     try{
-
       await signInWithGoogle();
-
       if(auth.currentUser){
         window.location.href = "#feed";
       } 
-
     } catch(error) {
-
       console.log(error.message);
-
     }
-    
   })
 
   loginGitHub.addEventListener('click', async () => {
-    
     try {
-      
       await signInWithGitHub();
-
       if(auth.currentUser){
         window.location.href = "#feed";
       } 
-
     } catch(error){
-
       console.log(error.message);
-
     }
-  
   })
 
   return userLogin;
