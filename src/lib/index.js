@@ -1,5 +1,5 @@
 // Initialize Firebase - todas as funções do firebase
-import app from "../firebase";
+import app from "../firebase/firebase";
 // import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 const auth = getAuth(app); //app do firebase
 

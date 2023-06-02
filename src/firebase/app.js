@@ -1,4 +1,4 @@
-import { myFunction } from './lib/index.js';
+import { myFunction } from '../lib/index.js';
 // Import the functions you need from the SDKs you need - só para conectar o firebase com o cloud - não precisa fazer mais nada
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
