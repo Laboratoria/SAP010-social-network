@@ -4,12 +4,12 @@ import {
 } from 'firebase/auth';
 
 import {
-  app, db, collection,
-} from './firebase.config';
-
-import {
   query, where, getDocs, setDoc, doc,
 } from 'firebase/firestore';
+
+import {
+  app, db, collection,
+} from './firebase.config';
 
 const auth = getAuth(app);
 
