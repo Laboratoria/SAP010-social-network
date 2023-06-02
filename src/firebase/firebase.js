@@ -71,8 +71,13 @@ const signInWithGitHub = async () => {
       isUserLoggedIn();
 
     }).catch((error) => {
-
-      console.log(error.message);
+      /*
+      if(error.code === "auth/account-exists-with-different-credential"){
+        alert("usuário já cadastrado com o provedor do Google")
+      }
+      */
+      console.log(error.code)
+      console.log(error.message)
     });
 }
 
@@ -88,21 +93,8 @@ const registerUserWithAnotherProvider = async (id, name, username, email) => {
 
     };
 
-    await setDoc(doc(db, 'users', `${id}`), userData);
-    console.log('Usuário cadastrado com sucesso')
-
-    /*
-    const q = query(collection(db, "users"), where("id", "==", id));
-
-    const querySnapshot = await getDocs(q);
-
-    querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
-      if (doc.data().id === id) {
-        alert("Usuario já cadastrado na base");
-      }
-    });
-    */
+    await setDoc(doc(db, 'users', `${email}`), userData);
+    console.log('Usuário cadastrado com sucesso');
 
   } catch (error) {
     console.log('Erro ao cadastrar usuário:', error.message);
@@ -123,7 +115,7 @@ const registerUser = async (name, username, email, password) => {
 
     };
 
-    await setDoc(doc(db, 'users', `${id}`), userData);
+    await setDoc(doc(db, 'users', `${email}`), userData);
 
     console.log('Usuário cadastrado com sucesso');
   } catch (error) {
@@ -132,4 +124,18 @@ const registerUser = async (name, username, email, password) => {
 
 };
 
-export { registerUserWithAnotherProvider, registerUser, logIn, signInWithGoogle, signInWithGitHub, isUserLoggedIn, logOut, auth };
+const emailAlreadyRegistered = async (email) => {
+console.log("aaaaaaaaaaaaaaaaaaaaaaaaaa")
+  const q = query(collection(db, "users"), where("email", "==", email));
+
+  const querySnapshot = await getDocs(q);
+
+  querySnapshot.forEach((doc) => {
+    console.log(doc.id, " => ", doc.data().email);
+    if (doc.data().email === doc.id) {
+      alert("Este e-mail já está sendo utilizado por outro provedor");
+    }
+  });
+}
+
+export { registerUserWithAnotherProvider, registerUser, logIn, signInWithGoogle, signInWithGitHub, isUserLoggedIn, logOut, auth, emailAlreadyRegistered };

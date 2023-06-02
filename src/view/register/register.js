@@ -1,8 +1,6 @@
 import './register.css'
 import registerImage from '../../images/register.svg'
-import googleImg from '../../images/google.svg'
-import githubImg from '../../images/github-mobile.svg'
-import { registerUserWithAnotherProvider, registerUser, signInWithGoogle, signInWithGitHub, auth} from '../../firebase/firebase.js';
+import { registerUser, auth} from '../../firebase/firebase.js';
 
 export default () => {
   // Definindo o HTML do formulário de cadastro
@@ -32,11 +30,6 @@ export default () => {
           </div>
           <span id='password-different' class='alert'></span>
           <button type="submit" class="btn-register" disabled>Inscreva-se</button>
-          <p>ou continue com</p>
-          <picture class="register-icons">
-          <img class="btn-google" src=${googleImg} alt="google icon">
-          <img class="btn-github" src=${githubImg} alt="github icon">
-          </picture>
           <h6 class="have-an-account">Já possui uma conta?<a class="login-account" href="/#login">Acesse sua conta agora</a></h6>
         </form>
       </section>
@@ -115,28 +108,6 @@ export default () => {
       confirmPasswordInput.type = 'text';
     } else {
       confirmPasswordInput.type = 'password';
-    }
-  });
-
-  // Selecionando os botões de login com o Google e GitHub
-  const signInWithGoogleButton = form.querySelector('.btn-google');
-  const signInWithGitHubButton = form.querySelector('.btn-github');
-  // Adicionando eventos de click aos botões de login com o Google e GitHub
-  signInWithGoogleButton.addEventListener('click', async () => {
-    await signInWithGoogle();
-    console.log(auth);
-    await registerUserWithAnotherProvider(auth.currentUser.uid, auth.currentUser.displayName, auth.currentUser.displayName, auth.currentUser.email);
-    if (auth.currentUser) {
-      window.location.href = "#feed";
-    }
-
-  });
-  signInWithGitHubButton.addEventListener('click', async () => {
-    await signInWithGitHub();
-    console.log(auth);
-    await registerUserWithAnotherProvider(auth.currentUser.uid, auth.currentUser.displayName, auth.currentUser.displayName, auth.currentUser.email);
-    if (auth.currentUser) {
-      window.location.href = "#feed";
     }
   });
 
