@@ -28,8 +28,10 @@ export function mostrarFormularioRegistro() {
 
      <p class="text-ou">OU</p>
 
+     <p class="entrar-com">Entrar com:</p>
+
     <div>
-      <button type="button" id="">Entrar com: <a id=" href="">Google</a></button>
+      <button type="button" id=""> <a id=" href="">Google</a></button>
     </div>
   </form>
 </section>
