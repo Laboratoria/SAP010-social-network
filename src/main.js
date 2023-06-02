@@ -1,14 +1,14 @@
 import { getUsers, db } from './lib/firebase.js';
-//import { feed } from './components.js/feed.js';
-//import { register } from './components.js/register.js';
+import { feed } from './components.js/feed.js';
+import { register } from './components.js/register.js';
 import { welcome } from './components.js/welcome.js';
-//import { sobre } from './components.js/sobre.js';
+// import { sobre } from './components.js/sobre.js';
 
 // rota (páginas de navegação)
 const init = () => {
   const routes = {
     '': welcome,
-  //  '#register': register,
+      '#register': register,
   //  '#sobre': sobre,
   //  '#feed': feed,
   };
