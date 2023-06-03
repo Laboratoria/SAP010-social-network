@@ -1,40 +1,73 @@
-/*--bgColor: #30A2FF;
-    --firstColor:  
-    --white: #FFFFFF;
-    --fontColor: #1d3c75;
-    */
+:root{
+    --bgColor: #30A2FF;
+    --firstColor:   #0B0B44;
+    --secondColor:  #f4f8fb; 
+    --thirColor:    #db8625;    
+   
+}
 
+.contenedor-registro {
+    display: grid;   
+    
+   
+}
 
 html {
-    background-color: var(--bgColor);
     text-align: center;
     justify-content: center;
     font-family: Georgia, 'Times New Roman', Times, serif ;
-    color: var(--fontColor);
+    color: var(--secondColor);
     box-sizing: border-box;
     display: flex;
-     
+    background-color: var(--bgColor);
+    
 }
-
 body {
-    padding: 20px;
+    padding: 5em    ;
 }
 
-button {
-    color: white;
-    background-color: rgb(11, 11, 68);
-    width: 130px;
-    height: 30px;
-    font-size: 14px;
-    border-radius: 5px;
-    margin-top: 50px;
+.titulo  {
+    font-size: 2.5em;
+    margin-top: 1em;
+}
+
+.inputs-div  {
+     margin-top: 2em;
+}
+
+.inputs-registro{
+    margin-top: 2em;
+    text-align: center;
+    width: 15em;
+    height: 3em;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.registro-btn {
+    color: var(--secondColor);
+    background-color: var(--thirColor);
+    width: 16em;
+    height: 3em;
+    font-size: 1em;
+    border-radius: 5px 5px 5px 5px;
+    margin-top: 3em;
+}
+
+.registro-btn:hover {
+    color: var(--secondColor);
+    background-color: rgb(231, 89, 37);
+   
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
 
-
-    button {
-        font-size: 10px;
+    .inputs-registro{
+        margin-top: 3em;
+        text-align: center;
+        width: 10em;
+        height: 3em;
+        border-radius: 5px 5px 5px 5px;
     }
+   
 }
