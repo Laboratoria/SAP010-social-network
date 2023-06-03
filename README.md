@@ -52,27 +52,27 @@
 
 Versão mobile:
 
-![Alt text](src/img/Prot%C3%B3tipo%20de%20baixa%20fidelidade%20vers%C3%A3o%20mobile.jpeg)
+<img src = "src/img/Prot%C3%B3tipo%20de%20baixa%20fidelidade%20vers%C3%A3o%20mobile.jpeg" width = "400px" height = 300px/>
+
 
 Versão desktop:
 
-![Alt text](src/img/Prot%C3%B3tipo%20de%20baixa%20fidelidade%20vers%C3%A3o%20desktop.jpeg)
+<img src = "src/img/Prot%C3%B3tipo%20de%20baixa%20fidelidade%20vers%C3%A3o%20desktop.jpeg" width = "400px" height = 300px/>
 
 
 ### 3.2 Protótipos de alta fidelidade:
 
 Versão mobile:
 
-Acesse [aqui](https://www.figma.com/proto/8hKLQYcc6QPfRtdsGxTv9T/Social-Network?type=design&node-id=45-104&scaling=scale-down&page-id=0%3A1&starting-point-node-id=45%3A104&show-proto-sidebar=1) 
-![Alt text](src/img/Prot%C3%B3tipo%20de%20alta%20fidelidade%20vers%C3%A3o%20mobile.PNG)
-
+Acesse [aqui](https://www.figma.com/proto/8hKLQYcc6QPfRtdsGxTv9T/Social-Network?type=design&node-id=51-165&scaling=scale-down&page-id=0%3A1&starting-point-node-id=51%3A165&show-proto-sidebar=1) 
+<img src = "src/img/Prot%C3%B3tipo%20de%20alta%20fidelidade%20vers%C3%A3o%20mobile.PNG" />
 Versão desktop:
 
 Acesse [aqui](https://www.figma.com/proto/8hKLQYcc6QPfRtdsGxTv9T/Social-Network?type=design&node-id=288-783&scaling=scale-down&page-id=51%3A523&starting-point-node-id=288%3A783&show-proto-sidebar=1)
-![Alt text](src/img/Prot%C3%B3tipo%20de%20alta%20fidelidade%20vers%C3%A3o%20desktop.PNG)
+<img src = "src/img/Prot%C3%B3tipo%20de%20alta%20fidelidade%20vers%C3%A3o%20desktop.PNG"/>
 
 ### 3.2 Paleta de cores utilizada:
-![Alt text](src/img/paleta%20de%20cores.PNG)
+<img src ="src/img/paleta%20de%20cores.PNG"/>
 
 
 
