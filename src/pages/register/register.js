@@ -1,6 +1,6 @@
 import { errorsFirebase, validateRegister } from '../../validations.js';
 import { createUserWithEmail } from '../../firebase/auth.js';
-
+import './register.css';
 
 export function mostrarFormularioRegistro() {
   const body = document.getElementsByTagName('body')[0];
@@ -10,30 +10,20 @@ export function mostrarFormularioRegistro() {
   formularioRegistro.classList.add('contenedor-registro');
   const plantillaFormulario = `
   <section class="form-envelope">
-  <p class="titulo">Cadastre-se</p>
+  <p class="titulo">Cadastrar-se</p>
   </section>
   <section class="registro-caixa">
   <form class="registro-form">
     <div class="inputs-div">
-      <input type="text" class="inputs-registro" id="nombre-usuario" placeholder="Nome completo">
-      <input type="email" class="inputs-registro" id="registro-email" placeholder="nome@email.com">
-      <input type="password" class="inputs-registro" id="registro-senha" placeholder="senha">
+      <input type="text" class="inputs-registro" id="nome-usuario" placeholder="NOME">
+      <input type="text" class="inputs-registro" id="sobrenome-usuario" placeholder="SOBRENOME"><br>
+      <input type="password" class="inputs-registro" id="registro-senha" placeholder="CRIAR SENHA">
       </div>
     
       <div>
-      <button type="button" id="register-btn" href="#timeline">Cadastrar</button>
+      <button type="button" class="registro-btn" href="#timeline">CADASTRAR</button>
     </div> 
-   
-     <p class="esquecer-senha">Esqueceu a senha?</p>
-
-     <p class="text-ou">OU</p>
-
-     <p class="entrar-com">Entrar com:</p>
-
-    <div>
-      <button type="button" id=""> <a id=" href="/#">Google</a></button>
-    </div>
-  </form>
+    </form>
 </section>
 `;
 
