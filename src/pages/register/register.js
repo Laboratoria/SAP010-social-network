@@ -12,7 +12,7 @@ export function mostrarFormularioRegistro() {
   <section class="form-envelope">
   <p class="titulo">Cadastre-se</p>
   </section>
-  <section class="registro-caja">
+  <section class="registro-caixa">
   <form class="registro-form">
     <div class="inputs-div">
       <input type="text" class="inputs-registro" id="nombre-usuario" placeholder="Nome completo">
@@ -22,7 +22,7 @@ export function mostrarFormularioRegistro() {
     
       <div>
       <button type="button" id="register-btn" href="#timeline">Cadastrar</button>
-    </div>
+    </div> 
    
      <p class="esquecer-senha">Esqueceu a senha?</p>
 
@@ -31,13 +31,14 @@ export function mostrarFormularioRegistro() {
      <p class="entrar-com">Entrar com:</p>
 
     <div>
-      <button type="button" id=""> <a id=" href="">Google</a></button>
+      <button type="button" id=""> <a id=" href="/#">Google</a></button>
     </div>
   </form>
 </section>
 `;
 
 formularioRegistro.innerHTML = plantillaFormulario;
+//return formularioRegistro;
 body.appendChild(formularioRegistro);
 
 }
