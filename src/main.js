@@ -19,6 +19,7 @@ window.onload = function() {
 function createButton(text, onclick) {
   const button = document.createElement('button');
   button.innerHTML = text;
-  button.onclick = onclick; // usar even nao onclick
+  button.onclick = onclick; // usar addEventListener nao onclick
   return button;
 }
+
