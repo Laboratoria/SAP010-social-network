@@ -1,0 +1,218 @@
+.container-login{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100vw;
+}
+
+.container-img-entrar{
+    align-items: center;
+    background-color: var(--secondColor);
+    border-radius: 10px 10px 50px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.container-img-entrar .img-menina-login{
+    height: 170px;
+    width: 170px;
+}
+
+.text-desktop-version{
+    display: none;
+}
+
+.container-img-entrar h1{
+    font-weight: 300;
+}
+
+div.container-img-entrar h1, .form-login p{
+    color: var(--white);
+}
+
+.form-login form{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-login form input{
+    background-color: var(--bgColor);
+    border: none;
+    border-bottom: 2px solid #010006;
+    color: var(--fontColorLogin);
+    height: 45px;
+    outline-color: none;
+    padding: 5px;
+    width: 300px;
+}
+
+input[type=email]{outline:none}
+input[type=password]{outline:none}
+
+.form-login form input::placeholder{
+    color: var(--fontColorLogin);
+}
+
+.input-error{
+    color: #ff5555;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: -15px;
+}
+
+.form-login p{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.login-icons{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.login-icons img{
+    height: 40px;
+    width: 40px;
+}
+
+.login-icons img:hover{
+    cursor: pointer;
+}
+
+.form-login .dont-have-an-account{
+    margin-top: 30px;
+}
+
+.form-login .dont-have-an-account, .create-account {
+    font-size: 14px;
+}
+
+form .btn-entrar{
+    color: var(--secondColor);
+    background-color: var(--white);
+    border-radius: 20px;
+    height: 45px;
+    padding: 10px;
+    width: 140px;
+}
+
+form .btn-entrar:hover{
+    background-color: var(--secondColor);
+    color: var(--white);
+    transition: .4s;
+}
+
+/* Responsive */
+
+@media screen and (min-width: 600px){
+    .container-login{
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+    }
+
+    .container-img-entrar{
+        align-items: center;
+        background-color: var(--bgColor);
+        height: 100%;
+        justify-content: center;
+    }
+
+    .text-mobile-version{
+        display: none;
+    }
+
+    .container-img-entrar .img-menina-login{
+        height: 100%;
+        width: 100%;
+    }
+
+    .form-login{
+        background-color: var(--white);
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        height: 550px;
+        justify-content: center;
+        margin-right: 20px;
+        padding: 0px 20px;
+        text-align: center;
+        width: 270px;
+        box-shadow: 5px 5px 9px 0px rgba(0, 0, 0, 0.39);
+    }
+
+    .form-login .text-desktop-version{
+        color: var(--bgColor);
+        display: block;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+
+    .form-login form{
+        padding: 0px 10px;
+    }
+
+    .form-login form input{
+        background-color: var(--white);
+        border-bottom: 2px solid #010006b4;
+        color: var(--secondColor);
+        font-size: 16px;
+        width: 230px;
+    }
+
+    .form-login form input::placeholder{
+        color: var(--secondColor);
+    }
+
+    .form-login p{
+        color: var(--bgColor);
+        margin: 20px 0px;
+    }
+
+    form .btn-entrar{
+        background-color: var(--secondColor);
+        color: var(--white);
+        margin-top: 20px;
+    }
+
+    form .btn-entrar:hover{
+        background-color: var(--firstColor);
+    }
+}
+
+@media screen and (min-width: 992px) {
+
+    .container-login{
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+    }
+
+    .container-img-entrar{
+        align-items: start;
+        background-color: var(--bgColor);
+        height: 100%;
+        justify-content: center;
+    }
+
+    .container-img-entrar .img-menina-login{
+        height: 700px;
+        width: 700px;
+    }
+
+    .form-login{
+        height: 550px;
+        padding: 0px 20px;
+        width: 400px;
+    }
+
+}
