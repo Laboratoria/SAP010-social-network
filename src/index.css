@@ -1,5 +1,36 @@
+:root {
+    /*paleta de cores */
+    --blue: #30A2FF;
+    --lightblue: #AEE2FF;
+    --orange: #E55807;
+    --white: #ffffff;
+    --black: #000000;
+  }
 
-html {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+body {
+    background-color: var(--blue);
+    display: flex;
+}
+
+
+
+footer {
+    color: var(--black);
+    background-color: var(--white);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;  
+    text-align: center;
+  } 
+
+
+/* html {
     text-align: center;
     justify-content: center;
     font-family: Georgia, 'Times New Roman', Times, serif ;
@@ -32,5 +63,5 @@ img{
     button {
         font-size: 10px;
     }
-}
+} */
 
