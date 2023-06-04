@@ -5,37 +5,36 @@ myFunction();
 import {auth, app, db } from './firebaseConfig.js';
 
 import {
+  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup
 } from "firebase/auth";
 
-const buttonEnter = document.getElementById('button-enter')
+const buttonLogin = document.getElementById('button-login')
+const buttonNewAccount = document.getElementById('button-new-account')
 const buttonLoginGoogle = document.getElementById('button-login-google')
 const inputEmail = document.getElementById('input-email')
 const inputPassword = document.getElementById('input-password')
 
-buttonEnter.addEventListener("click", (event) => {
+buttonLogin.addEventListener("click", (event) => {
   const email = inputEmail.value
   const password = inputPassword.value
-  console.log("email:"+email+" senha:"+password)
 
-  createUserWithEmailAndPassword(auth, email, password)
-   .then((userCredential) => {
-    // Signed
-    const user = userCredential.user;
-    // ...
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // O login foi realizado com sucesso
+      const user = userCredential.user;
+      console.log(user);
+      // Redirecione para a página principal ou execute outra ação necessária
     })
     .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
+      // Ocorreu um erro durante o login
+      console.error(error);
     });
-
 })
 
 const provider = new GoogleAuthProvider();
-
 buttonLoginGoogle.addEventListener("click", (event) => {
   signInWithPopup(auth, provider)
 
@@ -48,6 +47,21 @@ buttonLoginGoogle.addEventListener("click", (event) => {
     const errorCode = error.code;
     const errorMessage = error.message;
   });
+})
 
+// Após link de redirecionamento para criar nova conta, implementar botão para utilizar essa função.
+buttonNewAccount.addEventListener("click", (event) => {
+  const email = inputEmail.value
+  const password = inputPassword.value
+  console.log("email:"+email+" senha:"+password)
 
+  createUserWithEmailAndPassword(auth, email, password)
+   .then((userCredential) => {
+    // Signed
+    const user = userCredential.user;
+    })
+    .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    });
 })
