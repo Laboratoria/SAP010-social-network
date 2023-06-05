@@ -8,29 +8,42 @@ const main = document.querySelector('#main');
 
 const changeScreen = async () => {
   main.innerHTML = '';
+  const user = await isUserLoggedIn();
 
-  switch (window.location.hash) {
-    case '':
-      main.appendChild(home());
-      break;
-    case '#login':
-      main.appendChild(login());
-      break;
-    case '#register':
-      main.appendChild(register());
-      break;
-    case '#feed':
-      {
-        const user = await isUserLoggedIn();
-        if (user) {
-          main.appendChild(feed());
-        } else {
-          window.location.hash = '#login';
-        }
-      }
-      break;
-    default:
-      main.appendChild(home());
+  if (user) {
+    switch (window.location.hash) {
+      case '':
+        main.appendChild(home());
+        break;
+      case '#home':
+        window.location.hash = '#feed';
+        main.appendChild(feed());
+        break;
+      case '#feed':
+        main.appendChild(feed());
+        break;
+      default:
+        window.location.hash = '#home';
+        main.appendChild(home());
+    }
+  } else {
+    switch (window.location.hash) {
+      case '':
+        main.appendChild(home());
+        break;
+      case '#home':
+        main.appendChild(home());
+        break;
+      case '#login':
+        main.appendChild(login());
+        break;
+      case '#register':
+        main.appendChild(register());
+        break;
+      default:
+        window.location.hash = '#home';
+        main.appendChild(home());
+    }
   }
 };
 
