@@ -2,33 +2,33 @@ import { errorsFirebase, validateRegister } from '../../validations.js';
 import { createUserWithEmail } from '../../firebase/auth.js';
 import './register.css';
 
-export function mostrarFormularioRegistro() {
+export function registrationFormView() {
   const body = document.getElementsByTagName('body')[0];
   body.innerHTML = '';
 
-  const formularioRegistro = document.createElement('div');
-  formularioRegistro.classList.add('contenedor-registro');
-  const plantillaFormulario = `
-  <section class="form-envelope">
-  <p class="titulo">Cadastrar-se</p>
+  const registrationForm = document.createElement('div');
+  registrationForm.classList.add('register-conteiner');
+  const templateRegister = `
+  <section class="form-register">
+  <p class="title">Cadastrar-se</p>
   </section>
-  <section class="registro-caixa">
-  <form class="registro-form">
+  <section class="register-box">
+  <form class="register-form">
     <div class="inputs-div">
-      <input type="text" class="inputs-registro" id="nome-usuario" placeholder="NOME">
-      <input type="text" class="inputs-registro" id="sobrenome-usuario" placeholder="SOBRENOME"><br>
-      <input type="password" class="inputs-registro" id="registro-senha" placeholder="CRIAR SENHA">
+      <input type="text" class="inputs-register" id="name-user" placeholder="NOME">
+      <input type="text" class="inputs-register" id="lastName-user" placeholder="SOBRENOME"><br>
+      <input type="password" class="inputs-register" id="register-password" placeholder="CRIAR SENHA">
       </div>
     
       <div>
-      <button type="button" class="registro-btn" href="#timeline">CADASTRAR</button>
+      <button type="button" class="register-btn" href="#timeline">CADASTRAR</button>
     </div> 
     </form>
 </section>
 `;
 
-formularioRegistro.innerHTML = plantillaFormulario;
-//return formularioRegistro;
-body.appendChild(formularioRegistro);
+registrationForm.innerHTML = templateRegister;
+//return registrationFormView;
+body.appendChild(registrationFormView);
 
 }
