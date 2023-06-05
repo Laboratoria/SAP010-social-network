@@ -19,11 +19,15 @@ export default () => {
         </div>
     
         <div>
-          <button type="button" class="register-btn">CADASTRAR</button>
-        </div> 
+        <button type="button" class="register-btn"><a href="#timeline">CADASTRAR</a></button>
+      </div> 
+      <nav>
+     <button type="button" class="back-btn"><a href="#Login">VOLTAR</a></button>
+      </nav> 
       </form>
-    </section>
+  </section>
   `;
+  
 
   registrationForm.innerHTML = templateRegister;
 

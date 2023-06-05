@@ -61,6 +61,16 @@ body {
    
 }
 
+.back-btn {
+    color: var(--white);
+    margin-top: 3.5em;
+    background-color: rgb(234, 99, 50);
+    width: 8em;
+    height: 1.5em;
+    font-size: 1em;
+    border-radius: 5px 5px 5px 5px;
+}
+
 
 @media (max-width: 600px) {
 
