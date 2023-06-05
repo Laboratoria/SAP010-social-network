@@ -20,10 +20,10 @@ export default () => {
     
 
       <div>
-      <button type="button" class="register-btn"><a href="#timeline">CADASTRAR</a></button>
+      <button type="button" class="register-btn"><a class= "btn-register" href="#timeline">CADASTRAR</a></button>
     </div> 
     <nav>
-   <button type="button" class="back-btn"><a href="#Login">VOLTAR</a></button>
+   <button type="button" class="back-btn"><a class= "btn-back" href="#Login">VOLTAR</a></button>
     </nav> 
     </form>
 </section>
