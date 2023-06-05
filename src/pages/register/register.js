@@ -1,20 +1,22 @@
 import { errorsFirebase, validateRegister } from '../../validations.js';
 import { createUserWithEmail } from '../../firebase/auth.js';
-import './register.css';
+// import './register.css';
 
 export default () => {
   const registrationForm = document.createElement('div');
   registrationForm.classList.add('register-container');
-  const templateRegister = /*html*/ `
+
+  const templateRegister = /*html*/` 
+
     <section class="form-register">
       <p class="title">Cadastrar-se</p>
-    </section>
-    <section class="register-box">
+    <!-- </section> -->
+    <!-- <section class="register-box"> -->
       <form class="register-form">
-        <div class="inputs-div">
+        <div>
           <input type="text" class="inputs-register" id="name-user" placeholder="NOME">
-          <input type="text" class="inputs-register" id="lastName-user" placeholder="SOBRENOME"><br>
-          <input type="text" class="inputs-register" id="email-user" placeholder="EMAIL"><br>
+          <input type="text" class="inputs-register" id="lastName-user" placeholder="SOBRENOME">
+          <input type="text" class="inputs-register" id="email-user" placeholder="EMAIL">
           <input type="password" class="inputs-register" id="register-password" placeholder="CRIAR SENHA">
         </div>
     
@@ -26,9 +28,10 @@ export default () => {
         </nav> 
         <p id="error-message" class="error-message"></p>
 
-      </form>
-    </section>
-  `;
+    </form>
+  </section>
+`;
+
 
   registrationForm.innerHTML = templateRegister;
 

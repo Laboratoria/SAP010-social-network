@@ -14,8 +14,15 @@ body {
     background-color: var(--orange);
 }
 
-#info-inputs {
-    border-radius: 10px;
+.info-inputs {
+    margin-top: 2em;
+    text-align: center;
+    width: 20em;
+    height: 3em;
+    border-radius: 5px 5px 5px 5px;
+    display: grid;
+    border: none
+    
 }
 
 
