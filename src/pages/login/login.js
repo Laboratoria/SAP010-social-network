@@ -9,7 +9,7 @@ export default () => {
   <h2>Entrar</h2>
 
   <form>
-  <div>
+  <div id="info-inputs">
   <input type="text" placeholder="E-mail" id ="email" />
   <input type="password" placeholder="Senha" id ="senha" />
   </div>
