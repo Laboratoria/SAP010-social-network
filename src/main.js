@@ -1,6 +1,26 @@
-// Este es el punto de entrada de tu aplicacion
+import {cadastro, home, login} from "./login.js"
 
-import { myFunction } from './lib/index.js';
+const main = document.querySelector("#main")
+const init = () => {
+    window.addEventListener("hashchange", () => {
+        main.innerHTML="";
+        switch(window.location.hash){
+        case " ": 
+        main.appendChild(home());
+        break
+        case "#login": 
+        main.appendChild(login());
+        break
+        case "#cadastro":
+        main.appendChild(cadastro());
+        break    
+    }    
+    })
+}
+
+window.addEventListener("load", () => {
+    main.appendChild(home());
+    init()
+})
 
 
-myFunction();
