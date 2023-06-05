@@ -3,7 +3,7 @@
 export default () => {
   const container = document.createElement('div');
 
-  const templateLogin = `
+  const templateLogin = /*html*/ `
   <div class="login-wrap">
   <img src="img/logo.png" id="logo" alt="Logo da ExploraAí">
   <h2>Entrar</h2>
@@ -20,7 +20,7 @@ export default () => {
 
   <div>
   Esqueceu a senha? <br>
-  Não possui uma conta? <button type="button" id="register-button" href="#">Cadastre-se</button>
+  Não possui uma conta? <a id="register-button" href="#register">Cadastre-se</a>
   </div>
 
   <div>
