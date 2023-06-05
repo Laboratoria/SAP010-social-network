@@ -84,9 +84,9 @@ export default () => {
     let officialPassword;
     if (password !== confirmPassword) {
       passwordDifferent.textContent = 'As senhas informadas são diferentes';
-    } else if (strongPassword.test(password)){
+    } else if (strongPassword.test(password)) {
       officialPassword = password;
-    }else{
+    } else {
       passwordAlert.textContent = '1 letra maíuscula e minuscula, 1 caracter especial e 1 número';
     }
     // Registrar o usuário usando as informações fornecidas
@@ -95,7 +95,6 @@ export default () => {
     if (auth.currentUser) {
       window.location.href = '#feed';
     }
-
   });
 
   // Adicionar evento de clique no checkbox para mostrar/esconder a senha

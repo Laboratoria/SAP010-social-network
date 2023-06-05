@@ -3,7 +3,7 @@ import './feed.css';
 
 export default () => {
   const containerFeed = document.createElement('section');
-  containerFeed.classList.add('container-feed')
+  containerFeed.classList.add('container-feed');
   const templateFeed = `
    <h1> Olá </h1>
    <button class="btn-logout">Sair</button>
