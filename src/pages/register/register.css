@@ -1,10 +1,10 @@
-:root{
+/* :root{
     --bgColor: #30A2FF;
     --firstColor:   #0B0B44;
     --secondColor:  #f4f8fb; 
     --thirColor:    #db8625;    
    
-}
+} */
 
 .register-conteiner {
     display: grid;   
@@ -45,7 +45,7 @@ body {
 
 .register-btn {
     color: var(--secondColor);
-    background-color: var(--thirColor);
+    background-color: var(--orange);
     width: 16em;
     height: 3em;
     font-size: 1em;

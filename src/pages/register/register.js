@@ -2,9 +2,9 @@ import { errorsFirebase, validateRegister } from '../../validations.js';
 import { createUserWithEmail } from '../../firebase/auth.js';
 import './register.css';
 
-export function registrationFormView() {
-  const body = document.getElementsByTagName('body')[0];
-  body.innerHTML = '';
+export default() => {
+  // const body = document.getElementsByTagName('body')[0];
+  // body.innerHTML = '';
 
   const registrationForm = document.createElement('div');
   registrationForm.classList.add('register-conteiner');
@@ -28,7 +28,8 @@ export function registrationFormView() {
 `;
 
 registrationForm.innerHTML = templateRegister;
-//return registrationFormView;
-body.appendChild(registrationFormView);
+return registrationForm
+// body.appendChild(registrationFormView);
+
 
 }
