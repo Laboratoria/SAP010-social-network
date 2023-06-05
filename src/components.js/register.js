@@ -34,36 +34,46 @@ export const register = () => {
     
   </div>
     `;
-  root.innerHTML = registerHTML;
+    root.innerHTML = registerHTML;
 
-  const inputNome = root.querySelector('.nome');
-  const inputEmail = root.querySelector('.email[type="email"]');
-  const inputSenha = root.querySelector('.senha[type="password"]');
-  const confirmarSenha = root.querySelector('.confirmar-senha');
-  const btnRegister = root.querySelector('.btn-register');
+    const inputNome = root.querySelector('.nome');
+    const inputEmail = root.querySelector('.email[type="email"]');
+    const inputSenha = root.querySelector('.senha[type="password"]');
+    const confirmarSenha = root.querySelector('.confirmar-senha');
+    const btnRegister = root.querySelector('.btn-register');
 
-  btnRegister.addEventListener('click', async () => {
-    const email = inputEmail.value;
-    const password = inputSenha.value;
+    btnRegister.addEventListener('click', async () => {
+        const email = inputEmail;
+        const password = inputSenha;
 
 
-    if (validateEmail, email)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        alert('Cadastro efetuado com sucesso!! Você sera direcionado a página inicial para efetuar o login.')
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+        if (validateEmail(email.value) && validatePassword(password.value)) {
+            loginCreate(email.value, password.value)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    alert('Cadastro efetuado com sucesso!! Você sera direcionado a página inicial para efetuar o login.')
+                    window.location.hash = '#welcome';
+                })
 
-  });
-  function validateEmail(email) {
-    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regexEmail.test(email);
-  }
-  function validatePassword(password) {
-    const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
-    return regexPassword.test(password);
-  }
+                .catch((error) => {
+
+                    alert(
+                        'Ocorreu um erro ao criar o seu cadastro, por favor tente novamente.'
+                    );
+                });
+
+        } else {
+            alert('Por favor, insira um e-mail válido e uma senha com no minimo 6 caracteres')
+        }
+    });
+
+    function validateEmail(email) {
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regexEmail.test(email);
+    };
+    function validatePassword(password) {
+        const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+        return regexPassword.test(password);
+    };
+
 };

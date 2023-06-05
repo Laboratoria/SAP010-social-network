@@ -15,15 +15,8 @@ export const loginCreate = (email, password) => {
 };
 
 // LOGAR COM USUÁRIO EXISTENTE
-export const loginUser = () => {
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+export const loginUser = (email, password) => {
+  return signInWithEmailAndPassword(auth, email, password)
 };
 
 // LOGAR COM CONTA GOOGLE

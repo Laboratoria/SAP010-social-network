@@ -1,7 +1,7 @@
 import { loginUser, loginGoogle } from '../lib/index.js';
 
 export const welcome = () => {
-  const root = document.getElementById('root');
+  const root = document.createElement('div');
 
   const signInHTML = `
     <div class="divSignIn">
@@ -26,35 +26,48 @@ export const welcome = () => {
   const btnRegister = root.querySelector('.btnRegister');
   const btnGoogle = root.querySelector('.btnGoogle');
 
-  btnSignIn.addEventListener('click', async () => {
-    const email = inputEmail.value;
-    const password = inputPass.value;
 
-    try {
-      loginUser(email, password);
-      // Se o login estiver correto chama a pagina do feed(comentário)
-      window.location.hash = '#feed';
-    } catch (error) {
-      // Se não mostra o erro
-      alert('[ERRO] Dados inválidos, por favor tente de novo');
-    }
+
+  btnSignIn.addEventListener('click', async () => {
+    const email = inputEmail;
+    const password = inputPass;
+
+    if (email.value && password.value) {
+      loginUser(email.value, password.value)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          window.location.hash = '#feed';
+        })
+
+        .catch((error) => {
+
+          alert(
+            'Ocorreu um erro. E-mail ou senha não correspondem com o cadastro, tente novamente.'
+          );
+        });
+    };
   });
 
   btnRegister.addEventListener('click', () => {
     // Direciona para a pagina de registro
-    window.location.hash = '#cadastro';
+    window.location.hash = '#register';
   });
 
   btnGoogle.addEventListener('click', async () => {
-    try {
-      loginGoogle();
+    loginGoogle()
       // Feito o Login direciona para a area de comentários
-      window.location.hash = '#feed';
-    } catch (error) {
-      // Msg de erro
-      alert('[ERRO] ao se conectar a conta Google, tente de novo');
-    }
-  });
-};
+      .then(() => {
+        window.location.hash = '#feed';
 
-welcome();
+      })
+
+      .catch((error) => {
+
+        alert(
+          'Ocorreu um erro ao criar o seu cadastro, por favor tente novamente.'
+        );
+      });
+  });
+
+return root;
+};

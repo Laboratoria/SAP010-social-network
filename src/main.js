@@ -16,12 +16,9 @@ const init = () => {
         main.appendChild(welcome());
         break;
 
-      case '#cadastro':
-        main.appendChild(cadastro());
-        break;
-
       case '#register':
         main.appendChild(register());
+        break;
 
       default:
         main.appendChild(welcome());
@@ -31,6 +28,6 @@ const init = () => {
 
 window.addEventListener('load', () => {
   getUsers(db).then((data) => console.log(data)); //a fução getusers é uma função assincrona e ela retorna uma promisse
-  main.appendChild(inicio());
+  main.appendChild(welcome());
   init();
 });
