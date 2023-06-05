@@ -1,5 +1,5 @@
 // aqui exportaras las funciones que necesites
-import home from "src/pages/home/home.js";
+import home from "./pages/home.js";
 
 const main = document.querySelector("#root");
 
