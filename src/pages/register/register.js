@@ -20,6 +20,7 @@ export default () => {
     
         <div>
           <button type="button" class="register-btn">CADASTRAR</button>
+          <p id="error-message" class="error-message"></p>
         </div> 
       </form>
     </section>
@@ -41,18 +42,22 @@ export default () => {
     // Realize as validações necessárias usando a função validateRegister
     const validationErrors = validateRegister(name, lastName, email, password);
     if (validationErrors.length > 0) {
-      const errorElement = document.createElement('p');
-      errorElement.textContent = validationErrors.join(', ');
-      registrationForm.appendChild(errorElement);
+      const errorMessage = document.getElementById('error-message');
+      errorMessage.textContent = validationErrors.join(', ');
       return;
     }
 
     try {
       await createUserWithEmail(name, email, password);
 
-      window.location.href = '/dashboard';
+      // Redirecionar para a página timeline.js após o registro
+      window.location.href = '/#timeline';
     } catch (error) {
       console.error('Erro ao registrar o usuário:', error);
+      console.error(errorsFirebase[error.code]);
+
+      const errorMessage = document.getElementById('error-message');
+      errorMessage.textContent = errorsFirebase[error.code] || 'Erro ao registrar o usuário.';
     }
   }
 
