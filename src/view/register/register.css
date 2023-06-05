@@ -63,7 +63,7 @@ TV: 1015px pra cima
   border-bottom: 2px solid #010006;
   color: var(--fontColorLogin);
   height: 45px;
-  outline-color: none;
+  outline: none;
   width: 320px;
 }
 

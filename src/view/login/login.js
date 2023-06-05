@@ -105,7 +105,7 @@ export default () => {
       await logIn(email, password);
       if (auth.currentUser) {
         window.location.href = '#feed';
-      } else {
+      } else{
         userAlert.textContent = 'Usuário não cadastrado!';
       }
     } catch (error) {
