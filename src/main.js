@@ -1,5 +1,7 @@
 import login from "./pages/login/login.js";
 import register from "./pages/register/register.js"
+import timeline from "./pages/timeline/timeline.js"
+
 
 
 const main = document.querySelector("#root");
@@ -15,6 +17,9 @@ const main = document.querySelector("#root");
             case "#register":
             main.appendChild(register());
             break;
+            case "#timeline":
+            main.appendChild(timeline());
+            break;
             default:
             main.appendChild(login());
         }
@@ -23,7 +28,13 @@ const main = document.querySelector("#root");
 
 
 window.addEventListener ("load", () =>{
-    main.appendChild(login());
+    if (window.location.hash === "#register") {
+        main.appendChild(register());
+      } else if (window.location.hash === "#timeline") {
+        main.appendChild(timeline());
+      } else {
+        main.appendChild(login());
+      }
     // init();
 })
 
