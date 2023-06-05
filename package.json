@@ -32,7 +32,7 @@
     "regenerator-runtime": "^0.13.1",
     "stylelint": "^14.1.0",
     "stylelint-config-recommended": "^6.0.0",
-    "vite": "^3.1.0"
+    "vite": "^3.2.7"
   },
   "engines": {
     "node": ">=16.x"
@@ -41,5 +41,8 @@
     "createdAt": "2023-05-16T13:46:37.371Z",
     "version": "6.2.0",
     "commit": "6a23c58a18f96b4dc3b7b1566dcac06ca9c3ec14"
+  },
+  "dependencies": {
+    "firebase": "^9.22.1"
   }
 }
