@@ -21,8 +21,11 @@ export default() => {
       </div>
     
       <div>
-      <button type="button" class="register-btn" href="#timeline">CADASTRAR</button>
+      <button type="button" class="register-btn"><a href="#timeline">CADASTRAR</a></button>
     </div> 
+    <nav>
+   <button type="button" class="back-btn"><a href="#Login">VOLTAR</a></button>
+    </nav> 
     </form>
 </section>
 `;
