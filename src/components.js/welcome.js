@@ -69,5 +69,5 @@ export const welcome = () => {
       });
   });
 
-return root;
+  return root;
 };
