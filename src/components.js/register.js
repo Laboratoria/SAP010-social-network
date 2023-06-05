@@ -2,7 +2,7 @@ import { loginCreate } from '../lib/index.js';
 
 export const register = () => {
 
-    const root = document.createElement('div');
+    const container = document.createElement('div');
 
     const registerHTML = `
     <div class="register-elements">
@@ -31,13 +31,13 @@ export const register = () => {
                 <button class="btn-register" type="submit">Cadastrar</button>
         </form>
     </div> `;
-    root.innerHTML = registerHTML;
+    container.innerHTML = registerHTML;
 
     // const inputNome = root.querySelector('.nome');
-    const inputEmail = root.querySelector('.email[type="email"]');
-    const inputSenha = root.querySelector('.senha[type="password"]');
+    const inputEmail = container.querySelector('.email[type="email"]');
+    const inputSenha = container.querySelector('.senha[type="password"]');
     // const confirmarSenha = root.querySelector('.confirmar-senha');
-    const btnRegister = root.querySelector('.btn-register');
+    const btnRegister = container.querySelector('.btn-register');
 
     btnRegister.addEventListener('click', async () => {
         const email = inputEmail;
@@ -73,5 +73,5 @@ export const register = () => {
         return regexPassword.test(password);
     };
 
-    return root;
+    return container;
 };
