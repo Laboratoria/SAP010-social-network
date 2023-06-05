@@ -3,7 +3,7 @@ import './feed.css';
 
 export default () => {
   const containerFeed = document.createElement('section');
-  containerFeed.classList.add('container-feed')
+  containerFeed.classList.add('container-feed');
   const templateFeed = `
     <header class="header">
       <div class="hamburger-menu">

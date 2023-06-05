@@ -3,7 +3,11 @@ import meninaLogin from '../../images/login.svg';
 import googleImg from '../../images/google.svg';
 import githubImg from '../../images/github-mobile.svg';
 import {
-  logIn, signInWithGoogle, signInWithGitHub, auth, registerUserWithAnotherProvider,
+  logIn,
+  signInWithGoogle,
+  signInWithGitHub,
+  auth,
+  registerUserWithAnotherProvider,
 } from '../../firebase/firebase.js';
 
 export default () => {
@@ -105,7 +109,7 @@ export default () => {
       await logIn(email, password);
       if (auth.currentUser) {
         window.location.href = '#feed';
-      } else{
+      } else {
         userAlert.textContent = 'Usuário não cadastrado!';
       }
     } catch (error) {
