@@ -1,7 +1,9 @@
 import { loginCreate } from '../lib/index.js';
 
 export const register = () => {
-    const root = document.getElementById('root');
+
+    const root = document.createElement('div');
+
     const registerHTML = `
     <div class="register-elements">
         <form id="formulario-cadastro">
@@ -67,8 +69,9 @@ export const register = () => {
         return regexEmail.test(email);
     };
     function validatePassword(password) {
-        const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+        const regexPassword = /^.{6,}$/;
         return regexPassword.test(password);
     };
 
+    return root;
 };
