@@ -2,38 +2,33 @@ import { loginCreate } from '../lib/index.js';
 
 export const register = () => {
     const root = document.getElementById('root');
-
     const registerHTML = `
     <div class="register-elements">
-    <form id="formulario-cadastro">
-      
-   <h1 class="register-h1"> Cadastro de usuário </h1>
+        <form id="formulario-cadastro">
+            <h1 class="register-h1"> Cadastro de usuário </h1>
+                <div>
+                    <label class="dados" for="nome">Nome:</label>
+                    <input class="nome" type="text" id="nome" placeholder="Nome" required>
+                </div>
    
-   <div>
-     <label class="dados" for="nome">Nome:</label>
-     <input class="nome" type="text" id="nome" placeholder="Nome" required>
-   </div>
+                <div>
+                    <label class="dados" for="email">E-mail:</label>
+                    <input class="email" type="email" id="email" placeholder="contato@gmail.com" required>
+                </div>
    
-   <div>
-     <label class="dados" for="email">E-mail:</label>
-     <input class="email" type="email" id="email" placeholder="contato@gmail.com" required>
-   </div>
+                <div>
+                    <label class="dados" for="senha">Senha:</label>
+                    <input class="senha" type="password" id="senha" placeholder="********" required>
+                </div>
    
-   <div>
-     <label class="dados" for="senha">Senha:</label>
-     <input class="senha" type="password" id="senha" placeholder="********" required>
-   </div>
+                <div>
+                    <label class="dados" for="confirma-senha">Confirmar senha:</label>
+                    <input class="confirmar-senha" type="password" id="confirma-senha" placeholder="********" required>
+                </div>
    
-   <div>
-     <label class="dados" for="confirma-senha">Confirmar senha:</label>
-     <input class="confirmar-senha" type="password" id="confirma-senha" placeholder="********" required>
-   </div>
-   
-   <button class="btn-register" type="submit">Cadastrar</button>
- </form>
-    
-  </div>
-    `;
+                <button class="btn-register" type="submit">Cadastrar</button>
+        </form>
+    </div> `;
     root.innerHTML = registerHTML;
 
     const inputNome = root.querySelector('.nome');
