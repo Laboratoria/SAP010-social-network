@@ -2,13 +2,42 @@
     width: 100%; 
 }
 
-
-header{
+.header{
     background-color: var(--secondColor);
+    display: flex;
+    justify-content: center;
+    padding: 17px 10px;
     width: 100%;
+    position: relative;
 }
 
 .hamburger-menu .icon-menu{
     height: 30px;
+    position: absolute;
+    left: 6px;
     width: 30px;
+}
+
+.menu-nav{
+    display: none;
+}
+
+.header h1{
+    font-weight: 400;
+}
+
+main .feed{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%; 
+    max-width: 1200px;
+}
+
+.user-input-textarea{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+    width: 100%;
 }
