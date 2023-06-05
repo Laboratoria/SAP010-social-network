@@ -17,22 +17,17 @@ export function errorsFirebase(error) {
     }
   }
 
-export function validateRegister(name, email, password) {
-    if (!name && !email && !password) {
+export function validateRegister(name, sobrenome, password) {
+    if (!name && !sobrenome && !password) {
       return 'Preencha todos os campos';
     }
   
     if (name === '') {
       return 'Insira um nome';
     }
-    if (email === '') {
-      return 'Insira um e-mail';
-    }
-  
-    if (email === false) {
-      return 'Insira um e-mail válido (ex: nome@email.com)';
-    }
-  
+    if (sobrenome === '') {
+      return 'Insira um sobrenome';
+    } 
     if (password === '') {
       return 'Digite sua senha';
     }
