@@ -1,1 +1,1 @@
-/* import { loginCreate } from '/firebase.js'; */
+import { loginCreate } from '../lib/index.js';
