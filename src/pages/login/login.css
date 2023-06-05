@@ -1,9 +1,21 @@
+body {
+    display: flex;
+}
 .login-wrap {
- display: flex;
- text-align: center;
+ display: block
+}
+
+#logo{
+    display: flex;
+    
 }
 
 #login-button {
     background-color: var(--orange);
 }
+
+#info-inputs {
+    border-radius: 10px;
+}
+
 

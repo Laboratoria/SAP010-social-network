@@ -46,8 +46,24 @@ body {
 }
 
 .register-btn {
-    color: var(--secondColor);
+    color: var(--white);
     background-color: var(--orange);
+    width: 16em;
+    height: 3em;
+    font-size: 1em;
+    border-radius: 5px 5px 5px 5px;
+    margin-top: 3em;
+    text-decoration: none;
+}
+
+.btn-register {
+    text-decoration: none;
+    color: var(--white);
+}
+
+.register-btn:hover {
+    color: var(--white);
+    background-color: rgb(234, 99, 50);
     width: 16em;
     height: 3em;
     font-size: 1em;
@@ -55,10 +71,23 @@ body {
     margin-top: 3em;
 }
 
-.register-btn:hover {
+.back-btn {
     color: var(--white);
+    margin-top: 3.5em;
+    background-color: var(--orange);
+    width: 8em;
+    height: 1.5em;
+    font-size: 1em;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.back-btn:hover {
     background-color: rgb(234, 99, 50);
-   
+}
+
+.btn-back {
+    text-decoration: none;
+    color: var(--white);
 }
 
 
