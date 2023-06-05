@@ -8,24 +8,27 @@ export const welcome = () => {
   <img src="img/comunicacao.jpg" class="bg">
     <div class="divSignIn">
       <img src="img/logo_petchat.png" class="logo">
-        <p class="introSignIn">Bem-vindo(a) ao <strong>PetChat</strong></p>
-        <label class='label' for="email">E-mail:</label>
-        <div class="inputGroup">
-          <i class="material-icons inputIcon">person_outline</i>
-          <input type="email" class="inputSignIn" id="email" placeholder="example@youremail.com" required>
-        </div>
-        <label class='label' for="pass">Senha:</label>
-        <div class="inputGroup">
-          <i class="material-icons inputIcon">lock</i>
-            <input type="password" class="inputSignIn" id="pass" placeholder="*******" required minlength="6">
-        </div>
-        <button class="btnSignIn active">Sign In</button>
-        <button class="btnRegister">Cadastro</button>
+         <p class="introSignIn">Bem-vindo(a) ao <strong>PetChat</strong></p>
+         <label class='label' for="email">E-mail:</label>
+
+         <div class="inputGroup">
+           <i class="material-icons inputIcon">person_outline</i>
+           <input type="email" class="inputSignIn" id="email" placeholder="example@youremail.com" required>
+         </div>
+
+         <label class='label' for="pass">Senha:</label>
+         <div class="inputGroup">
+           <i class="material-icons inputIcon">lock</i>
+             <input type="password" class="inputSignIn" id="pass" placeholder="*******" required minlength="6">
+         </div>
+
+         <button class="btnSignIn active">Sign In</button>
+         <button class="btnRegister">Cadastro</button>
     
-        <button class="btnGoogle">
-          <img class="img-google" src="img/google_logo.png"/>
-            Sign in com o Google
-        </button>
+         <button class="btnGoogle">
+           <img class="img-google" src="img/google_logo.png"/>
+             Sign in com o Google
+         </button>
     </div>
 </section>
 `;
