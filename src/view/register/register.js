@@ -18,7 +18,7 @@ export default () => {
           <input type="text" id="username" required placeholder="Username">
           <input type="email" id="email" required placeholder="E-mail">
            <div class="password-container">
-             <input type="password" id="password" required placeholder="Senha">
+             <input type="password" id="password" required placeholder="Ex: Senha@1">
              <input type="checkbox" id="password-checkbox">
              <label for="password-checkbox" class="btn-checkbox"></label>
            </div>
@@ -46,6 +46,7 @@ export default () => {
   const passwordDifferent = document.getElementById('password-different');
   const passwordInput = document.getElementById('password');
   const confirmPasswordInput = document.getElementById('confirm-password');
+  const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]\\|:;'<>,.?/~]).{6,}$/;
   // Função para verificar se todos os campos do formulário estão preenchidos
   const verifyForm = () => {
     const allInputs = Array.from(inputs).every((input) => input.value !== '');
@@ -57,7 +58,6 @@ export default () => {
   // Função para validar a senha
   const validatePassword = () => {
     const password = passwordInput.value; // Obter o valor do campo de senha
-    const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]\\|:;'<>,.?/~]).{6,}$/;
     return strongPassword.test(password);
   };
   // Escutando o submit para enviar o formulário
@@ -71,7 +71,7 @@ export default () => {
     const confirmPassword = document.getElementById('confirm-password').value;
     // Verificar se a senha atende aos requisitos mínimos
     if (!validatePassword()) {
-      passwordAlert.textContent = 'A senha não atende aos requisitos mínimos';
+      passwordAlert.textContent = '1 letra maíuscula e minuscula, 1 caracter especial e 1 número';
     }
     // Limpar os alertas de senha quando o campo é modificado
     passwordInput.addEventListener('input', () => {
@@ -81,14 +81,21 @@ export default () => {
       passwordDifferent.textContent = '';
     });
     // Verificando se as senhas são iguais
+    let officialPassword;
     if (password !== confirmPassword) {
       passwordDifferent.textContent = 'As senhas informadas são diferentes';
+    } else if (strongPassword.test(password)){
+      officialPassword = password;
+    }else{
+      passwordAlert.textContent = '1 letra maíuscula e minuscula, 1 caracter especial e 1 número';
     }
     // Registrar o usuário usando as informações fornecidas
-    await registerUser(name, username, email, password);
+    await registerUser(name, username, email, officialPassword);
+
     if (auth.currentUser) {
       window.location.href = '#feed';
     }
+
   });
 
   // Adicionar evento de clique no checkbox para mostrar/esconder a senha
