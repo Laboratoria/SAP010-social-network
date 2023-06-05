@@ -18,12 +18,17 @@ export default () => {
           <input type="password" class="inputs-register" id="register-password" placeholder="CRIAR SENHA">
         </div>
     
-        <div>
-          <button type="button" class="register-btn">CADASTRAR</button>
-        </div> 
-      </form>
-    </section>
-  `;
+
+      <div>
+      <button type="button" class="register-btn"><a href="#timeline">CADASTRAR</a></button>
+    </div> 
+    <nav>
+   <button type="button" class="back-btn"><a href="#Login">VOLTAR</a></button>
+    </nav> 
+    </form>
+</section>
+`;
+
 
   registrationForm.innerHTML = templateRegister;
 
@@ -46,6 +51,7 @@ export default () => {
       registrationForm.appendChild(errorElement);
       return;
     }
+
 
     try {
       await createUserWithEmail(name, email, password);
