@@ -39,17 +39,16 @@ export const welcome = () => {
   const btnGoogle = container.querySelector('.btnGoogle');
 
   btnSignIn.addEventListener('click', async () => {
-    const email = inputEmail;
-    const password = inputPass;
+    const email = inputEmail.value;
+    const password = inputPass.value;
 
-    if (email.value && password.value) {
-      loginUser(email.value, password.value)
-        .then((userCredential) => {
-          const user = userCredential.user;
+    if (email && password) {
+      loginUser(email, password)
+        .then(() => {
           window.location.hash = '#feed';
         })
 
-        .catch((error) => {
+        .catch(() => {
           alert('Ocorreu um erro. E-mail ou senha não correspondem com o cadastro, tente novamente.');
         });
     }
@@ -67,7 +66,7 @@ export const welcome = () => {
         window.location.hash = '#feed';
       })
 
-      .catch((error) => {
+      .catch(() => {
         alert('Ocorreu um erro ao criar o seu cadastro, por favor tente novamente.');
       });
   });

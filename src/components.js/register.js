@@ -2,7 +2,6 @@ import { loginCreate } from '../lib/index.js';
 
 export const register = () => {
   const container = document.createElement('div');
-
   const registerHTML = `
     <div class="register-elements">
         <form id="formulario-cadastro">
@@ -31,41 +30,39 @@ export const register = () => {
         </form>
     </div> `;
   container.innerHTML = registerHTML;
-
   // const inputNome = root.querySelector('.nome');
   const inputEmail = container.querySelector('.email[type="email"]');
-  const inputSenha = container.querySelector('.senha[type="password"]');
+  const inputPassword = container.querySelector('.senha[type="password"]');
   // const confirmarSenha = root.querySelector('.confirmar-senha');
   const btnRegister = container.querySelector('.btn-register');
 
-  btnRegister.addEventListener('click', async () => {
-    const email = inputEmail;
-    const password = inputSenha;
+  btnRegister.addEventListener('submit', async () => {
+    const email = inputEmail.value;
+    const password = inputPassword.value;
 
-    if (validateEmail(email.value) && validatePassword(password.value)) {
-      loginCreate(email.value, password.value)
-        .then((userCredential) => {
-          const user = userCredential.user;
+    function validateEmail(validEmail) {
+      const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regexEmail.test(validEmail);
+    }
+    function validatePassword(validPassword) {
+      const regexPassword = /^.{6,}$/;
+      return regexPassword.test(validPassword);
+    }
+
+    if (validateEmail(email) && validatePassword(password)) {
+      loginCreate(email, password)
+        .then(() => {
           alert('Cadastro efetuado com sucesso!! Você sera direcionado a página inicial para efetuar o login.');
           window.location.hash = '#welcome';
         })
 
-        .catch((error) => {
+        .catch(() => {
           alert('Ocorreu um erro ao criar o seu cadastro, por favor tente novamente.');
         });
     } else {
       alert('Por favor, insira um e-mail válido e uma senha com no minimo 6 caracteres');
     }
   });
-
-  function validateEmail(email) {
-    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regexEmail.test(email);
-  }
-  function validatePassword(password) {
-    const regexPassword = /^.{6,}$/;
-    return regexPassword.test(password);
-  }
 
   return container;
 };

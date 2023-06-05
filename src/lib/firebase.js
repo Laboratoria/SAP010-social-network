@@ -15,13 +15,11 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-
 // essa função utiliza as funções "collection" e "getDocs" do Firestore Lite para obter
 // a coleção de usuários do banco de dados e retorna uma lista com os dados desses usuários.
-export async function getUsers(db) {
-  const usersCol = collection(db, 'users');
+export async function getUsers(database) {
+  const usersCol = collection(database, 'users');
   const userSnapshot = await getDocs(usersCol);
   const userList = userSnapshot.docs.map((doc) => doc.data());
   return userList;
-}
-
+};
