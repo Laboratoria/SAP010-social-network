@@ -33,7 +33,7 @@ export const welcome = () => {
     try {
       loginUser(email, password);
       // Se o login estiver correto chama a pagina do feed(comentário)
-      window.location.hash = '/feed';
+      window.location.hash = '#feed';
     } catch (error) {
       // Se não mostra o erro
       alert('[ERRO] Dados inválidos, por favor tente de novo');
@@ -42,14 +42,14 @@ export const welcome = () => {
 
   btnRegister.addEventListener('click', () => {
     // Direciona para a pagina de registro
-    window.location.hash = '/register/js';
+    window.location.hash = '#cadastro';
   });
 
   btnGoogle.addEventListener('click', async () => {
     try {
       loginGoogle();
       // Feito o Login direciona para a area de comentários
-      window.location.hash = '/feed.js';
+      window.location.hash = '#feed';
     } catch (error) {
       // Msg de erro
       alert('[ERRO] ao se conectar a conta Google, tente de novo');
@@ -57,5 +57,4 @@ export const welcome = () => {
   });
 };
 
-// Call renderSignInPage to render the sign-in page
 welcome();
