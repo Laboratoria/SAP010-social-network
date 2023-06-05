@@ -1,10 +1,12 @@
 /* :root{
-    --bgColor: #30A2FF;
-    --firstColor:   #0B0B44;
-    --secondColor:  #f4f8fb; 
-    --thirColor:    #db8625;    
-   
+    --blue: #30A2FF;
+    --lightblue: #AEE2FF;
+    --orange: #E55807;
+    --white: #ffffff;
+    --black: #000000;
 } */
+
+
 
 .register-conteiner {
     display: grid;   
@@ -16,10 +18,10 @@ html {
     text-align: center;
     justify-content: center;
     font-family: Georgia, 'Times New Roman', Times, serif ;
-    color: var(--secondColor);
+    color: var(--white);
     box-sizing: border-box;
     display: flex;
-    background-color: var(--bgColor);
+    background-color: var(--blue);
     
 }
 body {
@@ -54,8 +56,8 @@ body {
 }
 
 .register-btn:hover {
-    color: var(--secondColor);
-    background-color: rgb(231, 89, 37);
+    color: var(--white);
+    background-color: rgb(234, 99, 50);
    
 }
 
