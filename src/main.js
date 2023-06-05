@@ -1,9 +1,9 @@
 import { getUsers, db } from './lib/firebase.js';
-//import { feed } from './components.js/feed.js';
+// import { feed } from './components.js/feed.js';
 
-import { register } from './components.js/register.js'
+import { register } from './components.js/register.js';
 
-import { welcome } from './components.js/welcome.js'
+import { welcome } from './components.js/welcome.js';
 // import { sobre } from './components.js/sobre.js';
 
 const main = document.getElementById('root');
@@ -27,7 +27,8 @@ const init = () => {
 };
 
 window.addEventListener('load', () => {
-  getUsers(db).then((data) => console.log(data)); //a fução getusers é uma função assincrona e ela retorna uma promisse
+  // a fução getusers é uma função assincrona e ela retorna uma promisse
+  getUsers(db).then((data) => console.log(data));
   main.appendChild(welcome());
   init();
 });
