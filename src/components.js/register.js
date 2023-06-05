@@ -1,10 +1,9 @@
 import { loginCreate } from '../lib/index.js';
 
 export const register = () => {
+  const container = document.createElement('div');
 
-    const container = document.createElement('div');
-
-    const registerHTML = `
+  const registerHTML = `
     <div class="register-elements">
         <form id="formulario-cadastro">
             <h1 class="register-h1"> Cadastro de usuário </h1>
@@ -31,47 +30,42 @@ export const register = () => {
                 <button class="btn-register" type="submit">Cadastrar</button>
         </form>
     </div> `;
-    container.innerHTML = registerHTML;
+  container.innerHTML = registerHTML;
 
-    // const inputNome = root.querySelector('.nome');
-    const inputEmail = container.querySelector('.email[type="email"]');
-    const inputSenha = container.querySelector('.senha[type="password"]');
-    // const confirmarSenha = root.querySelector('.confirmar-senha');
-    const btnRegister = container.querySelector('.btn-register');
+  // const inputNome = root.querySelector('.nome');
+  const inputEmail = container.querySelector('.email[type="email"]');
+  const inputSenha = container.querySelector('.senha[type="password"]');
+  // const confirmarSenha = root.querySelector('.confirmar-senha');
+  const btnRegister = container.querySelector('.btn-register');
 
-    btnRegister.addEventListener('click', async () => {
-        const email = inputEmail;
-        const password = inputSenha;
+  btnRegister.addEventListener('click', async () => {
+    const email = inputEmail;
+    const password = inputSenha;
 
+    if (validateEmail(email.value) && validatePassword(password.value)) {
+      loginCreate(email.value, password.value)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          alert('Cadastro efetuado com sucesso!! Você sera direcionado a página inicial para efetuar o login.');
+          window.location.hash = '#welcome';
+        })
 
-        if (validateEmail(email.value) && validatePassword(password.value)) {
-            loginCreate(email.value, password.value)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    alert('Cadastro efetuado com sucesso!! Você sera direcionado a página inicial para efetuar o login.')
-                    window.location.hash = '#welcome';
-                })
+        .catch((error) => {
+          alert('Ocorreu um erro ao criar o seu cadastro, por favor tente novamente.');
+        });
+    } else {
+      alert('Por favor, insira um e-mail válido e uma senha com no minimo 6 caracteres');
+    }
+  });
 
-                .catch((error) => {
+  function validateEmail(email) {
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regexEmail.test(email);
+  }
+  function validatePassword(password) {
+    const regexPassword = /^.{6,}$/;
+    return regexPassword.test(password);
+  }
 
-                    alert(
-                        'Ocorreu um erro ao criar o seu cadastro, por favor tente novamente.'
-                    );
-                });
-
-        } else {
-            alert('Por favor, insira um e-mail válido e uma senha com no minimo 6 caracteres')
-        }
-    });
-
-    function validateEmail(email) {
-        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return regexEmail.test(email);
-    };
-    function validatePassword(password) {
-        const regexPassword = /^.{6,}$/;
-        return regexPassword.test(password);
-    };
-
-    return container;
+  return container;
 };
