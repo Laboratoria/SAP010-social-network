@@ -31,10 +31,10 @@ export const register = () => {
     </div> `;
     root.innerHTML = registerHTML;
 
-    const inputNome = root.querySelector('.nome');
+    // const inputNome = root.querySelector('.nome');
     const inputEmail = root.querySelector('.email[type="email"]');
     const inputSenha = root.querySelector('.senha[type="password"]');
-    const confirmarSenha = root.querySelector('.confirmar-senha');
+    // const confirmarSenha = root.querySelector('.confirmar-senha');
     const btnRegister = root.querySelector('.btn-register');
 
     btnRegister.addEventListener('click', async () => {
