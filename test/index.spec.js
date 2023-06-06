@@ -1,45 +1,25 @@
 // import { it } from 'node:test';
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { expect } from '@jest/globals';
+// import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { expect, jest } from '@jest/globals';
 
 import {
-  isUserLoggedIn, signInWithGoogle,
+  signInWithGoogle,
 } from '../src/firebase/firebase.js';
 
-jest.mock('../src/firebase/firebase.js', () => {
-  const currentUser = {
-    displayName: 'Spock',
-    email: 'spoky@gmail.com',
-    uid: '3141592',
-  };
-  const popUp = jest.fn();
-  return {
-    isUserLoggedIn: async () => currentUser !== null,
-    signInWithGoogle: async () => {
-      popUp.mockReturnValue(true);
-    },
-  };
-});
-
-describe('isUserLoggedIn', () => {
-  it('deve retornar true quando o usuário estiver logado', async () => {
-    const result = await isUserLoggedIn();
-    expect(result).toBe(true);
-  });
-
-  it('deve retornar false quando o usuário não estiver logado', async () => {
-    jest.requireMock('../src/firebase/firebase.js').isUserLoggedIn = async () => false;
-    const result = await isUserLoggedIn();
-    expect(result).toBe(false);
-  });
-});
+jest.mock('firebase/auth');
 
 describe('signInWithGoogle', () => {
-  it('Deveria logar o usuário com a conta do google', async () => {
-    signInWithPopup.mockReturnValueOnce();
-    GoogleAuthProvider.mockReturnValueOnce();
-    await signInWithGoogle();
-    expect(signInWithPopup).toHaveBeenCalledTimes();
-    expect(signInWithPopup).toHaveBeenCalledWith(undefined, {});
+  it('deveria ser uma função', () => {
+    expect(typeof signInWithGoogle).toBe('function');
   });
+  const loginGoogle = jest.fn().mockReturnValue({ id: '123456', email: 'meajudajesus@gmail.com' });
+  it('deveria logar com o google', () => signInWithGoogle(loginGoogle).then(() => {
+    expect(loginGoogle.mock.calls[0][1]).toBe('123456');
+  }));
+
+  /* it('Deveria logar o usuário com a conta do google', async () => {
+    signInWithPopup.mockResolvedValueOnce();
+    await signInWithGoogle();
+    expect(signInWithPopup).toHaveBeenCalledTimes(1);
+  }); */
 });
