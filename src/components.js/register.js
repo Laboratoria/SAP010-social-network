@@ -30,13 +30,14 @@ export const register = () => {
         </form>
     </div> `;
   container.innerHTML = registerHTML;
-  // const inputNome = root.querySelector('.nome');
-  const inputEmail = container.querySelector('.email[type="email"]');
-  const inputPassword = container.querySelector('.senha[type="password"]');
-  // const confirmarSenha = root.querySelector('.confirmar-senha');
-  const btnRegister = container.querySelector('.btn-register');
 
-  btnRegister.addEventListener('submit', async () => {
+  const inputEmail = container.querySelector('.email');
+  const inputPassword = container.querySelector('.senha');
+  const form = container.querySelector('#formulario-cadastro');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
     const email = inputEmail.value;
     const password = inputPassword.value;
 
@@ -50,17 +51,15 @@ export const register = () => {
     }
 
     if (validateEmail(email) && validatePassword(password)) {
-      loginCreate(email, password)
-        .then(() => {
-          alert('Cadastro efetuado com sucesso!! Você sera direcionado a página inicial para efetuar o login.');
-          window.location.hash = '#welcome';
-        })
-
-        .catch(() => {
-          alert('Ocorreu um erro ao criar o seu cadastro, por favor tente novamente.');
-        });
+      try {
+        loginCreate(email, password);
+        alert('Cadastro efetuado com sucesso!! Você será direcionado à página inicial para efetuar o login.');
+        window.location.hash = 'welcome';
+      } catch (error) {
+        alert('Ocorreu um erro ao criar o seu cadastro, por favor tente novamente.');
+      }
     } else {
-      alert('Por favor, insira um e-mail válido e uma senha com no minimo 6 caracteres');
+      alert('Por favor, insira um e-mail válido e uma senha com no mínimo 6 caracteres.');
     }
   });
 
