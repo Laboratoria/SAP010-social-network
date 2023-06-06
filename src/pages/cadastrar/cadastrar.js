@@ -17,13 +17,11 @@ export default () => {
                 <input type="text" class="digite_senha" id="digitesenha" placeholder="Digite sua senha"/>
                 </p> 
             </form>
-            <p class="form">
-              <button class="btnLogar" id="btnLogar">LOGAR</button>
-            </p>
+           
             <p class="form">
               <button class="logarGoogle" id="btnGoogle">Entrar com Google</button>
             <p class="form">
-              <a href="/#cadastrar" type="button" class="btnCadastrar" id="btnCadastrar">CADASTRE-SE!</a>
+              <button class="btnCadastrar" id="btnCadastrar">CADASTRAR!</button>  
             </p>
        </div>
     </div>

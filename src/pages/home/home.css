@@ -1,0 +1,88 @@
+
+.logo {
+    position: absolute;
+    width: 400px;
+    height:100 ;
+    left:1100px ;
+}
+
+.etiqueta {
+    position: absolute;
+    width: 400px;
+    height: 600px;
+    left: 1050px;
+    top: 200px;
+
+}
+h2{
+    position: absolute;
+    width: 227px;
+    height: 98px;
+    left: 1130px;
+    top: 354px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+
+    color: #F5B81D;
+}
+.inserir_email {
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    left: 1090px;
+    top: 500px;
+
+    background: #D9D9D9;
+    border-radius: 10px;
+}
+.digite_senha {
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    left: 1090px;
+    top: 580px;
+
+    background: #D9D9D9;
+    border-radius: 10px;
+
+}
+.btnLogar{
+    position: absolute;
+width: 141px;
+height: 41px;
+left: 1170px;
+top: 650px;
+
+background: #B80C0C;
+border-radius: 10px;
+}
+.btnCadastrar{
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    left: 1090px;
+    top: 700px;
+
+    background: #D9D9D9;
+    border-radius: 10px;
+    font-size: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26px;
+    text-align: center;
+    letter-spacing: 0.02em;
+
+    color: #B80C0C;
+
+
+
+}
