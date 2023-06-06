@@ -44,16 +44,13 @@ export const welcome = () => {
   btnSignIn.addEventListener('click', async () => {
     const email = inputEmail.value;
     const password = inputPass.value;
-
     if (email && password) {
-      loginUser(email, password)
-        .then(() => {
-          window.location.hash = '#feed';
-        })
-
-        .catch(() => {
-          alert('Ocorreu um erro. E-mail ou senha não correspondem com o cadastro, tente novamente.');
-        });
+      try {
+        await loginUser(email, password);
+        window.location.hash = '#feed';
+      } catch (error) {
+        alert('Ocorreu um erro. E-mail ou senha não correspondem com o cadastro, tente novamente.');
+      }
     }
   });
 
