@@ -10,7 +10,7 @@ import {
 const header = document.querySelector('header');
 
 const image = document.createElement('img');
-image.src = '../../img/balao.jpg'
+image.src = '../img/balão1.png'
 image.alt = 'balão';
 const titulo = document.createElement('h2')
 titulo.innerHTML="TravellersBook"

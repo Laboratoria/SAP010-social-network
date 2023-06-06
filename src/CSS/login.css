@@ -1,19 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+
 body{
     background-color: #008DA1;
     background-image: linear-gradient(to top, #86C0CA, #008DA1);
     background-repeat: no-repeat;
     width: 100vw;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+
+   
+  }
+  img {
+    width: 250px;
   }
   
-  .image {
-    margin-bottom: 10px; /* Espaçamento opcional entre a imagem e o texto */
+
+  h2{
+    font-family: 'Amatic SC', cursive;
+    font-size: 50px;
+    
   }
-  
+
+  .inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+   
+  }
+  .google{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  .createNewAccount{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
