@@ -1,33 +1,57 @@
-body {
-    display: flex;
-}
 .login-wrap {
- flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
-#logo{
+.login-form {
     display: flex;
-    
+    flex-direction: column;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.inputs-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputs-info{
+    border-radius: 5px 5px 5px 5px;
+    flex-direction:column;
+    border: none; 
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); /*colocar no register tbm*/
+    margin-top: 2em;
+    width: 20em;
+    height: 3em;
 }
 
 #login-button {
     background-color: var(--orange);
-}
-.register-box {
-    flex-direction: column;
-
-}
-.info-inputs {
-    flex-direction: column;
-    justify-content: center;
-    height: 3em;
+    color: var(--white);
     border-radius: 5px 5px 5px 5px;
-    display: grid;
-    border: none; 
+    border: none;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    margin-top: 2em;
+    width: 20em;
+    height: 3em;
+    margin-bottom: 2em;
 }
 
-.register-box {
-    display: flex;
+input::placeholder {
+    text-align: center;
+  }
+
+.register-button{
+    background-color: var(--blue);
+    border: none;
+    width: 5em;
+    font-size: 1.1rem;
+}
+
+.reg-btn {
+    color: var(--orange);
+    text-decoration: none;
 }
 
 .google-btn {
@@ -35,7 +59,12 @@ body {
     border: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    width: 10em;
+    width: 8em;
+    margin-top: 2em;
+}
+
+#google-img{
+    width: 5em;
 }
 
 
