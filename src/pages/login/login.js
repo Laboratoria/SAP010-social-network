@@ -7,11 +7,10 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 
-
 const header = document.querySelector('header');
 
 const image = document.createElement('img');
-image.src = '../img/balão.png'
+image.src = '../../img/balao.jpg'
 image.alt = 'balão';
 const titulo = document.createElement('h2')
 titulo.innerHTML="TravellersBook"
@@ -122,10 +121,4 @@ function setUpLoginElements(loginContainer) {
         const errorMessage = error.message;
       });
   });
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 4b8db87 (css)
 }
