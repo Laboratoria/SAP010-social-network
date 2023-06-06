@@ -42,32 +42,12 @@ const logOut = async () => {
 
 const signInWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
-  await signInWithPopup(auth, provider)
-    .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      console.log(`credential ${credential}`);
-      isUserLoggedIn();
-    }).catch((error) => {
-      console.log(error.message);
-    });
+  await signInWithPopup(auth, provider);
 };
 
 const signInWithGitHub = async () => {
   const provider = new GithubAuthProvider();
   await signInWithPopup(auth, provider)
-    .then((result) => {
-      const credential = GithubAuthProvider.credentialFromResult(result);
-      console.log(`credential ${credential}`);
-      isUserLoggedIn();
-    }).catch((error) => {
-      /*
-      if(error.code === "auth/account-exists-with-different-credential"){
-        alert("usuário já cadastrado com o provedor do Google")
-      }
-      */
-      console.log(error.code);
-      console.log(error.message);
-    });
 };
 
 const registerUserWithAnotherProvider = async (id, name, username, email) => {
