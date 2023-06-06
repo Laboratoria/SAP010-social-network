@@ -1,0 +1,19 @@
+body{
+    background-color: #008DA1;
+    background-image: linear-gradient(to top, #86C0CA, #008DA1);
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .image {
+    margin-bottom: 10px; /* Espaçamento opcional entre a imagem e o texto */
+  }
+  
