@@ -31,9 +31,11 @@ export default () => {
   Entrar com:
   </div>
 
-  <figure>
-  <img src="img/assets/google.png" id="google" alt="Logo do Google" width = 100px> 
-</figure>
+ <figure>
+ <button class="google-btn">
+  <img src="img/assets/google.png" id="google" alt="Logo do Google" width = 100px>
+ </button> 
+ </figure>
 
   </form>
   </section>` /*inserir o login do google em forma de botao posteriormente */

@@ -12,6 +12,10 @@
     padding: 0;
   }
 
+html {
+  box-sizing: border-box;
+}
+
 body {
     background-color: var(--blue);
     display: flex;
