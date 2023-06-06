@@ -13,20 +13,13 @@ export default () => {
                 <p class="email">
                 <input type="text" class="inserir_email" id="inseriremail" placeholder="Digite seu email"/>
                 </p>
-                <p class="senha">
-                <input type="text" class="digite_senha" id="digitesenha" placeholder="Digite sua senha"/>
-                </p> 
+                
             </form>
-            <p class="form">
-              <a href="/#recuperar" type="text" class="btnRecuperar" id="btnRecuperar">Esqueci minha senha</a>
+            <p>
+              <button class="btnEnviar" id="btnEnviar">ENVIAR</button>  
             </p>
             <p class="form">
-              <button class="btnLogar" id="btnLogar">LOGAR</button>
-            </p>
-            <p class="form">
-              <button class="logarGoogle" id="btnGoogle">Entrar com Google</button>
-            <p class="form">
-              <a href="/#cadastrar" type="button" class="btnCadastrar" id="btnCadastrar">CADASTRE-SE!</a>
+              <a href="/#home" type="button" class="btnVoltar" id="btnVoltar">Voltar</a>
             </p>
        </div>
     </div>
