@@ -8,37 +8,35 @@ export default () => {
   <img src="img/logo.png" id="logo" alt="Logo da ExploraAí">
   <h2>Entrar</h2>
 
-
-<section class="register-box">
-  <form>
-  <div class="info-inputs">
-  <input type="text" placeholder="E-mail" id ="email" />
-  <input type="password" placeholder="Senha" id ="senha" />
+  <form class="login-form">
+  <div class="inputs-container">
+  <input type="text" class="inputs-info" placeholder="E-MAIL" id ="email" />
+  <input type="password" class="inputs-info" placeholder="SENHA" id ="senha" />
 </div>
 
   <nav>
-  <button type="button" id="login-button" href="#">Entrar</button>
-</nav>
+  <button type="button" id="login-button" href="#">ENTRAR</button>
+ </nav>
 
-  <div>
+  <div class="txt1">
   Esqueceu a senha? <br>
-  Não possui uma conta? <!-- <a id="register-button" href="#register">Cadastre-se</a>-->
-  <button type="button" class="register-button"><a class= "reg-back" href="#register">Registrar</a></button>
+  Não possui uma conta? 
+  <button type="button" class="register-button"><a class= "reg-btn" href="#register">Registrar</a></button>
   </div>
 
-  <div>
+  <div class="txt2">
   Ou <br>
   Entrar com:
   </div>
 
  <figure>
  <button class="google-btn">
-  <img src="img/assets/google.png" id="google" alt="Logo do Google" width = 100px>
+  <img src="img/assets/google.png" id="google-img" alt="Logo do Google" width = 100px>
  </button> 
  </figure>
 
   </form>
-  </section>` /*inserir o login do google em forma de botao posteriormente */
+  </section>`
 
 container.innerHTML = templateLogin;
 

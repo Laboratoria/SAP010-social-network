@@ -12,9 +12,9 @@
     padding: 0;
   }
 
-html {
+/* html {
   box-sizing: border-box;
-}
+} */
 
 body {
     background-color: var(--blue);
