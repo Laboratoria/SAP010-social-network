@@ -1,0 +1,84 @@
+/* CSS para a página do feed */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.bg {
+  background-image: url('img/comunicacao.jpg');
+}
+/* Estilo da nav */
+nav {
+    background-image: url('img/comunicacao.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Estilo do logo */
+  .logo {
+
+    width: 100px;
+    height: 100px;
+  }
+  
+  /* Estilo dos itens da nav */
+  nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  nav ul li {
+    list-style: none;
+    margin-left: 10px;
+  }
+  
+  /* Estilo da seção principal */
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  /* Estilo do formulário de comentário */
+  #commentForm {
+    margin-top: 20px;
+  }
+  
+  #commentInput {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+  
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:disabled {
+    background-color: gray;
+  }
+  
+  /* Estilo dos comentários */
+  #commentsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .comment {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 80%;
+    max-width: 400px;
+  }
+  
