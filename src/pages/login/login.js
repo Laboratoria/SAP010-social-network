@@ -63,6 +63,26 @@ container.innerHTML = templateLogin;
 
   container.innerHTML = templateLogin;
 
+  const emailInput = container.querySelector('#email');
+  const senhaInput = container.querySelector('#senha');
+  const loginButton = container.querySelector('#login-button');
+
+  const handleLogin = () => {
+    const email = emailInput.value;
+    const senha = senhaInput.value;
+
+    loginWithEmail(email, senha)
+      .then(() => {
+        window.location.hash = '#timeline';
+      })
+      .catch((error) => {
+        alert('Usuário ou senha incorretos');
+        console.log('Erro de autenticação:', error);
+      });
+  };
+
+  loginButton.addEventListener('click', handleLogin);
+
   return container;
 
 }
