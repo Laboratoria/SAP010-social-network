@@ -1,4 +1,4 @@
-
+import { loginWithEmail, loginGoogle } from '../../firebase/auth.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -22,7 +22,8 @@ export default () => {
 
   <div>
   Esqueceu a senha? <br>
-  Não possui uma conta? <a id="register-button" href="#register">Cadastre-se</a>
+  Não possui uma conta? <!-- <a id="register-button" href="#register">Cadastre-se</a>-->
+  <button type="button" class="register-button"><a class= "reg-back" href="#register">Registrar</a></button>
   </div>
 
   <div>
@@ -35,7 +36,30 @@ export default () => {
 </figure>
 
   </form>
- </section>` /*inserir o login do google em forma de botao posteriormente */
+  </section>` /*inserir o login do google em forma de botao posteriormente */
+
+container.innerHTML = templateLogin;
+
+  const emailInput = container.querySelector('#email');
+  const senhaInput = container.querySelector('#senha');
+  const loginButton = container.querySelector('#login-button');
+
+  
+  const handleLogin = () => {
+    const email = emailInput.value;
+    const senha = senhaInput.value;
+
+    loginWithEmail(email, senha)
+      .then(() => {
+        window.location.hash = '#timeline';
+      })
+      .catch((error) => {
+        alert('Usuário ou senha incorretos');
+        console.log('Erro de autenticação:', error);
+      });
+  };
+
+  loginButton.addEventListener('click', handleLogin);
 
   container.innerHTML = templateLogin;
 
