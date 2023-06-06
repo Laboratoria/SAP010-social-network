@@ -22,4 +22,4 @@ export async function getUsers(database) {
   const userSnapshot = await getDocs(usersCol);
   const userList = userSnapshot.docs.map((doc) => doc.data());
   return userList;
-};
+}
