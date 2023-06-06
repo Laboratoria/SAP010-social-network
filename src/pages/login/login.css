@@ -2,7 +2,7 @@ body {
     display: flex;
 }
 .login-wrap {
- display: block
+ flex-direction: column;
 }
 
 #logo{
@@ -13,16 +13,29 @@ body {
 #login-button {
     background-color: var(--orange);
 }
+.register-box {
+    flex-direction: column;
 
+}
 .info-inputs {
-    margin-top: 2em;
-    text-align: center;
-    width: 20em;
+    flex-direction: column;
+    justify-content: center;
     height: 3em;
     border-radius: 5px 5px 5px 5px;
     display: grid;
-    border: none
-    
+    border: none; 
+}
+
+.register-box {
+    display: flex;
+}
+
+.google-btn {
+    background-color: var(--lightblue);
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    width: 10em;
 }
 
 
