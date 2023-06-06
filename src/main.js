@@ -1,5 +1,6 @@
-import {cadastro, home, login} from "./login.js"
-
+import {login} from "./view/home/login.js"
+import {cadastro} from "./view/home/cadastro.js"
+import {home} from "./view/home/home.js"
 const main = document.querySelector("#main")
 const init = () => {
     window.addEventListener("hashchange", () => {
