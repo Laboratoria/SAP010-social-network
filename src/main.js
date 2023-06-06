@@ -1,5 +1,20 @@
-// Este es el punto de entrada de tu aplicacion
+import { login } from './pages/login/login.js';
 
-import { myFunction } from './lib/index.js';
+const main = document.querySelector('#root');
 
-myFunction();
+const init = () => {
+  window.addEventListener('hashchange', () => {
+    main.innerHTML = ' ';
+
+    switch (window.location.hash) {
+      default:
+        main.appendChild(login());
+        break;
+    }
+  });
+};
+
+window.addEventListener('load', () => {
+  main.appendChild(login());
+  init();
+});
