@@ -121,6 +121,7 @@ export default () => {
   loginGoogle.addEventListener('click', async () => {
     try {
       await signInWithGoogle();
+      console.log(typeof signInWithGoogle);
       const uid = auth.currentUser.uid;
       const name = auth.currentUser.displayName;
       const email = auth.currentUser.email;

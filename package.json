@@ -35,6 +35,7 @@
     "vite": "^4.3.2"
   },
   "dependencies": {
+    "@jest/globals": "^29.5.0",
     "firebase": "^9.22.0"
   },
   "engines": {

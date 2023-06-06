@@ -115,5 +115,5 @@ const emailAlreadyRegistered = async (email) => {
 
 export {
   registerUserWithAnotherProvider, registerUser, logIn, signInWithGoogle, signInWithGitHub,
-  isUserLoggedIn, logOut, auth, emailAlreadyRegistered,
+  isUserLoggedIn, logOut, auth, emailAlreadyRegistered, signInWithPopup,
 };
