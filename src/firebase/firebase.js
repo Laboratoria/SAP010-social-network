@@ -47,7 +47,7 @@ const signInWithGoogle = async () => {
 
 const signInWithGitHub = async () => {
   const provider = new GithubAuthProvider();
-  await signInWithPopup(auth, provider)
+  await signInWithPopup(auth, provider);
 };
 
 const registerUserWithAnotherProvider = async (id, name, username, email) => {
