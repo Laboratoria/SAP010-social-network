@@ -4,25 +4,17 @@ import {
 } from 'firebase/auth';
 
 import {
-  query, where, getDocs, setDoc, doc,
+  setDoc, doc,
 } from 'firebase/firestore';
 
 import {
-  app, db, collection,
+  app, db,
 } from './firebase.config';
 
 const auth = getAuth(app);
 
-const isUserLoggedIn = async () => {
-  console.log(auth);
-  const user = auth.currentUser;
+const isUserLoggedIn = async (user) => {
   if (user !== null) {
-    const displayName = user.displayName;
-    const email = user.email;
-    const uid = user.uid;
-    console.log(`Nome do usuário ${displayName}`);
-    console.log(`O e-mail do usuário é ${email}`);
-    console.log(`O id do usuário é ${uid}`);
     return true;
   }
   return false;
@@ -81,19 +73,7 @@ const registerUser = async (name, username, email, password) => {
   }
 };
 
-const emailAlreadyRegistered = async (email) => {
-  const q = query(collection(db, 'users'), where('email', '==', email));
-  const querySnapshot = await getDocs(q);
-
-  querySnapshot.forEach((docs) => {
-    console.log(docs.id, '=>', docs.data().email);
-    if (docs.data().email === docs.id) {
-      alert('Este e-mail já está sendo utilizado por outro provedor');
-    }
-  });
-};
-
 export {
   registerUserWithAnotherProvider, registerUser, logIn, signInWithGoogle, signInWithGitHub,
-  isUserLoggedIn, logOut, auth, emailAlreadyRegistered, signInWithPopup,
+  isUserLoggedIn, logOut, auth, signInWithPopup,
 };
