@@ -6,7 +6,8 @@ export default () => {
   const templateLogin = /*html*/ `
   <section class="login-wrap">
   <img src="img/logo.png" id="logo" alt="Logo da ExploraAí">
-  <h2>Entrar</h2>
+  <h1>ExploraAí</h1>
+  <h2 id=text-login>Entrar</h2>
 
   <form class="login-form">
   <div class="inputs-container">
