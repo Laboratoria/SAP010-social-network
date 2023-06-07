@@ -7,9 +7,10 @@ export const login = () => {
   const auth = getAuth();
   
   const templateLogin = `
-    <img src="./img/logo.png" class="logo-repet" alt="Logo da rede social re.Pet">
+    
     <section class="loginpage-form">
-    <form>
+    <img src="./img/logo.png" class="logo-repet" alt="Logo da rede social re.Pet">
+    <form class="login-input-container">
     <label for="email-login"></label>
     <input class="form-inputs" type="email" id="email-login" required placeholder="Email">
     </input>
@@ -19,13 +20,25 @@ export const login = () => {
     </input>
 
     <button type="submit" class="loginpage-button">Entrar</button>
-
+    
     </form>
+    <div class="google-login">
+      <div class="google-icon-wrapper">
+        <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+      </div> 
+      <a class="google-button-text"> Entrar com o Google </a> 
+    </div>
+
+    </section>
+
 
     <button type="submit" id="botao-google"> Entrar com Google</button>
 
+
+    
     <h3> Não possui cadastro? <a class="criar-conta" href="/#cadastro">Criar conta</a></h3>
-    </section>
+    
+  
     `;
 
   container.innerHTML = templateLogin;
