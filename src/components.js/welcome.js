@@ -7,7 +7,7 @@ export const welcome = () => {
 <section class="mainPage">
   <img src="img/comunicacao.jpg" class="bg">
     <div class="divSignIn">
-      <img src="img/logo_petchat.png" class="logo">
+      <img src="img/logo_petchat.png" class="logoW">
          <p class="introSignIn">Bem-vindo(a) ao <strong>PetChat</strong></p>
          <label class='label' for="email">E-mail:</label>
 

@@ -16,13 +16,14 @@
     object-fit: cover;
   }
   
-  .logo {
+  .logoW {
     position: absolute;
     top: -25%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px; /* Ajuste o valor conforme necessário */
+    width: 60%;
     z-index: 1;
+    
   }
   
   .divSignIn {
@@ -40,6 +41,8 @@
   .introSignIn {
     margin-top: 20px;
     font-size: 1.8rem;
+    margin-bottom: 35px;
+    
   }
   
   .label {
