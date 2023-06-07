@@ -10,8 +10,7 @@ export default () => {
 
     <section class="form-register">
       <p class="title">Cadastrar-se</p>
-    <!-- </section> -->
-    <!-- <section class="register-box"> -->
+   
       <form class="register-form">
         <div>
           <input type="text" class="inputs-register" id="name-user" placeholder="NOME">
@@ -23,13 +22,16 @@ export default () => {
         <div>
           <button type="button" class="register-btn">CADASTRAR</button>
         </div> 
-        <nav>
-          <button type="button" class="back-btn"><a class="btn-back" href="#login">VOLTAR</a></button>
-        </nav> 
+        
         <p id="error-message" class="error-message"></p>
 
     </form>
   </section>
+      <br>
+        <nav>
+        <a class="btn-back" href="#login"><img src="img/assets/arrow.png" id="arrow-img" alt="imagem de seta" width = 50px></a>
+        </nav> 
+  
 `;
 
 
