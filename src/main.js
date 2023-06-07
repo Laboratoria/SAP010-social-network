@@ -2,13 +2,13 @@ import home from './view/homee/home.js';
 import login from './view/login/login.js';
 import register from './view/register/register.js';
 import feed from './view/feed/feed.js';
-import { isUserLoggedIn } from './firebase/firebase.js';
+import { isUserLoggedIn, auth } from './firebase/firebase.js';
 
 const main = document.querySelector('#main');
 
 const changeScreen = async () => {
   main.innerHTML = '';
-  const user = await isUserLoggedIn();
+  const user = await isUserLoggedIn(auth.currentUser);
 
   if (user) {
     switch (window.location.hash) {

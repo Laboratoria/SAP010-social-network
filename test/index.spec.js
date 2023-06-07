@@ -1,10 +1,14 @@
-// import { it } from 'node:test';
 import {
   signInWithPopup,
   signInWithEmailAndPassword,
   signOut,
   auth,
+  createUserWithEmailAndPassword,
 } from 'firebase/auth';
+
+import {
+  setDoc, doc,
+} from 'firebase/firestore';
 
 import {
   signInWithGoogle,
@@ -12,6 +16,8 @@ import {
   isUserLoggedIn,
   logIn,
   logOut,
+  registerUserWithAnotherProvider,
+  registerUser,
 } from '../src/firebase/firebase.js';
 
 const mockAuth = {
@@ -19,10 +25,12 @@ const mockAuth = {
     displayName: 'Spock',
     email: 'spock@gmail.com',
     uid: '3141592',
+    password: 'Senha@123',
   },
 };
 
 jest.mock('firebase/auth');
+jest.mock('firebase/firestore');
 
 describe('signInWithGoogle', () => {
   it('deveria ser uma função', () => {
@@ -50,13 +58,12 @@ describe('signInWithGitHub', () => {
 
 describe('isUserLoggedIn', () => {
   it('Deveria retornar true se ele estiver logado', async () => {
-    const result = await isUserLoggedIn();
+    const result = await isUserLoggedIn(mockAuth);
     expect(result).toBe(true);
   });
 
   it('Deveria retornar false se ele não estiver logado', async () => {
-    mockAuth.currentUser = null;
-    const result = await isUserLoggedIn();
+    const result = await isUserLoggedIn(null);
     expect(result).toBe(false);
   });
 });
@@ -75,5 +82,28 @@ describe('logOut', () => {
   it('Deveria deslogar', async () => {
     await logOut();
     expect(signOut).toHaveBeenCalled();
+  });
+});
+
+describe('registerUserWithAnotherProvider', () => {
+  it('Deveria cadastrar um usuário com provedor do Google ou Github', async () => {
+    await registerUserWithAnotherProvider();
+    expect(setDoc).toHaveBeenCalled();
+    expect(doc).toHaveBeenCalled();
+  });
+  it('Deveria capturar um erro e falhar ao cadastrar um usuário com provedor do Google ou Github', async () => {
+    const error = jest.fn().mockRejectedValueOnce(new Error('Erro ao cadastrar usuário'));
+    const result = await registerUserWithAnotherProvider();
+    expect(result).toEqual(error);
+  });
+});
+
+describe('registerUser', () => {
+  it('Deveria cadastrar um usuário com o formulário', async () => {
+    const user = mockAuth.currentUser;
+    await registerUser(user.displayName, user.displayName, user.email, user.password);
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(auth, user.email, user.password);
+    expect(setDoc).toHaveBeenCalled();
+    expect(doc).toHaveBeenCalled();
   });
 });
