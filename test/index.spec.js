@@ -1,10 +1,26 @@
 // import { it } from 'node:test';
-import { signInWithPopup } from 'firebase/auth';
+import {
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  signOut,
+  auth,
+} from 'firebase/auth';
 
 import {
   signInWithGoogle,
   signInWithGitHub,
+  isUserLoggedIn,
+  logIn,
+  logOut,
 } from '../src/firebase/firebase.js';
+
+const mockAuth = {
+  currentUser: {
+    displayName: 'Spock',
+    email: 'spock@gmail.com',
+    uid: '3141592',
+  },
+};
 
 jest.mock('firebase/auth');
 
@@ -29,5 +45,35 @@ describe('signInWithGitHub', () => {
     signInWithPopup.mockResolvedValueOnce();
     await signInWithGitHub();
     expect(signInWithPopup).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe('isUserLoggedIn', () => {
+  it('Deveria retornar true se ele estiver logado', async () => {
+    const result = await isUserLoggedIn();
+    expect(result).toBe(true);
+  });
+
+  it('Deveria retornar false se ele não estiver logado', async () => {
+    mockAuth.currentUser = null;
+    const result = await isUserLoggedIn();
+    expect(result).toBe(false);
+  });
+});
+
+describe('logIn', () => {
+  it('Deveria logar com email e senha corretos', async () => {
+    const email = 'spock@gmail.com';
+    const password = '3141592';
+    signInWithEmailAndPassword.mockResolvedValueOnce();
+    await logIn(email, password);
+    expect(signInWithEmailAndPassword).toHaveBeenCalledWith(auth, email, password);
+  });
+});
+
+describe('logOut', () => {
+  it('Deveria deslogar', async () => {
+    await logOut();
+    expect(signOut).toHaveBeenCalled();
   });
 });
