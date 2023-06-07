@@ -23,7 +23,8 @@
 }
 
 .header h1{
-    font-weight: 400;
+    font-weight: 300;
+    color: var(--white);
 }
 
 main .feed{
@@ -35,9 +36,42 @@ main .feed{
     max-width: 1200px;
 }
 
-.user-input-textarea{
+.container-input-post{
+    background-color: var(--bgInputPost);
     display: flex;
     flex-direction: column;
-    padding: 0px 10px;
-    width: 100%;
+    padding: 10px;
+    width: 95%;
+}
+.container-input-post, #user-text-area{
+    border-radius: 10px;
+} 
+
+#user-text-area{
+    border: 0px;
+    font-size: 20px;
+    height: 100px;
+    outline-color: var(--secondColor);
+    padding: 10px 10px 0px;
+    text-align: center;
+}
+
+#user-text-area::placeholder{
+    color: #00000081;
+}
+
+.div-btn-publish{
+    display: flex;
+    justify-content: end;
+}
+
+.btn-publish{
+    background-color: var(--white);
+    border: solid 1px var(--secondColor);
+    border-radius: 20px;
+    color: var(--secondColor);
+    font-size: 18px;
+    height: 40px;
+    margin-top: 20px;
+    width: 50%;
 }
