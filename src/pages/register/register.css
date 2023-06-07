@@ -6,11 +6,13 @@
     --black: #000000;
 } */
 
-
+.form-register {
+    justify-content: center;
+}
 
 .register-conteiner {
     display: flex;   
-    justify-content: center;
+    /* justify-content: center; */
    
 }
 
@@ -38,19 +40,21 @@ body {
     height: 3em;
     border-radius: 5px 5px 5px 5px;
     display: grid;
-    border: none
+    border: none;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
 }
 
 .register-btn {
     color: var(--white);
     background-color: var(--orange);
-    width: 16em;
+    width: 20em;
     height: 3em;
-    font-size: 1em;
     border-radius: 5px 5px 5px 5px;
     margin-top: 3em;
     text-decoration: none;
     border: none;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .btn-register {
@@ -60,10 +64,10 @@ body {
 
 .register-btn:hover {
     color: var(--white);
-    background-color: rgb(234, 99, 50);
-    width: 16em;
+    background-color: rgb(234, 99, 50); 
+    width: 20em;
     height: 3em;
-    font-size: 1em;
+    /* font-size: 1em; */
     border-radius: 5px 5px 5px 5px;
     margin-top: 3em;
 }
@@ -71,5 +75,8 @@ body {
 .btn-back {
     text-decoration: none;
     color: var(--white);
+    position: absolute;
+    top: 10px;
+    right: 10px
    
 }

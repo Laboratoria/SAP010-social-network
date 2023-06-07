@@ -1,6 +1,6 @@
 <div align="center">
 
-# Social Network - ExploraAí
+# Social Network - ExplorAí
 </div>
 
 <div align="center">
