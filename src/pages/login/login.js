@@ -28,19 +28,21 @@ export const login = () => {
       <button id="button-new-account">Criar nova conta</button>
       <!--criar um link de redirecionameto para criar nova conta, para usar a função implementada no js-->
     </section>
-  `
+  `;
 
   loginContainer.innerHTML = content;
 
-  setUpLoginElements(loginContainer)
+  setUpLoginElements(loginContainer);
 
-  return loginContainer
-}
+  return loginContainer;
+};
 
 function setUpLoginElements(loginContainer) {
   const buttonLogin = loginContainer.querySelector('#button-login');
   const buttonNewAccount = loginContainer.querySelector('#button-new-account');
-  const buttonLoginGoogle = loginContainer.querySelector('#button-login-google');
+  const buttonLoginGoogle = loginContainer.querySelector(
+    '#button-login-google'
+  );
   const inputEmail = loginContainer.querySelector('#input-email');
   const inputPassword = loginContainer.querySelector('#input-password');
 
@@ -57,26 +59,26 @@ function setUpLoginElements(loginContainer) {
       })
       .catch(error => {
         // Ocorreu um erro durante o login
-        switch(error.code) {
-          case "auth/user-not-found":
-            alert ("Usuário não encontrado");
-            break
+        switch (error.code) {
+          case 'auth/user-not-found':
+            alert('Usuário não encontrado');
+            break;
 
-          case "auth/wrong-password":
-            alert ("Senha incorreta")
-            break
+          case 'auth/wrong-password':
+            alert('Senha incorreta');
+            break;
 
-          case "auth/invalid-email":
-            alert ("E-mail inválido")
-            break
+          case 'auth/invalid-email':
+            alert('E-mail inválido');
+            break;
 
-          case "auth/missing-password":
-            alert ("Digite a senha")
-            break
+          case 'auth/missing-password':
+            alert('Digite a senha');
+            break;
 
           default:
-            alert ("Erro ao fazer o login: "+error.code)
-          }
+            alert('Erro ao fazer o login: ' + error.code);
+        }
       });
   });
 
