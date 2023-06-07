@@ -1,14 +1,22 @@
 .login-wrap {
     display: flex;
     flex-direction: column;
-    height: 140vh;
-    /* justify-content: center; */
+    height: 120vh; 
+    justify-content: center;
+}
+.logo-container {
+    display: block;
+}
+#logo {
+    width: 12em;
+    justify-content: center;
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
 }
 
 #text-login{
@@ -20,6 +28,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 0;
 }
 
 .inputs-info{
@@ -33,7 +42,7 @@
 }
 
 #login-button {
-    background-color: var(--orange);
+    background-color: var(--black);
     color: var(--white);
     border-radius: 5px 5px 5px 5px;
     border: none;
@@ -51,8 +60,9 @@ input::placeholder {
 .register-button{
     background-color: var(--blue);
     border: none;
-    width: 5em;
+    width: 9em;
     font-size: 1.1rem;
+    text-align: left;
 }
 
 .reg-btn {
@@ -61,7 +71,7 @@ input::placeholder {
 }
 
 .google-btn {
-    background-color: var(--lightblue);
+    background-color: var(--white);
     border: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
@@ -72,5 +82,18 @@ input::placeholder {
 #google-img{
     width: 5em;
 }
+@media screen and (min-width: 769px){
+    #logo {
+        width: 20em;
+    }
+    .login-wrap {
+        position: fixed;
+        top: 1;
+        left: 0;
+        width: 100%; 
+        height: fit-content;
+}
+}
+  
 
 

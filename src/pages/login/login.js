@@ -5,8 +5,10 @@ export default () => {
 
   const templateLogin = /*html*/ `
   <section class="login-wrap">
+  <figure class="logo-container">
   <img src="img/logo.png" id="logo" alt="Logo da ExploraAí">
-  <h1>ExploraAí</h1>
+  </figure>
+  <h1>ExplorAí</h1>
   <h2 id=text-login>Entrar</h2>
 
   <form class="login-form">
@@ -22,7 +24,7 @@ export default () => {
   <div class="txt1">
   Esqueceu a senha? <br>
   Não possui uma conta? 
-  <button type="button" class="register-button"><a class= "reg-btn" href="#register">Registrar</a></button>
+  <button type="button" class="register-button"><a class= "reg-btn" href="#register">Cadastre-se</a></button>
   </div>
 
   <div class="txt2">
