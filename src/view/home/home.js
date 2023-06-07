@@ -4,13 +4,13 @@ export const home = () => {
   
     const templateHome = `
       
-    <img src="./img/logo.png" class="logo-repet" alt="Logo da rede social re.Pet">
-  
-      <section class="loginpage-form">
+
+      <section class="homepage-form">
+      <img src="./img/logo.png" class="logo-repet" alt="Logo da rede social re.Pet">
         <p> Já possui cadastro?</p>
-        <a class="loginpage-button" href="/#login">Entrar</a>
+        <a class="homepage-button" href="/#login">Entrar</a>
         <p> Não possui cadastro?</p>
-        <a class="loginpage-button" href="/#cadastro">Cadastrar</a>
+        <a class="homepage-button" href="/#cadastro">Cadastrar</a>
       </section>
       `;
   
