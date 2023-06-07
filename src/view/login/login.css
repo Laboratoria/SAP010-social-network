@@ -92,7 +92,7 @@ input[type=password]{outline:none}
 }
 
 .login-icons img:hover{
-    cursor: pointer;
+    cursor: url('./images/cursor.svg'), auto;
 }
 
 .form-login .dont-have-an-account{
@@ -115,6 +115,7 @@ form .btn-entrar{
 form .btn-entrar:hover{
     background-color: var(--secondColor);
     color: var(--white);
+    cursor: url('./images/cursor.svg'), auto;
     transition: .4s;
 }
 
