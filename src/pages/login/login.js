@@ -7,6 +7,17 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 
+const header = document.querySelector('header');
+
+const image = document.createElement('img');
+image.src = '../img/balão1.png'
+image.alt = 'balão';
+const titulo = document.createElement('h2')
+titulo.innerHTML="TravellersBook"
+
+header.appendChild(image);
+header.appendChild(titulo);
+
 export const login = () => {
   const loginContainer = document.createElement('div');
 
