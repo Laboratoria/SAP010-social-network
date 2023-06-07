@@ -1,11 +1,9 @@
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
 import {app} from "../firebase/firebase.js"
+
 export const auth = getAuth(app);
 
-
-
 const signUpForm = document.getElementById("signup-form");
-
 
 
 export const signUpUser = (email, password) => {
