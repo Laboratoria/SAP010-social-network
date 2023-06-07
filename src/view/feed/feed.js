@@ -17,11 +17,12 @@ export default () => {
       </nav>
     </header>
     <main class="feed">
-      <h1> Olá </h1>
       <button class="btn-logout">Sair</button>
-      <div class="user-input-textarea">
+      <div class="container-input-post">
         <textarea name="" id="user-text-area" cols="5" rows="10" placeholder="O que está jogando?"></textarea>
-        <button>Publicar</button>
+        <div class="div-btn-publish">
+          <button class="btn-publish">Publicar</button>
+        </div>
       </div>
     </main>
     `;
