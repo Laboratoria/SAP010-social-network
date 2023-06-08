@@ -1,8 +1,9 @@
 .login-wrap {
     display: flex;
     flex-direction: column;
-    height: 120vh; 
+    /* height: 120vh;  */
     justify-content: center;
+    position: sticky;
 }
 .logo-container {
     display: block;
@@ -17,6 +18,7 @@
     flex-direction: column;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 0;
+    padding-bottom: 2.5rem;    /* altura do rodapé */
 }
 
 #text-login{
@@ -86,13 +88,13 @@ input::placeholder {
     #logo {
         width: 20em;
     }
-    .login-wrap {
+    /* .login-wrap {
         position: fixed;
         top: 1;
         left: 0;
         width: 100%; 
         height: fit-content;
-}
+} */
 }
   
 
