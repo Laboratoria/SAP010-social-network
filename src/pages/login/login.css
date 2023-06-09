@@ -1,5 +1,4 @@
 .login-wrap {
-
     display: grid;
     grid-template-columns: 1fr;
     justify-content: center;
@@ -12,28 +11,18 @@
 
 #logo {
     width: 15em;
-
+    justify-content: center;
 }
-.logo-container {
-    display: block;
-}
-#logo {
-    width: 12em;
 
-
+.login-form {
+    display: flex;
+    flex-direction: column;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 0;
     padding-bottom: 2.5rem;
 }
 
 #text-login {
-
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding-bottom: 2.5rem;    /* altura do rodapé */
-}
-
-#text-login{
     margin: 1em;
 }
 
@@ -76,7 +65,6 @@ input::placeholder {
     border: none;
     width: 9em;
     font-size: 1.1rem;
-
     text-align: center;
 }
 
@@ -96,6 +84,8 @@ input::placeholder {
 
 #google-img {
     width: 5em;
+}
+
 
 .left-text {
     display: none;
