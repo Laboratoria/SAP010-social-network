@@ -1,21 +1,33 @@
 .login-wrap {
-    display: flex;
-    flex-direction: column;
-    /* height: 120vh;  */
+
+    display: grid;
+    grid-template-columns: 1fr;
     justify-content: center;
     position: sticky;
+}
+
+.logo-container {
+    display: block;
+}
+
+#logo {
+    width: 15em;
+
 }
 .logo-container {
     display: block;
 }
 #logo {
     width: 12em;
-    justify-content: center;
+
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding-bottom: 2.5rem;
 }
 
-.login-form {
-    display: flex;
-    flex-direction: column;
+#text-login {
+
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 0;
     padding-bottom: 2.5rem;    /* altura do rodapé */
@@ -25,7 +37,7 @@
     margin: 1em;
 }
 
-.inputs-container{
+.inputs-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,11 +45,11 @@
     margin-top: 0;
 }
 
-.inputs-info{
+.inputs-info {
     border-radius: 5px 5px 5px 5px;
-    flex-direction:column;
-    border: none; 
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); /*colocar no register tbm*/
+    flex-direction: column;
+    border: none;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     margin-top: 2em;
     width: 20em;
     height: 3em;
@@ -57,14 +69,15 @@
 
 input::placeholder {
     text-align: center;
-  }
+}
 
-.register-button{
+.register-button {
     background-color: var(--blue);
     border: none;
     width: 9em;
     font-size: 1.1rem;
-    text-align: left;
+
+    text-align: center;
 }
 
 .reg-btn {
@@ -81,21 +94,86 @@ input::placeholder {
     margin-top: 2em;
 }
 
-#google-img{
+#google-img {
     width: 5em;
+
+.left-text {
+    display: none;
 }
-@media screen and (min-width: 769px){
+
+
+
+@media screen and (min-width: 769px) {
     #logo {
         width: 20em;
     }
-    /* .login-wrap {
+
+    .login-wrap {
         position: fixed;
         top: 1;
         left: 0;
-        width: 100%; 
+        width: 100%;
         height: fit-content;
-} */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .left {
+        margin-top: 130px;
+    }
+
+    .right {
+        margin-top: 150px;
+    }
+
+    .left-text {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        display: flex;
+        margin-left: 70px;
+    }
 }
-  
+
+@media screen and (min-width: 900px) {
+    .left-text {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        display: flex;
+        margin-left: 120px;
+    }
+}
+
+@media screen and (min-width: 1030px) {
+    .left-text {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        display: flex;
+        margin-left: 140px;
+    }
+}
+@media screen and (min-width: 1130px) {
+    .left-text {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        display: flex;
+        margin-left: 170px;
+    }
+}
+
+@media screen and (min-width: 1270px) {
+    .left-text {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        display: flex;
+        margin-left: 200px;
+    }
+}
+@media screen and (min-width: 1400px) {
+    .left-text {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        display: flex;
+        margin-left: 270px;
+    }
+}
 
 
+@media screen and (max-width: 769px) {
+    .left-text {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+}
