@@ -7,7 +7,8 @@ export default () => {
   const registrationForm = document.createElement("div");
   registrationForm.classList.add("register-container");
 
-  const templateRegister = /html/ ` 
+  const templateRegister = /*html*/
+  ` 
 
     <section class="form-register">
       <p class="title">Cadastrar-se</p>
