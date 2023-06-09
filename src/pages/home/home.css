@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-/*.container {
+.container {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -11,7 +11,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}*/
+}
 .rodape {
     display: flex;
     justify-content: baseline;
@@ -19,7 +19,7 @@
     margin-bottom: 0;
     width: 100%;
 }
-.formulario {
+.form {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -36,12 +36,12 @@
     
 }
 
-.etiqueta {
+/*.etiqueta {
     width: 400px;
     height: 600px;
     top: 200px;
 
-}
+}*/
 h2{
     width: 227px;
     height: 98px;
@@ -55,7 +55,6 @@ h2{
     text-align: center;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-
     color: #F5B81D;
 }
 .inserir_email {
@@ -63,7 +62,6 @@ h2{
     height: 50px;
     left: 1090px;
     top: 500px;
-
     background: #D9D9D9;
     border-radius: 10px;
 }
@@ -73,7 +71,6 @@ h2{
     height: 50px;
     left: 1090px;
     top: 580px;
-
     background: #D9D9D9;
     border-radius: 10px;
 
@@ -82,7 +79,6 @@ h2{
 width: 141px;
 height: 41px;
 left: 1170px;
-
 top: 650px;
 background: #B80C0C;
 border-radius: 10px;
