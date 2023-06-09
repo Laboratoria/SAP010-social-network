@@ -15,7 +15,7 @@ export default () => {
   </figure>
   <h1>ExplorAí</h1>
   <br>
-  <h6 class= "left-text">COMPARTHILE EXPERIÊNCIAS E AVENTURAS.
+  <h6 class= "left-text">COMPARTILHE EXPERIÊNCIAS E AVENTURAS.
     <br>
     RECEBA DICAS E INDICAÇÕES.
   </h6>
