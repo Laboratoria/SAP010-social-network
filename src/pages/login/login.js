@@ -1,8 +1,11 @@
 import { loginWithEmail, loginGoogle } from '../../firebase/auth.js';
 
+// Definindo a função exportada como uma função anônima arrow.
 export default () => {
+  // Criando um elemento de contêiner div.
   const container = document.createElement('div');
 
+  // Template HTML para o formulário de login.
   const templateLogin = /*html*/ `
   <section class="login-wrap">
 
@@ -18,7 +21,7 @@ export default () => {
   </h6>
     </div>
 
-  <div class= "right"
+  <div class= "right">
   <h2>Entrar</h2>
   <form class="login-form">
   <div class="inputs-container">
@@ -52,26 +55,33 @@ export default () => {
 
   container.innerHTML = templateLogin;
 
+  // Selecionando os elementos do formulário de login.
   const emailInput = container.querySelector('#email');
   const senhaInput = container.querySelector('#senha');
   const loginButton = container.querySelector('#login-button');
 
+  // Função para lidar com o evento de login.
   const handleLogin = () => {
     const email = emailInput.value;
     const senha = senhaInput.value;
 
+    // Chamando a função de login com e-mail e senha.
     loginWithEmail(email, senha)
       .then(() => {
+        // Redirecionando para a página de linha do tempo após o login bem-sucedido.
         window.location.hash = '#timeline';
       })
       .catch((error) => {
+        // Exibindo um alerta em caso de falha de autenticação.
         alert('Usuário ou senha incorretos');
         console.log('Erro de autenticação:', error);
       });
   };
 
+  // Adicionando um ouvinte de evento de clique ao botão de login.
   loginButton.addEventListener('click', handleLogin);
 
+  // Retornando o elemento de contêiner.
   return container;
 
 }
