@@ -1,12 +1,18 @@
 .login-wrap {
-    display: flex;
-    flex-direction: column;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+}
+
+#logo {
+    width: 19em;
+    justify-content: center;
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
 }
 
 .inputs-container{
@@ -20,7 +26,7 @@
     border-radius: 5px 5px 5px 5px;
     flex-direction:column;
     border: none; 
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); /*colocar no register tbm*/
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); 
     margin-top: 2em;
     width: 20em;
     height: 3em;
@@ -55,7 +61,7 @@ input::placeholder {
 }
 
 .google-btn {
-    background-color: var(--lightblue);
+    background-color: var(--white);
     border: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
@@ -67,4 +73,36 @@ input::placeholder {
     width: 5em;
 }
 
+.left-text{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: none;
+}
 
+
+.left {
+    margin-top: 150px;
+}
+
+.right {
+    margin-top: 150px;
+}
+
+@media screen and (min-width: 769px){
+    #logo {
+        width: 20em;
+    }
+    .login-wrap {
+        position: fixed;
+        top: 1;
+        left: 0;
+        width: 100%; 
+        height: fit-content;
+}
+}
+
+@media screen and (max-width: 769px){
+    .left-text{
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        
+    }
+}

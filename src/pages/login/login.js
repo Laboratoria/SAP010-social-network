@@ -5,18 +5,29 @@ export default () => {
 
   const templateLogin = /*html*/ `
   <section class="login-wrap">
+    <div class = "left">
+    <figure class="logo-container">
   <img src="img/logo.png" id="logo" alt="Logo da ExploraAí">
-  <h2>Entrar</h2>
+  </figure>
+  <h1>ExplorAí</h1>
+  <br>
+  <h6 class= "left-text">COMPARTHILE EXPERIÊNCIAS E AVENTURAS.
+    <br>
+    RECEBA DICAS E INDICAÇÕES.
+  </h6>
+    </div>
 
+  <div class= "right"
+  <h2>Entrar</h2>
   <form class="login-form">
   <div class="inputs-container">
   <input type="text" class="inputs-info" placeholder="E-MAIL" id ="email" />
   <input type="password" class="inputs-info" placeholder="SENHA" id ="senha" />
-</div>
+  </div>
 
   <nav>
   <button type="button" id="login-button" href="#">ENTRAR</button>
- </nav>
+  </nav>
 
   <div class="txt1">
   Esqueceu a senha? <br>
@@ -34,11 +45,11 @@ export default () => {
   <img src="img/assets/google.png" id="google-img" alt="Logo do Google" width = 100px>
  </button> 
  </figure>
-
   </form>
+</div>
   </section>`
 
-container.innerHTML = templateLogin;
+  container.innerHTML = templateLogin;
 
   const emailInput = container.querySelector('#email');
   const senhaInput = container.querySelector('#senha');
