@@ -26,16 +26,13 @@ export const login = () => {
       <div class="google-icon-wrapper">
         <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
       </div> 
-      <a class="google-button-text"> Entrar com o Google </a> 
+      <a id="botao-google">  Entrar com o Google </a> 
     </div>
 
     </section>
 
 
-    <button type="submit" id="botao-google"> Entrar com Google</button>
-
-
-    
+       
     <h3> Não possui cadastro? <a class="criar-conta" href="/#cadastro">Criar conta</a></h3>
     
   
@@ -50,7 +47,7 @@ export const login = () => {
   
     signInWithPopup (auth, provider)
     .then((result) => {
-      console.log(result);
+      window.location.hash = '#feed'
     })
     .catch((error) => {
       console.log(error);

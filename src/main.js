@@ -1,6 +1,8 @@
 import {login} from "./view/home/login.js"
 import {cadastro} from "./view/home/cadastro.js"
 import {home} from "./view/home/home.js"
+import {feed} from "./view/feed/feed.js"
+
 const main = document.querySelector("#main")
 const init = () => {
     window.addEventListener("hashchange", () => {
@@ -14,7 +16,10 @@ const init = () => {
         break
         case "#cadastro":
         main.appendChild(cadastro());
-        break    
+        break 
+        case "#feed":
+        main.appendChild(feed());
+        break      
     }    
     })
 }
