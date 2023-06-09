@@ -3,6 +3,7 @@ import { createUserWithEmail } from '../../firebase/auth.js';
 // import './register.css';
 
 export default () => {
+    // Cria um elemento div para o formulário de registro
   const registrationForm = document.createElement('div');
   registrationForm.classList.add('register-container');
 
@@ -34,19 +35,24 @@ export default () => {
   
 `;
 
+// Define o HTML do formulário de registro
+registrationForm.innerHTML = templateRegister;
 
-  registrationForm.innerHTML = templateRegister;
+// Obtém o botão de registro
+const registerButton = registrationForm.querySelector('.register-btn');
 
-  const registerButton = registrationForm.querySelector('.register-btn');
-  registerButton.addEventListener('click', registerUser);
+// Adiciona um ouvinte de evento para o clique no botão de registro
+registerButton.addEventListener('click', registerUser);
 
-  async function registerUser() {
-    const name = document.getElementById('name-user').value;
-    const lastName = document.getElementById('lastName-user').value;
-    const email = document.getElementById('email-user').value;
-    const password = document.getElementById('register-password').value;
+// Função assíncrona para registrar o usuário
+async function registerUser() {
+  const name = document.getElementById('name-user').value;
+  const lastName = document.getElementById('lastName-user').value;
+  const email = document.getElementById('email-user').value;
+  const password = document.getElementById('register-password').value;
 
-    const validationErrors = validateRegister(name, lastName, email, password);
+  // Valida os dados do formulário de registro
+  const validationErrors = validateRegister(name, lastName, email, password);
     if (validationErrors.length > 0) {
       const errorMessage = document.getElementById('error-message');
       errorMessage.textContent = validationErrors.join(', ');
@@ -54,16 +60,18 @@ export default () => {
     }
 
     try {
+      // Cria um novo usuário com email e senha
       await createUserWithEmail(name, email, password);
       window.location.hash = '#timeline';
     } catch (error) {
       console.error('Erro ao registrar o usuário:', error);
       console.error(errorsFirebase[error.code]);
 
+      // Exibe uma mensagem de erro caso ocorra um erro durante o registro
       const errorMessage = document.getElementById('error-message');
       errorMessage.textContent = errorsFirebase[error.code] || 'Erro ao registrar o usuário.';
     }
   }
-
+  // Retorna o elemento div do formulário de registro
   return registrationForm;
 };
