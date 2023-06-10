@@ -10,10 +10,10 @@ import {
 const header = document.querySelector('header');
 
 const image = document.createElement('img');
-image.src = '../img/balão1.png'
+image.src = '../img/balão1.png';
 image.alt = 'balão';
-const titulo = document.createElement('h2')
-titulo.innerHTML="TravellersBook"
+const titulo = document.createElement('h2');
+titulo.innerHTML = 'TravellersBook';
 
 header.appendChild(image);
 header.appendChild(titulo);
@@ -36,7 +36,7 @@ export const login = () => {
 
     <section class="createNewAccount">
       <br />
-      <button id="button-new-account">Criar nova conta</button>
+      <button id="button-new-account">Criar nova conta<a href='#register' id='createUser'>Cadastre-se</a></button>
       <!--criar um link de redirecionameto para criar nova conta, para usar a função implementada no js-->
     </section>
   `;
