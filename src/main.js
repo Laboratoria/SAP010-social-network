@@ -1,6 +1,6 @@
 import login from './pages/login/login.js';
 import register from './pages/register/register';
-import feed from './pages/feed/feed.js';
+//import feed from './pages/feed/feed.js';
 
 const main = document.querySelector('#root');
 
