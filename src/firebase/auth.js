@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile, FacebookAuthProvider  } from 'firebase/auth';
 
 import { app } from './app.js';
 
@@ -27,6 +27,12 @@ export const loginWithEmail = (email, password) => {
 
 export const loginGoogle = () => {
   const provider = new GoogleAuthProvider();
+  const auth = getAppAuth();
+  return signInWithPopup(auth, provider);
+};
+
+export const loginFacebook = () => {
+  const provider = new FacebookAuthProvider();
   const auth = getAppAuth();
   return signInWithPopup(auth, provider);
 };

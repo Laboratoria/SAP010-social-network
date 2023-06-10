@@ -1,4 +1,6 @@
+import { async } from 'regenerator-runtime';
 import { loginWithEmail, loginGoogle } from '../../firebase/auth.js';
+import { facebookLogin } from './loginFacebook.js';
 
 // Definindo a função exportada como uma função anônima arrow.
 export default () => {
@@ -48,7 +50,7 @@ export default () => {
  <button class="google-btn">
   <img src="img/assets/google.png" id="google-img" alt="Logo do Google" width = 100px>
  </button>
- <button class="facebook-btn">
+ <button class="facebook-btn" id="btn-facebook">
   <img src="img/assets/facebook.png" id="facebook-img" alt="Logo do facebook" width = 100px>
  </button>
  </figure>
@@ -83,6 +85,10 @@ export default () => {
 
   // Adicionando um ouvinte de evento de clique ao botão de login.
   loginButton.addEventListener('click', handleLogin);
+    
+  
+  const facebookButton = container.querySelector('#btn-facebook');
+  facebookButton.addEventListener("click", facebookLogin);
 
   // Retornando o elemento de contêiner.
   return container;
