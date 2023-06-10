@@ -35,7 +35,7 @@ export default () => {
 
   <div class="txt1">
   Esqueceu a senha? <br>
-  Não possui uma conta? 
+  Não possui uma conta?
   <button type="button" class="register-button"><a class= "reg-btn" href="#register">Cadastre-se</a></button>
   </div>
 
@@ -47,7 +47,10 @@ export default () => {
  <figure>
  <button class="google-btn">
   <img src="img/assets/google.png" id="google-img" alt="Logo do Google" width = 100px>
- </button> 
+ </button>
+ <button class="facebook-btn">
+  <img src="img/assets/facebook.png" id="facebook-img" alt="Logo do facebook" width = 100px>
+ </button>
  </figure>
   </form>
 </div>
