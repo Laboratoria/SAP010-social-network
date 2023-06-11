@@ -1,49 +1,125 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
 
 body{
-    background-color: #008DA1;
-    background-image: linear-gradient(to top, #86C0CA, #008DA1);
-    background-repeat: no-repeat;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background-color: #008DA1;
+  background-image: linear-gradient(to top, #86C0CA, #008DA1);
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+footer{
+  display: flex;
+  align-items: center;
+}
 
-   
-  }
-  img {
-    width: 250px;
-  }
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-google {
+  width: 40px;
+}
+
+img {
+  width: 250px;
+}
   
+h2{
+  font-family: 'Amatic SC', cursive;
+  font-size: 50px;
+}
 
-  h2{
-    font-family: 'Amatic SC', cursive;
-    font-size: 50px;
-    
+.form-title{
+  font-family: 'Amatic SC', cursive;
+  font-size: 30px;
+  color:#fff
+}
+
+.form-login{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  line-height: 50px;
+  width: 100vw ;
+  background-image:none;
+  border: 1px solid #C95A3E;
+  border-radius: 30px;
+  padding: 20px 0;
+  margin-top: 4vh;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+}
+
+.input-login{
+  border-radius: 20px;
+  height: 5vh;
+  border: none;
+  margin: 8px 0;
+  background-color: #D9D9D955;
+  color: #fff;
+}
+
+.input-login::placeholder{
+  color: #ffffff55
+}
+
+.button-login, .button-login-google,
+.button-new-account{
+  color: #fff;
+  border-radius: 20px 20px 20px 20px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 80vw;
+}
+
+.button-login {
+  background-color: #193549;
+}
+
+.button-login-google {
+  background-color: transparent;
+  border: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.button-new-account {
+  background-color: #C95A3E;
+  border: #fff
+}
+
+.login-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 500px){
+
+  .container {
+    overflow: scroll;
   }
 
-  .inputs{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+  .form-login{
+      max-width: 400px;
+  }
+
+  .form-login input{
+      width: 350px;
+      padding-left: 10px;
+  }
    
+  .button-login,
+  .button-new-account{
+      width: 200px;
   }
-  .google{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-  }
-  .createNewAccount{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+}

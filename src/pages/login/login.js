@@ -22,23 +22,18 @@ header.appendChild(titulo);
 export const login = () => {
   // foi criada uma varíavel div para guardar o conteúdo na página de login.
   const loginContainer = document.createElement('div');
+  loginContainer.classList.add('login-container')
 
   const content = `
-    <section class="inputs">
-      <input type="email" id="input-email" placeholder="e-mail" />
-      <br />
-      <p><input type="password" id="input-password" placeholder="senha" /></p>
-      <button id="button-login">Entrar</button>
-    </section>
-
-    <section class="google">
-      <br />
-      <button id="button-login-google">Google</button>
-    </section>
-
-    <section class="createNewAccount">
-      <br />
-      <button id="button-new-account">Criar nova conta<a href='#register' id='createUser'>Cadastre-se</a></button>
+    <section class="form-login">
+      <span class="form-title">Faça seu login</span>
+      <input class="input-login" type="email" id="input-email" placeholder="user@email.com" />
+      <input class="input-login" type="password" id="input-password" placeholder="senha" />
+      <button class="button-login" id="button-login">Entrar</button>
+      <button class="button-login-google" id="button-login-google">
+         <img src="../img/googlelogo.png" alt="Logo Google" class="logo-google">
+      </button>
+      <button class="button-new-account" id="button-new-account">Criar nova conta</button>
       <!--criar um link de redirecionameto para criar nova conta, para usar a função implementada no js-->
     </section>
   `
