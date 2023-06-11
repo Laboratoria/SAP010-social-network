@@ -1,4 +1,12 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile, FacebookAuthProvider  } from 'firebase/auth';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  updateProfile,
+  FacebookAuthProvider,
+} from 'firebase/auth';
 
 import { app } from './app.js';
 
@@ -11,13 +19,14 @@ export const getUserId = () => {
 
 export const createUserWithEmail = (name, email, password) => {
   const auth = getAppAuth();
-  return createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+  return createUserWithEmailAndPassword(auth, email, password).then(
+    (userCredential) => {
       const user = userCredential.user;
       return updateProfile(user, {
         displayName: `${name}`,
       });
-    });
+    },
+  );
 };
 
 export const loginWithEmail = (email, password) => {
