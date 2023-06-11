@@ -4,6 +4,7 @@ import register from './pages/register/register';
 
 const main = document.querySelector('#root');
 
+//renderPage é chamado toda vez que tem uma troca de # (window.location.hash), ou seja, muda o final da url
 const renderPage = () => {
   main.innerHTML = '';
   const hash = window.location.hash;
@@ -21,6 +22,7 @@ const renderPage = () => {
   }
 };
 
+//adiciona um callback no evento hashchange
 window.addEventListener('hashchange', renderPage);
 
 window.addEventListener('load', () => {
