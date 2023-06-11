@@ -1,7 +1,4 @@
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import { app } from './firebaseConfig';
-
-const db = getFirestore(app);
+import { collection, addDoc } from 'firebase/firestore';
 
 export const userData = (name, lastname) =>
   addDoc(collection(db, 'infos-add'), {

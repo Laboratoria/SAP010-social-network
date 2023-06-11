@@ -1,0 +1,36 @@
+html{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+body{
+  background-color: #008DA1;
+  background-image: linear-gradient(to top, #86C0CA, #008DA1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer{
+  font-family: 'arial', cursive;
+  font-size: 10px;
+  color:#000;
+}
+
+@media (min-width: 900px){
+
+  body{
+    flex-direction: row;
+  }
+}
