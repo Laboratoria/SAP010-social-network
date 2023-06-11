@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
 
-header {
-  width: 100%;
+.section-logo {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +11,7 @@ header {
   width: 40px;
 }
 
-img {
+.section-logo img {
   width: 130px;
 }
   
@@ -23,7 +22,7 @@ h2{
 
 .text-title{
   font-family: 'Amatic SC', cursive;
-  font-size: 30px;
+  font-size: 25px;
   color:#fff
 }
 
@@ -68,8 +67,7 @@ h2{
   border-radius: 20px;
   border: none;
   cursor: pointer;
-  width: auto;
-  padding: auto;
+  padding: 5px 10px;
 }
 
 .button-login {
@@ -80,15 +78,11 @@ h2{
 .button-login-google {
   background-color: transparent;
   border: none;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
 }
 
 .button-new-account {
   background-color: #C95A3E;
   border: #fff;
-  width: auto;
 }
 
 .login-container{
@@ -98,6 +92,15 @@ h2{
 }
 
 @media (min-width: 900px){
+  #root{
+    width: 900px;
+  }
+
+  .login-container{
+    width: 700px;
+    flex-direction: row;
+    justify-content: space-around;
+  }
 
   .text-google, .text-new-account{
     font-family: 'arial', cursive;
@@ -109,7 +112,6 @@ h2{
   }
 
   .form-login{
-    margin-top: 100px;
     width: 20vw;
   }
 
@@ -117,15 +119,5 @@ h2{
       width: 200px;
       padding-left: 10px;
   }
-   
-  .button-login,
-  .button-new-account{
-      width: 100px;
-      height: 20px;
-  }
-}
-
-.button-new-account{
-    width: 150px;
 }
 

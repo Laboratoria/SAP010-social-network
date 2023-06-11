@@ -6,17 +6,6 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 
-const header = document.querySelector('header');
-
-const image = document.createElement('img');
-image.src = '../img/balão1.png';
-image.alt = 'balão';
-const titulo = document.createElement('h2');
-titulo.innerHTML = 'TravellersBook';
-
-header.appendChild(image);
-header.appendChild(titulo);
-
 // cria e retorna uma div com os elementos HTML da pagina de login
 export const login = () => {
   // foi criada uma varíavel div para guardar o conteúdo na página de login.
@@ -24,6 +13,11 @@ export const login = () => {
   loginContainer.classList.add('login-container')
 
   const content = `
+    <section class="section-logo">
+      <img src="../img/balão1.png" alt="balão"></img>
+      <h2>TravellersBook</h2>
+    </section>
+
     <section class="form-login">
       <span class="text-title">Faça seu login</span>
       <input class="input-login" type="email" id="input-email" placeholder="user@email.com" />
@@ -34,7 +28,7 @@ export const login = () => {
          <img src="../img/googlelogo.png" alt="Logo Google" class="logo-google">
       </button>
       <span class="text-new-account">ainda não tem conta?</span>
-      <button class="button-new-account" id="button-new-account">Criar nova conta</button>
+      <button class="button-new-account" id="button-new-account">Crie uma conta</button>
       <!--criar um link de redirecionameto para criar nova conta, para usar a função implementada no js-->
     </section>
   `
