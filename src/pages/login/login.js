@@ -10,10 +10,10 @@ import {
 const header = document.querySelector('header');
 
 const image = document.createElement('img');
-image.src = '../img/balão1.png'
+image.src = '../img/balão1.png';
 image.alt = 'balão';
-const titulo = document.createElement('h2')
-titulo.innerHTML="TravellersBook"
+const titulo = document.createElement('h2');
+titulo.innerHTML = 'TravellersBook';
 
 header.appendChild(image);
 header.appendChild(titulo);
@@ -38,7 +38,7 @@ export const login = () => {
 
     <section class="createNewAccount">
       <br />
-      <button id="button-new-account">Criar nova conta</button>
+      <button id="button-new-account">Criar nova conta<a href='#register' id='createUser'>Cadastre-se</a></button>
       <!--criar um link de redirecionameto para criar nova conta, para usar a função implementada no js-->
     </section>
   `
@@ -50,14 +50,16 @@ export const login = () => {
   //essa função foi criada para ficar mais legível. Foi separada em 2 partes para não ficar gigante.
   setUpLoginElements(loginContainer)
 
-  return loginContainer
-}
+  return loginContainer;
+};
 
 // é uma função que recebe a div do login como parâmetro e cria os eventos de click nos botões.
 function setUpLoginElements(loginContainer) {
   const buttonLogin = loginContainer.querySelector('#button-login');
   const buttonNewAccount = loginContainer.querySelector('#button-new-account');
-  const buttonLoginGoogle = loginContainer.querySelector('#button-login-google');
+  const buttonLoginGoogle = loginContainer.querySelector(
+    '#button-login-google'
+  );
   const inputEmail = loginContainer.querySelector('#input-email');
   const inputPassword = loginContainer.querySelector('#input-password');
 
@@ -78,26 +80,26 @@ function setUpLoginElements(loginContainer) {
       // em caso de erro chama a função criada dentro do catch
       .catch(error => {
         // Ocorreu um erro durante o login
-        switch(error.code) {
-          case "auth/user-not-found":
-            alert ("Usuário não encontrado");
-            break
+        switch (error.code) {
+          case 'auth/user-not-found':
+            alert('Usuário não encontrado');
+            break;
 
-          case "auth/wrong-password":
-            alert ("Senha incorreta")
-            break
+          case 'auth/wrong-password':
+            alert('Senha incorreta');
+            break;
 
-          case "auth/invalid-email":
-            alert ("E-mail inválido")
-            break
+          case 'auth/invalid-email':
+            alert('E-mail inválido');
+            break;
 
-          case "auth/missing-password":
-            alert ("Digite a senha")
-            break
+          case 'auth/missing-password':
+            alert('Digite a senha');
+            break;
 
           default:
-            alert ("Erro ao fazer o login: "+error.code)
-          }
+            alert('Erro ao fazer o login: ' + error.code);
+        }
       });
   });
 

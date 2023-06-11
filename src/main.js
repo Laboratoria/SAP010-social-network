@@ -1,30 +1,36 @@
-import { login } from './pages/login/login.js';
+import login from './pages/login/login.js';
+import register from './pages/register/register';
+//import feed from './pages/feed/feed.js';
 
 const main = document.querySelector('#root');
 
-const init = () => {
-  //adiciona um callback no evento hashchange
-  //hashchange é chamado toda vez que tem uma troca de # (window.location.hash), ou seja, muda o final da url
-  window.addEventListener('hashchange', () => {
-    main.innerHTML = '';
+//renderPage é chamado toda vez que tem uma troca de # (window.location.hash), ou seja, muda o final da url
+const renderPage = () => {
+  main.innerHTML = '';
+  const hash = window.location.hash;
 
-    switch (window.location.hash) {
-      case "#homepage":
-        //main.appendChild()//criar função() para a nova tela com os elementos da home.
-        break
-
-      case "#createaccount":
-        //main.appendChild()//criar função() para a nova tela para cadastro de usuário.
-        break
-
-      default:
-        main.appendChild(login());
-        break;
-    }
-  });
+  switch (hash) {
+    case '#register':
+      main.appendChild(register());
+      break;
+    case '#feed':
+      main.appendChild(feed());
+      break;
+    default:
+      main.appendChild(login());
+      break;
+  }
 };
 
+//adiciona um callback no evento hashchange
+window.addEventListener('hashchange', renderPage);
+
 window.addEventListener('load', () => {
-  main.appendChild(login());
-  init();
+  if (window.location.hash === '#register') {
+    main.appendChild(register());
+  } else if (window.location.hash === '#feed') {
+    main.appendChild(feed());
+  } else {
+    main.appendChild(login());
+  }
 });
