@@ -23,7 +23,7 @@ export default () => {
                 </p> 
             </form>
             <p class="form">
-              <button class="btnCadastrar" id="btnCadastrar">CADASTRAR!</button>  
+              <button class="btnCadastrar" id="btnCadastrar">CADASTRAR</button>  
                 </p>
   </div>`;
   

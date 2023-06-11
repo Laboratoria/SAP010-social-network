@@ -7,7 +7,7 @@ export default () => {
          <img class="logo" src="imagens/logo mania de cupom.png" alt="logo" />
        </header>
             <form class="form" id="form">
-            <img class="etiqueta" src="imagens/etiqueta de desconto preta.png" alt="etiqueta" />
+                <img class="etiqueta" src="imagens/etiqueta de desconto preta.png" alt="etiqueta" />
                 <h2>A REDE SOCIAL PARA QUEM GOSTA DE ECONOMIZAR!</h2>
                 <p class="email">
                 <input type="text" class="inserir_email" id="inseriremail" placeholder="Digite seu email"/>
@@ -25,7 +25,7 @@ export default () => {
             <p class="form">
               <button class="logarGoogle" id="btnGoogle">Entrar com Google</button>
             <p class="form">
-              <a href="/#cadastrar" type="button" class="btnCadastrar" id="btnCadastrar">CADASTRE-SE!</a>
+              <a href="/#cadastrar" type="button" class="btnCadastrar" id="btnCadastrar">Cadastre-se</a>
             </p>
     </div>
     
