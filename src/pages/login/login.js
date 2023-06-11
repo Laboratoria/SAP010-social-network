@@ -1,69 +1,71 @@
 // import { async } from 'regenerator-runtime';
-import { loginWithEmail, loginGoogle } from '../../firebase/auth.js';
+import { loginWithEmail, loginGoogle, loginFacebook } from "../../firebase/auth.js";
 // import { facebookLogin } from './loginFacebook.js';
 
 // Definindo a função exportada como uma função anônima arrow.
 export default () => {
   // Criando um elemento de contêiner div.
-  const container = document.createElement('div');
+  const container = document.createElement("div");
 
   // Template HTML para o formulário de login.
   const templateLogin = `
-  <section class='login-wrap'>
+    <section class='login-wrap'>
+    
+      <div class='left'>
+        <figure class='logo-container'>
+          <img src='img/logo.png' id='logo' alt='Logo da ExploraAí'>
+        </figure>
+        <h1>ExplorAí</h1>
+        <br>
+        <h6 class='left-text'>COMPARTILHE EXPERIÊNCIAS E AVENTURAS.
+          <br>
+          RECEBA DICAS E INDICAÇÕES.
+        </h6>
+      </div>
 
-    <div class = 'left'>
-    <figure class='logo-container'>
-  <img src='img/logo.png' id='logo' alt='Logo da ExploraAí'>
-  </figure>
-  <h1>ExplorAí</h1>
-  <br>
-  <h6 class= 'left-text'>COMPARTILHE EXPERIÊNCIAS E AVENTURAS.
-    <br>
-    RECEBA DICAS E INDICAÇÕES.
-  </h6>
-    </div>
+      <div class='right'>
+        <h2>Entrar</h2>
+        <form class='login-form'>
+          <div class='inputs-container'>
+            <input type='text' class='inputs-info' placeholder='E-MAIL' id='email' />
+            <input type='password' class='inputs-info' placeholder='SENHA' id='senha' />
+          </div>
 
-  <div class= 'right'>
-  <h2>Entrar</h2>
-  <form class='login-form'>
-  <div class='inputs-container'>
-  <input type='text' class='inputs-info' placeholder='E-MAIL' id ='email' />
-  <input type='password' class='inputs-info' placeholder='SENHA' id ='senha' />
-  </div>
+          <nav>
+            <button type='button' id='login-button' href='#'>ENTRAR</button>
+          </nav>
 
-  <nav>
-  <button type='button' id='login-button' href='#'>ENTRAR</button>
-  </nav>
+          <div class='txt1'>
+            Esqueceu a senha? <br>
+            Não possui uma conta?
+            <button type='button' class='register-button'><a class='reg-btn' href='#register'>Cadastre-se</a></button>
+          </div>
 
-  <div class='txt1'>
-  Esqueceu a senha? <br>
-  Não possui uma conta?
-  <button type='button' class='register-button'><a class= 'reg-btn' href='#register'>Cadastre-se</a></button>
-  </div>
+          <div class='txt2'>
+            Ou <br>
+            Entrar com:
+          </div>
 
-  <div class='txt2'>
-  Ou <br>
-  Entrar com:
-  </div>
-
- <figure>
- <button class='google-btn'>
-  <img src='img/assets/google.png' id='google-img' alt='Logo do Google' width = 100px>
- </button>
- <button class='facebook-btn' id='btn-facebook'>
-  <img src='img/assets/facebook.png' id='facebook-img' alt='Logo do facebook' width = 100px>
- </button>
- </figure>
-  </form>
-</div>
-  </section>`;
+          <figure>
+            <button type='button' class='google-btn' id='google-btn'>
+              <img src='img/assets/google.png' id='google-img' alt='Logo do Google' width='100px'>
+            </button>
+            <button type='button' class='facebook-btn' id='btn-facebook'>
+              <img src='img/assets/facebook.png' id='facebook-img' alt='Logo do facebook' width='100px'>
+            </button>
+          </figure>
+        </form>
+      </div>
+    </section>`;
 
   container.innerHTML = templateLogin;
 
   // Selecionando os elementos do formulário de login.
-  const emailInput = container.querySelector('#email');
-  const senhaInput = container.querySelector('#senha');
-  const loginButton = container.querySelector('#login-button');
+  const emailInput = container.querySelector("#email");
+  const senhaInput = container.querySelector("#senha");
+  const loginButton = container.querySelector("#login-button");
+  const googleButton = container.querySelector("#google-btn");
+  const facebookButton = container.querySelector("#btn-facebook");
 
   // Função para lidar com o evento de login.
   const handleLogin = () => {
@@ -74,20 +76,49 @@ export default () => {
     loginWithEmail(email, senha)
       .then(() => {
         // Redirecionando para a página de linha do tempo após o login bem-sucedido.
-        window.location.hash = '#timeline';
+        window.location.hash = "#timeline";
       })
       .catch((error) => {
         // Exibindo um alerta em caso de falha de autenticação.
-        alert('Usuário ou senha incorretos');
+        alert("Usuário ou senha incorretos");
         // console.log('Erro de autenticação:', error); --verificar funcionalidade
+      });  };
+
+  // Função para lidar com o evento de login com o Google.
+  const handleGoogleLogin = () => {
+    loginGoogle()
+      .then(() => {
+        // Redirecionando para a página de linha do tempo após o login bem-sucedido.
+        window.location.hash = "#timeline";
+      })
+      .catch((error) => {
+        // Exibindo um alerta em caso de falha de autenticação.
+        alert("Erro ao fazer login com o Google");
+        // console.log('Erro de autenticação com o Google:', error); --verificar funcionalidade
+      });
+  };
+
+  const handleFacebookLogin = () => {
+    loginFacebook()
+      .then(() => {
+        // Redirecionando para a página de linha do tempo após o login bem-sucedido.
+        window.location.hash = "#timeline";
+      })
+      .catch((error) => {
+        // Exibindo um alerta em caso de falha de autenticação.
+        alert("Erro ao fazer login com o Facebook");
+        // console.log('Erro de autenticação com o Google:', error); --verificar funcionalidade
       });
   };
 
   // Adicionando um ouvinte de evento de clique ao botão de login.
-  loginButton.addEventListener('click', handleLogin);
+  loginButton.addEventListener("click", handleLogin);
 
-  // const facebookButton = container.querySelector('#btn-facebook');
-  // facebookButton.addEventListener('click', facebookLogin);
+  // Adicionando um ouvinte de evento de clique ao botão de login com o Google.
+  googleButton.addEventListener("click", handleGoogleLogin);
+
+  facebookButton.addEventListener("click", handleFacebookLogin);
+
 
   return container; // Retornando o elemento de contêiner.
 };
