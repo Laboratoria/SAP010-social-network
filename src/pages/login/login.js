@@ -1,6 +1,6 @@
-import { async } from 'regenerator-runtime';
+// import { async } from 'regenerator-runtime';
 import { loginWithEmail, loginGoogle } from '../../firebase/auth.js';
-import { facebookLogin } from './loginFacebook.js';
+// import { facebookLogin } from './loginFacebook.js';
 
 // Definindo a função exportada como uma função anônima arrow.
 export default () => {
@@ -8,55 +8,55 @@ export default () => {
   const container = document.createElement('div');
 
   // Template HTML para o formulário de login.
-  const templateLogin = /*html*/ `
-  <section class="login-wrap">
+  const templateLogin = `
+  <section class='login-wrap'>
 
-    <div class = "left">
-    <figure class="logo-container">
-  <img src="img/logo.png" id="logo" alt="Logo da ExploraAí">
+    <div class = 'left'>
+    <figure class='logo-container'>
+  <img src='img/logo.png' id='logo' alt='Logo da ExploraAí'>
   </figure>
   <h1>ExplorAí</h1>
   <br>
-  <h6 class= "left-text">COMPARTILHE EXPERIÊNCIAS E AVENTURAS.
+  <h6 class= 'left-text'>COMPARTILHE EXPERIÊNCIAS E AVENTURAS.
     <br>
     RECEBA DICAS E INDICAÇÕES.
   </h6>
     </div>
 
-  <div class= "right">
+  <div class= 'right'>
   <h2>Entrar</h2>
-  <form class="login-form">
-  <div class="inputs-container">
-  <input type="text" class="inputs-info" placeholder="E-MAIL" id ="email" />
-  <input type="password" class="inputs-info" placeholder="SENHA" id ="senha" />
+  <form class='login-form'>
+  <div class='inputs-container'>
+  <input type='text' class='inputs-info' placeholder='E-MAIL' id ='email' />
+  <input type='password' class='inputs-info' placeholder='SENHA' id ='senha' />
   </div>
 
   <nav>
-  <button type="button" id="login-button" href="#">ENTRAR</button>
+  <button type='button' id='login-button' href='#'>ENTRAR</button>
   </nav>
 
-  <div class="txt1">
+  <div class='txt1'>
   Esqueceu a senha? <br>
   Não possui uma conta?
-  <button type="button" class="register-button"><a class= "reg-btn" href="#register">Cadastre-se</a></button>
+  <button type='button' class='register-button'><a class= 'reg-btn' href='#register'>Cadastre-se</a></button>
   </div>
 
-  <div class="txt2">
+  <div class='txt2'>
   Ou <br>
   Entrar com:
   </div>
 
  <figure>
- <button class="google-btn">
-  <img src="img/assets/google.png" id="google-img" alt="Logo do Google" width = 100px>
+ <button class='google-btn'>
+  <img src='img/assets/google.png' id='google-img' alt='Logo do Google' width = 100px>
  </button>
- <button class="facebook-btn" id="btn-facebook">
-  <img src="img/assets/facebook.png" id="facebook-img" alt="Logo do facebook" width = 100px>
+ <button class='facebook-btn' id='btn-facebook'>
+  <img src='img/assets/facebook.png' id='facebook-img' alt='Logo do facebook' width = 100px>
  </button>
  </figure>
   </form>
 </div>
-  </section>`
+  </section>`;
 
   container.innerHTML = templateLogin;
 
@@ -79,18 +79,15 @@ export default () => {
       .catch((error) => {
         // Exibindo um alerta em caso de falha de autenticação.
         alert('Usuário ou senha incorretos');
-        console.log('Erro de autenticação:', error);
+        // console.log('Erro de autenticação:', error); --verificar funcionalidade
       });
   };
 
   // Adicionando um ouvinte de evento de clique ao botão de login.
   loginButton.addEventListener('click', handleLogin);
-    
-  
-  const facebookButton = container.querySelector('#btn-facebook');
-  facebookButton.addEventListener("click", facebookLogin);
 
-  // Retornando o elemento de contêiner.
-  return container;
+  // const facebookButton = container.querySelector('#btn-facebook');
+  // facebookButton.addEventListener('click', facebookLogin);
 
-}
+  return container; // Retornando o elemento de contêiner.
+};
