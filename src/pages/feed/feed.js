@@ -22,7 +22,7 @@ async function showFeed() {
     postElement.classList.add('post');
 
     const nameElement = document.createElement('h3');
-    nameElement.textContent = post.;
+    nameElement.textContent = post.Nome;
 
     const dateElement = document.createElement('p');
     dateElement.textContent = post.Data;
