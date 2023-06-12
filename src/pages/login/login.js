@@ -1,17 +1,12 @@
-// import { async } from 'regenerator-runtime';
 import {
   loginWithEmail,
   loginGoogle,
   loginFacebook,
 } from '../../firebase/auth.js';
-// import { facebookLogin } from './loginFacebook.js';
 
-// Definindo a função exportada como uma função anônima arrow.
 export default () => {
-  // Criando um elemento de contêiner div.
   const container = document.createElement('div');
-
-  // Template HTML para o formulário de login.
+  
   const templateLogin = `
     <section class='login-wrap'>
     
