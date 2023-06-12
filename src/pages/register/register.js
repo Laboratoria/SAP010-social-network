@@ -16,11 +16,6 @@ export default () => {
     };
   }
 
-  function createRegisterButton(formElement) {
-    const registerBtn = formElement.querySelector('.register-btn');
-    return registerBtn;
-  }
-
   function printErrorMessage(message) {
     const errorMessage = document.getElementById('error-message');
     errorMessage.textContent = message;
@@ -41,7 +36,7 @@ export default () => {
     }
 
     try {
-      await createUserWithEmail(name, email, password);
+      await createUserWithEmail(name, email, password, lastName);
       window.location.hash = '#timeline';
     } catch (error) {
       console.error('Erro ao registrar o usuário:', error);
@@ -51,7 +46,7 @@ export default () => {
   }
 
   const registrationForm = document.createElement('div');
-  registrationForm.classList.add('register-container');
+  registrationForm.classList.add('register-container'); //verificar
 
   const templateRegister = ` 
     <section class='form-register'>
@@ -77,8 +72,7 @@ export default () => {
 
   registrationForm.innerHTML = templateRegister;
 
-  const registerButton = createRegisterButton(registrationForm);
-  registerButton.addEventListener('click', registerUser);
+  registrationForm.querySelector('.register-btn').addEventListener('click', registerUser);
 
   return registrationForm;
 };

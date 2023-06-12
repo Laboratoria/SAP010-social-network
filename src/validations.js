@@ -18,7 +18,7 @@ export function errorsFirebase(error) {
 }
 
 export function validateRegister(name, sobrenome, email, password) {
-  if (!name && !sobrenome && !password) {
+  if (!name && !sobrenome && !password && !email) {
     return 'Preencha todos os campos';
   }
 
