@@ -66,7 +66,7 @@ export default () => {
         <div>Publicado por ${post.user}</div>
         <div>${post.content}</div>
         <div>${post.likes}</div>
-        <div>${post.dateTime}</div>
+        <div>${post.dateTime.toDate().toLocaleDateString()}</div>
       </div>
     `;
     postsList.innerHTML += feed;
