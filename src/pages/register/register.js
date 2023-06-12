@@ -7,8 +7,7 @@ export default () => {
 
   const content = `
     
-    <header class='header-register display' >
-    <nav class="nav-header">
+    <header nav class="nav-header">
     <a href="index.html"
       ><button class="btn-header">&laquo; Voltar</button></a
     >
