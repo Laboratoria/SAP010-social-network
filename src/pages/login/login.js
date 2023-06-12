@@ -1,11 +1,15 @@
 // import { async } from 'regenerator-runtime';
-import { loginWithEmail, loginGoogle, loginFacebook } from "../../firebase/auth.js";
+import {
+  loginWithEmail,
+  loginGoogle,
+  loginFacebook,
+} from '../../firebase/auth.js';
 // import { facebookLogin } from './loginFacebook.js';
 
 // Definindo a função exportada como uma função anônima arrow.
 export default () => {
   // Criando um elemento de contêiner div.
-  const container = document.createElement("div");
+  const container = document.createElement('div');
 
   // Template HTML para o formulário de login.
   const templateLogin = `
@@ -61,11 +65,11 @@ export default () => {
   container.innerHTML = templateLogin;
 
   // Selecionando os elementos do formulário de login.
-  const emailInput = container.querySelector("#email");
-  const senhaInput = container.querySelector("#senha");
-  const loginButton = container.querySelector("#login-button");
-  const googleButton = container.querySelector("#google-btn");
-  const facebookButton = container.querySelector("#btn-facebook");
+  const emailInput = container.querySelector('#email');
+  const senhaInput = container.querySelector('#senha');
+  const loginButton = container.querySelector('#login-button');
+  const googleButton = container.querySelector('#google-btn');
+  const facebookButton = container.querySelector('#btn-facebook');
 
   // Função para lidar com o evento de login.
   const handleLogin = () => {
@@ -75,50 +79,39 @@ export default () => {
     // Chamando a função de login com e-mail e senha.
     loginWithEmail(email, senha)
       .then(() => {
-        // Redirecionando para a página de linha do tempo após o login bem-sucedido.
-        window.location.hash = "#timeline";
+        window.location.hash = '#timeline';
       })
-      .catch((error) => {
-        // Exibindo um alerta em caso de falha de autenticação.
-        alert("Usuário ou senha incorretos");
-        // console.log('Erro de autenticação:', error); --verificar funcionalidade
-      });  };
+      .catch(() => {
+        alert('Usuário ou senha incorretos');
+      });
+  };
 
   // Função para lidar com o evento de login com o Google.
   const handleGoogleLogin = () => {
     loginGoogle()
       .then(() => {
-        // Redirecionando para a página de linha do tempo após o login bem-sucedido.
-        window.location.hash = "#timeline";
+        window.location.hash = '#timeline';
       })
-      .catch((error) => {
-        // Exibindo um alerta em caso de falha de autenticação.
-        alert("Erro ao fazer login com o Google");
-        // console.log('Erro de autenticação com o Google:', error); --verificar funcionalidade
+      .catch(() => {
+        alert('Erro ao fazer login com o Google');
       });
   };
 
   const handleFacebookLogin = () => {
     loginFacebook()
       .then(() => {
-        // Redirecionando para a página de linha do tempo após o login bem-sucedido.
-        window.location.hash = "#timeline";
+        window.location.hash = '#timeline';
       })
-      .catch((error) => {
-        // Exibindo um alerta em caso de falha de autenticação.
-        alert("Erro ao fazer login com o Facebook");
-        // console.log('Erro de autenticação com o Google:', error); --verificar funcionalidade
+      .catch(() => {
+        alert('Erro ao fazer login com o Facebook');
       });
   };
 
-  // Adicionando um ouvinte de evento de clique ao botão de login.
-  loginButton.addEventListener("click", handleLogin);
+  loginButton.addEventListener('click', handleLogin);
 
-  // Adicionando um ouvinte de evento de clique ao botão de login com o Google.
-  googleButton.addEventListener("click", handleGoogleLogin);
+  googleButton.addEventListener('click', handleGoogleLogin);
 
-  facebookButton.addEventListener("click", handleFacebookLogin);
+  facebookButton.addEventListener('click', handleFacebookLogin);
 
-
-  return container; // Retornando o elemento de contêiner.
+  return container;
 };
