@@ -7,114 +7,79 @@
     /*font escolhida padrão no link*/
 }
 
-body{
-    background: #D9D9D9;   
-}
-
-.logo {
-    width: 400px;
-    height: 300px;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    margin-left: 500px;
-}
-
-.etiqueta {
-    width: 450px;
-    height: 700px;
-    margin-top: 0px;
-    align-items:center;
-    margin-left: 450px;
-    display: flex;
-    margin-bottom: 100px;
-}*/
-
-h2{
-    display: flex;
-    width: 227px;
-    height: 98px;
-    left: 1130px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 28px;
-    text-align: center;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: #F5B81D;
-    margin-left: 550px;
-     
- }
  .inserir_nome {
-    width: 300px;
-    height: 50px;
-    left: 1090px;
+    position: absolute;
+    display: flex;
+    width: 32%;
+    left: 78%; 
+    transform: translate(-63%, 20%);
+    height: 3%;
     top: 500px;
     background: #D9D9D9;
     border-radius: 10px;
-    box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
-    display: flex;
-    margin-top: 20px;
     cursor: pointer;
-    margin-left: 530px;
     text-align: center;
     font-size: medium;
     font-weight: 500;
+    margin-top: 12%;
+    border-color: #F5B81D;
  }
- .inserir_email {
-    width: 300px;
-    height: 50px;
-    left: 1090px;
+ 
+.inserir_email2 {
+    position: absolute;
+    display: flex;
+    width: 32%;
+    left: 78%; 
+    transform: translate(-63%, 20%);
+    height: 3%;
     top: 500px;
     background: #D9D9D9;
     border-radius: 10px;
-    box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
-    display: flex;
-    margin-top: 20px;
     cursor: pointer;
-    margin-left: 530px;
     text-align: center;
     font-size: medium;
     font-weight: 500;
-    
+    margin-top: 17%;
+    border-color: #F5B81D;
 }
 
-.digite_senha {
-    width: 300px;
-    height: 50px;
-    left: 1090px;
+.digite_senha2 {
+    position: absolute;
+    display: flex;
+    width: 32%;
+    left: 78%; 
+    transform: translate(-63%, 20%);
+    height: 3%;
     top: 500px;
     background: #D9D9D9;
     border-radius: 10px;
-    box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
     display: flex;
-    margin-top: 20px;
     cursor: pointer;
-    margin-left: 530px;
     text-align: center;
     font-size: medium;
     font-weight: 500;
-    
+    margin-top: 22%;
+    border-color: #F5B81D;
 }
+
 .confirma_senha {
-    width: 300px;
-    height: 50px;
-    left: 1090px;
+    position: absolute;
+    display: flex;
+    width: 32%;
+    left: 78%; 
+    transform: translate(-63%, 20%);
+    height: 3%;
     top: 500px;
     background: #D9D9D9;
     border-radius: 10px;
-    box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
-    display: flex;
-    margin-top: 20px;
     cursor: pointer;
-    margin-left: 530px;
     text-align: center;
     font-size: medium;
     font-weight: 500;
-    
+    margin-top: 27%;
+    border-color: #F5B81D;
 }
+
 .btnRecuperar {
     margin-left: 700px;
     cursor: pointer;
@@ -122,59 +87,12 @@ h2{
     
 }
 
-.btnLogar {
-    width: 141px;
-    height: 41px;
-    left: 1170px;
+.btnCadastrar2 {
+    position: absolute;
+    width: 32%;
+    height: 4%;
+    left: 58%;
     top: 850px;
-    background:#B80C0C;
-    border-radius: 10px;
-    font-size: center;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 40px;
-    text-align: center;
-    letter-spacing: 0.02em;
-    color:#D9D9D9;
-    box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
-    display: inline-block;
-    margin-left: 610px;
-    margin-top: 20px;
-}
-
-.logarGoogle {
-    position: flex;
-    width: 200px;
-    height: 50px;
-    left: 1170px;
-    top: 850px;
-    background: #D9D9D9;
-    border-radius: 10px;
-    font-size: center;
-    font: bold;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 15px;
-    line-height: 50px;
-    text-align: center;
-    letter-spacing: 0.02em;
-    color: black;
-    box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
-    display: inline-block;
-    margin-left: 575px; 
-    margin-top: 20px;
-}
-
-.btnCadastrar {
-    position: flex;
-    width: 200px;
-    height: 50px;
-    left: 1170px;
-    top: 850px;
-    background: #D9D9D9;
     border-radius: 10px;
     font-size: center;
     font-family: 'Roboto';
@@ -184,22 +102,10 @@ h2{
     line-height: 50px;
     text-align: center;
     letter-spacing: 0.02em;
-    color: #B80C0C;
-    box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
+    color:#F5B81D;
     display: inline-block;
-    margin-left: 575px; 
-    margin-top: 20px; 
+    margin-top: 6%; 
+    background-color: black;
     cursor: pointer;
-}
-
-.rodape {
-    display: flex;
-    justify-content:center;
-    align-items:first baseline;
-    color: rgb(20, 19, 19);
-    border-radius: 20px;
-    margin-bottom: 0;
-    width: 100%;
-   font-size: small,10px;
-   margin-top: 20px;
+    box-shadow: -2px 3px 0#F5B81D;
 }

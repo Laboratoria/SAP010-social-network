@@ -8,9 +8,9 @@ export default () => {
        </header>
             <form class="form" id="form">
                 <img class="etiqueta" src="imagens/etiqueta de desconto preta.png" alt="etiqueta" />
-                <h2>A REDE SOCIAL PARA QUEM GOSTA DE ECONOMIZAR!</h2>
+                <h2>A REDE SOCIAL PARA QUEM <br> GOSTA DE ECONOMIZAR!</h2>
                 <p class="email">
-                <input type="text" class="inserir_email" id="inseriremail" placeholder="Digite seu email"/>
+                <input type="text" class="inserir_email" id="inseriremail" placeholder="Digite seu e-mail"/>
                 </p>
                 <p class="senha">
                 <input type="text" class="digite_senha" id="digitesenha" placeholder="Digite sua senha"/>
@@ -25,7 +25,7 @@ export default () => {
             <p class="form">
               <button class="logarGoogle" id="btnGoogle">Entrar com Google</button>
             <p class="form">
-              <a href="/#cadastrar" type="button" class="btnCadastrar" id="btnCadastrar">Cadastre-se</a>
+              <a href="/#cadastrar" type="button" class="btnCadastrar" id="btnCadastrar">CADASTRE-SE</a>
             </p>
     </div>
     
