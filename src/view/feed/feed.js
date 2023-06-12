@@ -1,8 +1,5 @@
-import { async } from 'regenerator-runtime';
 import { logOut, createPost, listAllPosts } from '../../firebase/firebase';
 import './feed.css';
-
-
 
 export default () => {
   const containerFeed = document.createElement('section');
@@ -19,9 +16,9 @@ export default () => {
       </div>
       <nav class="menu-nav">
         <ul>
-          <a href="#profile"><li>Meu perfil</li></a>
-          <a href="#feed"><li>Feed</li></a>
-          <a href="" class="btn-logout"><li>Sair</li></a>
+          <li><a href="#profile">Meu perfil</a></li>
+          <li><a href="#feed">Feed</a></li>
+          <li><a href="" class="btn-logout">Sair</a></li>
         </ul>
       </nav>
     </header>
@@ -51,14 +48,14 @@ export default () => {
 
   imgHamburgerMenu.addEventListener('click', () => {
     const itensMenu = containerFeed.querySelector('.menu-nav');
-    if (itensMenu.style.display == 'none') {
+    if (itensMenu.style.display === 'none') {
       itensMenu.style.display = 'block';
     } else {
       itensMenu.style.display = 'none';
     }
   });
 
-  //criar função showPosts e ela recebe o conteudo de allPosts
+  // criar função showPosts e ela recebe o conteudo de allPosts
   const postsList = document.createElement('section');
   const showPosts = (post) => {
     const feed = `
@@ -71,33 +68,32 @@ export default () => {
     `;
     postsList.innerHTML += feed;
     containerFeed.appendChild(postsList);
-  }
+  };
 
   const btnPublish = containerFeed.querySelector('.btn-publish');
 
   btnPublish.addEventListener('click', async () => {
-    console.log('chamei o click')
+    console.log('chamei o click');
     const post = containerFeed.querySelector('#user-text-area');
     const postInput = post.value;
     if (postInput.length > 0) {
       await createPost(postInput);
       post.value = '';
-      listAllPosts().then(posts => {
+      listAllPosts().then((posts) => {
         postsList.innerHTML = '';
-        posts.forEach(post => {
-          showPosts(post)
-        })
+        posts.forEach((publish) => {
+          showPosts(publish);
+        });
       });
     } else {
       alert('Não pode publicar um post vazio!');
     }
   });
 
-  listAllPosts().then(posts => {
-    posts.forEach(post => {
-      showPosts(post)
-    })
+  listAllPosts().then((posts) => {
+    posts.forEach((post) => {
+      showPosts(post);
+    });
   });
   return containerFeed;
-
 };

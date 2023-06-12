@@ -67,6 +67,7 @@ main .feed{
     background-color: var(--bgInputPost);
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
     padding: 10px;
     top: 90px;
     width: 95%;

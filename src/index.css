@@ -19,6 +19,6 @@
 
 body{
     background-color: var(--bgColor);
-    cursor: url('./images/cursor.svg'), auto;
+    /*cursor: url('./images/cursor.svg'), auto;*/
     height: 100%;
 }
