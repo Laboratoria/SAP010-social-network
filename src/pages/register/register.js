@@ -13,12 +13,12 @@ export default () => {
     
     <form class='section-login section-register display'>
         <h1> CADASTRE-SE </h1>
-        <input type='text' placeholder='Nome' id='nome-fulana'>
-        <input type='text' placeholder='Sobrenome' id='sobrenome-fulana'>
-        <input type='text' placeholder='Usuário' id='usuario-fulana'>
-        <input type='email' placeholder='Email' id='email-cadastro'>
-        <input type='password' placeholder='Senha' id='senha-cadastro'>           
-        <button class='button-login' id='cadastro-firebase' type='button' > CADASTRAR </button>          
+        <input type='text' placeholder='Nome' id='nameRegister'>
+        <input type='text' placeholder='Sobrenome' id='lastnameRegister'>
+        <input type='text' placeholder='Usuário' id='userRegister'>
+        <input type='email' placeholder='Email' id='emailRegister'>
+        <input type='password' placeholder='Senha' id='passwordRegister'>           
+        <button class='buttonRegister' id='firebaseRegister' type='button' > CADASTRAR </button>          
     </form>
     `;
   loginContainer.innerHTML = content;
