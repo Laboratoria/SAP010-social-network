@@ -1,4 +1,5 @@
-import { loginUser } from "../../lib";
+import { loginUser, loginGoogle } from "../../lib";
+
 
 export default () => {
   const container = document.createElement("div");
@@ -40,8 +41,8 @@ const logar = container.querySelector(".btnLogar")
  logar.addEventListener('click', () => {
   const email = container.querySelector(".inserir_email")
   const password = container.querySelector(".digite_senha")
-
-  loginUser(email.value, password.value)
+  
+    loginUser(email.value, password.value)
   
     .then(() => {
       window.location.hash = '#feed';
@@ -50,6 +51,18 @@ const logar = container.querySelector(".btnLogar")
       alert('Erro ao logar, por favor verifique os campos preenchidos.')
     });
   });
+
+  const btnGoogle = container.querySelector (".logarGoogle")
+  btnGoogle.addEventListener ('click', () => {
+    loginGoogle ()
+    .then(() => {
+      window.location.hash = '#feed';
+    })
+    .catch((error) => {
+      console.log(error)
+    });
+  });
+
 
 
 return container;

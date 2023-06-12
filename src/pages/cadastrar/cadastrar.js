@@ -24,8 +24,7 @@ export default () => {
                 <input type="text" class="confirma_senha" id="confirmasenha" placeholder="Confirme sua senha"/>
                 </p> 
             </form>
-            <p class="form">
-              <button class="logarGoogle" id="btnGoogle">Entrar com Google</button>
+
             <p class="form">
               <button class="btnCadastrar" id="btnCadastrar">CADASTRAR!</button>  
             </p>
