@@ -2,43 +2,33 @@ import { auth } from '../../firebase/firebaseConfig.js';
 
 import {
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
 } from 'firebase/auth';
-
-const header = document.querySelector('header');
-
-const image = document.createElement('img');
-image.src = '../img/balão1.png';
-image.alt = 'balão';
-const titulo = document.createElement('h2');
-titulo.innerHTML = 'TravellersBook';
-
-header.appendChild(image);
-header.appendChild(titulo);
 
 // cria e retorna uma div com os elementos HTML da pagina de login
 export const login = () => {
   // foi criada uma varíavel div para guardar o conteúdo na página de login.
   const loginContainer = document.createElement('div');
+  loginContainer.classList.add('login-container')
 
   const content = `
-    <section class="inputs">
-      <input type="email" id="input-email" placeholder="e-mail" />
-      <br />
-      <p><input type="password" id="input-password" placeholder="senha" /></p>
-      <button id="button-login">Entrar</button>
+    <section class="section-logo">
+      <img src="../img/balão1.png" alt="balão"></img>
+      <h2>TravellersBook</h2>
     </section>
 
-    <section class="google">
-      <br />
-      <button id="button-login-google">Google</button>
-    </section>
-
-    <section class="createNewAccount">
-      <br />
-      <button id="button-new-account">Criar nova conta<a href='#register' id='createUser'>Cadastre-se</a></button>
+    <section class="form-login">
+      <span class="text-title">Faça seu login</span>
+      <input class="input-login" type="email" id="input-email" placeholder="user@email.com" />
+      <input class="input-login" type="password" id="input-password" placeholder="senha" />
+      <button class="button-login" id="button-login">Entrar</button>
+      <span class="text-google">ou acesse com sua conta Google:</span>
+      <button class="button-login-google" id="button-login-google">
+         <img src="../img/googlelogo.png" alt="Logo Google" class="logo-google">
+      </button>
+      <span class="text-new-account">ainda não tem conta?</span>
+      <button class="button-new-account" id="button-new-account">Crie uma conta</button>
       <!--criar um link de redirecionameto para criar nova conta, para usar a função implementada no js-->
     </section>
   `
@@ -120,18 +110,6 @@ function setUpLoginElements(loginContainer) {
 
   // Após link de redirecionamento para criar nova conta, implementar botão para utilizar essa função.
   buttonNewAccount.addEventListener('click', event => {
-    const email = inputEmail.value;
-    const password = inputPassword.value;
-    console.log('email:' + email + ' senha:' + password);
-
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(userCredential => {
-        // Signed
-        const user = userCredential.user;
-      })
-      .catch(error => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+      window.location.hash = "#register"
   });
 }

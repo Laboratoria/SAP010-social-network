@@ -1,0 +1,37 @@
+html{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+main{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+body{
+  background-color: #008DA1;
+  background-image: linear-gradient(to top, #86C0CA, #008DA1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 90vw;
+  justify-content: space-between;
+}
+
+footer{
+  font-family: 'arial', cursive;
+  font-size: 10px;
+  color:#000;
+}
+
+@media (min-width: 900px){
+
+  body{
+  }
+}

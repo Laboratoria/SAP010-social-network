@@ -1,6 +1,6 @@
-import login from './pages/login/login.js';
+import { login } from './pages/login/login.js';
 import register from './pages/register/register';
-//import feed from './pages/feed/feed.js';
+//import homepage from './pages/homepage/homepage.js';
 
 const main = document.querySelector('#root');
 
@@ -13,8 +13,8 @@ const renderPage = () => {
     case '#register':
       main.appendChild(register());
       break;
-    case '#feed':
-      main.appendChild(feed());
+    case '#homepage':
+      main.appendChild(homepage());
       break;
     default:
       main.appendChild(login());
@@ -28,7 +28,7 @@ window.addEventListener('hashchange', renderPage);
 window.addEventListener('load', () => {
   if (window.location.hash === '#register') {
     main.appendChild(register());
-  } else if (window.location.hash === '#feed') {
+  } else if (window.location.hash === '#homepage') {
     main.appendChild(feed());
   } else {
     main.appendChild(login());

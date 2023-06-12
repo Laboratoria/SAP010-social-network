@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+
+.section-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logo-google {
+  width: 40px;
+}
+
+.section-logo img {
+  width: 130px;
+}
+  
+h2{
+  font-family: 'Amatic SC', cursive;
+  font-size: 40px;
+}
+
+.text-title{
+  font-family: 'Amatic SC', cursive;
+  font-size: 25px;
+  color:#fff
+}
+
+.text-google, .text-new-account{
+  font-family: 'arial', cursive;
+  font-size: 15px;
+  color:#fff
+}
+
+.form-login{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 30px;
+  width: 80vw ;
+  background-image:none;
+  border: 1px solid #C95A3E;
+  border-radius: 30px;
+  padding: 20px 20px 20px 20px;
+  margin-top: 4vh;
+  margin-bottom: 16px;
+}
+
+.input-login{
+  border-radius: 20px;
+  height: 5vh;
+  border: none;
+  margin: 8px;
+  width: 75vw;
+  padding-left: 10px;
+  background-color: #D9D9D955;
+  color: #fff;
+}
+
+.input-login::placeholder{
+  color: #ffffff55;
+}
+
+.button-login, .button-login-google,
+.button-new-account{
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.button-login {
+  margin-top: 8px;
+  background-color: #193549;
+}
+
+.button-login-google {
+  background-color: transparent;
+  border: none;
+}
+
+.button-new-account {
+  background-color: #C95A3E;
+  border: #fff;
+}
+
+.login-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 900px){
+  #root{
+    width: 900px;
+  }
+
+  .login-container{
+    width: 700px;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .text-google, .text-new-account{
+    font-family: 'arial', cursive;
+    font-size: 10px;
+    color:#fff
+  }
+  .logo-google {
+    width: 30px;
+  }
+
+  .form-login{
+    width: 20vw;
+  }
+
+  .form-login input{
+      width: 200px;
+      padding-left: 10px;
+  }
+}
+
