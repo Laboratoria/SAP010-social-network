@@ -4,7 +4,7 @@ import {
 } from 'firebase/auth';
 
 import {
-  setDoc, doc, collection, serverTimestamp, getDocs,
+  setDoc, doc, collection, serverTimestamp, getDocs, orderBy, query,
 } from 'firebase/firestore';
 
 import {
@@ -93,7 +93,8 @@ const createPost = async (textPost) => {
 const listAllPosts = async () => {
   const posts = [];
   const ref = collection(db, 'posts');
-  const snapshot = await getDocs(ref);
+  const q = query(ref, orderBy('dateTime','desc'))
+  const snapshot = await getDocs(q);
   snapshot.forEach(doc => {
     posts.push(doc.data());
   });

@@ -91,7 +91,6 @@ export default () => {
     } else {
       alert('Não pode publicar um post vazio!');
     }
-
   });
 
   listAllPosts().then(posts => {
@@ -99,12 +98,6 @@ export default () => {
       showPosts(post)
     })
   });
-
   return containerFeed;
 
 };
-
-
-
-
-
