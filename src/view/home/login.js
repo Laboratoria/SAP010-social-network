@@ -1,11 +1,10 @@
-import { initializeApp } from "firebase/app";
-
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { signIn } from "../../lib/index.js";
 
 export const login = () => {
   const container = document.createElement("div");
   const auth = getAuth();
-  
+
   const templateLogin = `
     
     <section class="loginpage-form">
@@ -19,7 +18,7 @@ export const login = () => {
     <input type="password" class="form-inputs" id="senha-login" required placeholder="Senha">
     </input>
 
-    <button type="submit" class="loginpage-button">Entrar</button>
+    <button type="submit" class="loginpage-button" id="login-button">Entrar</button>
     
     </form>
     <div class="google-login">
@@ -40,25 +39,39 @@ export const login = () => {
 
   container.innerHTML = templateLogin;
 
-  container.querySelector("#botao-google").addEventListener("click", handleGoogleSignIn);
+  container
+    .querySelector("#login-button")
+    .addEventListener("click", (event) => {
+      event.preventDefault()
+      const email = container.querySelector("#email-login").value;
+      const password = container.querySelector("#senha-login").value;
+
+      signIn(email, password)
+        .then(() => {
+          console.log("teste");
+          window.location.hash = "#feed";
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.error(errorCode, errorMessage);
+        });
+    });
+
+  container
+    .querySelector("#botao-google")
+    .addEventListener("click", handleGoogleSignIn);
 
   function handleGoogleSignIn() {
     const provider = new GoogleAuthProvider();
-  
-    signInWithPopup (auth, provider)
-    .then((result) => {
-      window.location.hash = '#feed'
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        window.location.hash = "#feed";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
-
   return container;
-  };
-
-
-
-
-
+};

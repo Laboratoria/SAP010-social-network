@@ -1,10 +1,9 @@
-import {signUpUser} from "../../lib/index.js"
+import { signUpUser } from "../../lib/index.js";
 
 export const cadastro = () => {
-    
-    const container = document.createElement("div");
-  
-    const templateCadastro = `
+  const container = document.createElement("div");
+
+  const templateCadastro = `
     
     <section class="registerpage-form">
       <img src="./img/logo.png" class="logo-repet" alt="Logo da rede social re.Pet">
@@ -39,27 +38,27 @@ export const cadastro = () => {
       
       `;
 
-//Registrar o usuario com nome,email,senha.
-container.innerHTML = templateCadastro;
+  //Registrar o usuario com nome,email,senha.
+  container.innerHTML = templateCadastro;
+
+  const register = container.querySelector("#sign-up");
   
-const register = container.querySelector("#sign-up")
-  register.addEventListener('click', () => {
-//const name = container.querySelector("#nome-cadastro")
-  const email = container.querySelector("#email-cadastro");
-  const password = container.querySelector("#senha-cadastro");
-
-  signUpUser(email.value, password.value).then(() => {
-  preventDefault()
-    alert('Usuário cadastrado com sucesso!')
-    window.location.hash = '#login'
-            
-}).catch((error) => {
-    alert('Erro ao cadastrar, por favor verifique os campos preenchidos.')
-})
-})
-   
-    return container;
-
+  register.addEventListener("click", () => {
     
-  };
-  
+    //const name = container.querySelector("#nome-cadastro")
+    const email = container.querySelector("#email-cadastro").value;
+    const password = container.querySelector("#senha-cadastro").value;
+
+    signUpUser(email, password)
+     .then(() => {
+        
+        alert("Usuário cadastrado com sucesso!");
+        window.location.hash = "#feed";
+      })
+      .catch((error) => {
+        alert("Erro ao cadastrar, por favor verifique os campos preenchidos.");
+      });
+  });
+
+  return container;
+};
