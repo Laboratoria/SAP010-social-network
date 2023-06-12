@@ -4,7 +4,7 @@ import {
 } from 'firebase/auth';
 
 import {
-  setDoc, doc, collection, serverTimestamp, getDocs
+  setDoc, doc, collection, serverTimestamp, getDocs,
 } from 'firebase/firestore';
 
 import {

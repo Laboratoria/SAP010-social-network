@@ -68,10 +68,8 @@ main .feed{
     display: flex;
     flex-direction: column;
     padding: 10px;
-    position: fixed;
     top: 90px;
     width: 95%;
-    z-index: -1;
 }
 
 .container-input-post, #user-text-area{

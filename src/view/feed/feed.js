@@ -1,3 +1,4 @@
+import { async } from 'regenerator-runtime';
 import { logOut, createPost, listAllPosts } from '../../firebase/firebase';
 import './feed.css';
 
@@ -60,33 +61,46 @@ export default () => {
   const btnPublish = containerFeed.querySelector('.btn-publish');
 
   btnPublish.addEventListener('click', async () => {
+    console.log('chamei o click')
     const post = containerFeed.querySelector('#user-text-area');
-    await createPost(post.value);
-    post.value = '';
+    const postInput = post.value;
+    if (postInput.length > 0) {
+      await createPost(postInput);
+      post.value = '';
+    } else {
+      alert('Não pode publicar um post vazio!');
+    }
+
+  });
+
+  listAllPosts().then(posts => {
+    const postsList = document.createElement('section');
+    posts.forEach(post => {
+      console.log(post)
+      const date = JSON.stringify(post.dateTime.toDate());
+      const feed = `
+        <div class= "post" style="color: white;">
+          <div>Publicado por ${post.user}</div>
+          <div>${post.content}</div>
+          <div>${post.likes}</div>
+          <div>${date}</div>
+        </div>
+      `;
+      postsList.innerHTML += feed;
+
+      console.log(post.user);
+      console.log(post.content);
+      console.log(post.likes);
+      console.log(date);
+    })
+    containerFeed.appendChild(postsList);
   });
 
   return containerFeed;
 
 };
 
-listAllPosts().then(posts => {
-  posts.forEach(post => {
-    console.log(post)
-    const date = JSON.stringify(post.dateTime.toDate());
-    const feed = `
-      <div class= "post">
-        <div>Publicado por ${post.user}</div>
-        <div>${post.content}</div>
-        <div>${post.likes}</div>
-        <div>${date}</div>
-      </div>
-    `;
-    console.log(post.user);
-    console.log(post.content);
-    console.log(post.likes);
-    console.log(date);
-  })
-});
+
 
 
 
