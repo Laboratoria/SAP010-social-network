@@ -1,7 +1,13 @@
-import { signUpUser } from "../../lib/index.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword
+} from "firebase/auth";
+
+
 
 export const cadastro = () => {
   const container = document.createElement("div");
+  const auth = getAuth()
 
   const templateCadastro = `
     
@@ -42,22 +48,24 @@ export const cadastro = () => {
   container.innerHTML = templateCadastro;
 
   const register = container.querySelector("#sign-up");
-  
-  register.addEventListener("click", () => {
+  register.addEventListener("click", (event) => {
+    event.preventDefault()
     
-    //const name = container.querySelector("#nome-cadastro")
-    const email = container.querySelector("#email-cadastro").value;
-    const password = container.querySelector("#senha-cadastro").value;
-
-    signUpUser(email, password)
-     .then(() => {
-        
-        alert("Usuário cadastrado com sucesso!");
-        window.location.hash = "#feed";
-      })
-      .catch((error) => {
-        alert("Erro ao cadastrar, por favor verifique os campos preenchidos.");
-      });
+    const email = container.querySelector("#email-cadastro");
+    const password = container.querySelector("#senha-cadastro");
+    
+    createUserWithEmailAndPassword(auth, email.value, password.value)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    alert("Usuário cadastrado com sucesso, por favor realize o login.")
+    window.location.hash = "#login"
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert(errorMessage)
+  });
+    
   });
 
   return container;
