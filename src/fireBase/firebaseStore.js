@@ -1,9 +1,16 @@
 import { collection, addDoc } from 'firebase/firestore';
 
-export const userData = (name, lastname) =>
+export const userData = (
+  nameElement,
+  lastnameElement,
+  emailElement,
+  userElement
+) =>
   addDoc(collection(db, 'infos-add'), {
-    nome: name,
-    sobrenome: lastname,
+    name: nameElement,
+    lastname: lastnameElement,
+    email: emailElement,
+    user: userElement,
   });
 
 //aqui virá as funções de postagem, para ficarem guardadas
