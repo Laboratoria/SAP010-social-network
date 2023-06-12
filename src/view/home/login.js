@@ -1,5 +1,9 @@
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { signIn } from "../../lib/index.js";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+
 
 export const login = () => {
   const container = document.createElement("div");
@@ -39,28 +43,26 @@ export const login = () => {
 
   container.innerHTML = templateLogin;
 
-  container
-    .querySelector("#login-button")
-    .addEventListener("click", (event) => {
-      event.preventDefault()
-      const email = container.querySelector("#email-login").value;
-      const password = container.querySelector("#senha-login").value;
+  container.querySelector("#login-button").addEventListener("click", (event) => {
+    event.preventDefault()
+    
+    const email = container.querySelector("#email-login");
+    const password = container.querySelector("#senha-login");
+    
+    signInWithEmailAndPassword(auth, email.value, password.value)
+      .then((userCredential) => {
+        window.location.hash = "#feed";
+        const user = userCredential.user;
+       
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage)
+      });
+  });
 
-      signIn(email, password)
-        .then(() => {
-          console.log("teste");
-          window.location.hash = "#feed";
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.error(errorCode, errorMessage);
-        });
-    });
-
-  container
-    .querySelector("#botao-google")
-    .addEventListener("click", handleGoogleSignIn);
+  container.querySelector("#botao-google").addEventListener("click", handleGoogleSignIn);
 
   function handleGoogleSignIn() {
     const provider = new GoogleAuthProvider();
