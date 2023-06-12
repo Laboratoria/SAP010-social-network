@@ -1,0 +1,65 @@
+h1 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 60px;
+}
+
+h3 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 40px;
+  color: #fff;
+}
+
+.text-title {
+  font-family: 'Amatic SC', cursive;
+  font-size: 25px;
+  color: #fff;
+}
+
+.register-logo {
+  width: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btn-header {
+  color: #c95a3e;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  justify-content: right;
+}
+
+.form-register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 30px;
+  width: 80vw;
+  background-image: none;
+  border: 1px solid #c95a3e;
+  border-radius: 30px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.buttonRegister {
+  color: #c95a3e;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.inputsRegister {
+  border-radius: 20px;
+  height: 5vh;
+  border: none;
+  margin: 8px;
+  width: 75vw;
+  padding-left: 10px;
+  background-color: #d9d9d955;
+  color: #fff;
+}

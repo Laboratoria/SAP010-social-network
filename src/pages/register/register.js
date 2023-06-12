@@ -8,40 +8,58 @@ export default () => {
   const content = `
     
     <header class='header-register display' >
-       
+    <nav class="nav-header">
+    <a href="index.html"
+      ><button class="btn-header">&laquo; Voltar</button></a
+    >
+  </nav>
     </header>
+
+    <section class="register-logo">
+      <img src="../img/balão1.png" alt="balão"></img>
+      <h1>TravellersBook</h1>
+    </section>
     
-    <form class='section-login section-register display'>
-        <h1> CADASTRE-SE </h1>
-        <input type='text' placeholder='Nome' id='nameRegister'>
-        <input type='text' placeholder='Sobrenome' id='lastnameRegister'>
-        <input type='text' placeholder='Usuário' id='userRegister'>
-        <input type='email' placeholder='Email' id='emailRegister'>
-        <input type='password' placeholder='Senha' id='passwordRegister'>           
+    <form class='form-register'>
+        <h3> CADASTRE-SE </h3>
+        <input class='inputsRegister' type='text' placeholder='Nome' id='nameRegister'>
+        <input class='inputsRegister' type='text' placeholder='Sobrenome' id='lastnameRegister'>
+        <input class='inputsRegister' type='text' placeholder='Usuário' id='userRegister'>
+        <input class='inputsRegister' type='email' placeholder='Email' id='emailRegister'>
+        <input class='inputsRegister' type='password' placeholder='Senha' id='passwordRegister'>           
         <button class='buttonRegister' id='firebaseRegister' type='button' > CADASTRAR </button>          
     </form>
     `;
   loginContainer.innerHTML = content;
 
-  const register = loginContainer.querySelector('#cadastro-firebase');
+  const register = loginContainer.querySelector('#firebaseRegister');
   register.addEventListener('click', () => {
-    const nome = loginContainer.querySelector('#nome-fulana');
-    const sobrenome = loginContainer.querySelector('#sobrenome-fulana');
-    const usuario = loginContainer.querySelector('#usuario-fulana');
-    const email = loginContainer.querySelector('#email-cadastro');
-    const senha = loginContainer.querySelector('#senha-cadastro');
-    if (usuario.value === '' || nome.value === '' || sobrenome.value === '') {
+    const nameElement = loginContainer.querySelector('#nameRegister');
+    const lastnameElement = loginContainer.querySelector('#lastnameRegister');
+    const userElement = loginContainer.querySelector('#userRegister');
+    const emailElement = loginContainer.querySelector('#emailRegister');
+    const passwordElement = loginContainer.querySelector('#passwordRegister');
+    if (
+      userElement.value === '' ||
+      nameElement.value === '' ||
+      lastnameElement.value === ''
+    ) {
       alert('Por favor, preencha todos os campos.');
     } else {
       createUser(
-        email.value,
-        senha.value,
-        nome.value,
-        sobrenome.value,
-        usuario.value
+        emailElement.value,
+        passwordElement.value,
+        nameElement.value,
+        lastnameElement.value,
+        userElement.value
       )
         .then(() =>
-          userData(nome.value, sobrenome.value, usuario.value, email.value)
+          userData(
+            nameElement.value,
+            lastnameElement.value,
+            userElement.value,
+            emailElement.value
+          )
         )
         .then(() => {
           window.location.hash = '#login';
