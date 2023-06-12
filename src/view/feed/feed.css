@@ -5,7 +5,6 @@
 .header{
     background-color: var(--secondColor);
     display: flex;
-    justify-content: center;
     padding: 17px 10px;
     width: 100%;
     position: relative;
@@ -14,17 +13,45 @@
 .hamburger-menu .icon-menu{
     height: 30px;
     position: absolute;
-    left: 6px;
+    left: 10px;
     width: 30px;
 }
 
-.menu-nav{
-    display: none;
+.header h1{
+    color: var(--white);
+    font-weight: 300;
 }
 
-.header h1{
-    font-weight: 300;
+.title-menu {
+    align-items: start;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.menu-nav{
+    background-color: var(--bgColor);
+    display: block;
+    width: 180px;
+    z-index: 1;
+}
+
+a {
+    align-items: center;
     color: var(--white);
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
+    justify-content: center;
+    list-style: none;
+    text-align: left;
+    text-decoration: none;
+    width: 100%;
+}
+
+li {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 main .feed{
@@ -41,8 +68,10 @@ main .feed{
     display: flex;
     flex-direction: column;
     padding: 10px;
+    top: 90px;
     width: 95%;
 }
+
 .container-input-post, #user-text-area{
     border-radius: 10px;
 } 

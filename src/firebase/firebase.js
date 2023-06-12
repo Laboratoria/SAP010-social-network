@@ -4,7 +4,7 @@ import {
 } from 'firebase/auth';
 
 import {
-  setDoc, doc,
+  setDoc, doc, collection, serverTimestamp, getDocs,
 } from 'firebase/firestore';
 
 import {
@@ -73,7 +73,34 @@ const registerUser = async (name, username, email, password) => {
   }
 };
 
+const createPost = async (textPost) => {
+
+  const uid = auth.currentUser.uid;
+  const name = auth.currentUser.displayName;
+
+  const post = {
+    id: uid,
+    user: name,
+    content: textPost,
+    likes: 0,
+    dateTime: serverTimestamp(),
+  };
+
+  const docRef = doc(collection(db, 'posts'));
+  await setDoc(docRef, post);
+};
+
+const listAllPosts = async () => {
+  const posts = [];
+  const ref = collection(db, 'posts');
+  const snapshot = await getDocs(ref);
+  snapshot.forEach(doc => {
+    posts.push(doc.data());
+  });
+  return posts;
+};
+
 export {
   registerUserWithAnotherProvider, registerUser, logIn, signInWithGoogle, signInWithGitHub,
-  isUserLoggedIn, logOut, auth, signInWithPopup,
+  isUserLoggedIn, logOut, auth, signInWithPopup, createPost, listAllPosts
 };
