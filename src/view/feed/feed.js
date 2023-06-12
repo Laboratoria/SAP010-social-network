@@ -58,6 +58,21 @@ export default () => {
     }
   });
 
+  //criar função showPosts e ela recebe o conteudo de allPosts
+  const postsList = document.createElement('section');
+  const showPosts = (post) => {
+    const feed = `
+      <div class= "post" style="color: white;">
+        <div>Publicado por ${post.user}</div>
+        <div>${post.content}</div>
+        <div>${post.likes}</div>
+        <div>${post.dateTime}</div>
+      </div>
+    `;
+    postsList.innerHTML += feed;
+    containerFeed.appendChild(postsList);
+  }
+
   const btnPublish = containerFeed.querySelector('.btn-publish');
 
   btnPublish.addEventListener('click', async () => {
@@ -67,6 +82,12 @@ export default () => {
     if (postInput.length > 0) {
       await createPost(postInput);
       post.value = '';
+      listAllPosts().then(posts => {
+        postsList.innerHTML = '';
+        posts.forEach(post => {
+          showPosts(post)
+        })
+      });
     } else {
       alert('Não pode publicar um post vazio!');
     }
@@ -74,26 +95,9 @@ export default () => {
   });
 
   listAllPosts().then(posts => {
-    const postsList = document.createElement('section');
     posts.forEach(post => {
-      console.log(post)
-      const date = JSON.stringify(post.dateTime.toDate());
-      const feed = `
-        <div class= "post" style="color: white;">
-          <div>Publicado por ${post.user}</div>
-          <div>${post.content}</div>
-          <div>${post.likes}</div>
-          <div>${date}</div>
-        </div>
-      `;
-      postsList.innerHTML += feed;
-
-      console.log(post.user);
-      console.log(post.content);
-      console.log(post.likes);
-      console.log(date);
+      showPosts(post)
     })
-    containerFeed.appendChild(postsList);
   });
 
   return containerFeed;
