@@ -92,9 +92,12 @@ describe('registerUserWithAnotherProvider', () => {
     expect(doc).toHaveBeenCalled();
   });
   it('Deveria capturar um erro e falhar ao cadastrar um usuário com provedor do Google ou Github', async () => {
-    const error = jest.fn().mockRejectedValueOnce(new Error('Erro ao cadastrar usuário'));
-    const result = await registerUserWithAnotherProvider();
-    expect(result).toEqual(error);
+    setDoc.mockRejectedValueOnce(new Error('Erro ao cadastrar usuário'));
+    try {
+      await registerUserWithAnotherProvider();
+    } catch (e) {
+      expect(e.message).toEqual('Erro ao cadastrar usuário');
+    }
   });
 });
 

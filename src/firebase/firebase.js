@@ -54,6 +54,7 @@ const registerUserWithAnotherProvider = async (id, name, username, email) => {
     console.log('Usuário cadastrado com sucesso');
   } catch (error) {
     console.log('Erro ao cadastrar usuário:', error.message);
+    throw error;
   }
 };
 
