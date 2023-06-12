@@ -1,9 +1,10 @@
 import {
   getAuth,
-  GoogleAuthProvider,
-  signInWithEmailAndPassword,
+  GoogleAuthProvider
+ 
 } from "firebase/auth";
 
+import {signIn, signInGoogle} from "../../lib/index.js"
 
 export const login = () => {
   const container = document.createElement("div");
@@ -49,7 +50,7 @@ export const login = () => {
     const email = container.querySelector("#email-login");
     const password = container.querySelector("#senha-login");
     
-    signInWithEmailAndPassword(auth, email.value, password.value)
+    signIn(email.value, password.value)
       .then((userCredential) => {
         window.location.hash = "#feed";
         const user = userCredential.user;
@@ -59,21 +60,20 @@ export const login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorMessage)
+        
       });
   });
 
-  container.querySelector("#botao-google").addEventListener("click", handleGoogleSignIn);
-
-  function handleGoogleSignIn() {
-    const provider = new GoogleAuthProvider();
-
-    signInWithPopup(auth, provider)
+  container.querySelector("#botao-google").addEventListener("click", () => {
+    
+    signInGoogle()
       .then((result) => {
         window.location.hash = "#feed";
       })
       .catch((error) => {
         console.log(error);
       });
-  }
+  })
   return container;
 };
+

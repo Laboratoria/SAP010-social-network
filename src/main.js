@@ -18,6 +18,7 @@ const init = () => {
         main.appendChild(cadastro());
         break 
         case "#feed":
+        // verificar se está conectado
         main.appendChild(feed());
         break
         default:
