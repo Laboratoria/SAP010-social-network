@@ -74,10 +74,8 @@ const registerUser = async (name, username, email, password) => {
 };
 
 const createPost = async (textPost) => {
-
   const uid = auth.currentUser.uid;
   const name = auth.currentUser.displayName;
-
   const post = {
     id: uid,
     user: name,
@@ -85,7 +83,6 @@ const createPost = async (textPost) => {
     likes: 0,
     dateTime: serverTimestamp(),
   };
-
   const docRef = doc(collection(db, 'posts'));
   await setDoc(docRef, post);
 };
@@ -93,15 +90,15 @@ const createPost = async (textPost) => {
 const listAllPosts = async () => {
   const posts = [];
   const ref = collection(db, 'posts');
-  const q = query(ref, orderBy('dateTime','desc'))
+  const q = query(ref, orderBy('dateTime', 'desc'));
   const snapshot = await getDocs(q);
-  snapshot.forEach(doc => {
-    posts.push(doc.data());
+  snapshot.forEach((document) => {
+    posts.push(document.data());
   });
   return posts;
 };
 
 export {
   registerUserWithAnotherProvider, registerUser, logIn, signInWithGoogle, signInWithGitHub,
-  isUserLoggedIn, logOut, auth, signInWithPopup, createPost, listAllPosts
+  isUserLoggedIn, logOut, auth, signInWithPopup, createPost, listAllPosts,
 };
