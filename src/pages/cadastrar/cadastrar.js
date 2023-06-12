@@ -1,3 +1,5 @@
+import {signUpUser} from "../../lib/index.js"
+
 export default () => {
   const container = document.createElement("div");
 
@@ -25,11 +27,35 @@ export default () => {
             <p class="form">
               <button class="logarGoogle" id="btnGoogle">Entrar com Google</button>
             <p class="form">
-              <button class="btnCadastrar2" id="btnCadastrar2">CADASTRAR</button>  
-                </p>
-  </div>`;
+              <button class="btnCadastrar" id="btnCadastrar">CADASTRAR!</button>  
+            </p>
+       </div>
+    </div>
+    
+    `;
+
+container.innerHTML = template;
+
+const register = container.querySelector(".btnCadastrar")
+ register.addEventListener('click', () => {
+  const email = container.querySelector(".inserir_email")
+  const password = container.querySelector(".digite_senha")
+
+  signUpUser(email.value, password.value).then(() => {
   
-  container.innerHTML = template;
-  return container;
- 
+      alert('Usuário cadastrado com sucesso!')
+      window.location.hash = '#home';
+              
+  })
+  .catch((error) => {
+      alert('Erro ao cadastrar, por favor verifique os campos preenchidos.')
+      
+  })
+ })
+
+
+
+return container;
+
 };
+

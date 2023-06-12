@@ -1,3 +1,5 @@
+import { loginUser } from "../../lib";
+
 export default () => {
   const container = document.createElement("div");
 
@@ -30,7 +32,26 @@ export default () => {
     </div>
     
     `;
+  
+container.innerHTML = template;
 
-  container.innerHTML = template;
-  return container;
+
+const logar = container.querySelector(".btnLogar")
+ logar.addEventListener('click', () => {
+  const email = container.querySelector(".inserir_email")
+  const password = container.querySelector(".digite_senha")
+
+  loginUser(email.value, password.value)
+  
+    .then(() => {
+      window.location.hash = '#feed';
+    })
+    .catch(() => {
+      alert('Erro ao logar, por favor verifique os campos preenchidos.')
+    });
+  });
+
+
+return container;
+
 };
