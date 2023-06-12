@@ -108,7 +108,6 @@ function setUpLoginElements(loginContainer) {
       });
   });
 
-  // Após link de redirecionamento para criar nova conta, implementar botão para utilizar essa função.
   buttonNewAccount.addEventListener('click', event => {
       window.location.hash = "#register"
   });
