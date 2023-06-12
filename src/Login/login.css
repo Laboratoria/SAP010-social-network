@@ -1,10 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Poppins:300);
+@import url(https://fonts.googleapis.com/css?family=Poppins:300); 
 
 body{
     height: 100vh;
     overflow: hidden;
     font-family: "Poppins";
-  background: #0e2941;
+    background: #0e2941;
 }
 .login-page {
   width: 400px;
