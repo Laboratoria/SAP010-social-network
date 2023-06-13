@@ -19,22 +19,26 @@ describe('loginGoogle', () => {
     expect(typeof loginGoogle).toBe('function');
   });
 
-  it('Should log in with Google Account', async () => {
+  it('should log in with Google Account', async () => {
     signInWithPopup.mockResolvedValueOnce();
     await loginGoogle();
     expect(signInWithPopup).toHaveBeenCalledTimes(1);
   });
 });
 
+afterEach(() => {
+  signInWithPopup.mockClear();
+});
+
 describe('loginFacebook', () => {
   it('expect to be a function', () => {
-    expect(typeof loginGoogle).toBe('function');
+    expect(typeof loginFacebook).toBe('function');
   });
 
-  it('Should log in with Facebook Account', async () => {
+  it('should log in with Facebook Account', async () => {
     signInWithPopup.mockResolvedValueOnce();
     await loginFacebook();
-    expect(signInWithPopup).toHaveBeenCalledTimes(2);
+    expect(signInWithPopup).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -53,7 +57,11 @@ describe('createUserWithEmail', () => {
     await createUserWithEmail(name, email, password);
 
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
-    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(auth, email, password);
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(
+      auth,
+      email,
+      password,
+    );
   });
 });
 
@@ -65,6 +73,10 @@ describe('loginWithEmail', () => {
     await loginWithEmail(newEmail, newPassword);
 
     expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
-    expect(signInWithEmailAndPassword).toHaveBeenCalledWith(auth, newEmail, newPassword);
+    expect(signInWithEmailAndPassword).toHaveBeenCalledWith(
+      auth,
+      newEmail,
+      newPassword,
+    );
   });
 });
