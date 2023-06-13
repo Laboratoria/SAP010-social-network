@@ -111,7 +111,6 @@ a {
     background: #ECF0FF;
     border-radius: 10px;
     margin-top: 20px;
-    margin-left: 20px;
   }
 
   .post-header {
@@ -134,4 +133,25 @@ a {
     border-radius: 10px;
     margin:10px;
     padding: 5px;
+  }
+  
+  .post-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -20px;
+    margin-right: 10px;
+  }
+  
+  .edit-btn img,
+  .delete-btn img {
+    width: 22px;
+    height: 22px;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+  
+  .post-likes img {
+    width: 22px;
+    height: 22px;
+    margin-right: 5px;
   }
