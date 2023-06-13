@@ -7,7 +7,7 @@
 import { auth, provider } from './lib/configFirebase.js';
 import { createUserWithEmailAndPassword, GoogleAuthProvider } from 'firebase/auth';
 
-//const provider = new GoogleAuthProvider();
+const provider = new GoogleAuthProvider();
 const email = 'teste@coffeestation.com';
 const password = '123456';
 
