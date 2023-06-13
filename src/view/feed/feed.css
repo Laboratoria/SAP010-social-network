@@ -29,11 +29,23 @@
     width: 100%;
 }
 
+main .feed{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%; 
+    max-width: 1200px;
+    position: relative;
+}
+
 .menu-nav{
     background-color: var(--bgColor);
     display: block;
     width: 180px;
-    z-index: 1;
+    position: fixed;
+    top: 63px;
+    left: 0;
+    bottom: 0;
 }
 
 a {
@@ -54,22 +66,12 @@ li {
     padding-bottom: 10px;
 }
 
-main .feed{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%; 
-    max-width: 1200px;
-}
-
 .container-input-post{
     background-color: var(--bgInputPost);
     display: flex;
     flex-direction: column;
     margin-top: 20px;
     padding: 10px;
-    top: 90px;
     width: 95%;
 }
 

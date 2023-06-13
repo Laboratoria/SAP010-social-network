@@ -33,7 +33,10 @@ export default () => {
     `;
   containerFeed.innerHTML = templateFeed;
 
+  const feedMain = containerFeed.querySelector('.feed')
   const btnLogOut = containerFeed.querySelector('.btn-logout');
+  const imgHamburgerMenu = containerFeed.querySelector('.hamburger-menu');
+  const btnPublish = containerFeed.querySelector('.btn-publish');
 
   btnLogOut.addEventListener('click', async () => {
     try {
@@ -43,8 +46,6 @@ export default () => {
       console.log(error.message);
     }
   });
-
-  const imgHamburgerMenu = containerFeed.querySelector('.hamburger-menu');
 
   imgHamburgerMenu.addEventListener('click', () => {
     const itensMenu = containerFeed.querySelector('.menu-nav');
@@ -67,10 +68,8 @@ export default () => {
       </div>
     `;
     postsList.innerHTML += feed;
-    containerFeed.appendChild(postsList);
+    feedMain.appendChild(postsList);
   };
-
-  const btnPublish = containerFeed.querySelector('.btn-publish');
 
   btnPublish.addEventListener('click', async () => {
     console.log('chamei o click');
