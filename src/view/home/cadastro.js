@@ -1,13 +1,7 @@
-import {
-  getAuth,
-  createUserWithEmailAndPassword
-} from "firebase/auth";
-
-
+import { signUp } from '../../lib';
 
 export const cadastro = () => {
-  const container = document.createElement("div");
-  const auth = getAuth()
+  const container = document.createElement('div');
 
   const templateCadastro = `
     
@@ -46,54 +40,47 @@ export const cadastro = () => {
       
       `;
 
-  //Registrar o usuario com nome,email,senha.
+  //  Registrar o usuario com nome,email,senha.
   container.innerHTML = templateCadastro;
 
-  const register = container.querySelector("#sign-up");
-  register.addEventListener("click", (event) => {
-    event.preventDefault()
-    
-    const email = container.querySelector("#email-cadastro");
-    const password = container.querySelector("#senha-cadastro");
-    const confirmPassword = container.querySelector("#confirmar-senha");
-    if (confirmPassword.value === password.value){  
-    
-    createUserWithEmailAndPassword(auth, email.value, password.value)
-  .then((userCredential) => {
-    const user = userCredential.user;
-    alert("Usuário cadastrado com sucesso, por favor realize o login.")
-    window.location.hash = "#login"
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-   
-    container.querySelector("#mensagem-erro").innerHTML = errorMessage;
+  const register = container.querySelector('#sign-up');
+  register.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const email = container.querySelector('#email-cadastro');
+    const password = container.querySelector('#senha-cadastro');
+    const confirmPassword = container.querySelector('#confirmar-senha');
+    if (confirmPassword.value === password.value) {
+      signUp(email.value, password.value)
+        .then(() => {
+          //  const user = userCredential.user;
+          alert('Usuário cadastrado com sucesso, por favor realize o login.');
+          window.location.hash = '#login';
+        })
+        .catch((error) => {
+          // const errorCode = error.code;
+          const errorMessage = error.message;
+
+          container.querySelector('#mensagem-erro').innerHTML = errorMessage;
           switch (errorMessage) {
-            case "Firebase: Error (auth/invalid-email).":
-              container.querySelector("#mensagem-erro").innerHTML =
-                "E-mail inválido.";
+            case 'Firebase: Error (auth/invalid-email).':
+              container.querySelector('#mensagem-erro').innerHTML = 'E-mail inválido.';
               break;
-            case "Firebase: Password should be at least 6 characters (auth/weak-password).":
-              container.querySelector("#mensagem-erro").innerHTML =
-                "A senha deve conter pelo menos 6 caracteres.";
+            case 'Firebase: Password should be at least 6 characters (auth/weak-password).':
+              container.querySelector('#mensagem-erro').innerHTML = 'A senha deve conter pelo menos 6 caracteres.';
               break;
-            case "Firebase: Error (auth/email-already-in-use).":
-              container.querySelector("#mensagem-erro").innerHTML =
-                "E-mail já cadastrado.";
+            case 'Firebase: Error (auth/email-already-in-use).':
+              container.querySelector('#mensagem-erro').innerHTML = 'E-mail já cadastrado.';
               break;
             default:
-              container.querySelector("#mensagem-erro").innerHTML =
-                "Erro ao cadastrar, tente novamente!";
+              container.querySelector('#mensagem-erro').innerHTML = 'Erro ao cadastrar, tente novamente!';
               break;
-  }});
-    
-  }else{
-    return container.querySelector("#mensagem-erro").innerHTML =
-    "As senhas devem ser as mesmas.";
-  }
-});
-
+          }
+        });
+    } else {
+      container.querySelector('#mensagem-erro').innerHTML = 'As senhas devem ser as mesmas.';
+    }
+  });
 
   return container;
 };
