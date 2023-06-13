@@ -13,7 +13,7 @@ const changeScreen = async () => {
   if (user) {
     switch (window.location.hash) {
       case '':
-        main.appendChild(home());
+        main.appendChild(feed());
         break;
       case '#home':
         window.location.hash = '#feed';
@@ -23,8 +23,8 @@ const changeScreen = async () => {
         main.appendChild(feed());
         break;
       default:
-        window.location.hash = '#home';
-        main.appendChild(home());
+        window.location.hash = '#feed';
+        main.appendChild(feed());
     }
   } else {
     switch (window.location.hash) {

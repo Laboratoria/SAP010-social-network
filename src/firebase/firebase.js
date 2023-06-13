@@ -13,11 +13,16 @@ import {
 
 const auth = getAuth(app);
 
-const isUserLoggedIn = async (user) => {
-  if (user !== null) {
-    return true;
-  }
-  return false;
+const isUserLoggedIn = () => {
+  return new Promise((resolve, reject) => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        resolve(true);
+      } else {
+        resolve(false);
+      }
+    });
+  });
 };
 
 const logIn = async (email, password) => {
