@@ -1,8 +1,7 @@
-
 export const feed = () => {
-    const container = document.createElement("div");
-  
-    const templateFeed = `
+  const container = document.createElement('div');
+
+  const templateFeed = `
       
 
       <section class="feed-page">
@@ -11,8 +10,8 @@ export const feed = () => {
        
       </section>
       `;
-  
-    container.innerHTML = templateFeed;
-  
-    return container;
-  };
+
+  container.innerHTML = templateFeed;
+
+  return container;
+};

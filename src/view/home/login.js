@@ -1,10 +1,7 @@
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
-
-import { signIn, signInGoogle } from "../../lib/index.js";
+import { signIn, signInGoogle } from '../../lib/index.js';
 
 export const login = () => {
-  const container = document.createElement("div");
-  const auth = getAuth();
+  const container = document.createElement('div');
 
   const templateLogin = `
     
@@ -41,46 +38,43 @@ export const login = () => {
   container.innerHTML = templateLogin;
 
   container
-    .querySelector("#login-button")
-    .addEventListener("click", (event) => {
+    .querySelector('#login-button')
+    .addEventListener('click', (event) => {
       event.preventDefault();
 
-      const email = container.querySelector("#email-login");
-      const password = container.querySelector("#senha-login");
+      const email = container.querySelector('#email-login');
+      const password = container.querySelector('#senha-login');
 
       signIn(email.value, password.value)
-        .then((userCredential) => {
-          window.location.hash = "#feed";
-          const user = userCredential.user;
+        .then(() => {
+          window.location.hash = '#feed';
+          // const user = userCredential.user;
         })
         .catch((error) => {
-          const errorCode = error.code;
+          // const errorCode = error.code;
           const errorMessage = error.message;
-          container.querySelector("#mensagem-erro").innerHTML = errorMessage;
+          container.querySelector('#mensagem-erro').innerHTML = errorMessage;
           switch (errorMessage) {
-            case "Firebase: Error (auth/user-not-found).":
-              container.querySelector("#mensagem-erro").innerHTML =
-                "Usuário não encontrado.";
+            case 'Firebase: Error (auth/user-not-found).':
+              container.querySelector('#mensagem-erro').innerHTML = 'Usuário não encontrado.';
               break;
-            case "Firebase: Error (auth/wrong-password).":
-              container.querySelector("#mensagem-erro").innerHTML =
-                "Senha incorreta.";
+            case 'Firebase: Error (auth/wrong-password).':
+              container.querySelector('#mensagem-erro').innerHTML = 'Senha incorreta.';
               break;
             default:
-              container.querySelector("#mensagem-erro").innerHTML =
-                "Erro ao fazer o login, tente novamente!";
+              container.querySelector('#mensagem-erro').innerHTML = 'Erro ao fazer o login, tente novamente!';
               break;
           }
         });
     });
 
-  container.querySelector("#botao-google").addEventListener("click", () => {
+  container.querySelector('#botao-google').addEventListener('click', () => {
     signInGoogle()
-      .then((result) => {
-        window.location.hash = "#feed";
+      .then(() => {
+        window.location.hash = '#feed';
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        container.querySelector('#mensagem-erro').innerHTML = 'Erro ao fazer o login com o Google, tente novamente!';
       });
   });
   return container;
