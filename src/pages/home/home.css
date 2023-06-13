@@ -152,6 +152,7 @@ h2{
     display: inline-block;
     margin-top: -4%;
     cursor: pointer;
+    background-image: url(/src/imagens/Logotipo\ google.png);
 }
 
 .btnCadastrar {

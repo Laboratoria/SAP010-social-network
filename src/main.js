@@ -18,6 +18,9 @@ const init = () => {
     case "#recuperar": 
       main.appendChild(recuperar());
       break;
+    case "#feed":
+      main.appendChild(feed());
+      break;
     default:
       main.appendChild(home());
   }

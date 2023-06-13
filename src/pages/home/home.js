@@ -47,8 +47,20 @@ const logar = container.querySelector(".btnLogar")
     .then(() => {
       window.location.hash = '#feed';
     })
-    .catch(() => {
-      alert('Erro ao logar, por favor verifique os campos preenchidos.')
+    .catch((error) => {
+      const errorMessage = error.message;
+            if (email.value === '' || password.value === '') {
+              alert('Todos os campos devem ser preenchidos')
+            }
+            if (errorMessage === 'Firebase: Error (auth/user-not-found).') {
+              alert('Usuário não cadastrado')
+            }
+            if (errorMessage === 'Firebase: Error (auth/invalid-email).') {
+              alert('E-mail inválido')
+            }
+            if (errorMessage === 'Firebase: Error (auth/wrong-password).') {
+              alert('Senha inválida')
+            }
     });
   });
 
@@ -59,7 +71,8 @@ const logar = container.querySelector(".btnLogar")
       window.location.hash = '#feed';
     })
     .catch((error) => {
-      console.log(error)
+      const errorCode = errosValid(error.code);
+      alert(errorCode)
     });
   });
 
