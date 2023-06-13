@@ -14,6 +14,8 @@ export default () => {
           <h1>&lt;GAMEE&gt;</h1>
         </div>
       </div>
+    </header>
+    <main class="feed">
       <nav class="menu-nav">
         <ul>
           <li><a href="#profile">Meu perfil</a></li>
@@ -21,8 +23,6 @@ export default () => {
           <li><a href="" class="btn-logout">Sair</a></li>
         </ul>
       </nav>
-    </header>
-    <main class="feed">
       <div class="container-input-post">
         <textarea name="" id="user-text-area" cols="5" rows="10" placeholder="O que está jogando?"></textarea>
         <div class="div-btn-publish">
