@@ -46,7 +46,7 @@ export default () => {
   }
 
   const registrationForm = document.createElement('div');
-  registrationForm.classList.add('register-container'); //verificar
+  registrationForm.classList.add('register-container'); // verificar
 
   const templateRegister = ` 
     <section class='form-register'>

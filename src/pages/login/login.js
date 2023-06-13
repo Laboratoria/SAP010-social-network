@@ -6,7 +6,7 @@ import {
 
 export default () => {
   const container = document.createElement('div');
-  
+
   const templateLogin = `
     <section class='login-wrap'>
     
