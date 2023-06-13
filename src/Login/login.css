@@ -1,25 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Prompt&family=Sunflower:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Prompt&family=Sunflower:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
 
 :root {
-  --CorPrimaria: #FF4500;
-  --CorSecundaria: #F9AB59;
-  --CorTerciaria: #FFF;
-  --CorQuartenaria: #F2F2F2;
+  --CorPrimaria: #ff4500;
+  --CorSecundaria: #f9ab59;
+  --CorTerciaria: #fff;
+  --CorQuartenaria: #f2f2f2;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Prompt', 'Sunflower';
+  font-family: "Prompt", "Sunflower";
 }
 
-body{
+body {
   background-color: var(--CorTerciaria);
+  overflow: hidden;
 }
 
 .backgroundTwo {
- display: flex;
+  
 }
 
 .backgroundTwo svg {
@@ -27,7 +30,7 @@ body{
   width: 335px;
   height: 172px;
   background: var(--CorPrimaria);
-  transform: matrix(4.94, -5.34, 6.80, 2.91, 5, 10);
+  transform: matrix(4.94, -5.34, 6.8, 2.91, 5, 10);
 }
 
 .backgroundTwo .shape-fill {
@@ -52,23 +55,11 @@ body{
 }
 
 .titulo {
-  text-align: center;
   font-size: 2.5rem;
   color: var(--CorPrimaria);
-}
-
-.subtitulo1 {
-  font-size: 1rem;
-  color: var(--CorPrimaria);
-  text-align: center;
-  margin: 5px;
-}
-
-.subtitulo2{
-  font-size: 1rem;
-  color: var(--CorPrimaria);
-  text-align: center;
-  margin: 5px;
+  font-family: 'Nunito Sans', sans-serif;
+  
+  
 }
 
 .form {
@@ -80,9 +71,10 @@ body{
   padding: 45px;
   text-align: center;
   border-radius: 15px;
-  border: 0.5px solid #FF9400;
+  -webkit-box-shadow: 0px 0px 12px 0px rgba(28, 28, 28, 0.15);
+  -moz-box-shadow: 0px 0px 12px 0px rgba(28, 28, 28, 0.15);
+  box-shadow: 0px 0px 12px 0px rgba(28, 28, 28, 0.15);
   backdrop-filter: blur(2px);
-  
 }
 
 .form input {
@@ -91,41 +83,42 @@ body{
   background: var(--CorTerciaria);
   width: 100%;
   border: 0;
-  border-radius: 7px;
-  margin: 0 0 15px;
-  padding: 15px;
+  margin: 16px 0px;
+  padding: 6px 15px;
   font-size: 14px;
-  
+  border-bottom: 1px solid #bababa;
 }
 .form button {
-  display: flex;
-  width: 90px;
+  /*width: 90px;*/
   font-family: "prompt";
   background: var(--CorPrimaria);
   border: 0;
-  padding: 10px;
+  padding: 10px 40px;
   justify-content: center;
   color: var(--CorTerciaria);
   border-radius: 5px;
   font-size: 1em;
   cursor: pointer;
+
 }
 
-.form button:hover,.form button:active,.form button:focus {
+.form button:hover,
+.form button:active,
+.form button:focus {
   background: var(--CorSecundaria);
-  transition: .2s;
+  transition: 0.2s;
   cursor: pointer;
 }
 
 .logo {
   display: inline-block;
-  width: 10%;
+  width: 32px;
   cursor: pointer;
   margin-top: 5px;
 }
 
 .form .message {
-  margin: 15px 0 0;
+  margin: 19px 0 0;
   color: var(--CorPrimaria);
   font-size: 12px;
 }
@@ -138,30 +131,44 @@ body{
   display: none;
 }
 .form .login-form {
-    display: none;
+  display: none;
 }
 
 .show {
-    display: block !important;
+  display: block !important;
 }
 
-
-@media screen and (max-width:1015px){
-  
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
 }
 
-@media screen and (max-width:810px) {
-
+.social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
 }
 
-@media screen and (max-width:670px) {
-
+.full-width {
+    width: 100%;
 }
 
-@media screen and (max-width:590px) {
-
+@media screen and (max-width: 1015px) {
 }
 
-@media screen and (max-width:470px) {
+@media screen and (max-width: 810px) {
+}
 
+@media screen and (max-width: 670px) {
+}
+
+@media screen and (max-width: 590px) {
+}
+
+@media screen and (max-width: 470px) {
 }
