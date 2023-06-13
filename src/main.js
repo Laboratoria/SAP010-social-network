@@ -2,6 +2,7 @@ import { getLoginPage } from './pages/login/login.js';
 import register from './pages/register/register';
 import { showFeed } from './pages/feed/feed.js';
 import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './fireBase/firebaseConfig.js';
 const main = document.querySelector('#root');
 
 const renderPage = () => {
@@ -37,7 +38,7 @@ window.addEventListener('load', () => {
   }
 });
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, user => {
   if (user) {
     window.location.hash = '#homepage'; // Redireciona para a página de feed
   } else {
