@@ -7,7 +7,6 @@
     display: flex;
     padding: 17px 10px;
     width: 100%;
-    position: relative;
 }
 
 .hamburger-menu .icon-menu{
@@ -23,29 +22,33 @@
 }
 
 .title-menu {
-    align-items: start;
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-main .feed{
+.main{
     align-items: center;
     display: flex;
     justify-content: center;
+    position: relative;
     width: 100%; 
     max-width: 1200px;
-    position: relative;
 }
 
 .menu-nav{
     background-color: var(--bgColor);
     display: block;
-    width: 180px;
     position: fixed;
     top: 63px;
     left: 0;
     bottom: 0;
+    width: 180px;
+}
+
+li {
+    margin-top: 20px;
+    padding: 10px;
 }
 
 a {
@@ -56,14 +59,8 @@ a {
     font-weight: 300;
     justify-content: center;
     list-style: none;
-    text-align: left;
     text-decoration: none;
     width: 100%;
-}
-
-li {
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 
 .container-input-post{
@@ -107,3 +104,34 @@ li {
     margin-top: 20px;
     width: 50%;
 }
+
+.post-container {
+    width: 500px;
+    height: 180px;
+    background: #ECF0FF;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  .post-header {
+    width: 500px;
+    height: 40px;
+    background: #6F69EF;
+    border-radius: 10px 10px 0px 0px;
+    font-family: Lato;
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 5px;
+  }
+
+  .post-content {
+    width: 95%;
+    height: 70px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    margin:10px;
+    padding: 5px;
+  }

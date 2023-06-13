@@ -1,9 +1,9 @@
-import { logOut, createPost, listAllPosts } from '../../firebase/firebase';
-import './feed.css';
+import { logOut, createPost, listAllPosts } from "../../firebase/firebase";
+import "./feed.css";
 
 export default () => {
-  const containerFeed = document.createElement('section');
-  containerFeed.classList.add('container-feed');
+  const containerFeed = document.createElement("section");
+  containerFeed.classList.add("container-feed");
   const templateFeed = `
     <header>
       <div class="header">
@@ -15,7 +15,7 @@ export default () => {
         </div>
       </div>
     </header>
-    <main class="feed">
+    <main class="main">
       <nav class="menu-nav">
         <ul>
           <li><a href="#profile">Meu perfil</a></li>
@@ -23,69 +23,71 @@ export default () => {
           <li><a href="" class="btn-logout">Sair</a></li>
         </ul>
       </nav>
-      <div class="container-input-post">
-        <textarea name="" id="user-text-area" cols="5" rows="10" placeholder="O que está jogando?"></textarea>
-        <div class="div-btn-publish">
-          <button class="btn-publish">Publicar</button>
+      <div class="feed">
+        <div class="container-input-post">
+          <textarea name="" id="user-text-area" cols="5" rows="10" placeholder="O que está jogando?"></textarea>
+          <div class="div-btn-publish">
+            <button class="btn-publish">Publicar</button>
+          </div>
         </div>
       </div>
     </main>
     `;
   containerFeed.innerHTML = templateFeed;
 
-  const feedMain = containerFeed.querySelector('.feed')
-  const btnLogOut = containerFeed.querySelector('.btn-logout');
-  const imgHamburgerMenu = containerFeed.querySelector('.hamburger-menu');
-  const btnPublish = containerFeed.querySelector('.btn-publish');
+  const feedMain = containerFeed.querySelector(".feed");
+  const btnLogOut = containerFeed.querySelector(".btn-logout");
+  const imgHamburgerMenu = containerFeed.querySelector(".hamburger-menu");
+  const btnPublish = containerFeed.querySelector(".btn-publish");
 
-  btnLogOut.addEventListener('click', async () => {
+  btnLogOut.addEventListener("click", async () => {
     try {
       await logOut();
-      window.location.href = '#home';
+      window.location.href = "#home";
     } catch (error) {
       console.log(error.message);
     }
   });
 
-  imgHamburgerMenu.addEventListener('click', () => {
-    const itensMenu = containerFeed.querySelector('.menu-nav');
-    if (itensMenu.style.display === 'none') {
-      itensMenu.style.display = 'block';
+  imgHamburgerMenu.addEventListener("click", () => {
+    const itensMenu = containerFeed.querySelector(".menu-nav");
+    if (itensMenu.style.display === "none") {
+      itensMenu.style.display = "block";
     } else {
-      itensMenu.style.display = 'none';
+      itensMenu.style.display = "none";
     }
   });
 
   // criar função showPosts e ela recebe o conteudo de allPosts
-  const postsList = document.createElement('section');
+  const postsList = document.createElement("section");
   const showPosts = (post) => {
     const feed = `
-      <div class= "post" style="color: white;">
-        <div>Publicado por ${post.user}</div>
-        <div>${post.content}</div>
-        <div>${post.likes}</div>
-        <div>${post.dateTime.toDate().toLocaleDateString()}</div>
-      </div>
+    <div class="post-container">
+      <div class="post-header">Publicado por ${post.user}</div>
+      <div class="post-content">${post.content}</div>
+      <div>${post.likes}</div>
+      <div>${post.dateTime.toDate().toLocaleDateString()}</div>
+    </div>
     `;
     postsList.innerHTML += feed;
     feedMain.appendChild(postsList);
   };
 
-  btnPublish.addEventListener('click', async () => {
-    console.log('chamei o click');
-    const post = containerFeed.querySelector('#user-text-area');
+  btnPublish.addEventListener("click", async () => {
+    console.log("chamei o click");
+    const post = containerFeed.querySelector("#user-text-area");
     const postInput = post.value;
     if (postInput.length > 0) {
       await createPost(postInput);
-      post.value = '';
+      post.value = "";
       listAllPosts().then((posts) => {
-        postsList.innerHTML = '';
+        postsList.innerHTML = "";
         posts.forEach((publish) => {
           showPosts(publish);
         });
       });
     } else {
-      alert('Não pode publicar um post vazio!');
+      alert("Não pode publicar um post vazio!");
     }
   });
 
