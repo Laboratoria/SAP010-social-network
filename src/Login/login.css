@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt&family=Sunflower:wght@700&display=swap');
+
+:root {
+  --CorPrimaria: #FF4500;
+  --CorSecundaria: #F9AB59;
+  --CorTerciaria: #FFF;
+  --CorQuartenaria: #F2F2F2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Prompt', 'Sunflower';
+}
+
+body{
+  background-color: var(--CorTerciaria);
+}
+
+.backgroundTwo {
+ display: flex;
+}
+
+.backgroundTwo svg {
+  position: absolute;
+  width: 335px;
+  height: 172px;
+  background: var(--CorPrimaria);
+  transform: matrix(4.94, -5.34, 6.80, 2.91, 5, 10);
+}
+
+.backgroundTwo .shape-fill {
+  fill: var(--CorPrimaria);
+}
+
+.login-page {
+  display: flex;
+  align-items: center;
+}
+
+.imagemMap {
+  display: none;
+}
+
+.imagemLogo {
+  display: flex;
+  justify-content: left;
+  width: 55vw;
+  position: absolute;
+  margin: 80px 0 30px 50px;
+}
+
+.titulo {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--CorPrimaria);
+}
+
+.subtitulo1 {
+  font-size: 1rem;
+  color: var(--CorPrimaria);
+  text-align: center;
+  margin: 5px;
+}
+
+.subtitulo2{
+  font-size: 1rem;
+  color: var(--CorPrimaria);
+  text-align: center;
+  margin: 5px;
+}
+
+.form {
+  display: flex;
+  position: absolute;
+  max-width: 400px;
+  margin-left: 70%;
+  margin-top: 50%;
+  padding: 45px;
+  text-align: center;
+  border-radius: 15px;
+  border: 0.5px solid #FF9400;
+  backdrop-filter: blur(2px);
+  
+}
+
+.form input {
+  font-family: "Poppins", sans-serif;
+  outline: 0;
+  background: var(--CorTerciaria);
+  width: 100%;
+  border: 0;
+  border-radius: 7px;
+  margin: 0 0 15px;
+  padding: 15px;
+  font-size: 14px;
+  
+}
+.form button {
+  display: flex;
+  width: 90px;
+  font-family: "prompt";
+  background: var(--CorPrimaria);
+  border: 0;
+  padding: 10px;
+  justify-content: center;
+  color: var(--CorTerciaria);
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.form button:hover,.form button:active,.form button:focus {
+  background: var(--CorSecundaria);
+  transition: .2s;
+  cursor: pointer;
+}
+
+.logo {
+  display: inline-block;
+  width: 10%;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.form .message {
+  margin: 15px 0 0;
+  color: var(--CorPrimaria);
+  font-size: 12px;
+}
+.form .message a {
+  font-weight: bold;
+  color: var(--CorPrimaria);
+  text-decoration: none;
+}
+.form .register-form {
+  display: none;
+}
+.form .login-form {
+    display: none;
+}
+
+.show {
+    display: block !important;
+}
+
+
+@media screen and (max-width:1015px){
+  
+}
+
+@media screen and (max-width:810px) {
+
+}
+
+@media screen and (max-width:670px) {
+
+}
+
+@media screen and (max-width:590px) {
+
+}
+
+@media screen and (max-width:470px) {
+
+}
