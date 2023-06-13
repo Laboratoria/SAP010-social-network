@@ -1,11 +1,11 @@
-html{
+html {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
 }
 
-main{
+main {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -13,9 +13,9 @@ main{
   justify-content: center;
 }
 
-body{
-  background-color: #008DA1;
-  background-image: linear-gradient(to top, #86C0CA, #008DA1);
+body {
+  background-color: #008da1;
+  background-image: linear-gradient(to top, #86c0ca, #008da1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,14 +24,13 @@ body{
   justify-content: space-between;
 }
 
-footer{
+footer {
   font-family: 'arial', cursive;
   font-size: 10px;
-  color:#000;
+  color: #000;
 }
 
-@media (min-width: 900px){
-
-  body{
+@media (min-width: 900px) {
+  body {
   }
 }
