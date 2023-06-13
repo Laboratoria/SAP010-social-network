@@ -74,7 +74,7 @@ export const login = () => {
         window.location.hash = '#feed';
       })
       .catch(() => {
-        container.querySelector('#mensagem-erro').innerHTML = 'Erro ao fazer o login com o Google, tente novamente!';
+        container.querySelector('#mensagem-erro').innerHTML = 'Erro, tente novamente!';
       });
   });
   return container;
