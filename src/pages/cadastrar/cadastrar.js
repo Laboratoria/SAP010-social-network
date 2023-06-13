@@ -1,5 +1,6 @@
 import {signUpUser} from "../../lib/index.js"
 
+
 export default () => {
   const container = document.createElement("div");
 
@@ -24,7 +25,7 @@ export default () => {
                 <input type="text" class="confirma_senha" id="confirmasenha" placeholder="Confirme sua senha"/>
                 </p> 
             </form>
-
+  
             <p class="form">
               <button class="btnCadastrar" id="btnCadastrar">CADASTRAR!</button>  
             </p>
@@ -37,20 +38,38 @@ container.innerHTML = template;
 
 const register = container.querySelector(".btnCadastrar")
  register.addEventListener('click', () => {
-  const email = container.querySelector(".inserir_email")
-  const password = container.querySelector(".digite_senha")
+  const email2 = container.querySelector(".inserir_email2")
+  const password2 = container.querySelector(".digite_senha2")
+  const nome = container.querySelector(".inserir_nome")
+  const passwordrepet = container.querySelector(".confirma_senha")
+  
 
-  signUpUser(email.value, password.value).then(() => {
+  signUpUser(email2.value, password2.value, passwordrepet.value).then(() => {
   
       alert('Usuário cadastrado com sucesso!')
-      window.location.hash = '#home';
+      window.location.hash = '#feed';
               
   })
   .catch((error) => {
-      alert('Erro ao cadastrar, por favor verifique os campos preenchidos.')
+    const errorMessage = error.message;
+    if (errorMessage === 'Firebase: Error (auth/email-already-in-use).') {
+      alert('E-mail já cadastrado')
+    }
+    if (errorMessage === 'Firebase: Error (auth/invalid-email).') {
+      alert('Endereço de e-mail inválido')
+    }
+    if (errorMessage === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+      alert('Sua senha deve ter ao menos 6 dígitos')
+    }
+    if (password2.value !== passwordrepet.value){
+      alert('As senhas devem ser iguais')
+    }
+  
+  });
+
       
-  })
- })
+  });
+
 
 
 

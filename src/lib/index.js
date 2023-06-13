@@ -4,25 +4,15 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider } from 'firebase/auth'
-import {auth} from "../firebase.js"
+import {auth} from "./firebase.js"
 
 
 
 
 
-export const signUpUser = (email, password) => {
-  
-  createUserWithEmailAndPassword(auth,email,password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      alert("Usuário registrado com sucesso");
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert("mensagem de erro");
-    });
-};
+export const signUpUser = (email2, password2, passwordrepet) => 
+  createUserWithEmailAndPassword(auth,email2,password2, passwordrepet);
+   
 
 export const loginUser = (email, password) => {
     console.log(email, password)
