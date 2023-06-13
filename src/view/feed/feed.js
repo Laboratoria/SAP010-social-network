@@ -65,8 +65,21 @@ export default () => {
     <div class="post-container">
       <div class="post-header">Publicado por ${post.user}</div>
       <div class="post-content">${post.content}</div>
-      <div>${post.likes}</div>
-      <div>${post.dateTime.toDate().toLocaleDateString()}</div>
+      <div class="post-info">
+        <div class="post-likes">
+         <img src="images/like-icon.svg" alt="Like">
+        ${post.likes}
+        </div>
+        <div class="post-date">${post.dateTime.toDate().toLocaleDateString()}</div>
+      </div>
+      <div class="post-actions">
+        <div class="edit-btn">
+          <img src="images/edit-icon.svg" alt="Editar">
+        </div>
+        <div class="delete-btn">
+          <img src="images/delete-icon.svg" alt="Excluir">
+        </div>
+      </div>
     </div>
     `;
     postsList.innerHTML += feed;
