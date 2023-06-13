@@ -3,8 +3,8 @@ const template = `
 `;
 
 const main = async () => {
-    const root = document.querySelector('#root');
-    root.innerHTML = template;
+  const root = document.querySelector('#root');
+  root.innerHTML = template;
 }
 
 export default main;
