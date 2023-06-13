@@ -10,6 +10,7 @@ import {
   loginFacebook,
   createUserWithEmail,
   loginWithEmail,
+  getUserId,
 } from '../src/firebase/auth';
 
 jest.mock('firebase/auth');
@@ -78,5 +79,21 @@ describe('loginWithEmail', () => {
       newEmail,
       newPassword,
     );
+  });
+});
+
+describe('getUserId', () => {
+  it('should return the current user ID', async () => {
+    const userId = 'user123';
+    const authTest = {
+      currentUser: {
+        uid: userId,
+      },
+    };
+    getAuth.mockReturnValue(authTest);
+
+    const result = getUserId();
+
+    expect(result).toBe(userId);
   });
 });
