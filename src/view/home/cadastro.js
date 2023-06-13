@@ -31,6 +31,8 @@ export const cadastro = () => {
       <label for="confirmar-senha"></label>
       <input type="password" class="form-inputs-register" id="confirmar-senha" required placeholder="Confirmar senha">
       </input>
+
+      <p id= "mensagem-erro" ></p>
   
       <button type="submit" id="sign-up" >Cadastrar</button>
   
@@ -53,6 +55,8 @@ export const cadastro = () => {
     
     const email = container.querySelector("#email-cadastro");
     const password = container.querySelector("#senha-cadastro");
+    const confirmPassword = container.querySelector("#confirmar-senha");
+    if (confirmPassword.value === password.value){  
     
     createUserWithEmailAndPassword(auth, email.value, password.value)
   .then((userCredential) => {
@@ -63,10 +67,33 @@ export const cadastro = () => {
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    alert(errorMessage)
-  });
+   
+    container.querySelector("#mensagem-erro").innerHTML = errorMessage;
+          switch (errorMessage) {
+            case "Firebase: Error (auth/invalid-email).":
+              container.querySelector("#mensagem-erro").innerHTML =
+                "E-mail inválido.";
+              break;
+            case "Firebase: Password should be at least 6 characters (auth/weak-password).":
+              container.querySelector("#mensagem-erro").innerHTML =
+                "A senha deve conter pelo menos 6 caracteres.";
+              break;
+            case "Firebase: Error (auth/email-already-in-use).":
+              container.querySelector("#mensagem-erro").innerHTML =
+                "E-mail já cadastrado.";
+              break;
+            default:
+              container.querySelector("#mensagem-erro").innerHTML =
+                "Erro ao cadastrar, tente novamente!";
+              break;
+  }});
     
-  });
+  }else{
+    return container.querySelector("#mensagem-erro").innerHTML =
+    "As senhas devem ser as mesmas.";
+  }
+});
+
 
   return container;
 };

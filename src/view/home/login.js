@@ -1,10 +1,6 @@
-import {
-  getAuth,
-  GoogleAuthProvider
- 
-} from "firebase/auth";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
-import {signIn, signInGoogle} from "../../lib/index.js"
+import { signIn, signInGoogle } from "../../lib/index.js";
 
 export const login = () => {
   const container = document.createElement("div");
@@ -22,7 +18,7 @@ export const login = () => {
     <label for="senha-login"></label>
     <input type="password" class="form-inputs" id="senha-login" required placeholder="Senha">
     </input>
-
+    <p id= "mensagem-erro" ></p>
     <button type="submit" class="loginpage-button" id="login-button">Entrar</button>
     
     </form>
@@ -44,28 +40,41 @@ export const login = () => {
 
   container.innerHTML = templateLogin;
 
-  container.querySelector("#login-button").addEventListener("click", (event) => {
-    event.preventDefault()
-    
-    const email = container.querySelector("#email-login");
-    const password = container.querySelector("#senha-login");
-    
-    signIn(email.value, password.value)
-      .then((userCredential) => {
-        window.location.hash = "#feed";
-        const user = userCredential.user;
-       
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage)
-        
-      });
-  });
+  container
+    .querySelector("#login-button")
+    .addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const email = container.querySelector("#email-login");
+      const password = container.querySelector("#senha-login");
+
+      signIn(email.value, password.value)
+        .then((userCredential) => {
+          window.location.hash = "#feed";
+          const user = userCredential.user;
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          container.querySelector("#mensagem-erro").innerHTML = errorMessage;
+          switch (errorMessage) {
+            case "Firebase: Error (auth/user-not-found).":
+              container.querySelector("#mensagem-erro").innerHTML =
+                "Usuário não encontrado.";
+              break;
+            case "Firebase: Error (auth/wrong-password).":
+              container.querySelector("#mensagem-erro").innerHTML =
+                "Senha incorreta.";
+              break;
+            default:
+              container.querySelector("#mensagem-erro").innerHTML =
+                "Erro ao fazer o login, tente novamente!";
+              break;
+          }
+        });
+    });
 
   container.querySelector("#botao-google").addEventListener("click", () => {
-    
     signInGoogle()
       .then((result) => {
         window.location.hash = "#feed";
@@ -73,7 +82,6 @@ export const login = () => {
       .catch((error) => {
         console.log(error);
       });
-  })
+  });
   return container;
 };
-
