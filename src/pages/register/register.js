@@ -2,8 +2,8 @@ import { createUser } from '../../fireBase/firebaseAuth.js';
 import { userData } from '../../fireBase/firebaseStore.js';
 
 export default () => {
-  const loginContainer = document.createElement('div');
-  loginContainer.classList.add('login-container');
+  const registerContainer = document.createElement('div');
+  registerContainer.classList.add('register-container');
 
   const content = `
     
@@ -29,15 +29,15 @@ export default () => {
         <button class='buttonRegister' id='firebaseRegister' type='button' > CADASTRAR </button>          
     </form>
     `;
-  loginContainer.innerHTML = content;
+    registerContainer.innerHTML = content;
 
-  const register = loginContainer.querySelector('#firebaseRegister');
+  const register = registerContainer.querySelector('#firebaseRegister');
   register.addEventListener('click', () => {
-    const nameElement = loginContainer.querySelector('#nameRegister');
-    const lastnameElement = loginContainer.querySelector('#lastnameRegister');
-    const userElement = loginContainer.querySelector('#userRegister');
-    const emailElement = loginContainer.querySelector('#emailRegister');
-    const passwordElement = loginContainer.querySelector('#passwordRegister');
+    const nameElement = registerContainer.querySelector('#nameRegister');
+    const lastnameElement = registerContainer.querySelector('#lastnameRegister');
+    const userElement = registerContainer.querySelector('#userRegister');
+    const emailElement = registerContainer.querySelector('#emailRegister');
+    const passwordElement = registerContainer.querySelector('#passwordRegister');
     if (
       userElement.value === '' ||
       nameElement.value === '' ||
@@ -77,5 +77,5 @@ export default () => {
         });
     }
   });
-  return loginContainer;
+  return registerContainer;
 };

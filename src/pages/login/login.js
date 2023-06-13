@@ -7,7 +7,7 @@ import {
 } from 'firebase/auth';
 
 // cria e retorna uma div com os elementos HTML da pagina de login
-export const login = () => {
+export const getLoginPage = () => {
   // foi criada uma varíavel div para guardar o conteúdo na página de login.
   const loginContainer = document.createElement('div');
   loginContainer.classList.add('login-container')

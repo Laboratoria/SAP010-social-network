@@ -1,9 +1,7 @@
-import { login } from './pages/login/login.js';
-import register from './pages/register/register.js';
+import { getLoginPage } from './pages/login/login.js';
+import register from './pages/register/register';
 import { showFeed } from './pages/feed/feed.js';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from './fireBase/firebaseConfig.js';
-
 const main = document.querySelector('#root');
 
 const renderPage = () => {
@@ -20,7 +18,7 @@ const renderPage = () => {
       });
       break;
     default:
-      main.appendChild(login());
+      main.appendChild(getLoginPage());
       break;
   }
 };
@@ -35,7 +33,7 @@ window.addEventListener('load', () => {
       main.appendChild(feedElement);
     });
   } else {
-    main.appendChild(login());
+    main.appendChild(getLoginPage());
   }
 });
 

@@ -12,4 +12,12 @@ export const createUser = (email, senha, nome, sobrenome, displayName) =>
     return updateProfile(user, { nome, sobrenome, displayName });
   });
 
+//export const login = (email, senha) =>
+//signInWithEmailAndPassword(Auth, email, senha);
+
+//export const googleLogin = () => {
+//  const provider = new GoogleAuthProvider();
+//  return signInWithPopup(Auth, provider);
+//};
+
 export const logOut = () => signOut(auth);
