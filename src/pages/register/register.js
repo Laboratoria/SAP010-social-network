@@ -22,12 +22,7 @@ export default () => {
   }
 
   async function registerUser() {
-    const {
-      name,
-      lastName,
-      email,
-      password,
-    } = getInputValues();
+    const { name, lastName, email, password } = getInputValues();
     const validationErrors = validateRegister(name, lastName, email, password);
 
     if (validationErrors.length > 0) {
@@ -46,7 +41,7 @@ export default () => {
   }
 
   const registrationForm = document.createElement('div');
-  registrationForm.classList.add('register-container'); // verificar
+  // registrationForm.classList.add('register-container'); // verificar
 
   const templateRegister = ` 
     <section class='form-register'>
@@ -63,16 +58,20 @@ export default () => {
         </div> 
         <p id='error-message' class='error-message'></p>
       </form>
-    </section>
-    <br>
     <nav>
       <a class='btn-back' href='#login'><img src='img/assets/arrow.png' id='arrow-img' alt='imagem de seta' width='50px'></a>
     </nav> 
+    </section>
+    <figure class='Image-register'>
+    <img src='img/assets/imageregister.png' id='img-register' alt='registerImage'>
+    </figure>
   `;
 
   registrationForm.innerHTML = templateRegister;
 
-  registrationForm.querySelector('.register-btn').addEventListener('click', registerUser);
+  registrationForm
+    .querySelector('.register-btn')
+    .addEventListener('click', registerUser);
 
   return registrationForm;
 };

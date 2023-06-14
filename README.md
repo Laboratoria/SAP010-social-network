@@ -7,7 +7,7 @@
 
   <!-- Acesse o projeto [aqui](inserir link do gh-pages depois de pronto/)   -->
   <br>
-  Status do projeto: Em andamento <br>
+  Status do projeto: Em andamento 🚧 <br>
   Ferramentas e tecnologias utilizadas: <br>
 
   <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics">
@@ -47,7 +47,7 @@
 - [7. Desenvolvedoras](#7-desenvolvedoras)
 
 ---
-## 3. Desenho de interface de usuário
+<!-- ## 3. Desenho de interface de usuário
 ### 3.1 Protótipo de baixa fidelidade:
 
 Versão mobile:
@@ -60,7 +60,7 @@ Versão desktop:
 <img src = "src/img/Prot%C3%B3tipo%20de%20baixa%20fidelidade%20vers%C3%A3o%20desktop.jpeg" width = "400px" height = 300px/>
 
 
-### 3.2 Protótipos de alta fidelidade:
+### 3.2 Protótipos de alta fidelidade: -->
 
 <!-- Versão mobile:
 Acesse [aqui](https://www.figma.com/proto/8hKLQYcc6QPfRtdsGxTv9T/Social-Network?type=design&node-id=51-165&scaling=scale-down&page-id=0%3A1&starting-point-node-id=51%3A165&show-proto-sidebar=1)
@@ -69,8 +69,8 @@ Acesse [aqui](https://www.figma.com/proto/8hKLQYcc6QPfRtdsGxTv9T/Social-Network?
 Acesse [aqui](https://www.figma.com/proto/8hKLQYcc6QPfRtdsGxTv9T/Social-Network?type=design&node-id=288-783&scaling=scale-down&page-id=51%3A523&starting-point-node-id=288%3A783&show-proto-sidebar=1)
 <img src = "src/img/Prot%C3%B3tipo%20de%20alta%20fidelidade%20vers%C3%A3o%20desktop.PNG"/> -->
 
-### 3.2 Paleta de cores utilizada:
-<img src ="src/img/paleta%20de%20cores.PNG"/>
+<!-- ### 3.2 Paleta de cores utilizada:
+<img src ="src/img/paleta%20de%20cores.PNG"/> -->
 
 
 
