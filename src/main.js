@@ -2,10 +2,11 @@ import { login } from './view/home/login.js';
 import { cadastro } from './view/home/cadastro.js';
 import { home } from './view/home/home.js';
 import { feed } from './view/feed/feed.js';
+import { checkLogin } from './lib/index.js';
 
 const main = document.querySelector('#main');
-const init = () => {
-  window.addEventListener('hashchange', () => {
+const init = async () => {
+  window.addEventListener('hashchange', async () => {
     main.innerHTML = '';
     switch (window.location.hash) {
       case '#home':
@@ -17,10 +18,16 @@ const init = () => {
       case '#cadastro':
         main.appendChild(cadastro());
         break;
-      case '#feed':
-        // verificar se está conectado
-        main.appendChild(feed());
+      case '#feed': {
+        const userLoggedIn = await checkLogin();
+        if (userLoggedIn) {
+          main.appendChild(feed());
+        } else {
+          alert('realize o login');
+          main.appendChild(home());
+        }
         break;
+      }
       default:
         main.appendChild(home());
         break;
@@ -28,7 +35,7 @@ const init = () => {
   });
 };
 
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
   window.location.hash = '#home';
   main.appendChild(home());
   init();
