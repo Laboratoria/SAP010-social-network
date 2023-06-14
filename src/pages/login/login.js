@@ -48,10 +48,10 @@ export default () => {
 
           <figure>
             <button type='button' class='google-btn' id='google-btn'>
-              <img src='img/assets/icongoogle.png' id='google-img' alt='Logo do Google' width='100px'>
+              <img src='img/assets/icongoogle.png' id='google-img' alt='Logo do Google'>
             </button>
             <button type='button' class='facebook-btn' id='btn-facebook'>
-              <img src='img/assets/iconfacebook.png' id='facebook-img' alt='Logo do facebook' width='100px'>
+              <img src='img/assets/iconfacebook.png' id='facebook-img' alt='Logo do facebook'>
             </button>
           </figure>
         </form>
