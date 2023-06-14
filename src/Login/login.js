@@ -1,4 +1,5 @@
 import { authLogin } from '../Firebase/instalfirebase';
+import '../Login/login.css';
 
 const container = document.createElement('div');
 
@@ -11,6 +12,7 @@ const template = `
 <div class="imagens">
   <img class="imagemLogo" src="Img/ImagemDesktopmap.png" alt= "Imagem Ilustrativa de pessoas interagindo">
   <img class="imagemMap" src="Img/ImagemMap.png" alt= "Mapa de GPS Ilustrativo">
+  <p class="subtitulo">O melhor site de avaliações do Brasil</p>
 </div>
 <section class="login-page">
   <section class="form">
@@ -37,10 +39,10 @@ const template = `
       <input type="email" placeholder="Email *" required/>
       <input type="password" placeholder="Senha *" required/>
       <div class="buttons"> 
-        <button type="submit">Cadastrar</button>
+        <button class="cadastrar" type="submit">Cadastrar</button>
         <button type="submit" id="signup">Voltar</button>
       </div>
-      <p class="message">Já tem uma conta? Clique em voltar e acesse.</a></p>
+      <p class="message">Já tem uma conta?</br> Clique em voltar e acesse.</p>
     </form>
   </section>
 </section>
