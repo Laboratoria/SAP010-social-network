@@ -3,8 +3,10 @@ import register from './pages/register/register';
 import { showFeed } from './pages/feed/feed.js';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './fireBase/firebaseConfig.js';
+
 const main = document.querySelector('#root');
 
+// função render preenche a main que está vazia no html
 const renderPage = () => {
   main.innerHTML = '';
   const hash = window.location.hash;
@@ -14,6 +16,7 @@ const renderPage = () => {
       main.appendChild(register());
       break;
     case '#homepage':
+      //verificar uma forma de identificar se está logado ou não. existe função firebase para isso?
       showFeed().then(feedElement => {
         main.appendChild(feedElement);
       });
@@ -24,9 +27,14 @@ const renderPage = () => {
   }
 };
 
+// hashchange escuta o evento de mudança de hash que chama o renderPage carrega a página que está a hash
 window.addEventListener('hashchange', renderPage);
 
-window.addEventListener('load', () => {
+// escuta o evento da primeira vez que carrega a página e executa o renderPage para saber qual página vai carregar
+window.addEventListener('load', renderPage);
+
+// evento acima traz a função de load e render que faz a msm coisa do evento abaixo de forma resumida. Se concordarem podemos apagar
+/*window.addEventListener('load', () => {
   if (window.location.hash === '#register') {
     main.appendChild(register());
   } else if (window.location.hash === '#homepage') {
@@ -36,12 +44,12 @@ window.addEventListener('load', () => {
   } else {
     main.appendChild(getLoginPage());
   }
-});
+});*/ 
 
-onAuthStateChanged(auth, user => {
+/*onAuthStateChanged(auth, user => {
   if (user) {
     window.location.hash = '#homepage'; // Redireciona para a página de feed
   } else {
     window.location.hash = ''; // Redireciona para a página de login
   }
-});
+});*/

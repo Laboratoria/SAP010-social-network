@@ -1,10 +1,7 @@
-import { auth } from '../../firebase/firebaseConfig.js';
-
 import {
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from 'firebase/auth';
+  signIn,
+  signInGoogle,
+} from '../../fireBase/firebaseAuth';
 
 // cria e retorna uma div com os elementos HTML da pagina de login
 export const getLoginPage = () => {
@@ -47,9 +44,7 @@ export const getLoginPage = () => {
 function setUpLoginElements(loginContainer) {
   const buttonLogin = loginContainer.querySelector('#button-login');
   const buttonNewAccount = loginContainer.querySelector('#button-new-account');
-  const buttonLoginGoogle = loginContainer.querySelector(
-    '#button-login-google'
-  );
+  const buttonLoginGoogle = loginContainer.querySelector('#button-login-google');
   const inputEmail = loginContainer.querySelector('#input-email');
   const inputPassword = loginContainer.querySelector('#input-password');
 
@@ -59,7 +54,7 @@ function setUpLoginElements(loginContainer) {
 
     // tenta fazer o login usando e-mail e senha cadastrado.
     // e retorna um Promisse que tem 2 callbacks
-    signInWithEmailAndPassword(auth, email, password)
+    signIn(email, password)
       // em caso de sucesso chama a função criada dentro do then
       .then(userCredential => {
         // O login foi realizado com sucesso
@@ -94,18 +89,18 @@ function setUpLoginElements(loginContainer) {
   });
 
   // login Google usa o GoogleAuthProvider para criar o provider usado no signInWithPopup
-  const provider = new GoogleAuthProvider();
   buttonLoginGoogle.addEventListener('click', event => {
-    signInWithPopup(auth, provider)
-      .then(result => {
-        // O login com o Google foi bem-sucedido, você pode acessar as informações do usuário através de result.user
-        const user = result.user;
-      })
-      .catch(error => {
-        // Ocorreu um erro durante o login com o Google
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+    signInGoogle()
+    .then(result => {
+      // O login com o Google foi bem-sucedido, você pode acessar as informações do usuário através de result.user
+      const user = result.user;
+      window.location.hash = "#homepage"
+    })
+    .catch(error => {
+      // Ocorreu um erro durante o login com o Google
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
   });
 
   buttonNewAccount.addEventListener('click', event => {
