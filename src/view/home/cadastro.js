@@ -54,8 +54,8 @@ export const cadastro = () => {
       signUp(email.value, password.value)
         .then(() => {
           //  const user = userCredential.user;
-          container.querySelector('#mensagem-erro').innerHTML = ('Usuário cadastrado com sucesso, por favor realize o login.');
-          window.location.hash = '#login';
+          container.querySelector('#mensagem-erro').innerHTML = 'Usuário cadastrado com sucesso! Por favor realize o login.';
+          //   window.location.hash = '#login';
         })
         .catch((error) => {
           // const errorCode = error.code;
