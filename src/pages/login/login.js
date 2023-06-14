@@ -23,8 +23,9 @@ export default () => {
       </div>
 
       <div class='right'>
-        <h2>Entrar</h2>
-        <form class='login-form'>
+          <form class='login-form'>
+          <br>
+          <h2>Entrar</h2>
           <div class='inputs-container'>
             <input type='text' class='inputs-info' placeholder='E-MAIL' id='email' />
             <input type='password' class='inputs-info' placeholder='SENHA' id='senha' />
