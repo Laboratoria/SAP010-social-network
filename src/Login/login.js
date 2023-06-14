@@ -1,8 +1,10 @@
-import { authLogin } from '../Firebase/instalfirebase';
-import '../Login/login.css';
+import { authLogin } from "../Firebase/instalfirebase";
+import { registerUser } from "../Register/register";
+
+import "../Login/login.css";
 
 export const loginUser = () => {
-  const container = document.createElement('div');
+  const container = document.createElement("div");
   const template = `
 <div class="backgroundTwo">
   <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -36,24 +38,33 @@ export const loginUser = () => {
   `;
 
   container.innerHTML = template;
-  const email = container.querySelector('#txtEmail');
-  const senha = container.querySelector('#txtPassword');
-  const txtError = container.querySelector('#txtError');
-  const login = container.querySelector('#btnLogin');
+  const email = container.querySelector("#txtEmail");
+  const senha = container.querySelector("#txtPassword");
+  const txtError = container.querySelector("#txtError");
+  const login = container.querySelector("#btnLogin");
+  const newAccountLink = container.querySelector("#newAccount"); // Selecionar o link "Cadastrar"
 
   const fazerLogin = () => {
-    login.addEventListener('click', () => {
+    login.addEventListener("click", () => {
       authLogin(email.value, senha.value)
         .then(() => {
-          window.location.href = '#feed';
+          window.location.href = "#feed";
         })
         .catch(() => {
-          txtError.setAttribute('style', 'display: block');
-          txtError.innerHTML = 'Usuário ou senha incorretos';
+          txtError.setAttribute("style", "display: block");
+          txtError.innerHTML = "Usuário ou senha incorretos";
         });
     });
   };
   fazerLogin();
 
+    // Adicionar evento de clique ao botão "Cadastrar"
+  newAccountLink.addEventListener("click", () => {
+    container.innerHTML = "";
+    container.appendChild(registerUser());
+  });
+
   return container;
 };
+
+

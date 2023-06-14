@@ -26,10 +26,10 @@ const init = () => {
 window.addEventListener("load", () => {
   root.appendChild(loginUser());
   init();
-  root.appendChild(registerUser());
-  init();
-  root.appendChild(feedUser());
-  init();
+  //root.appendChild(registerUser());
+  //init();
+  //root.appendChild(feedUser());
+  //init();
 });
 console.log(init, "hash");
 console.log(window.location.hash);

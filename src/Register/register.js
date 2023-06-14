@@ -1,8 +1,9 @@
-import { newUser } from '../Firebase/instalfirebase';
-import '../Login/login.css';
+import { newUser } from "../Firebase/instalfirebase";
+import { loginUser } from "../Login/login";
+import "../Login/login.css";
 
 export const registerUser = () => {
-  const container = document.createElement('div');
+  const container = document.createElement("div");
   const template = `
 <form class="register-form" method="POST" id="register">
     <h1 class="titulo">Food Review</h1>
@@ -19,6 +20,13 @@ export const registerUser = () => {
 `;
 
   container.innerHTML = template;
-  return container;
+  const voltarButton = container.querySelector("#signup");
 
-}
+  // Adicionar evento de clique ao botão "Voltar"
+  voltarButton.addEventListener("click", () => {
+    container.innerHTML = '';
+    container.appendChild(loginUser());
+  });
+
+  return container;
+};
