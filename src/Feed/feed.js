@@ -1,10 +1,19 @@
-const template = `
+
+
+export const feedUser = () => {
+  const container = document.createElement('div');
+
+  const template = `
     <h1>Feed</h1>
 `;
 
-const main = async () => {
-  const root = document.querySelector('#root');
-  root.innerHTML = template;
-}
+  container.innerHTML = template;
+  return container;
+};
 
-export default main;
+// const main = async () => {
+//   const root = document.querySelector('#root');
+//   root.innerHTML = template;
+// }
+
+// export default main;

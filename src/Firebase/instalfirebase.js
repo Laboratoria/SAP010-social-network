@@ -26,5 +26,4 @@ export const newUser = async (email, senha, displayName) => {
   const authentication = getAuth(app);
   await createUserWithEmailAndPassword(authentication, email, senha);
   await updateProfile(authentication.currentUser, { displayName });
-  
 };
