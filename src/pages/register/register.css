@@ -93,11 +93,10 @@ body {
         background-color:var(--lightblue);
         margin-top: 4em;
 }
-    #img-register {
-        position: fixed;
+    .Image-register {
         bottom: 2em;
         left: 0;
-        /* display: flex; */
+        display: flex; 
         position: fixed;
         width: 30em;
   }
