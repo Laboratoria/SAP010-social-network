@@ -5,10 +5,6 @@
     position: sticky;
 }
 
-/*.logo-container {
-    display: block;
-}*/
-
 #logo {
     width: 15em;
     justify-content: center;
@@ -20,13 +16,7 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 0;
     padding-bottom: 2.5rem;
-    border: 2px solid rgb(21, 141, 193);
-    border-radius:22px;
-    width: 24em;
-    height: 28em;
-    margin-left: 10em;
-    background-color:var(--lightblue);
-}
+    }
 
 .inputs-container {
     display: flex;
@@ -64,15 +54,15 @@ input::placeholder {
 
 .register-button {
     border: none;
-    width: 7em;
+    width: 6em;
     font-size: 1.1rem;
     text-align: center;
-    background-color: rgb(21, 141, 193);
+    background-color: #30A2FF;
 }
 
 .reg-btn {
-    color: var(--black);
-    text-decoration: none;
+    color: var(--lightblue);
+    text-decoration: none;   
 }
 
 .google-btn {
@@ -80,12 +70,13 @@ input::placeholder {
     border: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    width: 8em;
+    width: 4em;
     margin-top: 2em;
+    margin-right: 2em;
 }
 
 #google-img {
-    width: 5em;
+    width: 3em;
 }
 
 
@@ -94,13 +85,13 @@ input::placeholder {
     border: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    width: 8em;
+    width: 4em;
     margin-top: 2em;
 }
 
 #facebook-img {
     border-radius: 20px 20px 20px 20px;
-    width: 7.5em;
+    width: 3em;
 }
 
 .left-text {
@@ -112,6 +103,15 @@ input::placeholder {
 @media screen and (min-width: 769px) {
     #logo {
         width: 20em;
+        margin-left: 2em;
+    }
+
+    h1 {
+        font-size: 2.5em;     
+    }
+
+    h2 {
+        color: black;
     }
 
     .login-wrap {
@@ -129,27 +129,72 @@ input::placeholder {
     }
 
     .right {
-        margin-top: 150px;
+        margin-top: 120px;
+    }
+
+    .txt1,
+    .txt2 {
+        color: black;
     }
 
     .left-text {
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         justify-content: center;
-        margin-right: 10em;
+        display: flex;
+    }
 
     .login-form {
-            border:3px solid brown;
-            border-radius:22px;
-            
+            display: flex;
+            flex-direction: column;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding-bottom: 2.5rem;
+            border: 2px solid var(--lightblue);
+            border-radius: 22px;
+            width: 24em;
+            height: 28em;
+            background-color:var(--lightblue); 
         }
+
+        .register-button {
+            background-color: var(--lightblue);
+        }
+
+        .reg-btn {
+            color: black;   
+        }
+        .register-button:hover {
+            background-color: #30A2FF;
+            border-radius: 15px 15px 15px 15px;
+        }
+        .reg-btn:hover {
+            color: var(--lightblue);  
+        }
+
+        #login-button:hover {
+        background-color: var(--lightblue);
+       }
     }
-}
+
 
 @media screen and (min-width: 900px) {
     .left-text {
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         display: flex;
-        margin-left: 120px;
+      
+    }
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding-bottom: 2.5rem;
+        border: 2px solid var(--lightblue);
+        border-radius: 22px;
+        width: 28em;
+        height: 28em;
+        background-color:var(--lightblue); 
     }
 }
 
