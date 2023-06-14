@@ -55,10 +55,9 @@ export const cadastro = () => {
         .then(() => {
           //  const user = userCredential.user;
           container.querySelector('#mensagem-erro').innerHTML = 'Usuário cadastrado com sucesso!';
-            
-            setTimeout(function(){
-              window.location.hash = '#login'; 
-            }, 3000);
+          setTimeout(() => {
+            window.location.hash = '#login';
+          }, 3000);
         })
         .catch((error) => {
           // const errorCode = error.code;
