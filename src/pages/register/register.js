@@ -7,12 +7,14 @@ export default () => {
     const lastName = document.getElementById('lastName-user').value;
     const email = document.getElementById('email-user').value;
     const password = document.getElementById('register-password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
 
     return {
       name,
       lastName,
       email,
       password,
+      confirmPassword,
     };
   }
 
@@ -22,7 +24,9 @@ export default () => {
   }
 
   async function registerUser() {
-    const { name, lastName, email, password } = getInputValues();
+    const {
+      name, lastName, email, password, confirmPassword,
+    } = getInputValues();
     const validationErrors = validateRegister(name, lastName, email, password);
 
     if (validationErrors.length > 0) {
@@ -30,8 +34,13 @@ export default () => {
       return;
     }
 
+    if (password !== confirmPassword) {
+      printErrorMessage('Senhas não correspondem');
+      return;
+    }
+
     try {
-      await createUserWithEmail(name, email, password, lastName);
+      await createUserWithEmail(name, lastName, email, password);
       window.location.hash = '#timeline';
     } catch (error) {
       console.error('Erro ao registrar o usuário:', error);
@@ -52,6 +61,8 @@ export default () => {
           <input type='text' class='inputs-register' id='lastName-user' placeholder='SOBRENOME'>
           <input type='text' class='inputs-register' id='email-user' placeholder='EMAIL'>
           <input type='password' class='inputs-register' id='register-password' placeholder='CRIAR SENHA'>
+          <input type='password' class='inputs-register' id='confirm-password' placeholder='CONFIRME SUA SENHA'>
+
         </div>
         <div>
           <button type='button' class='register-btn'>CADASTRAR</button>
