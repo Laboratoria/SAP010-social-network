@@ -1,6 +1,5 @@
 import { authLogin } from "../Firebase/instalfirebase";
 import { registerUser } from "../Register/register";
-
 import "../Login/login.css";
 
 export const loginUser = () => {
@@ -19,9 +18,7 @@ export const loginUser = () => {
   <section class="login-page">
     <section class="form">
       <form class="login-form show" method="post" id="login">
-        <section class="titulos">
-          <h1 class="titulo">Food Review</h1>
-        </section>
+        <h1 class="login-titulo">Food Review</h1>
         <section>
           <input id=txtEmail type="text" placeholder="Email" required />
           <input id=txtPassword type="password" placeholder="Senha" required/>
