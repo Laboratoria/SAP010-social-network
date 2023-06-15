@@ -16,7 +16,8 @@ export default () => {
                 <input type="text" class="inserir_email" id="inseriremail" placeholder="Digite seu e-mail"/>
                 </p>
                 <p class="senha">
-                <input type="text" class="digite_senha" id="digitesenha" placeholder="Digite sua senha"/>
+                <input type="password" class="digite_senha" id="digitesenha" placeholder="Digite sua senha"/>
+                <i class="bi bi-eye-fill" id="olinho-visual" onclick="mostrarsenha()"></i> 
                 </p> 
             </form>
             <p class="form">
@@ -81,3 +82,19 @@ const logar = container.querySelector(".btnLogar")
 return container;
 
 };
+// função do olho 
+function mostrarsenha() {
+  var inputPass = document.getElementById('digitesenha')
+  var btnShowPass = document.getElementById('olinho-visual')
+
+  if(inputPass.type === 'password'){
+    inputPass.setAttribute('type','text')
+    btnShowPass.classList.replace('bi-eye-fill','bi-eye-slash-fill')
+  }
+  else {
+      inputPass.setAttribute('type','password')
+      btnShowPass.classList.replace('bi-eye-slash-fill','bi-eye-fill')
+  }
+
+
+}
