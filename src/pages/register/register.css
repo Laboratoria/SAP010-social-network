@@ -1,14 +1,7 @@
-/* :root{
-    --blue: #30A2FF;
-    --lightblue: #AEE2FF;
-    --orange: #E55807;
-    --white: #ffffff;
-    --black: #000000;
-} */
-
 .form-register {
     justify-content: center;
     display: grid;
+    margin-top: 2em;
 }
 
 body {
@@ -20,10 +13,6 @@ body {
     background-color: var(--blue);
     height: fit-content;
     
-}
-
-.title  {
-    font-size: 2.5em;
 }
 
 
@@ -80,12 +69,9 @@ body {
 
 @media screen and (min-width: 769px) {
     .form-register{
-        /* display: block; */
-        /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
         margin: 0;
         padding-bottom: 2.5rem;
         padding-top: 2.5rem;
-        /* border: 2px solid var(--lightblue); */
         border-radius: 22px;
         width: 24em;
         height: 28em;

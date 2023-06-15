@@ -54,7 +54,7 @@ export default () => {
 
   const templateRegister = ` 
     <section class='form-register'>
-      <p class='title'>Cadastrar-se</p>
+      <h2 class='title'>Cadastrar-se</h2>
       <form class='register-form'>
         <div>
           <input type='text' class='inputs-register' id='name-user' placeholder='NOME'>

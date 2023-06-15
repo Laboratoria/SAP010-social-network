@@ -13,7 +13,6 @@
 .login-form {
     display: flex;
     flex-direction: column;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 0;
     padding-bottom: 2.5rem;
     }
@@ -147,43 +146,43 @@ input::placeholder {
     }
 
     .login-form {
-            display: flex;
-            flex-direction: column;
-            margin: 0;
-            padding-bottom: 2.5rem;
-            border: 2px solid var(--lightblue);
-            border-radius: 22px;
-            width: 24em;
-            height: 28em;
-            background-color:var(--lightblue); 
-        }
-
-        .register-button {
-            background-color: var(--lightblue);
-        }
-
-        .reg-btn {
-            color: black;   
-        }
-        .register-button:hover {
-            background-color: #30A2FF;
-            border-radius: 15px 15px 15px 15px;
-        }
-        .reg-btn:hover {
-            color: var(--lightblue);  
-        }
-
-        #login-button:hover {
-        background-color: var(--lightblue);
-       }
-
-        .google-btn {
-        width: 10em;
-        height: 3em;
-        }
-
-        .facebook-btn {
-        width: 10em;
-        height: 3em;
-        }
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding-bottom: 2.5rem;
+        border: 2px solid var(--lightblue);
+        border-radius: 22px;
+        width: 24em;
+        height: 28em;
+        background-color:var(--lightblue); 
     }
+
+    .register-button {
+        background-color: var(--lightblue);
+    }
+
+    .reg-btn {
+        color: black;   
+    }
+    .register-button:hover {
+        background-color: #30A2FF;
+        border-radius: 15px 15px 15px 15px;
+    }
+    .reg-btn:hover {
+        color: var(--lightblue);  
+    }
+
+    #login-button:hover {
+    background-color: var(--lightblue);
+    }
+
+    .google-btn {
+    width: 10em;
+    height: 3em;
+    }
+
+    .facebook-btn {
+    width: 10em;
+    height: 3em;
+    }
+}
