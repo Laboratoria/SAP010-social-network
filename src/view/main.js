@@ -1,8 +1,8 @@
-import { login } from './view/home/login.js';
-import { cadastro } from './view/home/cadastro.js';
-import { home } from './view/home/home.js';
-import { feed } from './view/feed/feed.js';
-import { checkLogin } from './lib/index.js';
+import { login } from './home/login.js';
+import { cadastro } from './home/cadastro.js';
+import { home } from './home/home.js';
+import { feed } from './feed/feed.js';
+import { checkLogin } from '../lib/index.js';
 
 const main = document.querySelector('#main');
 const init = async () => {

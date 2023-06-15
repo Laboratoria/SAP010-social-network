@@ -20,26 +20,29 @@ export const feed = () => {
             <input type="radio" id="quero-doar" name="quero" value="quero-doar">
             <label for="quero-doar">Quero doar</label>
             <br>
-            <label for="idade">Idade:</label>
+            <label for="idade">Idade pet:</label>
             <input type="number" id="idade" name="idade">
             <label for="especie">Espécie:</label>
             <select name="select" id="especie">
             <option value="cachorro">Cachorro</option>
             <option value="gato" selected>Gato</option>
+            <option value="outros" selected>Outros</option>
             </select>
  
             <label for="sexo">Sexo:</label>
             <select name="select">
-            <option value="sexo1">Feminino</option>
-            <option value="sexo2" selected>Masculino</option>
+            <option value="sexo1">Fêmea</option>
+            <option value="sexo2" selected>Macho</option>
             </select>
             <br> 
 
             <input type="text" id="raca" name="raca" placeholder="Raça">
 
             <input type="text" id="local" name="local" placeholder="Localização">
+
+            <input type="text" id="contato" name="contato" placeholder="(xx) xxxxx-xxxx">
             <br>
-            <textarea id="mensagem" name="mensagem" rows="4" cols="50" placeholder=" Escreva sua mensagem aqui."></textarea>
+            <textarea id="mensagem" name="mensagem" rows="4" cols="20" placeholder=" Escreva sua mensagem aqui."></textarea>
             <br>
 
 
