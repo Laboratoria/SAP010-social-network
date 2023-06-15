@@ -77,5 +77,6 @@ export default () => {
         });
     }
   });
+
   return registerContainer;
 };

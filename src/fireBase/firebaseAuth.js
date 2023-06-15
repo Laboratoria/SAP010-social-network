@@ -1,5 +1,8 @@
 import {
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from 'firebase/auth';
@@ -15,12 +18,12 @@ export const createUser = (email, senha, nome, sobrenome, displayName) =>
   });
 //criar um catch
 
-//export const login = (email, senha) =>
-//signInWithEmailAndPassword(Auth, email, senha);
+export const signIn = (email, password) =>
+signInWithEmailAndPassword(auth, email, password);
 
-//export const googleLogin = () => {
-//  const provider = new GoogleAuthProvider();
-//  return signInWithPopup(Auth, provider);
-//};
 
+export const signInGoogle = () => {
+  const provider = new GoogleAuthProvider()
+  return signInWithPopup(auth, provider)
+}
 export const logOut = () => signOut(auth);

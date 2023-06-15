@@ -15,7 +15,8 @@ async function fetchPosts() {
 
 async function showFeed() {
   const posts = await fetchPosts();
-  const rootElement = document.getElementById('root');
+  //const rootElement = document.getElementById('root');
+  const feedContainer = document.createElement('div');
 
   posts.forEach((post) => {
     const postElement = document.createElement('div');
@@ -37,9 +38,11 @@ async function showFeed() {
     postElement.appendChild(dateElement);
     postElement.appendChild(textElement);
     postElement.appendChild(likeElement);
-
-    rootElement.appendChild(postElement);
+    //rootElement.appendChild(postElement);
+    feedContainer.appendChild(postElement)
   });
+
+  return feedContainer;
 }
 
 export {showFeed};
