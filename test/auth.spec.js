@@ -11,6 +11,7 @@ import {
   createUserWithEmail,
   loginWithEmail,
   getUserId,
+  getUserName,
 } from '../src/firebase/auth';
 
 jest.mock('firebase/auth');
@@ -95,5 +96,31 @@ describe('getUserId', () => {
     const result = getUserId();
 
     expect(result).toBe(userId);
+  });
+});
+
+describe('getUserName', () => {
+  it('Return the user name if user is authenticated', () => {
+    const authUser = {
+      currentUser: {
+        displayName: 'Maria Silva',
+      },
+    };
+    getAuth.mockReturnValue(authUser);
+
+    const result = getUserName();
+
+    expect(result).toBe('Maria Silva');
+  });
+
+  it('return null if user is not authenticated', () => {
+    const authUser = {
+      currentUser: null,
+    };
+    getAuth.mockReturnValue(authUser);
+
+    const result = getUserName();
+
+    expect(result).toBeNull();
   });
 });

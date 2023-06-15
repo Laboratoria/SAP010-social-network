@@ -17,13 +17,22 @@ export const getUserId = () => {
   return auth.currentUser.uid;
 };
 
-export const createUserWithEmail = (name, email, password) => {
+export const getUserName = () => {
+  const auth = getAppAuth();
+  const user = auth.currentUser;
+  if (user) {
+    return user.displayName;
+  }
+  return null;
+};
+
+export const createUserWithEmail = (name, lastName, email, password) => {
   const auth = getAppAuth();
   return createUserWithEmailAndPassword(auth, email, password).then(
     (userCredential) => {
       const user = userCredential.user;
       return updateProfile(user, {
-        displayName: `${name}`,
+        displayName: `${name} ${lastName}`,
       });
     },
   );
