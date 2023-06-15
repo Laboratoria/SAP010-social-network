@@ -56,8 +56,8 @@ export default () => {
           userData(
             nameElement.value,
             lastnameElement.value,
-            userElement.value,
-            emailElement.value
+            emailElement.value,
+            userElement.value
           )
         )
         .then(() => {
