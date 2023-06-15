@@ -36,10 +36,9 @@ h2{
   display:flex;
   flex-direction: column;
   align-items: center;
-  line-height: 30px;
   width: 80vw ;
   background-image:none;
-  border: 1px solid #C95A3E;
+  border: 1.5px solid #C95A3E;
   border-radius: 30px;
   padding: 20px 20px 20px 20px;
   margin-top: 4vh;
@@ -50,11 +49,26 @@ h2{
   border-radius: 20px;
   height: 5vh;
   border: none;
-  margin: 8px;
+  margin: 8px 8px 2px 8px;
   width: 75vw;
   padding-left: 10px;
   background-color: #D9D9D955;
   color: #fff;
+}
+
+.input-error{
+  border: 1.5px solid #9D2045;
+}
+
+.text-email-error,
+.text-password-error{
+  font-family: 'arial', cursive;
+  font-size: 15px;
+  color: #9D2045;
+}
+
+.text-password-error{
+  margin-bottom: 8px;
 }
 
 .input-login::placeholder{
@@ -68,6 +82,7 @@ h2{
   border: none;
   cursor: pointer;
   padding: 5px 10px;
+  margin: 8px;
 }
 
 .button-login {
@@ -103,10 +118,14 @@ h2{
   }
 
   .text-google, .text-new-account{
-    font-family: 'arial', cursive;
     font-size: 10px;
-    color:#fff
   }
+
+  .text-email-error,
+  .text-password-error{
+    font-size: 10px;
+  }
+
   .logo-google {
     width: 30px;
   }

@@ -15,19 +15,21 @@ export const getLoginPage = () => {
       <h2>TravellersBook</h2>
     </section>
 
-    <section class="form-login">
+    <form class="form-login">
       <span class="text-title">Faça seu login</span>
       <input class="input-login" type="email" id="input-email" placeholder="user@email.com" />
+      <span class="text-email-error"></span>
       <input class="input-login" type="password" id="input-password" placeholder="senha" />
-      <button class="button-login" id="button-login">Entrar</button>
+      <span class="text-password-error"></span>
+      <button class="button-login" id="button-login" type="submit">Entrar</button>
       <span class="text-google">ou acesse com sua conta Google:</span>
-      <button class="button-login-google" id="button-login-google">
+      <button class="button-login-google" id="button-login-google" type="button">
          <img src="../img/googlelogo.png" alt="Logo Google" class="logo-google">
       </button>
       <span class="text-new-account">ainda não tem conta?</span>
-      <button class="button-new-account" id="button-new-account">Crie uma conta</button>
+      <button class="button-new-account" id="button-new-account" type="button">Crie uma conta</button>
       <!--criar um link de redirecionameto para criar nova conta, para usar a função implementada no js-->
-    </section>
+    </form>
   `
   // o content é uma string que tem o conteúdo da página HTML
   // loginContainer é a div. o innerHTML é um atributo da div que é um "valor", tudo que está dentro da tag do elemento.
@@ -42,13 +44,24 @@ export const getLoginPage = () => {
 
 // é uma função que recebe a div do login como parâmetro e cria os eventos de click nos botões.
 function setUpLoginElements(loginContainer) {
-  const buttonLogin = loginContainer.querySelector('#button-login');
+  const formLogin = loginContainer.querySelector('.form-login');
   const buttonNewAccount = loginContainer.querySelector('#button-new-account');
   const buttonLoginGoogle = loginContainer.querySelector('#button-login-google');
   const inputEmail = loginContainer.querySelector('#input-email');
+  const textEmailError = loginContainer.querySelector(".text-email-error");
+  const textPasswordError = loginContainer.querySelector(".text-password-error")
   const inputPassword = loginContainer.querySelector('#input-password');
 
-  buttonLogin.addEventListener('click', event => {
+  formLogin.addEventListener('submit', event => {
+    event.preventDefault();
+
+    inputEmail.classList.remove('input-error');
+    textEmailError.innerHTML = ""
+
+    inputPassword.classList.remove('input-error');
+    textPasswordError.innerHTML = ""
+
+
     const email = inputEmail.value;
     const password = inputPassword.value;
 
@@ -67,23 +80,27 @@ function setUpLoginElements(loginContainer) {
         // Ocorreu um erro durante o login
         switch (error.code) {
           case 'auth/user-not-found':
-            alert('Usuário não encontrado');
-            break;
-
-          case 'auth/wrong-password':
-            alert('Senha incorreta');
+            inputEmail.classList.add('input-error')
+            textEmailError.innerHTML = "Usuário não encontrado";
             break;
 
           case 'auth/invalid-email':
-            alert('E-mail inválido');
+            inputEmail.classList.add('input-error');
+            textEmailError.innerHTML = "E-mail inválido";
+            break;
+
+          case 'auth/wrong-password':
+            inputPassword.classList.add('input-error');
+            textPasswordError.innerHTML = "Senha incorreta";
             break;
 
           case 'auth/missing-password':
-            alert('Digite a senha');
+            inputPassword.classList.add('input-error');
+            textPasswordError.innerHTML = "Digite a senha";
             break;
 
           default:
-            alert('Erro ao fazer o login: ' + error.code);
+            textPasswordError.innerHTML = "Erro ao fazer o login: " + error.code;
         }
       });
   });
