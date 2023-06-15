@@ -1,42 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Prompt&family=Sunflower:wght@700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
-
-
-:root {
-  --CorPrimaria: #ff4500;
-  --CorSecundaria: #f9ab59;
-  --CorTerciaria: #fff;
-  --CorQuartenaria: #f2f2f2;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Prompt", "Sunflower";
-}
-
-body {
-  height: 100vh;
-  width: 100vw;
-  background-color: var(--CorTerciaria);
-  overflow: hidden;
-}
-
 .backgroundTwo svg {
   width: 500px;
   height: 150px;
   background: var(--CorPrimaria);
-  transform: matrix(4.94, -5.34, 6.8, 2.91, 5, 10);
+  transform: matrix(3.94, -5.34, 6.8, 2.91, 5, 0);
+  overflow: hidden;
 }
 
 .backgroundTwo .shape-fill {
   fill: var(--CorPrimaria);
-}
-
-.login-page {
-  display: flex;
-  align-items: center;
 }
 
 .imagemMap {
@@ -45,35 +16,42 @@ body {
 }
 
 .imagemLogo {
-  display: flex;
   width: 50vw;
   position: absolute;
-  margin: 2px 70px;
+  right: 100px;
+  top: 150px;
+  left: 80px;
+  bottom: 10px;
 }
 
 .subtitulo {
   position: absolute;
   color: var(--CorTerciaria);
   font-size: 3rem;
-  margin-top: -150px;
-  margin-left: 20px;
+  top: 10px;
+  left: 20px;
 }
 
-.titulo {
-  font-size: 2.5rem;
+.login-page {
+  display: flex;
+  align-items: center;
+}
+
+.login-titulo {
+  font-size: 2.7rem;
   color: var(--CorPrimaria);
   font-family: 'Nunito Sans', sans-serif;
 }
 
 .form {
-  display: flex;
   position: absolute;
-  max-width: 400px;
-  margin-left: 67%;
-  margin-top: 450px;
+  max-width: 430px;
+  right: 70px;
+  top: 200px;
   padding: 45px;
   text-align: center;
   border-radius: 15px;
+  background-color: var(--CorTerciaria);
   -webkit-box-shadow: 0px 0px 12px 0px rgba(28, 28, 28, 0.15);
   -moz-box-shadow: 0px 0px 12px 0px rgba(28, 28, 28, 0.15);
   box-shadow: 0px 0px 12px 0px rgba(28, 28, 28, 0.15);
@@ -86,24 +64,23 @@ body {
   background: var(--CorTerciaria);
   width: 100%;
   border: 0;
-  margin: 16px 0px;
-  padding: 6px 15px;
-  font-size: 14px;
+  margin-top: 30px;
+  padding: 7px 10px;
+  font-size: 0.9rem;
   border-bottom: 1px solid #bababa;
 }
 
 .form button {
-  /*width: 90px;*/
   font-family: "prompt";
   background: var(--CorPrimaria);
   border: 0;
+  margin-top: 25px;
   padding: 10px 40px;
   justify-content: center;
   color: var(--CorTerciaria);
   border-radius: 5px;
   font-size: 1em;
   cursor: pointer;
-
 }
 
 .form button:hover,
@@ -118,23 +95,19 @@ body {
   display: inline-block;
   width: 32px;
   cursor: pointer;
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
 .form .message {
-  margin: 19px 0 0;
   color: var(--CorPrimaria);
-  font-size: 12px;
+  font-size: 0.9rem;
+  margin-top: 20px;
 }
 
 .form .message a {
   font-weight: bold;
   color: var(--CorPrimaria);
   text-decoration: none;
-}
-
-.form .register-form {
-  display: none;
 }
 
 .form .login-form {
@@ -165,7 +138,45 @@ body {
   width: 100%;
 }
 
-@media screen and (max-width: 1015px) {}
+@media screen and (max-width: 1350px) {
+  .backgroundTwo svg {
+    width: 500px;
+    height: 150px;
+    background: var(--CorPrimaria);
+    transform: matrix(3.94, -5.34, 5.8, 2.91, 5, 0);
+  }
+
+  .subtitulo {
+    position: absolute;
+    color: var(--CorTerciaria);
+    font-size: 2.8rem;
+    top: 10px;
+    left: 20px;
+  }
+}
+@media screen and (max-width: 1245px) {
+  .backgroundTwo svg {
+    width: 500px;
+    height: 150px;
+    background: var(--CorPrimaria);
+    transform: matrix(3.94, -5.34, 5.8, 2.91, 5, 0);
+  }
+
+  .imagemLogo {
+    width: 50vw;
+    position: absolute;
+    top: 150px;
+    left: 50px;
+    bottom: 10px;
+  }
+
+  .form {
+    right: 60px;
+    top: 200px;
+    padding: 40px;
+  }
+
+}
 
 @media screen and (max-width: 810px) {}
 
@@ -173,13 +184,15 @@ body {
 
 @media screen and (max-width: 590px) {}
 
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 490px) {
   .imagemMap {
     display: flex;
     position: absolute;
-    width: 70vw;
-    top: 5px;
-    margin-left: 60px;
+    width: 60vw;
+    top: 10px;
+    left: 40px;
+    right: 10px;
+    margin-right: 10px;
     transform: rotate(-4.39deg);
   }
 
@@ -189,69 +202,53 @@ body {
 
   .backgroundTwo svg {
     width: 300px;
-    height: 110px;
+    height: 115px;
     transform: matrix(1.94, -1.34, 1.42, 2.0, 5, 0);
   }
 
   .subtitulo {
     display: none;
-    font-size: 1.2rem;
-    color: #ff4500;
-    bottom: 10px;
   }
 
-  .form .titulo {
+  .login-titulo {
     font-size: 1.8rem;
+    margin-top: -15px;
   }
 
   .form {
-    max-width: 380px;
-    margin-left: 70px;
-    bottom: -45px;
-    padding: 30px;
+    width: 300px;
+    height: 300px;
+    left: 30px;
+    right: 85px;
+    top: 330px;
+    padding: 45px;
   }
 
   .form input {
     display: flex;
-    flex-direction: column;
-    width: 50vw;
-    margin: 20px 2px;
-    padding: 6px 15px;
-    font-size: 14px;
+    width: 100%;
+    margin-top: 25px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
     border-bottom: 1px solid #bababa;
   }
 
   .form button {
     width: 80px;
-    padding: 10px 10px;
-    font-size: 0.9em;
+    padding: 8px;
+    margin-top: 25px;
+    margin-left: 9px;
+    font-size: 0.8rem;
   }
 
   .logo {
     margin-right: 2px;
-    gap: 5px;
     width: 32px;
-    margin-top: 2px;
+    margin-top: 25px;
   }
 
   .form .message {
-    margin: 19px 0 0;
-    font-size: 0.7rem;
-  }
-
-  .buttons {
-    gap: 25px;
-  }
-
-  .buttons .cadastrar {
-    padding: 10px 2px;
-  }
-
-  .social {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
+    margin-top: 15px;
+    font-size: 0.8rem;
   }
 }
