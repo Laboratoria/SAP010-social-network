@@ -27,6 +27,9 @@ export default () => {
           <div class='inputs-container'>
             <input type='text' class='inputs-info' placeholder='E-MAIL' id='email' />
             <input type='password' class='inputs-info' placeholder='SENHA' id='senha' />
+            <button type="button" id="show-password" class="btn-eye">
+            <img src='img/assets/ojo.png' id='eye-img' alt='Logo do olho'>
+            </button> 
           </div>
           <nav>
             <button type='button' id='login-button' href='#'>ENTRAR</button>
@@ -54,7 +57,7 @@ export default () => {
 
   container.innerHTML = templateLogin;
 
-  // Selecionando os elementos do formulário de login.
+    // Selecionando os elementos do formulário de login.
   const emailInput = container.querySelector("#email");
   const senhaInput = container.querySelector("#senha");
   const loginButton = container.querySelector("#login-button");
@@ -103,5 +106,19 @@ export default () => {
 
   facebookButton.addEventListener("click", handleFacebookLogin);
 
+  let btn = container.querySelector('.btn-eye');
+  btn.addEventListener('click', function() {
+      let input = container.querySelector('#senha');
+      if(input.getAttribute('type') === 'text') {
+          input.setAttribute('type', 'password');
+      } else {
+          input.setAttribute('type', 'text');
+      }
+  });
+  
+
+
   return container;
 };
+
+
