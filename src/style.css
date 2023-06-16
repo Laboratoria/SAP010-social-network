@@ -9,15 +9,15 @@
 }
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: "Prompt", "Sunflower";
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    width: 100%;
-    height: auto;
     background-color: var(--CorTerciaria);
+    height: 100vh;
+    height: auto;
     overflow: hidden;
 }
