@@ -1,13 +1,13 @@
-import { errorsFirebase, validateRegister } from '../../validations.js';
+// import { errorsFirebase, validateRegister } from '../../validations.js';
 
 import {
   loginWithEmail,
   loginGoogle,
   loginFacebook,
-} from "../../firebase/auth.js";
+} from '../../firebase/auth.js';
 
 export default () => {
-  const container = document.createElement("div");
+  const container = document.createElement('div');
 
   const templateLogin = `
     <section class='login-wrap'>
@@ -15,7 +15,7 @@ export default () => {
         <figure class='logo-container'>
           <img src='img/assets/logologin.png' id='logo' alt='Logo da ExploraAí'>
         </figure>
-        <h1 class="title1">ExplorAí</h1>
+        <h1 class='title1'>ExplorAí</h1>
         <br>
         <h6 class='left-text'>COMPARTILHE EXPERIÊNCIAS E AVENTURAS.
           <br>
@@ -25,11 +25,11 @@ export default () => {
       <div class='right'>
           <form class='login-form'>
           <br>
-          <h2 class="title">Entrar</h2>
+          <h2 class='title'>Entrar</h2>
           <div class='inputs-container'>
             <input type='text' class='inputs-info' placeholder='E-MAIL' id='email' />
             <input type='password' class='inputs-info' placeholder='SENHA' id='senha' />
-            <button type="button" id="show-password" class="btn-eye">
+            <button type='button' id='show-password' class='btn-eye'>
             <img src='img/assets/ojo.png' id='eye-img' alt='Logo do olho'>
             </button> 
           </div>
@@ -62,12 +62,12 @@ export default () => {
 
   container.innerHTML = templateLogin;
 
-    // Selecionando os elementos do formulário de login.
-  const emailInput = container.querySelector("#email");
-  const senhaInput = container.querySelector("#senha");
-  const loginButton = container.querySelector("#login-button");
-  const googleButton = container.querySelector("#google-btn");
-  const facebookButton = container.querySelector("#btn-facebook");
+  // Selecionando os elementos do formulário de login.
+  const emailInput = container.querySelector('#email');
+  const senhaInput = container.querySelector('#senha');
+  const loginButton = container.querySelector('#login-button');
+  const googleButton = container.querySelector('#google-btn');
+  const facebookButton = container.querySelector('#btn-facebook');
 
   function printErrorMessage(message) {
     const errorMessage = document.getElementById('error-message');
@@ -86,7 +86,7 @@ export default () => {
     // Chamando a função de login com e-mail e senha.
     loginWithEmail(email, senha)
       .then(() => {
-        window.location.hash = "#timeline";
+        window.location.hash = '#timeline';
       })
       .catch(() => {
         printErrorMessage('E-mail ou senha incorretos');
@@ -97,7 +97,7 @@ export default () => {
   const handleGoogleLogin = () => {
     loginGoogle()
       .then(() => {
-        window.location.hash = "#timeline";
+        window.location.hash = '#timeline';
       })
       .catch(() => {
         printErrorMessage2('Erro ao logar com Google');
@@ -107,32 +107,27 @@ export default () => {
   const handleFacebookLogin = () => {
     loginFacebook()
       .then(() => {
-        window.location.hash = "#timeline";
+        window.location.hash = '#timeline';
       })
       .catch(() => {
         printErrorMessage2('Erro ao logar com Facebook');
       });
   };
 
-  loginButton.addEventListener("click", handleLogin);
+  loginButton.addEventListener('click', handleLogin);
 
-  googleButton.addEventListener("click", handleGoogleLogin);
+  googleButton.addEventListener('click', handleGoogleLogin);
 
-  facebookButton.addEventListener("click", handleFacebookLogin);
+  facebookButton.addEventListener('click', handleFacebookLogin);
 
-  let btn = container.querySelector('.btn-eye');
-  btn.addEventListener('click', function() {
-      let input = container.querySelector('#senha');
-      if(input.getAttribute('type') === 'text') {
-          input.setAttribute('type', 'password');
-      } else {
-          input.setAttribute('type', 'text');
-      }
+  const btn = container.querySelector('.btn-eye');
+  btn.addEventListener('click', () => {
+    const input = container.querySelector('#senha');
+    if (input.getAttribute('type') === 'text') {
+      input.setAttribute('type', 'password');
+    } else {
+      input.setAttribute('type', 'text');
+    }
   });
-  
-
-
   return container;
 };
-
-
