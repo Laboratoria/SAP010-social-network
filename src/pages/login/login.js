@@ -40,12 +40,11 @@ export default () => {
     <button type="button" onclick="entrarLoginUsuario()">Entrar</button>
     <button type="button" onclick="registrarNovoUsuario()">registrar</button><p>
 
-    <button type="button" onclick="redefinirSenha()">Esqueceu a Senha? Clique aqui!</button><p>
+  
 
-    <a href="register" > Esqueceu a Senha? Clique aqui!</a>
+    <a href="#register"> Esqueceu a Senha? Clique aqui!</a>
 
-    <!--<button id="reset" class="btn-option-reset"  >Limpar</button><p>-->
-
+   
 
   </fieldset>`
 
@@ -53,5 +52,5 @@ export default () => {
   container.innerHTML = template;
 
 
- return container;
+  return container;
 }
