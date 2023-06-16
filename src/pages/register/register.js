@@ -5,8 +5,24 @@ export default () => {
   const container = document.createElement('div');
 
   const templateRegister = `
+
+
+
+     
+  <h1> BEM VINDO A </h1>
+  
+  <img class="logo2" src="./images/logo2.png">
+ 
+ 
+ 
+ 
+  <body>
      
     <fieldset>
+
+    <legend> Cadastre-se </legend>
+
+    <img class="logo4" src="./images/logo4.png">
 
    <legend> *CAMPOS OBRIGATÓRIOS  </legend>
 
@@ -34,12 +50,12 @@ export default () => {
 
   </fieldset> `
 
-     container.innerHTML = templateRegister;
+  container.innerHTML = templateRegister;
 
-     //const nameInput = container.querySelector('#nameRegister');
-     //const emailInput = container.querySelector('#emailRegister');
-     //const senhaInput = container.querySelector('#senhaUsuario');
-     //const registerButton = container.querySelector('#btn-register');
+  //const nameInput = container.querySelector('#nameRegister');
+  //const emailInput = container.querySelector('#emailRegister');
+  //const senhaInput = container.querySelector('#senhaUsuario');
+  //const registerButton = container.querySelector('#btn-register');
 
 
 
