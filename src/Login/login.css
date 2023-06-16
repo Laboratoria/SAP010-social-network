@@ -60,9 +60,9 @@
 }
 
 .form input {
-  border-bottom: 1px solid #bababa;
   background: var(--CorTerciaria);
   border: 0;
+  border-bottom: 1px solid #bababa;
   font-family: "Poppins", sans-serif;
   font-size: 0.9rem;
   margin-top: 30px;
