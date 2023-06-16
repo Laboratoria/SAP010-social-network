@@ -4,6 +4,8 @@ import {
   signInWithEmailAndPassword,
   getAuth,
   updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -20,6 +22,10 @@ const auth = getAuth(app);
 
 // função para fazer login do usuario
 export const authLogin = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
+
+// função para login da conta do google
+const authProvedor = new GoogleAuthProvider();
+export const authLoginGoogle = () => signInWithPopup(auth, authProvedor);
 
 // cadastrar novo usuário
 export const newUser = async (email, senha, displayName) => {
