@@ -36,7 +36,12 @@ const init = async () => {
 };
 
 window.addEventListener('load', async () => {
-  window.location.hash = '#home';
-  main.appendChild(home());
+  const userLoggedIn = await checkLogin();
+  if (userLoggedIn) {
+    main.appendChild(feed());
+  } else {
+    window.location.hash = '#home';
+    main.appendChild(home());
+  }
   init();
 });
