@@ -7,7 +7,7 @@ export default () => {
   const template=`
   <div class="container" id="container-template">
     <header>
-      <img class="logo" src= "imagens/logo mania de cupom.png" alt="logo"></img>
+      <img class="logo" src= "imagens/logo mania.png" alt="logo">
     </header>
     <form class="form" id="form">
             <img class="etiqueta" src="imagens/etiqueta de desconto preta.png" alt="etiqueta" />
@@ -27,7 +27,7 @@ export default () => {
             </form>
   
             <p class="form">
-              <button class="btnCadastrar" id="btnCadastrar">CADASTRAR!</button>  
+              <button class="btnCadastrar2" id="btnCadastrar">CADASTRAR!</button>  
             </p>
        </div>
     </div>
@@ -36,7 +36,7 @@ export default () => {
 
 container.innerHTML = template;
 
-const register = container.querySelector(".btnCadastrar")
+const register = container.querySelector(".btnCadastrar2")
  register.addEventListener('click', () => {
   const email2 = container.querySelector(".inserir_email2")
   const password2 = container.querySelector(".digite_senha2")
