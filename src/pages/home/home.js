@@ -81,18 +81,43 @@ return container;
 
 };
 // função do olho 
-function mostrarsenha() {
-  var inputPass = document.getElementById('digitesenha')
-  var btnShowPass = document.getElementById('olinho-visual')
+//function mostrarsenha() {
+ // var inputPass = container.getElementById('digitesenha')
+//  var btnShowPass = container.getElementById('olinho-visual')
 
-  if(inputPass.type === 'password'){
-    inputPass.setAttribute('type','text')
-    btnShowPass.classList.replace('bi-eye-fill','bi-eye-slash-fill')
+  //if(inputPass.type === 'password'){
+  //  inputPass.setAttribute('type','text')
+   // btnShowPass.classList.replace('bi-eye-fill','bi-eye-slash-fill')
+  //}
+  //else {
+    //  inputPass.setAttribute('type','password')
+     // btnShowPass.classList.replace('bi-eye-slash-fill','bi-eye-fill')
+ // }
+
+
+//}
+
+const passwordImput = document.getElementById("digitesenha")
+const olho = document.getElementById("olinho-visual")
+
+function mostrarsenha(){
+  let ImputTypePassoword = passwordImput.type === "password"
+
+  if(ImputTypePassoword){
+   // se for passowrd qual é ação
+   showPassord()
+  } else {
+    // se não for qual ação deve tomar
+
+   hidePassword()
   }
-  else {
-      inputPass.setAttribute('type','password')
-      btnShowPass.classList.replace('bi-eye-slash-fill','bi-eye-fill')
-  }
-
-
 }
+ function  showPassord(){
+  passwordImput.setAttribute( "type","text")
+
+  btnShowPass.classList.replace('bi-eye-fill','bi-eye-slash-fill')
+}
+ function hidePassword(){
+  passwordImput.setAttribute( "type","password")
+  
+ }
