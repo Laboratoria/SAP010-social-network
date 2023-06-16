@@ -116,15 +116,12 @@ body{
 }
 
 .btnCadastrar {
-
-
     position: relative;
     width: 30%;
     height: 4%;
     left: 60%;
     top: 850px;
     border-radius: 10px;
-    font-size: center;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -149,9 +146,10 @@ body{
     margin-top: 30%;
     width: 250px;
     height: 40px;
-    color: #B80C0C;
-     top: 110px;
-       
+    color: #F5B81D;
+    top: 120px;
+    margin: -60%;
+    
 }
 
 .inserir_email:hover, 
@@ -246,13 +244,14 @@ footer{
 
 
 div i{
-    font-size: 30px;
+    font-size: 25px;
     cursor: pointer;
     position: absolute;
     height: 5%;
     color: #B80C0C;
     margin-top: 3%;
-    
+    float:left;
+   margin:10px 0px 0px -30px;
 
 }
 
