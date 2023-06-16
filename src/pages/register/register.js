@@ -1,4 +1,5 @@
 
+
 export default () => {
 
   const container = document.createElement('div');
@@ -33,12 +34,12 @@ export default () => {
 
   </fieldset> `
 
-  //   container.innerHTML = templateRegister;
+     container.innerHTML = templateRegister;
 
-  //   const nameInput = container.querySelector('#nameRegister');
-  //   const emailInput = container.querySelector('#emailRegister');
-  //   const senhaInput = container.querySelector('#senhaUsuario');
-  //   const registerButton = container.querySelector('#btn-register');
+     //const nameInput = container.querySelector('#nameRegister');
+     //const emailInput = container.querySelector('#emailRegister');
+     //const senhaInput = container.querySelector('#senhaUsuario');
+     //const registerButton = container.querySelector('#btn-register');
 
 
 
