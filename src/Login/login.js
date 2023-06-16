@@ -1,9 +1,9 @@
-import { authLogin } from "../Firebase/instalfirebase";
-import { registerUser } from "../Register/register";
-import "../Login/login.css";
+import { authLogin, authLoginGoogle } from '../Firebase/instalfirebase';
+import { registerUser } from '../Register/register.js';
+import './login.css';
 
 export const loginUser = () => {
-  const container = document.createElement("div");
+  const container = document.createElement('div');
   const template = `
   <div class="backgroundTwo">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -20,12 +20,15 @@ export const loginUser = () => {
       <form class="login-form show" method="post" id="login">
         <h1 class="login-titulo">Food Review</h1>
         <section>
-          <input id=txtEmail type="text" placeholder="Email" required />
-          <input id=txtPassword type="password" placeholder="Senha" required/>
+          <input id= "txtEmail" type="text" placeholder="Email" required />
+          <input id= "txtPassword" type="password" placeholder="Senha" required/>
+          <span class="txt-error" id="txtError"></span>
           <div class="buttons">
-            <button class="full-width" id=btnLogin type="submit" name="send2">Entrar</button>
+            <button class="full-width" id= "btnLogin" type="submit" name="send2">Entrar</button>
             <div class="social">
+            <button class="btn-google" id="btn-google">
               <img class="logo" src="Img/Google.png" alt= "Logo Google">
+            </button>
               <img class="logo" src="Img/facebook.png" alt= "Logo Facebook">
             </div>
           </div>
@@ -37,29 +40,76 @@ export const loginUser = () => {
   `;
 
   container.innerHTML = template;
-  const email = container.querySelector("#txtEmail");
-  const senha = container.querySelector("#txtPassword");
-  const txtError = container.querySelector("#txtError");
-  const login = container.querySelector("#btnLogin");
-  const newAccountLink = container.querySelector("#newAccount"); // Selecionar o link "Cadastrar"
+  const userEmail = container.querySelector('#txtEmail');
+  const userSenha = container.querySelector('#txtPassword');
+  const txtError = container.querySelector('#txtError');
+  const login = container.querySelector('#btnLogin');
+  const newAccountLink = container.querySelector('#newAccount'); // Selecionar o link "Cadastrar"
+  const btnGoogle = container.querySelector('#btn-google');
 
+  const validarEmail = (email) => {
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regexEmail.test(email)) {
+      return 'Formato de e-mail inválido';
+    }
+    return ''; // Retorna uma string vazia se o email for válido
+  };
+
+  const validarSenha = (senha) => {
+    if (senha.length < 6) {
+      return 'A senha deve ter pelo menos 6 caracteres';
+    }
+    return '';
+  };
+
+  // função para usuário fazer login
   const fazerLogin = () => {
-    login.addEventListener("click", () => {
-      authLogin(email.value, senha.value)
+    login.addEventListener('click', async (event) => {
+      event.preventDefault();
+
+      const emailInput = userEmail.value;
+      const password = userSenha.value;
+      const emailError = validarEmail(emailInput);
+      const senhaError = validarSenha(password);
+
+      if (emailError || senhaError) {
+        // Se houver algum erro de email ou senha, exiba as mensagens de erro
+        txtError.setAttribute('style', 'display: block');
+        txtError.innerHTML = emailError || senhaError;
+      } else {
+        // Caso contrário, prossiga com o login
+        authLogin(emailInput, password)
+          .then(() => {
+            window.location.hash = '#feed';
+          })
+          .catch(() => {
+            txtError.setAttribute('style', 'display: block');
+            txtError.innerHTML = 'Usuário ou senha incorretos';
+          });
+      }
+    });
+  };
+
+  fazerLogin();
+
+  // login google
+  const loginGoogle = () => {
+    btnGoogle.addEventListener('click', () => {
+      authLoginGoogle()
         .then(() => {
-          window.location.href = "#feed";
+          window.location.hash = '#feed';
         })
         .catch(() => {
-          txtError.setAttribute("style", "display: block");
-          txtError.innerHTML = "Usuário ou senha incorretos";
+          txtError.innerHTML = 'Usuário ou senha incorretos';
         });
     });
   };
-  fazerLogin();
 
-    // Adicionar evento de clique ao botão "Cadastrar"
-  newAccountLink.addEventListener("click", () => {
-    container.innerHTML = "";
+  loginGoogle();
+
+  // Adicionar evento de clique ao botão "Cadastrar"
+  newAccountLink.addEventListener('click', () => {
+    container.innerHTML = '';
     container.appendChild(registerUser());
   });
 

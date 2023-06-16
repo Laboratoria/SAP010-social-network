@@ -1,6 +1,6 @@
 import { newUser } from "../Firebase/instalfirebase";
-import { loginUser } from "../Login/login";
-import "../Register/register.css";
+import { loginUser } from "../Login/login.js";
+import './register.css';
 
 export const registerUser = () => {
   const container = document.createElement("div");
