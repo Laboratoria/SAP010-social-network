@@ -49,6 +49,7 @@
 
 input::placeholder {
     text-align: center;
+    
 }
 
 .register-button {
@@ -100,7 +101,18 @@ input::placeholder {
 .left-text {
     display: none;
    }
+   .btn-eye {
+    position: absolute;
+    top: 51%;
+    margin-left: 15em;
+    transform: translateY(50%);
+    border: none;
+    cursor: pointer;
+}
 
+#eye-img{
+    width: 2em;
+}
 
 
 @media screen and (min-width: 768px) {
@@ -184,5 +196,10 @@ input::placeholder {
     .facebook-btn {
     width: 10em;
     height: 3em;
+    }
+
+    .btn-eye {
+    top: 42%; 
+    border: none;  
     }
 }
