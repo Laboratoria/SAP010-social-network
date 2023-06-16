@@ -30,7 +30,7 @@ export const feed = () => {
             </select>
  
             <label for="sexo">Sexo:</label>
-            <select name="select">
+            <select name="select" id="sexo">
             <option value="sexo1">Fêmea</option>
             <option value="sexo2" selected>Macho</option>
             </select>
@@ -69,6 +69,41 @@ export const feed = () => {
     }
 
   });
+  
+
+container.querySelector('#publicar').addEventListener('click', (event) => {
+  event.preventDefault(); 
+  
+
+  const idadePet = document.getElementById('idade').value;
+  const especie = document.getElementById('especie').value;
+  const sexo = document.getElementById('sexo').value;
+  const raca = document.getElementById('raca').value;
+  const localizacao = document.getElementById('local').value;
+  const contato = document.getElementById('contato').value;
+  const mensagem = document.getElementById('mensagem').value;
+
+
+  const post = document.createElement('div');
+  post.innerHTML = `
+    <p>Idade do pet: ${idadePet}</p>
+    <p>Espécie: ${especie}</p>
+    <p>Sexo: ${sexo}</p>
+    <p>Raça: ${raca}</p>
+    <p>Localização: ${localizacao}</p>
+    <p>Contato: ${contato}</p>
+    <p>Mensagem: ${mensagem}</p>
+  `;
+
+  
+  const feedPage = document.querySelector('.feed-page');
+  feedPage.appendChild(post);
+
+  
+  const modal = document.getElementById('meuModal');
+  modal.style.display = 'none';
+});
+  
 
   return container;
 };
