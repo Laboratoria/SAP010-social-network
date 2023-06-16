@@ -1,3 +1,5 @@
+import { errorsFirebase, validateRegister } from '../../validations.js';
+
 import {
   loginWithEmail,
   loginGoogle,
@@ -34,6 +36,7 @@ export default () => {
           <nav>
             <button type='button' id='login-button' href='#'>ENTRAR</button>
           </nav>
+          <p id='error-message' class='error-message'></p>
           <div class='txt1'>
             Esqueceu a senha? <br>
             Não possui uma conta?
@@ -50,6 +53,8 @@ export default () => {
             <button type='button' class='facebook-btn' id='btn-facebook'>
               <img src='img/assets/iconfacebook.png' id='facebook-img' alt='Logo do facebook'>
             </button>
+            <p id='errorLogar' class='error-message'></p>
+
           </figure>
         </form>
       </div>
@@ -64,6 +69,15 @@ export default () => {
   const googleButton = container.querySelector("#google-btn");
   const facebookButton = container.querySelector("#btn-facebook");
 
+  function printErrorMessage(message) {
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.textContent = message;
+  }
+  function printErrorMessage2(message) {
+    const errorMessage = document.getElementById('errorLogar');
+    errorMessage.textContent = message;
+  }
+
   // Função para lidar com o evento de login.
   const handleLogin = () => {
     const email = emailInput.value;
@@ -75,7 +89,7 @@ export default () => {
         window.location.hash = "#timeline";
       })
       .catch(() => {
-        alert("Usuário ou senha incorretos");
+        printErrorMessage('E-mail ou senha incorretos');
       });
   };
 
@@ -86,7 +100,7 @@ export default () => {
         window.location.hash = "#timeline";
       })
       .catch(() => {
-        alert("Erro ao fazer login com o Google");
+        printErrorMessage2('Erro ao logar com Google');
       });
   };
 
@@ -96,7 +110,7 @@ export default () => {
         window.location.hash = "#timeline";
       })
       .catch(() => {
-        alert("Erro ao fazer login com o Facebook");
+        printErrorMessage2('Erro ao logar com Facebook');
       });
   };
 

@@ -5,6 +5,7 @@
     --orange: #E55807;
     --white: #ffffff;
     --black: #000000;
+    --red: #e24242;
   }
 
 * {
@@ -22,6 +23,11 @@ body {
   background-color: var(--blue);
   display: flex;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.error-message {
+  color: var(--red);
+  font-style: italic;
+  margin: 6px;
 }
 
 footer {
