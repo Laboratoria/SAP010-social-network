@@ -14,25 +14,26 @@ export const feed = () => {
        
           <form id="form-post">
             <br>
-            <input type="radio" id="quero-adotar" name="quero" value="quero-adotar">
+            <input type="radio"  id="quero-adotar" name="quero" value="Quero adotar">
             <label for="quero-adotar">Quero adotar</label>
 
-            <input type="radio" id="quero-doar" name="quero" value="quero-doar">
+            <input type="radio"  id="quero-doar" name="quero" value="Quero doar">
             <label for="quero-doar">Quero doar</label>
             <br>
-            <label for="idade">Idade pet:</label>
-            <input type="number" id="idade" name="idade">
+            <input type="text" id="idade" name="idade" placeholder="Idade do pet">
             <label for="especie">Espécie:</label>
             <select name="select" id="especie">
-            <option value="cachorro">Cachorro</option>
-            <option value="gato" selected>Gato</option>
-            <option value="outros" selected>Outros</option>
+            <option value="" selected disabled >Selecionar</option>
+            <option value="Cachorro">Cachorro</option>
+            <option value="Gato" >Gato</option>
+            <option value="Outros">Outros</option>
             </select>
  
             <label for="sexo">Sexo:</label>
             <select name="select" id="sexo">
-            <option value="sexo1">Fêmea</option>
-            <option value="sexo2" selected>Macho</option>
+            <option value="" selected disabled >Selecionar</option>
+            <option value="Fêmea">Fêmea</option>
+            <option value="Macho">Macho</option>
             </select>
             <br> 
 
@@ -74,6 +75,13 @@ export const feed = () => {
 container.querySelector('#publicar').addEventListener('click', (event) => {
   event.preventDefault(); 
   
+  let opcao = ""
+    
+    if (document.getElementById('quero-doar').checked) {
+       opcao = document.getElementById('quero-doar').value
+    } else if (document.getElementById('quero-adotar').checked) {
+       opcao = document.getElementById('quero-adotar').value
+    }
 
   const idadePet = document.getElementById('idade').value;
   const especie = document.getElementById('especie').value;
@@ -86,13 +94,14 @@ container.querySelector('#publicar').addEventListener('click', (event) => {
 
   const post = document.createElement('div');
   post.innerHTML = `
-    <p>Idade do pet: ${idadePet}</p>
-    <p>Espécie: ${especie}</p>
-    <p>Sexo: ${sexo}</p>
-    <p>Raça: ${raca}</p>
-    <p>Localização: ${localizacao}</p>
-    <p>Contato: ${contato}</p>
-    <p>Mensagem: ${mensagem}</p>
+    
+    <section class='container'>
+    <div class='post-header'> Nome Sobrenome | ${localizacao} </div>
+    <div> ${opcao} </div>
+    <div class='post-inputs'> Idade do pet: ${idadePet} Espécie: ${especie} ${sexo} Raça: ${raca} </div> 
+    <p>${mensagem} </p>
+    <p>Contato: ${contato} </p>
+    </section>
   `;
 
   
