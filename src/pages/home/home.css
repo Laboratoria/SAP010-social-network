@@ -116,6 +116,29 @@ body{
 }
 
 .btnCadastrar {
+
+
+    position: relative;
+    width: 30%;
+    height: 4%;
+    left: 60%;
+    top: 850px;
+    border-radius: 10px;
+    font-size: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color:#F5B81D;
+    display: inline-block;
+    margin-top: 6%; 
+    background-color: black;
+    cursor: pointer;
+    box-shadow: -2px 3px 0#F5B81D;
+
     
     position:relative;
     background: black;
@@ -188,6 +211,7 @@ footer{
     
     align-items: center;
     display: flex;
+
     justify-content: center;
     max-width: 1200px;
     margin-top: 200px;
@@ -219,3 +243,23 @@ footer{
             
 }      
    
+
+    margin-left: 440px;
+    align-items:first baseline;
+    color: rgb(20, 19, 19);
+    border-radius: 20px;
+    margin-bottom: 0;
+    width: 100%;
+    font-size: small,10px;
+    margin-top: 15px;
+}
+
+div i{
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    height: 5%;
+    color: #B80C0C;
+
+}
+
