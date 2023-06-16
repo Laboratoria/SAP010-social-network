@@ -42,7 +42,7 @@ export default () => {
 
     <button type="button" onclick="redefinirSenha()">Esqueceu a Senha? Clique aqui!</button><p>
 
-    <a href="register" > Esqueceu a Senha? Clique aqui!</a>
+    <a href="cadastro.html" target="_blank"> Esqueceu a Senha? Clique aqui!</a>
 
     <!--<button id="reset" class="btn-option-reset"  >Limpar</button><p>-->
 
