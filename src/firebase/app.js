@@ -1,12 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-// TODO: Add SDKs for Firebase products that you want to use
+import { getFirestore } from 'firebase/firestore';
 
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: 'AIzaSyCkvwr2TtB_LKDqEormFriM2wNFISeBLXw',
   authDomain: 'social-network-lab-3ce72.firebaseapp.com',
@@ -19,3 +15,4 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const database = getFirestore(app);
