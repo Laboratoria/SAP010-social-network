@@ -5,7 +5,7 @@
     position: sticky;
 }
 
-#logo {
+.logo {
     width: 15em;
     justify-content: center;
 }
@@ -33,74 +33,44 @@
     margin-top: 2em;
     width: 20em;
     height: 3em;
-}
-
-#login-button {
-    background-color: var(--black);
-    color: var(--white);
-    border-radius: 5px 5px 5px 5px;
-    border: none;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    margin: 3em 0 0.5em 0;
-    width: 20em;
-    height: 3em;
-}
-
-input::placeholder {
     text-align: center;
-    
 }
 
-.register-button {
+.register-here {
+    text-decoration: none;
+    color: var(--black);
     border: none;
     width: 6em;
     font-size: 1.1rem;
     text-align: center;
-    background-color: #30A2FF;
+    background-color: var(--blue);
 }
 
-.reg-btn {
-    color: var(--lightblue);
-    text-decoration: none;   
-}
 
-.google-btn {
+.google-button, .facebook-button {
     background-color: var(--white);
     border: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     width: 4em;
-    margin-top: 2em;
-    margin-right: 2em;
+    margin: 2em 1em 2em 1em;
 }
 
-#google-img {
+.google-img, .facebook-img {
     width: 2em;
     height: 2em;
     margin: 0.5em 0.5em 0.5em 0.5em;
 }
 
-
-.facebook-btn {
-    background-color: var(--white);
-    border: none;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    width: 4em;
-    margin-top: 2em;
-    margin-right: 2em;
+.text {
+    color: black;
+    margin-top: 10px;
 }
-
-#facebook-img {
-    width: 2em;
-    height: 2em;
-    margin: 0.5em 0.5em 0.5em 0.5em;
-}
-
-.left-text {
+.text-slogan {
     display: none;
-   }
-   .btn-eye {
+}
+
+.button-eye {
     position: absolute;
     top: 51%;
     margin-left: 15em;
@@ -109,23 +79,15 @@ input::placeholder {
     cursor: pointer;
 }
 
-#eye-img{
+.eye-img{
     width: 2em;
 }
 
 
 @media screen and (min-width: 768px) {
-    #logo {
+    .logo {
         width: 20em;
         margin-left: 2em;
-    }
-
-    h1 {
-        font-size: 2.5em;     
-    }
-
-    h2 {
-        color: black;
     }
 
     .login-wrap {
@@ -143,18 +105,23 @@ input::placeholder {
     }
 
     .right {
-        margin-top: 120px;
+        margin-top: 70px;
     }
 
-    .txt1,
-    .txt2 {
+    .register-here {
+      background-color: var(--lightblue);
+    }
+
+    .text {
         color: black;
+        margin-top: 10px;
     }
 
-    .left-text {
+    .text-slogan {
         justify-content: center;
         display: flex;
-    }
+        filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 1));
+   }
 
     .login-form {
         display: flex;
@@ -168,37 +135,18 @@ input::placeholder {
         background-color:var(--lightblue); 
     }
 
-    .register-button {
-        background-color: var(--lightblue);
-    }
-
-    .reg-btn {
-        color: black;   
-    }
-    .register-button:hover {
-        background-color: #30A2FF;
+    .register-here:hover {
+        background-color: var(--darkblue);
         border-radius: 15px 15px 15px 15px;
+        color: var(--white);
     }
-    .reg-btn:hover {
-        color: var(--lightblue);  
-    }
-
-    #login-button:hover {
-    background-color: var(--lightblue);
-    }
-
-    .google-btn {
+    .facebook-button, .google-button {
     width: 10em;
     height: 3em;
     }
 
-    .facebook-btn {
-    width: 10em;
-    height: 3em;
-    }
-
-    .btn-eye {
-    top: 42%; 
+    .button-eye {
+    top: 36%; 
     border: none;  
     }
 }

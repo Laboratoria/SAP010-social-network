@@ -54,7 +54,7 @@ export default () => {
 
   const templateRegister = ` 
     <section class='form-register'>
-      <h2 class='title'>Cadastrar-se</h2>
+      <h2 class='subtitle'>Cadastrar-se</h2>
       <form class='register-form'>
         <div>
           <input type='text' class='inputs-register' id='name-user' placeholder='NOME'>
@@ -65,23 +65,23 @@ export default () => {
 
         </div>
         <div>
-          <button type='button' class='register-btn'>CADASTRAR</button>
+          <button type='button' id='register-button' class='submit'>CADASTRAR</button>
         </div> 
         <p id='error-message' class='error-message'></p>
       </form>
     <nav>
-      <a class='btn-back' href='#login'><img src='img/assets/arrow.png' id='arrow-img' alt='imagem de seta' width='50px'></a>
+      <a class='btn-back' href='#login'><img src='img/assets/arrow.png' alt='imagem de seta' width='50px'></a>
     </nav> 
     </section>
-    <figure class='Image-register'>
-    <img src='img/assets/imageregister.png' id='img-register' alt='registerImage'>
+    <figure class='image-register'>
+    <img src='img/assets/imageregister.png' class='img-register' alt='registerImage'>
     </figure>
   `;
 
   registrationForm.innerHTML = templateRegister;
 
   registrationForm
-    .querySelector('.register-btn')
+    .querySelector('#register-button')
     .addEventListener('click', registerUser);
 
   return registrationForm;
