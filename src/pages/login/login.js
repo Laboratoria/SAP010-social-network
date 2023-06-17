@@ -23,12 +23,14 @@ export default () => {
       <div class='right'>
           <form class='login-form'>
           <br>
+
           <h2 class='subtitle'>Entrar</h2>
           <div class='inputs-container'>
             <input type='text' class='inputs-info' placeholder='E-MAIL' id='email' />
             <input type='password' class='inputs-info' placeholder='SENHA' id='senha' />
             <button type='button' id='show-password' class='button-eye'>
             <img src='img/assets/ojo.png' class='eye-img' alt='Logo do olho'>
+
             </button> 
           </div>
           <nav>
@@ -65,6 +67,7 @@ export default () => {
   const loginButton = container.querySelector('#login-button');
   const googleButton = container.querySelector('#google-button');
   const facebookButton = container.querySelector('#facebook-button');
+
 
   function printErrorMessage(message) {
     const errorMessage = document.getElementById('error-message');
@@ -117,8 +120,10 @@ export default () => {
 
   facebookButton.addEventListener('click', handleFacebookLogin);
 
+
   const button = container.querySelector('.button-eye');
-  button.addEventListener('click', function () {
+  button.addEventListener('click', () => {
+
     const input = container.querySelector('#senha');
     if (input.getAttribute('type') === 'text') {
       input.setAttribute('type', 'password');
