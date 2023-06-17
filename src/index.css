@@ -1,6 +1,7 @@
 :root {
     /*paleta de cores */
     --blue: #30A2FF;
+    --darkblue: #054b85;
     --lightblue: #AEE2FF;
     --orange: #E55807;
     --white: #ffffff;
@@ -13,30 +14,78 @@
   padding: 0;
 }
 
-.title,
-.title1 {
-  font-family: 'Comfortaa', cursive;
-}
-
 
 body {
   background-color: var(--blue);
+  color: var(--black);
   display: flex;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Comfortaa', cursive;
 }
+
+.title {
+  color: var(--white);
+}
+
+.subtitle {
+  color: var(--white);
+}
+
+.submit {
+  color: var(--white);
+  background-color: var(--black);
+  border-radius: 5px 5px 5px 5px;
+  border: none;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  margin-top: 2em;
+  width: 20em;
+  height: 3em;
+  margin-bottom: 2em;
+}
+
+.submit:hover {
+  color: var(--white);
+  background-color: var(--darkblue); 
+
+}
+
 .error-message {
   color: var(--red);
-  font-style: italic;
-  margin: 6px;
+  font-size: 0.8rem;
+  padding: 3px;
+  font-weight: bolder;
 }
 
 footer {
-  color: var(--black);
-  background-color: var(--white);
-  position: fixed;
+  color: var(--white);
+  background-color: var(--darkblue);
+  position: absolute;
   bottom: 0;
   width: 100%;
-  height: 2.5rem;  
+  height: auto;  
   text-align: center;
+  margin: 2px;
+  padding: 4px;
+  font-size: 0.8rem;
 } 
 
+ footer a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 769px) {
+  .title {
+    color: var(--white);
+    font-size: 3em;     
+  }
+
+  .subtitle {
+    color: var(--black);
+
+  }
+
+}

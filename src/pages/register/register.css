@@ -28,31 +28,6 @@ body {
 
 }
 
-.register-btn {
-    color: var(--white);
-    background-color: var(--black);
-    width: 20em;
-    height: 3em;
-    border-radius: 5px 5px 5px 5px;
-    margin: 3em 0 0.5em 0;
-    text-decoration: none;
-    border: none;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
-.btn-register {
-    text-decoration: none;
-    color: var(--white);
-}
-
-.register-btn:hover {
-    color: var(--white);
-    background-color: var(--lightblue); 
-    width: 20em;
-    height: 3em;
-    border-radius: 5px 5px 5px 5px;
-    margin-top: 3em;
-}
 
 .btn-back {
     text-decoration: none;
@@ -62,7 +37,7 @@ body {
     right: 10px
 }
 
-#img-register {
+.img-register {
     width: 15em;
     margin-top: 2em;
 }
@@ -78,20 +53,18 @@ body {
         background-color:var(--lightblue);
         margin-top: 4em;
 }
-    .Image-register {
+    .image-register {
         bottom: 2em;
         left: 0;
         display: flex; 
         position: fixed;
         width: 30em;
   }
-    .title {
-        color: var(--black);
-    }
+
 }
 
 @media screen and (min-width: 900px) {
-    #img-register {
+    .img-register {
         width: 20em;
     }
 }
