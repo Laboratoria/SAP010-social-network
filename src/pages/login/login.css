@@ -23,6 +23,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 0;
+    
 }
 
 .inputs-info {
@@ -72,17 +73,17 @@
 
 .button-eye {
     position: absolute;
-    top: 51%;
-    margin-left: 15em;
-    transform: translateY(50%);
+    margin-top: 20%;
+    margin-left: 13em;
+    transform: translateY(100%);
     border: none;
-    cursor: pointer;
+    cursor: pointer; 
+    color: black;
 }
 
-.eye-img{
-    width: 2em;
+.icon-eye:hover {
+    color: var(--darkblue);
 }
-
 
 @media screen and (min-width: 768px) {
     .logo {
@@ -133,6 +134,7 @@
         width: 24em;
         height: 28em;
         background-color:var(--lightblue); 
+        margin-top: 3em;
     }
 
     .register-here:hover {
@@ -146,7 +148,18 @@
     }
 
     .button-eye {
-    top: 36%; 
-    border: none;  
-    }
+    margin-top: 8%;
+    } 
+}
+
+@media screen and (min-width: 900px) {
+    .button-eye {
+        margin-top: 6%;
+        } 
+}
+
+@media screen and (min-width: 1120px) {
+    .button-eye {
+        margin-top: 4%;
+        } 
 }

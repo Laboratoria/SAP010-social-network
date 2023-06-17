@@ -29,9 +29,8 @@ export default () => {
             <input type='text' class='inputs-info' placeholder='E-MAIL' id='email' />
             <input type='password' class='inputs-info' placeholder='SENHA' id='senha' />
             <button type='button' id='show-password' class='button-eye'>
-            <img src='img/assets/ojo.png' class='eye-img' alt='Logo do olho'>
-
-            </button> 
+            <span class="icon-eye"><i class='fas fa-eye-slash'></i></span> 
+            </button>
           </div>
           <nav>
             <button type='button' id='login-button' class='submit' href='#'>ENTRAR</button>
@@ -120,15 +119,19 @@ export default () => {
 
   facebookButton.addEventListener('click', handleFacebookLogin);
 
-
+  
   const button = container.querySelector('.button-eye');
   button.addEventListener('click', () => {
-
+    const changeEye= container.querySelector('i');  
     const input = container.querySelector('#senha');
     if (input.getAttribute('type') === 'text') {
       input.setAttribute('type', 'password');
+      changeEye.classList.remove('fa-eye');
+      changeEye.classList.add('fa-eye-slash');
     } else {
       input.setAttribute('type', 'text');
+      changeEye.classList.remove('fa-eye-slash');
+      changeEye.classList.add('fa-eye');
     }
   });
 
