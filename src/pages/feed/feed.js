@@ -1,6 +1,31 @@
 import { db } from '../../fireBase/firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
 
+function template(main){
+const header = document.getElementById('header');
+
+const headerTemplate = `<section class="header">
+<h2 class="titleHeader">TravellersBook<img class="logoHeader" src="./img/balão1.png" alt="balão"></h2>
+
+<nav class="menu">
+      <a href='#Home'>Home</a>
+    
+      <a href='#Publicar'>Publicar</a>
+    
+      <a href='#Sair' id='btnSair'>Sair</a>
+</nav>
+</section>`;
+
+
+const template = `<div id="feed">
+    
+</div>`;
+
+  header.innerHTML = headerTemplate;
+  main.innerHTML = template;
+
+}
+
 async function fetchPosts() {
   const postsCollection = collection(db, 'posts');
   const snapshot = await getDocs(postsCollection);
@@ -15,14 +40,16 @@ async function fetchPosts() {
 
 async function showFeed() {
   const posts = await fetchPosts();
-  //const rootElement = document.getElementById('root');
-  const feedContainer = document.createElement('div');
-
+  const FeedElement = document.getElementById('feed');
+  
   posts.forEach((post) => {
     const postElement = document.createElement('div');
     postElement.classList.add('post');
 
-    const nameElement = document.createElement('h3');
+    const infoElement = document.createElement("div")
+    infoElement.classList.add('Informations')
+
+    const nameElement = document.createElement('p');
     nameElement.textContent = post.Nome;
 
     const dateElement = document.createElement('p');
@@ -34,15 +61,16 @@ async function showFeed() {
     const likeElement = document.createElement('p');
     likeElement.textContent = `Likes: ${post.like}`;
 
-    postElement.appendChild(nameElement);
-    postElement.appendChild(dateElement);
+    infoElement.appendChild(nameElement);
+    infoElement.appendChild(dateElement);
     postElement.appendChild(textElement);
     postElement.appendChild(likeElement);
+    postElement.appendChild(infoElement)
     //rootElement.appendChild(postElement);
-    feedContainer.appendChild(postElement)
+    FeedElement.appendChild(postElement)
   });
 
-  return feedContainer;
+  return FeedElement;
 }
 
-export {showFeed};
+export {showFeed, template};
