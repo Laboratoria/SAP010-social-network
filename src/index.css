@@ -58,7 +58,7 @@ body {
 footer {
   color: var(--white);
   background-color: var(--darkblue);
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: auto;  

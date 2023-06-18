@@ -23,23 +23,21 @@ const db = getFirestore(app);
 //     });
 //   };
 
-export const createPost = () => {
+export const createPost = (description) => {
   const auth = getAppAuth();
   const userPost = auth.currentUser;
-  const postComment = document.getElementById('ExplorAi').value;
   const userName = userPost.displayName;
-  const userEmail = userPost.email;
-
-  addDoc(collection(db, 'posts'), {
+  return addDoc(collection(db, 'posts'), {
     name: userName,
     author: auth.currentUser.uid,
-    email: userEmail,
-    postContent: postComment,
-    date: new Date(),
-    like: [],
+    description,
+    createdAt: new Date(),
+    likes: [],
+    whoLiked: [],
   });
 };
-export async function getPost() {
+
+export async function accessPost() {
   const allPosts = [];
   const postQuery = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
   const querySnapshot = await getDocs(postQuery);
@@ -50,3 +48,31 @@ export async function getPost() {
   });
   return allPosts;
 }
+
+// export const createPost = (description) => {
+//   const auth = getAppAuth();
+//   const userPost = auth.currentUser;
+//   const postComment = document.getElementById('ExplorAi').value;
+//   const userName = userPost.displayName;
+//   const userEmail = userPost.email;
+
+//   addDoc(collection(db, 'posts'), {
+//     name: userName,
+//     author: auth.currentUser.uid,
+//     email: userEmail,
+//     postContent: postComment,
+//     date: new Date(),
+//     like: [],
+//   });
+// };
+// export async function getPost() {
+//   const allPosts = [];
+//   const postQuery = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
+//   const querySnapshot = await getDocs(postQuery);
+//   querySnapshot.forEach((post) => {
+//     const data = post.data();
+//     data.id = post.id;
+//     allPosts.push(data);
+//   });
+//   return allPosts;
+// }
