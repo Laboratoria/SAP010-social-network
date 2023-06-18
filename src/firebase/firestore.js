@@ -12,16 +12,7 @@ import { app } from './app';
 // variable firestone
 const db = getFirestore(app);
 
-// export const createPost = (description) => {
-//     const auth = getAppAuth();
-//     return addDoc(collection(db, 'containerPost'), {
-//       name: auth.currentUser.displayName,
-//       author: auth.currentUser.uid,
-//       createdAt: new Date(),
-//       likes: [],
-//       whoLiked: [],
-//     });
-//   };
+
 
 export const createPost = (description) => {
   const auth = getAppAuth();
