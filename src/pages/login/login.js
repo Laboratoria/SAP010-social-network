@@ -67,7 +67,6 @@ export default () => {
   const googleButton = container.querySelector('#google-button');
   const facebookButton = container.querySelector('#facebook-button');
 
-
   function printErrorMessage(message) {
     const errorMessage = document.getElementById('error-message');
     errorMessage.textContent = message;
@@ -119,10 +118,9 @@ export default () => {
 
   facebookButton.addEventListener('click', handleFacebookLogin);
 
-  
   const button = container.querySelector('.button-eye');
   button.addEventListener('click', () => {
-    const changeEye= container.querySelector('i');  
+    const changeEye = container.querySelector('i');
     const input = container.querySelector('#senha');
     if (input.getAttribute('type') === 'text') {
       input.setAttribute('type', 'password');
