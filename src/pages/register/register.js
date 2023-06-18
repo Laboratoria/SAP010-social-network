@@ -61,7 +61,13 @@ export default () => {
           <input type='text' class='inputs-register' id='lastName-user' placeholder='SOBRENOME'>
           <input type='text' class='inputs-register' id='email-user' placeholder='EMAIL'>
           <input type='password' class='inputs-register' id='register-password' placeholder='CRIAR SENHA'>
+          <button type='button' id='show-eye' class='eye-eye'>
+            <span class="icons-eye"><i class='fas fa-eye-slash'></i></span> 
+            </button>
           <input type='password' class='inputs-register' id='confirm-password' placeholder='CONFIRME SUA SENHA'>
+          <button type='button' id='show-eyes' class='eyes-eyes'>
+            <span class="icons-eyes"><i class='fas fa-eye-slash'></i></span> 
+            </button>
 
         </div>
         <div>
@@ -83,6 +89,38 @@ export default () => {
   registrationForm
     .querySelector('#register-button')
     .addEventListener('click', registerUser);
+
+    const button = registrationForm.querySelector('.eye-eye');
+    button.addEventListener('click', () => {
+      const changeEye = registrationForm.querySelector('i');
+      const input = registrationForm.querySelector('#register-password');
+      if (input.getAttribute('type') === 'text') {
+        input.setAttribute('type', 'password');
+        changeEye.classList.remove('fa-eye');
+        changeEye.classList.add('fa-eye-slash');
+      } else {
+        input.setAttribute('type', 'text');
+        changeEye.classList.remove('fa-eye-slash');
+        changeEye.classList.add('fa-eye');
+      }
+    })
+      
+    const btnEye = registrationForm.querySelector('.eyes-eyes');
+    btnEye.addEventListener('click', () => {
+      const changeEye = registrationForm.querySelector('i');
+      const input = registrationForm.querySelector('#confirm-password');
+      if (input.getAttribute('type') === 'text') {
+        input.setAttribute('type', 'password');
+        changeEye.classList.remove('fa-eye');
+        changeEye.classList.add('fa-eye-slash');
+      } else {
+        input.setAttribute('type', 'text');
+        changeEye.classList.remove('fa-eye-slash');
+        changeEye.classList.add('fa-eye');
+      }
+    });
+
+     
 
   return registrationForm;
 };

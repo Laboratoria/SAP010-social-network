@@ -2,6 +2,7 @@
     justify-content: center;
     display: grid;
     margin-top: 2em;
+    
 }
 
 body {
@@ -25,7 +26,6 @@ body {
     display: grid;
     border: none;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-
 }
 
 
@@ -40,6 +40,37 @@ body {
 .img-register {
     width: 15em;
     margin-top: 2em;
+}
+.register-form {
+position: relative;
+}
+
+.eye-eye {
+    position: absolute;
+    margin-left: 8em;
+    border: none;
+    cursor: pointer; 
+    margin-top: 5%;
+    transform: translateY(-250%);
+    background-color: white;
+}
+
+.icons-eye:hover {
+    color: var(--blue);
+}
+
+.eyes-eyes {
+    position: absolute;
+    margin-left: 8em;
+    border: none;
+    cursor: pointer; 
+    transform: translateY(-160%);
+    background-color: white;
+   
+}
+
+.icons-eyes:hover {
+    color: var(--blue);
 }
 
 @media screen and (min-width: 769px) {
