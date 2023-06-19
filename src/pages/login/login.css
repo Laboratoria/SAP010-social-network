@@ -1,0 +1,82 @@
+
+h1 {
+    text-align: center;
+    font-family: 'Barlow Semi Condensed';
+    color: #2F2212;
+    font-size: 65px;
+  
+}
+
+a {
+    text-decoration: none;
+    color: #ECE4CE;
+}
+
+.logo2 {
+    display: block;
+    margin: auto;
+    max-width:300px;
+    margin-top: -80px;
+  
+}
+  
+.logo4 {
+    display: block;
+    margin: auto;
+    max-width:45px;
+    margin-top: -25px;
+}
+  
+
+
+
+fieldset {
+    max-width: 15%;
+    margin: auto;
+    padding: 50px;
+    border: 5px solid #9A7951;
+    border-radius: 10px;
+    background-color: #2F2212;
+    margin-top: -50px;
+    
+}
+  
+legend {
+    text-align: center;
+    color: #ECE4CE;
+    font-size: 18px;
+}
+  
+ul {
+    font-family: 'Barlow Semi Condensed';
+    margin: -1;
+    padding: 0;
+    color: #ECE4CE;
+}
+
+  
+
+
+
+.FormularioLoginEmail {
+   
+    width: 700%;
+    padding: -2px;
+    margin-top: 25px;
+}
+  
+
+button {
+    display:inline-block;
+    width: auto;
+    padding: 5px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fbfcfd;
+    color: #2F2212;
+    font-family: 'Barlow Semi Condensed';
+    cursor: pointer;
+    margin-bottom: 20px;
+   
+}
