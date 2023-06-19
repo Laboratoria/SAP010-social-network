@@ -1,7 +1,7 @@
-import { loginUser, loginGoogle } from "../../lib";
+import { loginUser, loginGoogle } from '../../lib';
 
 export default () => {
-  const container = document.createElement("div");
+  const container = document.createElement('div');
 
   const template = `
       <div class="logomarca">   
@@ -35,37 +35,37 @@ export default () => {
 
   container.innerHTML = template;
 
-  const logar = container.querySelector(".btnLogar");
-  logar.addEventListener("click", () => {
-    const email = container.querySelector(".inserir_email");
-    const password = container.querySelector(".digite_senha");
+  const logar = container.querySelector('.btnLogar');
+  logar.addEventListener('click', () => {
+    const email = container.querySelector('.inserir_email');
+    const password = container.querySelector('.digite_senha');
 
     loginUser(email.value, password.value)
       .then(() => {
-        window.location.hash = "#feed";
+        window.location.hash = '#feed';
       })
       .catch((error) => {
         const errorMessage = error.message;
-        if (email.value === "" || password.value === "") {
-          alert("Todos os campos devem ser preenchidos");
+        if (email.value === '' || password.value === '') {
+          alert('Todos os campos devem ser preenchidos');
         }
-        if (errorMessage === "Firebase: Error (auth/user-not-found).") {
-          alert("Usuário não cadastrado");
+        if (errorMessage === 'Firebase: Error (auth/user-not-found).') {
+          alert('Usuário não cadastrado');
         }
-        if (errorMessage === "Firebase: Error (auth/invalid-email).") {
-          alert("E-mail inválido");
+        if (errorMessage === 'Firebase: Error (auth/invalid-email).') {
+          alert('E-mail inválido');
         }
-        if (errorMessage === "Firebase: Error (auth/wrong-password).") {
-          alert("Senha inválida");
+        if (errorMessage === 'Firebase: Error (auth/wrong-password).') {
+          alert('Senha inválida');
         }
       });
   });
 
-  const btnGoogle = container.querySelector(".logarGoogle");
-  btnGoogle.addEventListener("click", () => {
+  const btnGoogle = container.querySelector('.logarGoogle');
+  btnGoogle.addEventListener('click', () => {
     loginGoogle()
       .then(() => {
-        window.location.hash = "#feed";
+        window.location.hash = '#feed';
       })
       .catch((error) => {
         const errorCode = errosValid(error.code);
