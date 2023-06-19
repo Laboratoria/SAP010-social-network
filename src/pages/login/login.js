@@ -28,7 +28,7 @@ export default () => {
         <button id="registrarButton">Registrar</button><p>
         <a href="#feed">Esqueceu a Senha? Clique aqui!</a>
       </fieldset>
-    </body>
+    </body> 
   `;
 
   container.innerHTML = template;
