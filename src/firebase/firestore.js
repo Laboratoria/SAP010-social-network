@@ -12,8 +12,6 @@ import { app } from './app';
 // variable firestone
 const db = getFirestore(app);
 
-
-
 export const createPost = (description) => {
   const auth = getAppAuth();
   return addDoc(collection(db, 'posts'), {
