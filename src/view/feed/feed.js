@@ -1,3 +1,6 @@
+import { collection, addDoc, doc, getDocs, query, where } from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
+import { app } from '../../firebase/firebase';
 export const feed = () => {
   const container = document.createElement('div');
 
@@ -73,27 +76,55 @@ export const feed = () => {
     };
   });
 
-  container.querySelector('#publicar').addEventListener('click', (event) => {
-    event.preventDefault();
+  container
+    .querySelector('#publicar')
+    .addEventListener('click', async (event) => {
+      event.preventDefault();
+      const db = getFirestore(app);
 
-    let opcao = '';
+      //criando post
 
-    if (document.getElementById('quero-doar').checked) {
-      opcao = document.getElementById('quero-doar').value;
-    } else if (document.getElementById('quero-adotar').checked) {
-      opcao = document.getElementById('quero-adotar').value;
-    }
+      let opcao = '';
 
-    const idadePet = document.getElementById('idade').value;
-    const especie = document.getElementById('especie').value;
-    const sexo = document.getElementById('sexo').value;
-    const raca = document.getElementById('raca').value;
-    const localizacao = document.getElementById('local').value;
-    const contato = document.getElementById('contato').value;
-    const mensagem = document.getElementById('mensagem').value;
+      if (document.getElementById('quero-doar').checked) {
+        opcao = document.getElementById('quero-doar').value;
+      } else if (document.getElementById('quero-adotar').checked) {
+        opcao = document.getElementById('quero-adotar').value;
+      }
 
-    const post = document.createElement('div');
-    post.innerHTML = `
+      try {
+        const docRef = await addDoc(collection(db, 'post'), {
+          opcaoAdocao: opcao,
+          idadePet: document.getElementById('idade').value,
+          especie: document.getElementById('especie').value,
+          sexo: document.getElementById('sexo').value,
+          raca: document.getElementById('raca').value,
+          localizacao: document.getElementById('local').value,
+          contato: document.getElementById('contato').value,
+          mensagem: document.getElementById('mensagem').value,
+        });
+        console.log('Document written with ID: ', docRef.id);
+      } catch (e) {
+        console.error('Error adding document: ', e);
+      }
+      
+      //pegando 
+      const q = query(collection(db, "post"));
+     
+      const querySnapshot = await getDocs(q);
+      const arrayPosts = [];
+      
+      querySnapshot.forEach((post) => {
+      const data = post.data()
+      data.id = post.id;
+      arrayPosts.push(data)
+      
+      console.log(post.id, " => ", post.data());
+      });
+      
+
+      const postCard = document.createElement('div');
+      postCard.innerHTML = `
     
     <section class='container-post'>
     <div class='post-header'> <div class="username"> Nome Sobrenome </div> <div class="user-location"> ${localizacao}</div> </div>
@@ -104,12 +135,12 @@ export const feed = () => {
     </section>
   `;
 
-    const feedPage = document.querySelector('.feed-page');
-    feedPage.appendChild(post);
+      const feedPage = document.querySelector('.feed-page');
+      feedPage.appendChild(post);
 
-    const modal = document.getElementById('meuModal');
-    modal.style.display = 'none';
-  });
+      const modal = document.getElementById('meuModal');
+      modal.style.display = 'none';
+    });
 
   return container;
 };
