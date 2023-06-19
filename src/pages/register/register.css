@@ -1,82 +1,72 @@
-
-h1 {
-    text-align: center;
-    font-family: 'Barlow Semi Condensed';
-    color: #2F2212;
-    font-size: 65px;
-  
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-a {
-    text-decoration: none;
-    color: #886d22;
+h2{
+    color: var(--grey);
 }
 
-.logo2 {
-    display: block;
-    margin: auto;
-    max-width:300px;
-    margin-top: -80px;
-  
+.logo-cs {
+    max-width: 300px;
 }
   
-.logo4 {
-    display: block;
-    margin: auto;
-    max-width:45px;
-    margin-top: -25px;
+.logo-google {
+    max-width: 30px;
 }
   
-
-
-
-fieldset {
-    max-width: 15%;
-    margin: auto;
-    padding: 50px;
-    border: 5px solid #9A7951;
-    border-radius: 10px;
-    background-color: #2F2212;
-    margin-top: -50px;
-    
-}
-  
-legend {
-    text-align: center;
-    color: #ECE4CE;
-    font-size: 18px;
-}
-  
-ul {
-    font-family: 'Barlow Semi Condensed';
-    margin: -1;
-    padding: 0;
-    color: #ECE4CE;
-}
-
-  
-
-
-
-.FormularioLoginEmail {
-   
-    width: 700%;
-    padding: -2px;
-    margin-top: 25px;
-}
-  
-
-button {
-    display:inline-block;
-    width: auto;
-    padding: 5px;
-    margin-top: 20px;
+input{
+    width: 80%;
+    padding: 8px;
+    background-color: var(--medium-brown);
     border: none;
     border-radius: 5px;
-    background-color: #fbfcfd;
-    color: #2F2212;
-    font-family: 'Barlow Semi Condensed';
-    cursor: pointer;
-    margin-bottom: 20px;
-   
+}
+
+::-webkit-input-placeholder{
+	color: var(--light-white);
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+ul{
+    color: var(--light-white);
+}
+
+.cadastro{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: var(--light-white);
+    gap: 8px;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: var(--intense-brown);
+    box-shadow: 15px 17px 10px -7px var(--medium-brown);
+    border: none;
+    width: 300px;
+    height: 400px;
+    margin-bottom: 30px;
+}
+
+.botoes{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+select{
+    width: 85%;
+    padding: 8px;
+    background-color: var(--medium-brown);
+    border: none;
+    border-radius: 5px;
+    color: var(--light-white);
+    font-family: 'Nunito Sans', sans-serif;
+    margin-top: 8px;
 }
