@@ -23,3 +23,8 @@ footer {
     text-align: center;
     line-height: 25px;
 }
+
+.error {
+   color: red;
+   display: nome;
+}

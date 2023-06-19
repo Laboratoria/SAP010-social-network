@@ -23,7 +23,6 @@ import { app } from './configFirebase.js';
     );
   };
   
-
   //login 
   export const loginWithEmail = (email, password) => {
     const auth = getAppAuth();
