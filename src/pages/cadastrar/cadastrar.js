@@ -41,10 +41,10 @@ const register = container.querySelector(".btnCadastrar")
   const email2 = container.querySelector(".inserir_email2")
   const password2 = container.querySelector(".digite_senha2")
   const nome = container.querySelector(".inserir_nome")
-  const passwordrepet = container.querySelector(".confirma_senha")
+  const passwordRepet = container.querySelector(".confirma_senha")
   
 
-  signUpUser(email2.value, password2.value, passwordrepet.value).then(() => {
+  signUpUser(email2.value, password2.value, passwordRepet.value).then(() => {
   
       alert('Usuário cadastrado com sucesso!')
       window.location.hash = '#feed';
@@ -61,7 +61,7 @@ const register = container.querySelector(".btnCadastrar")
     if (errorMessage === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
       alert('Sua senha deve ter ao menos 6 dígitos')
     }
-    if (password2.value !== passwordrepet.value){
+    if (password2.value !== passwordRepet.value){
       alert('As senhas devem ser iguais')
     }
   

@@ -10,8 +10,8 @@ import {auth} from "./firebase.js"
 
 
 
-export const signUpUser = (email2, password2, passwordrepet) => 
-  createUserWithEmailAndPassword(auth,email2,password2, passwordrepet);
+export const signUpUser = (email2, password2, passwordRepet) => 
+  createUserWithEmailAndPassword(auth,email2,password2, passwordRepet);
    
 
 export const loginUser = (email, password) => {
