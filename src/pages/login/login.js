@@ -26,7 +26,7 @@ export default () => {
         </ul>
         <button id="entrarButton">Entrar</button>
         <button id="registrarButton">Registrar</button><p>
-        <a href="#feed">Esqueceu a Senha? Clique aqui!</a>
+        <a href="#register">Esqueceu a Senha? Clique aqui!</a>
       </fieldset>
     </body> 
   `;

@@ -17,7 +17,10 @@ const init = () => {
              case " ":
              main.appendChild(login());
              break;
-            case "#feed":
+            case "#register":
+              main.appendChild(register());
+              break;
+              case "#feed":
               main.appendChild(feed());
              break;
            default:
