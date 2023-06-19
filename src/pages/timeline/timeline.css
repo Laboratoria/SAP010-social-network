@@ -1,8 +1,22 @@
-.input-container {
-    position: relative;
-    display: inline-block;
-    margin:10px
+.timeline {
+    display: block;
+    /* position: relative; */
+    /* align-items: center; */
+    justify-content: center;
 }
+.input-container {
+    /* position: absolute; */
+    display: inline-block;
+    margin:10px;
+}
+
+.post-container {
+    margin: 30px;
+    padding: 10px;
+    background-color: var(--lightblue);
+    border-radius: 5px;
+  }
+  
 
 .input-mensage {
     width: 300px;
@@ -27,6 +41,7 @@
     border: none;
     margin: 5px;
     padding: 5px; */
+    position: absolute;
 }
 
 .nameUser {
@@ -37,9 +52,10 @@
 }
 
 .textPost {
-    background-color: var(--lightblue);
-    color: var(--black);
-    width: 350px;
-    padding: 10px;
-    margin: 0 10px 10px 10px;
+   background-color: var(--white);
+   color: var(--black);
+   width: 350px;
+   padding: 10px;
+   margin: 0 10px 10px 10px;
+   height: auto;
 }

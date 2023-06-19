@@ -9,10 +9,15 @@ export default () => {
   const timeline = document.createElement('div');
   const viewPost = `
     <h1>Olá ${getUserName()}, bem-vindo (a) de volta!</h1>
-    <div class='input-container'>
-    <input type='text' class='input-mensage' id='postArea' placeholder='COMPARTILHE UMA EXPERIÊNCIA ...'>
-    <button class='shareBtn' id='sharePost' >COMPARTILHAR</button>
-    <div id='postList'></div>
+    <div class='timeline'>
+      <div class='input-container'>
+        <input type='text' class='input-mensage' id='postArea' placeholder='COMPARTILHE UMA EXPERIÊNCIA ...'>
+        <button class='shareBtn' id='sharePost' >COMPARTILHAR</button>
+        <div id='postList'></div>
+      </div>
+      <!-- <figure class='image-register'>
+      <img src='img/assets/imagetimeline.png' class='img-timeline' alt='timelineImage'>
+      </figure>-->
     </div>
     `;
 
@@ -25,7 +30,7 @@ export default () => {
   const CreatePostElement = (name,description) => {
     const postElement = document.createElement('div');
     postElement.innerHTML = `
-    <div>
+    <div class="post-container">
     <p class='nameUser'>${name}</p>
     <p class='textPost'>${description}</p>
     </div>
