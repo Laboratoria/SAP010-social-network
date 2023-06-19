@@ -24,7 +24,7 @@ h3{
 
 .logo-cs {
     width: 200px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
   
 .logo-google {
@@ -95,4 +95,15 @@ fieldset {
 #googleLoginButton:hover{
     background-color: var(--light-white);
     color: var(--intense-brown);
+}
+
+@media (max-width: 800px) {
+    .imagem-fundo{
+        display: none;
+    }
+
+    div{
+        flex-direction: column;
+    }
+
 }
