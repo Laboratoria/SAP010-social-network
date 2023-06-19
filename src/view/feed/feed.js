@@ -122,21 +122,24 @@ export const feed = () => {
       console.log(post.id, " => ", post.data());
       });
       
+      const feedPage = container.querySelector('.feed-page');
+      arrayPosts.forEach((post) => {
 
       const postCard = document.createElement('div');
       postCard.innerHTML = `
     
     <section class='container-post'>
-    <div class='post-header'> <div class="username"> Nome Sobrenome </div> <div class="user-location"> ${localizacao}</div> </div>
-    <div class='adopt-option'> ${opcao} </div>
-    <div class='post-inputs'> <div class="modal-input">${idadePet}</div> <div class="modal-input">${especie}</div> <div class="modal-input">${sexo}</div> <div class="modal-input"> ${raca} </div> </div> 
-    <p>${mensagem} </p>
-    <p>Contato: ${contato} </p>
+    <div class='post-header'> <div class="username"> Nome Sobrenome </div> <div class="user-location"> ${post.localizacao}</div> </div>
+    <div class='adopt-option'> ${post.opcaoAdocao} </div>
+    <div class='post-inputs'> <div class="modal-input">${post.idadePet}</div> <div class="modal-input">${post.especie}</div> <div class="modal-input">${post.sexo}</div> <div class="modal-input"> ${post.raca} </div> </div> 
+    <p>${post.mensagem} </p>
+    <p>Contato: ${post.contato} </p>
     </section>
   `;
 
-      const feedPage = document.querySelector('.feed-page');
-      feedPage.appendChild(post);
+      feedPage.appendChild(postCard);
+
+      });
 
       const modal = document.getElementById('meuModal');
       modal.style.display = 'none';
