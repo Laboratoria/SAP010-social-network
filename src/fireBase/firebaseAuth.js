@@ -10,20 +10,20 @@ import {
 import { auth } from './firebaseConfig.js';
 
 // cadastro de usuarios novos
-export const createUser = (email, senha, nome, sobrenome, displayName) =>
-  createUserWithEmailAndPassword(auth, email, senha).then(userCredential => {
-    // Signed in
-    const user = userCredential.user; // aqui atualizar o perfil do usuario
-    return updateProfile(user, { nome, sobrenome, displayName });
+export const createUser = (email, password, name, lastName, username) =>
+  createUserWithEmailAndPassword(auth, email, password).then(userCredential => {
+    // Depois que criou o usuário executa a função baixo
+    const user = userCredential.user; // atualiza o perfil do usuário
+    return updateProfile(user, { name, lastName, username });
   });
-//criar um catch
+//criar um catch?
 
 export const signIn = (email, password) =>
 signInWithEmailAndPassword(auth, email, password);
-
 
 export const signInGoogle = () => {
   const provider = new GoogleAuthProvider()
   return signInWithPopup(auth, provider)
 }
+
 export const logOut = () => signOut(auth);
