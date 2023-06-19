@@ -7,7 +7,6 @@ div{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
 
 h2{
@@ -56,6 +55,7 @@ input:focus{
     color: var(--light-white);
     font-size: 18px;
     display: flex;
+    flex-direction: column;
     gap: 6px;
 }
 
@@ -66,8 +66,8 @@ fieldset {
     background-color: var(--intense-brown);
     box-shadow: 12px 15px 8px -9px var(--medium-brown);
     border: none;
-    width: 300px;
-    height: 400px;
+    width: 400px;
+    height: 500px;
     margin-top: 30px;
     gap: 20px;
 }
@@ -96,4 +96,3 @@ fieldset {
     background-color: var(--light-white);
     color: var(--intense-brown);
 }
-
