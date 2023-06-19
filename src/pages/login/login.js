@@ -5,7 +5,10 @@ export default () => {
   const container = document.createElement('div');
 
   const template = `
+  <div class="imagens">
     <img class="logo-cs" src="./images/logo2.png">
+    <img class="imagem-fundo" src="./images/background-desktop.png">
+  </div>
       <fieldset>
       <h2>Entre com</h2>
         <div class="loginSenha">
@@ -23,7 +26,6 @@ export default () => {
         <div class="google">
         <button id="googleLoginButton">Acesse sua conta com <img class="logo-google" src="./images/logo4.png"></button>
       </div>
-    
       </fieldset>
   `;
 
@@ -55,6 +57,6 @@ export default () => {
   registrarButton.addEventListener('click', () => {
     window.location.hash = '#register';
   });
-  
+
   return container
 };

@@ -5,7 +5,10 @@ export default () => {
   const container = document.createElement('div');
 
   const templateRegister = `
+  <div class="imagens">
   <img class="logo-cs" src="./images/logo2.png">
+  <img class="imagem-fundo" src="./images/background-desktop.png">
+  </div>
     <fieldset>
       <h2> *CAMPOS OBRIGATÓRIOS  </h2>
       <div class="cadastro">
@@ -16,7 +19,7 @@ export default () => {
         <label for="senha">Crie sua Senha*</label>
         <input type="password" id="senhaUsuario" placeholder="Digite sua senha" required>
       <select class="areaDeAtuacao" id="atuaçao" required>
-        <option value="">Selecione a sua área de atuação*</option>
+        <option value="" hidden>Selecione a sua área de atuação*</option>
         <option value="produtor">Produtor de café</option>
         <option value="empresario">Empresário do ramo de café</option>
         <option value="comprador">Comprador ou negociante de café</option>

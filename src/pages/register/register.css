@@ -2,7 +2,7 @@ div{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    margin-top: 30px;
 }
 
 h2{
@@ -49,8 +49,8 @@ fieldset {
     background-color: var(--intense-brown);
     box-shadow: 15px 17px 10px -7px var(--medium-brown);
     border: none;
-    width: 300px;
-    height: 400px;
+    width: 400px;
+    height: 500px;
     margin-bottom: 30px;
 }
 
@@ -69,4 +69,13 @@ select{
     color: var(--light-white);
     font-family: 'Nunito Sans', sans-serif;
     margin-top: 8px;
+}
+
+option{
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.imagens{
+    display: flex;
+    flex-direction: column;
 }
