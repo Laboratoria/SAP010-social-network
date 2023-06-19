@@ -17,7 +17,7 @@ export default () => {
                 </p>
                 <p class="senha">
                 <input type="password" class="digite_senha" id="digitesenha" placeholder="Digite sua senha"/>
-                <i class="bi bi-eye-fill" id="olinho-visual" onclick="mostrarsenha()"></i> 
+                <i class="bi bi-eye-fill" id="olinho-visual"></i> 
                 </p> 
             </form>
            
@@ -74,25 +74,37 @@ const logar = container.querySelector(".btnLogar")
       alert(errorCode)
     });
   });
+//função olho
+  const passwordImput = container.querySelector("#digitesenha")
+  const olho = container.querySelector("#olinho-visual")
+  olho.addEventListener('click', () => {
 
+  let ImputTypePassoword = passwordImput.type === "password"
+
+  if(ImputTypePassoword){
+   // se for passowrd qual é ação
+   showPassord()
+  } else {
+    // se não for qual ação deve tomar
+    hidePassword()
+  }
+})
+ function  showPassord(){
+  passwordImput.setAttribute( "type","text")
+
+  olho.classList.replace('bi-eye-fill','bi-eye-slash-fill')
+}
+ function hidePassword(){
+  passwordImput.setAttribute( "type","password")
+  
+  olho.classList.replace('bi-eye-slash-fill','bi-eye-fill')
+ }
 
 
 return container;
 
 };
-// função do olho 
-function mostrarsenha() {
-  var inputPass = document.getElementById('digitesenha')
-  var btnShowPass = document.getElementById('olinho-visual')
-
-  if(inputPass.type === 'password'){
-    inputPass.setAttribute('type','text')
-    btnShowPass.classList.replace('bi-eye-fill','bi-eye-slash-fill')
-  }
-  else {
-      inputPass.setAttribute('type','password')
-      btnShowPass.classList.replace('bi-eye-slash-fill','bi-eye-fill')
-  }
 
 
-}
+
+
