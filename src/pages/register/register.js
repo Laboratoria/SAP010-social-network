@@ -6,7 +6,7 @@ export default () => {
 
   const templateRegister = `
   <div class="imagens">
-  <img class="logo-cs" src="./images/logo2.png">
+  <img class="logo-cs" src="./images/logo1.png">
   <img class="imagem-fundo" src="./images/background-desktop.png">
   </div>
     <fieldset>
@@ -39,7 +39,7 @@ export default () => {
   const emailInput = container.querySelector('#emailRegister');
   const senhaInput = container.querySelector('#senhaUsuario');
   const registerButton = container.querySelector('#btn-register');
-  const homeButton = container.querySelector('#btn-home')
+  const homeButton = container.querySelector('#btn-home');
 
   const registrarNovoUsuario = () => {
     const name = nameInput.value;
