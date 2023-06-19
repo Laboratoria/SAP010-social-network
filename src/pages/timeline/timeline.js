@@ -1,22 +1,25 @@
 import { getUserName, getAppAuth } from '../../firebase/auth.js';
-import { createPost } from '../../firebase/firestore.js';
+import {
+createPost,
+accessPost
+} from '../../firebase/firestore.js';
+import { getUserId } from '../../firebase/auth';
+import { auth } from '../../firebase/app';
 
 export default () => {
-  const userName = getUserName();
-  const timeline = document.createElement('div');
-
-  timeline.innerHTML = `
-    <h1>Bem-vindo ${userName} à linha do tempo!</h1>
+  const divPost = document.createElement('div');
+  const viewPost = `
+    <h1>Bem-vindo ${getUserName()} à linha do tempo!</h1>
     <div class='input-container'>
     <input type='text' class='input-mensage' id='postArea' placeholder='COMPARTILHE UMA EXPERIÊNCIA ...'>
     <button class='shareBtn' id='sharePost' >COMPARTILHAR</button>
 </div>
     `;
 
-  timeline.style.display = 'block';
+  divPost.innerHTML = viewPost;
 
-  const postBtn = timeline.querySelector('#sharePost');
-  const descriptionPost = timeline.querySelector('#postArea');
+  const postBtn = divPost.querySelector('#sharePost');
+  const descriptionPost = divPost.querySelector('#postArea');
 
   postBtn.addEventListener('click', () => {
     const description = descriptionPost.value;
@@ -31,5 +34,16 @@ export default () => {
         });
     }
   });
-  return timeline;
+
+
+  accessPost()
+  .then((posts) => {
+    console.log(posts)
+   console.log('printar o conteúdo na tela') 
+  })
+ .catch(() => {
+  console.log('deu errado')
+ })
+
+  return divPost;
 };

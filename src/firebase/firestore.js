@@ -16,8 +16,8 @@ const db = getFirestore(app);
 
 export const createPost = (description) => {
   const auth = getAppAuth();
-  const userPost = auth.currentUser;
-  const userName = userPost.displayName;
+  // const userPost = auth.currentUser;
+  // const userName = userPost.displayName;
   return addDoc(collection(db, 'posts'), {
     name: userName,
     author: auth.currentUser.uid,
