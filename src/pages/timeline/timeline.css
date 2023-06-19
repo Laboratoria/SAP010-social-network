@@ -18,7 +18,7 @@
     background-color: var(--blue);
     font-size: 12px;
     border-radius: 5px;
-    position: absolute;
+    /* position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -26,5 +26,20 @@
     height: auto;
     border: none;
     margin: 5px;
-    padding: 5px;
+    padding: 5px; */
+}
+
+.nameUser {
+    background-color: var(--darkblue);
+    width: 350px;
+    padding: 10px;
+    margin: 10px 10px 0 10px;
+}
+
+.textPost {
+    background-color: var(--lightblue);
+    color: var(--black);
+    width: 350px;
+    padding: 10px;
+    margin: 0 10px 10px 10px;
 }

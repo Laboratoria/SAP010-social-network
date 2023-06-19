@@ -1,25 +1,37 @@
-import { getUserName, getAppAuth } from '../../firebase/auth.js';
+import { async } from 'regenerator-runtime';
+import { getUserName } from '../../firebase/auth.js';
 import {
 createPost,
 accessPost
 } from '../../firebase/firestore.js';
-import { getUserId } from '../../firebase/auth';
-import { auth } from '../../firebase/app';
 
 export default () => {
-  const divPost = document.createElement('div');
+  const timeline = document.createElement('div');
   const viewPost = `
-    <h1>Bem-vindo ${getUserName()} à linha do tempo!</h1>
+    <h1>Olá ${getUserName()}, bem-vindo (a) de volta!</h1>
     <div class='input-container'>
     <input type='text' class='input-mensage' id='postArea' placeholder='COMPARTILHE UMA EXPERIÊNCIA ...'>
     <button class='shareBtn' id='sharePost' >COMPARTILHAR</button>
-</div>
+    <div id='postList'></div>
+    </div>
     `;
 
-  divPost.innerHTML = viewPost;
+  timeline.innerHTML = viewPost;
 
-  const postBtn = divPost.querySelector('#sharePost');
-  const descriptionPost = divPost.querySelector('#postArea');
+  const postBtn = timeline.querySelector('#sharePost');
+  const descriptionPost = timeline.querySelector('#postArea');
+  const postList = timeline.querySelector('#postList');
+
+  const CreatePostElement = (name,description) => {
+    const postElement = document.createElement('div');
+    postElement.innerHTML = `
+    <div>
+    <p class='nameUser'>${name}</p>
+    <p class='textPost'>${description}</p>
+    </div>
+    `;
+    return postElement;
+  }
 
   postBtn.addEventListener('click', () => {
     const description = descriptionPost.value;
@@ -29,21 +41,26 @@ export default () => {
     } else {
       createPost(description)
         .then(() => {
+          descriptionPost.value = ''; /*limpa o input*/
+          loadPosts();
           alert('Publicação efetuada com sucesso!');
-          window.location.hash = '#timeline';
+        })
+        .catch((error) => {
+          alert('Ocorreu um erro ao criar o post. Por favor, tente novamente mais tarde');
         });
     }
   });
 
+  const loadPosts = async () => {
+    postList.innerHTML = '';
+    const postsFirestore = await accessPost();
 
-  accessPost()
-  .then((posts) => {
-    console.log(posts)
-   console.log('printar o conteúdo na tela') 
-  })
- .catch(() => {
-  console.log('deu errado')
- })
-
-  return divPost;
+    postsFirestore.forEach((post) => {
+      const postElement = CreatePostElement(post.name, post.description);
+      postList.appendChild(postElement);
+    });
+  };
+  
+  loadPosts();
+  return timeline;
 };
