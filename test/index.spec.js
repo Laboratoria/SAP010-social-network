@@ -3,7 +3,7 @@ import {
   signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  auth
+  auth,
 } from 'firebase/auth';
 import { loginGoogle, loginUser, signUpUser } from '../src/lib/index';
 
@@ -39,7 +39,6 @@ describe('createUser', () => {
   });
 });
 
-
 describe('loginUser', () => {
   it('logar com e-mail', async () => {
     const email = 'test2@hotmail.com';
@@ -49,7 +48,7 @@ describe('loginUser', () => {
     expect(signInWithEmailAndPassword).toHaveBeenCalledWith(
       auth,
       email,
-      password
+      password,
     );
   });
 });

@@ -67,9 +67,8 @@ export default () => {
       .then(() => {
         window.location.hash = '#feed';
       })
-      .catch((error) => {
-        const errorCode = errosValid(error.code);
-        alert(errorCode);
+      .catch(() => {
+        alert('erro ao autenticar');
       });
   });
 

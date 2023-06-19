@@ -39,12 +39,12 @@ export default () => {
   register.addEventListener('click', () => {
     const email2 = container.querySelector('.inserir_email2');
     const password2 = container.querySelector('.digite_senha2');
-    const nome = container.querySelector('.inserir_nome');
     const passwordRepet = container.querySelector('.confirma_senha');
-    signUpUser(email2.value, password2.value, passwordRepet.value).then(() => {
-      alert('Usuário cadastrado com sucesso!');
-      window.location.hash = '#feed'; 
-    })
+    signUpUser(email2.value, password2.value, passwordRepet.value)
+      .then(() => {
+        alert('Usuário cadastrado com sucesso!');
+        window.location.hash = '#feed';
+      })
       .catch((error) => {
         const errorMessage = error.message;
         if (errorMessage === 'Firebase: Error (auth/email-already-in-use).') {
@@ -59,7 +59,7 @@ export default () => {
         if (password2.value !== passwordRepet.value) {
           alert('As senhas devem ser iguais');
         }
-      });  
+      });
   });
   return container;
 };
