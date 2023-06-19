@@ -40,17 +40,16 @@ export default () => {
     const email = emailInput.value;
     const senha = senhaInput.value;
 
-    // Chamando a função de login com e-mail e senha.
     loginWithEmail(email, senha)
       .then(() => {
-        window.location.hash = '#--nova ----pagina---acesso ';
+        window.location.hash = '#feed';
       })
       .catch(() => {
         printErrorMessage('E-mail ou senha incorretos');
       });
   };
 
-  loginButton.addEventListener('click', handleLogin());
+  loginButton.addEventListener('click', handleLogin);
 
   registrarButton.addEventListener('click', () => {
     window.location.hash = '#register';
