@@ -1,35 +1,30 @@
-
 import './login.css';
 import { loginWithEmail } from '../../configFirebase/auth';
-
-
 
 export default () => {
   const container = document.createElement('div');
 
   const template = `
-    <h1> BEM VINDO A </h1>
-    <img class="logo2" src="./images/logo2.png">
-    <body>
-
+    <img class="logo-cs" src="./images/logo2.png">
       <fieldset>
-        <legend> Acesse sua conta com </legend>
-        <img class="logo4" src="./images/logo4.png">
-        <button id="googleLoginButton">teste login com o Google</button>
-        
-        <ul class="FormularioLoginEmail">
-          <label for="email">E-Mail</label><p>
+      <h2>Entre com</h2>
+        <div class="loginSenha">
+          <label for="email">E-mail</label>
           <input type="email" id="email" placeholder="Digite seu e-mail">
-        </ul>
-        <ul class="FormularioLoginSenha">
-          <label for="senha">Senha</label><p>
+          <label for="senha">Senha</label>
           <input type="password" id="senha" placeholder="Digite sua senha">
-        </ul>
+          <a href="">Esqueceu a senha? Clique aqui!</a>
+        </div>
+          <div class="botoes">
         <button id="entrarButton">Entrar</button>
-        <button id="registrarButton">Registrar</button><p>
-        <a href="#register">Esqueceu a Senha? Clique aqui!</a>
+        <button id="registrarButton">Registrar</button></div>
+          </div>
+          <h3>-- ou --</h3>
+        <div class="google">
+        <button id="googleLoginButton">Acesse sua conta com <img class="logo-google" src="./images/logo4.png"></button>
+      </div>
+    
       </fieldset>
-    </body>
   `;
 
   container.innerHTML = template;
@@ -38,9 +33,10 @@ export default () => {
   const senhaInput = container.querySelector('#senha');
   const loginButton = container.querySelector('#entrarButton');
   const googleButton = container.querySelector('#googleLoginButton');
+  const registrarButton = container.querySelector('#registrarButton');
 
   // lidar com o evento de login
-    const handleLogin = () => {
+  const handleLogin = () => {
     const email = emailInput.value;
     const senha = senhaInput.value;
 
@@ -54,8 +50,11 @@ export default () => {
       });
   };
 
-  loginButton.addEventListener('click', handleLogin);
- 
+  loginButton.addEventListener('click', handleLogin());
 
-  return container;
+  registrarButton.addEventListener('click', () => {
+    window.location.hash = '#register';
+  });
+  
+  return container
 };
