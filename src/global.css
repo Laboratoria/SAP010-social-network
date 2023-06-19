@@ -1,25 +1,63 @@
 
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@700&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;400;700&family=Nunito+Sans:wght@400;700&display=swap');
 
-
-
-navE {
-    width: 100%;
+*{
+    font-family: 'Barlow Condensed', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-body {
-    font-family: 'Barlow Semi Condensed';
-    background-color: #ECE4CE;
+:root{
+    --intense-brown: #2F2212;
+    --medium-brown: #734B26;
+    --light-brown: #9A7951;
+    --super-light-brown: #B99970;
+    --grey: #BAAD98;
+    --light-white: #ECE4CE;
 }
-  
 
+body{
+    background-color: var(--light-white);
+    margin: 0;
+}
 
+main{
+    background-color: var(--light-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
 footer {
-    background-color: #2F2212;
-    color: #ECE4CE;
-    margin-top: 49px;
+    background-color: var(--intense-brown);
+    color: var(--light-white);
     text-align: center;
-    line-height: 25px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: var(--medium-brown);
+    border-radius: 20px;
+}
+
+button {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--light-white);
+    color: var(--intense-brown);
+    cursor: pointer;
+    width: 120px;
+    font-size: 18px;
+    transition: 0.3s ease-in-out;
+}
+
+button:hover{
+    background-color: var(--medium-brown);
+    color: var(--light-white);
 }
