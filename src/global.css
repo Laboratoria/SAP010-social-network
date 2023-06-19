@@ -1,0 +1,25 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@700&family=Poppins&display=swap');
+
+
+
+navE {
+    width: 100%;
+}
+
+body {
+    font-family: 'Barlow Semi Condensed';
+    background-color: #ECE4CE;
+}
+  
+
+
+
+footer {
+    background-color: #2F2212;
+    color: #ECE4CE;
+    margin-top: 49px;
+    text-align: center;
+    line-height: 25px;
+}
