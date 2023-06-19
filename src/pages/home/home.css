@@ -1,171 +1,127 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  /*faz com que o navegador não calcule a dimensão de um elemento somando bordas e margens com altura e largura.*/
-  font-family: "Roboto";
-  /*font escolhida padrão no link*/
-}
-
-body {
-  background: #d9d9d9;
-}
-
-.logomarca {
-  width: 100%;
-  height: auto;
-}
-.logo {
-  width: 30%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.form {
-  width: 450px;
-  height: 700px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-/*.etiqueta {
-    width: 450px;
-    height: 700px;
-    margin-top: 0px;
-    align-items:center;
-    margin-left: 450px;
-    display: flex;
-    margin-bottom: 100px;
-}
-
-h2{
-    position: absolute;
-   margin-top: -68%;
-    display: flex;
-    width: 100%;
-    transform: translate(-63%, 20%);
-    height: 98px;
-    left: 123%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /faz com que o navegador não calcule a dimensão de um elemento somando bordas e margens com altura e largura./
     font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 28px;
-    text-align: center;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+    /font escolhida padrão no link/
+}
+
+
+.container{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+    position: absolute;
+    
+    left: 50%;
+    transform: translate(-50%);
+    
+}
+
+ 
+body{
+    background: #D9D9D9;
+}
+
+.logo {
+    position: relative;
+    width: 320px;
+    height: 140px;
+    
+    display: flex;
+    margin-left: 60px;
+    
+}
+
+.etiqueta {
+    
+    position: relative;
+    height: 600px;
+    margin-top: -20px;
+    display: flex;
+    
+}
+
+ .form h2{
+    position: relative;
+    font-family: 'Roboto';
+    font-size: 18px;
     color: #F5B81D;
+    margin-top: -440px;
+    margin-left: 40px;
  }
 
- .inserir_email {
-    position: absolute;
-    display: flex;
-    width: 32%;
-    left: 78%; 
-    transform: translate(-63%, 20%);
-    height: 3%;
-    top: 500px;
+  .inserir_email, .digite_senha {
+    position:relative;
+    margin-left: 40px; 
     background: #D9D9D9;
     border-radius: 10px;
     border-color: #F5B81D;
     cursor: pointer;
     text-align: center;
     font-size: medium;
-    font-weight: 500;
-    margin-top: 10%;
+    margin-top: 7%;
+    width: 250px;
+    height: 40px;
     
 }
 
 .digite_senha {
-    position: absolute;
-    display: flex;
-    width: 32%;
-    left: 78%; 
-    transform: translate(-63%, 20%);
-    height: 3%;
-    margin-top: 16%;
-    top: 500px;
-    background: #D9D9D9;
-    border-radius: 10px;
-        border-color: #F5B81D;
-    display: flex;
-    cursor: pointer;
-    text-align: center;
-    font-size: medium;
-    font-weight: 500;
-    
+    margin-top: 2%;
+
 }
 
 .btnRecuperar {
-    cursor: pointer;
-    font-size: small;
-    position: absolute;
+    
     display: flex;
-    width: 32%;
-    left: 10%; 
+    width: 68%; 
     transform: translate(-63%, 20%);
-    height: 3%;
-    margin-top: -47%;
     color: white;
+    
+   
 }
 
 .btnLogar {
-   position: absolute;
-    width: 18%;
-    height:3%;
-    left: 65%;
-    top: 850px;
+    position: relative;
+    transform: translate(-30%, 20%);
+    width: 200%;
     background:#B80C0C;
     border-radius: 10px;
-    font-size: center;
     font-family: 'Roboto';
-    font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 30px;
-    text-align: center;
-    letter-spacing: 0.02em;
     color:#D9D9D9;
     box-shadow: -2px 3px 0 #D9D9D9;
-    display: inline-block;
-    margin-top: -11%;
-    cursor:pointer;
-}
+    top:35px;
 
+}
+ 
 .logarGoogle {
-    position: absolute;
-    width: 25%;
-    height: 50px;
-    left: 62%;
-    top: 850px;
-    background: #D9D9D9;
+    position: relative;
+    width: 130%;
+    height: 40px;
+    background: white;
     border-radius: 10px;
-    font-size: center;
-    font: bold;
     font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
     font-size: 17px;
-    line-height: 50px;
-    text-align: center;
-    letter-spacing: 0.02em;
     color: black;
-    box-shadow: -2px 3px 0#F5B81D, -4px 6px 0 #F5B81D;
-    display: inline-block;
-    margin-top: -4%;
-    cursor: pointer;
-    background-image: url(/src/imagens/Logotipo\ google.png);
+    top: 70px;
+    margin-left: -25px ;
+    
+    
 }
 
 .btnCadastrar {
-    position: absolute;
+    position: relative;
     width: 30%;
     height: 4%;
     left: 60%;
     top: 850px;
     border-radius: 10px;
-    font-size: center;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -179,6 +135,20 @@ h2{
     background-color: black;
     cursor: pointer;
     box-shadow: -2px 3px 0#F5B81D;
+
+    
+    position:relative;
+    background: black;
+    cursor: pointer;
+    text-align: center;
+    font-size: medium;
+    font-weight: bold;
+    margin-top: 30%;
+    width: 250px;
+    height: 40px;
+    color: #F5B81D;
+    top: 120px;
+    margin: -60%;
     
 }
 
@@ -187,19 +157,100 @@ h2{
 .btnRecuperar:hover,
 .btnLogar:hover,
 .logarGoogle:hover,
-.btnCadastrar:hover {
+.btnCadastrar:hover,
+.inserir_nome:hover, 
+.inserir_email2:hover,
+.btnCadastrar2:hover,
+.digite_senha2:hover,
+.confirma_senha:hover {
 
     filter: brightness(0.8);
 }
 
-.rodape {
+.inserir_nome,
+.inserir_email2,
+.digite_senha2,
+.confirma_senha
+  {
+   position:relative;
+   margin-left: 40px; 
+   background: #D9D9D9;
+   border-radius: 10px;
+   border-color: #F5B81D;
+   cursor: pointer;
+   text-align: center;
+   font-size: medium;
+   margin-top: 2%;
+   width: 250px;
+   height: 40px;
+   
+}
+.inserir_nome{
+
+   margin-top: 10%;
+}
+.btnCadastrar2 {
+   
+   position:relative;
+   background: black;
+   cursor: pointer;
+   text-align: center;
+   font-size: medium;
+   font-weight: bold;
+   width: 250px;
+   height: 40px;
+   color: #B80C0C;
+    top: 50px;
+  
+}
+
+
+footer{
+    
+    align-items: center;
     display: flex;
-    margin-left: 440px;
-    align-items:first baseline;
-    color: rgb(20, 19, 19);
-    border-radius: 20px;
-    margin-bottom: 0;
-    width: 100%;
-    font-size: small,10px;
-    margin-top: 15px;
-}*/
+
+    justify-content: center;
+    max-width: 1200px;
+    margin-top: 200px;
+    
+} 
+.rodape {
+
+    font-size: 10px;
+    
+}
+
+ @media screen and (mix-width: 414x) and (max-width:900px){
+
+    .container{
+        
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+}
+
+@media screen and (mix-width: 375x) and (max-width:667px){
+
+    .container{
+     width: 100%;
+     height: 100%;
+     display: block;
+    }
+            
+}      
+   
+
+
+div i{
+    font-size: 25px;
+    cursor: pointer;
+    position: absolute;
+    height: 5%;
+    color: #B80C0C;
+    margin-top: 3%;
+    float:left;
+   margin:10px 0px 0px -30px;
+
+}

@@ -3,33 +3,34 @@ import { loginUser, loginGoogle } from '../../lib';
 export default () => {
   const container = document.createElement('div');
 
-  const template = `
-      <div class="logomarca">   
+  const class="logomarca">   
        <header>
-         <img class="logo" src="imagens/logo mania de cupom.png" alt="logo" />
+         <img classtemplate = `
+      <div class="container" id="container-template">
+       <header>
+         <img class="logo" src="imagens/logo mania.png" alt="logo" />
        </header>
-       </div>    
-       <section class="form" id="form">
+            <form class="form" id="form">
                 <img class="etiqueta" src="imagens/etiqueta de desconto preta.png" alt="etiqueta" />
-                <h2>A REDE SOCIAL PARA QUEM <br> GOSTA DE ECONOMIZAR!</h2>
+                <h2>  A REDE SOCIAL PARA QUEM <br>GOSTA DE ECONOMIZAR!</h2>
                 <p class="email">
                 <input type="text" class="inserir_email" id="inseriremail" placeholder="Digite seu e-mail"/>
                 </p>
                 <p class="senha">
-                <input type="text" class="digite_senha" id="digitesenha" placeholder="Digite sua senha"/>
+                <input type="password" class="digite_senha" id="digitesenha" placeholder="Digite sua senha"/>
+                <i class="bi bi-eye-fill" id="olinho-visual"></i> 
                 </p> 
-                <p class="form">
-                <a href="/#recuperar" type="text" class="btnRecuperar" id="btnRecuperar">Esqueci minha senha</a>
-                </p>
-                <p class="form">
-                <button class="btnLogar" id="btnLogar">LOGAR</button>
-                </p>
-                <p class="form">
-                <button class="logarGoogle" id="btnGoogle">Entrar com Google</button>
-                <p class="form">
-                <a href="/#cadastrar" type="button" class="btnCadastrar" id="btnCadastrar">CADASTRE-SE</a>
-                </p>
-            </section>
+            </form>
+           
+            <p class="form">
+              <button class="btnLogar" id="btnLogar">LOGAR</button>
+            </p>
+            <p class="form">
+              <button class="logarGoogle" id="btnGoogle"><img src="imagens/google.png"> Entrar com Google</button>
+            <p class="form">
+              <a href="/#cadastrar" type="button" class="btnCadastrar" id="btnCadastrar">CADASTRE-SE</a>
+            </p>
+    </div>
     
     `;
 
@@ -71,6 +72,38 @@ export default () => {
         alert('erro ao autenticar');
       });
   });
+//função olho
+  const passwordImput = container.querySelector("#digitesenha")
+  const olho = container.querySelector("#olinho-visual")
+  olho.addEventListener('click', () => {
 
-  return container;
+  let ImputTypePassoword = passwordImput.type === "password"
+
+
+  if(ImputTypePassoword){
+   // se for passowrd qual é ação
+   showPassord()
+  } else {
+    // se não for qual ação deve tomar
+    hidePassword()
+  }
+})
+ function  showPassord(){
+  passwordImput.setAttribute( "type","text")
+
+  olho.classList.replace('bi-eye-fill','bi-eye-slash-fill')
+}
+ function hidePassword(){
+  passwordImput.setAttribute( "type","password")
+  
+  olho.classList.replace('bi-eye-slash-fill','bi-eye-fill')
+ }
+
+
+return container;
+
 };
+
+
+
+
