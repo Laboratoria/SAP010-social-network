@@ -1,12 +1,11 @@
-import { loginUser, loginGoogle } from '../../lib';
+import { loginUser, loginGoogle } from "../../lib";
+
 
 export default () => {
-  const container = document.createElement('div');
+  const container = document.createElement("div");
 
-  const class="logomarca">   
-       <header>
-         <img classtemplate = `
-      <div class="container" id="container-template">
+  const template = `
+    <div class="container" id="container-template">
        <header>
          <img class="logo" src="imagens/logo mania.png" alt="logo" />
        </header>
@@ -33,44 +32,47 @@ export default () => {
     </div>
     
     `;
+  
+container.innerHTML = template;
 
-  container.innerHTML = template;
 
-  const logar = container.querySelector('.btnLogar');
-  logar.addEventListener('click', () => {
-    const email = container.querySelector('.inserir_email');
-    const password = container.querySelector('.digite_senha');
-
+const logar = container.querySelector(".btnLogar")
+ logar.addEventListener('click', () => {
+  const email = container.querySelector(".inserir_email")
+  const password = container.querySelector(".digite_senha")
+  
     loginUser(email.value, password.value)
-      .then(() => {
-        window.location.hash = '#feed';
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        if (email.value === '' || password.value === '') {
-          alert('Todos os campos devem ser preenchidos');
-        }
-        if (errorMessage === 'Firebase: Error (auth/user-not-found).') {
-          alert('Usuário não cadastrado');
-        }
-        if (errorMessage === 'Firebase: Error (auth/invalid-email).') {
-          alert('E-mail inválido');
-        }
-        if (errorMessage === 'Firebase: Error (auth/wrong-password).') {
-          alert('Senha inválida');
-        }
-      });
+  
+    .then(() => {
+      window.location.hash = '#feed';
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+            if (email.value === '' || password.value === '') {
+              alert('Todos os campos devem ser preenchidos')
+            }
+            if (errorMessage === 'Firebase: Error (auth/user-not-found).') {
+              alert('Usuário não cadastrado')
+            }
+            if (errorMessage === 'Firebase: Error (auth/invalid-email).') {
+              alert('E-mail inválido')
+            }
+            if (errorMessage === 'Firebase: Error (auth/wrong-password).') {
+              alert('Senha inválida')
+            }
+    });
   });
 
-  const btnGoogle = container.querySelector('.logarGoogle');
-  btnGoogle.addEventListener('click', () => {
-    loginGoogle()
-      .then(() => {
-        window.location.hash = '#feed';
-      })
-      .catch(() => {
-        alert('erro ao autenticar');
-      });
+  const btnGoogle = container.querySelector (".logarGoogle")
+  btnGoogle.addEventListener ('click', () => {
+    loginGoogle ()
+    .then(() => {
+      window.location.hash = '#feed';
+    })
+    .catch((error) => {
+      const errorCode = errosValid(error.code);
+      alert(errorCode)
+    });
   });
 //função olho
   const passwordImput = container.querySelector("#digitesenha")
@@ -78,7 +80,6 @@ export default () => {
   olho.addEventListener('click', () => {
 
   let ImputTypePassoword = passwordImput.type === "password"
-
 
   if(ImputTypePassoword){
    // se for passowrd qual é ação

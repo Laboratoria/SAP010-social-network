@@ -1,22 +1,25 @@
 // Este es el punto de entrada de tu aplicacion
 
-import { initializeApp } from 'firebase/app';
+
+import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
-import { getAuth } from 'firebase/auth';
+import { getAuth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: 'AIzaSyAdXF_2uQ3kxNBTYIFua1-3HFgdLUoiC6Q',
-  authDomain: 'social-network-f5b19.firebaseapp.com',
-  projectId: 'social-network-f5b19',
-  storageBucket: 'social-network-f5b19.appspot.com',
-  messagingSenderId: '201443918698',
-  appId: '1:201443918698:web:4fa93e0b8f2a8c3d069b13',
-  measurementId: 'G-XNLQK083M7',
+  apiKey: "AIzaSyAdXF_2uQ3kxNBTYIFua1-3HFgdLUoiC6Q",
+  authDomain: "social-network-f5b19.firebaseapp.com",
+  projectId: "social-network-f5b19",
+  storageBucket: "social-network-f5b19.appspot.com",
+  messagingSenderId: "201443918698",
+  appId: "1:201443918698:web:4fa93e0b8f2a8c3d069b13",
+  measurementId: "G-XNLQK083M7"
 };
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+
+
