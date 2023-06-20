@@ -59,6 +59,10 @@ export default () => {
 
 
   loginButton.addEventListener('click', handleLogin);
+  registrarButton.addEventListener('click',() => {
+    window.location.hash = '#register';
+  });
+  
 
   const eyeToggle = container.querySelector('#eyeToggle');
   const passwordInput = container.querySelector('#senha');

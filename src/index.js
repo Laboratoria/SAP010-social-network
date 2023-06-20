@@ -2,6 +2,7 @@
 import login from './pages/login/login.js';
 import register from './pages/register/register.js';
 
+
 //  Load evento de carregamento da janela/ depois printar informações na tela
 const main = document.querySelector('#root');
 
@@ -13,11 +14,10 @@ const init = () => {
              case " ":
              main.appendChild(login());
              break;
-            case "#register":
+              case "#register":
               main.appendChild(register());
               break;
-              case "#feed":
-              main.appendChild(feed());
+              case "#login":
              break;
            default:
             main.appendChild(login());
