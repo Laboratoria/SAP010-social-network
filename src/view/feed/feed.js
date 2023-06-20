@@ -1,11 +1,11 @@
 import { carregarPosts, criarPost } from '../../lib/firestore.js';
 import { getCurrentUser } from '../../lib/index.js';
-
+let username = ''
 export const feed = () => {
   const container = document.createElement('div');
   const templateFeed = `
       <header class="feed-header">
-      <p> Seja bem-vindo(a) </p>
+      <p> Seja bem-vindo(a) ${username} </p>
       <a class="feedPage" href="/#feed"></a>
 
       <button id="post">Crie seu post aqui!</button>
@@ -75,19 +75,13 @@ export const feed = () => {
 
   container.innerHTML = templateFeed;
 
+  
+
   const carregarFeed = async () => {
     const posts = await carregarPosts();
     const feedPage = container.querySelector('.feed-page');
     feedPage.innerHTML = '';
-    const currentUser = await getCurrentUser();
-    const username = currentUser.displayName;
-
-    const header = container.querySelector('.feed-header');
-    header.innerHTML = `
-      <p>Seja bem-vindo, ${username}</p>
-      <a class="feedPage" href="/#feed"></a>
-      <button id="post">Crie seu post aqui!</button>
-      `
+    
     posts.forEach((post) => {
       const postCard = document.createElement('div');
       postCard.innerHTML = `
@@ -179,4 +173,8 @@ export const feed = () => {
     });
 
   return container;
-};
+}
+
+getCurrentUser().then((currentUser) => {
+  username = currentUser.displayName;
+});
