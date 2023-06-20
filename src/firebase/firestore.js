@@ -7,7 +7,7 @@ import {
   orderBy,
   doc,
   deleteDoc,
-  updateDoc
+  updateDoc,
 } from 'firebase/firestore';
 import { getAppAuth } from './auth';
 import { app } from './app';
@@ -48,4 +48,3 @@ export async function editPost(idPost, newPost) {
   const docRef = doc(db, 'posts', idPost);
   return updateDoc(docRef, newPost);
 }
-

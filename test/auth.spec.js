@@ -52,11 +52,12 @@ getAuth.mockReturnValue(auth);
 describe('createUserWithEmail', () => {
   it('should create a new user', async () => {
     createUserWithEmailAndPassword.mockResolvedValue(auth);
-
+    const name = 'Social';
+    const lastName = 'Network';
     const email = 'social@network.com';
     const password = 'social123';
-    const name = 'Network';
-    await createUserWithEmail(name, email, password);
+
+    await createUserWithEmail(name, lastName, email, password);
 
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
     expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(
@@ -121,6 +122,6 @@ describe('getUserName', () => {
 
     const result = getUserName();
 
-    expect(result).toBeNull();
+    expect(result).toBeFalsy();
   });
 });

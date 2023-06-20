@@ -4,10 +4,10 @@ import { createPost, accessPost, deletePost } from '../../firebase/firestore.js'
 export default () => {
   const timeline = document.createElement('div');
   const viewPost = `
-    <p class="postTitle">Olá ${getUserName()}, bem-vindo (a) de volta!</p>
+    <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
     <div class='timeline'>
       <div class='input-container'>
-        <textarea class='input-message' id='postArea' placeholder='COMPARTILHE UMA EXPERIÊNCIA ...'></textarea>
+        <textarea class='input-message' id='postArea' placeholder='COMPARTILHE UMA EXPERIÊNCIA...'></textarea>
         <button class='shareBtn' id='sharePost'>COMPARTILHAR</button>
       </div>
       <div id='postList'></div>
@@ -20,7 +20,7 @@ export default () => {
   const descriptionPost = timeline.querySelector('#postArea');
   const postList = timeline.querySelector('#postList');
 
-  const CreatePostElement = (name, createdAt, description, postId, authorId) => {
+  const createPostElement = (name, createdAt, description, postId, authorId) => {
     const createdAtDate = new Date(createdAt.seconds * 1000);
     const createdAtFormattedDate = createdAtDate.toLocaleDateString();
     const createdAtFormattedTime = createdAtDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -42,7 +42,10 @@ export default () => {
             <button type="button" class='icons' id='editPost'>
               <a class='icons' id='editPost'><img src='img/assets/editicon.png' alt='edit image' width='30px'></a>
             </button>
-            ${authorId === getUserId() ? `<button type="button" class='icons' id='btn-delete' data-post-id='${postId}'><img src='img/assets/deleteicon.png' alt='delete image' width='30px'></button>` : ''}
+            ${authorId === getUserId() ? `
+            <button type="button" class='icons' id='btn-delete' data-post-id='${postId}'>
+            <img src='img/assets/deleteicon.png' alt='delete image' width='30px'></button>
+            ` : ''}
           </nav> 
         </figure>
       </div>
@@ -53,12 +56,11 @@ export default () => {
   const loadPosts = async () => {
     postList.innerHTML = '';
     const postsFirestore = await accessPost();
-  
-    const currentUserID = getUserId();
-  
     postsFirestore.forEach((post) => {
-      const postElement = CreatePostElement(post.name, post.createdAt, post.description, post.id, post.author);
-  
+      const {
+        name, createdAt, description, id, author,
+      } = post;
+      const postElement = createPostElement(name, createdAt, description, id, author);
       postList.appendChild(postElement);
     });
   };
@@ -81,8 +83,6 @@ export default () => {
     }
   });
 
-
-
   postList.addEventListener('click', (event) => {
     const target = event.target;
     const deleteButton = target.closest('#btn-delete');
@@ -96,7 +96,7 @@ export default () => {
             alert('Publicação excluída com sucesso!');
           })
           .catch((error) => {
-            alert('Ocorreu um erro ao excluir o post. Por favor, tente novamente mais tarde');
+            alert('Ocorreu um erro ao excluir o post. Por favor, tente novamente mais tarde', error);
           });
       }
     }

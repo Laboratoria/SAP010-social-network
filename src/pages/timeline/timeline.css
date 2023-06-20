@@ -61,7 +61,7 @@
     margin: 10px 10px 0 10px;
     border-radius:  0.8em 0.8em 0 0;
     background-color: var(--darkblue);
-    color: var(--lightblue);
+    color: var(--white);
 }
 
 .dataPost {
