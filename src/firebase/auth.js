@@ -23,7 +23,7 @@ export const getUserName = () => {
   if (user) {
     return user.displayName;
   }
-  return '';
+  return 'viajante';
 };
 
 export const createUserWithEmail = (name, lastName, email, password) => {
