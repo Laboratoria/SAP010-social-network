@@ -1,4 +1,5 @@
-import { authLogin, authLoginGoogle } from '../Firebase/instalfirebase';
+import { authLogin, authLoginGoogle, authLoginFacebook } from '../Firebase/instalfirebase';
+import { registerUser } from '../Register/register.js';
 import './login.css';
 
 export const loginUser = () => {
@@ -40,6 +41,7 @@ export const loginUser = () => {
   const login = container.querySelector('#btnLogin');
   const newAccountLink = container.querySelector('#newAccount'); // Selecionar o link "Cadastrar"
   const btnGoogle = container.querySelector('#btn-google');
+  const btnFacebook = container.querySelector('#btn-face');
 
   const validarEmail = (email) => {
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -101,5 +103,20 @@ export const loginUser = () => {
 
   loginGoogle();
 
+  // login facebook
+  const loginFacebook = () => {
+    btnFacebook.addEventListener('click', () => {
+      authLoginFacebook()
+        .then(() => {
+          window.location.hash = '#feed';
+        })
+        .catch(() => {
+          txtError.innerHTML = 'Usuário ou senha incorretos';
+        });
+    });
+  };
+
+  loginFacebook();
+  
   return container;
 };

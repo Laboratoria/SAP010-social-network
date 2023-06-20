@@ -5,8 +5,11 @@ import {
   getAuth,
   updateProfile,
   GoogleAuthProvider,
+  signInWithPopup,
+  FacebookAuthProvider,
   signInWithRedirect,
   onAuthStateChanged,
+
 } from 'firebase/auth';
 import { routes } from '../main';
 
@@ -46,3 +49,6 @@ export const newUser = async (email, senha, displayName) => {
   await createUserWithEmailAndPassword(authentication, email, senha);
   await updateProfile(authentication.currentUser, { displayName });
 };
+
+const provider = new FacebookAuthProvider();
+export const authLoginFacebook = () => signInWithPopup(auth, provider);
