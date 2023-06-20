@@ -1,4 +1,4 @@
-// inportar o template criado 
+// inportar o template criado
 import login from './pages/login/login.js';
 import register from './pages/register/register.js';
 
