@@ -49,5 +49,8 @@ export default () => {
 
   registerButton.addEventListener('click', registrarNovoUsuario);
 
+  homeButton.addEventListener('click', () => {
+    window.location.hash = '';
+  });
   return container;
 };
