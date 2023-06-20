@@ -1,9 +1,10 @@
-import { signUpUser } from '../../lib/index.js';
+import {signUpUser} from "../../lib/index.js"
+
 
 export default () => {
-  const container = document.createElement('div');
+  const container = document.createElement("div");
 
-  const template = `
+  const template=`
   <div class="container" id="container-template">
     <header>
       <img class="logo" src= "imagens/logo mania.png" alt="logo">
@@ -33,10 +34,7 @@ export default () => {
     
     `;
 
-
-  container.innerHTML = template;
-
-
+container.innerHTML = template;
 
 const register = container.querySelector(".btnCadastrar2")
  register.addEventListener('click', () => {
@@ -68,33 +66,14 @@ const register = container.querySelector(".btnCadastrar2")
     }
   
   });
->>>>>>> main
 
-  const register = container.querySelector('.btnCadastrar');
-  register.addEventListener('click', () => {
-    const email2 = container.querySelector('.inserir_email2');
-    const password2 = container.querySelector('.digite_senha2');
-    const passwordRepet = container.querySelector('.confirma_senha');
-    signUpUser(email2.value, password2.value, passwordRepet.value)
-      .then(() => {
-        alert('Usuário cadastrado com sucesso!');
-        window.location.hash = '#feed';
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        if (errorMessage === 'Firebase: Error (auth/email-already-in-use).') {
-          alert('E-mail já cadastrado');
-        }
-        if (errorMessage === 'Firebase: Error (auth/invalid-email).') {
-          alert('Endereço de e-mail inválido');
-        }
-        if (errorMessage === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
-          alert('Sua senha deve ter ao menos 6 dígitos');
-        }
-        if (password2.value !== passwordRepet.value) {
-          alert('As senhas devem ser iguais');
-        }
-      });
+      
   });
-  return container;
+
+
+
+
+return container;
+
 };
+

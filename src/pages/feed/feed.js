@@ -1,7 +1,7 @@
 export default () => {
-  const container = document.createElement('div');
+    const container = document.createElement('div');
 
-  const template = `<!DOCTYPE html>
+    const template = `<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -15,6 +15,7 @@ export default () => {
     </body>
     </html>`;
 
-  container.innerHTML = template;
-  return container;
-};
+container.innerHTML = template;
+return container;
+
+}

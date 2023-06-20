@@ -1,7 +1,7 @@
 export default () => {
-  const container = document.createElement('div');
+    const container = document.createElement('div');
 
-  const template = `
+    const template =`
     <div class="container" id="container-template"
        <header>
          <img class="logo" src="imagens/logo mania de cupom.png" alt="logo" />
@@ -26,6 +26,7 @@ export default () => {
     
     `;
 
-  container.innerHTML = template;
-  return container;
-};
+container.innerHTML = template;
+return container;
+
+}

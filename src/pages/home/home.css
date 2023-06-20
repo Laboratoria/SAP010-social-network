@@ -2,9 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /faz com que o navegador não calcule a dimensão de um elemento somando bordas e margens com altura e largura./
+    /*faz com que o navegador não calcule a dimensão de um elemento somando bordas e margens com altura e largura.*/
     font-family: 'Roboto';
-    /font escolhida padrão no link/
+    /*font escolhida padrão no link*/
 }
 
 
@@ -254,3 +254,4 @@ div i{
    margin:10px 0px 0px -30px;
 
 }
+
