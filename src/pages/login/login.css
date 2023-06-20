@@ -131,7 +131,7 @@ cursor: pointer;
         border: 2px solid var(--lightblue);
         border-radius: 22px;
         width: 24em;
-        height: 28em;
+        height: 30em;
         background-color:var(--lightblue); 
         margin-top: 3em;
     }

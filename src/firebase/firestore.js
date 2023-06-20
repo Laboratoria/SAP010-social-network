@@ -5,11 +5,13 @@ import {
   getDocs,
   query,
   orderBy,
+  doc,
+  deleteDoc,
 } from 'firebase/firestore';
 import { getAppAuth } from './auth';
 import { app } from './app';
 
-// variable firestone
+// Obtém a instância do Firestore
 const db = getFirestore(app);
 
 export const createPost = (description) => {
@@ -24,7 +26,7 @@ export const createPost = (description) => {
   });
 };
 
-export async function accessPost() {
+export const accessPost = async () => {
   const allPosts = [];
   const postQuery = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
   const querySnapshot = await getDocs(postQuery);
@@ -34,4 +36,9 @@ export async function accessPost() {
     allPosts.push(data);
   });
   return allPosts;
-}
+};
+
+export const deletePost = async (postId) => {
+  const docRef = doc(db, 'posts', postId);
+  await deleteDoc(docRef);
+};
