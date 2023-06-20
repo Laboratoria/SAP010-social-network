@@ -1,4 +1,4 @@
-import { collection, addDoc, doc, getDocs, query, where } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query } from 'firebase/firestore';
 import { getFirestore } from 'firebase/firestore';
 import { app } from '../../firebase/firebase';
 export const feed = () => {
@@ -26,7 +26,7 @@ export const feed = () => {
             <label for="quero-doar">Quero doar</label>
             <br>
             
-            <label for="especie">Espécie:</label>
+            <label for="especie" class="label-class">Espécie:</label> 
             <select name="select" id="especie" class="modal-input-area">
             <option value="" selected disabled >Selecionar</option>
             <option value="Cachorro">Cachorro</option>
@@ -34,16 +34,16 @@ export const feed = () => {
             <option value="Outros">Outros</option>
             </select>
  
-            <label for="sexo">Sexo:</label>
+            <label for="sexo" class="label-class">Sexo:</label>
             <select name="select" id="sexo" class="modal-input-area">
             <option value="" selected disabled >Selecionar</option>
             <option value="Fêmea">Fêmea</option>
             <option value="Macho">Macho</option>
             <option value="Sem Preferência">Sem Preferência</option>
-            <br>
             </select>
+
             <br>
-            <label for="idade">Idade do pet:</label>
+            <label for="idade" class="label-class">Idade do pet:</label>
             <select name="select" id="idade" class="modal-input-area">
             <option value="" selected disabled >Selecionar</option>
             <option value="Filhote">Filhote</option>
@@ -51,15 +51,17 @@ export const feed = () => {
             <option value="Idoso">Idoso</option>
             <option value="Sem Preferência">Sem Preferência</option>
 
-            <br>
-            <label for="raca">Raça:</label>
+                       
+            </select>
+            <label for="raca" class="label-class">Raça:</label>
             <input type="text" class="modal-input-area" id="raca" name="raca" placeholder="Exemplo: Bulldog">
             <br>
             
             
-            <label for="localização">Localização:</label>
+            <label for="localização" class="label-class">Localização:</label>
             <input type="text" class="modal-input-area" id="local" name="local" placeholder="Exemplo: Curitiba/PR">
-
+            
+            <label for="contato" class="label-class">Contato:</label>
             <input type="text" class="modal-input-area" id="contato" name="contato" placeholder="(xx) xxxxx-xxxx">
             <br>
             <textarea id="mensagem" name="mensagem" rows="4" cols="20" placeholder=" Escreva sua mensagem aqui."></textarea>
@@ -115,8 +117,9 @@ export const feed = () => {
           localizacao: document.getElementById('local').value,
           contato: document.getElementById('contato').value,
           mensagem: document.getElementById('mensagem').value,
+          data: Date.now()
         });
-        console.log('Document written with ID: ', docRef.id);
+       // console.log('Document written with ID: ', docRef.id);
       } catch (e) {
         console.error('Error adding document: ', e);
       }
@@ -132,7 +135,7 @@ export const feed = () => {
       data.id = post.id;
       arrayPosts.push(data)
       
-      console.log(post.id, " => ", post.data());
+      //console.log(post.id, " => ", post.data());
       });
       
       arrayPosts.forEach((post) => {
