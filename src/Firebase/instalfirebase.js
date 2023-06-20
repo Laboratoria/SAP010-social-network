@@ -28,7 +28,6 @@ export const authLogin = (email, senha) => signInWithEmailAndPassword(auth, emai
 const authProvedor = new GoogleAuthProvider();
 export const authLoginGoogle = () => signInWithPopup(auth, authProvedor);
 
-// cadastrar novo usuário
 export const newUser = async (email, senha, displayName) => {
   const authentication = getAuth(app);
   await createUserWithEmailAndPassword(authentication, email, senha);

@@ -1,9 +1,9 @@
 .backgroundTwo {
-  border-style: solid;
-  border-width: 1300px 990px 0 0;
-  border-color: #ff4400 transparent transparent transparent;
-  height: 0;
   width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 31300px 990px 0 0;
+  border-color: #ff4400 transparent transparent transparent;
 }
 
 .imagemMap {
@@ -35,7 +35,7 @@
 .register-titulo {
   color: var(--CorPrimaria);
   font-size: 2.7rem;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .titulo-sub {
@@ -85,7 +85,7 @@
   gap: 40px;
 }
 
-.buttons-register {
+.button-register {
   background: var(--CorPrimaria);
   border: 0;
   border-radius: 5px;
@@ -98,9 +98,9 @@
   width: 40vw;
 }
 
-.buttons-register:hover,
-.buttons-register:active,
-.buttons-register:focus {
+.button-register:hover,
+.button-register:active,
+.button-register:focus {
   cursor: pointer;
   background: var(--CorSecundaria);
   transition: 0.2s;
@@ -116,7 +116,6 @@
   color: var(--CorPrimaria);
   text-decoration: none;
   font-weight: bold;
-}
 
 .form .register-form {
   display: none;
@@ -161,7 +160,7 @@
   .backgroundTwo {
     border-width: 990px 750px 0 0;
   }
-
+  
   .imagemLogo {
     left: 5px;
     top: 160px;
@@ -186,6 +185,7 @@
   }
 }
 
+  
 @media screen and (max-width:1010px) {
   .backgroundTwo {
     border-width: 990px 690px 0 0;
@@ -204,7 +204,7 @@
   .register-titulo {
     color: var(--CorPrimaria);
     font-size: 1.6rem;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
   }
 
   .titulo-sub {
@@ -216,13 +216,12 @@
     top: 150px;
     width: 42vw;
   }
-
+  
   .buttons-register {
     font-size: 0.9em;
     margin-left: 0px;
     padding: 10px 20px;
     width: 40vw;
-  }
 
   .register-message {
     font-size: 0.8rem;
@@ -243,7 +242,6 @@
 
   .backgroundTwo {
     border-width: 405px 500px 0 0;
-
   }
 
   .imagemLogo {
@@ -278,7 +276,7 @@
     padding: 7px 10px;
   }
 
-  .buttons-register {
+  .button-register {
     font-size: 0.8rem;
     margin-left: 20px;
     padding: 8px 10px;
@@ -339,7 +337,7 @@
     gap: 20px;
   }
 
-  .buttons-register {
+  .button-register {
     font-size: 0.8rem;
     margin-top: 20px;
     margin-left: 5px;

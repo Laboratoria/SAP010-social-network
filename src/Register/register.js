@@ -1,4 +1,4 @@
-import { newUser } from '../Firebase/instalfirebase';
+import { newUser } from "../Firebase/instalfirebase";
 import './register.css';
 
 export const registerUser = () => {
@@ -89,6 +89,6 @@ export const registerUser = () => {
     });
   };
   registerLogin();
-
+  
   return container;
 };
