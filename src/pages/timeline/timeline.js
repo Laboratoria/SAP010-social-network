@@ -53,9 +53,12 @@ export default () => {
   const loadPosts = async () => {
     postList.innerHTML = '';
     const postsFirestore = await accessPost();
-
+  
+    const currentUserID = getUserId();
+  
     postsFirestore.forEach((post) => {
-      const postElement = CreatePostElement(post.name, post.description);
+      const postElement = CreatePostElement(post.name, post.createdAt, post.description, post.id, post.author);
+  
       postList.appendChild(postElement);
     });
   };
@@ -78,18 +81,7 @@ export default () => {
     }
   });
 
-  const loadPosts = async () => {
-    postList.innerHTML = '';
-    const postsFirestore = await accessPost();
-  
-    const currentUserID = getUserId();
-  
-    postsFirestore.forEach((post) => {
-      const postElement = CreatePostElement(post.name, post.createdAt, post.description, post.id, post.author);
-  
-      postList.appendChild(postElement);
-    });
-  };
+
 
   postList.addEventListener('click', (event) => {
     const target = event.target;

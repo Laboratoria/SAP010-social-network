@@ -60,8 +60,8 @@
     padding: 0.3em;
     margin: 10px 10px 0 10px;
     border-radius:  0.8em 0.8em 0 0;
-    background-color: var(--white);
-    color: var(--black);
+    background-color: var(--darkblue);
+    color: var(--lightblue);
 }
 
 .dataPost {
@@ -82,7 +82,7 @@
 .icons {
     background-color: var(--lightblue);
     border: none;
-
+}
 
 .icons:hover {
     background-color: var(--blue);
