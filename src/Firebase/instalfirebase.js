@@ -11,7 +11,7 @@ import {
   onAuthStateChanged,
 
 } from 'firebase/auth';
-import { routes } from '../main';
+// import { routes } from '../main';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDSedT4wQAFd6nZqtK9xWVLPVSRAj9y9dE',
@@ -41,7 +41,7 @@ onAuthStateChanged(auth, (user) => {
 
 // função para login da conta do google
 const authProvedor = new GoogleAuthProvider();
-export const authLoginGoogle = async () => signInWithRedirect(auth, authProvedor);
+export const authLoginGoogle = () => signInWithRedirect(auth, authProvedor);
 //                                            | trocado a função
 // cadastrar novo usuário
 export const newUser = async (email, senha, displayName) => {

@@ -1,5 +1,4 @@
 import { authLogin, authLoginGoogle, authLoginFacebook } from '../Firebase/instalfirebase';
-import { registerUser } from '../Register/register.js';
 import './login.css';
 
 export const loginUser = () => {
@@ -39,7 +38,6 @@ export const loginUser = () => {
   const userSenha = container.querySelector('#txtPassword');
   const txtError = container.querySelector('#txtError');
   const login = container.querySelector('#btnLogin');
-  const newAccountLink = container.querySelector('#newAccount'); // Selecionar o link "Cadastrar"
   const btnGoogle = container.querySelector('#btn-google');
   const btnFacebook = container.querySelector('#btn-face');
 
@@ -117,6 +115,5 @@ export const loginUser = () => {
   };
 
   loginFacebook();
-  
   return container;
 };

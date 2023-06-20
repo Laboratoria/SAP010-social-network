@@ -1,8 +1,8 @@
-import { newUser } from "../Firebase/instalfirebase";
+import { newUser } from '../Firebase/instalfirebase';
 import './register.css';
 
 export const registerUser = () => {
-  const container = document.createElement("div");
+  const container = document.createElement('div');
   const template = `
     <div class="backgroundTwo">
     </div>
@@ -20,21 +20,70 @@ export const registerUser = () => {
           <input class="inputs" type="email" placeholder="Email *" required/>
           <input class="inputs" type="password" placeholder="Senha *" required/>
         </div>
-          <button class="button-register" type="submit">Cadastrar</button>
+          <button class="btnregister" type="submit">Cadastrar</button>
         <p class="register-message">Já possui uma conta? <a href="#login" id="newAccount">Clique em voltar e acesse.</a></p>
       </form>
     </section>
   `;
 
   container.innerHTML = template;
-  const voltarButton = container.querySelector("#signup");
+  const register = container.querySelector('#btnregister');
+  const registerName = container.querySelector('#registerName');
+  const registerEmail = container.querySelector('#registerEmail');
+  const registerPassword = container.querySelector('#registerPassword');
+  const errorTxt = container.querySelector('#errorRegister');
 
-  // Adicionar evento de clique ao botão "Voltar"
-  //voltarButton.addEventListener("click", () => {
-    // container.innerHTML = '';
-    // container.appendChild(loginUser());
-   // window.location.hash = '#login'
-  //});
+  const validarRegisterEmail = (email) => {
+    const regexEmailRegister = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regexEmailRegister.test(email)) {
+      return 'Por favor digite um e-mail';
+    }
+    return ''; // Retorna uma string vazia se o email for válido
+  };
 
+  const validarRegisterSenha = (senha) => {
+    if (senha.length < 6) {
+      return `A senha deve ter pelo menos 6 caracteres`;
+    }
+    return '';
+  };
+
+  const validarRegisterName = (nome) => {
+    const regexNameRegister = /^[A-Za-z][A-Z a-z]*$./;
+    if (!regexNameRegister.test(nome)) {
+      return `Favor preencha seu nome completo.`;
+    }
+    return '';
+  };
+
+  const registerLogin = () => {
+    register.addEventListener('click', async (evento) => {
+      evento.preventDefault();
+
+      const emailInputRegister = registerEmail.value;
+      const passwordRegister = registerPassword.value;
+      const nameRegister2 = registerName.value;
+      const nameErrorRegister = validarRegisterName(nameRegister2);
+      const emailErrorRegister = validarRegisterEmail(emailInputRegister);
+      const senhaErrorRegister = validarRegisterSenha(passwordRegister);
+
+      if (emailErrorRegister || senhaErrorRegister) {
+        // Se houver algum erro de email ou senha, exiba as mensagens de erro
+        errorTxt.setAttribute('style', 'display: block');
+        errorTxt.innerHTML = emailErrorRegister || senhaErrorRegister;
+      } else {
+        // Caso contrário, prossiga com o login
+        newUser(emailInputRegister, passwordRegister)
+          .then(() => {
+            window.location.hash = '#feed';
+          })
+          .catch(() => {
+            errorTxt.setAttribute('style', 'display: block');
+            errorTxt.innerHTML = '';
+          });
+      }
+    });
+  };
+  registerLogin();
   return container;
 };
