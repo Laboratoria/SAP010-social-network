@@ -5,9 +5,6 @@ export const registerUser = () => {
   const container = document.createElement("div");
   const template = `
     <div class="backgroundTwo">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
-      </svg>
     </div>
     <div class="imagens">
       <img class="imagemLogo" src="Img/ImagemDesktopmap.png" alt= "Imagem Ilustrativa de pessoas interagindo">
@@ -23,11 +20,8 @@ export const registerUser = () => {
           <input class="inputs" type="email" placeholder="Email *" required/>
           <input class="inputs" type="password" placeholder="Senha *" required/>
         </div>
-        <div class="botoes-register">
-          <button class="buttons-register" type="submit">Cadastrar</button>
-          <button class="buttons-register" type="submit" id="signup">Voltar</button>
-        </div>
-        <p class="register-message">Já possui uma conta? Clique em voltar e acesse.</a></p>
+          <button class="button-register" type="submit">Cadastrar</button>
+        <p class="register-message">Já possui uma conta? <a href="#login" id="newAccount">Clique em voltar e acesse.</a></p>
       </form>
     </section>
   `;
@@ -36,10 +30,11 @@ export const registerUser = () => {
   const voltarButton = container.querySelector("#signup");
 
   // Adicionar evento de clique ao botão "Voltar"
-  voltarButton.addEventListener("click", () => {
-    container.innerHTML = '';
-    container.appendChild(loginUser());
-  });
+  //voltarButton.addEventListener("click", () => {
+    // container.innerHTML = '';
+    // container.appendChild(loginUser());
+   // window.location.hash = '#login'
+  //});
 
   return container;
 };

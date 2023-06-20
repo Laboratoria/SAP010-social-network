@@ -6,8 +6,12 @@ import {
   updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
-  FacebookAuthProvider
+  FacebookAuthProvider,
+  signInWithRedirect,
+  onAuthStateChanged,
+
 } from 'firebase/auth';
+import { routes } from '../main';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDSedT4wQAFd6nZqtK9xWVLPVSRAj9y9dE',
@@ -22,12 +26,23 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // função para fazer login do usuario
-export const authLogin = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
+export const authLogin = async (email, senha) => signInWithEmailAndPassword(auth, email, senha);
+
+//ele escuta para saber se o usuário esta logado ou não, caso esteja da o acesso, caso não ele remove e no fim chama o função routes para renderizar a página
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    window.localStorage.setItem('token', user.accessToken);
+  } else {
+    window.localStorage.removeItem('token');
+  }
+
+  routes();
+});
 
 // função para login da conta do google
 const authProvedor = new GoogleAuthProvider();
-export const authLoginGoogle = () => signInWithPopup(auth, authProvedor);
-
+export const authLoginGoogle = async () => signInWithRedirect(auth, authProvedor);
+//                                            | trocado a função
 // cadastrar novo usuário
 export const newUser = async (email, senha, displayName) => {
   const authentication = getAuth(app);

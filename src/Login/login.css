@@ -1,14 +1,18 @@
-.backgroundTwo svg {
-  background: var(--CorPrimaria);
-  height: 150px;
+body {
   overflow: hidden;
-  transform: matrix(3.94, -5.34, 6.8, 2.91, 5, 0);
-  width: 500px;
 }
 
-.backgroundTwo .shape-fill {
-  fill: var(--CorPrimaria);
+.backgroundTwo {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 1300px 990px 0 0;
+  border-color: #ff4400 transparent transparent transparent;
 }
+
+/*.backgroundTwo .shape-fill {
+  fill: var(--CorPrimaria);
+}*/
 
 .imagemMap {
   display: none;
@@ -41,7 +45,7 @@
 .login-titulo {
   color: var(--CorPrimaria);
   font-size: 2.7rem;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .form {
@@ -140,8 +144,12 @@
 }
 
 @media screen and (max-width: 1350px) {
-  .backgroundTwo svg {
-    transform: matrix(3.94, -5.34, 5.8, 2.91, 5, 0);
+  .backgroundTwo {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 990px 980px 0 0;
+    border-color: #ff4400 transparent transparent transparent;
   }
 
   .subtitulo {
@@ -158,10 +166,13 @@
   }
 }
 
-@media screen and (max-width: 1245px) {
-  .backgroundTwo svg {
-    transform: matrix(3.94, -5.34, 5.8, 2.91, 5, 0);
-    width: 450px;
+@media screen and (max-width: 1237px) {
+  .backgroundTwo {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 990px 859px 0 0;
+    border-color: #ff4400 transparent transparent transparent;
   }
 
   .imagemLogo {
@@ -176,11 +187,13 @@
   }
 }
 
-@media screen and (max-width: 1120px) {
-  .backgroundTwo svg {
-    height: 140px;
-    transform: matrix(3.94, -5.34, 5.8, 2.91, 5, 0);
-    width: 400px;
+@media screen and (max-width: 1118px) {
+  .backgroundTwo {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 900px 750px 0 0;
+    border-color: #ff4400 transparent transparent transparent;
   }
 
   .imagemLogo {
@@ -195,6 +208,14 @@
 }
 
 @media screen and (max-width: 1050px) {
+  .backgroundTwo {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 990px 750px 0 0;
+    border-color: #ff4400 transparent transparent transparent;
+  }
+
   .imagemLogo {
     left: 5px;
     top: 160px;
@@ -206,11 +227,13 @@
   }
 }
 
-@media screen and (max-width:1010px) {
-  .backgroundTwo svg {
-    height: 130px;
-    transform: matrix(3.94, -5.34, 5.8, 2.91, 5, 0);
-    width: 250px;
+@media screen and (max-width: 1010px) {
+  .backgroundTwo {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 990px 690px 0 0;
+    border-color: #ff4400 transparent transparent transparent;
   }
 
   .imagemLogo {
@@ -226,7 +249,7 @@
   .login-titulo {
     color: var(--CorPrimaria);
     font-size: 1.6rem;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
   }
 
   .form {
@@ -249,22 +272,22 @@
 }
 
 @media screen and (max-width: 600px) {
+  .backgroundTwo {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 1000px 630px 0 0;
+    border-color: #ff4400 transparent transparent transparent;
+  }
+
   .imagemMap {
     display: flex;
-    left: 90px;
-    margin-right: 10px;
+    left: 40%;
     position: absolute;
     right: 10px;
     transform: rotate(-4.39deg);
     top: 45px;
-    width: 60vw;
-  }
-
-  .backgroundTwo svg {
-    height: 115px;
-    margin-left: 20px;
-    transform: matrix(1.94, -1.34, 1.60, 2.0, 5, 0);
-    width: 290px;
+    width: 260px;
   }
 
   .imagemLogo {
@@ -272,7 +295,7 @@
   }
 
   .subtitulo {
-    font-size: 1.3rem;
+    color:#ff4400 
   }
 
   .login-titulo {
@@ -281,7 +304,6 @@
 
   .form {
     height: 310px;
-    left: 80px;
     right: 12px;
     top: 340px;
     width: 65vw;
@@ -312,26 +334,27 @@
 }
 
 @media screen and (max-width: 490px) {
+  
   .imagemMap {
     display: flex;
-    left: 90px;
+    left: 40%;
     margin-right: 10px;
     position: absolute;
     right: 10px;
-    top: 8px;
     transform: rotate(-4.39deg);
-    width: 300px;
+    width: 240px;
   }
 
   .imagemLogo {
     display: none;
   }
 
-  .backgroundTwo svg {
-    height: 115px;
-    margin-left: 20px;
-    transform: matrix(1.94, -1.34, 1.42, 2.0, 5, 0);
-    width: 270px;
+  .backgroundTwo {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 785px 480px 0 0;
+    border-color: #ff4400 transparent transparent transparent;
   }
 
   .subtitulo {
@@ -344,11 +367,11 @@
   }
 
   .form {
-    height: 300px;
-    left: 80px;
+    height: 370px;
+    left: 95px;
     right: 85px;
-    top: 320px;
-    width: 300px;
+    top: 280px;
+    width: 290px;
   }
 
   .form input {
