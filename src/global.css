@@ -71,3 +71,8 @@ button:hover{
 .imagem-fundo{
     max-width: 500px;
 }
+
+.error {
+    color: red;
+    display: none;
+}

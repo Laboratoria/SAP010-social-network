@@ -15,12 +15,11 @@ export default () => {
       <label for="email">E-mail</label>
       <input type="email" id="email" placeholder="Digite seu e-mail">
       <label for="senha">Senha</label>
-      <input type="password" id="senha" placeholder="Digite sua senha"> 
+      <input type="password" id="senha" placeholder="Digite sua senha">
       <img class="eye" id="eyeToggle" src="./images/icons/eye-off.svg">
-      <div id="errorMessage" class="error"></div> 
+      <div id="errorMessage" class="error"></div>
       <a href="">Esqueceu a senha? Clique aqui!</a>
       </div>
-    
         <div class="botoes">
         <button id="entrarButton">Entrar</button>
         <button id="registrarButton">Registrar</button></div>
@@ -51,14 +50,16 @@ export default () => {
       })
       .catch(() => {
         const errorMessage = container.querySelector('#errorMessage');
-        errorMessage.textContent = 'E-mail ou senha incorretos'; 
-        errorMessage.style.display = 'block'; 
+        errorMessage.textContent = 'E-mail ou senha incorretos';
+        errorMessage.style.display = 'block';
       });
-      
   };
 
-
   loginButton.addEventListener('click', handleLogin);
+
+  registrarButton.addEventListener('click',() => {
+    window.location.hash = '#register';
+  });
 
   const eyeToggle = container.querySelector('#eyeToggle');
   const passwordInput = container.querySelector('#senha');
@@ -66,11 +67,11 @@ export default () => {
   eyeToggle.addEventListener('click', () => {
     if (passwordInput.type === 'password') {
       passwordInput.type = 'text';
-      eyeToggle.src = './images/icons/eye.svg';
+      eyeToggle.src = '../images/icons/eye.svg';
       eyeToggle.title = 'Esconder senha';
     } else {
       passwordInput.type = 'password';
-      eyeToggle.src = './images/icons/eye-off.svg';
+      eyeToggle.src = '../images/icons/eye-off.svg';
       eyeToggle.title = 'Mostrar senha';
     }
   });

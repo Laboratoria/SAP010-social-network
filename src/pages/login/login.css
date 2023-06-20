@@ -70,7 +70,7 @@ fieldset {
     width: 400px;
     height: 500px;
     margin-top: 30px;
-  
+    gap: 3px;
 }
 
 .botoes{
@@ -127,4 +127,23 @@ fieldset {
         flex-direction: column;
     }
 
+}
+
+.eye {
+    width: 15px;
+    cursor: pointer;
+    position: relative;
+    top: -29px;
+    right: -150px; /* horizontal*/
+}
+
+.eye-closed {
+    display: none;
+}
+
+#errorMessage {
+    position: relative;
+    font-size: 14px;
+    top: -50px;
+    right: -10px;
 }
