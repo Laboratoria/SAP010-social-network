@@ -1,7 +1,3 @@
-body {
-  overflow: hidden;
-}
-
 .backgroundTwo {
   width: 0;
   height: 0;
@@ -9,10 +5,6 @@ body {
   border-width: 1300px 990px 0 0;
   border-color: #ff4400 transparent transparent transparent;
 }
-
-/*.backgroundTwo .shape-fill {
-  fill: var(--CorPrimaria);
-}*/
 
 .imagemMap {
   display: none;
@@ -103,13 +95,13 @@ body {
   width: 32px;
 }
 
-.form .message {
+.form .messageLogin {
   color: var(--CorPrimaria);
   font-size: 0.9rem;
   margin-top: 20px;
 }
 
-.form .message a {
+.form .messageLogin a {
   color: var(--CorPrimaria);
   font-weight: bold;
   text-decoration: none;
@@ -144,12 +136,8 @@ body {
 }
 
 @media screen and (max-width: 1350px) {
-  .backgroundTwo {
-    width: 0;
-    height: 0;
-    border-style: solid;
+  .backgroundTwo{
     border-width: 990px 980px 0 0;
-    border-color: #ff4400 transparent transparent transparent;
   }
 
   .subtitulo {
@@ -167,12 +155,8 @@ body {
 }
 
 @media screen and (max-width: 1237px) {
-  .backgroundTwo {
-    width: 0;
-    height: 0;
-    border-style: solid;
+  .backgroundTwo{
     border-width: 990px 859px 0 0;
-    border-color: #ff4400 transparent transparent transparent;
   }
 
   .imagemLogo {
@@ -188,12 +172,8 @@ body {
 }
 
 @media screen and (max-width: 1118px) {
-  .backgroundTwo {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 900px 750px 0 0;
-    border-color: #ff4400 transparent transparent transparent;
+  .backgroundTwo{
+    border-width: 990px 750px 0 0;
   }
 
   .imagemLogo {
@@ -227,13 +207,9 @@ body {
   }
 }
 
-@media screen and (max-width: 1010px) {
+@media screen and (max-width:1010px) {
   .backgroundTwo {
-    width: 0;
-    height: 0;
-    border-style: solid;
     border-width: 990px 690px 0 0;
-    border-color: #ff4400 transparent transparent transparent;
   }
 
   .imagemLogo {
@@ -272,22 +248,19 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-  .backgroundTwo {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 1000px 630px 0 0;
-    border-color: #ff4400 transparent transparent transparent;
-  }
-
   .imagemMap {
     display: flex;
-    left: 40%;
+    left: 90px;
+    margin-right: 10px;
     position: absolute;
-    right: 10px;
+    right: 20px;
     transform: rotate(-4.39deg);
     top: 45px;
-    width: 260px;
+    width: 60vw;
+  }
+
+  .backgroundTwo{
+    border-width: 405px 500px 0 0;
   }
 
   .imagemLogo {
@@ -295,7 +268,7 @@ body {
   }
 
   .subtitulo {
-    color:#ff4400 
+    font-size: 1.3rem; 
   }
 
   .login-titulo {
@@ -304,6 +277,7 @@ body {
 
   .form {
     height: 310px;
+    left: 80px;
     right: 12px;
     top: 340px;
     width: 65vw;
@@ -334,15 +308,15 @@ body {
 }
 
 @media screen and (max-width: 490px) {
-  
   .imagemMap {
     display: flex;
-    left: 40%;
+    left: 90px;
     margin-right: 10px;
     position: absolute;
-    right: 10px;
+    right: 25px;
+    top: 8px;
     transform: rotate(-4.39deg);
-    width: 240px;
+    width: 300px;
   }
 
   .imagemLogo {
@@ -350,11 +324,7 @@ body {
   }
 
   .backgroundTwo {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 785px 480px 0 0;
-    border-color: #ff4400 transparent transparent transparent;
+    border-width: 385px 480px 0 0;
   }
 
   .subtitulo {
@@ -363,15 +333,15 @@ body {
 
   .login-titulo {
     font-size: 1.8rem;
-    margin-top: -15px;
+    top: 15px;
   }
 
   .form {
     height: 370px;
     left: 95px;
     right: 85px;
-    top: 280px;
-    width: 290px;
+    top: 320px;
+    width: 300px;
   }
 
   .form input {
