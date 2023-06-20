@@ -1,13 +1,9 @@
-.backgroundTwo svg {
-  background: var(--CorPrimaria);
-  height: 150px;
-  overflow: hidden;
-  transform: matrix(3.94, -5.34, 6.8, 2.91, 5, 0);
-  width: 500px;
-}
-
-.backgroundTwo .shape-fill {
-  fill: var(--CorPrimaria);
+.backgroundTwo {
+  border-style: solid;
+  border-width: 1300px 990px 0 0;
+  border-color: #ff4400 transparent transparent transparent;
+  height: 0;
+  width: 0;
 }
 
 .imagemMap {
@@ -98,8 +94,8 @@
   font-size: 1em;
   justify-content: center;
   margin-top: 25px;
-  margin-left: 17px;
-  padding: 10px 30px;
+  padding: 10px 40px;
+  width: 40vw;
 }
 
 .buttons-register:hover,
@@ -116,13 +112,19 @@
   margin-top: 20px;
 }
 
+.message {
+  color: var(--CorPrimaria);
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .form .register-form {
   display: none;
 }
 
 @media screen and (max-width: 1350px) {
-  .backgroundTwo svg {
-    transform: matrix(3.94, -5.34, 5.8, 2.91, 5, 0);
+  .backgroundTwo {
+    border-width: 990px 980px 0 0;
   }
 
   .subtitulo {
@@ -139,11 +141,9 @@
   }
 }
 
-@media screen and (max-width: 1245px) {
-  .backgroundTwo svg {
-    height: 150px;
-    transform: matrix(3.94, -5.34, 5.8, 2.91, 5, 0);
-    width: 450px;
+@media screen and (max-width: 1237px) {
+  .backgroundTwo {
+    border-width: 990px 859px 0 0;
   }
 
   .imagemLogo {
@@ -157,12 +157,9 @@
   }
 }
 
-@media screen and (max-width: 1120px) {
-  .backgroundTwo svg {
-    background: var(--CorPrimaria);
-    height: 140px;
-    transform: matrix(3.94, -5.34, 5.8, 2.91, 5, 0);
-    width: 400px;
+@media screen and (max-width: 1118px) {
+  .backgroundTwo {
+    border-width: 990px 750px 0 0;
   }
 
   .imagemLogo {
@@ -190,10 +187,8 @@
 }
 
 @media screen and (max-width:1010px) {
-  .backgroundTwo svg {
-    height: 130px;
-    transform: matrix(3.94, -5.34, 5.8, 2.91, 5, 0);
-    width: 250px;
+  .backgroundTwo {
+    border-width: 990px 690px 0 0;
   }
 
   .imagemLogo {
@@ -222,39 +217,33 @@
     width: 42vw;
   }
 
-  .botoes-register {
-    gap: 20px;
-  }
-
   .buttons-register {
     font-size: 0.9em;
     margin-left: 0px;
     padding: 10px 20px;
-    width: 20vw;
+    width: 40vw;
   }
 
   .register-message {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 }
 
 @media screen and (max-width: 600px) {
   .imagemMap {
     display: flex;
-    left: 90px;
+    left: 110px;
     margin-right: 10px;
     position: absolute;
     right: 10px;
     transform: rotate(-4.39deg);
     top: 45px;
-    width: 60vw;
+    width: 55vw;
   }
 
-  .backgroundTwo svg {
-    height: 115px;
-    margin-left: 20px;
-    transform: matrix(1.94, -1.34, 1.60, 2.0, 5, 0);
-    width: 290px;
+  .backgroundTwo {
+    border-width: 405px 500px 0 0;
+
   }
 
   .imagemLogo {
@@ -275,7 +264,7 @@
   }
 
   .register-form {
-    height: 340px;
+    height: 350px;
     left: 80px;
     right: 12px;
     top: 320px;
@@ -291,23 +280,20 @@
 
   .buttons-register {
     font-size: 0.8rem;
-    margin-left: 0px;
+    margin-left: 20px;
     padding: 8px 10px;
-    width: 80vw;
+    width: 40vw;
   }
 
   .register-message {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     margin-top: 13px;
   }
 }
 
 @media screen and (max-width: 490px) {
-  .backgroundTwo svg {
-    height: 115px;
-    margin-left: 20px;
-    transform: matrix(1.94, -1.34, 1.42, 2.0, 5, 0);
-    width: 270px;
+  .backgroundTwo {
+    border-width: 385px 480px 0 0;
   }
 
   .imagemLogo {
@@ -335,8 +321,8 @@
   }
 
   .register-form {
-    height: 315px;
-    left: 80px;
+    height: 330px;
+    left: 90px;
     right: 85px;
     top: 320px;
     width: 290px;
@@ -356,9 +342,9 @@
   .buttons-register {
     font-size: 0.8rem;
     margin-top: 20px;
-    margin-left: 10px;
+    margin-left: 5px;
     padding: 8px 10px;
-    width: 80px;
+    width: 250px;
   }
 
   .register-message {

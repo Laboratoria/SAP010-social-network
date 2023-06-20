@@ -1,14 +1,10 @@
-import { newUser } from "../Firebase/instalfirebase";
-import { loginUser } from "../Login/login.js";
+import { newUser } from '../Firebase/instalfirebase';
 import './register.css';
 
 export const registerUser = () => {
-  const container = document.createElement("div");
+  const container = document.createElement('div');
   const template = `
     <div class="backgroundTwo">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
-      </svg>
     </div>
     <div class="imagens">
       <img class="imagemLogo" src="Img/ImagemDesktopmap.png" alt= "Imagem Ilustrativa de pessoas interagindo">
@@ -20,27 +16,79 @@ export const registerUser = () => {
         <h1 class="register-titulo">Food Review</h1>
         <p class="titulo-sub">Preencha os campos abaixo:</p>
         <div class="register-inputs">
-          <input class="inputs" type="text" placeholder="Nome completo *" required/>
-          <input class="inputs" type="email" placeholder="Email *" required/>
-          <input class="inputs" type="password" placeholder="Senha *" required/>
+          <input class='inputs' id='registerName' type="text" placeholder="Nome completo *" required/>
+          <input class='inputs' id='registerEmail' type="email" placeholder="Email *" required/>
+          <input class='inputs' id='registerPassword' type="password" placeholder="Senha *" required/>
+          <span class='txt-error' id='errorRegister'></span>
         </div>
         <div class="botoes-register">
-          <button class="buttons-register" type="submit">Cadastrar</button>
-          <button class="buttons-register" type="submit" id="signup">Voltar</button>
+          <button class="buttons-register" id='btnregister' type="submit">Cadastrar</button>
         </div>
-        <p class="register-message">Já possui uma conta? Clique em voltar e acesse.</a></p>
+        <p class="register-message">Já possui uma conta? Clique em <a href="#login" class ="message">voltar</a> e acesse.</p>
       </form>
     </section>
   `;
 
   container.innerHTML = template;
-  const voltarButton = container.querySelector("#signup");
 
-  // Adicionar evento de clique ao botão "Voltar"
-  voltarButton.addEventListener("click", () => {
-    container.innerHTML = '';
-    container.appendChild(loginUser());
-  });
+  const register = container.querySelector('#btnregister');
+  const registerName = container.querySelector('#registerName');
+  const registerEmail = container.querySelector('#registerEmail');
+  const registerPassword = container.querySelector('#registerPassword');
+  const errorTxt = container.querySelector('#errorRegister');
+
+  const validarRegisterEmail = (email) => {
+    const regexEmailRegister = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regexEmailRegister.test(email)) {
+      return 'Por favor digite um e-mail';
+    }
+    return ''; // Retorna uma string vazia se o email for válido
+  };
+
+  const validarRegisterSenha = (senha) => {
+    if (senha.length < 6) {
+      return `A senha deve ter pelo menos 6 caracteres`;
+    }
+    return '';
+  };
+
+  const validarRegisterName = (nome) => {
+    const regexNameRegister = /^[A-Za-z][A-Z a-z]*$./;
+    if (!regexNameRegister.test(nome)) {
+      return `Favor preencha seu nome completo.`;
+    }
+    return '';
+  };
+
+  const registerLogin = () => {
+    register.addEventListener('click', async (evento) => {
+      evento.preventDefault();
+
+      const emailInputRegister = registerEmail.value;
+      const passwordRegister = registerPassword.value;
+      const nameRegister2 = registerName.value;
+      const nameErrorRegister = validarRegisterName(nameRegister2);
+      const emailErrorRegister = validarRegisterEmail(emailInputRegister);
+      const senhaErrorRegister = validarRegisterSenha(passwordRegister);
+
+      if (emailErrorRegister || senhaErrorRegister) {
+        // Se houver algum erro de email ou senha, exiba as mensagens de erro
+        errorTxt.setAttribute('style', 'display: block');
+        errorTxt.innerHTML = emailErrorRegister || senhaErrorRegister;
+      } else {
+        // Caso contrário, prossiga com o login
+        newUser(emailInputRegister, passwordRegister)
+          .then(() => {
+            window.location.hash = '#feed';
+          })
+          .catch(() => {
+            errorTxt.setAttribute('style', 'display: block');
+            errorTxt.innerHTML = '';
+          });
+      }
+    });
+  };
+  registerLogin();
 
   return container;
 };

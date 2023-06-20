@@ -1,14 +1,10 @@
-import { authLogin, authLoginGoogle } from '../Firebase/instalfirebase';
-import { registerUser } from '../Register/register.js';
+import { authLogin, authLoginGoogle , authLoginFacebook} from '../Firebase/instalfirebase';
 import './login.css';
 
 export const loginUser = () => {
   const container = document.createElement('div');
   const template = `
   <div class="backgroundTwo">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
-    </svg>
   </div>
   <div class="imagens">
     <img class="imagemLogo" src="Img/ImagemDesktopmap.png" alt= "Imagem Ilustrativa de pessoas interagindo">
@@ -19,19 +15,17 @@ export const loginUser = () => {
     <section class="form">
       <form class="login-form show" method="post" id="login">
         <h1 class="login-titulo">Food Review</h1>
-        <section>
-          <input id= "txtEmail" type="text" placeholder="Email" required />
-          <input id= "txtPassword" type="password" placeholder="Senha" required/>
-          <span class="txt-error" id="txtError"></span>
-          <div class="buttons">
-            <button class="full-width" id= "btnLogin" type="submit" name="send2">Entrar</button>
-            <div class="social">
-              <img class="logo" id="btn-google" src="Img/Google.png" alt= "Logo Google">
-              <img class="logo" id="btn-face" src="Img/facebook.png" alt= "Logo Facebook">
-            </div>
+        <input id= "txtEmail" type="text" placeholder="Email" required />
+        <input id= "txtPassword" type="password" placeholder="Senha" required/>
+        <span class="txt-error" id="txtError"></span>
+        <div class="buttons">
+          <button class="full-width" id= "btnLogin" type="submit" name="send2">Entrar</button>
+          <div class="social">
+            <img class="logo" id="btn-google" src="Img/Google.png" alt= "Logo Google">
+            <img class="logo" id="btn-face" src="Img/facebook.png" alt= "Logo Facebook">
           </div>
-          <p class="message">Não possui uma conta? <a href="#" id="newAccount">Cadastrar</a></p>
-        </section>
+        </div>
+        <p class="messageLogin">Não possui uma conta? <a href="#register" id="newAccount">Cadastrar</a></p>
       </form>
     </section>
   </section>
@@ -42,8 +36,8 @@ export const loginUser = () => {
   const userSenha = container.querySelector('#txtPassword');
   const txtError = container.querySelector('#txtError');
   const login = container.querySelector('#btnLogin');
-  const newAccountLink = container.querySelector('#newAccount'); // Selecionar o link "Cadastrar"
   const btnGoogle = container.querySelector('#btn-google');
+  const btnFacebook = container.querySelector('#btn-face');
 
   const validarEmail = (email) => {
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -59,7 +53,6 @@ export const loginUser = () => {
     }
     return '';
   };
-
   // função para usuário fazer login
   const fazerLogin = () => {
     login.addEventListener('click', async (event) => {
@@ -105,11 +98,19 @@ export const loginUser = () => {
 
   loginGoogle();
 
-  // Adicionar evento de clique ao botão "Cadastrar"
-  newAccountLink.addEventListener('click', () => {
-    container.innerHTML = '';
-    container.appendChild(registerUser());
-  });
+  const loginFacebook = () => {
+    btnFacebook.addEventListener('click', () => {
+      authLoginFacebook()
+        .then(() => {
+          window.location.hash = '#feed';
+        })
+        .catch(() => {
+          txtError.innerHTML = 'Usuário ou senha incorretos';
+        });
+    });
+  };
+
+  loginFacebook();
 
   return container;
 };

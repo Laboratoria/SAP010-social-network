@@ -8,7 +8,8 @@ const init = () => {
   window.addEventListener('hashchange', () => {
     root.innerHTML = '';
     switch (window.location.hash) {
-      case ' ':
+      case '':
+      case '#login':
         root.appendChild(loginUser());
         break;
       case '#register':
