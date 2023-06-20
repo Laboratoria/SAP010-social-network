@@ -39,13 +39,26 @@ export const feed = () => {
             <option value="" selected disabled >Selecionar</option>
             <option value="Fêmea">Fêmea</option>
             <option value="Macho">Macho</option>
+            <option value="Sem Preferência">Sem Preferência</option>
+            <br>
             </select>
-            <br> 
-            <input type="text" class="modal-input-area" id="idade" name="idade" placeholder="Idade do pet">
-            
-            <input type="text" class="modal-input-area" id="raca" name="raca" placeholder="Raça">
+            <br>
+            <label for="idade">Idade do pet:</label>
+            <select name="select" id="idade" class="modal-input-area">
+            <option value="" selected disabled >Selecionar</option>
+            <option value="Filhote">Filhote</option>
+            <option value="Adulto">Adulto</option>
+            <option value="Idoso">Idoso</option>
+            <option value="Sem Preferência">Sem Preferência</option>
 
-            <input type="text" class="modal-input-area" id="local" name="local" placeholder="Localização">
+            <br>
+            <label for="raca">Raça:</label>
+            <input type="text" class="modal-input-area" id="raca" name="raca" placeholder="Exemplo: Bulldog">
+            <br>
+            
+            
+            <label for="localização">Localização:</label>
+            <input type="text" class="modal-input-area" id="local" name="local" placeholder="Exemplo: Curitiba/PR">
 
             <input type="text" class="modal-input-area" id="contato" name="contato" placeholder="(xx) xxxxx-xxxx">
             <br>
@@ -122,7 +135,6 @@ export const feed = () => {
       console.log(post.id, " => ", post.data());
       });
       
-      const feedPage = container.querySelector('.feed-page');
       arrayPosts.forEach((post) => {
 
       const postCard = document.createElement('div');
@@ -136,7 +148,8 @@ export const feed = () => {
     <p>Contato: ${post.contato} </p>
     </section>
   `;
-
+      
+      const feedPage = container.querySelector('.feed-page');
       feedPage.appendChild(postCard);
 
       });
