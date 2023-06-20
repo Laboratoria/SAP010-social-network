@@ -5,6 +5,8 @@ import {
   getDocs,
   query,
   orderBy,
+  doc,
+  updateDoc
 } from 'firebase/firestore';
 import { getAppAuth } from './auth';
 import { app } from './app';
@@ -35,3 +37,9 @@ export async function accessPost() {
   });
   return allPosts;
 }
+
+export async function editPost(idPost, newPost) {
+  const docRef = doc(db, 'posts', idPost);
+  return updateDoc(docRef, newPost);
+}
+
