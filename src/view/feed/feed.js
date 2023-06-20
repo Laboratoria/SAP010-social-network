@@ -1,11 +1,11 @@
-import { carregarFeed, criarPost } from '../../lib/firestore.js';
+import { carregarPosts, criarPost } from '../../lib/firestore.js';
+import { getCurrentUser } from '../../lib/index.js';
 
 export const feed = () => {
   const container = document.createElement('div');
-
   const templateFeed = `
       <header class="feed-header">
-      <p> Seja bem-vindo, usuário </p>
+      <p> Seja bem-vindo(a) </p>
       <a class="feedPage" href="/#feed"></a>
 
       <button id="post">Crie seu post aqui!</button>
@@ -75,9 +75,45 @@ export const feed = () => {
 
   container.innerHTML = templateFeed;
 
-  carregarFeed()
+  const carregarFeed = async () => {
+    const posts = await carregarPosts();
+    const feedPage = container.querySelector('.feed-page');
+    feedPage.innerHTML = '';
+    const currentUser = await getCurrentUser();
+    const username = currentUser.displayName;
 
+    const header = container.querySelector('.feed-header');
+    header.innerHTML = `
+      <p>Seja bem-vindo, ${username}</p>
+      <a class="feedPage" href="/#feed"></a>
+      <button id="post">Crie seu post aqui!</button>
+      `
+    posts.forEach((post) => {
+      const postCard = document.createElement('div');
+      postCard.innerHTML = `
+        <section class='container-post'>
+          <div class='post-header'>
+            <div class="username">${username}</div>
+            <div class="user-location">${post.localizacao}</div>
+          </div>
+          <div class='adopt-option'>${post.opcaoAdocao}</div>
+          <div class='post-inputs'>
+            <div class="modal-input">${post.idadePet}</div>
+            <div class="modal-input">${post.especie}</div>
+            <div class="modal-input">${post.sexo}</div>
+            <div class="modal-input">${post.raca}</div>
+          </div>
+          <p>${post.mensagem}</p>
+          <p>Contato: ${post.contato}</p>
+        </section>
+      `;
+      
 
+      feedPage.appendChild(postCard);
+    });
+  };
+
+  carregarFeed();
 
   container.querySelector('#post').addEventListener('click', () => {
     const modal = document.getElementById('meuModal');
@@ -92,52 +128,55 @@ export const feed = () => {
     };
   });
 
-  container.querySelector('#publicar').addEventListener('click', async (event) => {
-    event.preventDefault();
-    let opcao = '';
-    if (document.getElementById('quero-doar').checked) {
-      opcao = document.getElementById('quero-doar').value;
-    } else if (document.getElementById('quero-adotar').checked) {
-      opcao = document.getElementById('quero-adotar').value;
-    }
-    const opcaoAdocao = opcao;
-    const idadePet = document.getElementById('idade').value;
-    const especie = document.getElementById('especie').value;
-    const sexo = document.getElementById('sexo').value;
-    const raca = document.getElementById('raca').value;
-    const localizacao = document.getElementById('local').value;
-    const contato = document.getElementById('contato').value;
-    const mensagem = document.getElementById('mensagem').value;
-    const dataAtual = Date.now();
-  
-    await criarPost(
-      opcaoAdocao,
-      idadePet,
-      especie,
-      sexo,
-      raca,
-      localizacao,
-      contato,
-      mensagem,
-      dataAtual
-    );
-  
-    // Limpa os campos do formulário
-    document.getElementById('quero-doar').checked = false;
-    document.getElementById('quero-adotar').checked = false;
-    document.getElementById('idade').value = '';
-    document.getElementById('especie').value = '';
-    document.getElementById('sexo').value = '';
-    document.getElementById('raca').value = '';
-    document.getElementById('local').value = '';
-    document.getElementById('contato').value = '';
-    document.getElementById('mensagem').value = '';
-    
-    // Recarrega o feed com a nova postagem
-    carregarFeed();
-    const modal = container.querySelector('#meuModal');
-    modal.style.display = 'none';
-  });
-    
+  container
+    .querySelector('#publicar')
+    .addEventListener('click', async (event) => {
+      event.preventDefault();
+      let opcao = '';
+      if (document.getElementById('quero-doar').checked) {
+        opcao = document.getElementById('quero-doar').value;
+      } else if (document.getElementById('quero-adotar').checked) {
+        opcao = document.getElementById('quero-adotar').value;
+      }
+      const opcaoAdocao = opcao;
+      const idadePet = document.getElementById('idade').value;
+      const especie = document.getElementById('especie').value;
+      const sexo = document.getElementById('sexo').value;
+      const raca = document.getElementById('raca').value;
+      const localizacao = document.getElementById('local').value;
+      const contato = document.getElementById('contato').value;
+      const mensagem = document.getElementById('mensagem').value;
+      const dataAtual = Date.now();
+
+      const dadosPost = {
+        opcaoAdocao,
+        idadePet,
+        especie,
+        sexo,
+        raca,
+        localizacao,
+        contato,
+        mensagem,
+        dataAtual,
+      };
+      await criarPost(dadosPost);
+
+      // Limpa os campos do formulário
+      document.getElementById('quero-doar').checked = false;
+      document.getElementById('quero-adotar').checked = false;
+      document.getElementById('idade').value = '';
+      document.getElementById('especie').value = '';
+      document.getElementById('sexo').value = '';
+      document.getElementById('raca').value = '';
+      document.getElementById('local').value = '';
+      document.getElementById('contato').value = '';
+      document.getElementById('mensagem').value = '';
+
+      // Recarrega o feed com a nova postagem
+      await carregarFeed();
+      const modal = container.querySelector('#meuModal');
+      modal.style.display = 'none';
+    });
+
   return container;
 };
