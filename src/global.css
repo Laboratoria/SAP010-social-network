@@ -72,7 +72,9 @@ button:hover{
     max-width: 500px;
 }
 
-.error {
+.error{
     color: red;
-    display: none;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: 'Nunito Sans', sans-serif;
 }
