@@ -12,7 +12,7 @@ export const userData = (
     name: nameElement,
     lastname: lastnameElement,
     email: emailElement,
-    user: userElement,
+    username: userElement,
   });
 
 //aqui virá as funções de postagem, para ficarem guardadas
