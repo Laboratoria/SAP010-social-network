@@ -111,13 +111,6 @@ fieldset {
     display: none;
 }
 
-#errorMessage {
-    position: relative;
-    font-size: 14px;
-    top: -50px; 
-    right: -10px;
-}
-
 @media (max-width: 800px) {
     .imagem-fundo{
         display: none;
