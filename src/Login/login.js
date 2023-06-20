@@ -15,19 +15,17 @@ export const loginUser = () => {
     <section class="form">
       <form class="login-form show" method="post" id="login">
         <h1 class="login-titulo">Food Review</h1>
-        <section>
-          <input id= "txtEmail" type="text" placeholder="Email" required />
-          <input id= "txtPassword" type="password" placeholder="Senha" required/>
-          <span class="txt-error" id="txtError"></span>
-          <div class="buttons">
-            <button class="full-width" id= "btnLogin" type="submit" name="send2">Entrar</button>
-            <div class="social">
-              <img class="logo" id="btn-google" src="Img/Google.png" alt= "Logo Google">
-              <img class="logo" id="btn-face" src="Img/facebook.png" alt= "Logo Facebook">
-            </div>
+        <input id= "txtEmail" type="text" placeholder="Email" required />
+        <input id= "txtPassword" type="password" placeholder="Senha" required/>
+        <span class="txt-error" id="txtError"></span>
+        <div class="buttons">
+          <button class="full-width" id= "btnLogin" type="submit" name="send2">Entrar</button>
+          <div class="social">
+            <img class="logo" id="btn-google" src="Img/Google.png" alt= "Logo Google">
+            <img class="logo" id="btn-face" src="Img/facebook.png" alt= "Logo Facebook">
           </div>
-          <p class="message">Não possui uma conta? <a href="#register" id="newAccount">Cadastrar</a></p>
-        </section>
+        </div>
+        <p class="messageLogin">Não possui uma conta? <a href="#register" id="newAccount">Cadastrar</a></p>
       </form>
     </section>
   </section>
@@ -55,7 +53,6 @@ export const loginUser = () => {
     }
     return '';
   };
-
   // função para usuário fazer login
   const fazerLogin = () => {
     login.addEventListener('click', async (event) => {

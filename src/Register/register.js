@@ -16,12 +16,15 @@ export const registerUser = () => {
         <h1 class="register-titulo">Food Review</h1>
         <p class="titulo-sub">Preencha os campos abaixo:</p>
         <div class="register-inputs">
-          <input class="inputs" type="text" placeholder="Nome completo *" required/>
-          <input class="inputs" type="email" placeholder="Email *" required/>
-          <input class="inputs" type="password" placeholder="Senha *" required/>
+          <input class='inputs' id='registerName' type="text" placeholder="Nome completo *" required/>
+          <input class='inputs' id='registerEmail' type="email" placeholder="Email *" required/>
+          <input class='inputs' id='registerPassword' type="password" placeholder="Senha *" required/>
+          <span class='txt-error' id='errorRegister'></span>
         </div>
-          <button class="btnregister" type="submit">Cadastrar</button>
-        <p class="register-message">Já possui uma conta? <a href="#login" id="newAccount">Clique em voltar e acesse.</a></p>
+        <div class="botoes-register">
+          <button class="buttons-register" id='btnregister' type="submit">Cadastrar</button>
+        </div>
+        <p class="register-message">Já possui uma conta? Clique em <a href="#login" class ="message">voltar</a> e acesse.</p>
       </form>
     </section>
   `;
@@ -43,15 +46,15 @@ export const registerUser = () => {
 
   const validarRegisterSenha = (senha) => {
     if (senha.length < 6) {
-      return `A senha deve ter pelo menos 6 caracteres`;
+      return 'A senha deve ter pelo menos 6 caracteres';
     }
     return '';
   };
 
   const validarRegisterName = (nome) => {
-    const regexNameRegister = /^[A-Za-z][A-Z a-z]*$./;
+    const regexNameRegister = /^[A-Za-z][A-Z a-z]*$/;
     if (!regexNameRegister.test(nome)) {
-      return `Favor preencha seu nome completo.`;
+      return 'Favor preencha seu nome completo.';
     }
     return '';
   };
@@ -67,10 +70,10 @@ export const registerUser = () => {
       const emailErrorRegister = validarRegisterEmail(emailInputRegister);
       const senhaErrorRegister = validarRegisterSenha(passwordRegister);
 
-      if (emailErrorRegister || senhaErrorRegister) {
-        // Se houver algum erro de email ou senha, exiba as mensagens de erro
+      if (nameErrorRegister || emailErrorRegister || senhaErrorRegister) {
+        // Se houver algum erro de nome ou email ou senha, exiba as mensagens de erro
         errorTxt.setAttribute('style', 'display: block');
-        errorTxt.innerHTML = emailErrorRegister || senhaErrorRegister;
+        errorTxt.innerHTML = nameErrorRegister || emailErrorRegister || senhaErrorRegister;
       } else {
         // Caso contrário, prossiga com o login
         newUser(emailInputRegister, passwordRegister)
@@ -85,5 +88,6 @@ export const registerUser = () => {
     });
   };
   registerLogin();
+
   return container;
 };
