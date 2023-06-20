@@ -11,14 +11,17 @@ export default () => {
   </div>
       <fieldset>
       <h2>Entre com</h2>
-        <div class="loginSenha">
-          <label for="email">E-mail</label>
-          <input type="email" id="email" placeholder="Digite seu e-mail">
-          <label for="senha">Senha</label>
-          <input type="password" id="senha" placeholder="Digite sua senha">
-          <a href="">Esqueceu a senha? Clique aqui!</a>
-        </div>
-          <div class="botoes">
+      <div class="loginSenha">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" placeholder="Digite seu e-mail">
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" placeholder="Digite sua senha"> 
+      <img class="eye" id="eyeToggle" src="./images/icons/eye-off.svg">
+      <div id="errorMessage" class="error"></div> 
+      <a href="">Esqueceu a senha? Clique aqui!</a>
+      </div>
+    
+        <div class="botoes">
         <button id="entrarButton">Entrar</button>
         <button id="registrarButton">Registrar</button></div>
           </div>
@@ -42,20 +45,34 @@ export default () => {
     const email = emailInput.value;
     const senha = senhaInput.value;
 
-    // Chamando a função de login com e-mail e senha.
     loginWithEmail(email, senha)
       .then(() => {
-        window.location.hash = '#--nova ----pagina---acesso ';
+        window.location.hash = '#feed';
       })
       .catch(() => {
-        printErrorMessage('E-mail ou senha incorretos');
+        const errorMessage = container.querySelector('#errorMessage');
+        errorMessage.textContent = 'E-mail ou senha incorretos'; 
+        errorMessage.style.display = 'block'; 
       });
+      
   };
 
-  loginButton.addEventListener('click', handleLogin());
 
-  registrarButton.addEventListener('click', () => {
-    window.location.hash = '#register';
+  loginButton.addEventListener('click', handleLogin);
+
+  const eyeToggle = container.querySelector('#eyeToggle');
+  const passwordInput = container.querySelector('#senha');
+
+  eyeToggle.addEventListener('click', () => {
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      eyeToggle.src = './images/icons/eye.svg';
+      eyeToggle.title = 'Esconder senha';
+    } else {
+      passwordInput.type = 'password';
+      eyeToggle.src = './images/icons/eye-off.svg';
+      eyeToggle.title = 'Mostrar senha';
+    }
   });
 
   return container;
