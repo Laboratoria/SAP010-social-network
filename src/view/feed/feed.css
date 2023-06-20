@@ -5,13 +5,15 @@ html {
 }
 
 .modal {
-    display: none; /* Oculta o modal por padrão */
-    position: fixed; /* Permite que o modal flutue sobre o conteúdo */
-    z-index: 1; /* Define a ordem de empilhamento */
-    left: 0;
-    top: 0;
-    overflow: auto; /* Adiciona rolagem caso o conteúdo seja maior que a tela */
-  }
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
   
   .modal-content {
     text-align: center;
@@ -141,3 +143,13 @@ html {
     padding: 4px;
 
   }
+
+  .label-class {
+    font-size: 0.8rem;
+
+  }
+
+  .modal-input-area{
+    font-size: 0.7rem;
+  }
+  
