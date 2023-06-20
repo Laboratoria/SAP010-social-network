@@ -7,6 +7,7 @@ import {
   orderBy,
   doc,
   deleteDoc,
+  updateDoc
 } from 'firebase/firestore';
 import { getAppAuth } from './auth';
 import { app } from './app';
@@ -42,3 +43,9 @@ export const deletePost = async (postId) => {
   const docRef = doc(db, 'posts', postId);
   await deleteDoc(docRef);
 };
+
+export async function editPost(idPost, newPost) {
+  const docRef = doc(db, 'posts', idPost);
+  return updateDoc(docRef, newPost);
+}
+

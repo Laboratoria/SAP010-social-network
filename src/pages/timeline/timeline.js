@@ -4,7 +4,7 @@ import { createPost, accessPost, deletePost } from '../../firebase/firestore.js'
 export default () => {
   const timeline = document.createElement('div');
   const viewPost = `
-    <h1>Olá ${getUserName()}, bem-vindo(a) de volta!</h1>
+    <p class="postTitle">Olá ${getUserName()}, bem-vindo (a) de volta!</p>
     <div class='timeline'>
       <div class='input-container'>
         <textarea class='input-message' id='postArea' placeholder='COMPARTILHE UMA EXPERIÊNCIA ...'></textarea>
@@ -50,6 +50,16 @@ export default () => {
     return postElement;
   };
 
+  const loadPosts = async () => {
+    postList.innerHTML = '';
+    const postsFirestore = await accessPost();
+
+    postsFirestore.forEach((post) => {
+      const postElement = CreatePostElement(post.name, post.description);
+      postList.appendChild(postElement);
+    });
+  };
+
   postBtn.addEventListener('click', () => {
     const description = descriptionPost.value;
 
@@ -62,7 +72,7 @@ export default () => {
           loadPosts();
           alert('Publicação efetuada com sucesso!');
         })
-        .catch((error) => {
+        .catch(() => {
           alert('Ocorreu um erro ao criar o post. Por favor, tente novamente mais tarde');
         });
     }

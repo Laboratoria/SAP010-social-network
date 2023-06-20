@@ -4,7 +4,10 @@
     align-items: center;
     justify-content: center;
     line-height: 1.5;
+}
 
+.postTitle {
+    margin-bottom: 10px;
 }
 
 .input-container { /*input e botao enviar*/
@@ -17,10 +20,8 @@
     justify-content: center;
     border-radius: 0.8em;
     margin: 2em;
-
 }
   
-
 .input-message { /*input mensagem*/
     min-height: 8em;
     border: none;
@@ -55,12 +56,12 @@
   }
 
 .nameUser {
-    background-color: var(--darkblue);
     width: 22em;
     padding: 0.3em;
     margin: 10px 10px 0 10px;
     border-radius:  0.8em 0.8em 0 0;
-
+    background-color: var(--white);
+    color: var(--black);
 }
 
 .dataPost {
@@ -81,7 +82,7 @@
 .icons {
     background-color: var(--lightblue);
     border: none;
-}
+
 
 .icons:hover {
     background-color: var(--blue);
