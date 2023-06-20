@@ -22,8 +22,8 @@ export default () => {
 
   const createPostElement = (name, createdAt, description, postId, authorId) => {
     const createdAtDate = new Date(createdAt.seconds * 1000);
-    const createdAtFormattedDate = createdAtDate.toLocaleDateString();
-    const createdAtFormattedTime = createdAtDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const createdAtFormattedDate = createdAtDate.toLocaleDateString('pt-BR');
+    const createdAtFormattedTime = createdAtDate.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', hour12: false });
     const createdAtFormatted = `${createdAtFormattedDate} ~ ${createdAtFormattedTime}`;
 
     const postElement = document.createElement('div');
@@ -34,8 +34,7 @@ export default () => {
           <p class='dataPost'>${createdAtFormatted}</p>
         </div>
         <p class='textPost'>${description}</p>
-        <figure class='image-icons'>
-          <nav>
+        <div class='image-icons'>
             <button type="button" class='icons' id='likePost'>
               <a class='icons' id='likePost'><img src='img/assets/likeicon.png' alt='like image' width='30px'></a>
             </button>
@@ -46,8 +45,7 @@ export default () => {
             <button type="button" class='icons' id='btn-delete' data-post-id='${postId}'>
             <img src='img/assets/deleteicon.png' alt='delete image' width='30px'></button>
             ` : ''}
-          </nav> 
-        </figure>
+        </div>
       </div>
     `;
     return postElement;
