@@ -1,5 +1,6 @@
 import './feed.css';
-import { getUserName, getAppAuth } from '../../configFirebase/auth';
+import { getUserName, getAppAuth } from '../../firebase/auth.js';
+>>>>>>> 3dc2565894e4ea9fe660a9906c50112bae3f6bbb
 
 
 

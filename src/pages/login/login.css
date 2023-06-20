@@ -1,6 +1,7 @@
 a {
     text-decoration: none;
     color: var(--light-white);
+
 }
 
 div{
@@ -90,11 +91,31 @@ fieldset {
     color: var(--light-white);
     font-size: 14px;
     transition: 0.3s ease-in-out;
+
 }
 
 #googleLoginButton:hover{
     background-color: var(--light-white);
     color: var(--intense-brown);
+}
+
+.eye {
+    width: 15px;
+    cursor: pointer;
+    position: relative;
+    top: -29px; 
+    right: -150px; /* horizontal*/
+}
+  
+.eye-closed {
+    display: none;
+}
+
+#errorMessage {
+    position: relative;
+    font-size: 14px;
+    top: -50px; 
+    right: -10px;
 }
 
 @media (max-width: 800px) {

@@ -20,7 +20,6 @@ export default () => {
       <div id="errorMessage" class="error"></div>
       <a href="">Esqueceu a senha? Clique aqui!</a>
       </div>
-
         <div class="botoes">
         <button id="entrarButton">Entrar</button>
         <button id="registrarButton">Registrar</button></div>
@@ -54,14 +53,14 @@ export default () => {
         errorMessage.textContent = 'E-mail ou senha incorretos';
         errorMessage.style.display = 'block';
       });
-
   };
 
 
   loginButton.addEventListener('click', handleLogin);
+
   registrarButton.addEventListener('click',() => {
     window.location.hash = '#register';
-  });
+  })
 
 
   const eyeToggle = container.querySelector('#eyeToggle');

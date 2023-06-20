@@ -37,6 +37,11 @@ footer {
     top: 135px;
 }
 
+.error {
+   color: red;
+   display: none;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
 }
