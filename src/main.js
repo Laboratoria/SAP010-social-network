@@ -9,6 +9,7 @@ const init = () => {
     root.innerHTML = '';
     switch (window.location.hash) {
       case ' ':
+      case '#login':
         root.appendChild(loginUser());
         break;
       case '#register':

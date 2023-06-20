@@ -1,5 +1,4 @@
 import { newUser } from "../Firebase/instalfirebase";
-import { loginUser } from "../Login/login.js";
 import './register.css';
 
 export const registerUser = () => {

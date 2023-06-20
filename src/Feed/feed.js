@@ -1,5 +1,3 @@
-
-
 export const feedUser = () => {
   const container = document.createElement('div');
 
