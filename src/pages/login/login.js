@@ -6,7 +6,7 @@ export default () => {
 
   const template = `
   <div class="imagens">
-    <img class="logo-cs" src="./images/logo2.png">
+    <img class="logo-cs" src="./images/logo1.png">
     <img class="imagem-fundo" src="./images/background-desktop.png">
   </div>
       <fieldset>
@@ -75,8 +75,5 @@ export default () => {
     }
   });
 
-
-
-  return container
+  return container;
 };
-
