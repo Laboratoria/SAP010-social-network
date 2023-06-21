@@ -35,7 +35,7 @@
 .register-titulo {
   color: var(--CorPrimaria);
   font-size: 2.7rem;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 .titulo-sub {
@@ -71,7 +71,7 @@
   background: var(--CorTerciaria);
   border: 0;
   border-bottom: 1px solid #bababa;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
   margin-top: 20px;
   outline: 0;
@@ -90,7 +90,7 @@
   border: 0;
   border-radius: 5px;
   color: var(--CorTerciaria);
-  font-family: "prompt";
+  font-family: 'Prompt', sans-serif;
   font-size: 1em;
   justify-content: center;
   margin-top: 25px;
@@ -204,7 +204,7 @@
   .register-titulo {
     color: var(--CorPrimaria);
     font-size: 1.6rem;
-    font-family: "Nunito Sans", sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
   }
 
   .titulo-sub {
