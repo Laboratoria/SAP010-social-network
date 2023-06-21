@@ -2,7 +2,9 @@
     /*paleta de cores */
     --blue: #30A2FF;
     --darkblue: #054b85;
-    --lightblue: #AEE2FF;
+
+    /*--darkblue: #054b85;*/
+    --lightblue: #86c1e0;
     --orange: #E55807;
     --white: #ffffff;
     --black: #000000;
@@ -19,10 +21,20 @@
 body {
   background-color: var(--blue);
   color: var(--black);
-  display: flex;
   font-family: 'Comfortaa', cursive;
+  text-align: center;
+  justify-content: center;
+  background-image: linear-gradient(var(--darkblue), 20%, var(--blue));
+
+
 }
 
+main {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  min-height: 100vh;
+}
 .title {
   color: var(--white);
 }
@@ -59,15 +71,15 @@ body {
 footer {
   color: var(--white);
   background-color: var(--darkblue);
-  position: fixed;
-  bottom: 0;
   width: 100%;
-  height: auto;  
-  text-align: center;
-  margin: 2px;
-  padding: 4px;
-  font-size: 0.8rem;
+  padding: 1em;
+  font-size: 0.6rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 } 
+
 
  footer a {
   color: var(--white);
@@ -78,7 +90,17 @@ footer a:hover {
   text-decoration: underline;
 }
 
+.rodape {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
 @media screen and (min-width: 769px) {
+  body {
+    background-image: linear-gradient(to right, var(--darkblue), var(--blue));
+
+  }
   .title {
     color: var(--white);
     font-size: 3em;     
@@ -88,5 +110,9 @@ footer a:hover {
     color: var(--black);
 
   }
+  
+  footer {
+    font-size: 0.8rem;
 
+  }
 }
