@@ -1,6 +1,48 @@
 import { authLogin, authLoginGoogle, authLoginFacebook } from '../lib/index';
 import './login.css';
 
+export const validarEmail = (email) => {
+  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!regexEmail.test(email)) {
+    return 'Formato de e-mail inválido';
+  }
+  return ''; // Retorna uma string vazia se o email for válido
+};
+
+export const validarSenha = (senha) => {
+  if (senha.length < 6) {
+    return 'A senha deve ter pelo menos 6 caracteres';
+  }
+  return '';
+};
+
+export const fazerLogin = (login, userEmail, userSenha, txtError) => {
+  login.addEventListener('click', async (event) => {
+    event.preventDefault();
+
+    const emailInput = userEmail.value;
+    const password = userSenha.value;
+    const emailError = validarEmail(emailInput);
+    const senhaError = validarSenha(password);
+
+    if (emailError || senhaError) {
+      // Se houver algum erro de email ou senha, exiba as mensagens de erro
+      txtError.setAttribute('style', 'display: block');
+      txtError.innerHTML = emailError || senhaError;
+    } else {
+      // Caso contrário, prossiga com o login
+      authLogin(emailInput, password)
+        .then(() => {
+          window.location.hash = '#feed';
+        })
+        .catch(() => {
+          txtError.setAttribute('style', 'display: block');
+          txtError.innerHTML = 'Usuário ou senha incorretos';
+        });
+    }
+  });
+};
+
 export const loginUser = () => {
   const container = document.createElement('div');
   const template = `
@@ -39,50 +81,8 @@ export const loginUser = () => {
   const btnGoogle = container.querySelector('#btn-google');
   const btnFacebook = container.querySelector('#btn-face');
 
-  const validarEmail = (email) => {
-    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!regexEmail.test(email)) {
-      return 'Formato de e-mail inválido';
-    }
-    return ''; // Retorna uma string vazia se o email for válido
-  };
-
-  const validarSenha = (senha) => {
-    if (senha.length < 6) {
-      return 'A senha deve ter pelo menos 6 caracteres';
-    }
-    return '';
-  };
-
   // função para usuário fazer login
-  const fazerLogin = () => {
-    login.addEventListener('click', async (event) => {
-      event.preventDefault();
-
-      const emailInput = userEmail.value;
-      const password = userSenha.value;
-      const emailError = validarEmail(emailInput);
-      const senhaError = validarSenha(password);
-
-      if (emailError || senhaError) {
-        // Se houver algum erro de email ou senha, exiba as mensagens de erro
-        txtError.setAttribute('style', 'display: block');
-        txtError.innerHTML = emailError || senhaError;
-      } else {
-        // Caso contrário, prossiga com o login
-        authLogin(emailInput, password)
-          .then(() => {
-            window.location.hash = '#feed';
-          })
-          .catch(() => {
-            txtError.setAttribute('style', 'display: block');
-            txtError.innerHTML = 'Usuário ou senha incorretos';
-          });
-      }
-    });
-  };
-
-  fazerLogin();
+  fazerLogin(login, userEmail, userSenha, txtError);
 
   // login google
   const loginGoogle = () => {
