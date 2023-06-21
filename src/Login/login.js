@@ -1,4 +1,4 @@
-import { authLogin, authLoginGoogle, authLoginFacebook } from '../Firebase/instalfirebase';
+import { authLogin, authLoginGoogle, authLoginFacebook } from '../lib/index';
 import './login.css';
 
 export const loginUser = () => {
