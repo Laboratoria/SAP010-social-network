@@ -112,6 +112,5 @@ export const loginUser = () => {
   };
   
   loginFacebook();
-  
   return container;
 };

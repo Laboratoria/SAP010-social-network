@@ -116,6 +116,7 @@
   color: var(--CorPrimaria);
   text-decoration: none;
   font-weight: bold;
+}
 
 .form .register-form {
   display: none;
@@ -185,7 +186,6 @@
   }
 }
 
-  
 @media screen and (max-width:1010px) {
   .backgroundTwo {
     border-width: 990px 690px 0 0;
@@ -222,7 +222,8 @@
     margin-left: 0px;
     padding: 10px 20px;
     width: 40vw;
-
+  }
+  
   .register-message {
     font-size: 0.8rem;
   }
