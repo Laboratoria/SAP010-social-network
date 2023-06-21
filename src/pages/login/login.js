@@ -17,7 +17,6 @@ export default () => {
       <label for="senha">Senha</label>
       <input type="password" id="senha" placeholder="Digite sua senha">
       <img class="eye" id="eyeToggle" src="./images/icons/eye-off.svg">
-
       <div id="errorMessage" class="error">
       </div>
       <a href="">Esqueceu a senha? Clique aqui!</a>
@@ -59,8 +58,6 @@ export default () => {
 
   loginButton.addEventListener('click', handleLogin);
 
-
-
   registrarButton.addEventListener('click',() => {
     window.location.hash = '#register';
   });
@@ -81,7 +78,7 @@ export default () => {
   });
 
   // Login Google
-   googleButton.addEventListener('click', () => {
+  googleButton.addEventListener('click', () => {
     loginGoogle().then(() => {
       window.location.hash = '#feed';
     }).catch(() => {
@@ -89,7 +86,5 @@ export default () => {
     });
   });
 
-
   return container;
-
 };
