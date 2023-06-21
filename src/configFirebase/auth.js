@@ -19,9 +19,9 @@ export const loginGoogle = () => {
 };
 
 // criar usuario
-export const createUserWithEmail = (name, email, password) => {
+export const createUserWithEmail = (name, email, senha) => {
   const auth = getAppAuth();
-  return createUserWithEmailAndPassword(auth, email, password).then(
+  return createUserWithEmailAndPassword(auth, email, senha).then(
     (userCredential) => {
       const user = userCredential.user;
       window.location.hash = '#feed';
@@ -32,7 +32,7 @@ export const createUserWithEmail = (name, email, password) => {
   );
 };
 
-// login 
+// login
 export const loginWithEmail = (email, password) => {
   const auth = getAppAuth();
   return signInWithEmailAndPassword(auth, email, password);
@@ -53,4 +53,3 @@ export const getUserName = () => {
   }
   return null;
 };
-

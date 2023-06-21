@@ -58,7 +58,7 @@ export default () => {
 
   loginButton.addEventListener('click', handleLogin);
 
-  registrarButton.addEventListener('click',() => {
+  registrarButton.addEventListener('click', () => {
     window.location.hash = '#register';
   });
 
