@@ -5,14 +5,25 @@ import delPost from './posts.js';
 export default () => {
   const timeline = document.createElement('div');
   const viewPost = `
-    <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
-    <div class='timeline'>
-      <div class='input-container'>
-        <textarea class='input-message' id='postArea' placeholder='COMPARTILHE UMA EXPERIÊNCIA...'></textarea>
-        <button class='shareBtn' id='sharePost'>COMPARTILHAR</button>
-      </div>
-      <div id='postList'></div>
+  <div class="container">
+    <div class='left-timeline'>
+      <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
+      <figure class='icones'>
+        <a href="" class="icon-timeline"><img src="./img/assets/icon-home.png" class="icon-timeline" alt="Icone home"> Home </a>
+        <a href="" class="icon-timeline"><img src="./img/assets/icon-sair.png" class="icon-timeline" alt="Icone sair "> Sair </a>
+      </figure>
+
+      <img src="./img/assets/imagetimeline.png" class="img-timeline" alt="edit image" width="300px">
     </div>
+    <div class="right-timeline">
+      <div class="input-container">
+        <textarea class="input-message" id="postArea" placeholder="COMPARTILHE UMA EXPERIÊNCIA..."></textarea>
+        <button class="shareBtn" id="sharePost">COMPARTILHAR</button>
+      </div>
+      <div id="postList"></div>
+    </div>
+  </div>
+</div>
   `;
 
   timeline.innerHTML = viewPost;
@@ -33,6 +44,7 @@ export default () => {
 
     const postElement = document.createElement('div');
     postElement.innerHTML = `
+
       <div class="post-container">
         <div class='nameUser'>
           <p class='userName'>${name}</p>
@@ -41,13 +53,13 @@ export default () => {
         <p class='textPost'>${description}</p>
         <div class='image-icons'>
           <button type="button" class='icons' id='likePost'>
-            <a class='icons' id='likePost'><img src='img/assets/likeicon.png' alt='like image' width='30px'></a>
+            <a class='icons' id='likePost'><img src='./img/assets/likeicon.png' alt='like image' width='30px'></a>
           </button>
           <button type="button" class='icons' id='editPost'>
-            <a class='icons' id='editPost'><img src='img/assets/editicon.png' alt='edit image' width='30px'></a>
+            <a class='icons' id='editPost'><img src='./img/assets/editicon.png' alt='edit image' width='30px'></a>
           </button>
           ${authorId === getUserId() ? `<button type="button" class='icons' id='btn-delete' data-post-id='${postId}'>
-                  <img src='img/assets/deleteicon.png' alt='delete image' width='30px'>
+                  <img src='./img/assets/deleteicon.png' alt='delete image' width='30px'>
                 </button>` : ''}
         </div>
       </div>

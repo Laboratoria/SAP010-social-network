@@ -2,20 +2,9 @@
     justify-content: center;
     display: grid;
     margin-top: 2em;
-    
-}
-
-body {
     text-align: center;
     justify-content: center;
-    color: var(--white);
-    box-sizing: border-box;
-    display: flex;
-    background-color: var(--blue);
-    height: fit-content;
-    
 }
-
 
 .inputs-register{
     margin-top: 2em;
