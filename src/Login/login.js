@@ -53,6 +53,7 @@ export const loginUser = () => {
     }
     return '';
   };
+  
   // função para usuário fazer login
   const fazerLogin = () => {
     login.addEventListener('click', async (event) => {
