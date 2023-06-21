@@ -89,6 +89,5 @@ export const registerUser = () => {
     });
   };
   registerLogin();
-  
   return container;
 };
