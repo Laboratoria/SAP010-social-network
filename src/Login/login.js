@@ -1,4 +1,4 @@
-import { authLogin, authLoginGoogle, authLoginFacebook } from '../Firebase/instalfirebase';
+import { authLogin, authLoginGoogle , authLoginFacebook} from '../Firebase/instalfirebase';
 import './login.css';
 
 export const loginUser = () => {
@@ -110,7 +110,7 @@ export const loginUser = () => {
         });
     });
   };
-
+  
   loginFacebook();
   return container;
 };

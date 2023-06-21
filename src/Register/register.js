@@ -30,6 +30,7 @@ export const registerUser = () => {
   `;
 
   container.innerHTML = template;
+
   const register = container.querySelector('#btnregister');
   const registerName = container.querySelector('#registerName');
   const registerEmail = container.querySelector('#registerEmail');
@@ -88,6 +89,6 @@ export const registerUser = () => {
     });
   };
   registerLogin();
-
+  
   return container;
 };
