@@ -1,4 +1,4 @@
-import { authLogin, authLoginGoogle , authLoginFacebook} from '../Firebase/instalfirebase';
+import { authLogin, authLoginGoogle, authLoginFacebook } from '../Firebase/instalfirebase';
 import './login.css';
 
 export const loginUser = () => {
@@ -53,7 +53,7 @@ export const loginUser = () => {
     }
     return '';
   };
-  
+
   // função para usuário fazer login
   const fazerLogin = () => {
     login.addEventListener('click', async (event) => {
@@ -111,7 +111,7 @@ export const loginUser = () => {
         });
     });
   };
-  
+
   loginFacebook();
   return container;
 };

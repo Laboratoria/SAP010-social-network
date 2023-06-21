@@ -37,7 +37,7 @@
 .login-titulo {
   color: var(--CorPrimaria);
   font-size: 2.7rem;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 .form {
@@ -59,7 +59,7 @@
   background: var(--CorTerciaria);
   border: 0;
   border-bottom: 1px solid #bababa;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
   margin-top: 30px;
   outline: 0;
@@ -74,7 +74,7 @@
   color: var(--CorTerciaria);
   cursor: pointer;
   font-size: 1em;
-  font-family: "prompt";
+  font-family: 'Prompt', sans-serif;
   justify-content: center;
   margin-top: 25px;
   padding: 10px 40px;
