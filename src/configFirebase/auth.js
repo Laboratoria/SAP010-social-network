@@ -3,12 +3,22 @@
 //getAppAuth- retorno da autenticação do firebase
 //getUserId - retorno do id do usuario
 
-import {getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,} from 'firebase/auth';
+import {getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
 import { app } from './configFirebase.js';
  
   
+  
+   //login google
+  export const getAppAuth = () => getAuth(app);
 
-  export const getAppAuth = () => getAuth();
+
+  export const loginGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    const auth = getAppAuth();
+    return signInWithPopup(auth, provider);
+  };
+
+
 
    //criar usuario
    export const createUserWithEmail = (name, email, password) => {

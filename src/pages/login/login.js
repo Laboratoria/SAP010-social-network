@@ -1,5 +1,5 @@
 import './login.css';
-import { loginWithEmail } from '../../configFirebase/auth';
+import { loginWithEmail, loginGoogle } from '../../configFirebase/auth';
 
 export default () => {
   const container = document.createElement('div');
@@ -15,12 +15,11 @@ export default () => {
       <label for="email">E-mail</label>
       <input type="email" id="email" placeholder="Digite seu e-mail">
       <label for="senha">Senha</label>
-      <input type="password" id="senha" placeholder="Digite sua senha"> 
+      <input type="password" id="senha" placeholder="Digite sua senha">
       <img class="eye" id="eyeToggle" src="./images/icons/eye-off.svg">
-      <div id="errorMessage" class="error"></div> 
+      <div id="errorMessage" class="error"></div>
       <a href="">Esqueceu a senha? Clique aqui!</a>
       </div>
-    
         <div class="botoes">
         <button id="entrarButton">Entrar</button>
         <button id="registrarButton">Registrar</button></div>
@@ -40,7 +39,7 @@ export default () => {
   const googleButton = container.querySelector('#googleLoginButton');
   const registrarButton = container.querySelector('#registrarButton');
 
-  // lidar com o evento de login
+  // login
   const handleLogin = () => {
     const email = emailInput.value;
     const senha = senhaInput.value;
@@ -51,18 +50,16 @@ export default () => {
       })
       .catch(() => {
         const errorMessage = container.querySelector('#errorMessage');
-        errorMessage.textContent = 'E-mail ou senha incorretos'; 
-        errorMessage.style.display = 'block'; 
+        errorMessage.textContent = 'E-mail ou senha incorretos';
+        errorMessage.style.display = 'block';
       });
-      
   };
 
-
   loginButton.addEventListener('click', handleLogin);
-  registrarButton.addEventListener('click',() => {
+
+  registrarButton.addEventListener('click', () => {
     window.location.hash = '#register';
   });
-  
 
   const eyeToggle = container.querySelector('#eyeToggle');
   const passwordInput = container.querySelector('#senha');
@@ -70,14 +67,25 @@ export default () => {
   eyeToggle.addEventListener('click', () => {
     if (passwordInput.type === 'password') {
       passwordInput.type = 'text';
-      eyeToggle.src = './images/icons/eye.svg';
+      eyeToggle.src = '../images/icons/eye.svg';
       eyeToggle.title = 'Esconder senha';
     } else {
       passwordInput.type = 'password';
-      eyeToggle.src = './images/icons/eye-off.svg';
+      eyeToggle.src = '../images/icons/eye-off.svg';
       eyeToggle.title = 'Mostrar senha';
     }
   });
 
+  // Login Google
+   googleButton.addEventListener('click', () => {
+    loginGoogle().then(() => {
+      window.location.hash = '#feed';
+    }).catch(() => {
+      alert('Erro ao fazer login com o Google');
+    });
+  });
+
+
   return container;
+
 };

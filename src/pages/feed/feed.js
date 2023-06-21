@@ -1,7 +1,7 @@
 
 import './feed.css';
-import { getUserName, getAppAuth } from '../../firebase/auth.js';
-
+import { getUserName, getUserId } from '../../firebase/auth.js';
+import {   } from '../../firebase/firestore.js';
 
 
 export default () => {
