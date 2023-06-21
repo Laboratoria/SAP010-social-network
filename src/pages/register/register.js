@@ -1,5 +1,5 @@
 import './register.css';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmail } from '../../configFirebase/auth';
 
 export default () => {
   const container = document.createElement('div');
@@ -31,6 +31,8 @@ export default () => {
       <button type="button" id="btn-register">Registrar</button>
       <button type="button" id="btn-home">Voltar</button>
       </div>
+      <div id="errorMessage" class="error">
+      </div>
     </fieldset>
   `;
 
@@ -40,22 +42,22 @@ export default () => {
   const emailInput = container.querySelector('#emailRegister');
   const senhaInput = container.querySelector('#senhaUsuario');
   const registerButton = container.querySelector('#btn-register');
-
   const homeButton = container.querySelector('#btn-home');
 
-
-  const registrarNovoUsuario = () => {
+  const registerUser = () => {
     const name = nameInput.value;
     const email = emailInput.value;
     const senha = senhaInput.value;
     const areaAtuacao = container.querySelector('#atuaçao').value;
 
-    console.log('Nome:', name);
-    console.log('E-Mail:', email);
-    console.log('Área de Atuação:', areaAtuacao);
+    createUserWithEmail(name, email, senha, areaAtuacao)
+      .catch(() => {
+        const error = container.querySelector('#errorMessage');
+        error.textContent = 'Erro ao registrar o usuário';
+      });
   };
 
-  registerButton.addEventListener('click', registrarNovoUsuario);
+  registerButton.addEventListener('click', registerUser);
 
   homeButton.addEventListener('click', () => {
     window.location.hash = '';
