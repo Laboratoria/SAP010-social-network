@@ -114,14 +114,12 @@ describe('getUserName', () => {
     expect(result).toBe('Maria Silva');
   });
 
-  it('return null if user is not authenticated', () => {
-    const authUser = {
-      currentUser: null,
-    };
+  it('return viajante if user is not authenticated', () => {
+    const authUser = 'viajante';
     getAuth.mockReturnValue(authUser);
 
     const result = getUserName();
 
-    expect(result).toBeFalsy();
+    expect(result).toBe('viajante');
   });
 });
