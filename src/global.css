@@ -71,3 +71,10 @@ button:hover{
 .imagem-fundo{
     max-width: 500px;
 }
+
+.error{
+    color: red;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: 'Nunito Sans', sans-serif;
+}

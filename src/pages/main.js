@@ -14,8 +14,3 @@ const main = document.querySelector('#root');
 
 import { auth, provider } from './lib/configFirebase.js';
 import { createUserWithEmailAndPassword, GoogleAuthProvider } from 'firebase/auth';
-
-
-
-
-

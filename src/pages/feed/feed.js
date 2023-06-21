@@ -1,18 +1,16 @@
-
 import './feed.css';
-import { getUserName, getUserId } from '../../firebase/auth.js';
-import {   } from '../../firebase/firestore.js';
+
+import { getUserName, getAppAuth } from '../../configFirebase/auth';
 
 
 export default () => {
   const container = document.createElement('div');
 
-  const feed = `
+  const template = `
   
   testando 123123
-
   `;
 
-  
-  return feed;
-}
+  container.innerHTML = template;
+  return container;
+};

@@ -1,8 +1,8 @@
-// inportar o template criado 
+// inportar o template criado
 import login from './pages/login/login.js';
 import register from './pages/register/register.js';
-//import feed from './pages/feed/feed.js';
 
+import feed from './pages/feed/feed.js';
 
 
 //  Load evento de carregamento da janela/ depois printar informações na tela

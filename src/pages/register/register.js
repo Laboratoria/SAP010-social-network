@@ -5,7 +5,11 @@ export default () => {
   const container = document.createElement('div');
 
   const templateRegister = `
-  <img class="logo-cs" src="./images/logo2.png">
+
+  <div class="imagens">
+  <img class="logo-cs" src="./images/logo1.png">
+  <img class="imagem-fundo" src="./images/background-desktop.png">
+  </div>
     <fieldset>
       <h2> *CAMPOS OBRIGATÓRIOS  </h2>
       <div class="cadastro">
@@ -15,8 +19,8 @@ export default () => {
         <input type="email" id="emailRegister" placeholder="Digite seu melhor e-mail" required>
         <label for="senha">Crie sua Senha*</label>
         <input type="password" id="senhaUsuario" placeholder="Digite sua senha" required>
+        <p>Selecione a sua área de atuação*</p>
       <select class="areaDeAtuacao" id="atuaçao" required>
-        <option value="">Selecione a sua área de atuação*</option>
         <option value="produtor">Produtor de café</option>
         <option value="empresario">Empresário do ramo de café</option>
         <option value="comprador">Comprador ou negociante de café</option>
@@ -36,7 +40,9 @@ export default () => {
   const emailInput = container.querySelector('#emailRegister');
   const senhaInput = container.querySelector('#senhaUsuario');
   const registerButton = container.querySelector('#btn-register');
-  const homeButton = container.querySelector('#btn-home')
+
+  const homeButton = container.querySelector('#btn-home');
+
 
   const registrarNovoUsuario = () => {
     const name = nameInput.value;
@@ -50,8 +56,10 @@ export default () => {
   };
 
   registerButton.addEventListener('click', registrarNovoUsuario);
+
   homeButton.addEventListener('click', () => {
     window.location.hash = '';
   });
+
   return container;
 };

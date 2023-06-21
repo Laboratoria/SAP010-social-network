@@ -9,7 +9,7 @@ export default () => {
     <img class="logo-cs" src="./images/logo1.png">
     <img class="imagem-fundo" src="./images/background-desktop.png">
   </div>
-      <fieldset>
+    <fieldset>
       <h2>Entre com</h2>
       <div class="loginSenha">
       <label for="email">E-mail</label>
@@ -17,7 +17,9 @@ export default () => {
       <label for="senha">Senha</label>
       <input type="password" id="senha" placeholder="Digite sua senha">
       <img class="eye" id="eyeToggle" src="./images/icons/eye-off.svg">
-      <div id="errorMessage" class="error"></div>
+
+      <div id="errorMessage" class="error">
+      </div>
       <a href="">Esqueceu a senha? Clique aqui!</a>
       </div>
         <div class="botoes">
@@ -26,7 +28,7 @@ export default () => {
           </div>
           <h3>-- ou --</h3>
         <div class="google">
-        <button id="googleLoginButton">Acesse sua conta com <img class="logo-google" src="./images/logo4.png"></button>
+        <button id="googleLoginButton">Acesse com sua conta <img class="logo-google" src="./images/logo4.png"></button>
       </div>
       </fieldset>
   `;
@@ -57,7 +59,9 @@ export default () => {
 
   loginButton.addEventListener('click', handleLogin);
 
-  registrarButton.addEventListener('click', () => {
+
+
+  registrarButton.addEventListener('click',() => {
     window.location.hash = '#register';
   });
 
