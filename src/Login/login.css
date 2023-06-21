@@ -1,4 +1,4 @@
-.backgroundTwo {
+.backgroundTwo{
   width: 0;
   height: 0;
   border-style: solid;
@@ -189,11 +189,7 @@
 
 @media screen and (max-width: 1050px) {
   .backgroundTwo {
-    width: 0;
-    height: 0;
-    border-style: solid;
     border-width: 990px 750px 0 0;
-    border-color: #ff4400 transparent transparent transparent;
   }
 
   .imagemLogo {
@@ -223,9 +219,7 @@
   }
 
   .login-titulo {
-    color: var(--CorPrimaria);
     font-size: 1.6rem;
-    font-family: "Nunito Sans", sans-serif;
   }
 
   .form {
@@ -242,7 +236,7 @@
     width: 30px;
   }
 
-  .form .message {
+  .form .messageLogin {
     font-size: 0.7rem;
   }
 }
@@ -302,7 +296,7 @@
     margin-top: 28px;
   }
 
-  .form .message {
+  .form .messageLogin {
     font-size: 0.8rem;
   }
 }
@@ -363,7 +357,7 @@
     margin-top: 25px;
   }
 
-  .form .message {
+  .form .messageLogin {
     font-size: 0.8rem;
     margin-top: 15px;
   }

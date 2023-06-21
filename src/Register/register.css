@@ -2,7 +2,7 @@
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 31300px 990px 0 0;
+  border-width: 1300px 990px 0 0;
   border-color: #ff4400 transparent transparent transparent;
 }
 
@@ -112,7 +112,7 @@
   margin-top: 20px;
 }
 
-.message {
+.messageReturn {
   color: var(--CorPrimaria);
   text-decoration: none;
   font-weight: bold;
@@ -217,7 +217,7 @@
     width: 42vw;
   }
   
-  .buttons-register {
+  .button-register {
     font-size: 0.9em;
     margin-left: 0px;
     padding: 10px 20px;

@@ -22,9 +22,9 @@ export const registerUser = () => {
           <span class='txt-error' id='errorRegister'></span>
         </div>
         <div class="botoes-register">
-          <button class="buttons-register" id='btnregister' type="submit">Cadastrar</button>
+          <button class="button-register" id='btnregister' type="submit">Cadastrar</button>
         </div>
-        <p class="register-message">Já possui uma conta? Clique em <a href="#login" class ="message">voltar</a> e acesse.</p>
+        <p class="register-message">Já possui uma conta? Clique em <a href="#login" class ="messageReturn">voltar</a> e acesse.</p>
       </form>
     </section>
   `;
