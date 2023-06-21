@@ -1,5 +1,6 @@
 import { getUserName, getUserId } from '../../firebase/auth.js';
-import { createPost, accessPost, deletePost } from '../../firebase/firestore.js';
+import { createPost, accessPost } from '../../firebase/firestore.js';
+import delPost from './posts.js';
 
 export default () => {
   const timeline = document.createElement('div');
@@ -23,7 +24,11 @@ export default () => {
   const createPostElement = (name, createdAt, description, postId, authorId) => {
     const createdAtDate = new Date(createdAt.seconds * 1000);
     const createdAtFormattedDate = createdAtDate.toLocaleDateString('pt-BR');
-    const createdAtFormattedTime = createdAtDate.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', hour12: false });
+    const createdAtFormattedTime = createdAtDate.toLocaleTimeString('pt-BR', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    });
     const createdAtFormatted = `${createdAtFormattedDate} ~ ${createdAtFormattedTime}`;
 
     const postElement = document.createElement('div');
@@ -35,16 +40,15 @@ export default () => {
         </div>
         <p class='textPost'>${description}</p>
         <div class='image-icons'>
-            <button type="button" class='icons' id='likePost'>
-              <a class='icons' id='likePost'><img src='img/assets/likeicon.png' alt='like image' width='30px'></a>
-            </button>
-            <button type="button" class='icons' id='editPost'>
-              <a class='icons' id='editPost'><img src='img/assets/editicon.png' alt='edit image' width='30px'></a>
-            </button>
-            ${authorId === getUserId() ? `
-            <button type="button" class='icons' id='btn-delete' data-post-id='${postId}'>
-            <img src='img/assets/deleteicon.png' alt='delete image' width='30px'></button>
-            ` : ''}
+          <button type="button" class='icons' id='likePost'>
+            <a class='icons' id='likePost'><img src='img/assets/likeicon.png' alt='like image' width='30px'></a>
+          </button>
+          <button type="button" class='icons' id='editPost'>
+            <a class='icons' id='editPost'><img src='img/assets/editicon.png' alt='edit image' width='30px'></a>
+          </button>
+          ${authorId === getUserId() ? `<button type="button" class='icons' id='btn-delete' data-post-id='${postId}'>
+                  <img src='img/assets/deleteicon.png' alt='delete image' width='30px'>
+                </button>` : ''}
         </div>
       </div>
     `;
@@ -63,7 +67,7 @@ export default () => {
     });
   };
 
-  postBtn.addEventListener('click', () => {
+  const handlePostBtnClick = () => {
     const description = descriptionPost.value;
 
     if (!description) {
@@ -79,27 +83,22 @@ export default () => {
           alert('Ocorreu um erro ao criar o post. Por favor, tente novamente mais tarde');
         });
     }
-  });
+  };
 
-  postList.addEventListener('click', (event) => {
+  const handlePostListClick = (event) => {
     const target = event.target;
     const deleteButton = target.closest('#btn-delete');
     if (deleteButton) {
       const postId = deleteButton.getAttribute('data-post-id');
-
-      if (window.confirm('Tem certeza de que deseja excluir a publicação?')) {
-        deletePost(postId)
-          .then(() => {
-            loadPosts();
-            alert('Publicação excluída com sucesso!');
-          })
-          .catch((error) => {
-            alert('Ocorreu um erro ao excluir o post. Por favor, tente novamente mais tarde', error);
-          });
-      }
+      delPost(postId);
+      loadPosts();
     }
-  });
+  };
+
+  postBtn.addEventListener('click', handlePostBtnClick);
+  postList.addEventListener('click', handlePostListClick);
 
   loadPosts();
+
   return timeline;
 };
