@@ -99,6 +99,7 @@ export const loginUser = () => {
 
   loginGoogle();
 
+  // login facebook
   const loginFacebook = () => {
     btnFacebook.addEventListener('click', () => {
       authLoginFacebook()
@@ -110,8 +111,7 @@ export const loginUser = () => {
         });
     });
   };
-
+  
   loginFacebook();
-
   return container;
 };

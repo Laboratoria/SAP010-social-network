@@ -22,9 +22,9 @@ export const registerUser = () => {
           <span class='txt-error' id='errorRegister'></span>
         </div>
         <div class="botoes-register">
-          <button class="buttons-register" id='btnregister' type="submit">Cadastrar</button>
+          <button class="button-register" id='btnregister' type="submit">Cadastrar</button>
         </div>
-        <p class="register-message">Já possui uma conta? Clique em <a href="#login" class ="message">voltar</a> e acesse.</p>
+        <p class="register-message">Já possui uma conta? Clique em <a href="#login" class ="messageReturn">voltar</a> e acesse.</p>
       </form>
     </section>
   `;
@@ -47,15 +47,15 @@ export const registerUser = () => {
 
   const validarRegisterSenha = (senha) => {
     if (senha.length < 6) {
-      return `A senha deve ter pelo menos 6 caracteres`;
+      return 'A senha deve ter pelo menos 6 caracteres';
     }
     return '';
   };
 
   const validarRegisterName = (nome) => {
-    const regexNameRegister = /^[A-Za-z][A-Z a-z]*$./;
+    const regexNameRegister = /^[A-Za-z][A-Z a-z]*$/;
     if (!regexNameRegister.test(nome)) {
-      return `Favor preencha seu nome completo.`;
+      return 'Favor preencha seu nome completo.';
     }
     return '';
   };
@@ -71,10 +71,10 @@ export const registerUser = () => {
       const emailErrorRegister = validarRegisterEmail(emailInputRegister);
       const senhaErrorRegister = validarRegisterSenha(passwordRegister);
 
-      if (emailErrorRegister || senhaErrorRegister) {
-        // Se houver algum erro de email ou senha, exiba as mensagens de erro
+      if (nameErrorRegister || emailErrorRegister || senhaErrorRegister) {
+        // Se houver algum erro de nome ou email ou senha, exiba as mensagens de erro
         errorTxt.setAttribute('style', 'display: block');
-        errorTxt.innerHTML = emailErrorRegister || senhaErrorRegister;
+        errorTxt.innerHTML = nameErrorRegister || emailErrorRegister || senhaErrorRegister;
       } else {
         // Caso contrário, prossiga com o login
         newUser(emailInputRegister, passwordRegister)
@@ -89,6 +89,6 @@ export const registerUser = () => {
     });
   };
   registerLogin();
-
+  
   return container;
 };

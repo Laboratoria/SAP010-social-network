@@ -37,7 +37,7 @@
 .login-titulo {
   color: var(--CorPrimaria);
   font-size: 2.7rem;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .form {
@@ -188,6 +188,10 @@
 }
 
 @media screen and (max-width: 1050px) {
+  .backgroundTwo {
+    border-width: 990px 750px 0 0;
+  }
+
   .imagemLogo {
     left: 5px;
     top: 160px;
@@ -215,9 +219,7 @@
   }
 
   .login-titulo {
-    color: var(--CorPrimaria);
     font-size: 1.6rem;
-    font-family: 'Nunito Sans', sans-serif;
   }
 
   .form {
@@ -234,7 +236,7 @@
     width: 30px;
   }
 
-  .form .message {
+  .form .messageLogin {
     font-size: 0.7rem;
   }
 }
@@ -260,7 +262,7 @@
   }
 
   .subtitulo {
-    font-size: 1.3rem;
+    font-size: 1.3rem; 
   }
 
   .login-titulo {
@@ -294,7 +296,7 @@
     margin-top: 28px;
   }
 
-  .form .message {
+  .form .messageLogin {
     font-size: 0.8rem;
   }
 }
@@ -355,7 +357,7 @@
     margin-top: 25px;
   }
 
-  .form .message {
+  .form .messageLogin {
     font-size: 0.8rem;
     margin-top: 15px;
   }
