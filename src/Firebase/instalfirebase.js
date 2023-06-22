@@ -1,13 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  getAuth,
-  updateProfile,
-  GoogleAuthProvider,
-  signInWithPopup,
-  FacebookAuthProvider,
-} from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDSedT4wQAFd6nZqtK9xWVLPVSRAj9y9dE',
@@ -19,20 +11,4 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-// função para fazer login do usuario
-export const authLogin = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
-
-// função para login da conta do google
-const authProvedor = new GoogleAuthProvider();
-export const authLoginGoogle = () => signInWithPopup(auth, authProvedor);
-
-export const newUser = async (email, senha, displayName) => {
-  const authentication = getAuth(app);
-  await createUserWithEmailAndPassword(authentication, email, senha);
-  await updateProfile(authentication.currentUser, { displayName });
-};
-
-const provider = new FacebookAuthProvider();
-export const authLoginFacebook = () => signInWithPopup(auth, provider);
+export const auth = getAuth(app);
