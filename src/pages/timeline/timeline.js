@@ -145,7 +145,8 @@ const handlePostBtnClick = () => {
               alert('Post atualizado com sucesso!');
             })
             .catch(() => {
-              alert('Ocorreu um erro ao excluir o post. Por favor, tente novamente mais tarde');
+              // console.error('erro ao atualizar post:', error);
+              alert('Ocorreu um erro ao editar o post. Por favor, tente novamente mais tarde');
             });
         }
       }
