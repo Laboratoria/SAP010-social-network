@@ -150,6 +150,30 @@ html {
   }
 
   .modal-input-area{
-    font-size: 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .container-msg * {
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    resize: vertical;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100px;
+    padding: 5px;
+    ;
   }
   
+  .error-border {
+    border: 1px solid red;
+  }
+  
+  .mensagem-erro {
+    color: red;
+    font-size: 10px;
+    margin-top: 0px;
+  }
+  
+  .modal-input-area.error-border {
+    border: 1px solid red;
+  }
