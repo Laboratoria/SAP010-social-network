@@ -8,13 +8,15 @@ import {
   FacebookAuthProvider,
 } from 'firebase/auth';
 
-import { app } from './app.js';
+import { app, db } from './app.js';
+import { doc, setDoc } from 'firebase/firestore';
 
 export const getAppAuth = () => getAuth(app);
 
 export const getUserId = () => {
   const auth = getAppAuth();
   return auth.currentUser.uid;
+
 };
 
 export const getUserName = () => {
@@ -26,6 +28,16 @@ export const getUserName = () => {
   return 'viajante';
 };
 
+export const createUserDocument = (user) => {
+  const { uid, displayName, email } = user;
+  const userRef = doc(db, 'users', uid);
+  const userData = {
+    displayName,
+    email,
+  };
+  return setDoc(userRef, userData);
+};
+
 export const createUserWithEmail = (name, lastName, email, password) => {
   const auth = getAppAuth();
   return createUserWithEmailAndPassword(auth, email, password).then(
@@ -33,7 +45,7 @@ export const createUserWithEmail = (name, lastName, email, password) => {
       const user = userCredential.user;
       return updateProfile(user, {
         displayName: `${name} ${lastName}`,
-      });
+      }).then(() => createUserDocument(user));
     },
   );
 };
@@ -46,11 +58,17 @@ export const loginWithEmail = (email, password) => {
 export const loginGoogle = () => {
   const provider = new GoogleAuthProvider();
   const auth = getAppAuth();
-  return signInWithPopup(auth, provider);
+  return signInWithPopup(auth, provider).then((userCredential) => {
+    const user = userCredential.user;
+    return createUserDocument(user);
+  });
 };
 
 export const loginFacebook = () => {
   const provider = new FacebookAuthProvider();
   const auth = getAppAuth();
-  return signInWithPopup(auth, provider);
+  return signInWithPopup(auth, provider).then((userCredential) => {
+    const user = userCredential.user;
+    return createUserDocument(user);
+  });
 };

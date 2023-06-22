@@ -17,13 +17,11 @@
     
     
 }
-.icon-timeline {
-    width: 2em;
-}
+
 .postTitle {
     font-weight: bold;
     color: var(--white);
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 .img-timeline {
@@ -149,12 +147,6 @@
 
 
 }
-.icones {
-    margin-bottom: 10em;
-    display: flex;
-    padding: 3em;
-
-}
 
 .icon-timeline {
     margin: 1em;
@@ -210,7 +202,13 @@ a {
 
 
     }
-      
+    .photo-timeline {
+        width: 6em;
+        margin-top: 1em;
+        margin: 1em;
+        border-radius: 50%;
+    }
+
     .img-timeline {
         position: absolute;
         left: 50%;
@@ -228,7 +226,14 @@ a {
         
 
     }
+    .icon-timeline {
+        text-align: center;
+    }
+    .icones {
+        margin-bottom: 15em;
+
     
+    }
     .right-timeline, .postList {
         grid-area: right; /*defide que o timeline é a segunda coluna*/
         overflow-y: scroll;
