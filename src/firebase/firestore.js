@@ -8,11 +8,11 @@ import {
   doc,
   deleteDoc,
   updateDoc,
+  getDoc,
 } from 'firebase/firestore';
 import { getAppAuth } from './auth';
 import { app } from './app';
 
-// Obtém a instância do Firestore
 const db = getFirestore(app);
 
 export const createPost = (description) => {
@@ -48,3 +48,35 @@ export async function editPost(idPost, newPost) {
   const docRef = doc(db, 'posts', idPost);
   return updateDoc(docRef, newPost);
 }
+
+const posts = [
+  { id: '1', likes: 0 },
+  { id: '2', likes: 0 },
+  { id: '3', likes: 0 },
+];
+const likes = [];
+
+export const hasUserLikedPost = (postId, userId) => {
+  return likes.some((like) => like.postId === postId && like.userId === userId);
+};
+
+export const likePost = (postId, userId) => {
+  try {
+    const userHasLikedPost = hasUserLikedPost(postId, userId);
+
+    if (!userHasLikedPost) {
+      const post = posts.find((post) => post.id === postId);
+      if (post) {
+        post.likes++;
+      }
+
+      likes.push({ postId, userId });
+      console.log('Like agregado correctamente');
+    } else {
+      console.log('El usuario ya ha dado like a esta publicación');
+    }
+  } catch (error) {
+    console.error('Error al dar like:', error);
+    throw error;
+  }
+};

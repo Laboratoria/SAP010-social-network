@@ -1,5 +1,5 @@
 import { getUserName, getUserId } from '../../firebase/auth.js';
-import { createPost, accessPost } from '../../firebase/firestore.js';
+import { createPost, accessPost, likePost } from '../../firebase/firestore.js';
 import { uploadProfileImage, updateProfileImageURL } from '../../firebase/storage.js';
 
 import delPost from './posts.js';
@@ -57,9 +57,11 @@ export default () => {
         </div>
         <p class='textPost'>${description}</p>
         <div class='image-icons'>
-          <button type="button" class='icons' id='likePost'>
-            <a class='icons' id='likePost'><img src='./img/assets/likeicon.png' alt='like image' width='30px'></a>
-          </button>
+        <button type="button" class='icons' id='likePost' data-post-id='${postId}'>
+        <a class='icons' id='likePost'><img src='img/assets/likeicon.png' alt='like image' width='30px'></a>
+      </button>
+      <span id='likes-counter-${postId}'>0</span>
+
           <button type="button" class='icons' id='editPost'>
             <a class='icons' id='editPost'><img src='./img/assets/editicon.png' alt='edit image' width='30px'></a>
           </button>
@@ -75,71 +77,63 @@ export default () => {
   const loadPosts = async () => {
     postList.innerHTML = '';
     const postsFirestore = await accessPost();
-    postsFirestore.forEach((post) => {
+    
+    postsFirestore.forEach(async (post) => {
       const {
         name, createdAt, description, id, author,
       } = post;
       const postElement = createPostElement(name, createdAt, description, id, author);
       postList.appendChild(postElement);
+  
+      const likeButton = postElement.querySelector('#likePost');
+      const postId = likeButton.getAttribute('data-post-id');
+      const likesCounter = postElement.querySelector(`#likes-counter-${postId}`);
+      
+      likeButton.addEventListener('click', async () => {
+        try {
+          likePost(postId, getUserId());
+          const currentLikes = parseInt(likesCounter.innerText);
+          likesCounter.innerText = currentLikes + 1;
+          likeButton.disabled = true;
+        } catch (error) {
+          console.error('Error al dar like:', error);
+        }
+      });
     });
   };
-
-  const handlePostBtnClick = () => {
-    const description = descriptionPost.value;
-
-    if (!description) {
-      alert('Preencha o campo');
-    } else {
-      createPost(description)
-        .then(() => {
-          descriptionPost.value = '';
-          loadPosts();
-          alert('Publicação efetuada com sucesso!');
-        })
-        .catch(() => {
-          alert('Ocorreu um erro ao criar o post. Por favor, tente novamente mais tarde');
-        });
-    }
-  };
-
-  const handleProfilePhotoUploadChange = () => {
-    const file = profilePhotoUploadInput.files[0];
-    if (file) {
-      uploadProfileImage(file)
-        .then((imagePath) => {
-          // Atualizar a URL da imagem no perfil do usuário
-          updateProfileImageURL(imagePath)
-            .then(() => {
-              // Atualizar a visualização da imagem de perfil
-              profileImagePreview.src = URL.createObjectURL(file);
-            })
-            .catch((error) => {
-              console.error('Erro ao atualizar a URL da imagem do perfil:', error);
-            });
-        })
-        .catch((error) => {
-          console.error('Erro ao fazer o upload da imagem:', error);
-        });
-    }
-  };
+    
+      const handlePostBtnClick = () => {
+      const description = descriptionPost.value;
   
+      if (!description) {
+        alert('Preencha o campo');
+      } else {
+        createPost(description)
+          .then(() => {
+            descriptionPost.value = '';
+            loadPosts();
+            alert('Publicação efetuada com sucesso!');
+          })
+          .catch(() => {
+            alert('Ocorreu um erro ao criar o post. Por favor, tente novamente mais tarde');
+          });
+      }
+    };
   
-
-  const handlePostListClick = (event) => {
-    const target = event.target;
-    const deleteButton = target.closest('#btn-delete');
-    if (deleteButton) {
-      const postId = deleteButton.getAttribute('data-post-id');
-      delPost(postId);
-      loadPosts();
-    }
+    const handlePostListClick = (event) => {
+      const target = event.target;
+      const deleteButton = target.closest('#btn-delete');
+      if (deleteButton) {
+        const postId = deleteButton.getAttribute('data-post-id');
+        delPost(postId);
+        loadPosts();
+      }
+    };
+  
+    postBtn.addEventListener('click', handlePostBtnClick);
+    postList.addEventListener('click', handlePostListClick);
+  
+    loadPosts();
+  
+    return timeline;
   };
-
-  postBtn.addEventListener('click', handlePostBtnClick);
-  profilePhotoUploadInput.addEventListener('change', handleProfilePhotoUploadChange);
-  postList.addEventListener('click', handlePostListClick);
-
-  loadPosts();
-
-  return timeline;
-};
