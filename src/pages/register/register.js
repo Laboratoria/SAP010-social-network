@@ -14,23 +14,11 @@ export default () => {
       <h2> *CAMPOS OBRIGATÓRIOS  </h2>
       <div class="cadastro">
         <label for="name">Nome Completo*</label>
-        <input type="text" id="nameRegister" placeholder="Digite seu Nome"/>
-        <span id="nome-obrigatorio" class="error">
-        Nome é obrigatório.
-      </span>
+        <input type="text" id="nameRegister" placeholder="Ex.: Maria da Silva" required/>
         <label for="email">E-Mail*</label>
-        <input type="email" id="emailRegister" placeholder="Digite seu melhor e-mail"/>
-        <span id="email-obrigatorio" class="error">
-        E-mail é obrigatório.
-      </span>
-      <span id="email-invalido" class="error">
-        E-mail não é válido.
-      </span>
+        <input type="email" id="emailRegister" placeholder="Ex.: email@email.com" required/>
         <label for="senha">Crie sua Senha*</label>
-        <input type="password" id="senhaUsuario" placeholder="Digite sua senha" required/>
-        <span id="senha-obrigatorio" class="error">
-        Senha é obrigatória.
-      </span>
+        <input type="password" id="senhaUsuario" placeholder="Ex.: 123456" required required/>
         <p>Selecione a sua área de atuação*</p>
       <select class="areaDeAtuacao" id="atuaçao" required>
         <option value="produtor">Produtor de café</option>
@@ -38,12 +26,9 @@ export default () => {
         <option value="comprador">Comprador ou negociante de café</option>
         <option value="outros">Outros</option>
       </select>
-      <span id="atuacao-obrigatoria" class="error">
-        Área de atuação é obrigatória.
-      </span>
       </div>
       <div class="botoes">
-      <button type="button" id="btn-register" disabled="true">Registrar</button>
+      <button type="button" id="btn-register">Registrar</button>
       <button type="button" id="btn-home">Voltar</button>
       </div>
       <div id="errorMessage" class="error">
@@ -59,18 +44,9 @@ export default () => {
   const registerButton = container.querySelector('#btn-register');
   const homeButton = container.querySelector('#btn-home');
 
-  const form = {
-    emailValidacao: () => container.querySelector('#emailRegister'),
-    emailObrigatorio: () => container.querySelector('#email-obrigatorio'),
-    emailInvalido: () => container.querySelector('#email-invalido'),
-  };
-
-  emailInput.addEventListener('onchange', () => {
-    const email1 = form.emailValidacao().value;
-    form.emailObrigatorio().style.display = email1 ? 'none' : 'block';
-
-    form.emailInvalido().style.display = validateEmail() ? 'none' : 'block';
-  });
+  function getErrorMessage(error) {
+    return error.message;
+  }
 
   const registerUser = () => {
     const name = nameInput.value;
@@ -79,37 +55,38 @@ export default () => {
     const areaAtuacao = container.querySelector('#atuaçao').value;
 
     createUserWithEmail(name, email, senha, areaAtuacao)
-      .catch(error => {
-        switch (error.code) {
+      .catch(() => {
+        const errorMessage = container.querySelector('#errorMessage');
+        switch (getErrorMessage) {
           case 'auth/email-already-in-use':
-            emailElement.classList.add('input-error');
-            textEmailError.innerHTML = 'Este e-mail já está cadastrado';
+            errorMessage.textContent = 'E-mail já está em uso!';
+            errorMessage.style.display = 'block';
             break;
 
           case 'auth/missing-email':
-            emailElement.classList.add('input-error');
-            textEmailError.innerHTML = 'Preencha esse campo';
+            errorMessage.textContent = 'Preencha o campo de e-mail!';
+            errorMessage.style.display = 'block';
             break;
 
           case 'auth/invalid-email':
-            emailElement.classList.add('input-error');
-            textEmailError.innerHTML = 'E-mail inválido';
+            errorMessage.textContent = 'E-mail inválido!';
+            errorMessage.style.display = 'block';
             break;
 
           case 'auth/missing-password':
-            passwordElement.classList.add('input-error');
-            textPasswordError.innerHTML = 'Preencha esse campo';
+            errorMessage.textContent = 'Preencha o campo de senha!';
+            errorMessage.style.display = 'block';
             break;
 
           case 'auth/weak-password':
-            passwordElement.classList.add('input-error');
-            textPasswordError.innerHTML = 'A senha deve conter no mín. 6 dígitos';
+            errorMessage.textContent = 'A senha deve conter, no min. 6 dígitos!';
+            errorMessage.style.display = 'block';
             break;
 
           default:
-            textPasswordError.innerHTML = "Erro ao cadastrar: " + error.code;
+            errorMessage.textContent = 'Confira os dados digitados';
+            errorMessage.style.display = 'block';
         }
-
       });
   };
 
