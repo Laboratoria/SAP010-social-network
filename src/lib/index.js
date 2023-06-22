@@ -1,7 +1,6 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
   FacebookAuthProvider,
@@ -16,9 +15,10 @@ export const authLogin = (email, senha) => signInWithEmailAndPassword(auth, emai
 const authProvedor = new GoogleAuthProvider();
 export const authLoginGoogle = () => signInWithPopup(auth, authProvedor);
 
-export const newUser = async (email, senha, displayName) => {
+// incluir displayName nos parametros se for usar futuramente
+export const newUser = async (email, senha) => {
   await createUserWithEmailAndPassword(auth, email, senha);
-  await updateProfile(auth.currentUser, { displayName });
+  // await updateProfile(auth.currentUser, { displayName });
 };
 
 const provider = new FacebookAuthProvider();
