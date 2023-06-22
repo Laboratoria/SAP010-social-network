@@ -44,7 +44,7 @@ export const deletePost = async (postId) => {
   await deleteDoc(docRef);
 };
 
-export async function editPost(idPost, newPost) {
-  const docRef = doc(db, 'posts', idPost);
-  return updateDoc(docRef, newPost);
-}
+export const updatePost = async (postId, newText) => {
+  const docRef = doc(db, 'posts', postId);
+  return updateDoc(docRef, newText);
+};
