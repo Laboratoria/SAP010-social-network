@@ -1,8 +1,7 @@
 import { getUserName, getUserId } from '../../firebase/auth.js';
-
 import { createPost, accessPost, updatePost, likePost } from '../../firebase/firestore.js';
-
 import delPost from './posts.js';
+
 
 export default () => {
   const timeline = document.createElement('div');
@@ -38,7 +37,7 @@ export default () => {
   const profilePhotoUploadInput = timeline.querySelector('#profilePhotoUpload');
   const profileImagePreview = timeline.querySelector('#profileImagePreview');
 
-  const createPostElement = (name, createdAt, description, postId, authorId) => {
+  const createPostElement = (name, createdAt, description, postId, authorId, whoLiked) => {
     const createdAtDate = new Date(createdAt.seconds * 1000);
     const createdAtFormattedDate = createdAtDate.toLocaleDateString('pt-BR');
     const createdAtFormattedTime = createdAtDate.toLocaleTimeString('pt-BR', {
@@ -61,7 +60,7 @@ export default () => {
         <button type="button" class='icons' id='likePost' data-post-id='${postId}'>
         <a class='icons' id='likePost'><img src='img/assets/likeicon.png' alt='like image' width='30px'></a>
       </button>
-      <span id='likes-counter-${postId}'>0</span>
+      <span id='likes-counter-${postId}'>'${whoLiked.length}'</span>
 
 
       ${authorId === getUserId() ? `<button type="button" data-post-id='${postId}' class='icons' id='editPost'>
@@ -76,33 +75,34 @@ export default () => {
 return postElement;
 };
 
-  const loadPosts = async () => {
-    postList.innerHTML = '';
-    const postsFirestore = await accessPost();
-    
-    postsFirestore.forEach(async (post) => {
-      const {
-        name, createdAt, description, id, author,
-      } = post;
-      const postElement = createPostElement(name, createdAt, description, id, author);
-      postList.appendChild(postElement);
-  
-      const likeButton = postElement.querySelector('#likePost');
-      const postId = likeButton.getAttribute('data-post-id');
-      const likesCounter = postElement.querySelector(`#likes-counter-${postId}`);
-      
-      likeButton.addEventListener('click', async () => {
-        try {
-          likePost(postId, getUserId());
-          const currentLikes = parseInt(likesCounter.innerText);
-          likesCounter.innerText = currentLikes + 1;
-          likeButton.disabled = true;
-        } catch (error) {
-          console.error('Error al dar like:', error);
-        }
-      });
+const loadPosts = async () => {
+  postList.innerHTML = '';
+  const postsFirestore = await accessPost();
+
+  postsFirestore.forEach(async (post) => {
+    const {
+      name, createdAt, description, id, author, whoLiked
+    } = post;
+    const postElement = createPostElement(name, createdAt, description, id, author, whoLiked);
+    postList.appendChild(postElement);
+
+    const likeButton = postElement.querySelector('#likePost');
+    const postId = likeButton.getAttribute('data-post-id');
+    const likesCounter = postElement.querySelector(`#likes-counter-${postId}`);
+
+    likeButton.addEventListener('click', async () => {
+      try {
+        await likePost(postId, getUserId());
+        const currentLikes = parseInt(likesCounter.innerText) || 0;
+        likesCounter.innerText = currentLikes + 1;
+        likeButton.disabled = true;
+      } catch (error) {
+        console.error('Error al dar like:', error);
+      }
     });
-  };
+  });
+};
+
     
 const handlePostBtnClick = () => {
   const description = descriptionPost.value;
