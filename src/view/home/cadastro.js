@@ -46,14 +46,14 @@ export const cadastro = () => {
   const register = container.querySelector('#sign-up');
   register.addEventListener('click', (event) => {
     event.preventDefault();
-
+    const nome = container.querySelector('#nome-cadastro')
     const email = container.querySelector('#email-cadastro');
     const password = container.querySelector('#senha-cadastro');
     const confirmPassword = container.querySelector('#confirmar-senha');
     if (confirmPassword.value === password.value) {
       signUp(email.value, password.value)
-        .then(() => {
-          //  const user = userCredential.user;
+        .then((userCredential) => {
+          const user = userCredential.user;
           container.querySelector('#mensagem-erro').innerHTML = 'Usuário cadastrado com sucesso!';
           setTimeout(() => {
             window.location.hash = '#login';
