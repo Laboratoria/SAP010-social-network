@@ -18,16 +18,21 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const auth = getAuth();
+const email = "camila@camila.com";
+const password = "123456";
+
 createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
     // ...
+    console.log("deu certo");
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
     // ..
+    console.log("deu errado");
   });
 
+export default { createUserWithEmailAndPassword };
