@@ -1,7 +1,6 @@
 import './feed.css';
 
-import { getUserName, getAppAuth } from '../../configFirebase/auth';
-
+// import { getUserName, getAppAuth } from '../../configFirebase/auth';
 
 export default () => {
   const container = document.createElement('div');

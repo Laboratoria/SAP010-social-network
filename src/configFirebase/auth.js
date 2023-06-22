@@ -5,7 +5,7 @@
 
 import {
   getAuth, createUserWithEmailAndPassword,
-  signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,
+  signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile,
 } from 'firebase/auth';
 import { app } from './configFirebase.js';
 

@@ -4,33 +4,30 @@ import register from './pages/register/register.js';
 
 import feed from './pages/feed/feed.js';
 
-
 //  Load evento de carregamento da janela/ depois printar informações na tela
 const main = document.querySelector('#root');
 
 // função para acessar cada pagina e fazer a função funcionar
 const init = () => {
-  window.addEventListener("hashchange", () => {
-    main.innerHTML = "";
+  window.addEventListener('hashchange', () => {
+    main.innerHTML = '';
     switch (window.location.hash) {
-      case " ":
+      case ' ':
         main.appendChild(login());
         break;
-      case "#register":
+      case '#register':
         main.appendChild(register());
         break;
-      case "#login":
+      case '#login':
         main.appendChild(login());
-        breake;
-      case "#feed": 
+        break;
+      case '#feed':
         main.appendChild(feed());
         break;
       default: main.appendChild(login());
-      
     }
   });
-}
-
+};
 
 window.addEventListener('load', () => {
   main.appendChild(login()); // printar na tela
