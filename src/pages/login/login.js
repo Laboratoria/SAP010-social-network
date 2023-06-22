@@ -3,6 +3,7 @@ import {
   loginGoogle,
   loginFacebook,
 } from '../../firebase/auth.js';
+import { errorsFirebase } from '../../validations.js';
 
 export default () => {
   const container = document.createElement('div');
@@ -86,8 +87,9 @@ export default () => {
       .then(() => {
         window.location.hash = '#timeline';
       })
-      .catch(() => {
-        printErrorMessage('E-mail ou senha incorretos');
+      .catch((error) => {
+        const errorMessage = errorsFirebase(error.code) || 'usuário ou senha incorretos';
+        printErrorMessage(errorMessage);
       });
   };
 

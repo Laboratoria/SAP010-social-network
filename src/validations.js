@@ -1,7 +1,7 @@
 export function errorsFirebase(error) {
   switch (error) {
     case 'auth/invalid-email':
-      return 'O e-mail inserido é inválido';
+      return 'Insira um e-mail válido';
     case 'auth/user-not-found':
       return 'O e-mail inserido não está cadastrado';
     case 'auth/email-already-in-use':
