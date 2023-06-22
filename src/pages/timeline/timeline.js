@@ -1,29 +1,33 @@
 import { getUserName, getUserId } from '../../firebase/auth.js';
 import { createPost, accessPost } from '../../firebase/firestore.js';
+import { uploadProfileImage, updateProfileImageURL } from '../../firebase/storage.js';
+
 import delPost from './posts.js';
 
 export default () => {
   const timeline = document.createElement('div');
   const viewPost = `
-  <div class="container">
-    <div class='left-timeline'>
-      <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
-      <figure class='icones'>
-        <a href="" class="icon-timeline"><img src="./img/assets/icon-home.png" class="icon-timeline" alt="Icone home"> Home </a>
-        <a href="" class="icon-timeline"><img src="./img/assets/icon-sair.png" class="icon-timeline" alt="Icone sair "> Sair </a>
-      </figure>
-
-      <img src="./img/assets/imagetimeline.png" class="img-timeline" alt="edit image" width="300px">
-    </div>
-    <div class="right-timeline">
-      <div class="input-container">
-        <textarea class="input-message" id="postArea" placeholder="COMPARTILHE UMA EXPERIÊNCIA..."></textarea>
-        <button class="shareBtn" id="sharePost">COMPARTILHAR</button>
+    <div class="container">
+      <div class='left-timeline'>
+        <input type="file" id="profilePhotoUpload" accept="image/*" style="display: none;">
+        <label for="profilePhotoUpload" class="photo-timeline">
+          <img src="./img/assets/icon-photo.png" id="profileImagePreview" class="photo-timeline" alt="Icone photo"> 
+        </label>
+        <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
+        <figure class='icones'>
+          <a href="" class="icon-timeline"><img src="./img/assets/icon-home.png" class="icon-timeline" alt="Icone home"> Home </a>
+          <a href="" class="icon-timeline"><img src="./img/assets/icon-sair.png" class="icon-timeline" alt="Icone sair "> Sair </a>
+        </figure>
+        <img src="./img/assets/imagetimeline.png" class="img-timeline" alt="edit image" width="300px">
       </div>
-      <div id="postList"></div>
+      <div class="right-timeline">
+        <div class="input-container">
+          <textarea class="input-message" id="postArea" placeholder="COMPARTILHE UMA EXPERIÊNCIA..."></textarea>
+          <button class="shareBtn" id="sharePost">COMPARTILHAR</button>
+        </div>
+        <div id="postList"></div>
+      </div>
     </div>
-  </div>
-</div>
   `;
 
   timeline.innerHTML = viewPost;
@@ -31,6 +35,8 @@ export default () => {
   const postBtn = timeline.querySelector('#sharePost');
   const descriptionPost = timeline.querySelector('#postArea');
   const postList = timeline.querySelector('#postList');
+  const profilePhotoUploadInput = timeline.querySelector('#profilePhotoUpload');
+  const profileImagePreview = timeline.querySelector('#profileImagePreview');
 
   const createPostElement = (name, createdAt, description, postId, authorId) => {
     const createdAtDate = new Date(createdAt.seconds * 1000);
@@ -44,7 +50,6 @@ export default () => {
 
     const postElement = document.createElement('div');
     postElement.innerHTML = `
-
       <div class="post-container">
         <div class='nameUser'>
           <p class='userName'>${name}</p>
@@ -97,6 +102,29 @@ export default () => {
     }
   };
 
+  const handleProfilePhotoUploadChange = () => {
+    const file = profilePhotoUploadInput.files[0];
+    if (file) {
+      uploadProfileImage(file)
+        .then((imagePath) => {
+          // Atualizar a URL da imagem no perfil do usuário
+          updateProfileImageURL(imagePath)
+            .then(() => {
+              // Atualizar a visualização da imagem de perfil
+              profileImagePreview.src = URL.createObjectURL(file);
+            })
+            .catch((error) => {
+              console.error('Erro ao atualizar a URL da imagem do perfil:', error);
+            });
+        })
+        .catch((error) => {
+          console.error('Erro ao fazer o upload da imagem:', error);
+        });
+    }
+  };
+  
+  
+
   const handlePostListClick = (event) => {
     const target = event.target;
     const deleteButton = target.closest('#btn-delete');
@@ -108,6 +136,7 @@ export default () => {
   };
 
   postBtn.addEventListener('click', handlePostBtnClick);
+  profilePhotoUploadInput.addEventListener('change', handleProfilePhotoUploadChange);
   postList.addEventListener('click', handlePostListClick);
 
   loadPosts();
