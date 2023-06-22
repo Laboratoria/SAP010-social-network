@@ -9,6 +9,7 @@ import {
   deleteDoc,
   updateDoc,
   getDoc,
+  
 } from 'firebase/firestore';
 import { getAppAuth } from './auth';
 import { app } from './app';
@@ -50,35 +51,41 @@ export const updatePost = async (postId, newText) => {
   return updateDoc(docRef, newText);
 }
 
-const posts = [
-  { id: '1', likes: 0 },
-  { id: '2', likes: 0 },
-  { id: '3', likes: 0 },
-];
-const likes = [];
+ export const hasUserLikedPost = async (postId) => {
+  const docRef = doc(db, 'posts', postId);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    const post = docSnap.data();
+    const { whoLiked } = post;
+    const userId = getAppAuth().currentUser.uid;
+    return whoLiked.includes(userId);
+  }
+  return false;
+};  
 
-export const hasUserLikedPost = (postId, userId) => {
-  return likes.some((like) => like.postId === postId && like.userId === userId);
-};
 
-export const likePost = (postId, userId) => {
+ export const likePost = async (postId, userId) => {
   try {
-    const userHasLikedPost = hasUserLikedPost(postId, userId);
-
+    const userHasLikedPost = await hasUserLikedPost(postId);
     if (!userHasLikedPost) {
-      const post = posts.find((post) => post.id === postId);
-      if (post) {
-        post.likes++;
-      }
+      const docRef = doc(db, 'posts', postId);
+      const postDoc = await getDoc(docRef);
 
-      likes.push({ postId, userId });
-      console.log('Like agregado correctamente');
+      if (postDoc.exists()) {
+        const post = postDoc.data();
+        const { likes, whoLiked } = post;
+        if (!whoLiked.includes(userId)) {
+          likes.push(userId);
+          whoLiked.push(userId);
+          await updateDoc(docRef, { likes, whoLiked });
+          console.log('Like adicionado com sucesso');
+        } 
+      } 
     } else {
-      console.log('El usuario ya ha dado like a esta publicación');
+      console.log('O usuário já gostou deste post');
     }
   } catch (error) {
     console.error('Error al dar like:', error);
     throw error;
   }
-
 };
