@@ -59,9 +59,10 @@ body{
 
   .menu {
     display: flex;
-   width: 40%;
+    width: 40%;
     align-items: center;
     padding-right: 10px;
+    cursor: pointer;
   }
   
   

@@ -1,31 +1,3 @@
-h1 {
-  font-family: 'Amatic SC', cursive;
-  font-size: 40px;
-}
-
-.text-title {
-  font-family: 'Amatic SC', cursive;
-  font-size: 25px;
-  color: #fff;
-}
-
-.register-logo {
-  width: 130px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.btn-header {
-  color: #c95a3e;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  padding: 5px 10px;
-  margin-top: 10px;
-  justify-content: right;
-}
-
 .register-container{
   display:flex;
   flex-direction: column;
@@ -37,31 +9,30 @@ h1 {
   flex-direction: column;
   align-items: center;
   width: 80vw;
-  background-image: none;
-  border: 1.5px solid #c95a3e;
+  background:#5555;
   border-radius: 30px;
   padding: 20px 20px 20px 20px;
+  margin-top: 3vh;
   margin-bottom: 16px;
-}
-
-.buttonRegister {
-  color: #c95a3e;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  margin-top: 8px;
-  padding: 5px 10px;
 }
 
 .inputsRegister {
   border-radius: 20px;
-  height: 5vh;
+  height: 30px;
   border: none;
   margin: 8px 8px 2px 8px;
-  width: 75vw;
+  width: 90%;
   padding-left: 10px;
   background-color: #d9d9d955;
   color: #fff;
+}
+
+.inputsRegister::placeholder{
+  color: #ffffff55;
+}
+
+.inputsRegister:focus{
+  outline: none
 }
 
 .input-error{
@@ -74,36 +45,62 @@ h1 {
   color: #9D2045;
 }
 
+.button-group{
+  display: flex;
+  margin-top: 10px;
+  margin: 8px 8px 2px 8px;
+  width: 90%;
+}
+
+.buttonRegister {
+  color: #c95a3e;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  flex: 1;
+  margin-top: 8px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.button-back {
+  color: #c95a3e;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  justify-content: right;
+  flex: 1;
+  margin-top: 8px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 @media (min-width: 900px) {
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    width: 90vw;
+  #root{
+    width: 900px;
   }
 
   .register-container {
-    display: flex;
-    flex-direction: column;
+    width: 700px;
+    flex-direction: row;
+    justify-content: space-around;
   }
 
   .form-register {
-    width: 700px;
-    flex-direction: column;
-    justify-content: center;
+    width: 20vw;
   }
 
-  .register-logo {
-    display: flex;
-    width: 30px;
-    justify-content: left;
+  .button-group{
+    width: 100%;
   }
 
-  .inputsRegister {
-    width: 50%;
+  .input-error{
+    border: 1px solid #9D2045;
   }
 
-  .nav-header {
-    justify-content: left;
+  .text-error{
+    font-size: 10px;
   }
 }

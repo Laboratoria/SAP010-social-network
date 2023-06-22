@@ -13,6 +13,29 @@ main {
   justify-content: center;
 }
 
+.section-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.section-logo img {
+  width: 130px;
+}
+
+h2 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 40px;
+}
+
+.text-title {
+  font-family: 'Amatic SC', cursive;
+  font-size: 25px;
+  color: #fff;
+}
+
+
 body {
   background-color: #008da1;
   background-image: linear-gradient(to top, #86c0ca, #008da1);
@@ -24,13 +47,17 @@ body {
   justify-content: space-between;
 }
 
+.customAlert {
+  position: fixed;
+  top: 20px;
+  background-color: #33333355;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 4px;
+}
+
 footer {
   font-family: 'arial', cursive;
   font-size: 10px;
   color: #000;
-}
-
-@media (min-width: 900px) {
-  body {
-  }
 }

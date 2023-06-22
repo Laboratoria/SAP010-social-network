@@ -1,39 +1,41 @@
 import { createUser } from '../../fireBase/firebaseAuth.js';
 import { userData } from '../../fireBase/firebaseStore.js';
+import customAlert from '../../components/customAlert.js'
 
 export default () => {
   const registerContainer = document.createElement('div');
   registerContainer.classList.add('register-container');
 
   const content = `
-    <header nav class="nav-header">
-      <a href="index.html">
-        <button class="btn-header">&laquo; Voltar</button>
-      </a>
-    </nav>
-    </header>
-
-    <section class="register-logo">
+    <section class="section-logo">
       <img src="../img/balão1.png" alt="balão"></img>
-      <h1>TravellersBook</h1>
+      <h2>TravellersBook</h2>
     </section>
     
     <form class='form-register'>
         <span class="text-title">CADASTRE-SE</span>
-        <input class='inputsRegister' type='text' placeholder='Nome' id='nameRegister'>
+        <input class='inputsRegister' type='text' placeholder='nome' id='nameRegister'>
         <span class='text-error' id='text-name-error'></span>
-        <input class='inputsRegister' type='text' placeholder='Sobrenome' id='lastnameRegister'>
+        <input class='inputsRegister' type='text' placeholder='sobrenome' id='lastnameRegister'>
         <span class='text-error' id='text-last-name-error'></span>
-        <input class='inputsRegister' type='text' placeholder='Usuário' id='userRegister'>
+        <input class='inputsRegister' type='text' placeholder='usuário' id='userRegister'>
         <span class='text-error' id='text-user-error'></span>
-        <input class='inputsRegister' type='email' placeholder='Email' id='emailRegister'>
+        <input class='inputsRegister' type='email' placeholder='e-mail' id='emailRegister'>
         <span class='text-error' id='text-email-error'></span>
-        <input class='inputsRegister' type='password' placeholder='Senha' id='passwordRegister'>           
+        <input class='inputsRegister' type='password' placeholder='senha' id='passwordRegister'>
         <span class='text-error' id='text-password-error'></span>
-        <button class='buttonRegister' id='firebaseRegister' type='submit' >Cadastrar</button>
+        <section class="button-group">
+          <button class='buttonRegister' id='firebaseRegister' type='submit' >Cadastrar</button>
+          <button class="button-back" type='button'>&laquo; Voltar</button>
+        </section>
         </form>
     `;
-    registerContainer.innerHTML = content;
+  registerContainer.innerHTML = content;
+
+  const buttonBack = registerContainer.querySelector('.button-back')
+  buttonBack.addEventListener('click', () => {
+    window.location.hash = '#login'
+  });
 
   const register = registerContainer.querySelector('.form-register');
   register.addEventListener('submit', event => {
@@ -100,6 +102,7 @@ export default () => {
           )
         )
         .then(() => {
+          customAlert('Cadastrado realizado com sucesso')
           window.location.hash = '#login';
         })
         .catch(error => {
