@@ -19,12 +19,13 @@ export const feed = () => {
           <form id="form-post">
             <br>
             
-            <input type="radio"  id="quero-adotar" name="quero" value="Quero adotar">
+            <input type="radio"  id="quero-adotar" name="quero" value="Quero adotar" required>
             <label for="quero-adotar">Quero adotar</label>
            
-            <input type="radio"  id="quero-doar" name="quero" value="Quero doar">
+            <input type="radio"  id="quero-doar" name="quero" value="Quero doar" required>
             <label for="quero-doar">Quero doar</label>
             <br>
+            <p id="mensagem-erro-radio" class="mensagem-erro"></p>
             
             <label for="especie" class="label-class">Espécie:</label> 
             <select name="select" id="especie" class="modal-input-area">
@@ -64,9 +65,10 @@ export const feed = () => {
             <label for="contato" class="label-class">Contato:</label>
             <input type="text" class="modal-input-area" id="contato" name="contato" placeholder="(xx) xxxxx-xxxx">
             <br>
-            <textarea id="mensagem" name="mensagem" rows="4" cols="20" placeholder=" Escreva sua mensagem aqui."></textarea>
+            <textarea id="mensagem" name="mensagem" rows="4" cols="20" required placeholder=" Escreva sua mensagem aqui."></textarea>
             <br>
 
+            <p id="mensagem-erro-textarea" class="mensagem-erro"></p>
 
             <button type="submit" class="publicar" id="publicar">Publicar</button>
             </form>
@@ -100,7 +102,9 @@ export const feed = () => {
             <div class="modal-input">${post.sexo}</div>
             <div class="modal-input">${post.raca}</div>
           </div>
-          <p>${post.mensagem}</p>
+          <div class='container-msg'>
+           <p>${post.mensagem}</p>
+          </div>
           <p>Contato: ${post.contato}</p>
         </section>
       `;
@@ -135,6 +139,7 @@ export const feed = () => {
       } else if (document.getElementById('quero-adotar').checked) {
         opcao = document.getElementById('quero-adotar').value;
       }
+    
 
       const opcaoAdocao = opcao;
       const idadePet = document.getElementById('idade').value;
@@ -146,6 +151,26 @@ export const feed = () => {
       const mensagem = document.getElementById('mensagem').value;
       const dataAtual = Date.now();
 
+      //trecho para validação dos inputs de radio e textarea
+      let validarInputs = true;
+      const mensagemErroRadio = document.getElementById('mensagem-erro-radio');
+      const mensagemErroTextarea = document.getElementById('mensagem-erro-textarea');
+
+      if (!document.querySelector('input[type="radio"][name="quero"]:checked')) {
+        validarInputs = false;
+        mensagemErroRadio.textContent = 'Campo obrigatório: favor selecionar uma opção.';
+        }
+
+      if (document.getElementById('mensagem').value === '') {
+        validarInputs = false;
+        mensagemErroTextarea.textContent = 'Campo obrigatório: favor inserir uma mensagem.';
+        document.getElementById('mensagem').classList.add('error-border');
+      } else {
+        document.getElementById('mensagem').classList.remove('error-border');
+      }
+                 
+
+      if (validarInputs) {
       const dadosPost = {
         opcaoAdocao,
         idadePet,
@@ -169,12 +194,16 @@ export const feed = () => {
       document.getElementById('local').value = '';
       document.getElementById('contato').value = '';
       document.getElementById('mensagem').value = '';
+      document.getElementById('mensagem-erro-radio').textContent = '';
+      document.getElementById('mensagem-erro-textarea').textContent = '';
 
       // Recarrega o feed com a nova postagem
       await carregarFeed();
       const modal = container.querySelector('#meuModal');
 
       modal.style.display = 'none';
+    
+    }
     });
 
   return container;
