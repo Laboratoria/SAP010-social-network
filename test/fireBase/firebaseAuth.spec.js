@@ -3,7 +3,7 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  //signOut,
+  signOut,
   updateProfile,
 } from 'firebase/auth';
 
@@ -13,7 +13,8 @@ import {
 import {
   createUser,
   signIn,
-  signInGoogle
+  signInGoogle,
+  logOut
 } from '../../src/fireBase/firebaseAuth.js'
 
 //Informando para o jest qual biblioteca que vai ser mascarada os comportamentos
@@ -119,3 +120,13 @@ it('Expected to sign in with Google account', async () => {
   expect(signInWithPopup).toHaveBeenCalledTimes(1);
   expect(signInWithPopup).toHaveBeenCalledWith(undefined, provider);
 });
+
+//teste case para função logOut
+describe('logOut', () => {
+  it('Deveria deslogar', async () => {
+    await logOut();
+    expect(signOut).toHaveBeenCalled();
+  });
+});
+
+
