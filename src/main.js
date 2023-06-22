@@ -1,6 +1,6 @@
 // Este es el punto de entrada de tu aplicacion
-
-import { myFunction } from './lib/index.js';
+// main controla qual página que vai abrir 
+import { myFunction } from './lib/firebase.js';
 
 myFunction();
 
