@@ -62,17 +62,17 @@ export default () => {
       </button>
       <span id='likes-counter-${postId}'>0</span>
 
-          <button type="button" class='icons' id='editPost'>
-            <a class='icons' id='editPost'><img src='./img/assets/editicon.png' alt='edit image' width='30px'></a>
-          </button>
-          ${authorId === getUserId() ? `<button type="button" class='icons' id='btn-delete' data-post-id='${postId}'>
-                  <img src='./img/assets/deleteicon.png' alt='delete image' width='30px'>
-                </button>` : ''}
-        </div>
-      </div>
-    `;
-    return postElement;
-  };
+      ${authorId === getUserId() ? `<button type="button" data-post-id='${postId}' class='icons' id='editPost'>
+      <a class='icons' id='editPost'><img src='./img/assets/editicon.png' alt='edit image' width='30px'></a>
+    </button>
+    <button type="button" class='icons' id='btn-delete' data-post-id='${postId}'>
+    <img src='./img/assets/deleteicon.png' alt='delete image' width='30px'>
+    </button>` : ''}
+    </div>
+  </div>
+`;
+return postElement;
+};
 
   const loadPosts = async () => {
     postList.innerHTML = '';
