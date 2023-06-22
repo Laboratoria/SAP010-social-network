@@ -17,6 +17,8 @@ export default () => {
         <input type="text" id="nameRegister" placeholder="Ex.: Maria da Silva" required/>
         <label for="email">E-Mail*</label>
         <input type="email" id="emailRegister" placeholder="Ex.: email@email.com" required/>
+        <div id="errorEmail" class="error">
+      </div>
         <label for="senha">Crie sua Senha*</label>
         <input type="password" id="senhaUsuario" placeholder="Ex.: 123456" required required/>
         <p>Selecione a sua área de atuação*</p>
@@ -57,15 +59,15 @@ export default () => {
     createUserWithEmail(name, email, senha, areaAtuacao)
       .catch(() => {
         const errorMessage = container.querySelector('#errorMessage');
+        const errorEmail = container.querySelector('#errorEmail');
         switch (getErrorMessage) {
           case 'auth/email-already-in-use':
-            errorMessage.textContent = 'E-mail já está em uso!';
-            errorMessage.style.display = 'block';
+            alert('Email já cadastrado');
             break;
 
           case 'auth/missing-email':
-            errorMessage.textContent = 'Preencha o campo de e-mail!';
-            errorMessage.style.display = 'block';
+            errorEmail.textContent = 'Preencha o campo de e-mail!';
+            errorEmail.style.display = 'block';
             break;
 
           case 'auth/invalid-email':

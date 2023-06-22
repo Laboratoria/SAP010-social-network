@@ -1,13 +1,10 @@
-
-//Firebase configuration
+// Firebase configuration
 
 import { initializeApp } from 'firebase/app';
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-import { getAuth} from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-
-
 
 const firebaseConfig = ({
   apiKey: 'AIzaSyDJEA0F1mx6VNcCZRfXe6SH4mw9uNpaFnY',
@@ -18,9 +15,7 @@ const firebaseConfig = ({
   appId: '1:515057240877:web:7fb3e958dc0b26888e21a4',
 });
 
-
-//const provider = new GoogleAuthProvider();
-
+// const provider = new GoogleAuthProvider();
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);

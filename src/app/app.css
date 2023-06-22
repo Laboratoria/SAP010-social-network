@@ -1,7 +1,7 @@
 
 h1 {
     text-align: center;
-    font-family: 'Barlow Semi Condensed';
+    font-family: 'Barlow Semi Condensed', sans-serif;
     color: #2F2212;
     font-size: 65px;
   
@@ -48,7 +48,7 @@ legend {
 }
   
 ul {
-    font-family: 'Barlow Semi Condensed';
+    font-family: 'Barlow Semi Condensed', sans-serif;
     margin: -1;
     padding: 0;
     color: #ECE4CE;
@@ -75,7 +75,7 @@ button {
     border-radius: 5px;
     background-color: #fbfcfd;
     color: #2F2212;
-    font-family: 'Barlow Semi Condensed';
+    font-family: 'Barlow Semi Condensed', sans-serif;
     cursor: pointer;
     margin-bottom: 20px;
    
