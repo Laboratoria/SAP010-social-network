@@ -88,7 +88,7 @@ export default () => {
         window.location.hash = '#timeline';
       })
       .catch((error) => {
-        const errorMessage = errorsFirebase(error.code) || 'usuário ou senha incorretos';
+        const errorMessage = errorsFirebase(error.code) || 'Usuário e/ou senha incorretos';
         printErrorMessage(errorMessage);
       });
   };

@@ -11,7 +11,7 @@ export function errorsFirebase(error) {
     case 'auth/invalid-password':
       return 'Senha inválida';
     case 'auth/wrong-password':
-      return 'Senha incorreta';
+      return 'Usuário e/ou senha incorretos';
     default:
       return '';
   }
