@@ -44,10 +44,12 @@ export const deletePost = async (postId) => {
   await deleteDoc(docRef);
 };
 
-export async function editPost(idPost, newPost) {
-  const docRef = doc(db, 'posts', idPost);
-  return updateDoc(docRef, newPost);
-}
+
+export const updatePost = async (postId, newText) => {
+  const docRef = doc(db, 'posts', postId);
+  return updateDoc(docRef, newText);
+
+
 
 const posts = [
   { id: '1', likes: 0 },
@@ -79,4 +81,5 @@ export const likePost = (postId, userId) => {
     console.error('Error al dar like:', error);
     throw error;
   }
+
 };

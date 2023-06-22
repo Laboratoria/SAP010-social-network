@@ -1,6 +1,6 @@
 import { getUserName, getUserId } from '../../firebase/auth.js';
-import { createPost, accessPost, likePost } from '../../firebase/firestore.js';
-import { uploadProfileImage, updateProfileImageURL } from '../../firebase/storage.js';
+
+import { createPost, accessPost, updatePost } from '../../firebase/firestore.js';
 
 import delPost from './posts.js';
 
@@ -57,6 +57,7 @@ export default () => {
         </div>
         <p class='textPost'>${description}</p>
         <div class='image-icons'>
+
         <button type="button" class='icons' id='likePost' data-post-id='${postId}'>
         <a class='icons' id='likePost'><img src='img/assets/likeicon.png' alt='like image' width='30px'></a>
       </button>
@@ -101,6 +102,63 @@ export default () => {
       });
     });
   };
+
+
+  const handlePostBtnClick = () => {
+    const description = descriptionPost.value;
+
+    if (!description) {
+      alert('Preencha o campo');
+    } else {
+      createPost(description)
+        .then(() => {
+          descriptionPost.value = '';
+          loadPosts();
+          alert('Publicação efetuada com sucesso!');
+        })
+        .catch(() => {
+          alert('Ocorreu um erro ao criar o post. Por favor, tente novamente mais tarde');
+        });
+    }
+  };
+
+  const handlePostListClick = (event) => {
+    const target = event.target;
+    const deleteButton = target.closest('#btn-delete');
+    const editButton = target.closest('#editPost');
+
+    if (deleteButton) {
+      const postId = deleteButton.getAttribute('data-post-id');
+      delPost(postId);
+      loadPosts();
+
+    } else if (editButton) {
+      const postId = editButton.getAttribute('data-post-id');
+      const postElement = editButton.closest('.post-container');
+      const textPostElement = postElement.querySelector('.textPost');
+      const newText = prompt('Edite a sua postagem:', textPostElement.textContent);
+
+      if (newText && newText.trim() !== '') {
+        updatePost(postId, { description: newText })
+          .then(() => {
+            textPostElement.textContent = newText;
+            alert('Post atualizado com sucesso!');
+          })
+          .catch(() => {
+            alert('Ocorreu um erro ao excluir o post. Por favor, tente novamente mais tarde');
+          });
+      }
+    }
+  };
+
+  postBtn.addEventListener('click', handlePostBtnClick);
+  postList.addEventListener('click', handlePostListClick);
+
+  loadPosts();
+
+  return timeline;
+};
+
     
       const handlePostBtnClick = () => {
       const description = descriptionPost.value;
