@@ -1,6 +1,6 @@
 import { getUserName, getUserId } from '../../firebase/auth.js';
 
-import { createPost, accessPost, updatePost } from '../../firebase/firestore.js';
+import { createPost, accessPost, updatePost, likePost } from '../../firebase/firestore.js';
 
 import delPost from './posts.js';
 
@@ -63,6 +63,7 @@ export default () => {
       </button>
       <span id='likes-counter-${postId}'>0</span>
 
+
       ${authorId === getUserId() ? `<button type="button" data-post-id='${postId}' class='icons' id='editPost'>
       <a class='icons' id='editPost'><img src='./img/assets/editicon.png' alt='edit image' width='30px'></a>
     </button>
@@ -103,8 +104,7 @@ return postElement;
     });
   };
 
-
-  const handlePostBtnClick = () => {
+    const handlePostBtnClick = () => {
     const description = descriptionPost.value;
 
     if (!description) {
@@ -194,4 +194,4 @@ return postElement;
     loadPosts();
   
     return timeline;
-  };
+  

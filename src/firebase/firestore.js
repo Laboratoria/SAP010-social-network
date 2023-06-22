@@ -48,8 +48,7 @@ export const deletePost = async (postId) => {
 export const updatePost = async (postId, newText) => {
   const docRef = doc(db, 'posts', postId);
   return updateDoc(docRef, newText);
-
-
+}
 
 const posts = [
   { id: '1', likes: 0 },
