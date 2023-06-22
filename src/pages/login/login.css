@@ -1,35 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
-
-.section-logo {
-  display: flex;
+.login-container{
+  display:flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-}
-
-.logo-google {
-  width: 40px;
-}
-
-.section-logo img {
-  width: 130px;
-}
-  
-h2{
-  font-family: 'Amatic SC', cursive;
-  font-size: 40px;
-}
-
-.text-title{
-  font-family: 'Amatic SC', cursive;
-  font-size: 25px;
-  color:#fff
-}
-
-.text-google, .text-new-account{
-  font-family: 'arial', cursive;
-  font-size: 15px;
-  color:#fff
 }
 
 .form-login{
@@ -37,8 +9,7 @@ h2{
   flex-direction: column;
   align-items: center;
   width: 80vw ;
-  background-image:none;
-  border: 1.5px solid #C95A3E;
+  background:#5555;
   border-radius: 30px;
   padding: 20px 20px 20px 20px;
   margin-top: 3vh;
@@ -47,13 +18,21 @@ h2{
 
 .input-login{
   border-radius: 20px;
-  height: 5vh;
+  height: 30px;
   border: none;
   margin: 8px 8px 2px 8px;
-  width: 75vw;
+  width: 90%;
   padding-left: 10px;
   background-color: #D9D9D955;
   color: #fff;
+}
+
+.input-login::placeholder{
+  color: #ffffff55;
+}
+
+.input-login:focus{
+  outline: none
 }
 
 .input-error{
@@ -71,8 +50,14 @@ h2{
   margin-bottom: 8px;
 }
 
-.input-login::placeholder{
-  color: #ffffff55;
+.logo-google {
+  width: 40px;
+}
+
+.text-google, .text-new-account{
+  font-family: 'arial', cursive;
+  font-size: 15px;
+  color:#fff
 }
 
 .button-login, .button-login-google,
@@ -88,6 +73,7 @@ h2{
 .button-login {
   margin-top: 8px;
   background-color: #193549;
+  width: 125px;
 }
 
 .button-login-google {
@@ -98,12 +84,7 @@ h2{
 .button-new-account {
   background-color: #C95A3E;
   border: #fff;
-}
-
-.login-container{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
+  width: 125px;
 }
 
 @media (min-width: 900px){
@@ -117,8 +98,16 @@ h2{
     justify-content: space-around;
   }
 
+  .form-login{
+    width: 20vw;
+  }
+
   .text-google, .text-new-account{
     font-size: 10px;
+  }
+
+  .input-error{
+    border: 1px solid #9D2045;
   }
 
   .text-email-error,
@@ -130,13 +119,12 @@ h2{
     width: 30px;
   }
 
-  .form-login{
-    width: 20vw;
+  .button-login {
+    width: 125px;
   }
 
-  .form-login input{
-      width: 200px;
-      padding-left: 10px;
+  .button-new-account {
+    width: 125px;
   }
 }
 

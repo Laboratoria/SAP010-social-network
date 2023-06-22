@@ -1,29 +1,40 @@
 import { db } from '../../fireBase/firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
+import { logOut } from '../../fireBase/firebaseAuth';
+import customAlert from '../../components/customAlert';
 
 function template(main){
-const header = document.getElementById('header');
+  const header = document.getElementById('header');
 
-const headerTemplate = `<section class="header">
-<h2 class="titleHeader">TravellersBook<img class="logoHeader" src="./img/balão1.png" alt="balão"></h2>
+  const headerTemplate = `<section class="header">
+  <h2 class="titleHeader">TravellersBook<img class="logoHeader" src="./img/balão1.png" alt="balão"></h2>
 
-<nav class="menu">
-      <a href='#Home'>Home</a>
-    
-      <a href='#Publicar'>Publicar</a>
-    
-      <a href='#Sair' id='btnSair'>Sair</a>
-</nav>
-</section>`;
+  <nav class="menu">
+        <a href='#home'>Home</a>
 
+        <a href='#publicar'>Publicar</a>
 
-const template = `<div id="feed">
-    
-</div>`;
+        <a id='button-logout'>Sair</a>
+  </nav>
+  </section>`;
 
   header.innerHTML = headerTemplate;
-  main.innerHTML = template;
 
+  const buttonLogOut = header.querySelector('#button-logout');
+  buttonLogOut.addEventListener('click', () =>{
+    logOut()
+      .then(() => {
+          window.location.hash = '#login';
+          header.innerHTML = '';
+        })
+        .catch(() => {
+          customAlert('Erro ao sair. Tente novamente.');
+        });
+  });
+
+  const template = `<div id="feed"></div>`;
+
+  main.innerHTML = template;
 }
 
 async function fetchPosts() {
@@ -73,4 +84,7 @@ async function showFeed() {
   return FeedElement;
 }
 
+
+
 export {showFeed, template};
+
