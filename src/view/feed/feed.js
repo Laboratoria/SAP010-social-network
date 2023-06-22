@@ -1,11 +1,14 @@
 
 import { carregarPosts, criarPost } from '../../lib/firestore.js';
-import { getCurrentUser } from '../../lib/index.js';
+import { getCurrentUser, logout } from '../../lib/index.js';
+
 let username = ''
+
 export const feed = () => {
   const container = document.createElement('div');
   const templateFeed = `
       <header class="feed-header">
+      <button id="sair"> Sair </button>
       <p> Seja bem-vindo(a) ${username} </p>
       <a class="feedPage" href="/#feed"></a>
 
@@ -92,7 +95,7 @@ export const feed = () => {
       postCard.innerHTML = `
         <section class='container-post'>
           <div class='post-header'>
-            <div class="username">${username}</div>
+            <div class="username">"Nome do usuário"</div>
             <div class="user-location">${post.localizacao}</div>
           </div>
           <div class='adopt-option'>${post.opcaoAdocao}</div>
@@ -115,6 +118,10 @@ export const feed = () => {
   };
 
   carregarFeed();
+
+  container.querySelector('#sair').addEventListener('click', () => {
+    logout()
+  })
 
   container.querySelector('#post').addEventListener('click', () => {
     const modal = document.getElementById('meuModal');

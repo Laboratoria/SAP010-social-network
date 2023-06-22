@@ -5,6 +5,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   onAuthStateChanged,
+  signOut
 } from 'firebase/auth';
 
 import { app } from '../firebase/firebase.js';
@@ -43,3 +44,11 @@ export const getCurrentUser = () => {
     });
   });
 };
+
+export const logout = () => {
+  signOut(auth).then(() => {
+    window.location.hash = '#home'
+  }).catch((error) => {
+    // An error happened.
+  });
+}
