@@ -25,8 +25,8 @@ export const createUserWithEmail = (name, email, senha) => {
     (userCredential) => {
       const user = userCredential.user;
       window.location.hash = '#feed';
-      return updateProfile(user, {
-        displayName: `${name} ${lastName}`,
+      updateProfile(user, {
+        displayName: `${name}`,
       });
     },
   );
