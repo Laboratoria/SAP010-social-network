@@ -46,7 +46,6 @@ export default () => {
       hour12: false,
     });
     const createdAtFormatted = `${createdAtFormattedDate} ~ ${createdAtFormattedTime}`;
-
     const postElement = document.createElement('div');
     postElement.innerHTML = `
       <div class="post-container">
@@ -64,7 +63,7 @@ export default () => {
 
 
       ${authorId === getUserId() ? `<button type="button" data-post-id='${postId}' class='icons' id='editPost'>
-      <a class='icons' id='editPost'><img src='./img/assets/editicon.png' alt='edit image' width='30px'></a>
+      <a class='icons'><img src='./img/assets/editicon.png' alt='edit image' width='30px'></a>
     </button>
     <button type="button" class='icons' id='btn-delete' data-post-id='${postId}'>
     <img src='./img/assets/deleteicon.png' alt='delete image' width='30px'>
@@ -148,7 +147,9 @@ const loadPosts = async () => {
               textPostElement.textContent = newText;
               alert('Post atualizado com sucesso!');
             })
-            .catch(() => {
+
+            .catch((error) => {
+
               alert('Ocorreu um erro ao editar o post. Por favor, tente novamente mais tarde');
             });
         }
