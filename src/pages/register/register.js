@@ -55,9 +55,14 @@ export default () => {
     const areaAtuacao = container.querySelector('#atuaçao').value;
 
     createUserWithEmail(name, email, senha, areaAtuacao)
-      .catch(() => {
+      .then(response => {
+        console.log('sucesso ao cadastrar usuário', response);
+      }).catch((error) => {
         const errorMessage = container.querySelector('#errorMessage');
-        switch (getErrorMessage) {
+        window.location
+        //console.log('#### window ####', window.location);
+        //console.log('CÓDIGO DE ERRO ---> ', error.code);
+        switch (error.code) {
           case 'auth/email-already-in-use':
             errorMessage.textContent = 'E-mail já está em uso!';
             errorMessage.style.display = 'block';
