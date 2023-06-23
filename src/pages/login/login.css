@@ -21,6 +21,7 @@ h3{
     color: var(--grey);
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .logo-cs {
@@ -82,10 +83,6 @@ fieldset {
     margin-top: 20px;
 }
 
-h3{
-    margin-top: 20px;
-}
-
 #googleLoginButton{
     display: flex;
     justify-content: center;
@@ -128,16 +125,4 @@ h3{
         flex-direction: column;
     }
 
-}
-
-.eye {
-    width: 15px;
-    cursor: pointer;
-    position: relative;
-    top: -29px;
-    right: -150px; /* horizontal*/
-}
-
-.eye-closed {
-    display: none;
 }

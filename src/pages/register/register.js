@@ -17,6 +17,8 @@ export default () => {
         <input type="text" id="nameRegister" placeholder="Ex.: Maria da Silva" required/>
         <label for="email">E-Mail*</label>
         <input type="email" id="emailRegister" placeholder="Ex.: email@email.com" required/>
+        <div id="errorEmail" class="error">
+      </div>
         <label for="senha">Crie sua Senha*</label>
         <input type="password" id="senhaUsuario" placeholder="Ex.: 123456" required required/>
         <p>Selecione a sua área de atuação*</p>
@@ -101,5 +103,5 @@ export default () => {
     window.location.hash = '';
   });
 
-  return container;
+  return container;
 };

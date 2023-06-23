@@ -1,8 +1,4 @@
-
-import './login.css';
-
 export default () => {
-
   const container = document.createElement('div');
 
   const template = `
@@ -47,11 +43,9 @@ export default () => {
     <!--<button id="reset" class="btn-option-reset"  >Limpar</button><p>-->
 
 
-  </fieldset>`
-
+  </fieldset>`;
 
   container.innerHTML = template;
 
-
- return container;
-}
+  return container;
+};
