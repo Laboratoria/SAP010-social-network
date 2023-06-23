@@ -49,10 +49,19 @@ export default () => {
       .then(() => {
         window.location.hash = '#feed';
       })
-      .catch(() => {
+      .catch((error) => {
         const errorMessage = container.querySelector('#errorMessage');
-        errorMessage.textContent = 'E-mail ou senha incorretos';
-        errorMessage.style.display = 'block';
+        //console.log('CÓDIGO DE ERRO ---> ', error.code);
+        switch (error.code) {
+          case 'auth/user-not-found':
+            errorMessage.textContent = 'O usuário não correponde à nenhuma credencial valida!';
+            errorMessage.style.display = 'block';
+            break;
+
+          default:
+            errorMessage.textContent = 'E-mail ou senha incorretos';
+            errorMessage.style.display = 'block';
+        }
       });
   };
 
