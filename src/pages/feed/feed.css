@@ -1,0 +1,123 @@
+a {
+    text-decoration: none;
+    color: var(--light-white);
+
+}
+
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2{
+    color: var(--grey);
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+h3{
+    color: var(--grey);
+    display: flex;
+    justify-content: center;
+}
+
+.logo-cs {
+    width: 200px;
+    margin-top: 30px;
+}
+  
+.logo-google {
+    max-width: 30px;
+}
+
+input{
+    width: 80%;
+    padding: 8px;
+    background-color: var(--medium-brown);
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    color: var(--light-white);
+}
+
+input:focus{
+    border: 1px solid var(--light-white);
+}
+
+
+::-webkit-input-placeholder{
+    font-family: 'Nunito Sans', sans-serif;
+    color: var(--light-white);
+}
+
+.loginSenha{
+    color: var(--light-white);
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: var(--intense-brown);
+    box-shadow: 12px 15px 8px -9px var(--medium-brown);
+    border: none;
+    width: 400px;
+    height: 500px;
+    margin-top: 30px;
+    gap: 3px;
+}
+
+.botoes{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+#googleLoginButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    gap: 8px;
+    width: 200px;
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: var(--medium-brown); 
+    color: var(--light-white);
+    font-size: 14px;
+    transition: 0.3s ease-in-out;
+
+}
+
+#googleLoginButton:hover{
+    background-color: var(--light-white);
+    color: var(--intense-brown);
+}
+
+.eye {
+    width: 15px;
+    cursor: pointer;
+    position: relative;
+    top: -29px; 
+    right: -150px; /* horizontal*/
+}
+  
+.eye-closed {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .imagem-fundo{
+        display: none;
+    }
+
+    div{
+        flex-direction: column;
+    }
+
+}
