@@ -46,7 +46,7 @@ export default () => {
       hour12: false,
     });
     const createdAtFormatted = `${createdAtFormattedDate} ~ ${createdAtFormattedTime}`;
-
+    console.log(description)
     const postElement = document.createElement('div');
     postElement.innerHTML = `
       <div class="post-container">
@@ -64,7 +64,7 @@ export default () => {
 
 
       ${authorId === getUserId() ? `<button type="button" data-post-id='${postId}' class='icons' id='editPost'>
-      <a class='icons' id='editPost'><img src='./img/assets/editicon.png' alt='edit image' width='30px'></a>
+      <a class='icons'><img src='./img/assets/editicon.png' alt='edit image' width='30px'></a>
     </button>
     <button type="button" class='icons' id='btn-delete' data-post-id='${postId}'>
     <img src='./img/assets/deleteicon.png' alt='delete image' width='30px'>
@@ -88,6 +88,7 @@ const loadPosts = async () => {
 
     const likeButton = postElement.querySelector('#likePost');
     const postId = likeButton.getAttribute('data-post-id');
+    // console.log(postId)
     const likesCounter = postElement.querySelector(`#likes-counter-${postId}`);
 
     likeButton.addEventListener('click', async () => {
@@ -134,9 +135,11 @@ const handlePostBtnClick = () => {
   
       } else if (editButton) {
         const postId = editButton.getAttribute('data-post-id');
+        // console.log(postId)
         const postElement = editButton.closest('.post-container');
         const textPostElement = postElement.querySelector('.textPost');
         const newText = prompt('Edite a sua postagem:', textPostElement.textContent);
+        console.log(newText)
   
         if (newText && newText.trim() !== '') {
           updatePost(postId, { description: newText })
@@ -144,8 +147,8 @@ const handlePostBtnClick = () => {
               textPostElement.textContent = newText;
               alert('Post atualizado com sucesso!');
             })
-            .catch(() => {
-              // console.error('erro ao atualizar post:', error);
+            .catch((error) => {
+              console.log(error);
               alert('Ocorreu um erro ao editar o post. Por favor, tente novamente mais tarde');
             });
         }

@@ -48,7 +48,7 @@ export const deletePost = async (postId) => {
 
 export const updatePost = async (postId, newText) => {
   const docRef = doc(db, 'posts', postId);
-  return updateDoc(docRef, { description: newText });
+  return updateDoc(docRef, newText);
 }
 
  export const hasUserLikedPost = async (postId) => {
