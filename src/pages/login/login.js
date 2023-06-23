@@ -79,12 +79,16 @@ export default () => {
 
   // Login Google
   googleButton.addEventListener('click', () => {
-    loginGoogle().then(() => {
-      window.location.hash = '#feed';
-    }).catch(() => {
-      alert('Erro ao fazer login com o Google');
-    });
+    loginGoogle()
+      .then(() => {
+        window.location.hash = '#feed';
+      })
+      .catch(() => {
+        const errorMessage = container.querySelector('#errorMessage');
+        errorMessage.textContent = 'Erro ao fazer login com o Google';
+        errorMessage.style.display = 'block';
+      });
   });
-
+  dd 
   return container;
 };
