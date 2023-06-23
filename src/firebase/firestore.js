@@ -48,7 +48,7 @@ export const deletePost = async (postId) => {
 export const updatePost = async (postId, newText) => {
   const docRef = doc(db, 'posts', postId);
   return updateDoc(docRef, newText);
-}
+};
 
 export const hasUserLikedPost = async (postId) => {
   const docRef = doc(db, 'posts', postId);
@@ -75,23 +75,19 @@ export const likePost = async (postId, userId) => {
         if (!whoLiked.includes(userId)) {
           whoLiked.push(userId);
           await updateDoc(docRef, { whoLiked });
-          console.log('Like adicionado com sucesso');
         }
-        return "adicione like"
+        return 'adicione like';
       }
     } else {
       const washingtonRef = doc(db, 'posts', postId);
       await updateDoc(washingtonRef, {
-        whoLiked: arrayRemove(userId)
+        whoLiked: arrayRemove(userId),
       });
-
-      console.log('O usuário já gostou deste post');
-      return "remove like"
+      return 'remove like';
     }
   } catch (error) {
     console.error('Error al dar like:', error);
     throw error;
   }
+  return '';
 };
-
-

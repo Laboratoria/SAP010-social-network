@@ -1,7 +1,11 @@
 import { getUserName, getUserId } from '../../firebase/auth.js';
-import { createPost, accessPost, updatePost, likePost } from '../../firebase/firestore.js';
+import {
+  createPost,
+  accessPost,
+  updatePost,
+  likePost,
+} from '../../firebase/firestore.js';
 import delPost from './posts.js';
-
 
 export default () => {
   const timeline = document.createElement('div');
@@ -34,8 +38,8 @@ export default () => {
   const postBtn = timeline.querySelector('#sharePost');
   const descriptionPost = timeline.querySelector('#postArea');
   const postList = timeline.querySelector('#postList');
-  const profilePhotoUploadInput = timeline.querySelector('#profilePhotoUpload');
-  const profileImagePreview = timeline.querySelector('#profileImagePreview');
+  // const profilePhotoUploadInput = timeline.querySelector('#profilePhotoUpload');
+  // const profileImagePreview = timeline.querySelector('#profileImagePreview');
 
   const createPostElement = (name, createdAt, description, postId, authorId, whoLiked) => {
     const createdAtDate = new Date(createdAt.seconds * 1000);
@@ -71,95 +75,84 @@ export default () => {
     </div>
   </div>
 `;
-return postElement;
-};
+    return postElement;
+  };
 
-const loadPosts = async () => {
-  postList.innerHTML = '';
-  const postsFirestore = await accessPost();
+  const loadPosts = async () => {
+    postList.innerHTML = '';
+    const postsFirestore = await accessPost();
 
-  postsFirestore.forEach(async (post) => {
-    const {
-      name, createdAt, description, id, author, whoLiked
-    } = post;
-    const postElement = createPostElement(name, createdAt, description, id, author, whoLiked);
-    postList.appendChild(postElement);
+    postsFirestore.forEach(async (post) => {
+      const {
+        name, createdAt, description, id, author, whoLiked,
+      } = post;
+      const postElement = createPostElement(name, createdAt, description, id, author, whoLiked);
+      postList.appendChild(postElement);
 
-    const likeButton = postElement.querySelector('#like-Post');
-    const postId = likeButton.getAttribute('data-post-id');
-    const likesCounter = postElement.querySelector(`#likes-counter-${postId}`);
-    likeButton.addEventListener('click', async () => {
-      try {
-
-        const likeLike = await likePost(postId, getUserId());
-        let currentLikes = parseInt(likesCounter.innerText);
-        if (likeLike === "adicione like"  ) {
-          currentLikes = currentLikes + 1;
-        } else {
-          currentLikes = currentLikes - 1;
+      const likeButton = postElement.querySelector('#like-Post');
+      const postId = likeButton.getAttribute('data-post-id');
+      const likesCounter = postElement.querySelector(`#likes-counter-${postId}`);
+      likeButton.addEventListener('click', async () => {
+        try {
+          const likeLike = await likePost(postId, getUserId());
+          let currentLikes = parseInt(likesCounter.innerText, 10);
+          if (likeLike === 'adicione like') {
+            currentLikes += 1;
+          } else {
+            currentLikes -= 1;
+          }
+          likesCounter.innerText = currentLikes;
+        } catch (error) {
+          console.error('Error al dar like:', error);
         }
-        likesCounter.innerText = currentLikes;
-      } catch (error) {
-        console.error('Error al dar like:', error);
-        
-      }
+      });
     });
-  });
-};
+  };
 
   const handlePostBtnClick = () => {
-  const description = descriptionPost.value;
+    const description = descriptionPost.value;
 
-  if (!description) {
-    alert('Preencha o campo');
-  } else {
-    createPost(description)
-      .then(() => {
-        descriptionPost.value = '';
-        loadPosts();
-        alert('Publicação efetuada com sucesso!');
-      })
-      .catch(() => {
-        alert('Ocorreu um erro ao criar o post. Por favor, tente novamente mais tarde');
-      });
-  }
-};
-  
-    const handlePostListClick = (event) => {
-      const target = event.target;
-      const deleteButton = target.closest('#btn-delete');
-      const editButton = target.closest('#editPost');
-  
-      if (deleteButton) {
-        const postId = deleteButton.getAttribute('data-post-id');
-        delPost(postId);
-        loadPosts();
-  
-      } else if (editButton) {
-        const postId = editButton.getAttribute('data-post-id');
-        const postElement = editButton.closest('.post-container');
-        const textPostElement = postElement.querySelector('.textPost');
-        const newText = prompt('Edite a sua postagem:', textPostElement.textContent);
-  
-        if (newText && newText.trim() !== '') {
-          updatePost(postId, { description: newText })
-            .then(() => {
-              textPostElement.textContent = newText;
-              alert('Post atualizado com sucesso!');
-            })
-
-            .catch((error) => {
-
-              alert('Ocorreu um erro ao editar o post. Por favor, tente novamente mais tarde');
-            });
-        }
-      }
-    };
-  
-    postBtn.addEventListener('click', handlePostBtnClick);
-    postList.addEventListener('click', handlePostListClick);
-  
-    loadPosts();
-  
-    return timeline;
+    if (!description) {
+      alert('Preencha o campo');
+    } else {
+      createPost(description)
+        .then(() => {
+          descriptionPost.value = '';
+          loadPosts();
+          alert('Publicação efetuada com sucesso!');
+        })
+        .catch(() => {
+          alert('Ocorreu um erro ao criar o post. Por favor, tente novamente mais tarde');
+        });
+    }
   };
+  const handlePostListClick = (event) => {
+    const target = event.target;
+    const deleteButton = target.closest('#btn-delete');
+    const editButton = target.closest('#editPost');
+    if (deleteButton) {
+      const postId = deleteButton.getAttribute('data-post-id');
+      delPost(postId);
+      loadPosts();
+    } else if (editButton) {
+      const postId = editButton.getAttribute('data-post-id');
+      const postElement = editButton.closest('.post-container');
+      const textPostElement = postElement.querySelector('.textPost');
+      const newText = prompt('Edite a sua postagem:', textPostElement.textContent);
+      if (newText && newText.trim() !== '') {
+        updatePost(postId, { description: newText })
+          .then(() => {
+            textPostElement.textContent = newText;
+            alert('Post atualizado com sucesso!');
+          })
+          .catch(() => {
+            alert('Ocorreu um erro ao editar o post. Por favor, tente novamente mais tarde');
+          });
+      }
+    }
+  };
+  postBtn.addEventListener('click', handlePostBtnClick);
+  postList.addEventListener('click', handlePostListClick);
+  loadPosts();
+  return timeline;
+};
