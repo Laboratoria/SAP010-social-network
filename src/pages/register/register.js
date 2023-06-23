@@ -57,18 +57,22 @@ export default () => {
     const areaAtuacao = container.querySelector('#atuaçao').value;
 
     createUserWithEmail(name, email, senha, areaAtuacao)
-      .catch(() => {
+      .then(response => {
+        //console.log('sucesso ao cadastrar usuário', response);
+      }).catch((error) => {
         const errorMessage = container.querySelector('#errorMessage');
-        const errorEmail = container.querySelector('#errorEmail');
-        switch (getErrorMessage) {
+        window.location
+        //console.log('#### window ####', window.location);
+        //console.log('CÓDIGO DE ERRO ---> ', error.code);
+        switch (error.code) {
           case 'auth/email-already-in-use':
-            errorEmail.textContent = 'Preencha o campo de e-mail!';
-            errorEmail.style.display = 'block';
+            errorMessage.textContent = 'E-mail já está em uso!';
+            errorMessage.style.display = 'block';
             break;
 
           case 'auth/missing-email':
-            errorEmail.textContent = 'Preencha o campo de e-mail!';
-            errorEmail.style.display = 'block';
+            errorMessage.textContent = 'Preencha o campo de e-mail!';
+            errorMessage.style.display = 'block';
             break;
 
           case 'auth/invalid-email':
@@ -99,5 +103,5 @@ export default () => {
     window.location.hash = '';
   });
 
-  return container;
+  return container;
 };
