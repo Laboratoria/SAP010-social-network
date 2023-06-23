@@ -62,7 +62,8 @@ export default () => {
         const errorEmail = container.querySelector('#errorEmail');
         switch (getErrorMessage) {
           case 'auth/email-already-in-use':
-            alert('Email já cadastrado');
+            errorEmail.textContent = 'Preencha o campo de e-mail!';
+            errorEmail.style.display = 'block';
             break;
 
           case 'auth/missing-email':
