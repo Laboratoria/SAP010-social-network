@@ -177,3 +177,7 @@ html {
   .modal-input-area.error-border {
     border: 1px solid red;
   }
+
+  .material-icons {
+    cursor: default
+  }

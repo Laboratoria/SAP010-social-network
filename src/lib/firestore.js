@@ -5,6 +5,7 @@ import {
   getDocs,
   query,
   orderBy,
+  deleteDoc,
 } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 
@@ -33,4 +34,17 @@ export const carregarPosts = async () => {
   });
 
   return arrayPosts;
+};
+
+export const deletePost = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      await deleteDoc(doc(db, "post", id));
+      console.log('Document deleted with ID: ', id);
+      resolve();
+    } catch (e) {
+      console.error('Error deleting document: ', e);
+      reject(e);
+    }
+  });
 };
