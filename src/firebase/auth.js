@@ -7,16 +7,14 @@ import {
   updateProfile,
   FacebookAuthProvider,
 } from 'firebase/auth';
-
-import { app, db } from './app.js';
 import { doc, setDoc } from 'firebase/firestore';
+import { app, db } from './app.js';
 
 export const getAppAuth = () => getAuth(app);
 
 export const getUserId = () => {
   const auth = getAppAuth();
   return auth.currentUser.uid;
-
 };
 
 export const getUserName = () => {

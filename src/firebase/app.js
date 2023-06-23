@@ -4,7 +4,6 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
-
 const firebaseConfig = {
   apiKey: 'AIzaSyCkvwr2TtB_LKDqEormFriM2wNFISeBLXw',
   authDomain: 'social-network-lab-3ce72.firebaseapp.com',
