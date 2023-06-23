@@ -98,6 +98,5 @@ export default () => {
         errorMessage.style.display = 'block';
       });
   });
-  
   return container;
 };
