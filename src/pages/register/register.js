@@ -56,7 +56,7 @@ export default () => {
 
     createUserWithEmail(name, email, senha, areaAtuacao)
       .then(response => {
-        console.log('sucesso ao cadastrar usuário', response);
+        //console.log('sucesso ao cadastrar usuário', response);
       }).catch((error) => {
         const errorMessage = container.querySelector('#errorMessage');
         window.location
