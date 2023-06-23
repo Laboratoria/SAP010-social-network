@@ -9,7 +9,7 @@ import {
   deleteDoc,
   updateDoc,
   getDoc,
-  
+  arrayRemove,
 } from 'firebase/firestore';
 import { getAppAuth } from './auth';
 import { app } from './app';
@@ -45,13 +45,12 @@ export const deletePost = async (postId) => {
   await deleteDoc(docRef);
 };
 
-
 export const updatePost = async (postId, newText) => {
   const docRef = doc(db, 'posts', postId);
   return updateDoc(docRef, newText);
 }
 
- export const hasUserLikedPost = async (postId) => {
+export const hasUserLikedPost = async (postId) => {
   const docRef = doc(db, 'posts', postId);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
@@ -61,10 +60,9 @@ export const updatePost = async (postId, newText) => {
     return whoLiked.includes(userId);
   }
   return false;
-};  
+};
 
-
- export const likePost = async (postId, userId) => {
+export const likePost = async (postId, userId) => {
   try {
     const userHasLikedPost = await hasUserLikedPost(postId);
     if (!userHasLikedPost) {
@@ -73,19 +71,27 @@ export const updatePost = async (postId, newText) => {
 
       if (postDoc.exists()) {
         const post = postDoc.data();
-        const { likes, whoLiked } = post;
+        const { whoLiked } = post;
         if (!whoLiked.includes(userId)) {
-          likes.push(userId);
           whoLiked.push(userId);
-          await updateDoc(docRef, { likes, whoLiked });
+          await updateDoc(docRef, { whoLiked });
           console.log('Like adicionado com sucesso');
-        } 
-      } 
+        }
+        return "adicione like"
+      }
     } else {
+      const washingtonRef = doc(db, 'posts', postId);
+      await updateDoc(washingtonRef, {
+        whoLiked: arrayRemove(userId)
+      });
+
       console.log('O usuário já gostou deste post');
+      return "remove like"
     }
   } catch (error) {
     console.error('Error al dar like:', error);
     throw error;
   }
 };
+
+
