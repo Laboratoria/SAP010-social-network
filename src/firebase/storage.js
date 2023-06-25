@@ -1,30 +1,22 @@
-import { doc, updateDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { getUserId } from './auth.js';
-import { storage, db } from './app.js';
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} from 'firebase/storage';
+import firebase from 'firebase/compat/app';
+import { app } from './app.js';
 
-export const uploadProfileImage = async (file) => {
-  try {
-    const storageRef = ref(storage, `profile/${file.name}`);
-    const snapshot = await uploadBytes(storageRef, file);
-    const downloadURL = await getDownloadURL(snapshot.ref);
-    return downloadURL;
-  } catch (error) {
-    console.error('Erro ao enviar a imagem:', error);
-    throw error;
-  }
-};
+export const storage = getStorage(app);
 
-export const updateProfileImageURL = async (imagePath) => {
-  try {
-    const userId = getUserId();
-    const userRef = doc(db, 'users', userId);
+export const uploadProfilePhoto = (file) => {
+  const userId = firebase.auth().currentUser.uid;
+  const storageRef = ref(storage, `profilePhotos/${userId}/${file.name}`);
 
-    await updateDoc(userRef, {
-      profileImageUrl: imagePath,
+  return uploadBytes(storageRef, file)
+    .then(() => getDownloadURL(storageRef))
+    .catch((error) => {
+      console.log('Erro ao fazer upload da foto de perfil:', error);
+      throw error;
     });
-  } catch (error) {
-    console.error('Erro ao atualizar a URL da imagem do perfil:', error);
-    throw error;
-  }
 };
