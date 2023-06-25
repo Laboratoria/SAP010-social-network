@@ -5,23 +5,22 @@ import {
   updatePost,
   likePost,
 } from '../../firebase/firestore.js';
+import { uploadProfilePhoto } from '../../firebase/storage.js';
 import delPost from './posts.js';
 
 export default () => {
   const timeline = document.createElement('div');
   const viewPost = `
-    <div class="container">
-      <div class='left-timeline'>
-        <input type="file" id="profilePhotoUpload" accept="image/*" style="display: none;">
-        <label for="profilePhotoUpload" class="photo-timeline">
-          <img src="./img/assets/icon-photo.png" id="profileImagePreview" class="photo-timeline" alt="Icone photo"> 
-        </label>
-        <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
-        <figure class='icones'>
+  <div class="container">
+  <div class='left-timeline'>
+    <img src='' alt='Foto de perfil' class='profilePhoto'>
+    <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
+    <figure class='icones'>
           <a href="" class="icon-timeline"><img src="./img/assets/icon-home.png" class="icon-timeline" alt="Icone home"> Home </a>
           <a href="" class="icon-timeline"><img src="./img/assets/icon-sair.png" class="icon-timeline" alt="Icone sair "> Sair </a>
         </figure>
         <img src="./img/assets/imagetimeline.png" class="img-timeline" alt="edit image" width="300px">
+        <input type="file" id="profilePhotoInput" accept="image/*" style="display: none;">
       </div>
       <div class="right-timeline">
         <div class="input-container">
@@ -38,10 +37,18 @@ export default () => {
   const postBtn = timeline.querySelector('#sharePost');
   const descriptionPost = timeline.querySelector('#postArea');
   const postList = timeline.querySelector('#postList');
-  // const profilePhotoUploadInput = timeline.querySelector('#profilePhotoUpload');
-  // const profileImagePreview = timeline.querySelector('#profileImagePreview');
+  const profilePhotoInput = timeline.querySelector('#profilePhotoInput');
+  const profilePhoto = timeline.querySelector('.profilePhoto');
 
-  const createPostElement = (name, createdAt, description, postId, authorId, whoLiked) => {
+  const createPostElement = (
+    name,
+    createdAt,
+    description,
+    postId,
+    authorId,
+    whoLiked,
+    profilePhotoUrl,
+  ) => {
     const createdAtDate = new Date(createdAt.seconds * 1000);
     const createdAtFormattedDate = createdAtDate.toLocaleDateString('pt-BR');
     const createdAtFormattedTime = createdAtDate.toLocaleTimeString('pt-BR', {
@@ -75,6 +82,12 @@ export default () => {
     </div>
   </div>
 `;
+
+    if (profilePhotoUrl) {
+      const profilePhotoElement = postElement.querySelector('.profilePhoto');
+      profilePhotoElement.src = profilePhotoUrl;
+    }
+
     return postElement;
   };
 
@@ -84,9 +97,17 @@ export default () => {
 
     postsFirestore.forEach(async (post) => {
       const {
-        name, createdAt, description, id, author, whoLiked,
+        name, createdAt, description, id, author, whoLiked, profilePhotoUrl,
       } = post;
-      const postElement = createPostElement(name, createdAt, description, id, author, whoLiked);
+      const postElement = createPostElement(
+        name,
+        createdAt,
+        description,
+        id,
+        author,
+        whoLiked,
+        profilePhotoUrl,
+      );
       postList.appendChild(postElement);
 
       const likeButton = postElement.querySelector('#like-Post');
@@ -109,6 +130,21 @@ export default () => {
     });
   };
 
+  const handleProfilePhotoUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      uploadProfilePhoto(file)
+        .then((url) => {
+          profilePhoto.src = url;
+          // Armazena a URL da foto de perfil no armazenamento local (localStorage)
+          localStorage.setItem('profilePhotoUrl', url);
+        })
+        .catch((error) => {
+          console.log('Erro ao fazer upload da foto de perfil:', error);
+        });
+    }
+  };
+
   const handlePostBtnClick = () => {
     const description = descriptionPost.value;
 
@@ -126,6 +162,7 @@ export default () => {
         });
     }
   };
+
   const handlePostListClick = (event) => {
     const target = event.target;
     const deleteButton = target.closest('#btn-delete');
@@ -151,8 +188,21 @@ export default () => {
       }
     }
   };
+
+  profilePhoto.addEventListener('click', () => {
+    profilePhotoInput.click();
+  });
+
+  profilePhotoInput.addEventListener('change', handleProfilePhotoUpload);
   postBtn.addEventListener('click', handlePostBtnClick);
   postList.addEventListener('click', handlePostListClick);
+
+  // Verifica se há uma URL de foto de perfil armazenada no armazenamento local (localStorage)
+  const storedProfilePhotoUrl = localStorage.getItem('profilePhotoUrl');
+  if (storedProfilePhotoUrl) {
+    profilePhoto.src = storedProfilePhotoUrl;
+  }
+
   loadPosts();
   return timeline;
 };
