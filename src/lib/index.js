@@ -4,22 +4,14 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   FacebookAuthProvider,
-  onAuthStateChanged
+  onAuthStateChanged,
 } from 'firebase/auth';
 
 import { auth } from '../Firebase/instalfirebase';
-import { routes } from '../main';
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    console.log({ user });
-    window.localStorage.setItem('token', 'aaa');
-  } else {
-    window.localStorage.removeItem('token');
-  }
-
-  routes();
-});
+export const authStateChanged = (callback) => {
+  onAuthStateChanged(auth, callback);
+};
 
 // função para fazer login do usuario
 export const authLogin = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
