@@ -23,6 +23,7 @@ export default () => {
                 </p>
                 <p class="confirmasenha">
                 <input type="text" class="confirma_senha" id="confirmasenha" placeholder="Confirme sua senha"/>
+                <span id='usuarioAlert' class='alertCadastro'></span>
                 </p> 
             </form>
   
@@ -57,16 +58,20 @@ const register = container.querySelector(".btnCadastrar2")
   .catch((error) => {
     const errorMessage = error.message;
     if (errorMessage === 'Firebase: Error (auth/email-already-in-use).') {
-      alert('E-mail já cadastrado')
+      usuarioAlert.setAttribute('style', 'display: block');
+      usuarioAlert.innerHTML = 'E-mail já cadastrado!';
     }
     if (errorMessage === 'Firebase: Error (auth/invalid-email).') {
-      alert('Endereço de e-mail inválido')
+      usuarioAlert.setAttribute('style', 'display: block');
+      usuarioAlert.innerHTML ='Endereço de e-mail inválido!';
     }
     if (errorMessage === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
-      alert('Sua senha deve ter ao menos 6 dígitos')
+      usuarioAlert.setAttribute('style', 'display: block');
+      usuarioAlert.innerHTML = 'Sua senha deve ter ao menos 6 dígitos!';
     }
     if (password2.value !== passwordrepet.value){
-      alert('As senhas devem ser iguais')
+      usuarioAlert.setAttribute('style', 'display: block');
+      usuarioAlert.innerHTML ='As senhas devem ser iguais!';
     }
   
   });

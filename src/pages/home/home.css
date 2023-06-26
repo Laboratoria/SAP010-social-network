@@ -51,7 +51,8 @@ body{
     font-size: 18px;
     color: #F5B81D;
     margin-top: -440px;
-    margin-left: 40px;
+    margin-left: 25px;
+    text-align: center;
  }
 
   .inserir_email, .digite_senha {
@@ -222,7 +223,22 @@ footer{
     font-size: 10px;
     
 }
-
+/*fazendo alteração*/
+.alertHome {
+    color: #F5B81D;
+    position: absolute;
+    font-family: 'Roboto';
+    text-align: center;
+    margin-top: 100%;
+ 
+  }
+#usuarioAlert {
+    color: #F5B81D;
+    position: absolute;
+    font-family: 'Roboto';
+    margin-left: 18%;
+    margin-top: 2%;
+}
  @media screen and (mix-width: 414x) and (max-width:900px){
 
     .container{
