@@ -1,5 +1,9 @@
 // Este es el punto de entrada de tu aplicacion
 // main controla qual página que vai abrir 
+/* import { } from './pages/Cadastro/cadastro.js';
+import { } from './pages/Feed/feed.js';
+import { } from './pages/Login/login.js';
+import { } from './pages/Perfil/perfil.js'; */
 import { myFunction } from './lib/firebase.js';
 
 myFunction();
