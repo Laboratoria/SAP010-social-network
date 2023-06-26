@@ -68,7 +68,7 @@ export default () => {
         <div class='image-icons'>
 
         <button type="button" class='icons' id='like-Post' data-post-id='${postId}'>
-        <a class='icons' id='likePost'><img src='img/assets/likeicon.png' alt='like image' width='30px'></a>
+        <a class='icons' id='likePost'><img src='./img/assets/likeicon.png' alt='like image' width='30px'></a>
       </button>
       <span id='likes-counter-${postId}'>${whoLiked.length}</span>
 
