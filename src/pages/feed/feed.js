@@ -1,12 +1,14 @@
 
-import { getDoc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 import { db, auth } from "../../lib/firebase";
 
 import {
     pegarPost,
     criarPost,
-    likePost
+    likePost,
+    
 } from "../../lib/firestone";
+
 
 let userName = ''
 
@@ -78,7 +80,7 @@ export default () => {
                         <h3 class="nome"> ${post.name}</h3>
                         <p class="conteudoPag"> ${post.texto}</p>
                          <div class="btns">
-                             <button class="btnLike" ${post.like.includes(auth.currentUser.uid) ? ' liked' : ''}" data-id="${post.id}">❤️</button>
+                             <button class="btnLike" ${post.like.includes(auth.currentUser.uid) ? ' liked' : ''}" data-post-id="${post.id}">❤️</button>
                              <span class="contadorLike"> ${post.like.length}</span>
                              <button class="btnEditar" data-id="${post.id}"> ✏️ </button>
                              <button class="btnDeletar" data-id="${post.id}"> 🗑️ </button>
@@ -89,15 +91,16 @@ export default () => {
             postContainer.appendChild(postar)
 
             const btnLike = postar.querySelector('.btnLike')
-            const contadorLike = postar.querySelector('.contadorLike')
+            
 
             btnLike.addEventListener('click', async () => {
-                const postId = btnLike.getAttribute('.data-id');
+                const postId = btnLike.getAttribute('data-post-id');
+                const contadorLike = postar.querySelector('.contadorLike')
                 
                 try {
 
-                    await likePost(db, postId, auth.currentUser.uid);
-                    const atualizar = await getDoc(doc(db, 'posts', postId));
+                    await likePost(db, postId, auth.currentUser.uid, auth);
+                    const atualizar = await getDoc(doc(db, 'post', postId));
                     const atualizarLikes = atualizar.data().like.length;
                     contadorLike.textContent = atualizarLikes;
 

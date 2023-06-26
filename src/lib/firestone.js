@@ -6,7 +6,9 @@ import {
     getFirestore,
     getDocs,
     addDoc,
-    getDoc
+    getDoc,
+    doc,
+    updateDoc
 } from "firebase/firestore";
 
 
@@ -45,22 +47,28 @@ export const pegarPost = async () => {
 
 // likes
 
-export const getPostById = async (postID) => {
-    const docRef = doc(db, 'posts', postID);
-    const docSnap = await getDoc(docRef);
-    return docSnap.data().like.length;
-};
+// export const getPostById = async (postID) => {
+//     const docRef = doc(db, 'posts', postID);
+//     const docSnap = await getDoc(docRef);
+//     return docSnap.data().like.length;
+// };
 
-export const likePost = async (postId, userId) => {
-    const post = await getPostById(postId);
-    let likes = post.like;
-    const liking = !likes.includes(userId);
-    if (liking) {
-        likes.push(userId);
-    } else {
-        likes = likes.filter((id) => id !== userId);
-    }
-    return updateDoc(doc(db, 'posts', postId), {
-        like: likes,
-    });
+export const likePost = async (db,  postId, userId) => {
+    // const currentUser = auth.currentUser;
+    // if (!currentUser) {
+    //   throw new Error('Usuário não está logado');
+    // }
+  
+    const postRef = doc(db, 'post', postId);
+    const postSnap = await getDoc(postRef);
+    const postData = postSnap.data();
+    
+  
+    const isLiked = postData.like.includes(userId);
+  
+    const updatedLikeArray = isLiked
+      ? postData.like.filter((id) => id !== userId)
+      : [...postData.like, userId];
+  
+    await updateDoc(postRef, { like: updatedLikeArray });
 };
