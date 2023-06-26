@@ -79,12 +79,13 @@ position: absolute;
 margin-left: 15em;
 margin-top: 30%;
 border: none;
-cursor: pointer; 
+cursor: pointer;
+background-color: white;
 
 }
 
 .icon-eye:hover {
-    color: var(--darkblue);
+    color: var(--blue);
 }
 
 @media screen and (min-width: 768px) {
@@ -147,6 +148,7 @@ cursor: pointer;
     .register-here:hover {
         background-color: var(--darkblue);
         border-radius: 15px 15px 15px 15px;
+        color: var(--white);
     }
     .facebook-button, .google-button {
     width: 10em;
