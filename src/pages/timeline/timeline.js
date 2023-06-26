@@ -136,7 +136,6 @@ export default () => {
       uploadProfilePhoto(file)
         .then((url) => {
           profilePhoto.src = url;
-          // Armazena a URL da foto de perfil no armazenamento local (localStorage)
           localStorage.setItem('profilePhotoUrl', url);
         })
         .catch((error) => {
@@ -197,7 +196,6 @@ export default () => {
   postBtn.addEventListener('click', handlePostBtnClick);
   postList.addEventListener('click', handlePostListClick);
 
-  // Verifica se há uma URL de foto de perfil armazenada no armazenamento local (localStorage)
   const storedProfilePhotoUrl = localStorage.getItem('profilePhotoUrl');
   if (storedProfilePhotoUrl) {
     profilePhoto.src = storedProfilePhotoUrl;
