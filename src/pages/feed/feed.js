@@ -1,6 +1,5 @@
-import { db } from '../../fireBase/firebaseConfig';
-import { collection, getDocs } from 'firebase/firestore';
 import { logOut } from '../../fireBase/firebaseAuth';
+import { userData, fetchPosts, createFeedData } from '../../fireBase/firebaseStore';
 import customAlert from '../../components/customAlert';
 
 function template(main){
@@ -37,21 +36,12 @@ function template(main){
   main.innerHTML = template;
 }
 
-async function fetchPosts() {
-  const postsCollection = collection(db, 'posts');
-  const snapshot = await getDocs(postsCollection);
-  const posts = [];
-
-  snapshot.forEach((doc) => {
-    posts.push(doc.data());
-  });
-
-  return posts;
-}
-
 async function showFeed() {
   const posts = await fetchPosts();
-  const FeedElement = document.getElementById('feed');
+  const feedElement = document.getElementById('feed');
+
+  const publishElement = createPublishElement()
+  feedElement.appendChild(publishElement)
   
   posts.forEach((post) => {
     const postElement = document.createElement('div');
@@ -61,10 +51,10 @@ async function showFeed() {
     infoElement.classList.add('Informations')
 
     const nameElement = document.createElement('p');
-    nameElement.textContent = post.Nome;
+    nameElement.textContent = post.nome;
 
     const dateElement = document.createElement('p');
-    dateElement.textContent = post.Data;
+    dateElement.textContent = post.data;
 
     const textElement = document.createElement('p');
     textElement.textContent = post.texto;
@@ -74,17 +64,45 @@ async function showFeed() {
 
     infoElement.appendChild(nameElement);
     infoElement.appendChild(dateElement);
+    postElement.appendChild(infoElement)
     postElement.appendChild(textElement);
     postElement.appendChild(likeElement);
-    postElement.appendChild(infoElement)
     //rootElement.appendChild(postElement);
-    FeedElement.appendChild(postElement)
+    feedElement.appendChild(postElement)
   });
 
-  return FeedElement;
+  return feedElement;
 }
 
+function createPublishElement() {
+  const publishElement = document.createElement('div')
+  publishElement.classList.add('publish');
 
+  const content = `
+    <input id='input-text'></input>
+    <button id='button-publish'>Publicar</button>
+  `
+
+  publishElement.innerHTML = content
+
+  const inputText = publishElement.querySelector('#input-text')
+
+  const buttonPublish = publishElement.querySelector('#button-publish')
+  buttonPublish.addEventListener('click', () => {
+    // descobrir como pegar a data do sistema
+    // descobrir como pegar o user name
+    createFeedData(0, 'nome', 0, inputText.value)
+    .then(() => {
+      customAlert('Seu post foi publicado com sucesso');
+      window.location.hash = '#homepage';
+    })
+    .catch(() => {
+      customAlert('Erro ao publicar post')
+    })
+  })
+
+  return publishElement
+}
 
 export {showFeed, template};
 
