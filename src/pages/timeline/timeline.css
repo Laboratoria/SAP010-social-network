@@ -49,7 +49,7 @@
 }
 
 
-.input-container { /*input e botao enviar*/
+.input-container {
     display: flex;
     flex-direction: column;
     width: 96%;
@@ -215,7 +215,7 @@ a {
     
     }
     .right-timeline, .postList {
-        grid-area: right; /*defide que o timeline é a segunda coluna*/
+        grid-area: right;
         overflow-y: scroll;
         border-left: solid var(--darkblue) 0.1em;
         margin-bottom: 0;
@@ -226,7 +226,7 @@ a {
         font-size: 0.8em;
     
       }
-    .input-container, .post-container { /*input e botao enviar*/
+    .input-container, .post-container {
         width: 80%;
     }   
 
