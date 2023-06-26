@@ -4,9 +4,10 @@ import {
   accessPost,
   updatePost,
   likePost,
+  deletePost,
 } from '../../firebase/firestore.js';
 import { uploadProfilePhoto } from '../../firebase/storage.js';
-import delPost from './posts.js';
+// import delPost from './posts.js';
 
 export default () => {
   const timeline = document.createElement('div');
@@ -153,7 +154,8 @@ export default () => {
       createPost(description)
         .then(() => {
           descriptionPost.value = '';
-          loadPosts();
+          // createPostElement.insertBefore - ajustar
+          loadPosts(); //substituir
           alert('Publicação efetuada com sucesso!');
         })
         .catch(() => {
@@ -168,8 +170,17 @@ export default () => {
     const editButton = target.closest('#editPost');
     if (deleteButton) {
       const postId = deleteButton.getAttribute('data-post-id');
-      delPost(postId);
-      loadPosts();
+      if (window.confirm('Tem certeza de que deseja excluir a publicação?')) {
+        deletePost(postId)
+          .then(() => {
+            target.closest('.post-container').remove() //remove da tela os posts que são excluídos
+            alert('Publicação excluída com sucesso!');
+          })
+          .catch((error) => {
+            alert('Ocorreu um erro ao excluir o post. Por favor, tente novamente mais tarde', error);
+          });
+      }
+      // loadPosts();
     } else if (editButton) {
       const postId = editButton.getAttribute('data-post-id');
       const postElement = editButton.closest('.post-container');
