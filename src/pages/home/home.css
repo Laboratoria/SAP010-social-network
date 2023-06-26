@@ -16,24 +16,24 @@
    
     position: absolute;
     
-    left: 50%;
-    transform: translate(-50%);
+    left: 80%;
+    transform: translate(-80%);
     
 }
 
  
 body{
     background: #D9D9D9;
+    /* background-image: url(../../imagens/background7.png);
+    background-size: 100%; */
 }
 
 .logo {
     position: relative;
-    width: 320px;
-    height: 140px;
-    
     display: flex;
-    margin-left: 60px;
-    
+     width: 320px;
+    height: 140px;
+    margin-left: 60px; 
 }
 
 .etiqueta {
@@ -256,4 +256,13 @@ div i{
    margin:10px 0px 0px -30px;
 
 }
+@media screen and (mix-width: 420x) {
 
+
+    .logo {
+
+   margin-left: 80%;
+
+
+    }
+} 

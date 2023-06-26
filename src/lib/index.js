@@ -1,21 +1,24 @@
 import {
-  getAuth, 
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword,
   signInWithPopup,
-  GoogleAuthProvider } from 'firebase/auth'
-import {auth} from "./firebase.js"
+  GoogleAuthProvider,
+ } from 'firebase/auth'
+import {auth, app} from "./firebase.js"
+import { getAuth, updateProfile} from 'firebase/auth';
 
 
 
+export const signUpUser = (name, email2, password2 ) => {
+  const authAccount = getAuth(app);
+  createUserWithEmailAndPassword(auth, email2,password2, );
 
-
-export const signUpUser = (email2, password2, passwordrepet) => 
-  createUserWithEmailAndPassword(auth,email2,password2, passwordrepet);
-   
+  return updateProfile(authAccount.currentUser, {
+    displayName: name,
+  }
+)};
 
 export const loginUser = (email, password) => {
-    console.log(email, password)
     return signInWithEmailAndPassword(auth, email, password);
 };
 
@@ -23,3 +26,4 @@ export const loginGoogle = () => {
   const provider = new GoogleAuthProvider;
   return signInWithPopup(auth,provider)
 }
+
