@@ -12,7 +12,7 @@ export default () => {
     <section class='login-wrap'>
       <div class='left'>
         <figure class='logo-container'>
-          <img src='img/assets/logologin.png' class='logo' alt='Logo da ExploraAí'>
+          <img src='./img/assets/logologin.png' class='logo' alt='Logo da ExploraAí'>
         </figure>
         <h1 class='title'>ExplorAí!</h1>
         <br>
