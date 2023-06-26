@@ -1,15 +1,12 @@
-
-import { carregarPosts, criarPost } from '../../lib/firestore.js';
-import { getCurrentUser, logout } from '../../lib/index.js';
-
-let username = ''
+import { carregarPosts, criarPost, getUsername } from '../../lib/firestore.js';
+import { logout } from '../../lib/index.js';
 
 export const feed = () => {
   const container = document.createElement('div');
   const templateFeed = `
       <header class="feed-header">
       <button id="sair"> Sair </button>
-      <p> Seja bem-vindo(a) ${username} </p>
+      <p> Seja bem-vindo(a) </p>
       <a class="feedPage" href="/#feed"></a>
 
       <button id="post">Crie seu post aqui!</button>
@@ -83,19 +80,20 @@ export const feed = () => {
 
   container.innerHTML = templateFeed;
 
-  
-
   const carregarFeed = async () => {
     const posts = await carregarPosts();
+
     const feedPage = container.querySelector('.feed-page');
     feedPage.innerHTML = '';
-    
-    posts.forEach((post) => {
+
+    posts.forEach(async (post) => {
+     
+
       const postCard = document.createElement('div');
       postCard.innerHTML = `
         <section class='container-post'>
           <div class='post-header'>
-            <div class="username">"Nome do usuário"</div>
+            <div class="username">${post.postUsername}</div>
             <div class="user-location">${post.localizacao}</div>
           </div>
           <div class='adopt-option'>${post.opcaoAdocao}</div>
@@ -111,7 +109,6 @@ export const feed = () => {
           <p>Contato: ${post.contato}</p>
         </section>
       `;
-      
 
       feedPage.appendChild(postCard);
     });
@@ -120,8 +117,8 @@ export const feed = () => {
   carregarFeed();
 
   container.querySelector('#sair').addEventListener('click', () => {
-    logout()
-  })
+    logout();
+  });
 
   container.querySelector('#post').addEventListener('click', () => {
     const modal = document.getElementById('meuModal');
@@ -146,7 +143,6 @@ export const feed = () => {
       } else if (document.getElementById('quero-adotar').checked) {
         opcao = document.getElementById('quero-adotar').value;
       }
-    
 
       const opcaoAdocao = opcao;
       const idadePet = document.getElementById('idade').value;
@@ -157,65 +153,67 @@ export const feed = () => {
       const contato = document.getElementById('contato').value;
       const mensagem = document.getElementById('mensagem').value;
       const dataAtual = Date.now();
+      const postUsername = username
 
       //trecho para validação dos inputs de radio e textarea
       let validarInputs = true;
       const mensagemErroRadio = document.getElementById('mensagem-erro-radio');
-      const mensagemErroTextarea = document.getElementById('mensagem-erro-textarea');
+      const mensagemErroTextarea = document.getElementById(
+        'mensagem-erro-textarea'
+      );
 
-      if (!document.querySelector('input[type="radio"][name="quero"]:checked')) {
+      if (
+        !document.querySelector('input[type="radio"][name="quero"]:checked')
+      ) {
         validarInputs = false;
-        mensagemErroRadio.textContent = 'Campo obrigatório: favor selecionar uma opção.';
-        }
+        mensagemErroRadio.textContent =
+          'Campo obrigatório: favor selecionar uma opção.';
+      }
 
       if (document.getElementById('mensagem').value === '') {
         validarInputs = false;
-        mensagemErroTextarea.textContent = 'Campo obrigatório: favor inserir uma mensagem.';
+        mensagemErroTextarea.textContent =
+          'Campo obrigatório: favor inserir uma mensagem.';
         document.getElementById('mensagem').classList.add('error-border');
       } else {
         document.getElementById('mensagem').classList.remove('error-border');
       }
-                 
 
       if (validarInputs) {
-      const dadosPost = {
-        opcaoAdocao,
-        idadePet,
-        especie,
-        sexo,
-        raca,
-        localizacao,
-        contato,
-        mensagem,
-        dataAtual,
-      };
-      await criarPost(dadosPost);
+        const dadosPost = {
+          opcaoAdocao,
+          idadePet,
+          especie,
+          sexo,
+          raca,
+          localizacao,
+          contato,
+          mensagem,
+          dataAtual,
+          postUsername
+        };
+        await criarPost(dadosPost);
 
-      // Limpa os campos do formulário
-      document.getElementById('quero-doar').checked = false;
-      document.getElementById('quero-adotar').checked = false;
-      document.getElementById('idade').value = '';
-      document.getElementById('especie').value = '';
-      document.getElementById('sexo').value = '';
-      document.getElementById('raca').value = '';
-      document.getElementById('local').value = '';
-      document.getElementById('contato').value = '';
-      document.getElementById('mensagem').value = '';
-      document.getElementById('mensagem-erro-radio').textContent = '';
-      document.getElementById('mensagem-erro-textarea').textContent = '';
+        // Limpa os campos do formulário
+        document.getElementById('quero-doar').checked = false;
+        document.getElementById('quero-adotar').checked = false;
+        document.getElementById('idade').value = '';
+        document.getElementById('especie').value = '';
+        document.getElementById('sexo').value = '';
+        document.getElementById('raca').value = '';
+        document.getElementById('local').value = '';
+        document.getElementById('contato').value = '';
+        document.getElementById('mensagem').value = '';
+        document.getElementById('mensagem-erro-radio').textContent = '';
+        document.getElementById('mensagem-erro-textarea').textContent = '';
 
-      // Recarrega o feed com a nova postagem
-      await carregarFeed();
-      const modal = container.querySelector('#meuModal');
+        // Recarrega o feed com a nova postagem
+        await carregarFeed();
+        const modal = container.querySelector('#meuModal');
 
-      modal.style.display = 'none';
-    
-    }
+        modal.style.display = 'none';
+      }
     });
 
   return container;
-}
-
-getCurrentUser().then((currentUser) => {
-  username = currentUser.displayName;
-});
+};

@@ -33,17 +33,8 @@ export function checkLogin() {
   });
 }
 
-export const getCurrentUser = () => {
-  return new Promise((resolve, reject) => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        resolve(user);
-      } else {
-        reject(new Error('Usuário não autenticado'));
-      }
-    });
-  });
-};
+
+
 
 export const logout = () => {
   signOut(auth).then(() => {

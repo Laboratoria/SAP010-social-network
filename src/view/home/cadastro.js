@@ -1,4 +1,5 @@
 import { signUp } from '../../lib';
+import { createUserData } from '../../lib/firestore';
 
 export const cadastro = () => {
   const container = document.createElement('div');
@@ -52,8 +53,9 @@ export const cadastro = () => {
     const confirmPassword = container.querySelector('#confirmar-senha');
     if (confirmPassword.value === password.value) {
       signUp(email.value, password.value)
-        .then((userCredential) => {
+        .then(async(userCredential) => {
           const user = userCredential.user;
+          createUserData(nome.value)
           container.querySelector('#mensagem-erro').innerHTML = 'Usuário cadastrado com sucesso!';
           setTimeout(() => {
             window.location.hash = '#login';
