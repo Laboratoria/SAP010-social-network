@@ -28,7 +28,9 @@ export default () => {
           <h3>-- ou --</h3>
         <div class="google">
         <button id="googleLoginButton">Acesse com sua conta <img class="logo-google" src="./images/logo4.png"></button>
-      </div>
+       </div>
+      
+       <footer> Desenvolvedoras: Aline Ferreira, Josi Corrêa e Nara Monteiro </footer>
       </fieldset>
   `;
 
@@ -49,19 +51,10 @@ export default () => {
       .then(() => {
         window.location.hash = '#feed';
       })
-      .catch((error) => {
+      .catch(() => {
         const errorMessage = container.querySelector('#errorMessage');
-        //console.log('CÓDIGO DE ERRO ---> ', error.code);
-        switch (error.code) {
-          case 'auth/user-not-found':
-            errorMessage.textContent = 'O usuário não correponde à nenhuma credencial valida!';
-            errorMessage.style.display = 'block';
-            break;
-
-          default:
-            errorMessage.textContent = 'E-mail ou senha incorretos';
-            errorMessage.style.display = 'block';
-        }
+        errorMessage.textContent = 'E-mail ou senha incorretos';
+        errorMessage.style.display = 'block';
       });
   };
 
@@ -88,15 +81,12 @@ export default () => {
 
   // Login Google
   googleButton.addEventListener('click', () => {
-    loginGoogle()
-      .then(() => {
-        window.location.hash = '#feed';
-      })
-      .catch(() => {
-        const errorMessage = container.querySelector('#errorMessage');
-        errorMessage.textContent = 'Erro ao fazer login com o Google';
-        errorMessage.style.display = 'block';
-      });
+    loginGoogle().then(() => {
+      window.location.hash = '#feed';
+    }).catch(() => {
+      alert('Erro ao fazer login com o Google');
+    });
   });
+
   return container;
 };
