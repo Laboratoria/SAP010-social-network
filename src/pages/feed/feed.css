@@ -1,123 +1,122 @@
-a {
-    text-decoration: none;
-    color: var(--light-white);
-
-}
-
-div{
+.feed {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-h2{
-    color: var(--grey);
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-h3{
-    color: var(--grey);
-    display: flex;
-    justify-content: center;
-}
-
-.logo-cs {
-    width: 200px;
-    margin-top: 30px;
-}
+  }
   
-.logo-google {
-    max-width: 30px;
-}
-
-input{
-    width: 80%;
-    padding: 8px;
-    background-color: var(--medium-brown);
-    border: none;
-    border-radius: 5px;
-    outline: none;
-    color: var(--light-white);
-}
-
-input:focus{
-    border: 1px solid var(--light-white);
-}
-
-
-::-webkit-input-placeholder{
+  .convite {
+    margin-top: -80px;
+    margin-left: -190px;
+  }
+  
+  li {
+    margin-top: 25px;
+    margin-left: -170px;
+  }
+  
+  .logo-cs {
+    width: 500px;
+    margin-top: 1px;
+  }
+  
+  .conecteh1 {
     font-family: 'Nunito Sans', sans-serif;
-    color: var(--light-white);
+    margin-top: 1px;
+    font-size:25px;
+    text-align: left;
+  }
+  
+  
+  .logoCsFeed {
+    position: relative;
+    top: 2px;
+    right: -150px;
+    width: 700px;
+    margin-left: -90px;
+  }
+  
+  .fulana {
+    margin-top: -150px;
+    margin-left: -40px;
+  }
+  
+  .logout {
+    margin-top: 180px;
+    margin-left: -10px;
+    width: 80px;
+  }
+  
+ .box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 1px;
+  text-align: left;
 }
 
-.loginSenha{
-    color: var(--light-white);
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-fieldset {
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
+  
+  .container2 {
+    grid-column: 3 / 3;
     background-color: var(--intense-brown);
     box-shadow: 12px 15px 8px -9px var(--medium-brown);
     border: none;
-    width: 400px;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 50px;
+    width: 350px;
     height: 500px;
-    margin-top: 30px;
-    gap: 3px;
-}
-
-.botoes{
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-}
-
-#googleLoginButton{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    gap: 8px;
-    width: 200px;
-    font-family: 'Nunito Sans', sans-serif;
-    background-color: var(--medium-brown); 
-    color: var(--light-white);
-    font-size: 14px;
-    transition: 0.3s ease-in-out;
-
-}
-
-#googleLoginButton:hover{
-    background-color: var(--light-white);
-    color: var(--intense-brown);
-}
-
-.eye {
-    width: 15px;
-    cursor: pointer;
-    position: relative;
-    top: -29px; 
-    right: -150px; /* horizontal*/
-}
+  }
   
-.eye-closed {
-    display: none;
-}
+  .acesseTbm {
+    margin-top: -400px;
+    margin-left: -20px;
+  }
 
-@media (max-width: 800px) {
-    .imagem-fundo{
-        display: none;
-    }
-
-    div{
-        flex-direction: column;
-    }
-
-}
+  a {
+    font-size: 25px;
+  }
+  
+  
+  .usuario {
+    grid-column: 3 / 3;
+    background-color: var(--intense-brown);
+    box-shadow: 12px 15px 8px -9px var(--medium-brown);
+    border: none;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 50px;
+    width: 350px;
+    height: 200px;
+  }
+  
+  .postagens {
+    position: relative;
+    top: -100%;
+    right: -290px;
+    background-color: #734B26;
+    box-shadow: 12px 15px 8px -9px #734B26;
+    border: none;
+    border-radius: 10px;
+    width: 800px;
+    height: 600px;
+  }
+  
+  .inputPostagem {
+    width: 650px;
+    margin-top: -300px;
+  }
+  
+  .inputMensagem {
+    width: 100%;
+    height: 100px; 
+    padding: 10px;
+    color: var(--intense-brown);
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  .btnPostagem {
+    height: 40px;
+    margin-left: 20px;
+  }
+  

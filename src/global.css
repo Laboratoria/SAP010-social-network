@@ -29,14 +29,6 @@ main{
     flex-direction: column;
 }
 
-footer {
-    background-color: var(--intense-brown);
-    color: var(--light-white);
-    text-align: center;
-    position: relative;
-    top: 135px;
-}
-
 ::-webkit-scrollbar {
     width: 8px;
 }

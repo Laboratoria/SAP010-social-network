@@ -126,3 +126,12 @@ fieldset {
     }
 
 }
+
+footer {
+    background-color: var(--intense-brown);
+    color: var(--light-white);
+    text-align: center;
+    position: relative;
+    top: 215px;
+    height: 100px
+};
