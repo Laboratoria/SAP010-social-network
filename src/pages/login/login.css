@@ -114,6 +114,8 @@ background-color: white;
 
     .register-here {
       background-color: var(--lightblue);
+      filter: none;
+      font-weight: none;
     }
 
     .text {
@@ -141,10 +143,6 @@ background-color: white;
 
     }
 
-    .register-here {
-        filter: none;
-        font-weight: none;
-    }
     .register-here:hover {
         background-color: var(--darkblue);
         border-radius: 15px 15px 15px 15px;
