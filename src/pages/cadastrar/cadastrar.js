@@ -36,15 +36,19 @@ export default () => {
 
 container.innerHTML = template;
 
+
 const register = container.querySelector(".btnCadastrar2")
  register.addEventListener('click', () => {
   const email2 = container.querySelector(".inserir_email2")
   const password2 = container.querySelector(".digite_senha2")
-  const nome = container.querySelector(".inserir_nome")
+  const name = container.querySelector(".inserir_nome")
   const passwordrepet = container.querySelector(".confirma_senha")
+
+
+ 
   
 
-  signUpUser(email2.value, password2.value, passwordrepet.value).then(() => {
+  signUpUser(name.value, email2.value, password2.value).then(() => {
   
       alert('Usuário cadastrado com sucesso!')
       window.location.hash = '#feed';
