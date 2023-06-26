@@ -6,7 +6,9 @@ import {
   getDocs,
   orderBy,
   deleteDoc,
+  doc
 } from 'firebase/firestore';
+
 import { db } from '../firebase/firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { auth } from './index.js';
@@ -109,7 +111,7 @@ export const getUsername = async () => {
     console.error(error);
     throw error;
   }
-
+}
 export const deletePost = (id) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -121,5 +123,4 @@ export const deletePost = (id) => {
       reject(e);
     }
   });
-
-};
+}
