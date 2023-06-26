@@ -6,7 +6,7 @@ import {
   getDocs,
   orderBy,
   deleteDoc,
-  doc
+  doc,
 } from 'firebase/firestore';
 
 import { db } from '../firebase/firebase';
@@ -39,7 +39,6 @@ export const carregarPosts = async () => {
 
   return arrayPosts;
 };
-
 
 export const createUserData = async (nome) => {
   const auth = getAuth();
@@ -87,7 +86,9 @@ export const getUsername = async () => {
     if (currentUser) {
       const providerData = await currentUser.providerData;
 
-      if (providerData.some((provider) => provider.providerId === 'google.com')) {
+      if (
+        providerData.some((provider) => provider.providerId === 'google.com')
+      ) {
         const username = currentUser.displayName;
         return username;
       }
@@ -111,11 +112,11 @@ export const getUsername = async () => {
     console.error(error);
     throw error;
   }
-}
+};
 export const deletePost = (id) => {
   return new Promise(async (resolve, reject) => {
     try {
-      await deleteDoc(doc(db, "post", id));
+      await deleteDoc(doc(db, 'post', id));
       console.log('Document deleted with ID: ', id);
       resolve();
     } catch (e) {
@@ -123,4 +124,4 @@ export const deletePost = (id) => {
       reject(e);
     }
   });
-}
+};
