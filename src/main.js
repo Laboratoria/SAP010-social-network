@@ -1,6 +1,7 @@
 import { loginUser } from './Login/login.js';
 import { registerUser } from './Register/register.js';
 import { feedUser } from './Feed/feed.js';
+import { authStateChanged } from './lib/index.js';
 
 const root = document.querySelector('#root');
 
@@ -42,13 +43,19 @@ const init = () => {
   window.addEventListener('hashchange', routes);
 };
 
+authStateChanged((user) => {
+  if (user) {
+    window.localStorage.setItem('token', 'aaa');
+  } else {
+    window.localStorage.removeItem('token');
+  }
 
-window.addEventListener('load', () => {
-  root.appendChild('<h1>Carregando...</h1>');
-  init();
-  // root.appendChild(registerUser());
-  // init();
-  // root.appendChild(feedUser());
-  // init();
+  routes();
 });
 
+window.addEventListener('load', () => {
+  const loadingElement = document.createElement('h1');
+  loadingElement.textContent = 'Carregando...';
+  root.appendChild(loadingElement);
+  init();
+});
