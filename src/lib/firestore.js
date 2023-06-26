@@ -10,7 +10,6 @@ import { db } from '../firebase/firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { auth } from './index.js';
 
-
 //função de criar um post no banco de dados
 
 export const criarPost = async (dadosPost) => {
@@ -47,14 +46,13 @@ export const createUserData = async (nome) => {
 
       const docRef = await addDoc(collection(db, 'usernames'), {
         name: nome,
-        userId: userId
+        userId: userId,
       });
     }
   });
-}
+};
 
-
-const getCurrentUser = () => {
+const getCurrentUserId = () => {
   return new Promise((resolve, reject) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -66,20 +64,42 @@ const getCurrentUser = () => {
   });
 };
 
-
-
-
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        resolve(user);
+      } else {
+        reject(new Error('Usuário não autenticado'));
+      }
+    });
+  });
+};
 
 export const getUsername = async () => {
   try {
-    const currentUserId = await getCurrentUser();
-    const q = query(collection(db, 'usernames'), where('userId', '==', currentUserId));
+    const currentUser = await getCurrentUser();
+
+    if (currentUser) {
+      const providerData = await currentUser.providerData;
+
+      if (providerData.some((provider) => provider.providerId === 'google.com')) {
+        const username = currentUser.displayName;
+        return username;
+      }
+    }
+
+    const currentUserId = await getCurrentUserId();
+    const q = query(
+      collection(db, 'usernames'),
+      where('userId', '==', currentUserId)
+    );
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
       const doc = querySnapshot.docs[0];
       const username = doc.data().name;
-      return username; // Retorna o nome de usuário
+      return username;
     } else {
       throw new Error('Usuário não encontrado');
     }
@@ -88,9 +108,3 @@ export const getUsername = async () => {
     throw error;
   }
 };
-
-/*  export const getUsername = async (userId) => {
-  const userDoc = await getDoc(collection(db, 'usernames', userId));
-    const username = userDoc.data().name; // Obtém o nome de usuário do documento do usuário
-  console.log('username')
-} */

@@ -1,4 +1,9 @@
-import { carregarPosts, criarPost, getUsername } from '../../lib/firestore.js';
+import {
+  carregarPosts,
+  criarPost,
+  getUsername,
+  getCurrentUser,
+} from '../../lib/firestore.js';
 import { logout } from '../../lib/index.js';
 
 export const feed = () => {
@@ -80,15 +85,21 @@ export const feed = () => {
 
   container.innerHTML = templateFeed;
 
+  const feedHeader = container.querySelector('.feed-header p');
+
+  getUsername().then((username) => {
+    feedHeader.textContent += ` ${username}`;
+  });
+
   const carregarFeed = async () => {
+    const currentUser = await getCurrentUser();
+    console.log('usuário atual', currentUser);
     const posts = await carregarPosts();
 
     const feedPage = container.querySelector('.feed-page');
     feedPage.innerHTML = '';
 
     posts.forEach(async (post) => {
-     
-
       const postCard = document.createElement('div');
       postCard.innerHTML = `
         <section class='container-post'>
@@ -137,81 +148,91 @@ export const feed = () => {
     .querySelector('#publicar')
     .addEventListener('click', async (event) => {
       event.preventDefault();
-      let opcao = '';
-      if (document.getElementById('quero-doar').checked) {
-        opcao = document.getElementById('quero-doar').value;
-      } else if (document.getElementById('quero-adotar').checked) {
-        opcao = document.getElementById('quero-adotar').value;
-      }
 
-      const opcaoAdocao = opcao;
-      const idadePet = document.getElementById('idade').value;
-      const especie = document.getElementById('especie').value;
-      const sexo = document.getElementById('sexo').value;
-      const raca = document.getElementById('raca').value;
-      const localizacao = document.getElementById('local').value;
-      const contato = document.getElementById('contato').value;
-      const mensagem = document.getElementById('mensagem').value;
-      const dataAtual = Date.now();
-      const postUsername = username
+      try {
+        const username = await getUsername();
+        console.log('Nome de usuário:', username);
 
-      //trecho para validação dos inputs de radio e textarea
-      let validarInputs = true;
-      const mensagemErroRadio = document.getElementById('mensagem-erro-radio');
-      const mensagemErroTextarea = document.getElementById(
-        'mensagem-erro-textarea'
-      );
+        let opcao = '';
+        if (document.getElementById('quero-doar').checked) {
+          opcao = document.getElementById('quero-doar').value;
+        } else if (document.getElementById('quero-adotar').checked) {
+          opcao = document.getElementById('quero-adotar').value;
+        }
 
-      if (
-        !document.querySelector('input[type="radio"][name="quero"]:checked')
-      ) {
-        validarInputs = false;
-        mensagemErroRadio.textContent =
-          'Campo obrigatório: favor selecionar uma opção.';
-      }
+        const opcaoAdocao = opcao;
+        const idadePet = document.getElementById('idade').value;
+        const especie = document.getElementById('especie').value;
+        const sexo = document.getElementById('sexo').value;
+        const raca = document.getElementById('raca').value;
+        const localizacao = document.getElementById('local').value;
+        const contato = document.getElementById('contato').value;
+        const mensagem = document.getElementById('mensagem').value;
+        const dataAtual = Date.now();
+        const postUsername = username;
 
-      if (document.getElementById('mensagem').value === '') {
-        validarInputs = false;
-        mensagemErroTextarea.textContent =
-          'Campo obrigatório: favor inserir uma mensagem.';
-        document.getElementById('mensagem').classList.add('error-border');
-      } else {
-        document.getElementById('mensagem').classList.remove('error-border');
-      }
+        //trecho para validação dos inputs de radio e textarea
+        let validarInputs = true;
+        const mensagemErroRadio = document.getElementById(
+          'mensagem-erro-radio'
+        );
+        const mensagemErroTextarea = document.getElementById(
+          'mensagem-erro-textarea'
+        );
 
-      if (validarInputs) {
-        const dadosPost = {
-          opcaoAdocao,
-          idadePet,
-          especie,
-          sexo,
-          raca,
-          localizacao,
-          contato,
-          mensagem,
-          dataAtual,
-          postUsername
-        };
-        await criarPost(dadosPost);
+        if (
+          !document.querySelector('input[type="radio"][name="quero"]:checked')
+        ) {
+          validarInputs = false;
+          mensagemErroRadio.textContent =
+            'Campo obrigatório: favor selecionar uma opção.';
+        }
 
-        // Limpa os campos do formulário
-        document.getElementById('quero-doar').checked = false;
-        document.getElementById('quero-adotar').checked = false;
-        document.getElementById('idade').value = '';
-        document.getElementById('especie').value = '';
-        document.getElementById('sexo').value = '';
-        document.getElementById('raca').value = '';
-        document.getElementById('local').value = '';
-        document.getElementById('contato').value = '';
-        document.getElementById('mensagem').value = '';
-        document.getElementById('mensagem-erro-radio').textContent = '';
-        document.getElementById('mensagem-erro-textarea').textContent = '';
+        if (document.getElementById('mensagem').value === '') {
+          validarInputs = false;
+          mensagemErroTextarea.textContent =
+            'Campo obrigatório: favor inserir uma mensagem.';
+          document.getElementById('mensagem').classList.add('error-border');
+        } else {
+          document.getElementById('mensagem').classList.remove('error-border');
+        }
 
-        // Recarrega o feed com a nova postagem
-        await carregarFeed();
-        const modal = container.querySelector('#meuModal');
+        if (validarInputs) {
+          const dadosPost = {
+            opcaoAdocao,
+            idadePet,
+            especie,
+            sexo,
+            raca,
+            localizacao,
+            contato,
+            mensagem,
+            dataAtual,
+            postUsername,
+          };
+          await criarPost(dadosPost);
 
-        modal.style.display = 'none';
+          // Limpa os campos do formulário
+          document.getElementById('quero-doar').checked = false;
+          document.getElementById('quero-adotar').checked = false;
+          document.getElementById('idade').value = '';
+          document.getElementById('especie').value = '';
+          document.getElementById('sexo').value = '';
+          document.getElementById('raca').value = '';
+          document.getElementById('local').value = '';
+          document.getElementById('contato').value = '';
+          document.getElementById('mensagem').value = '';
+          document.getElementById('mensagem-erro-radio').textContent = '';
+          document.getElementById('mensagem-erro-textarea').textContent = '';
+
+          // Recarrega o feed com a nova postagem
+          await carregarFeed();
+          const modal = container.querySelector('#meuModal');
+
+          modal.style.display = 'none';
+        }
+      } catch (error) {
+        console.log(error);
       }
     });
 
