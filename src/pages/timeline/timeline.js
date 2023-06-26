@@ -155,7 +155,7 @@ export default () => {
         .then(() => {
           descriptionPost.value = '';
           // createPostElement.insertBefore - ajustar
-          loadPosts(); //substituir
+          loadPosts(); // substituir
           alert('Publicação efetuada com sucesso!');
         })
         .catch(() => {
@@ -173,14 +173,13 @@ export default () => {
       if (window.confirm('Tem certeza de que deseja excluir a publicação?')) {
         deletePost(postId)
           .then(() => {
-            target.closest('.post-container').remove() //remove da tela os posts que são excluídos
+            target.closest('.post-container').remove(); // remove da tela os posts que são excluídos
             alert('Publicação excluída com sucesso!');
           })
           .catch((error) => {
             alert('Ocorreu um erro ao excluir o post. Por favor, tente novamente mais tarde', error);
           });
       }
-      // loadPosts();
     } else if (editButton) {
       const postId = editButton.getAttribute('data-post-id');
       const postElement = editButton.closest('.post-container');
