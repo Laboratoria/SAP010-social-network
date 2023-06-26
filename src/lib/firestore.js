@@ -1,13 +1,15 @@
 import {
   collection,
   addDoc,
-  doc,
-  getDocs,
   query,
+  where,
+  getDocs,
   orderBy,
   deleteDoc,
 } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { auth } from './index.js';
 
 //função de criar um post no banco de dados
 
@@ -36,6 +38,78 @@ export const carregarPosts = async () => {
   return arrayPosts;
 };
 
+
+export const createUserData = async (nome) => {
+  const auth = getAuth();
+
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const userId = user.uid;
+
+      const docRef = await addDoc(collection(db, 'usernames'), {
+        name: nome,
+        userId: userId,
+      });
+    }
+  });
+};
+
+const getCurrentUserId = () => {
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        resolve(user.uid);
+      } else {
+        reject(new Error('Usuário não autenticado'));
+      }
+    });
+  });
+};
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        resolve(user);
+      } else {
+        reject(new Error('Usuário não autenticado'));
+      }
+    });
+  });
+};
+
+export const getUsername = async () => {
+  try {
+    const currentUser = await getCurrentUser();
+
+    if (currentUser) {
+      const providerData = await currentUser.providerData;
+
+      if (providerData.some((provider) => provider.providerId === 'google.com')) {
+        const username = currentUser.displayName;
+        return username;
+      }
+    }
+
+    const currentUserId = await getCurrentUserId();
+    const q = query(
+      collection(db, 'usernames'),
+      where('userId', '==', currentUserId)
+    );
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      const doc = querySnapshot.docs[0];
+      const username = doc.data().name;
+      return username;
+    } else {
+      throw new Error('Usuário não encontrado');
+    }
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+
 export const deletePost = (id) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -47,4 +121,5 @@ export const deletePost = (id) => {
       reject(e);
     }
   });
+
 };
