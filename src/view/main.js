@@ -45,3 +45,7 @@ window.addEventListener('load', async () => {
   }
   init();
 });
+
+export const navigate = (hash) => {
+  window.location.hash = hash;
+};

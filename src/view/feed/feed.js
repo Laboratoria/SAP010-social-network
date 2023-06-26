@@ -131,7 +131,7 @@ export const feed = () => {
 
       const deleteIcon = postCard.querySelector('.material-icons');
       deleteIcon.addEventListener('click', async () => {
-        const confirmDelete = confirm(
+        const confirmDelete = window.confirm(
           'Tem certeza que deseja excluir esta postagem?',
         );
         if (confirmDelete) {

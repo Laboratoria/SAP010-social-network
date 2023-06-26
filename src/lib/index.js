@@ -34,11 +34,7 @@ export function checkLogin() {
 }
 
 export const logout = () => {
-  signOut(auth)
-    .then(() => {
-      window.location.hash = '#home';
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  signOut(auth).then(() => {
+    window.location.hash = '#home';
+  });
 };
