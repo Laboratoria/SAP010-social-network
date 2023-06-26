@@ -14,7 +14,8 @@ export const feed = () => {
   const templateFeed = `
       <header class="feed-header">
       <button id="sair"> Sair </button>
-      <p> Seja bem-vindo(a) </p>
+      <div class="icon-welcome"> <img src="../../img/usericon.png" alt="ícone de usuário" class="user-icon"/> 
+      <p class="boas-vindas">Seja bem-vindo(a) </p> </div>
       <a class="feedPage" href="/#feed"></a>
 
       <button id="post">Crie seu post aqui!</button>
@@ -93,7 +94,7 @@ export const feed = () => {
   const feedHeader = container.querySelector('.feed-header p');
 
   getUsername().then((username) => {
-    feedHeader.textContent += ` ${username}`;
+    feedHeader.textContent += ` ${username}!`;
   });
 
   const carregarFeed = async () => {
