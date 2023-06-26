@@ -1,6 +1,5 @@
 import { loginUser, loginGoogle } from "../../lib";
 
-
 export default () => {
   const container = document.createElement("div");
 
@@ -24,87 +23,84 @@ export default () => {
             <p class="form">
               <button class="btnLogar" id="btnLogar">LOGAR</button>
             </p>
+            <span id='usuarioAlertHome' class='alertHome'></span>
             <p class="form">
               <button class="logarGoogle" id="btnGoogle"><img src="imagens/google.png"> Entrar com Google</button>
             <p class="form">
               <a href="/#cadastrar" type="button" class="btnCadastrar" id="btnCadastrar">CADASTRE-SE</a>
             </p>
+            
     </div>
     
     `;
-  
-container.innerHTML = template;
 
+  container.innerHTML = template;
 
-const logar = container.querySelector(".btnLogar")
- logar.addEventListener('click', () => {
-  const email = container.querySelector(".inserir_email")
-  const password = container.querySelector(".digite_senha")
-  
+  const logar = container.querySelector(".btnLogar");
+  logar.addEventListener("click", () => {
+    const email = container.querySelector(".inserir_email");
+    const password = container.querySelector(".digite_senha");
+
     loginUser(email.value, password.value)
-  
-    .then(() => {
-      window.location.hash = '#feed';
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-            if (email.value === '' || password.value === '') {
-              alert('Todos os campos devem ser preenchidos')
-            }
-            if (errorMessage === 'Firebase: Error (auth/user-not-found).') {
-              alert('Usuário não cadastrado')
-            }
-            if (errorMessage === 'Firebase: Error (auth/invalid-email).') {
-              alert('E-mail inválido')
-            }
-            if (errorMessage === 'Firebase: Error (auth/wrong-password).') {
-              alert('Senha inválida')
-            }
-    });
+      .then(() => {
+        window.location.hash = "#feed";
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        if (email.value === "" || password.value === "") {
+          usuarioAlertHome.setAttribute('style', 'display: block');
+          usuarioAlertHome.innerHTML ="Todos os campos devem ser preenchidos!";
+        }
+        if (errorMessage === "Firebase: Error (auth/user-not-found).") {
+          usuarioAlertHome.setAttribute('style', 'display: block');
+          usuarioAlertHome.innerHTML = "Usuário não cadastrado!";
+        }
+        if (errorMessage === "Firebase: Error (auth/invalid-email).") {
+          usuarioAlertHome.setAttribute('style', 'display: block');
+          usuarioAlertHome.innerHTML = "E-mail inválido!";
+        }
+        if (errorMessage === "Firebase: Error (auth/wrong-password).") {
+          usuarioAlertHome.setAttribute('style', 'display: block');
+          usuarioAlertHome.innerHTML = "Senha inválida!";
+        }
+      });
   });
 
-  const btnGoogle = container.querySelector (".logarGoogle")
-  btnGoogle.addEventListener ('click', () => {
-    loginGoogle ()
-    .then(() => {
-      window.location.hash = '#feed';
-    })
-    .catch((error) => {
-      const errorCode = errosValid(error.code);
-      alert(errorCode)
-    });
+  const btnGoogle = container.querySelector(".logarGoogle");
+  btnGoogle.addEventListener("click", () => {
+    loginGoogle()
+      .then(() => {
+        window.location.hash = "#feed";
+      })
+      .catch((error) => {
+        const errorCode = errosValid(error.code);
+        alert(errorCode);
+      });
   });
-//função olho
-  const passwordImput = container.querySelector("#digitesenha")
-  const olho = container.querySelector("#olinho-visual")
-  olho.addEventListener('click', () => {
+  //função olho
+  const passwordImput = container.querySelector("#digitesenha");
+  const olho = container.querySelector("#olinho-visual");
+  olho.addEventListener("click", () => {
+    let ImputTypePassoword = passwordImput.type === "password";
 
-  let ImputTypePassoword = passwordImput.type === "password"
+    if (ImputTypePassoword) {
+      // se for passowrd qual é ação
+      showPassord();
+    } else {
+      // se não for qual ação deve tomar
+      hidePassword();
+    }
+  });
+  function showPassord() {
+    passwordImput.setAttribute("type", "text");
 
-  if(ImputTypePassoword){
-   // se for passowrd qual é ação
-   showPassord()
-  } else {
-    // se não for qual ação deve tomar
-    hidePassword()
+    olho.classList.replace("bi-eye-fill", "bi-eye-slash-fill");
   }
-})
- function  showPassord(){
-  passwordImput.setAttribute( "type","text")
+  function hidePassword() {
+    passwordImput.setAttribute("type", "password");
 
-  olho.classList.replace('bi-eye-fill','bi-eye-slash-fill')
-}
- function hidePassword(){
-  passwordImput.setAttribute( "type","password")
-  
-  olho.classList.replace('bi-eye-slash-fill','bi-eye-fill')
- }
+    olho.classList.replace("bi-eye-slash-fill", "bi-eye-fill");
+  }
 
-
-return container;
-
+  return container;
 };
-
-
-
-
