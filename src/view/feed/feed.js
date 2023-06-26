@@ -1,19 +1,18 @@
-
 import {
   carregarPosts,
   criarPost,
   getUsername,
   getCurrentUser,
-  deletePost
+  deletePost,
 } from '../../lib/firestore.js';
 import { logout } from '../../lib/index.js';
-
 
 export const feed = () => {
   const container = document.createElement('div');
   const templateFeed = `
       <header class="feed-header">
-      <button id="sair"> Sair </button>
+      <div class='logo-sair-container'>
+      <img src="../../img/logo.png" class="logo-repet" id="logo-repet-feed"> <button id="sair"> Sair </button> </div>
       <div class="icon-welcome"> <img src="../../img/usericon.png" alt="ícone de usuário" class="user-icon"/> 
       <p class="boas-vindas">Seja bem-vindo(a) </p> </div>
       <a class="feedPage" href="/#feed"></a>
@@ -98,7 +97,6 @@ export const feed = () => {
   });
 
   const carregarFeed = async () => {
-
     const currentUser = await getCurrentUser();
     console.log('usuário atual', currentUser);
 
@@ -108,7 +106,6 @@ export const feed = () => {
     feedPage.innerHTML = '';
 
     posts.forEach(async (post) => {
-
       const postCard = document.createElement('div');
       postCard.innerHTML = `
         <section class='container-post'>
@@ -134,7 +131,9 @@ export const feed = () => {
 
       const deleteIcon = postCard.querySelector('.material-icons');
       deleteIcon.addEventListener('click', async () => {
-        const confirmDelete = confirm("Tem certeza que deseja excluir esta postagem?");
+        const confirmDelete = confirm(
+          'Tem certeza que deseja excluir esta postagem?',
+        );
         if (confirmDelete) {
           try {
             await deletePost(post.id);
@@ -145,9 +144,9 @@ export const feed = () => {
           }
         }
       });
-    
+
       feedPage.appendChild(postCard);
-    })
+    });
   };
 
   carregarFeed();
@@ -196,27 +195,25 @@ export const feed = () => {
         const dataAtual = Date.now();
         const postUsername = username;
 
-        //trecho para validação dos inputs de radio e textarea
+        //  trecho para validação dos inputs de radio e textarea
         let validarInputs = true;
         const mensagemErroRadio = document.getElementById(
-          'mensagem-erro-radio'
+          'mensagem-erro-radio',
         );
         const mensagemErroTextarea = document.getElementById(
-          'mensagem-erro-textarea'
+          'mensagem-erro-textarea',
         );
 
         if (
           !document.querySelector('input[type="radio"][name="quero"]:checked')
         ) {
           validarInputs = false;
-          mensagemErroRadio.textContent =
-            'Campo obrigatório: favor selecionar uma opção.';
+          mensagemErroRadio.textContent = 'Campo obrigatório: favor selecionar uma opção.';
         }
 
         if (document.getElementById('mensagem').value === '') {
           validarInputs = false;
-          mensagemErroTextarea.textContent =
-            'Campo obrigatório: favor inserir uma mensagem.';
+          mensagemErroTextarea.textContent = 'Campo obrigatório: favor inserir uma mensagem.';
           document.getElementById('mensagem').classList.add('error-border');
         } else {
           document.getElementById('mensagem').classList.remove('error-border');

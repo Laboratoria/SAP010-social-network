@@ -9,11 +9,13 @@ import {
   doc,
 } from 'firebase/firestore';
 
+import { onAuthStateChanged } from 'firebase/auth';
+
 import { db } from '../firebase/firebase';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
 import { auth } from './index.js';
 
-//função de criar um post no banco de dados
+//  função de criar um post no banco de dados
 
 export const criarPost = async (dadosPost) => {
   try {
@@ -24,7 +26,7 @@ export const criarPost = async (dadosPost) => {
   }
 };
 
-//função de carregar os dados das postagens do banco de dados em ordem de data
+//  função de carregar os dados das postagens do banco de dados em ordem de data
 
 export const carregarPosts = async () => {
   const q = query(collection(db, 'post'), orderBy('dataAtual', 'desc'));
@@ -40,34 +42,32 @@ export const carregarPosts = async () => {
   return arrayPosts;
 };
 
+//  Adcionar nome e ID à coleção 'usernames'
 export const createUserData = async (nome) => {
-  const auth = getAuth();
-
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       const userId = user.uid;
-
-      const docRef = await addDoc(collection(db, 'usernames'), {
+      await addDoc(collection(db, 'usernames'), {
         name: nome,
-        userId: userId,
+        userId,
       });
     }
   });
 };
 
-const getCurrentUserId = () => {
-  return new Promise((resolve, reject) => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        resolve(user.uid);
-      } else {
-        reject(new Error('Usuário não autenticado'));
-      }
-    });
+// recupera o Id do usuário atual
+const getCurrentUserId = () => new Promise((resolve, reject) => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      resolve(user.uid);
+    } else {
+      reject(new Error('Usuário não autenticado'));
+    }
   });
-};
+});
 
-export const getCurrentUser = () => {
+// recupera todas as informações do usuário atual
+export function getCurrentUser() {
   return new Promise((resolve, reject) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -77,8 +77,9 @@ export const getCurrentUser = () => {
       }
     });
   });
-};
+}
 
+// primeiro verifica o provedor de login, depois recupera o username
 export const getUsername = async () => {
   try {
     const currentUser = await getCurrentUser();
@@ -97,31 +98,28 @@ export const getUsername = async () => {
     const currentUserId = await getCurrentUserId();
     const q = query(
       collection(db, 'usernames'),
-      where('userId', '==', currentUserId)
+      where('userId', '==', currentUserId),
     );
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
-      const doc = querySnapshot.docs[0];
-      const username = doc.data().name;
+      const currentDoc = querySnapshot.docs[0];
+      const username = currentDoc.data().name;
       return username;
-    } else {
-      throw new Error('Usuário não encontrado');
     }
+    return null;
   } catch (error) {
     console.error(error);
     throw error;
   }
 };
-export const deletePost = (id) => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      await deleteDoc(doc(db, 'post', id));
-      console.log('Document deleted with ID: ', id);
-      resolve();
-    } catch (e) {
-      console.error('Error deleting document: ', e);
-      reject(e);
-    }
-  });
-};
+export const deletePost = (id) => new Promise((resolve, reject) => {
+  try {
+    deleteDoc(doc(db, 'post', id));
+    console.log('Document deleted with ID: ', id);
+    resolve();
+  } catch (e) {
+    console.error('Error deleting document: ', e);
+    reject(e);
+  }
+});

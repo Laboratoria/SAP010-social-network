@@ -5,7 +5,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   onAuthStateChanged,
-  signOut
+  signOut,
 } from 'firebase/auth';
 
 import { app } from '../firebase/firebase.js';
@@ -33,13 +33,12 @@ export function checkLogin() {
   });
 }
 
-
-
-
 export const logout = () => {
-  signOut(auth).then(() => {
-    window.location.hash = '#home'
-  }).catch((error) => {
-    // An error happened.
-  });
-}
+  signOut(auth)
+    .then(() => {
+      window.location.hash = '#home';
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
