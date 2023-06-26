@@ -2,9 +2,11 @@ import login from "./pages/Login/login.js";
 import perfil from "./pages/Perfil/perfil.js";
 import cadastro from "./pages/Cadastro/cadastro.js";
 
-const main = document.querySelector("root");
+const main = document.querySelector("#root");
 const init = () => {
+  
   window.addEventListener("hashchange", () => {
+    main.innerHTML = "";
     switch(window.location.hash){
       case "#criarConta":
         main.appendChild(cadastro());
