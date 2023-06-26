@@ -1,10 +1,13 @@
+
 import {
   carregarPosts,
   criarPost,
   getUsername,
   getCurrentUser,
+  deletePost
 } from '../../lib/firestore.js';
 import { logout } from '../../lib/index.js';
+
 
 export const feed = () => {
   const container = document.createElement('div');
@@ -76,7 +79,9 @@ export const feed = () => {
             <p id="mensagem-erro-textarea" class="mensagem-erro"></p>
 
             <button type="submit" class="publicar" id="publicar">Publicar</button>
+
             </form>
+
 
         </div>
       </div>
@@ -92,14 +97,17 @@ export const feed = () => {
   });
 
   const carregarFeed = async () => {
+
     const currentUser = await getCurrentUser();
     console.log('usuário atual', currentUser);
+
     const posts = await carregarPosts();
 
     const feedPage = container.querySelector('.feed-page');
     feedPage.innerHTML = '';
 
     posts.forEach(async (post) => {
+
       const postCard = document.createElement('div');
       postCard.innerHTML = `
         <section class='container-post'>
@@ -118,11 +126,27 @@ export const feed = () => {
            <p>${post.mensagem}</p>
           </div>
           <p>Contato: ${post.contato}</p>
-        </section>
+         
+          <i class="material-icons" data-post-id="${post.id}">delete</i>
+          </section>
       `;
 
+      const deleteIcon = postCard.querySelector('.material-icons');
+      deleteIcon.addEventListener('click', async () => {
+        const confirmDelete = confirm("Tem certeza que deseja excluir esta postagem?");
+        if (confirmDelete) {
+          try {
+            await deletePost(post.id);
+            // Atualize o feed após a exclusão do post
+            postCard.remove();
+          } catch (error) {
+            console.error('Erro ao deletar o post', error);
+          }
+        }
+      });
+    
       feedPage.appendChild(postCard);
-    });
+    })
   };
 
   carregarFeed();

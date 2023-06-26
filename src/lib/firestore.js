@@ -5,6 +5,7 @@ import {
   where,
   getDocs,
   orderBy,
+  deleteDoc,
 } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
@@ -36,6 +37,7 @@ export const carregarPosts = async () => {
 
   return arrayPosts;
 };
+
 
 export const createUserData = async (nome) => {
   const auth = getAuth();
@@ -107,4 +109,17 @@ export const getUsername = async () => {
     console.error(error);
     throw error;
   }
+
+export const deletePost = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      await deleteDoc(doc(db, "post", id));
+      console.log('Document deleted with ID: ', id);
+      resolve();
+    } catch (e) {
+      console.error('Error deleting document: ', e);
+      reject(e);
+    }
+  });
+
 };
