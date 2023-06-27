@@ -10,46 +10,57 @@
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    position: relative; 
-    animation: entering 0.7s ease-in-out;
+    display: grid;
+    grid-template-areas:
+      "top"
+      "middle"
+      "bottom";
+    grid-template-rows: auto auto 1fr;
+    animation: entering 0.7s ease-in-out;     
+}
+
+.left-timeline {
+    grid-area: top;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background-image: linear-gradient(var(--darkblue), 50%, var(--blue));
+    padding: 0.5em;  
     
-    
+}
+
+.img-timeline {
+    grid-area: bottom;
+    position: sticky;
+    top: 100%;
+    z-index: 2;
 }
 
 .postTitle {
     font-weight: bold;
     color: var(--white);
     font-size: 1em;
+    padding: 1em;
+    text-align: center;
 }
 
 .profilePhoto {
     width: 6em;
-    margin: 1em;
-    margin-top: 1em;
+    margin: 0.5em;
     border-radius: 50%;
 }
 
-.img-timeline {
-    position: absolute; 
-    bottom: 0;
-    width: 18em;
-    display: flex;
-    flex-direction: column-reverse;
-    left: 50%; 
-    transform: translateX(-50%);   
- }
-
 .right-timeline, .postList {
-    align-items: center;
-    justify-content: center;
-    padding: 2em;
-    margin-bottom: 12em;  
+    grid-area: middle;
+    position: sticky;
+    bottom: 0;
+    z-index: -1; 
+    margin-top: 14em;
 }
 
 
-.input-container { /*input e botao enviar*/
+.input-container { 
     display: flex;
     flex-direction: column;
     width: 96%;
@@ -114,6 +125,8 @@
     margin-right: auto;
     background-image: linear-gradient(var(--darkblue), var(--blue));
     font-weight: bold;
+    letter-spacing: 0.07em;
+
 }
 
 .dataPost {
@@ -133,16 +146,24 @@
    margin-bottom: 0.7em;
    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
    font-weight: bold;
+   
+}
+.number-like {
+    color: black;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    position: fixed;
+    margin: 2em 0 0 0.7em;
+
 }
 
 .icon-timeline {
-    margin: 1em;
     font-size: 0.9em;  
     color: var(--white); 
-    width: 3em;
-    margin-left: 2em;
-    margin-right: 2em;
+    width: 2em;
 }
+
 a {
     text-decoration: none;
 }
@@ -150,6 +171,7 @@ a {
 .icons {
     background-color: var(--lightblue);
     border: none;
+    margin-bottom: 1em;
 }
 
 .icons:hover, .icon-timeline:hover {
@@ -160,7 +182,6 @@ a {
     height: auto;
 
 }
-
 @media screen and (min-width: 768px) {
     ::-webkit-scrollbar{
         width: 0.5em;
@@ -186,46 +207,54 @@ a {
         line-height: 1.5;
         font-size: 1.2em;     
         background-image: linear-gradient(to right, var(--darkblue), var(--blue));
-
-
     }
+
     .img-timeline {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 18em;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        transform: translate(5%, -105%);
     }
      
     .left-timeline {
         grid-area: left;  
-        position: relative;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: baseline ;
         flex-direction: column;
-        
+        background-image: none;
+        text-align: justify;
 
     }
+    
     .icon-timeline {
         text-align: center;
     }
-    .icones {
-        margin-bottom: 5em;
 
-    
+    .icones {
+        margin-bottom: 5em;   
     }
+
     .right-timeline, .postList {
-        grid-area: right; /*defide que o timeline é a segunda coluna*/
+        grid-area: right; 
         overflow-y: scroll;
         border-left: solid var(--darkblue) 0.1em;
-        margin-bottom: 0;
-
+        box-shadow: inset 4px 0px 4px rgba(0, 0, 0, 0.25);
+        z-index: 1;
+        margin: 0.1em 0 1.5em 0;
+        
     }
 
     .post-container {
         font-size: 0.8em;
+    }
     
-      }
+    .input-container {
+    margin-top: 3em;
+    margin-bottom: 4em;
+
+    }
+    
     .input-container, .post-container { /*input e botao enviar*/
         width: 80%;
     }   
