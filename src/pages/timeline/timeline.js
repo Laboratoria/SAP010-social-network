@@ -12,23 +12,23 @@ export default () => {
   const timeline = document.createElement('div');
   const viewPost = `
   <div class="container">
-  <div class='left-timeline'>
-    <img src='./img/assets/icon-photo.png' alt='Foto de perfil' class='profilePhoto' width="300px">
-    <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
-    <figure class='icones'>
-          <a href="" class="icon-timeline"><img src="./img/assets/icon-home.png" class="icon-timeline" alt="Icone home"> Home </a>
-          <button type="button" class='button-timeline' id='logout-btn'><img src='./img/assets/icon-sair.png' alt='logout icon' width='30px'>
-        </figure>
-        <input type="file" id="profilePhotoInput" accept="image/*" style="display: none;">
+    <div class='left-timeline'>
+      <img src='./img/assets/icon-photo.png' alt='Foto de perfil' class='profilePhoto'>
+      <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
+      <figure class='icones'>
+        <button type="button" class='button-timeline' id='home-btn'><img src="./img/assets/icon-home.png" class="icon-timeline" alt="Icone home">
+        <button type="button" class='button-timeline' id='logout-btn'><img src='./img/assets/icon-sair.png' class="icon-timeline" alt='logout icon'>
+      </figure>
+      <input type="file" id="profilePhotoInput" accept="image/*" style="display: none;">
+    </div>
+    <img src="./img/assets/imagetimeline.png" class="img-timeline" alt="edit image" >
+    <div class="right-timeline">
+      <div class="input-container">
+        <textarea class="input-message" id="postArea" placeholder="COMPARTILHE UMA EXPERIÊNCIA..."></textarea>
+        <button class="shareBtn" id="sharePost">COMPARTILHAR</button>
       </div>
-      <img src="./img/assets/imagetimeline.png" class="img-timeline" alt="edit image" width="300px">
-      <div class="right-timeline">
-        <div class="input-container">
-          <textarea class="input-message" id="postArea" placeholder="COMPARTILHE UMA EXPERIÊNCIA..."></textarea>
-          <button class="shareBtn" id="sharePost">COMPARTILHAR</button>
-        </div>
-        <div id="postList"></div>
-      </div>
+    <div id="postList"></div>
+  </div>
     </div>
   `;
 
@@ -67,18 +67,15 @@ export default () => {
         </div>
         <p class='textPost'>${description}</p>
         <div class='image-icons'>
-
+        <span class='likePost' id='likes-counter-${postId}'>${whoLiked.length}</span>
         <button type="button" class='icons' id='like-Post' data-post-id='${postId}'>
-        <a class='icons' id='likePost'><img src='./img/assets/likeicon.png' alt='like image' width='30px'></a>
+        <a class='icons' id='likePost'><img src='./img/assets/likeicon.png' alt='like image' class='icons'></a>
       </button>
-      <span id='likes-counter-${postId}'>${whoLiked.length}</span>
-
-
       ${authorId === getUserId() ? `<button type="button" data-post-id='${postId}' class='icons' id='editPost'>
-      <a class='icons'><img src='./img/assets/editicon.png' alt='edit image' width='30px'></a>
+      <a class='icons'><img src='./img/assets/editicon.png' alt='edit image' class='icons'></a>
     </button>
     <button type="button" class='icons' id='btn-delete' data-post-id='${postId}'>
-    <img src='./img/assets/deleteicon.png' alt='delete image' width='30px'>
+    <img src='./img/assets/deleteicon.png' alt='delete image' class='icons'>
     </button>` : ''}
     </div>
   </div>
