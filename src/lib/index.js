@@ -32,4 +32,5 @@ export const authLoginFacebook = () => signInWithPopup(auth, provider);
 
 export const logout = async () => {
   await signOut(auth);
+  window.location.hash = '';
 }

@@ -36,6 +36,7 @@ header h1 {
   align-items: center;
 }
 
+
 nav ul {
   display: flex;
   flex-direction: column;
