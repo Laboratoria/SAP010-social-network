@@ -6,6 +6,7 @@ import {
   FacebookAuthProvider,
   onAuthStateChanged,
   updateProfile,
+  signOut,
 } from 'firebase/auth';
 
 import { auth } from '../Firebase/instalfirebase';
@@ -29,3 +30,8 @@ export const newUser = async (email, senha, displayName) => {
 
 const provider = new FacebookAuthProvider();
 export const authLoginFacebook = () => signInWithPopup(auth, provider);
+
+export const logout = async () => {
+  await signOut(auth);
+  window.location.hash = '';
+};
