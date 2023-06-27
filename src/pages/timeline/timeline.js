@@ -1,4 +1,4 @@
-import { getUserName, getUserId } from '../../firebase/auth.js';
+import { getUserName, getUserId, logOut } from '../../firebase/auth.js';
 import {
   createPost,
   accessPost,
@@ -7,7 +7,6 @@ import {
   deletePost,
 } from '../../firebase/firestore.js';
 import { uploadProfilePhoto } from '../../firebase/storage.js';
-// import delPost from './posts.js';
 
 export default () => {
   const timeline = document.createElement('div');
@@ -18,7 +17,7 @@ export default () => {
     <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
     <figure class='icones'>
           <a href="" class="icon-timeline"><img src="./img/assets/icon-home.png" class="icon-timeline" alt="Icone home"> Home </a>
-          <a href="" class="icon-timeline"><img src="./img/assets/icon-sair.png" class="icon-timeline" alt="Icone sair "> Sair </a>
+          <button type="button" class='button-timeline' id='logout-btn'><img src='./img/assets/icon-sair.png' alt='logout icon' width='30px'>
         </figure>
         <img src="./img/assets/imagetimeline.png" class="img-timeline" alt="edit image" width="300px">
         <input type="file" id="profilePhotoInput" accept="image/*" style="display: none;">
@@ -40,6 +39,7 @@ export default () => {
   const postList = timeline.querySelector('#postList');
   const profilePhotoInput = timeline.querySelector('#profilePhotoInput');
   const profilePhoto = timeline.querySelector('.profilePhoto');
+  const logOutBtn = timeline.querySelector('#logout-btn');
 
   const createPostElement = (
     name,
@@ -210,6 +210,16 @@ export default () => {
   if (storedProfilePhotoUrl) {
     profilePhoto.src = storedProfilePhotoUrl;
   }
+
+  logOutBtn.addEventListener('click', () => {
+    logOut()
+      .then(() => {
+        window.location.hash = '#login';
+      })
+      .catch(() => {
+        alert('Ocorreu um erro, tente novamente.');
+      });
+  });
 
   loadPosts();
   return timeline;
