@@ -1,3 +1,4 @@
+
 a {
   text-decoration: none;
 }
@@ -5,6 +6,7 @@ a {
 #root {
   width: 100vw;
   height: 100vh;
+  
 }
 
 main {
@@ -91,6 +93,7 @@ nav ul {
   margin-block: 18px;
   background-color: var(--BackcgroundColorDark);
   padding: 12px;
+  border-radius: 5px;
 }
 
 .card-header {
@@ -158,7 +161,7 @@ nav ul {
 
 .boxExperience {
   background-color: var(--BackcgroundColorDark);
-  padding: 10px;
+  padding: 12px;
   width: 100%;
   max-width: 604px;
   z-index: 1;
@@ -168,10 +171,16 @@ nav ul {
 
 .experience-button {
   border-radius: 10px;
-  padding: 2px;
-  width: calc(100% - 48px);
-  margin-inline: 24px;
+  padding: 8px;
+  width: 100%;
+  margin-inline: 0;
   background-color: var(--BackcgroundColorLight);
   cursor: pointer;
   border: none;
+  text-align: left;
+}
+
+.experience-button p {
+  color: var(--TextColor);
+  font-weight: 600;
 }

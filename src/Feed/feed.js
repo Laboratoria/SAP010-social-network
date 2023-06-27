@@ -23,7 +23,9 @@ export const feedUser = () => {
     <section class="feed">
     <img src="Img/bg-feed.png"/>
     <div class="boxExperience">
-      <button id="experienceButton" class="experience-button">Qual experiência você teve hoje?</button>
+      <button id="experienceButton" class="experience-button">
+      <p>Qual experiência você teve hoje?</p>
+      </button>
     </div>
     <div class="post-list"> 
       <div class="card">
