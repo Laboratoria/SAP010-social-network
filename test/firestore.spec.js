@@ -3,8 +3,16 @@ import {
   getDoc,
   doc,
   db,
+  deleteDoc,
+  updateDoc,
 } from 'firebase/firestore';
-import { createPost, hasUserLikedPost } from '../src/firebase/firestore';
+
+import {
+  createPost,
+  hasUserLikedPost,
+  deletePost,
+  updatePost,
+} from '../src/firebase/firestore';
 import { getAppAuth } from '../src/firebase/auth';
 
 jest.mock('firebase/firestore');
@@ -33,6 +41,20 @@ describe('createPost', () => {
     await createPost(description);
     expect(addDoc).toHaveBeenCalledTimes(1);
     expect(addDoc).toHaveBeenCalledWith(undefined, post);
+  });
+});
+
+describe('deletePost', () => {
+  it('should delete a post', async () => {
+    deletePost();
+    expect(deleteDoc).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('updatePost', () => {
+  it('should edit a post', async () => {
+    updatePost();
+    expect(updateDoc).toHaveBeenCalledTimes(1);
   });
 });
 
