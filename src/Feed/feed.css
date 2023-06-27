@@ -10,18 +10,18 @@ a {
 main {
   display: flex;
   flex-direction: row;
-  background-color: #e9e9eb;
+  background-color: var(--BackcgroundColor);
 }
 
 sidebar {
   width: 254px;
-  background-color: #F9AB59;
+  background-color: var(--CorSecundaria);
   height: 100vh;
 }
 
 sidebar header {
-  background-color: #2A2C41;
-  color: #F9AB59;
+  background-color: var(--TextColor);
+  color: var(--CorSecundaria);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,7 +44,7 @@ nav ul {
 }
 
 .nav-item > a {
-  color: #2A2C41;
+  color: var(--TextColor);
   font-size: 24px;
   display: flex;
   align-items: center;
@@ -78,12 +78,45 @@ nav ul {
   padding: 12px;
 }
 
-.feed img {
+.feed > img  {
   position: absolute;
   right: 0;
   bottom: 0;
   width: 370px;
   height: 406px;
+}
+
+.card {
+  width: 100%;
+  max-width: 604px;
+  margin-block: 18px;
+  background-color: var(--BackcgroundColorDark);
+  padding: 12px;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-avatar img {
+  border-radius: 50%;
+}
+
+.card-user {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
 }
 
 .post {
@@ -125,21 +158,21 @@ nav ul {
 }
 
 .boxExperience {
-  background-color: #d9d9d9;
+  background-color: var(--BackcgroundColorDark);
   padding: 10px;
   width: 100%;
   max-width: 604px;
   z-index: 1;
   height: 60px;
-  
+  border-radius: 5px;
 }
 
 .experience-button {
-  border: 1px solid black;
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 2px;
   width: calc(100% - 48px);
   margin-inline: 24px;
-  background-color: #ffffff;
+  background-color: var(--BackcgroundColorLight);
   cursor: pointer;
+  border: none;
 }

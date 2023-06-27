@@ -24,6 +24,26 @@ export const feedUser = () => {
     <div class="boxExperience">
       <button id="experienceButton" class="experience-button">Qual experiência você teve hoje?</button>
     </div>
+    <div class="post-list"> 
+      <div class="card">
+        <div class="card-header">
+          
+          <div class="card-user">
+            <div class="card-avatar"> <img src="https://placekitten.com/50/50"/></div>
+            <h5>Roxane Principe</h5>
+          </div>
+          <div class="card-actions">...</div>
+        </div>
+        <div class="card-description">
+          <p>Estou surpresa por ser um ambiente tão bom, comida boa e com o ótimo atendimento que inclusive fomos atendidos pelo baixinho. Ele foi ótimo e muito atencioso com a gente e com todos ao redor. A comida é maravilhosa, uma experiência incrível, todos tem que fazer isso um dia!</p>
+        </div>
+        <div class="card-info">
+          <div class="card-likes"><3 5</div>
+          <div class="card-restaurant">Starbucks</div>
+        </div>
+      </div>
+    </div>
+
     </section>
  </main>
   <div id="createPost" class="post">

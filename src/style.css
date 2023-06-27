@@ -6,6 +6,10 @@
     --CorSecundaria: #f9ab59;
     --CorTerciaria: #fff;
     --CorQuartenaria: #f2f2f2;
+    --BackcgroundColorLight: #E6E6E7;
+    --BackcgroundColor: #e1e1e3;
+    --BackcgroundColorDark: #CFCFD3;
+    --TextColor: #2A2C41;
 }
 
 * {
