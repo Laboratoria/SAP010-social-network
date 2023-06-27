@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
   updateProfile,
   FacebookAuthProvider,
+  signOut,
 } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { app, db } from './app.js';
@@ -69,4 +70,9 @@ export const loginFacebook = () => {
     const user = userCredential.user;
     return createUserDocument(user);
   });
+};
+
+export const logOut = () => {
+  const auth = getAppAuth();
+  return signOut(auth);
 };

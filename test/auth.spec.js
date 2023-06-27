@@ -3,6 +3,8 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
+  updateProfile,
+  signOut,
 } from 'firebase/auth';
 
 import {
@@ -12,9 +14,24 @@ import {
   loginWithEmail,
   getUserId,
   getUserName,
+  logOut,
 } from '../src/firebase/auth';
 
 jest.mock('firebase/auth');
+jest.mock('firebase/firestore');
+
+const mockUserCredential = {
+  user: {
+    displayName: 'Maria',
+    uid: 'uid9876',
+  },
+};
+
+const mockUpdateUserProfile = {
+  uid: 'uid9876',
+  email: 'maria@example.com',
+  displayName: 'Maria da Silva',
+};
 
 describe('loginGoogle', () => {
   it('expect to be a function', () => {
@@ -22,7 +39,7 @@ describe('loginGoogle', () => {
   });
 
   it('should log in with Google Account', async () => {
-    signInWithPopup.mockResolvedValueOnce();
+    signInWithPopup.mockResolvedValueOnce(mockUserCredential);
     await loginGoogle();
     expect(signInWithPopup).toHaveBeenCalledTimes(1);
   });
@@ -38,7 +55,7 @@ describe('loginFacebook', () => {
   });
 
   it('should log in with Facebook Account', async () => {
-    signInWithPopup.mockResolvedValueOnce();
+    signInWithPopup.mockResolvedValueOnce(mockUserCredential);
     await loginFacebook();
     expect(signInWithPopup).toHaveBeenCalledTimes(1);
   });
@@ -51,7 +68,8 @@ getAuth.mockReturnValue(auth);
 
 describe('createUserWithEmail', () => {
   it('should create a new user', async () => {
-    createUserWithEmailAndPassword.mockResolvedValue(auth);
+    createUserWithEmailAndPassword.mockResolvedValue(mockUserCredential);
+    updateProfile.mockResolvedValue(mockUpdateUserProfile);
     const name = 'Social';
     const lastName = 'Network';
     const email = 'social@network.com';
@@ -121,5 +139,15 @@ describe('getUserName', () => {
     const result = getUserName();
 
     expect(result).toBe('viajante');
+  });
+});
+
+describe('logOut', () => {
+  it('should log out the user', () => {
+    signOut.mockResolvedValue({
+      user: {},
+    });
+    logOut();
+    expect(signOut).toHaveBeenCalledTimes(1);
   });
 });

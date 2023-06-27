@@ -1,12 +1,12 @@
-import { getUserName, getUserId } from '../../firebase/auth.js';
+import { getUserName, getUserId, logOut } from '../../firebase/auth.js';
 import {
   createPost,
   accessPost,
   updatePost,
   likePost,
+  deletePost,
 } from '../../firebase/firestore.js';
 import { uploadProfilePhoto } from '../../firebase/storage.js';
-import delPost from './posts.js';
 
 export default () => {
   const timeline = document.createElement('div');
@@ -17,7 +17,7 @@ export default () => {
     <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
     <figure class='icones'>
           <a href="" class="icon-timeline"><img src="./img/assets/icon-home.png" class="icon-timeline" alt="Icone home"> Home </a>
-          <a href="" class="icon-timeline"><img src="./img/assets/icon-sair.png" class="icon-timeline" alt="Icone sair "> Sair </a>
+          <button type="button" class='button-timeline' id='logout-btn'><img src='./img/assets/icon-sair.png' alt='logout icon' width='30px'>
         </figure>
         <input type="file" id="profilePhotoInput" accept="image/*" style="display: none;">
       </div>
@@ -39,6 +39,7 @@ export default () => {
   const postList = timeline.querySelector('#postList');
   const profilePhotoInput = timeline.querySelector('#profilePhotoInput');
   const profilePhoto = timeline.querySelector('.profilePhoto');
+  const logOutBtn = timeline.querySelector('#logout-btn');
 
   const createPostElement = (
     name,
@@ -136,7 +137,6 @@ export default () => {
       uploadProfilePhoto(file)
         .then((url) => {
           profilePhoto.src = url;
-          // Armazena a URL da foto de perfil no armazenamento local (localStorage)
           localStorage.setItem('profilePhotoUrl', url);
         })
         .catch((error) => {
@@ -154,7 +154,8 @@ export default () => {
       createPost(description)
         .then(() => {
           descriptionPost.value = '';
-          loadPosts();
+          // createPostElement.insertBefore - ajustar
+          loadPosts(); // substituir
           alert('Publicação efetuada com sucesso!');
         })
         .catch(() => {
@@ -169,8 +170,16 @@ export default () => {
     const editButton = target.closest('#editPost');
     if (deleteButton) {
       const postId = deleteButton.getAttribute('data-post-id');
-      delPost(postId);
-      loadPosts();
+      if (window.confirm('Tem certeza de que deseja excluir a publicação?')) {
+        deletePost(postId)
+          .then(() => {
+            target.closest('.post-container').remove(); // remove da tela os posts que são excluídos
+            alert('Publicação excluída com sucesso!');
+          })
+          .catch((error) => {
+            alert('Ocorreu um erro ao excluir o post. Por favor, tente novamente mais tarde', error);
+          });
+      }
     } else if (editButton) {
       const postId = editButton.getAttribute('data-post-id');
       const postElement = editButton.closest('.post-container');
@@ -197,11 +206,20 @@ export default () => {
   postBtn.addEventListener('click', handlePostBtnClick);
   postList.addEventListener('click', handlePostListClick);
 
-  // Verifica se há uma URL de foto de perfil armazenada no armazenamento local (localStorage)
   const storedProfilePhotoUrl = localStorage.getItem('profilePhotoUrl');
   if (storedProfilePhotoUrl) {
     profilePhoto.src = storedProfilePhotoUrl;
   }
+
+  logOutBtn.addEventListener('click', () => {
+    logOut()
+      .then(() => {
+        window.location.hash = '#login';
+      })
+      .catch(() => {
+        alert('Ocorreu um erro, tente novamente.');
+      });
+  });
 
   loadPosts();
   return timeline;

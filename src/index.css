@@ -71,9 +71,7 @@ font-size: 0.6rem;
 position: absolute;
 bottom: 0;
 left: 0;
-width: 100%;
 z-index: 1;
-} 
 
 footer a {
 color: var(--white);

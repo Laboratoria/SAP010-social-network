@@ -61,7 +61,6 @@ export default () => {
 
   container.innerHTML = templateLogin;
 
-  // Selecionando os elementos do formulário de login.
   const emailInput = container.querySelector('#email');
   const senhaInput = container.querySelector('#senha');
   const loginButton = container.querySelector('#login-button');
@@ -77,12 +76,10 @@ export default () => {
     errorMessage.textContent = message;
   }
 
-  // Função para lidar com o evento de login.
   const handleLogin = () => {
     const email = emailInput.value;
     const senha = senhaInput.value;
 
-    // Chamando a função de login com e-mail e senha.
     loginWithEmail(email, senha)
       .then(() => {
         window.location.hash = '#timeline';
@@ -93,7 +90,6 @@ export default () => {
       });
   };
 
-  // Função para lidar com o evento de login com o Google.
   const handleGoogleLogin = () => {
     loginGoogle()
       .then(() => {
