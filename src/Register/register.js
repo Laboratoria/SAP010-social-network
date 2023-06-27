@@ -77,7 +77,7 @@ export const registerUser = () => {
         errorTxt.innerHTML = nameErrorRegister || emailErrorRegister || senhaErrorRegister;
       } else {
         // Caso contrário, prossiga com o login
-        newUser(emailInputRegister, passwordRegister)
+        newUser(emailInputRegister, passwordRegister, nameRegister2)
           .then(() => {
             window.location.hash = '#feed';
           })

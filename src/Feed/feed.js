@@ -1,4 +1,5 @@
 import './feed.css';
+import { authStateChanged } from '../lib/index';
 
 export const feedUser = () => {
   const container = document.createElement('div');
@@ -53,6 +54,7 @@ export const feedUser = () => {
     <form>
       
       <span id="userName"></span>
+      <img id="userPhoto" src="" alt="Foto do perfil">
       
       <label for="postContent"> </label>
       <textarea id="postContent" placeholder="Qual experiência você teve hoje?" required></textarea>
@@ -90,8 +92,20 @@ export const feedUser = () => {
       closeModal();
     }
   });
-
   // Esse trecho de código permite fechar o modal quando o usuário clica fora da área do modal.
+
+  authStateChanged((user) => {
+    if (user) {
+      const userNameElement = document.getElementById('userName');
+      const userPhotoElement = document.getElementById('userPhoto');
+      userNameElement.textContent = user.displayName;
+      if (user.photoURL) {
+        userPhotoElement.src = user.photoURL;
+      } else {
+        userPhotoElement.style.display = 'none'; // Oculta o elemento se não houver foto de perfil
+      }
+    }
+  });
 
   return container;
 };
