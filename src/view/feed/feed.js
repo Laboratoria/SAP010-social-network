@@ -5,6 +5,7 @@ import {
   getCurrentUser,
   getCurrentUserId,
   deletePost,
+  checkAuthor,
 } from '../../lib/firestore.js';
 import { logout } from '../../lib/index.js';
 
@@ -68,7 +69,7 @@ export const feed = () => {
             <br>
             
             
-            <label for="localização" class="label-class">Localização:</label>
+            <label for="localização" class="labeluerySnapshot[0].data()-class">Localização:</label>
             <input type="text" class="modal-input-area" id="local" name="local" placeholder="Exemplo: Curitiba/PR">
             
             <label for="contato" class="label-class">Contato:</label>
@@ -131,23 +132,40 @@ export const feed = () => {
       `;
 
       const deleteIcon = postCard.querySelector('.material-icons');
+
+      // chama a função checkAuthor e verifica todos os posts sendo gerados
+      const isAuthor = await checkAuthor(post.id);
+
+      if (isAuthor) {
+        // verifica o retorno da função checkAuthor e exibe ou não o ícone da lixeira
+        deleteIcon.style.visibility = 'visible';
+      } else {
+        deleteIcon.style.visibility = 'hidden';
+      }
+
       deleteIcon.addEventListener('click', async () => {
-       
-        
-        const confirmDelete = window.confirm(
-          'Tem certeza que deseja excluir esta postagem?',
-        );
-        if (confirmDelete) {
-          try {
-            await deletePost(post.id);
-            // Atualize o feed após a exclusão do post
-            postCard.remove();
-          } catch (error) {
-            console.error('Erro ao deletar o post', error);
+        const postId = post.id;
+        console.log(postId);
+        const isAuthor = await checkAuthor(postId);
+        console.log(isAuthor);
+
+        if (isAuthor) {
+          // aqui está verificando novamente se é o autor da postagem (mesmo a lixeira só aparecendo se for o autor)
+          const confirmDelete = window.confirm(
+            'Tem certeza que deseja excluir esta postagem?'
+          );
+
+          if (confirmDelete) {
+            try {
+              await deletePost(post.id);
+              // Atualize o feed após a exclusão do post
+              postCard.remove();
+            } catch (error) {
+              console.error('Erro ao deletar o post', error);
+            }
           }
         }
-      })
-      
+      });
 
       feedPage.appendChild(postCard);
     });
@@ -179,7 +197,7 @@ export const feed = () => {
 
       try {
         const username = await getUsername();
-        const currentUserId = await getCurrentUserId()
+        const currentUserId = await getCurrentUserId();
         console.log('Nome de usuário:', username);
 
         let opcao = '';
@@ -199,27 +217,29 @@ export const feed = () => {
         const mensagem = document.getElementById('mensagem').value;
         const dataAtual = Date.now();
         const postUsername = username;
-        const postId = currentUserId;
+        const postAuthorId = currentUserId;
 
         //  trecho para validação dos inputs de radio e textarea
         let validarInputs = true;
         const mensagemErroRadio = document.getElementById(
-          'mensagem-erro-radio',
+          'mensagem-erro-radio'
         );
         const mensagemErroTextarea = document.getElementById(
-          'mensagem-erro-textarea',
+          'mensagem-erro-textarea'
         );
 
         if (
           !document.querySelector('input[type="radio"][name="quero"]:checked')
         ) {
           validarInputs = false;
-          mensagemErroRadio.textContent = 'Campo obrigatório: favor selecionar uma opção.';
+          mensagemErroRadio.textContent =
+            'Campo obrigatório: favor selecionar uma opção.';
         }
 
         if (document.getElementById('mensagem').value === '') {
           validarInputs = false;
-          mensagemErroTextarea.textContent = 'Campo obrigatório: favor inserir uma mensagem.';
+          mensagemErroTextarea.textContent =
+            'Campo obrigatório: favor inserir uma mensagem.';
           document.getElementById('mensagem').classList.add('error-border');
         } else {
           document.getElementById('mensagem').classList.remove('error-border');
@@ -237,8 +257,9 @@ export const feed = () => {
             mensagem,
             dataAtual,
             postUsername,
-            postId
+            postAuthorId,
           };
+
           await criarPost(dadosPost);
 
           // Limpa os campos do formulário
