@@ -1,6 +1,6 @@
 import { getLoginPage } from './pages/login/login.js';
 import register from './pages/register/register';
-import { showFeed, template } from './pages/feed/feed.js';
+import feed from './pages/feed/feed.js';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './fireBase/firebaseConfig.js';
 
@@ -19,8 +19,8 @@ const renderPage = () => {
       break;
     case '#homepage':
       //verificar uma forma de identificar se está logado ou não. existe função firebase para isso?
-      template(main)
-      showFeed()
+      main.appendChild(feed());
+    
       break;
     default:
       main.appendChild(getLoginPage());
