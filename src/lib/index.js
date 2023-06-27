@@ -5,6 +5,7 @@ import {
   signInWithPopup,
   FacebookAuthProvider,
   onAuthStateChanged,
+  updateProfile,
 } from 'firebase/auth';
 
 import { auth } from '../Firebase/instalfirebase';
@@ -21,9 +22,9 @@ const authProvedor = new GoogleAuthProvider();
 export const authLoginGoogle = () => signInWithPopup(auth, authProvedor);
 
 // incluir displayName nos parametros se for usar futuramente
-export const newUser = async (email, senha) => {
+export const newUser = async (email, senha, displayName) => {
   await createUserWithEmailAndPassword(auth, email, senha);
-  // await updateProfile(auth.currentUser, { displayName });
+  await updateProfile(auth.currentUser, { displayName });
 };
 
 const provider = new FacebookAuthProvider();
