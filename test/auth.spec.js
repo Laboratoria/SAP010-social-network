@@ -4,6 +4,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   updateProfile,
+  signOut,
 } from 'firebase/auth';
 
 import {
@@ -13,6 +14,7 @@ import {
   loginWithEmail,
   getUserId,
   getUserName,
+  logOut,
 } from '../src/firebase/auth';
 
 jest.mock('firebase/auth');
@@ -22,7 +24,6 @@ const mockUserCredential = {
   user: {
     displayName: 'Maria',
     uid: 'uid9876',
-    // email: 'maria@example.com',
   },
 };
 
@@ -138,5 +139,15 @@ describe('getUserName', () => {
     const result = getUserName();
 
     expect(result).toBe('viajante');
+  });
+});
+
+describe('logOut', () => {
+  it('should log out the user', () => {
+    signOut.mockResolvedValue({
+      user: {},
+    });
+    logOut();
+    expect(signOut).toHaveBeenCalledTimes(1);
   });
 });
