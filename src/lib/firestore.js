@@ -8,6 +8,7 @@ import {
   deleteDoc,
   doc,
   getDoc,
+  updateDoc,
 } from 'firebase/firestore';
 
 import { onAuthStateChanged } from 'firebase/auth';
@@ -30,6 +31,7 @@ export const criarPost = async (dadosPost) => {
 //  função de carregar os dados das postagens do banco de dados em ordem de data
 
 export const carregarPosts = async () => {
+  
   const q = query(collection(db, 'post'), orderBy('dataAtual', 'desc'));
   const querySnapshot = await getDocs(q);
   const arrayPosts = [];
@@ -37,7 +39,7 @@ export const carregarPosts = async () => {
     const data = post.data();
     data.id = post.id;
     arrayPosts.push(data);
-    console.log(post.id, ' => ', post.data());
+    
   });
 
   return arrayPosts;
@@ -81,7 +83,7 @@ export function getCurrentUser() {
   });
 }
 
-// primeiro verifica o provedor de login, depois recupera o username
+// primeiro verifica o provedor de login, depois recupera e retorna o username
 export const getUsername = async () => {
   try {
     const currentUser = await getCurrentUser();
@@ -115,6 +117,8 @@ export const getUsername = async () => {
     throw error;
   }
 };
+
+// deleta a postagem
 export const deletePost = (id) =>
   new Promise((resolve, reject) => {
     try {
@@ -127,14 +131,48 @@ export const deletePost = (id) =>
     }
   });
 
+// checa se o ID do usuário atual é igual ao id do autor da postagem
 export const checkAuthor = async (postId) => {
   const currentUserId = await getCurrentUserId();
   const postRef = doc(db, 'post', postId);
   const docSnapshot = await getDoc(postRef);
 
-  if (docSnapshot.exists() && docSnapshot.data().postAuthorId === currentUserId) {
+  if (
+    docSnapshot.exists() &&
+    docSnapshot.data().postAuthorId === currentUserId
+  ) {
     return true;
   } else {
     return false;
   }
+};
+
+// edita o doc da collection 'post'
+
+export const editPostDoc = async (
+  postId,
+  racaEdit,
+  mensagemEdit,
+  localizacaoEdit,
+  idadeEdit,
+  sexoEdit,
+  especieEdit,
+  opcaoAdocaoEdit,
+  contatoEdit
+) => {
+  const postRef = doc(db, 'post', postId);
+  console.log('postRef', postRef)
+
+  await updateDoc(postRef, {
+    raca: racaEdit,
+    mensagem: mensagemEdit,
+    localizacao: localizacaoEdit,
+    idadePet: idadeEdit,
+    especie: especieEdit,
+    opcaoAdocao: opcaoAdocaoEdit,
+    contato: contatoEdit,
+    sexo: sexoEdit,
+  });
+
+  console.log('documento editado')
 };

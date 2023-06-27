@@ -2,10 +2,10 @@ import {
   carregarPosts,
   criarPost,
   getUsername,
-  getCurrentUser,
   getCurrentUserId,
   deletePost,
   checkAuthor,
+  editPostDoc,
 } from '../../lib/firestore.js';
 import { logout } from '../../lib/index.js';
 
@@ -81,6 +81,7 @@ export const feed = () => {
             <p id="mensagem-erro-textarea" class="mensagem-erro"></p>
 
             <button type="submit" class="publicar" id="publicar">Publicar</button>
+            <button type="submit" class="editar" id="editar">Editar</button>
 
             </form>
 
@@ -91,17 +92,28 @@ export const feed = () => {
   `;
 
   container.innerHTML = templateFeed;
-
+  let arrayPosts = [];
   const feedHeader = container.querySelector('.feed-header p');
 
   getUsername().then((username) => {
     feedHeader.textContent += ` ${username}!`;
   });
 
-  const carregarFeed = async () => {
-    const currentUser = await getCurrentUser();
-    console.log('usuário atual', currentUser);
+  const limparFormulário = () => {
+    document.getElementById('quero-doar').checked = false;
+    document.getElementById('quero-adotar').checked = false;
+    document.getElementById('idade').value = '';
+    document.getElementById('especie').value = '';
+    document.getElementById('sexo').value = '';
+    document.getElementById('raca').value = '';
+    document.getElementById('local').value = '';
+    document.getElementById('contato').value = '';
+    document.getElementById('mensagem').value = '';
+    document.getElementById('mensagem-erro-radio').textContent = '';
+    document.getElementById('mensagem-erro-textarea').textContent = '';
+  };
 
+  const carregarFeed = async () => {
     const posts = await carregarPosts();
 
     const feedPage = container.querySelector('.feed-page');
@@ -128,9 +140,98 @@ export const feed = () => {
           <p>Contato: ${post.contato}</p>
          
           <i class="material-icons" data-post-id="${post.id}">delete</i>
+          <i class="material-icons edit-icon" data-post-id="${post.id}">edit</i>
           </section>
       `;
 
+      const editIcon = postCard.querySelector('.edit-icon');
+
+      editIcon.addEventListener('click', async (event) => {
+        event.preventDefault();
+        // ok pegar o id do post
+        // ok abrir o modal
+        // ok já aparecer preenchido com as infos antigas
+        // ok usuário troca as infos
+        // mandar e chamar a função editPostDoc com as infos novas
+
+        const postId = post.id;
+
+        const isAuthor = await checkAuthor(postId);
+        console.log(isAuthor);
+
+        if (isAuthor) {
+          const modal = document.getElementById('meuModal');
+
+          const submitButtonModal = document.getElementById('publicar');
+          submitButtonModal.style.visibility = 'hidden';
+
+          const editButtonModal = document.querySelector('.editar');
+          editButtonModal.style.visibility = 'visible';
+
+          const fechar = modal.querySelector('.fechar');
+          fechar.onclick = function () {
+            modal.style.display = 'none';
+            submitButtonModal.style.visibility = 'visible';
+            limparFormulário();
+          };
+          modal.style.display = 'block';
+
+          document.getElementById('quero-doar').checked =
+            post.opcaoAdocao === 'Quero doar';
+          document.getElementById('quero-adotar').checked =
+            post.opcaoAdocao === 'Quero adotar';
+          document.getElementById('idade').value = post.idadePet;
+          document.getElementById('especie').value = post.especie;
+          document.getElementById('sexo').value = post.sexo;
+          document.getElementById('raca').value = post.raca;
+          document.getElementById('local').value = post.localizacao;
+          document.getElementById('contato').value = post.contato;
+          document.getElementById('mensagem').value = post.mensagem;
+
+          const submitButton = document.getElementById('editar');
+
+          submitButton.addEventListener('click', async (event) => {
+            event.preventDefault();
+
+            let opcao = '';
+            if (document.getElementById('quero-doar').checked) {
+              opcao = document.getElementById('quero-doar').value;
+            } else if (document.getElementById('quero-adotar').checked) {
+              opcao = document.getElementById('quero-adotar').value;
+            }
+
+            const opcaoAdocaoEdit = opcao;
+            const idadeEdit = document.getElementById('idade').value;
+            const especieEdit = document.getElementById('especie').value;
+            const sexoEdit = document.getElementById('sexo').value;
+            const racaEdit = document.getElementById('raca').value;
+            const localizacaoEdit = document.getElementById('local').value;
+            const contatoEdit = document.getElementById('contato').value;
+            const mensagemEdit = document.getElementById('mensagem').value;
+
+            await editPostDoc(
+              postId,
+              racaEdit,
+              mensagemEdit,
+              localizacaoEdit,
+              idadeEdit,
+              sexoEdit,
+              especieEdit,
+              opcaoAdocaoEdit,
+              contatoEdit
+            );
+
+            limparFormulário();
+
+            modal.style.display = 'none';
+            submitButtonModal.style.visibility = 'visible';
+
+            await carregarFeed();
+          });
+        }
+      });
+
+      // deletar post
       const deleteIcon = postCard.querySelector('.material-icons');
 
       // chama a função checkAuthor e verifica todos os posts sendo gerados
@@ -139,13 +240,15 @@ export const feed = () => {
       if (isAuthor) {
         // verifica o retorno da função checkAuthor e exibe ou não o ícone da lixeira
         deleteIcon.style.visibility = 'visible';
+        editIcon.style.visibility = 'visible';
       } else {
         deleteIcon.style.visibility = 'hidden';
+        editIcon.style.visibility = 'hidden';
       }
 
       deleteIcon.addEventListener('click', async () => {
         const postId = post.id;
-        console.log(postId);
+
         const isAuthor = await checkAuthor(postId);
         console.log(isAuthor);
 
@@ -180,6 +283,8 @@ export const feed = () => {
   container.querySelector('#post').addEventListener('click', () => {
     const modal = document.getElementById('meuModal');
     const fechar = modal.querySelector('.fechar');
+    const editButtonModal = modal.querySelector('.editar');
+    editButtonModal.style.visibility = 'hidden';
 
     // Ao clicar no botão, exibe o modal
     modal.style.display = 'block';
@@ -198,7 +303,6 @@ export const feed = () => {
       try {
         const username = await getUsername();
         const currentUserId = await getCurrentUserId();
-        console.log('Nome de usuário:', username);
 
         let opcao = '';
         if (document.getElementById('quero-doar').checked) {
@@ -263,17 +367,7 @@ export const feed = () => {
           await criarPost(dadosPost);
 
           // Limpa os campos do formulário
-          document.getElementById('quero-doar').checked = false;
-          document.getElementById('quero-adotar').checked = false;
-          document.getElementById('idade').value = '';
-          document.getElementById('especie').value = '';
-          document.getElementById('sexo').value = '';
-          document.getElementById('raca').value = '';
-          document.getElementById('local').value = '';
-          document.getElementById('contato').value = '';
-          document.getElementById('mensagem').value = '';
-          document.getElementById('mensagem-erro-radio').textContent = '';
-          document.getElementById('mensagem-erro-textarea').textContent = '';
+          limparFormulário();
 
           // Recarrega o feed com a nova postagem
           await carregarFeed();
