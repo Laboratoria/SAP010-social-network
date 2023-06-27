@@ -68,8 +68,7 @@ export const likePost = async (postId, userId) => {
     if (!userHasLikedPost) {
       const docRef = doc(db, 'posts', postId);
       const postDoc = await getDoc(docRef);
-
-      if (postDoc.exists()) {
+          if (postDoc.exists) {
         const post = postDoc.data();
         const { whoLiked } = post;
         if (!whoLiked.includes(userId)) {
@@ -86,7 +85,7 @@ export const likePost = async (postId, userId) => {
       return 'remove like';
     }
   } catch (error) {
-    console.error('Error ao dar like:', error);
+    console.error('Error al dar like:', error);
     throw error;
   }
   return '';

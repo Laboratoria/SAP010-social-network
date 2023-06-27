@@ -5,6 +5,7 @@ import {
   db,
   deleteDoc,
   updateDoc,
+  arrayRemove,
 } from 'firebase/firestore';
 
 import {
@@ -12,6 +13,7 @@ import {
   hasUserLikedPost,
   deletePost,
   updatePost,
+  likePost,
 } from '../src/firebase/firestore';
 import { getAppAuth } from '../src/firebase/auth';
 
@@ -110,5 +112,55 @@ describe('hasUserLikedPost', () => {
       doc(undefined, 'posts', postId),
     );
     expect(resultado).toBe(false);
+  });
+});
+
+describe('likePost', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should add like to post', async () => {
+    const mockPostId = 'postId';
+    const mockUserId = 'userId';
+
+    const mockPostData = {
+      whoLiked: ['userId'],
+    };
+    const mockGetDoc = {
+      exists: true,
+      data: jest.fn(() => mockPostData),
+    };
+    getDoc.mockReturnValueOnce(mockGetDoc);
+
+    const mockUpdateDoc = jest.fn();
+    updateDoc.mockReturnValueOnce(mockUpdateDoc);
+
+    const result = await likePost(mockPostId, mockUserId);
+
+    expect(getDoc).toHaveBeenCalledWith(
+      doc(db, 'posts', mockPostId),
+    );
+    expect(updateDoc).toHaveBeenCalledWith(
+      doc(db, 'posts', mockPostId),
+      { whoLiked: [mockUserId] },
+    );
+    expect(result).toBe('adicione like');
+  });
+
+  it('should remove like from post', async () => {
+    const mockPostId = 'postId';
+    const mockUserId = 'userId';
+
+    const mockUpdateDoc = jest.fn();
+    updateDoc.mockReturnValueOnce(mockUpdateDoc);
+
+    const result = await likePost(mockPostId, mockUserId);
+
+    expect(updateDoc).toHaveBeenCalledWith(
+      doc(db, 'posts', mockPostId),
+      { whoLiked: arrayRemove(mockUserId) },
+    );
+    expect(result).toBe('remove like');
   });
 });
