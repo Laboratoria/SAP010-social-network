@@ -1,7 +1,89 @@
-header {
-  background-color: #F9AB59;
+a {
+  text-decoration: none;
+}
 
-  }
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  background-color: #e9e9eb;
+}
+
+sidebar {
+  width: 254px;
+  background-color: #F9AB59;
+  height: 100vh;
+}
+
+sidebar header {
+  background-color: #2A2C41;
+  color: #F9AB59;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 24px;
+  width: 245px;
+  height: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  padding-top: 12px;
+}
+
+.nav-item > a {
+  color: #2A2C41;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  width: 245px;
+  height: 68px;
+  padding-inline: 32px;
+}
+
+.nav-item:last-child {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.nav-item:last-child > a {
+  justify-content: center;
+}
+
+.nav-item img {
+  width: 26px;
+  height: 26px;
+  margin-right: 12px;
+} 
+.feed {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  padding: 12px;
+}
+
+.feed img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 370px;
+  height: 406px;
+}
 
 .post {
   display: none; /* Ocultar o modal, que será exibido com js */
@@ -44,13 +126,19 @@ header {
 .boxExperience {
   background-color: #d9d9d9;
   padding: 10px;
-  width: 400px;
+  width: 100%;
+  max-width: 604px;
+  z-index: 1;
+  height: 60px;
+  
 }
 
 .experience-button {
   border: 1px solid black;
   border-radius: 4px;
   padding: 2px;
-  width: 400px;
+  width: calc(100% - 48px);
+  margin-inline: 24px;
   background-color: #ffffff;
+  cursor: pointer;
 }
