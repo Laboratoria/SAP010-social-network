@@ -69,7 +69,7 @@ export const feed = () => {
             <br>
             
             
-            <label for="localização" class="labeluerySnapshot[0].data()-class">Localização:</label>
+            <label for="localização" class="label-class">Localização:</label>
             <input type="text" class="modal-input-area" id="local" name="local" placeholder="Exemplo: Curitiba/PR">
             
             <label for="contato" class="label-class">Contato:</label>
