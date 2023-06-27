@@ -1,7 +1,7 @@
 import { loginUser } from './Login/login.js';
 import { registerUser } from './Register/register.js';
 import { feedUser } from './Feed/feed.js';
-import { authStateChanged } from './lib/index.js';
+import { authStateChanged, logout } from './lib/index.js';
 
 const root = document.querySelector('#root');
 
@@ -18,6 +18,9 @@ export const routes = () => {
       case '':
       case '#feed':
         root.appendChild(feedUser());
+        break;
+      case '#sair':
+        logout();
         break;
       default:
         root.appendChild(feedUser());
