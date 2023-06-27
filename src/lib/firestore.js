@@ -7,6 +7,7 @@ import {
   orderBy,
   deleteDoc,
   doc,
+  getDoc,
 } from 'firebase/firestore';
 
 import { onAuthStateChanged } from 'firebase/auth';
@@ -56,15 +57,16 @@ export const createUserData = async (nome) => {
 };
 
 // recupera o Id do usuário atual
-const getCurrentUserId = () => new Promise((resolve, reject) => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      resolve(user.uid);
-    } else {
-      reject(new Error('Usuário não autenticado'));
-    }
+export const getCurrentUserId = () =>
+  new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        resolve(user.uid);
+      } else {
+        reject(new Error('Usuário não autenticado'));
+      }
+    });
   });
-});
 
 // recupera todas as informações do usuário atual
 export function getCurrentUser() {
@@ -98,7 +100,7 @@ export const getUsername = async () => {
     const currentUserId = await getCurrentUserId();
     const q = query(
       collection(db, 'usernames'),
-      where('userId', '==', currentUserId),
+      where('userId', '==', currentUserId)
     );
     const querySnapshot = await getDocs(q);
 
@@ -113,13 +115,26 @@ export const getUsername = async () => {
     throw error;
   }
 };
-export const deletePost = (id) => new Promise((resolve, reject) => {
-  try {
-    deleteDoc(doc(db, 'post', id));
-    console.log('Document deleted with ID: ', id);
-    resolve();
-  } catch (e) {
-    console.error('Error deleting document: ', e);
-    reject(e);
+export const deletePost = (id) =>
+  new Promise((resolve, reject) => {
+    try {
+      deleteDoc(doc(db, 'post', id));
+      console.log('Document deleted with ID: ', id);
+      resolve();
+    } catch (e) {
+      console.error('Error deleting document: ', e);
+      reject(e);
+    }
+  });
+
+export const checkAuthor = async (postId) => {
+  const currentUserId = await getCurrentUserId();
+  const postRef = doc(db, 'post', postId);
+  const docSnapshot = await getDoc(postRef);
+
+  if (docSnapshot.exists() && docSnapshot.data().postAuthorId === currentUserId) {
+    return true;
+  } else {
+    return false;
   }
-});
+};
