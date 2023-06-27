@@ -9,7 +9,7 @@ h2{
 }
 
 .logo-cs {
-    max-width: 300px;
+    max-width: 250px;
 }
   
 .logo-google {
@@ -28,8 +28,6 @@ input{
 label, p{
     font-size: 20px;
 }
-
-
 
 ::-webkit-input-placeholder{
 	color: var(--light-white);
@@ -83,6 +81,7 @@ option{
 .imagens{
     display: flex;
     flex-direction: column;
+    margin-top: 80px;
 }
 
 @media (max-width: 800px) {
@@ -94,4 +93,19 @@ option{
         flex-direction: column;
     }
 
+    .logo-cs{
+        margin-bottom: 20px;
+    }
+
+    footer{
+        height: 50px;
+    }
 }
+
+footer {
+    background-color: var(--intense-brown);
+    color: var(--light-white);
+    text-align: center;
+    height: 50px;
+    width: 100%;
+};
