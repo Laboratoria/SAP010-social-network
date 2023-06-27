@@ -41,12 +41,12 @@ h1 {
     height: 100px;
     border-radius: 5px;
     text-align: center;
-    font-size: medium;
-    border-color: #b80c0c;
+    font-size: 30px;
+    border-color: #F5B81D;
 }
 
 .conteudo {
-    background-color: blanchedalmond;
+    background-color: #ffe29a;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,23 +58,42 @@ h1 {
     width: 60%;
     height: 100px;
     border-radius: 5px;
-    
     text-align: center;
-    
-    
-
-
+    font-family:"roboto";
 }
 
+.nome,.conteudoPag{
+    font-family:"roboto";  
+    font-size: 30px;
+
+}
+.conteudoPag{
+    margin-top:8px;
+}
 .btn {
     position: relative;
     text-align: center;
     
-    width: 70px;
-    height: 20px;
-    border-radius: 50px;
+    width: 80px;
+    height: 30px;
+    border-radius: 10px;
     left: 75%;
     transform: translate(-75%);
     top: 160px;
     cursor: pointer;
+    background: #F5B81D;
+
+}
+.btnSair{
+       position: relative;
+        text-align: center;
+        width: 80px;
+        height: 30px;
+        border-radius: 10px;
+        left: 75%;
+        transform: translate(-75%);
+        top: -15px;
+        cursor: pointer;
+        background: #F5B81D;
+
 }
