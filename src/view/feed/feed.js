@@ -3,7 +3,7 @@ import {
   criarPost,
   getUsername,
   getCurrentUser,
-  getCurrentUserId,
+  // getCurrentUserId,
   deletePost,
 } from '../../lib/firestore.js';
 import { logout } from '../../lib/index.js';
@@ -132,11 +132,7 @@ export const feed = () => {
 
       const deleteIcon = postCard.querySelector('.material-icons');
       deleteIcon.addEventListener('click', async () => {
-       
-        
-        const confirmDelete = window.confirm(
-          'Tem certeza que deseja excluir esta postagem?',
-        );
+        const confirmDelete = window.confirm('Tem certeza que deseja excluir esta postagem?');
         if (confirmDelete) {
           try {
             await deletePost(post.id);
@@ -146,8 +142,7 @@ export const feed = () => {
             console.error('Erro ao deletar o post', error);
           }
         }
-      })
-      
+      });
 
       feedPage.appendChild(postCard);
     });
@@ -179,7 +174,7 @@ export const feed = () => {
 
       try {
         const username = await getUsername();
-        const currentUserId = await getCurrentUserId()
+        // const currentUserId = await getCurrentUserId();
         console.log('Nome de usuário:', username);
 
         let opcao = '';
@@ -199,7 +194,7 @@ export const feed = () => {
         const mensagem = document.getElementById('mensagem').value;
         const dataAtual = Date.now();
         const postUsername = username;
-        const postId = currentUserId;
+        // const postId = currentUserId;
 
         //  trecho para validação dos inputs de radio e textarea
         let validarInputs = true;
@@ -237,7 +232,7 @@ export const feed = () => {
             mensagem,
             dataAtual,
             postUsername,
-            postId
+            // postId,
           };
           await criarPost(dadosPost);
 
