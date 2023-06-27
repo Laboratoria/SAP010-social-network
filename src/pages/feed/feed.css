@@ -1,122 +1,267 @@
-.feed {
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100px 1fr 1fr;
+  grid-template-areas: "logo logo"
+                        "postagens menu"
+                        "postagens filtros";
+  grid-column-gap: 100px;
+}
+
+.menu, .filtros{
+  display: flex;
+  flex-direction: column;
+}
+
+.menu{
+  grid-area: menu;
+  width: 430px;
+  height: 301px;
+  border-radius: 10px;
+  background: var(--medium-brown);
+  justify-content: space-around;
+  margin-bottom: 27px;
+  padding: 10px;
+  box-shadow: 12px 15px 8px -9px var(--light-brown);
+}
+
+.saudacao{
+  color: var(--light-white);
+  width: 200px;
+  margin: 0;
+}
+
+.convite{
+  color: var(--light-white);
+  width: 200px;
+  margin: 0;
+}
+
+ul {
+  list-style-image: url('../../images/saco-de-cafe.png');
+  width: 300px;
+  margin-left: 50px;
+}
+
+ul, li{
+  width: fit-content;
+}
+
+a{
+  font-size: 20px;
+  font-family: 'Nunito Sans', sans-serif;
+  transition: 0.3s ease-in-out;
+}
+
+a:hover{
+  color: var(--intense-brown);
+  font-size: 24px;
+}
+
+.logout{
+  align-self: flex-end;
+  background: var(--medium-brown);
+  color: var(--light-white);
+  transition: 0.3s ease-in-out;
+}
+
+.logout:hover{
+  color: var(--medium-brown);
+  background: var(--light-white);
+}
+
+.filtros{
+  grid-area: filtros;
+  width: 430px;
+  height: 301px;
+  background: var(--grey);
+  border-radius: 10px;
+  box-shadow: 12px 15px 8px -9px var(--light-brown);
+  padding: 10px;
+  gap: 20px;
+}
+
+.fundo{
+  position: relative;
+  bottom: 30px;
+  width: 200px;
+  align-self: flex-end;
+}
+
+.postagens{
+  grid-area: postagens;
+  grid-row: 2/3;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 12px 15px 8px -9px var(--light-brown);
+}
+
+.inputMensagem {
+  background: var(--grey);
+  width: 500px;
+  height: 180px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  resize: none;
+  position: relative;
+  padding: 10px;
+}
+
+::-webkit-input-placeholder{
+  font-family: 'Nunito Sans', sans-serif;
+  color: var(--light-white);
+  padding: 10px;
+}
+
+.btnPostagem img{
+  width: 30px;
+}
+
+.btnPostagem{
+  align-self: flex-end;
+  background: none;
+  width: 50px;
+  position: absolute;
+  top: 320px;
+}
+
+.btnPostagem:hover{
+  background: var(--light-white);
+}
+
+.logo{
+  grid-area: logo;
+}
+
+@media (max-width: 500px){
+  .container{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 15px;
   }
-  
-  .convite {
-    margin-top: -80px;
-    margin-left: -190px;
+
+  .btnPostagem{
+    top: 785px;
   }
-  
-  li {
-    margin-top: 25px;
-    margin-left: -170px;
+
+  .fundo{
+    display: none;
   }
-  
-  .logo-cs {
-    width: 500px;
-    margin-top: 1px;
+
+  .filtros{
+    width: 300px;
+    height: 170px;
   }
-  
-  .conecteh1 {
+
+  a{
+    font-size: 16px;
     font-family: 'Nunito Sans', sans-serif;
-    margin-top: 1px;
-    font-size:25px;
-    text-align: left;
+    transition: 0.3s ease-in-out;
   }
   
-  
-  .logoCsFeed {
-    position: relative;
-    top: 2px;
-    right: -150px;
-    width: 700px;
-    margin-left: -90px;
+  a:hover{
+    color: var(--intense-brown);
+    font-size: 18px;
   }
-  
-  .fulana {
-    margin-top: -150px;
-    margin-left: -40px;
-  }
-  
-  .logout {
-    margin-top: 180px;
-    margin-left: -10px;
-    width: 80px;
-  }
-  
- .box {
+}
+
+/* .convite {
+  margin-top: -80px;
+  margin-left: -190px;
+}
+
+li {
+  margin-top: 25px;
+  margin-left: -170px;
+}
+
+.logo-cs {
+  width: 500px;
+  margin-top: 1px;
+}
+
+.logoCsFeed {
+  position: relative;
+  top: 2px;
+  right: -150px;
+  width: 700px;
+  margin-left: -90px;
+}
+
+.fulana {
+  margin-top: -150px;
+  margin-left: -40px;
+}
+
+.logout {
+  margin-top: 180px;
+  margin-left: -10px;
+  width: 80px;
+}
+
+.box {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 1px;
   text-align: left;
 }
 
-  
-  .container2 {
-    grid-column: 3 / 3;
-    background-color: var(--intense-brown);
-    box-shadow: 12px 15px 8px -9px var(--medium-brown);
-    border: none;
-    border-radius: 10px;
-    padding: 25px;
-    margin-top: 50px;
-    width: 350px;
-    height: 500px;
-  }
-  
-  .acesseTbm {
-    margin-top: -400px;
-    margin-left: -20px;
-  }
+.container2 {
+  grid-column: 3 / 3;
+  background-color: var(--intense-brown);
+  box-shadow: 12px 15px 8px -9px var(--medium-brown);
+  border: none;
+  border-radius: 10px;
+  padding: 25px;
+  margin-top: 50px;
+  width: 350px;
+  height: 500px;
+}
 
-  a {
-    font-size: 25px;
-  }
-  
-  
-  .usuario {
-    grid-column: 3 / 3;
-    background-color: var(--intense-brown);
-    box-shadow: 12px 15px 8px -9px var(--medium-brown);
-    border: none;
-    border-radius: 10px;
-    padding: 25px;
-    margin-top: 50px;
-    width: 350px;
-    height: 200px;
-  }
-  
-  .postagens {
-    position: relative;
-    top: -100%;
-    right: -290px;
-    background-color: #734B26;
-    box-shadow: 12px 15px 8px -9px #734B26;
-    border: none;
-    border-radius: 10px;
-    width: 800px;
-    height: 600px;
-  }
-  
-  .inputPostagem {
-    width: 650px;
-    margin-top: -300px;
-  }
-  
-  .inputMensagem {
-    width: 100%;
-    height: 100px; 
-    padding: 10px;
-    color: var(--intense-brown);
-    font-size: 20px;
-    border-radius: 5px;
-    border: none;
-  }
-  
-  .btnPostagem {
-    height: 40px;
-    margin-left: 20px;
-  }
-  
+.acesseTbm {
+  margin-top: -400px;
+  margin-left: -20px;
+}
+
+a {
+  font-size: 25px;
+}
+
+.usuario {
+  grid-column: 3 / 3;
+  background-color: var(--intense-brown);
+  box-shadow: 12px 15px 8px -9px var(--medium-brown);
+  border: none;
+  border-radius: 10px;
+  padding: 25px;
+  margin-top: 50px;
+  width: 350px;
+  height: 200px;
+}
+
+.postagens {
+  position: relative;
+  top: -100%;
+  right: -290px;
+  background-color: var(--medium-brown);
+  box-shadow: 12px 15px 8px -9px var(--medium-brown);
+  border: none;
+  border-radius: 10px;
+  width: 800px;
+  height: 600px;
+}
+
+.inputPostagem {
+  width: 650px;
+  margin-top: -300px;
+}
+
+.btnPostagem {
+  height: 40px;
+  margin-left: 20px;
+}
+
+ul {
+  list-style-image: url('../../images/saco-de-cafe.png');
+} */

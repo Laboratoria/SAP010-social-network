@@ -1,0 +1,41 @@
+.container-rum{
+    width: 80vh;
+    height: 100vh;
+    background-image: url(./images/background-rum.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.informativo{
+    background-color: var(--light-white);
+    color: var(--intense-brown);
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.voltar{
+    color: var(--light-white);
+    background-color: var(--medium-brown);
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+@media (min-width: 800px) {
+    .voltar{
+        font-size: 30px;
+    }
+
+    .informativo{
+        font-size: 70px;
+    }
+
+    .container-rum{
+        background-size: 800px;
+        width: 100vh;
+    }
+}

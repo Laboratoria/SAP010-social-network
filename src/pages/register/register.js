@@ -35,6 +35,7 @@ export default () => {
       </div>
       <div id="errorMessage" class="error">
       </div>
+      <footer> Desenvolvedoras: Aline Ferreira, Josi Corrêa e Nara Monteiro </footer>
     </fieldset>
   `;
 

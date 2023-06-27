@@ -3,6 +3,7 @@ import login from './pages/login/login.js';
 import register from './pages/register/register.js';
 
 import feed from './pages/feed/feed.js';
+import cafeComRum from './pages/cafeComRum/cafeComRum.js';
 
 //  Load evento de carregamento da janela/ depois printar informações na tela
 const main = document.querySelector('#root');
@@ -23,6 +24,9 @@ const init = () => {
         break;
       case '#feed':
         main.appendChild(feed());
+        break;
+      case '#cafeComRum':
+        main.appendChild(cafeComRum());
         break;
       default: main.appendChild(login());
     }
