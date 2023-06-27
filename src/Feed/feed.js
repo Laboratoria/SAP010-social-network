@@ -1,7 +1,7 @@
-import "./feed.css";
+import './feed.css';
 
 export const feedUser = () => {
-  const container = document.createElement("div");
+  const container = document.createElement('div');
 
   const template = ` 
   <main>
@@ -42,6 +42,7 @@ export const feedUser = () => {
           <div class="card-restaurant">Starbucks</div>
         </div>
       </div>
+
     </div>
 
     </section>
@@ -67,24 +68,24 @@ export const feedUser = () => {
 
   container.innerHTML = template;
 
-  const modal = container.querySelector("#createPost");
-  const closeButton = container.querySelector("#close");
+  const modal = container.querySelector('#createPost');
+  const closeButton = container.querySelector('#close');
   // const publishButton = container.getElementById('publishButton');
-  const openPublishButton = container.querySelector("#experienceButton");
+  const openPublishButton = container.querySelector('#experienceButton');
 
   // Função para abrir o modal
   function openModal() {
-    modal.style.display = "block"; // Exibe o modal
+    modal.style.display = 'block'; // Exibe o modal
   }
 
   // Função para fechar o modal
   function closeModal() {
-    modal.style.display = "none"; // Oculta o modal
+    modal.style.display = 'none'; // Oculta o modal
   }
 
-  openPublishButton.addEventListener("click", openModal);
-  closeButton.addEventListener("click", closeModal);
-  window.addEventListener("click", (event) => {
+  openPublishButton.addEventListener('click', openModal);
+  closeButton.addEventListener('click', closeModal);
+  window.addEventListener('click', (event) => {
     if (event.target === modal) {
       closeModal();
     }
