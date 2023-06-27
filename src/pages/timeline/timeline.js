@@ -13,15 +13,15 @@ export default () => {
   const viewPost = `
   <div class="container">
   <div class='left-timeline'>
-    <img src='' alt='Foto de perfil' class='profilePhoto'>
+    <img src='./img/assets/icon-photo.png' alt='Foto de perfil' class='profilePhoto' width="300px">
     <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
     <figure class='icones'>
           <a href="" class="icon-timeline"><img src="./img/assets/icon-home.png" class="icon-timeline" alt="Icone home"> Home </a>
           <button type="button" class='button-timeline' id='logout-btn'><img src='./img/assets/icon-sair.png' alt='logout icon' width='30px'>
         </figure>
-        <img src="./img/assets/imagetimeline.png" class="img-timeline" alt="edit image" width="300px">
         <input type="file" id="profilePhotoInput" accept="image/*" style="display: none;">
       </div>
+      <img src="./img/assets/imagetimeline.png" class="img-timeline" alt="edit image" width="300px">
       <div class="right-timeline">
         <div class="input-container">
           <textarea class="input-message" id="postArea" placeholder="COMPARTILHE UMA EXPERIÊNCIA..."></textarea>
