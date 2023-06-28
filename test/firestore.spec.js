@@ -1,8 +1,16 @@
-import { addDoc, collection } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  getDocs,
+} from 'firebase/firestore';
 
 import { db } from 'firebase/auth';
 
-import { criarPost } from '../src/lib/firestore';
+import {
+  criarPost,
+  carregarPosts,
+  createUserData,
+} from '../src/lib/firestore';
 
 jest.mock('firebase/firestore');
 jest.mock('firebase/auth');
@@ -30,5 +38,29 @@ describe('criarPost', () => {
 
     expect(addDoc).toHaveBeenCalledTimes(1);
     expect(addDoc).toHaveBeenCalledWith(collection(db, 'post'), dadosPost);
+  });
+});
+
+describe('carregarPosts', () => {
+  it('deve carregar os posts', async () => {
+    await carregarPosts();
+    expect(getDocs).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('createUserData', () => {
+  it('deve criar os dados dos usuários', async () => {
+    const mockUser = { uid: 'id' };
+    const mockNome = 'nome';
+
+    db.mockReturnValueOnce({ currentUser: mockUser });
+
+    await createUserData(mockNome);
+
+    expect(addDoc).toHaveBeenCalledTimes(1);
+    expect(addDoc).toHaveBeenCalledWith(collection(db, 'usernames'), {
+      name: mockNome,
+      userId: mockUser.uid,
+    });
   });
 });

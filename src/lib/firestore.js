@@ -1,4 +1,4 @@
-/* import {
+import {
   collection,
   addDoc,
   query,
@@ -51,15 +51,17 @@ export const createUserData = async (nome) => {
 };
 
 // recupera o Id do usuário atual
-export const getCurrentUserId = () =>
-  new Promise((resolve, reject) => { onAuthStateChanged(auth, (user) => {
+export const getCurrentUserId = () => (
+  new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         resolve(user.uid);
       } else {
-        reject(new Error('Usuário não autenticado'));
+        reject(new Error('Usuário não autenticado.'));
       }
     });
-  });
+  })
+);
 
 // recupera todas as informações do usuário atual
 export function getCurrentUser() {
@@ -93,7 +95,7 @@ export const getUsername = async () => {
     const currentUserId = await getCurrentUserId();
     const q = query(
       collection(db, 'usernames'),
-      where('userId', '==', currentUserId)
+      where('userId', '==', currentUserId),
     );
     const querySnapshot = await getDocs(q);
 
@@ -110,7 +112,7 @@ export const getUsername = async () => {
 };
 
 // deleta a postagem
-export const deletePost = (id) =>
+export const deletePost = (id) => (
   new Promise((resolve, reject) => {
     try {
       deleteDoc(doc(db, 'post', id));
@@ -120,7 +122,8 @@ export const deletePost = (id) =>
       console.error('Error deleting document: ', e);
       reject(e);
     }
-  });
+  })
+);
 
 // checa se o ID do usuário atual é igual ao id do autor da postagem
 export const checkAuthor = async (postId) => {
@@ -128,14 +131,9 @@ export const checkAuthor = async (postId) => {
   const postRef = doc(db, 'post', postId);
   const docSnapshot = await getDoc(postRef);
 
-  if (
-    docSnapshot.exists() &&
-    docSnapshot.data().postAuthorId === currentUserId
-  ) {
-    return true;
-  } else {
-    return false;
-  }
+  return (
+    docSnapshot.exists() && docSnapshot.data().postAuthorId === currentUserId
+  );
 };
 
 // edita o doc da collection 'post'
@@ -149,10 +147,10 @@ export const editPostDoc = async (
   sexoEdit,
   especieEdit,
   opcaoAdocaoEdit,
-  contatoEdit
+  contatoEdit,
 ) => {
   const postRef = doc(db, 'post', postId);
-  console.log('postRef', postRef)
+  console.log('postRef', postRef);
 
   await updateDoc(postRef, {
     raca: racaEdit,
@@ -165,5 +163,5 @@ export const editPostDoc = async (
     sexo: sexoEdit,
   });
 
-  console.log('documento editado')
-}; */
+  console.log('documento editado');
+};
