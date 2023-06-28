@@ -1,85 +1,108 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
 
-body{
-    margin: 0;
-    padding: 0;
-    background-color: #008da1;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #008da1;
   background-image: linear-gradient(to top, #86c0ca, #008da1);
   height: 100vh;
   width: 100%;
 }
 
-
-#feed{
-    display: flex;
-    flex-wrap: wrap;
-   flex-direction: column;
-   align-items: center;
-    width: 100%;
+#feed {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-.titleHeader{
-    font-family: 'Amatic SC', cursive;
-    font-size: 15px;
-    color:#fff
-}
-
-.logoHeader{
-    width: 30px;
-}
-
-
-
-.header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    margin-bottom: 20px;
-}
-.post {
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #DA5536;
-    border-radius: 5px;
-    width: 90%;
-}
-
-.post p {
-    margin: 0;
-    padding: 5px;
-    color: white;
+.titleHeader {
+  font-family: 'Amatic SC', cursive;
+  font-size: 30px;
+  color: #fff;
 }
 
 .logoHeader {
-    width: 35px;
-    height: 35px;
-    
-  }
+  width: 40px;
+}
 
-  .menu {
-    display: flex;
-    width: 40%;
-    align-items: center;
-    padding-right: 10px;
-    cursor: pointer;
-  }
-  
-  
-  .menu a {
-    color: #fff;
-    text-decoration: none;
-    font-family: 'Amatic SC', cursive;
-    padding: 20px;
-    font-size: clamp(1em, 1em + 1vw, 1em);
-  }
-  .NameDate{
-    font-family: 'Amatic SC', cursive;
-    font-size: 20px;
-    color:#fff
-  }
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.post {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #da5536;
+  border-radius: 5px;
+  width: 90%;
+}
 
-  .Informations{
-    display: flex;
-    justify-content: space-between;
-  }
+.post p {
+  margin: 0;
+  padding: 5px;
+  color: white;
+}
+
+.logoHeader {
+  width: 35px;
+  height: 35px;
+}
+
+.menu {
+  display: flex;
+  width: 40%;
+  align-items: center;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Amatic SC', cursive;
+  padding: 20px;
+  font-size: clamp(1em, 1em + 1vw, 1em);
+}
+.NameDate {
+  font-family: 'Amatic SC', cursive;
+  font-size: 20px;
+  color: #fff;
+}
+
+.Informations {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-publish {
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 8px;
+  background-color: #c95a3e;
+  border: #fff;
+  width: 125px;
+  align-items: center;
+}
+
+.input-text {
+  border-radius: 5px;
+  height: 50px;
+  border: none;
+  margin: 8px 8px 2px 8px;
+  width: 90%;
+  padding-left: 10px;
+  background-color: #d9d9d955;
+  color: #fff;
+}
+
+.input-text::placeholder {
+  color: #ffffff55;
+}
