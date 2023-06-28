@@ -83,8 +83,8 @@ nav ul {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 370px;
-  height: 406px;
+  width: 300px;
+  height: 306px;
 }
 
 .card {
@@ -136,27 +136,14 @@ nav ul {
 .post-content {
   position: relative;
   background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
+  top:150px;
+  left: 500px;
+  padding: 10px;
   border: 1px solid #888;
-  width: 80%;
-  max-width: 600px;
+  width: 80vw;
+  max-height: 1000px;
+  max-width: 620px;
   border-radius: 5px;
-}
-
-/* Estilos para fechar o modal */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 .boxExperience {
@@ -183,4 +170,81 @@ nav ul {
 .experience-button p {
   color: var(--TextColor);
   font-weight: 600;
+}
+
+/* Estilos para fechar o modal */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.photo {
+  display: flex;
+  margin-top: 5px;
+}
+
+.profilePicture {
+  width: 50px;
+  border-radius: 35px;
+  margin-left: 20px;
+}
+
+.profileName {
+  font-family: 'Prompt';
+  padding: 10px 10px;
+}
+
+.formPost {
+  display: flex;
+}
+
+.inputContent {
+  background-color: #cfcfd3;
+  width: 95%;
+  margin-left: 14px;
+  height: 200px;
+  padding: 6px;
+  border-radius: 9px;
+  margin-top: 10px;
+  outline: 0;
+}
+
+.profileRestaurant {
+  font-family: 'Prompt';
+  font-size: 0.9rem;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.inputLocation {
+  background-color: #cfcfd3;
+  outline: 0;
+  border:#aaa;
+  width: 156px;
+  height: 30px;
+  padding: 5px;
+  border-radius:5px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  margin-left: 5px
+}
+
+.buttonPublish {
+  width: 90px;
+  height: 30px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-left: 210px;
 }
