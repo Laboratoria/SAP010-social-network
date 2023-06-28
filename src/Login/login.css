@@ -21,7 +21,7 @@
 
 .subtitulo {
   color: var(--CorTerciaria);
-  font-family: 'Prompt';
+  font-family: 'Prompt', sans-serif;
   font-size: 3rem;
   left: 20px;
   position: absolute;

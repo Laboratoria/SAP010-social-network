@@ -22,7 +22,6 @@ export const loginUser = () => {
           <button class="full-width" id= "btnLogin" type="submit" name="send2">Entrar</button>
           <div class="social">
             <img class="logo" id="btn-google" src="Img/Google.png" alt= "Logo Google">
-            <img class="logo" id="btn-face" src="Img/facebook.png" alt= "Logo Facebook">
           </div>
         </div>
         <p class="messageLogin">Não possui uma conta? <a href="#register" id="newAccount">Cadastrar</a></p>
