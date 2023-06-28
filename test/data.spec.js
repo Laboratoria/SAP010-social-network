@@ -30,7 +30,7 @@ describe('loginWithEmail', () => {
     const email = 'teste@coffeestation.com';
     const password = '123456';
 
-    signInWithEmailAndPassword.mockRejectedValueOnce('Erro ao logar usuário'));
+    signInWithEmailAndPassword.mockRejectedValueOnce(new Error('Erro ao logar usuário'));
     try {
       await loginWithEmail(email, password);
     } catch (error) {
