@@ -88,7 +88,7 @@ export const likePost = async (postId, userId) => {
       return 'remove like';
     }
   } catch (error) {
-    console.error('Error al dar like:', error);
+    console.error('Error ao dar like:', error);
     throw error;
   }
   return '';

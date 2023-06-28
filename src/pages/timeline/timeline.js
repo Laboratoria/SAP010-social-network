@@ -6,7 +6,6 @@ import {
   likePost,
   deletePost,
 } from '../../firebase/firestore.js';
-import { uploadProfilePhoto } from '../../firebase/storage.js';
 
 export default () => {
   const timeline = document.createElement('div');
@@ -16,10 +15,9 @@ export default () => {
       <img src='./assets/icon-photo.png' alt='Foto de perfil' class='profilePhoto'>
       <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
       <figure class='icones'>
-        <button type="button" class='button-timeline' id='home-btn'><img src="./assets/icon-home.png" class="icon-timeline" alt="Icone home">
-        <button type="button" class='button-timeline' id='logout-btn'><img src='./assets/icon-sair.png' class="icon-timeline" alt='logout icon'>
+        <button type="button" class='button-timeline' id='home-btn'><img src="./assets/icon-home.png" class="icon-timeline" alt="Icone home"></button>
+        <button type="button" class='button-timeline' id='logout-btn'><img src='./assets/icon-sair.png' class="icon-timeline" alt='logout icon'></button>
       </figure>
-      <input type="file" id="profilePhotoInput" accept="image/*" style="display: none;">
     </div>
     <img src="./assets/imagetimeline.png" class="img-timeline" alt="edit image" >
     <div class="right-timeline">
@@ -37,8 +35,6 @@ export default () => {
   const postBtn = timeline.querySelector('#sharePost');
   const descriptionPost = timeline.querySelector('#postArea');
   const postList = timeline.querySelector('#postList');
-  const profilePhotoInput = timeline.querySelector('#profilePhotoInput');
-  const profilePhoto = timeline.querySelector('.profilePhoto');
   const logOutBtn = timeline.querySelector('#logout-btn');
 
   const createPostElement = (
@@ -48,7 +44,6 @@ export default () => {
     postId,
     authorId,
     whoLiked,
-    profilePhotoUrl,
   ) => {
     const createdAtDate = new Date(createdAt.seconds * 1000);
     const createdAtFormattedDate = createdAtDate.toLocaleDateString('pt-BR');
@@ -66,11 +61,10 @@ export default () => {
           <p class='dataPost'>${createdAtFormatted}</p>
         </div>
         <p class='textPost'>${description}</p>
-        <div class='image-icons'>
-          <span class='likePost' id='likes-counter-${postId}'>${whoLiked.length}</span>
-          <button type="button" class='icons-post' id='like-Post' data-post-id='${postId}'>
-            <a class='icons-post' id='likePost'><img src='./assets/likeicon.png' alt='like image' class='icons-post'></a>
-          </button>
+          <div class='image-icons'>
+            <button type="button" class='icons-post' id='like-Post' data-post-id='${postId}'>
+              <a class='icons-post' id='icons-post'><img src='./assets/likeicon.png' alt='like image' class='icons-post'></a>
+            </button>
           ${authorId === getUserId() ? `<button type="button" data-post-id='${postId}' class='icons-post' id='editPost'>
             <a class='icons-post'><img src='./assets/editicon.png' alt='edit image' class='icons-post'></a>
           </button>
@@ -78,13 +72,9 @@ export default () => {
             <img src='./assets/deleteicon.png' alt='delete image' class='icons-post'>
           </button>` : ''}
         </div>
+        <span class='likePost' id='likes-counter-${postId}'>${whoLiked.length}</span>
       </div>
 `;
-
-    if (profilePhotoUrl) {
-      const profilePhotoElement = postElement.querySelector('.profilePhoto');
-      profilePhotoElement.src = profilePhotoUrl;
-    }
 
     return postElement;
   };
@@ -95,7 +85,7 @@ export default () => {
 
     postsFirestore.forEach(async (post) => {
       const {
-        name, createdAt, description, id, author, whoLiked, profilePhotoUrl,
+        name, createdAt, description, id, author, whoLiked,
       } = post;
       const postElement = createPostElement(
         name,
@@ -104,7 +94,6 @@ export default () => {
         id,
         author,
         whoLiked,
-        profilePhotoUrl,
       );
       postList.appendChild(postElement);
 
@@ -126,20 +115,6 @@ export default () => {
         }
       });
     });
-  };
-
-  const handleProfilePhotoUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      uploadProfilePhoto(file)
-        .then((url) => {
-          profilePhoto.src = url;
-          localStorage.setItem('profilePhotoUrl', url);
-        })
-        .catch((error) => {
-          console.log('Erro ao fazer upload da foto de perfil:', error);
-        });
-    }
   };
 
   const handlePostBtnClick = () => {
@@ -195,18 +170,11 @@ export default () => {
     }
   };
 
-  profilePhoto.addEventListener('click', () => {
-    profilePhotoInput.click();
-  });
-
-  profilePhotoInput.addEventListener('change', handleProfilePhotoUpload);
   postBtn.addEventListener('click', handlePostBtnClick);
+  postBtn.addEventListener('touchstart', handlePostBtnClick);
+  
   postList.addEventListener('click', handlePostListClick);
-
-  const storedProfilePhotoUrl = localStorage.getItem('profilePhotoUrl');
-  if (storedProfilePhotoUrl) {
-    profilePhoto.src = storedProfilePhotoUrl;
-  }
+  postList.addEventListener('touchstart', handlePostListClick);
 
   logOutBtn.addEventListener('click', () => {
     logOut()

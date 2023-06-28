@@ -62,11 +62,8 @@
     grid-area: middle;
     position: sticky;
     bottom: 0;
-    z-index: -1; 
     margin-top: 12em;
 }
-
-
 
 .input-container { 
     display: flex;
@@ -162,17 +159,13 @@
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1em;
-    position: fixed;
-    margin: 1.5em 0 0 0.4em;
-
+    margin: 0 4em 0 0
 }
 
 .icon-timeline {
     text-align: center;
     color: var(--white); 
-    width: 1.5em;
-    margin: 1em 2em 0 2em;
-    
+    width: 1.5em;   
 }
 
 a {
@@ -182,7 +175,6 @@ a {
 .icons-post {
     background-color: var(--lightblue);
     border: none;
-    margin-bottom: 1em;
     width: 1.5em;
 }
 
