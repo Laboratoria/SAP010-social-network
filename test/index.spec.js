@@ -4,13 +4,11 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
-  FacebookAuthProvider,
 } from 'firebase/auth';
 import {
   newUser,
   authLogin,
   authLoginGoogle,
-  authLoginFacebook,
 } from '../src/lib/index.js';
 
 jest.mock('firebase/auth');
@@ -28,12 +26,6 @@ test('Deveria logar o usuário com sua conta do Google', async () => {
   signInWithPopup.mockResolvedValueOnce();
   await authLoginGoogle();
   expect(GoogleAuthProvider).toHaveBeenCalledTimes(1);
-});
-
-test('Deveria logar o usuário com sua conta do Facebook', async () => {
-  signInWithPopup.mockResolvedValueOnce();
-  await authLoginFacebook();
-  expect(FacebookAuthProvider).toHaveBeenCalledTimes(1);
 });
 
 test('Criar novo usuario', async () => {

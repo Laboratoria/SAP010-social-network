@@ -2,7 +2,6 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
-
 const firebaseConfig = {
   apiKey: 'AIzaSyDSedT4wQAFd6nZqtK9xWVLPVSRAj9y9dE',
   authDomain: 'rede-social-2c0e4.firebaseapp.com',

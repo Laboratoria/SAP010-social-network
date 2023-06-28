@@ -11,14 +11,12 @@ import {
 
 import { auth } from '../Firebase/instalfirebase';
 
-
 export const authStateChanged = (callback) => {
   onAuthStateChanged(auth, callback);
 };
 
 // função para fazer login do usuario
-export const authLogin = (email, senha) =>
-  signInWithEmailAndPassword(auth, email, senha);
+export const authLogin = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
 
 // função para login da conta do google
 const authProvedor = new GoogleAuthProvider();
@@ -35,5 +33,5 @@ export const newUser = async (email, senha, displayName) => {
 
 export const logout = async () => {
   await signOut(auth);
-  window.location.hash = "";
+  window.location.hash = '';
 };

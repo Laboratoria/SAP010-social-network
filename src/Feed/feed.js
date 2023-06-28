@@ -90,13 +90,17 @@ export const feedUser = () => {
     }
   });
 
-  
-
-    getFeedItems().then( (items) => {
-       const card = ({description, likes, rating, restaurantName, userAvatar, userName}) => (`
-       <div class="card">
+  getFeedItems().then((items) => {
+    const card = ({
+      description,
+      likes,
+      rating,
+      restaurantName,
+      userAvatar,
+      userName,
+    }) => (
+      `<div class="card">
         <div class="card-header">
-          
           <div class="card-user">
             <div class="card-avatar"> <img src="${userAvatar}"/></div>
             <h5>${userName}</h5>
@@ -110,41 +114,35 @@ export const feedUser = () => {
           <div class="card-likes">${likes}</div>
           <div class="card-restaurant">${restaurantName}</div>
         </div>
-      </div>
-      `); 
-        const postList = document.querySelector('#postList');
-        postList.innerHTML = items.map(card).join('')
-    } )
+      </div>`);
+    const postList = document.querySelector('#postList');
+    postList.innerHTML = items.map(card).join('');
+  });
 
   return container;
 };
 
 function publishPost() {
-
   const userNameElement = document.getElementById('userName');
   const userPhotoElement = document.getElementById('userPhoto');
   const postLocation = document.getElementById('postLocation');
   const postContent = document.getElementById('postContent');
   const userId = document.getElementById('userId');
-      
 
   const post = {
-    description: postContent.value, 
+    description: postContent.value,
     likes: 0,
-    rating: 2, 
-    restaurantName: postLocation.value, 
-    userAvatar: userPhotoElement.src, 
+    rating: 2,
+    restaurantName: postLocation.value,
+    userAvatar: userPhotoElement.src,
     userName: userNameElement.textContent,
     createdAt: new Date(),
     userId: userId.value,
-  }
+  };
 
-   publish(post).then(() => {
+  publish(post).then(() => {
     const closeButton = document.querySelector('#close');
     closeButton.click();
-   })
-
-   
-
+  });
 }
 window.publishPost = publishPost;
