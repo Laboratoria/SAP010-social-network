@@ -37,7 +37,6 @@ export const loginUser = () => {
   const txtError = container.querySelector('#txtError');
   const login = container.querySelector('#btnLogin');
   const btnGoogle = container.querySelector('#btn-google');
-  const btnFacebook = container.querySelector('#btn-face');
 
   const validarEmail = (email) => {
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -98,20 +97,5 @@ export const loginUser = () => {
   };
 
   loginGoogle();
-
-  // login facebook
-  // const loginFacebook = () => {
-  //   btnFacebook.addEventListener('click', () => {
-  //     authLoginFacebook()
-  //       .then(() => {
-  //         window.location.hash = '#feed';
-  //       })
-  //       .catch(() => {
-  //         txtError.innerHTML = 'Usuário ou senha incorretos';
-  //       });
-  //   });
-  // };
-
-  // loginFacebook();
   return container;
 };

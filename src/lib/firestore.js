@@ -1,8 +1,14 @@
-import { collection, query, getDocs, doc, addDoc, orderBy } from 'firebase/firestore';
+import {
+  collection,
+  query,
+  getDocs,
+  addDoc,
+  orderBy,
+} from 'firebase/firestore';
 import { db } from '../Firebase/instalfirebase';
 
 export const getFeedItems = async () => {
-  const feedItems = []
+  const feedItems = [];
   const feedPost = collection(db, 'Post');
   const q = query(feedPost, orderBy('createdAt', 'desc'));
   const querySnapshot = await getDocs(q);
@@ -11,12 +17,11 @@ export const getFeedItems = async () => {
       id: doc.id,
       ...doc.data(),
     };
-    feedItems.push(item)
+    feedItems.push(item);
   });
-  return feedItems
+  return feedItems;
 };
 
 export const publish = async (post) => {
-  const docRef = await addDoc(collection(db, "Post"), post);
-  console.log("Document written with ID: ", docRef.id);
-}
+  await addDoc(collection(db, 'Post'), post);
+};
