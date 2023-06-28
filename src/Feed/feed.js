@@ -1,5 +1,5 @@
 import './feed.css';
-import { authStateChanged } from '../lib/index';
+import { authStateChanged, getFeedItems, publish } from '../lib/index';
 
 export const feedUser = () => {
   const container = document.createElement('div');
@@ -25,24 +25,8 @@ export const feedUser = () => {
       <div class="boxExperience">
         <button id="experienceButton" class="experience-button">Qual experiência você teve hoje?</button>
       </div>
-      <div class="post-list"> 
-        <div class="card">
-          <div class="card-header">
-            
-            <div class="card-user">
-              <div class="card-avatar"> <img src="https://placekitten.com/50/50"/></div>
-              <h5>Roxane Principe</h5>
-            </div>
-            <div class="card-actions">...</div>
-          </div>
-          <div class="card-description">
-            <p>Estou surpresa por ser um ambiente tão bom, comida boa e com o ótimo atendimento que inclusive fomos atendidos pelo baixinho. Ele foi ótimo e muito atencioso com a gente e com todos ao redor. A comida é maravilhosa, uma experiência incrível, todos tem que fazer isso um dia!</p>
-          </div>
-          <div class="card-info">
-            <div class="card-likes"><3 5</div>
-            <div class="card-restaurant">Starbucks</div>
-          </div>
-        </div>
+      <div id="postList"class="post-list"> 
+        
       </div>
     </section>
  </main>
@@ -50,9 +34,10 @@ export const feedUser = () => {
     <div class="post-content">
       <span id= "close" class="close" onclick="closeModal()">&times;</span>
       <div class='photo'>
-        <img class='profilePicture' id="userPhoto" src="" alt="Foto do perfil">
+        <img referrerpolicy='no-referrer' class='profilePicture' id="userPhoto" src="" alt="Foto do perfil">
         <span class='profileName' id="userName"></span>
       </div>
+      <input id="userId" type="hidden"/>
       <textarea class='inputContent' id="postContent" placeholder="Qual experiência você teve hoje?" required></textarea>
       <form class='formPost'>
         <label class='profileRestaurant' for="postLocation">Restaurante:</label>
@@ -92,8 +77,10 @@ export const feedUser = () => {
   authStateChanged((user) => {
     if (user) {
       const userNameElement = document.getElementById('userName');
+      const userIdElement = document.getElementById('userId');
       const userPhotoElement = document.getElementById('userPhoto');
       userNameElement.textContent = user.displayName;
+      userIdElement.value = user.uid;
       if (user.photoURL) {
         userPhotoElement.src = user.photoURL;
       } else {
@@ -102,5 +89,61 @@ export const feedUser = () => {
     }
   });
 
+  
+
+    getFeedItems().then( (items) => {
+       const card = ({description, likes, rating, restaurantName, userAvatar, userName}) => (`
+       <div class="card">
+        <div class="card-header">
+          
+          <div class="card-user">
+            <div class="card-avatar"> <img src="${userAvatar}"/></div>
+            <h5>${userName}</h5>
+          </div>
+          <div class="card-actions">...</div>
+        </div>
+        <div class="card-description">
+          <p>${description}</p>
+        </div>
+        <div class="card-info">
+          <div class="card-likes">${likes}</div>
+          <div class="card-restaurant">${restaurantName}</div>
+        </div>
+      </div>
+      `); 
+        const postList = document.querySelector('#postList');
+        postList.innerHTML = items.map(card).join('')
+    } )
+
   return container;
 };
+
+function publishPost() {
+
+  const userNameElement = document.getElementById('userName');
+  const userPhotoElement = document.getElementById('userPhoto');
+  const postLocation = document.getElementById('postLocation');
+  const postContent = document.getElementById('postContent');
+  const userId = document.getElementById('userId');
+      
+
+  const post = {
+    description: postContent.value, 
+    likes: 0,
+    rating: 2, 
+    restaurantName: postLocation.value, 
+    userAvatar: userPhotoElement.src, 
+    userName: userNameElement.textContent,
+    createdAt: new Date(),
+    userId: userId.value,
+  }
+
+   publish(post).then(() => {
+    const closeButton = document.querySelector('#close');
+    closeButton.click();
+   })
+
+   
+
+}
+window.publishPost = publishPost;

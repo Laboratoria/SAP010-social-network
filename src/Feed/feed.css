@@ -94,6 +94,7 @@ nav ul {
   background-color: var(--BackcgroundColorDark);
   padding: 12px;
   border-radius: 5px;
+  min-width: 600px;
 }
 
 .card-header {
@@ -112,6 +113,8 @@ nav ul {
 
 .card-avatar img {
   border-radius: 50%;
+  width: 50px;
+  height: 50px;
 }
 
 .card-user {
@@ -216,6 +219,7 @@ nav ul {
   border-radius: 9px;
   margin-top: 10px;
   outline: 0;
+  resize: none;
 }
 
 .profileRestaurant {
@@ -247,4 +251,15 @@ nav ul {
   cursor: pointer;
   font-size: 0.8rem;
   margin-left: 210px;
+}
+
+.post-list{
+  overflow: scroll;
+  z-index: 1;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.post-list::-webkit-scrollbar{
+  display: none;
 }
