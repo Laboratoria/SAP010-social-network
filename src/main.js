@@ -1,33 +1,30 @@
 // Este es el punto de entrada de tu aplicacion
-//import createUserWithEmailAndPassword from "./lib/configFirebase";
+// import createUserWithEmailAndPassword from "./lib/configFirebase";
 
-//createUserWithEmailAndPassword();
+// createUserWithEmailAndPassword();
 
-import login from "./pages/login/login.js";
-import home from "./pages/home/home.js";
+import login from './pages/login/login.js';
+import home from './pages/home/home.js';
 
-const main = document.getElementById("root");
+const main = document.getElementById('root');
 const init = () => {
-  window.addEventListener("hashchange", () => {
+  window.addEventListener('hashchange', () => {
     // console.log(window.location.hash)
-    main.innerHTML = " ";
+    main.innerHTML = ' ';
     switch (window.location.hash) {
-      case " ":
+      case ' ':
         main.appendChild(home());
         break;
-      case "#login":
+      case '#login':
         main.appendChild(login());
         break;
-      // case "#contacts":
-      //   main.appendChild(contact());
-      //   break;
       default:
         main.appendChild(home());
     }
   });
 };
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   main.appendChild(home());
   init();
 });
