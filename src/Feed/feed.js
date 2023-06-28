@@ -41,8 +41,8 @@ export const feedUser = () => {
       <input id="userId" type="hidden"/>
       <textarea class='inputContent' id="postContent" placeholder="Qual experiência você teve hoje?" required></textarea>
       <form class='formPost'>
-        <label class='profileRestaurant' for="postLocation">Restaurante:</label>
-        <input class='inputLocation' type="text" id="postLocation" required>
+      <img class='img-location' src="Img/location-feed.svg">
+      <textarea class='inputLocation' type="text" id="postLocation" placeholder="Restaurante"required></textarea>
         <button class='buttonPublish' id="publishButton" onclick="publishPost()">Publicar</button>
       </form>
     </div>
@@ -105,14 +105,14 @@ export const feedUser = () => {
             <div class="card-avatar"> <img src="${userAvatar}"/></div>
             <h5>${userName}</h5>
           </div>
-          <div class="card-actions">...</div>
+          <div class="card-actions"> <img class="points-feed" src="Img/points-feed.svg"/> </div>
         </div>
-        <div class="card-description">
+        <div class="card-description"> 
           <p>${description}</p>
         </div>
         <div class="card-info">
           <div class="card-likes">${likes}</div>
-          <div class="card-restaurant">${restaurantName}</div>
+          <div class="card-restaurant"> <img class="img-location-feed" src="Img/location-feed.svg"/> ${restaurantName}</div>
         </div>
       </div>`);
     const postList = document.querySelector('#postList');
