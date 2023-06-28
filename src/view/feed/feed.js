@@ -6,6 +6,7 @@ import {
   deletePost,
   checkAuthor,
   editPostDoc,
+  addLike,
 } from '../../lib/firestore.js';
 import { logout } from '../../lib/index.js';
 
@@ -138,21 +139,40 @@ export const feed = () => {
            <p>${post.mensagem}</p>
           </div>
           <p>Contato: ${post.contato}</p>
-         
-          <i class='material-icons' data-post-id='${post.id}'>delete</i>
+          <div class='icon-container'>
+          <div class='like-counter'></div>
+          <i class='material-icons like-icon' data-post-id='${post.id}'>thumb_up</i>
+          <i class='material-icons delete-icon' data-post-id='${post.id}'>delete</i>
           <i class='material-icons edit-icon' data-post-id='${post.id}'>edit</i>
+          </div>
           </section>
       `;
+
+      const loadNumberOfLikes = async () => {
+        const postId = post.id;
+        const likeCounter = await addLike(postId, 0);
+        const likeNumber = postCard.querySelector('.like-counter');
+        likeNumber.textContent = `${likeCounter}`;
+      };
+
+      loadNumberOfLikes();
+
+      const likeIcon = postCard.querySelector('.like-icon');
+
+      likeIcon.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const postId = post.id;
+        const currentUserId = await getCurrentUserId();
+        const newLike = currentUserId;
+        const likeCounter = await addLike(postId, newLike);
+        const likeNumber = postCard.querySelector('.like-counter');
+        likeNumber.textContent = `${likeCounter}`;
+      });
 
       const editIcon = postCard.querySelector('.edit-icon');
 
       editIcon.addEventListener('click', async (event) => {
         event.preventDefault();
-        // ok pegar o id do post
-        // ok abrir o modal
-        // ok já aparecer preenchido com as infos antigas
-        // ok usuário troca as infos
-        // mandar e chamar a função editPostDoc com as infos novas
 
         const postId = post.id;
 
@@ -176,8 +196,10 @@ export const feed = () => {
           };
           modal.style.display = 'block';
 
-          document.getElementById('quero-doar').checked = post.opcaoAdocao === 'Quero doar';
-          document.getElementById('quero-adotar').checked = post.opcaoAdocao === 'Quero adotar';
+          document.getElementById('quero-doar').checked =
+            post.opcaoAdocao === 'Quero doar';
+          document.getElementById('quero-adotar').checked =
+            post.opcaoAdocao === 'Quero adotar';
           document.getElementById('idade').value = post.idadePet;
           document.getElementById('especie').value = post.especie;
           document.getElementById('sexo').value = post.sexo;
@@ -216,7 +238,7 @@ export const feed = () => {
               sexoEdit,
               especieEdit,
               opcaoAdocaoEdit,
-              contatoEdit,
+              contatoEdit
             );
 
             limparFormulário();
@@ -230,7 +252,7 @@ export const feed = () => {
       });
 
       // deletar post
-      const deleteIcon = postCard.querySelector('.material-icons');
+      const deleteIcon = postCard.querySelector('.delete-icon');
 
       // chama a função checkAuthor e verifica todos os posts sendo gerados
       const isAuthor = await checkAuthor(post.id);
@@ -246,7 +268,9 @@ export const feed = () => {
 
       deleteIcon.addEventListener('click', async () => {
         if (isAuthor) {
-          const confirmDelete = window.confirm('Tem certeza que deseja excluir esta postagem?');
+          const confirmDelete = window.confirm(
+            'Tem certeza que deseja excluir esta postagem?'
+          );
 
           if (confirmDelete) {
             try {
@@ -314,22 +338,29 @@ export const feed = () => {
         const dataAtual = Date.now();
         const postUsername = username;
         const postAuthorId = currentUserId;
+        const postLikes = [];
 
         //  trecho para validação dos inputs de radio e textarea
         let validarInputs = true;
-        const mensagemErroRadio = document.getElementById('mensagem-erro-radio');
-        const mensagemErroTextarea = document.getElementById('mensagem-erro-textarea');
+        const mensagemErroRadio = document.getElementById(
+          'mensagem-erro-radio'
+        );
+        const mensagemErroTextarea = document.getElementById(
+          'mensagem-erro-textarea'
+        );
 
         if (
           !document.querySelector('input[type="radio"][name="quero"]:checked')
         ) {
           validarInputs = false;
-          mensagemErroRadio.textContent = 'Campo obrigatório: favor selecionar uma opção.';
+          mensagemErroRadio.textContent =
+            'Campo obrigatório: favor selecionar uma opção.';
         }
 
         if (document.getElementById('mensagem').value === '') {
           validarInputs = false;
-          mensagemErroTextarea.textContent = 'Campo obrigatório: favor inserir uma mensagem.';
+          mensagemErroTextarea.textContent =
+            'Campo obrigatório: favor inserir uma mensagem.';
           document.getElementById('mensagem').classList.add('error-border');
         } else {
           document.getElementById('mensagem').classList.remove('error-border');
@@ -348,6 +379,7 @@ export const feed = () => {
             dataAtual,
             postUsername,
             postAuthorId,
+            postLikes,
           };
 
           await criarPost(dadosPost);

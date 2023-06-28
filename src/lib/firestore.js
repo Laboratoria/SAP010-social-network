@@ -1,4 +1,4 @@
-/* import {
+import {
   collection,
   addDoc,
   query,
@@ -9,6 +9,7 @@
   doc,
   getDoc,
   updateDoc,
+  arrayUnion
 } from 'firebase/firestore';
 
 import { onAuthStateChanged } from 'firebase/auth';
@@ -52,7 +53,8 @@ export const createUserData = async (nome) => {
 
 // recupera o Id do usuário atual
 export const getCurrentUserId = () =>
-  new Promise((resolve, reject) => { onAuthStateChanged(auth, (user) => {
+  new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         resolve(user.uid);
       } else {
@@ -152,7 +154,6 @@ export const editPostDoc = async (
   contatoEdit
 ) => {
   const postRef = doc(db, 'post', postId);
-  console.log('postRef', postRef)
 
   await updateDoc(postRef, {
     raca: racaEdit,
@@ -165,5 +166,22 @@ export const editPostDoc = async (
     sexo: sexoEdit,
   });
 
-  console.log('documento editado')
-}; */
+  console.log('documento editado');
+};
+
+export const addLike = async (postId, newLike) => {
+  const postRef = doc(db, 'post', postId);
+  
+  await updateDoc(postRef, {
+    postLikes: arrayUnion(newLike),
+  });
+
+  const postSnapshot = await getDoc(postRef);
+  if (postSnapshot.exists()) {
+    const postData = postSnapshot.data();
+    const postLikes = postData.postLikes ; 
+    const likesCount = postLikes.length-1
+    console.log(likesCount)
+    return likesCount
+  }
+};
