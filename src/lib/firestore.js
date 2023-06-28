@@ -20,12 +20,7 @@ import { auth } from './index.js';
 //  função de criar um post no banco de dados
 
 export const criarPost = async (dadosPost) => {
-  try {
-    const docRef = await addDoc(collection(db, 'post'), dadosPost);
-    console.log('Document written with ID: ', docRef.id);
-  } catch (e) {
-    console.error('Error adding document: ', e);
-  }
+  await addDoc(collection(db, 'post'), dadosPost);
 };
 
 //  função de carregar os dados das postagens do banco de dados em ordem de data

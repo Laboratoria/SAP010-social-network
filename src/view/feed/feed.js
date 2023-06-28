@@ -247,6 +247,7 @@ export const feed = () => {
       }
 
       deleteIcon.addEventListener('click', async () => {
+
         const postId = post.id;
 
         const isAuthor = await checkAuthor(postId);
@@ -302,6 +303,7 @@ export const feed = () => {
 
       try {
         const username = await getUsername();
+
         const currentUserId = await getCurrentUserId();
 
         let opcao = '';
