@@ -15,8 +15,8 @@ export default () => {
       <img src='./assets/icon-photo.png' alt='Foto de perfil' class='profilePhoto'>
       <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
       <figure class='icones'>
-        <button type="button" class='button-timeline' id='home-btn'><img src="./assets/icon-home.png" class="icon-timeline" alt="Icone home">
-        <button type="button" class='button-timeline' id='logout-btn'><img src='./assets/icon-sair.png' class="icon-timeline" alt='logout icon'>
+        <button type="button" class='button-timeline' id='home-btn'><img src="./assets/icon-home.png" class="icon-timeline" alt="Icone home"></button>
+        <button type="button" class='button-timeline' id='logout-btn'><img src='./assets/icon-sair.png' class="icon-timeline" alt='logout icon'></button>
       </figure>
     </div>
     <img src="./assets/imagetimeline.png" class="img-timeline" alt="edit image" >
@@ -171,7 +171,10 @@ export default () => {
   };
 
   postBtn.addEventListener('click', handlePostBtnClick);
+  postBtn.addEventListener('touchstart', handlePostBtnClick);
+  
   postList.addEventListener('click', handlePostListClick);
+  postList.addEventListener('touchstart', handlePostListClick);
 
   logOutBtn.addEventListener('click', () => {
     logOut()

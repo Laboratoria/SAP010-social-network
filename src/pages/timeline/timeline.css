@@ -62,7 +62,6 @@
     grid-area: middle;
     position: sticky;
     bottom: 0;
-    z-index: -1; 
     margin-top: 12em;
 }
 
