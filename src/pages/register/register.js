@@ -46,11 +46,6 @@ export default () => {
   const senhaInput = container.querySelector('#senhaUsuario');
   const registerButton = container.querySelector('#btn-register');
   const homeButton = container.querySelector('#btn-home');
-
-  function getErrorMessage(error) {
-    return error.message;
-  }
-
   const registerUser = () => {
     const name = nameInput.value;
     const email = emailInput.value;
@@ -58,13 +53,10 @@ export default () => {
     const areaAtuacao = container.querySelector('#atuaçao').value;
 
     createUserWithEmail(name, email, senha, areaAtuacao)
-      .then(response => {
-        //console.log('sucesso ao cadastrar usuário', response);
+      .then(() => {
       }).catch((error) => {
         const errorMessage = container.querySelector('#errorMessage');
-        window.location
-        //console.log('#### window ####', window.location);
-        //console.log('CÓDIGO DE ERRO ---> ', error.code);
+        errorMessage.style.display = 'block';
         switch (error.code) {
           case 'auth/email-already-in-use':
             errorMessage.textContent = 'E-mail já está em uso!';
@@ -104,5 +96,5 @@ export default () => {
     window.location.hash = '';
   });
 
-  return container;
+  return container;
 };
