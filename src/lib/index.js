@@ -3,7 +3,6 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  // FacebookAuthProvider,
   onAuthStateChanged,
   updateProfile,
   signOut,
@@ -27,9 +26,6 @@ export const newUser = async (email, senha, displayName) => {
   await createUserWithEmailAndPassword(auth, email, senha);
   await updateProfile(auth.currentUser, { displayName });
 };
-
-// const provider = new FacebookAuthProvider();
-// export const authLoginFacebook = () => signInWithPopup(auth, provider);
 
 export const logout = async () => {
   await signOut(auth);

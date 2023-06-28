@@ -58,7 +58,8 @@ authStateChanged((user) => {
 
 window.addEventListener('load', () => {
   const loadingElement = document.createElement('h1');
-  loadingElement.textContent = 'Carregando...';
+  loadingElement.classList.add('loadPages');
+  loadingElement.textContent = 'Carregando aguarde...';
   root.appendChild(loadingElement);
   init();
 });

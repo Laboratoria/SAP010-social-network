@@ -7,8 +7,8 @@ export const feedUser = () => {
 
   const template = ` 
   <main>
-    <sidebar>
-      <header>
+    <sidebar class='sidebar'>
+      <header class='header'>
         <h1>Food Review</h1>
       </header>
       <nav>
@@ -110,7 +110,10 @@ export const feedUser = () => {
             <h5>Nota: ${rating}/5</h5>
             </div>
           </div>
-          <div class="card-actions"> <img class="points-feed" src="Img/points-feed.svg"/> </div>
+          <div class="card-actions">
+            <img class="points-feed" id='' src="Img/pen.png"/>
+            <img class="points-feed" id='' src="Img/bin.png"/>
+          </div>
         </div>
         <div class="card-description"> 
           <p>${description}</p>
