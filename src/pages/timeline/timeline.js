@@ -67,18 +67,18 @@ export default () => {
         </div>
         <p class='textPost'>${description}</p>
         <div class='image-icons'>
-        <span class='likePost' id='likes-counter-${postId}'>${whoLiked.length}</span>
-        <button type="button" class='icons' id='like-Post' data-post-id='${postId}'>
-        <a class='icons' id='likePost'><img src='./assets/likeicon.png' alt='like image' class='icons'></a>
-      </button>
-      ${authorId === getUserId() ? `<button type="button" data-post-id='${postId}' class='icons' id='editPost'>
-      <a class='icons'><img src='./assets/editicon.png' alt='edit image' class='icons'></a>
-    </button>
-    <button type="button" class='icons' id='btn-delete' data-post-id='${postId}'>
-    <img src='./assets/deleteicon.png' alt='delete image' class='icons'>
-    </button>` : ''}
-    </div>
-  </div>
+          <span class='likePost' id='likes-counter-${postId}'>${whoLiked.length}</span>
+          <button type="button" class='icons-post' id='like-Post' data-post-id='${postId}'>
+            <a class='icons-post' id='likePost'><img src='./assets/likeicon.png' alt='like image' class='icons-post'></a>
+          </button>
+          ${authorId === getUserId() ? `<button type="button" data-post-id='${postId}' class='icons-post' id='editPost'>
+            <a class='icons-post'><img src='./assets/editicon.png' alt='edit image' class='icons-post'></a>
+          </button>
+          <button type="button" class='icons-post' id='btn-delete' data-post-id='${postId}'>
+            <img src='./assets/deleteicon.png' alt='delete image' class='icons-post'>
+          </button>` : ''}
+        </div>
+      </div>
 `;
 
     if (profilePhotoUrl) {
