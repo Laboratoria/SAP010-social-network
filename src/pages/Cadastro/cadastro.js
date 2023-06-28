@@ -1,5 +1,5 @@
 //colocar import do configfirebase.js e separar 
-//import { } from ".authUser.js";
+//import { } from "../../lib/authUser.js";
 
 export default () => {
 
@@ -7,8 +7,12 @@ export default () => {
   const templateCadastro = `<form action="">
   <fieldset>Cadastre-se
       <div>
+          <label for="">Nome completo</label>
+          <input type="text" class="nome-completo" id="nome-completo">
+</div>
+      <div>
           <label for="">Nome do usuário</label>
-          <input type="text" class="usuário" id="usuário">
+          <input type="text" class="usuario" id="usuario">
       </div>
       <div>
           <label for="email">Email</label>
@@ -18,9 +22,9 @@ export default () => {
           <label for="">Senha</label>
           <input type="number" class="senha" id="senha">
       </div>
-    <a href="/#concluirCadastro">Concluir cadastro</a>
-    <a href="/#voltar">Voltar</a>
-    <a href="/#loginGoogle">Login com Google</a>
+    <button class="btn" id="btn-cad-voltar">Voltar</button>
+    <button class="btn" id="btn-cad-concluir">Concluir cadastro</button>
+    <button class="btn" id="btn-cad-login-google">Login com Google</button>
   </fieldset>
 </form>`;
   

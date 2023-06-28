@@ -6,6 +6,17 @@ import { } from './pages/Login/login.js';
 import { } from './pages/Perfil/perfil.js'; */
 //import { myFunction } from './lib/firebase.js';
 
+
+/* // Versão ANTIGA - NAO USAR - CUIDADO! FOGE! CORRE!
+firebase.auth().qualquerCoisa()
+  .then(....) 
+  .catch(....)
+
+firebase.firestore().qualquerCoisa()
+  .then(....) 
+  .catch(....) */
+  
+
 //myFunction();
 
 // Import the functions you need from the SDKs you need
