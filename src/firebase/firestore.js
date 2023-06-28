@@ -53,11 +53,14 @@ export const updatePost = async (postId, newText) => {
 export const hasUserLikedPost = async (postId) => {
   const docRef = doc(db, 'posts', postId);
   const docSnap = await getDoc(docRef);
-  if (docSnap.exists) {
+  if (docSnap && docSnap.exists) {
     const post = docSnap.data();
     const { whoLiked } = post;
-    const userId = getAppAuth().currentUser.uid;
-    return whoLiked.includes(userId);
+    const currentUser = getAppAuth().currentUser;
+    if (currentUser && currentUser.uid) {
+      const userId = currentUser.uid;
+      return whoLiked.includes(userId);
+    }
   }
   return false;
 };
@@ -68,7 +71,7 @@ export const likePost = async (postId, userId) => {
     if (!userHasLikedPost) {
       const docRef = doc(db, 'posts', postId);
       const postDoc = await getDoc(docRef);
-          if (postDoc.exists) {
+      if (postDoc && postDoc.exists) {
         const post = postDoc.data();
         const { whoLiked } = post;
         if (!whoLiked.includes(userId)) {
