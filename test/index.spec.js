@@ -13,6 +13,7 @@ import {
   signUp,
   signInGoogle,
   checkLogin,
+  logout,
 } from '../src/lib/index.js';
 
 jest.mock('firebase/auth');
@@ -59,46 +60,37 @@ describe('signInGoogle', () => {
 
 describe('checkLogin', () => {
   it('deve retornar true quando o usuário estiver logado', async () => {
-    // Simular o usuário logado
     const user = { id: '123', nome: 'Usuário Teste' };
 
-    // Mock da função onAuthStateChanged
     onAuthStateChanged.mockImplementation((mockedAuth, callback) => {
       callback(user);
       return () => {};
     });
 
-    // Chamar a função checkLogin
     const resultado = await checkLogin();
 
-    // Verificar se o resultado é true
     expect(resultado).toBe(true);
-    // Verificar se a função onAuthStateChanged foi chamada corretamente
     expect(onAuthStateChanged).toHaveBeenCalledWith(auth, expect.any(Function));
   });
   it('deve retornar false quando o usuário não estiver logado', async () => {
-    // Simular usuário não logado
     const user = null;
 
-    // Mock da função onAuthStateChanged
     onAuthStateChanged.mockImplementation((mockedAuth, callback) => {
       callback(user);
-      return () => {}; // Adicionar um retorno vazio para compatibilidade
+      return () => {};
     });
 
-    // Chamar a função checkLogin
     const resultado = await checkLogin();
 
-    // Verificar se o resultado é false
     expect(resultado).toBe(false);
-
-    // Verificar se a função onAuthStateChanged foi chamada corretamente
     expect(onAuthStateChanged).toHaveBeenCalledWith(auth, expect.any(Function));
   });
 });
 
-describe('deve fazer logout do feed', () => {
-  it('logout', () => {
+describe('logout', () => {
+  it('deve fazer logout do feed', () => {
+    signOut.mockResolvedValue({ user: {} });
+    logout();
     expect(signOut).toHaveBeenCalledTimes(1);
   });
 });

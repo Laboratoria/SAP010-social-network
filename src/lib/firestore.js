@@ -52,15 +52,19 @@ export const createUserData = async (nome) => {
 };
 
 // recupera o Id do usuário atual
-export const getCurrentUserId = () => new Promise((resolve, reject) => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      resolve(user.uid);
-    } else {
-      reject(new Error('Usuário não autenticado'));
-    }
-  });
-});
+
+export const getCurrentUserId = () => (
+  new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        resolve(user.uid);
+      } else {
+        reject(new Error('Usuário não autenticado.'));
+      }
+    });
+  })
+);
+
 
 // recupera todas as informações do usuário atual
 export function getCurrentUser() {
@@ -111,14 +115,20 @@ export const getUsername = async () => {
 };
 
 // deleta a postagem
-export const deletePost = (id) => new Promise((resolve, reject) => {
-  try {
-    deleteDoc(doc(db, 'post', id));
-    resolve();
-  } catch (e) {
-    reject(e);
-  }
-});
+
+export const deletePost = (id) => (
+  new Promise((resolve, reject) => {
+    try {
+      deleteDoc(doc(db, 'post', id));
+      console.log('Document deleted with ID: ', id);
+      resolve();
+    } catch (e) {
+      console.error('Error deleting document: ', e);
+      reject(e);
+    }
+  })
+);
+
 
 // checa se o ID do usuário atual é igual ao id do autor da postagem
 export const checkAuthor = async (postId) => {
@@ -126,12 +136,11 @@ export const checkAuthor = async (postId) => {
   const postRef = doc(db, 'post', postId);
   const docSnapshot = await getDoc(postRef);
 
-  if (
+
+  return (
     docSnapshot.exists() && docSnapshot.data().postAuthorId === currentUserId
-  ) {
-    return true;
-  }
-  return console.log('não encontrado');
+  );
+
 };
 
 // edita o doc da collection 'post'
@@ -160,6 +169,8 @@ export const editPostDoc = async (
     sexo: sexoEdit,
   });
 };
+
+
 
 export const addLike = async (postId, newLike) => {
   const postRef = doc(db, 'post', postId);
@@ -193,4 +204,5 @@ export const numberOfLikes = async (postId) => {
     return likesCount;
   }
   return console.log('não encontrado');
+
 };

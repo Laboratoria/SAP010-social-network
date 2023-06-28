@@ -94,7 +94,6 @@ export const feed = () => {
   `;
 
   container.innerHTML = templateFeed;
-  // const arrayPosts = [];
   const feedHeader = container.querySelector('.feed-header p');
 
   getUsername().then((username) => {
@@ -140,6 +139,7 @@ export const feed = () => {
            <p>${post.mensagem}</p>
           </div>
           <p>Contato: ${post.contato}</p>
+
           <div class='icon-container'>
           <div class='like-counter'></div>
           <i class='material-icons like-icon' data-post-id='${post.id}'>thumb_up</i>
@@ -349,7 +349,7 @@ export const feed = () => {
         );
 
         if (
-          !document.querySelector('input[type="radio"][name="quero"]:checked')
+          !document.querySelector('input[type=]"radio"][name="quero"]:checked')
         ) {
           validarInputs = false;
           mensagemErroRadio.textContent = 'Campo obrigatório: favor selecionar uma opção.';
