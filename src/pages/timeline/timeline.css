@@ -179,25 +179,27 @@ a {
     text-decoration: none;
 }
 
-.icons {
+.icons-post {
     background-color: var(--lightblue);
     border: none;
     margin-bottom: 1em;
     width: 1.5em;
-
 }
- .icon-timeline:hover{
-    width: 45px;
- }
 
-.icons:hover {
+.icon-timeline:hover {
     background-color: var(--blue);
     border-radius: 0.8em;
-    padding: 0.1em;
-    width:auto;
-    height: auto;
-
+    padding: 0.3em;
+    width: 3em;
 }
+
+.icons-post:hover, .likePost:hover {
+    background-color: var(--blue);
+    border-radius: 0.8em;
+}
+
+
+
 @media screen and (min-width: 768px) {
     ::-webkit-scrollbar{
         width: 0.5em;
@@ -254,7 +256,7 @@ a {
         width: 3em;
         margin: 2em 2em 0 2em;
     }
-    .icons {
+    .icons-post {
         width: 2em;
     }
     .icones {
