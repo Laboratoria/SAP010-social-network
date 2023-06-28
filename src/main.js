@@ -1,21 +1,12 @@
 // Este es el punto de entrada de tu aplicacion
-import createUserWithEmailAndPassword from "./lib/configFirebase";
+//import createUserWithEmailAndPassword from "./lib/configFirebase";
 
+//createUserWithEmailAndPassword();
 
-// import { myFunction } from './lib/index.js';
-
-// myFunction();
-
-createUserWithEmailAndPassword();
-
-// import cadastro from "./pages/cadastro/cadastro.js";
 import login from "./pages/login/login.js";
 import home from "./pages/home/home.js";
-// import loading from "./pages/loading";
 
-// loading();
-
-const main = document.querySelector("#root");
+const main = document.getElementById("root");
 const init = () => {
   window.addEventListener("hashchange", () => {
     // console.log(window.location.hash)
