@@ -6,7 +6,6 @@ import {
   likePost,
   deletePost,
 } from '../../firebase/firestore.js';
-import { uploadProfilePhoto } from '../../firebase/storage.js';
 
 export default () => {
   const timeline = document.createElement('div');
@@ -19,7 +18,6 @@ export default () => {
         <button type="button" class='button-timeline' id='home-btn'><img src="./assets/icon-home.png" class="icon-timeline" alt="Icone home">
         <button type="button" class='button-timeline' id='logout-btn'><img src='./assets/icon-sair.png' class="icon-timeline" alt='logout icon'>
       </figure>
-      <input type="file" id="profilePhotoInput" accept="image/*" style="display: none;">
     </div>
     <img src="./assets/imagetimeline.png" class="img-timeline" alt="edit image" >
     <div class="right-timeline">
@@ -37,8 +35,6 @@ export default () => {
   const postBtn = timeline.querySelector('#sharePost');
   const descriptionPost = timeline.querySelector('#postArea');
   const postList = timeline.querySelector('#postList');
-  const profilePhotoInput = timeline.querySelector('#profilePhotoInput');
-  const profilePhoto = timeline.querySelector('.profilePhoto');
   const logOutBtn = timeline.querySelector('#logout-btn');
 
   const createPostElement = (
@@ -48,7 +44,6 @@ export default () => {
     postId,
     authorId,
     whoLiked,
-    profilePhotoUrl,
   ) => {
     const createdAtDate = new Date(createdAt.seconds * 1000);
     const createdAtFormattedDate = createdAtDate.toLocaleDateString('pt-BR');
@@ -81,11 +76,6 @@ export default () => {
       </div>
 `;
 
-    if (profilePhotoUrl) {
-      const profilePhotoElement = postElement.querySelector('.profilePhoto');
-      profilePhotoElement.src = profilePhotoUrl;
-    }
-
     return postElement;
   };
 
@@ -95,7 +85,7 @@ export default () => {
 
     postsFirestore.forEach(async (post) => {
       const {
-        name, createdAt, description, id, author, whoLiked, profilePhotoUrl,
+        name, createdAt, description, id, author, whoLiked,
       } = post;
       const postElement = createPostElement(
         name,
@@ -104,7 +94,6 @@ export default () => {
         id,
         author,
         whoLiked,
-        profilePhotoUrl,
       );
       postList.appendChild(postElement);
 
@@ -126,20 +115,6 @@ export default () => {
         }
       });
     });
-  };
-
-  const handleProfilePhotoUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      uploadProfilePhoto(file)
-        .then((url) => {
-          profilePhoto.src = url;
-          localStorage.setItem('profilePhotoUrl', url);
-        })
-        .catch((error) => {
-          console.log('Erro ao fazer upload da foto de perfil:', error);
-        });
-    }
   };
 
   const handlePostBtnClick = () => {
@@ -195,18 +170,8 @@ export default () => {
     }
   };
 
-  profilePhoto.addEventListener('click', () => {
-    profilePhotoInput.click();
-  });
-
-  profilePhotoInput.addEventListener('change', handleProfilePhotoUpload);
   postBtn.addEventListener('click', handlePostBtnClick);
   postList.addEventListener('click', handlePostListClick);
-
-  const storedProfilePhotoUrl = localStorage.getItem('profilePhotoUrl');
-  if (storedProfilePhotoUrl) {
-    profilePhoto.src = storedProfilePhotoUrl;
-  }
 
   logOutBtn.addEventListener('click', () => {
     logOut()
