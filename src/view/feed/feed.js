@@ -6,6 +6,8 @@ import {
   deletePost,
   checkAuthor,
   editPostDoc,
+  addLike,
+  numberOfLikes,
 } from '../../lib/firestore.js';
 import { logout } from '../../lib/index.js';
 
@@ -138,20 +140,40 @@ export const feed = () => {
           </div>
           <p>Contato: ${post.contato}</p>
 
-          <i class='material-icons' data-post-id='${post.id}'>delete</i>
+          <div class='icon-container'>
+          <div class='like-counter'></div>
+          <i class='material-icons like-icon' data-post-id='${post.id}'>thumb_up</i>
+          <i class='material-icons delete-icon' data-post-id='${post.id}'>delete</i>
           <i class='material-icons edit-icon' data-post-id='${post.id}'>edit</i>
+          </div>
           </section>
       `;
+
+      const loadNumberOfLikes = async () => {
+        const postId = post.id;
+        const likeCounter = await numberOfLikes(postId);
+        const likeNumber = postCard.querySelector('.like-counter');
+        likeNumber.textContent = `${likeCounter}`;
+        console.log('feed', likeCounter);
+      };
+
+      loadNumberOfLikes();
+
+      const likeIcon = postCard.querySelector('.like-icon');
+
+      likeIcon.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const postId = post.id;
+        const currentUserId = await getCurrentUserId();
+        const newLike = currentUserId;
+        await addLike(postId, newLike);
+        loadNumberOfLikes();
+      });
 
       const editIcon = postCard.querySelector('.edit-icon');
 
       editIcon.addEventListener('click', async (event) => {
         event.preventDefault();
-        // ok pegar o id do post
-        // ok abrir o modal
-        // ok já aparecer preenchido com as infos antigas
-        // ok usuário troca as infos
-        // mandar e chamar a função editPostDoc com as infos novas
 
         const postId = post.id;
 
@@ -229,7 +251,7 @@ export const feed = () => {
       });
 
       // deletar post
-      const deleteIcon = postCard.querySelector('.material-icons');
+      const deleteIcon = postCard.querySelector('.delete-icon');
 
       // chama a função checkAuthor e verifica todos os posts sendo gerados
       const isAuthor = await checkAuthor(post.id);
@@ -245,7 +267,9 @@ export const feed = () => {
 
       deleteIcon.addEventListener('click', async () => {
         if (isAuthor) {
-          const confirmDelete = window.confirm('Tem certeza que deseja excluir esta postagem?');
+          const confirmDelete = window.confirm(
+            'Tem certeza que deseja excluir esta postagem?',
+          );
 
           if (confirmDelete) {
             try {
@@ -313,11 +337,16 @@ export const feed = () => {
         const dataAtual = Date.now();
         const postUsername = username;
         const postAuthorId = currentUserId;
+        const postLikes = [];
 
         //  trecho para validação dos inputs de radio e textarea
         let validarInputs = true;
-        const mensagemErroRadio = document.getElementById('mensagem-erro-radio');
-        const mensagemErroTextarea = document.getElementById('mensagem-erro-textarea');
+        const mensagemErroRadio = document.getElementById(
+          'mensagem-erro-radio',
+        );
+        const mensagemErroTextarea = document.getElementById(
+          'mensagem-erro-textarea',
+        );
 
         if (
           !document.querySelector('input[type=]"radio"][name="quero"]:checked')
@@ -347,6 +376,7 @@ export const feed = () => {
             dataAtual,
             postUsername,
             postAuthorId,
+            postLikes,
           };
 
           await criarPost(dadosPost);

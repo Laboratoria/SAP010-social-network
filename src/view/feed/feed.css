@@ -101,11 +101,11 @@ button:hover {
 }
 #sair {
   align-self: flex-end;
-  margin-left:50px;
-  margin-right: 30px
+  margin-left: 50px;
+  margin-right: 30px;
 }
 #logo-repet-feed {
-  margin-left:20px;
+  margin-left: 20px;
   margin-right: 50px;
   width: 100px;
   margin-top: 0;
@@ -116,9 +116,7 @@ button:hover {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  flex-wrap:wrap;
-
-
+  flex-wrap: wrap;
 }
 .user-icon {
   width: 30px;
@@ -206,12 +204,17 @@ button:hover {
   border: 1px solid red;
 }
 
+
 .material-icons {
   cursor: default;
-  
-  
+  margin: 0 5px;
 }
 
 .material-icons:hover {
   transform: scale(1.2);
 }
+.like-counter {
+  font-size: 1.2rem;
+  margin-left: 10px;
+}
+

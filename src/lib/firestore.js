@@ -9,6 +9,7 @@ import {
   doc,
   getDoc,
   updateDoc,
+  arrayUnion,
 } from 'firebase/firestore';
 
 import { onAuthStateChanged } from 'firebase/auth';
@@ -51,6 +52,7 @@ export const createUserData = async (nome) => {
 };
 
 // recupera o Id do usuário atual
+
 export const getCurrentUserId = () => (
   new Promise((resolve, reject) => {
     onAuthStateChanged(auth, (user) => {
@@ -62,6 +64,7 @@ export const getCurrentUserId = () => (
     });
   })
 );
+
 
 // recupera todas as informações do usuário atual
 export function getCurrentUser() {
@@ -104,7 +107,7 @@ export const getUsername = async () => {
       const username = currentDoc.data().name;
       return username;
     }
-    return null;
+    return console.log('não encontrado');
   } catch (error) {
     console.error(error);
     throw error;
@@ -112,6 +115,7 @@ export const getUsername = async () => {
 };
 
 // deleta a postagem
+
 export const deletePost = (id) => (
   new Promise((resolve, reject) => {
     try {
@@ -125,15 +129,18 @@ export const deletePost = (id) => (
   })
 );
 
+
 // checa se o ID do usuário atual é igual ao id do autor da postagem
 export const checkAuthor = async (postId) => {
   const currentUserId = await getCurrentUserId();
   const postRef = doc(db, 'post', postId);
   const docSnapshot = await getDoc(postRef);
 
+
   return (
     docSnapshot.exists() && docSnapshot.data().postAuthorId === currentUserId
   );
+
 };
 
 // edita o doc da collection 'post'
@@ -150,7 +157,6 @@ export const editPostDoc = async (
   contatoEdit,
 ) => {
   const postRef = doc(db, 'post', postId);
-  console.log('postRef', postRef);
 
   await updateDoc(postRef, {
     raca: racaEdit,
@@ -162,6 +168,41 @@ export const editPostDoc = async (
     contato: contatoEdit,
     sexo: sexoEdit,
   });
+};
 
-  console.log('documento editado');
+
+
+export const addLike = async (postId, newLike) => {
+  const postRef = doc(db, 'post', postId);
+
+  const postSnapshot = await getDoc(postRef);
+  if (postSnapshot.exists()) {
+    const postData = postSnapshot.data();
+    const postLikes = postData.postLikes;
+    const hasLiked = postLikes.includes(newLike);
+
+    if (hasLiked) {
+      const updatedLikes = postLikes.filter((like) => like !== newLike);
+      await updateDoc(postRef, {
+        postLikes: updatedLikes,
+      });
+    } else {
+      await updateDoc(postRef, {
+        postLikes: arrayUnion(newLike),
+      });
+    }
+  }
+};
+
+export const numberOfLikes = async (postId) => {
+  const postRef = doc(db, 'post', postId);
+  const updatedSnapshot = await getDoc(postRef);
+  if (updatedSnapshot.exists()) {
+    const updatedData = updatedSnapshot.data();
+    const updatedLikes = updatedData.postLikes;
+    const likesCount = updatedLikes.length;
+    return likesCount;
+  }
+  return console.log('não encontrado');
+
 };
