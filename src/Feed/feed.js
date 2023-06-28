@@ -1,5 +1,6 @@
 import './feed.css';
-import { authStateChanged, getFeedItems, publish } from '../lib/index';
+import { authStateChanged } from '../lib/index';
+import { getFeedItems, publish } from '../lib/firestore';
 
 export const feedUser = () => {
   const container = document.createElement('div');

@@ -3,49 +3,13 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  FacebookAuthProvider,
+  // FacebookAuthProvider,
   onAuthStateChanged,
   updateProfile,
   signOut,
 } from 'firebase/auth';
-import { collection, query, getDocs, doc, addDoc, orderBy } from 'firebase/firestore';
-import { auth, db } from '../Firebase/instalfirebase';
 
-export const getFeedItems = async () => {
-  const feedItems = []
-  const feedPost = collection(db, 'Post');
-  const q = query(feedPost, orderBy('createdAt', 'desc'));
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    const item = {
-      id: doc.id,
-      ...doc.data(),
-    };
-    feedItems.push(item)
-  });
-  return feedItems
-};
-
-export const publish = async (post) => {
-  const docRef = await addDoc(collection(db, "Post"), post);
-  console.log("Document written with ID: ", docRef.id);
-}
-
-
-
-
-// const q = query(collection(db, "cities"), where("state", "==", "CA"));
-// const unsubscribe = onSnapshot(q, (querySnapshot) => {
-//   const cities = [];
-//   querySnapshot.forEach((doc) => {
-//       cities.push(doc.data().name);
-//   });
-//   console.log("Current cities in CA: ", cities.join(", "));
-// });
-
-
-
-
+import { auth } from '../Firebase/instalfirebase';
 
 
 export const authStateChanged = (callback) => {
@@ -66,8 +30,8 @@ export const newUser = async (email, senha, displayName) => {
   await updateProfile(auth.currentUser, { displayName });
 };
 
-const provider = new FacebookAuthProvider();
-export const authLoginFacebook = () => signInWithPopup(auth, provider);
+// const provider = new FacebookAuthProvider();
+// export const authLoginFacebook = () => signInWithPopup(auth, provider);
 
 export const logout = async () => {
   await signOut(auth);
