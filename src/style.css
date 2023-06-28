@@ -1,6 +1,15 @@
 html{
 width: 100%;
 height: 100%;
-color:blue;
-background-color: gray;
+color:#96A7AF;
+background-color: #243645;
+}
+
+header{
+width: 100%;
+text-align: center;
+}
+
+.logo{
+max-width: 200px;
 }
