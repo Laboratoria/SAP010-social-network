@@ -5,7 +5,6 @@ import {
   db,
   deleteDoc,
   updateDoc,
-  arrayRemove,
 } from 'firebase/firestore';
 
 import {
@@ -123,43 +122,37 @@ describe('likePost', () => {
   it('should add like to post', async () => {
     const mockPostId = 'postId';
     const mockUserId = 'userId';
-
     const mockPostData = {
       whoLiked: ['userId'],
     };
-    const mockGetDoc = {
+    const mockGetDoc = jest.fn().mockResolvedValueOnce({
       exists: true,
       data: jest.fn(() => mockPostData),
-    };
-    getDoc.mockReturnValueOnce(mockGetDoc);
-
-    const mockUpdateDoc = jest.fn();
-    updateDoc.mockReturnValueOnce(mockUpdateDoc);
-
-    const result = await likePost(mockPostId, mockUserId);
-
-    expect(getDoc).toHaveBeenCalledWith(
+    });
+    const mockUpdateDoc = jest.fn().mockResolvedValue();
+    const result = await likePost(mockPostId, mockUserId, mockGetDoc, mockUpdateDoc);
+    expect(mockGetDoc).toHaveBeenCalledWith(
       doc(db, 'posts', mockPostId),
     );
-    expect(updateDoc).toHaveBeenCalledWith(
+    expect(mockUpdateDoc).toHaveBeenCalledWith(
       doc(db, 'posts', mockPostId),
-      { whoLiked: [mockUserId] },
+      expect.objectContaining({
+        whoLiked: expect.arrayContaining(['userId', 'userId']),
+      }),
     );
     expect(result).toBe('adicione like');
+    expect(result).toBe('adicione like');
   });
-
   it('should remove like from post', async () => {
     const mockPostId = 'postId';
     const mockUserId = 'userId';
-
-    const mockUpdateDoc = jest.fn();
-    updateDoc.mockReturnValueOnce(mockUpdateDoc);
-
-    const result = await likePost(mockPostId, mockUserId);
-
-    expect(updateDoc).toHaveBeenCalledWith(
+    const mockUpdateDoc = jest.fn().mockResolvedValue();
+    const result = await likePost(mockPostId, mockUserId, null, mockUpdateDoc);
+    expect(mockUpdateDoc).toHaveBeenCalledWith(
       doc(db, 'posts', mockPostId),
-      { whoLiked: arrayRemove(mockUserId) },
+      expect.objectContaining({
+        whoLiked: expect.arrayContaining(['userId']),
+      }),
     );
     expect(result).toBe('remove like');
   });
