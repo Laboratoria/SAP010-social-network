@@ -43,7 +43,7 @@ export const feedUser = () => {
       <form class='formPost'>
       <img class='img-location' src="Img/location-feed.svg">
       <textarea class='inputLocation' type="text" id="postLocation" placeholder="Restaurante"required></textarea>
-        <button class='buttonPublish' id="publishButton" onclick="publishPost()">Publicar</button>
+        <button type='button' class='buttonPublish' id="publishButton" onclick="publishPost()">Publicar</button>
       </form>
     </div>
   </div>
@@ -122,7 +122,7 @@ export const feedUser = () => {
   return container;
 };
 
-function publishPost() {
+async function publishPost() {
   const userNameElement = document.getElementById('userName');
   const userPhotoElement = document.getElementById('userPhoto');
   const postLocation = document.getElementById('postLocation');
@@ -140,9 +140,9 @@ function publishPost() {
     userId: userId.value,
   };
 
-  publish(post).then(() => {
-    const closeButton = document.querySelector('#close');
-    closeButton.click();
-  });
+  await publish(post)
+  const closeButton = document.querySelector('#close');
+  closeButton.click();
 }
 window.publishPost = publishPost;
+

@@ -234,7 +234,7 @@ nav ul {
   outline: 0;
   resize: none;
   border: none;
-  overflow: scroll;
+  overflow: none;
   
 }
 
