@@ -7,42 +7,52 @@
     /*font escolhida padrão no link*/
 }
 
-
 .container{
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-   
-    position: absolute;
-    
-    left: 80%;
-    transform: translate(-80%);
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    height: 100%;
     
 }
 
  
 body{
     background: #D9D9D9;
-    /* background-image: url(../../imagens/background7.png);
-    background-size: 100%; */
 }
 
 .logo {
     position: relative;
-    display: flex;
-     width: 320px;
+    width: 300px;
     height: 140px;
-    margin-left: 60px; 
+    
+    display: flex;
+    margin-left:80px;
 }
 
+h1 {
+ display: none;
+    
+}
 .etiqueta {
     
     position: relative;
     height: 600px;
     margin-top: -20px;
     display: flex;
-    
+   
+}
+ form.form{
+   position:absolute;
+   display: flex;
+   align-items:center;
+   justify-content: center;
+   flex-direction: column;
+   top:450px;
+  
 }
 
  .form h2{
@@ -50,28 +60,27 @@ body{
     font-family: 'Roboto';
     font-size: 18px;
     color: #F5B81D;
-    margin-top: -440px;
-    margin-left: 25px;
-    text-align: center;
+    margin-top: -360px;
+    margin-left: 7px;
  }
 
   .inserir_email, .digite_senha {
     position:relative;
-    margin-left: 40px; 
     background: #D9D9D9;
     border-radius: 10px;
     border-color: #F5B81D;
     cursor: pointer;
     text-align: center;
     font-size: medium;
-    margin-top: 7%;
-    width: 250px;
+    margin-top:30px;
+    width: 200px;
     height: 40px;
+   
     
 }
 
 .digite_senha {
-    margin-top: 2%;
+    margin-top: 15px;
 
 }
 
@@ -174,7 +183,7 @@ body{
 .confirma_senha
   {
    position:relative;
-   margin-left: 40px; 
+   margin-left: 10px; 
    background: #D9D9D9;
    border-radius: 10px;
    border-color: #F5B81D;
@@ -201,12 +210,11 @@ body{
    width: 250px;
    height: 40px;
    color:#F5B81D;
-   top: 50px;
+   top: 800px;
    background-color: black;
    box-shadow: -2px 3px 0#F5B81D;
   
 }
-
 
 footer{
     
@@ -223,44 +231,8 @@ footer{
     font-size: 10px;
     
 }
-/*fazendo alteração*/
-.alertHome {
-    color: #F5B81D;
-    position: absolute;
-    font-family: 'Roboto';
-    text-align: center;
-    margin-top: 100%;
- 
-  }
-#usuarioAlert {
-    color: #F5B81D;
-    position: absolute;
-    font-family: 'Roboto';
-    margin-left: 18%;
-    margin-top: 2%;
-}
- @media screen and (mix-width: 414x) and (max-width:900px){
 
-    .container{
-        
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
-}
-
-@media screen and (mix-width: 375x) and (max-width:667px){
-
-    .container{
-     width: 100%;
-     height: 100%;
-     display: block;
-    }
-            
-}      
-   
-
-
+    
 div i{
     font-size: 25px;
     cursor: pointer;
@@ -269,16 +241,414 @@ div i{
     color: #B80C0C;
     margin-top: 3%;
     float:left;
-   margin:10px 0px 0px -30px;
+   margin: 20px 0px 0px -30px;
 
 }
-@media screen and (mix-width: 420x) {
+
+@media screen and (min-width: 700px) and (max-width:760px) {
+
+    img.logo{ 
+    align-items: left;
+    justify-content: left;
+    text-align: center;
+    margin-top:30px ;
+    height: 2O0px;
+     width: 350px;
+   
+ }
+
+ h2{
+    position:none;
+    display: none;
+        
+    }
+
+    .container{ 
+        display:flex;
+        flex-direction:row;/*para alinhamento do lado do outro ,sempre no elemnto pai*/
+      }
+     h1{ 
+        display:flex;
+        margin-right: 200px;
+        padding: 100px;
+       background-color: black;
+       color: #F5B81D;
+       border-radius: 20px;
+       text-align: center ;
+     }
+     .etiqueta{
+     height: 850px;
+     width: 450px;
+
+     }
+     form.form{
+        position:absolute;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        flex-direction: column;
+        top:150px;
+        right: 100px;
+        margin-top:130px;
+        
+     }
+     .form{
+        margin-bottom:30px;
+     }
+     .inserir_email, .digite_senha {
+        width: 350px;
+        height: 45px;
+        margin-top:25px;
+     }
+
+   div i{
+    margin: 32px 0px 0px -30px;
+   }
+
+   /* pagina cadastrar */
+   .btnCadastrar2{
+        position:absolute;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        flex-direction: column;
+        top:350px;
+        right: 250px;
+        margin-top:130px;
+   }
+   .inserir_nome,
+ .inserir_email2,
+.digite_senha2,
+.confirma_senha{
+    width: 350px;
+    height: 35px;
+    margin-top:25px;
+}
+}
 
 
-    .logo {
+@media screen and (min-width: 800px) {
 
-   margin-left: 80%;
+    img.logo{ 
+    align-items: left;
+    justify-content: left;
+    text-align: center;
+    margin-top:30px ;
+    height: 2O0px;
+     width: 350px;
+   
+ }
 
+ h2{
+    position:none;
+    display: none;
+        
+    }
+
+    .container{ 
+        display:flex;
+        flex-direction:row;/*para alinhamento do lado do outro ,sempre no elemnto pai*/
+      }
+     h1{ 
+        display:flex;
+        margin-right: 50px;
+        padding: 50px;
+       background-color: black;
+       color: #F5B81D;
+       border-radius: 20px;
+       text-align: center ;
+       font-size: 35px;
+     }
+     .etiqueta{
+     height: 700px;
+     width: 450px;
+
+     }
+     form.form{
+        position:absolute;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        flex-direction: column;
+        top:150px;
+        right: 20px;
+        margin-top:60px;
+        
+     }
+     .form{
+        margin-bottom:30px;
+     }
+     .inserir_email, .digite_senha {
+        width: 350px;
+        height: 45px;
+        margin-top:25px;
+     }
+
+   div i{
+    margin: 32px 0px 0px -30px;
+   }
+
+   /* pagina cadastrar */
+   .btnCadastrar2{
+        position:absolute;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        flex-direction: column;
+        top:350px;
+        right: 250px;
+        margin-top:130px;
+   }
+   .inserir_nome,
+ .inserir_email2,
+.digite_senha2,
+.confirma_senha{
+    width: 350px;
+    height: 35px;
+    margin-top:25px;
+}
+}
+
+
+
+@media screen and (min-width: 768px) and (max-width:768px) {
+
+    img.logo{ 
+    align-items: left;
+    justify-content: left;
+    text-align: center;
+    margin-top:30px ;
+    height: 2O0px;
+     width: 350px;
+   
+ }
+
+ h2{
+    position:none;
+    display: none;
+        
+    }
+
+    .container{ 
+        display:flex;
+        flex-direction:row;/*para alinhamento do lado do outro ,sempre no elemnto pai */
 
     }
-} 
+    h1{
+        display:flex;
+        margin-right: 50px;
+        padding: 40px;
+       background-color: black;
+       color: #F5B81D;
+       border-radius: 20px;
+       text-align: center ;
+       font-size: 30px;
+     }
+     .etiqueta{
+     height: 700px;
+     width: 450px;
+
+     }
+     form.form{
+        position:absolute;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        flex-direction: column;
+        top:150px;
+        right: 23px;
+        margin-top:60px;
+        
+     }
+     .form{
+        margin-bottom:30px;
+     }
+     .inserir_email, .digite_senha {
+        width: 350px;
+        height: 45px;
+        margin-top:25px;
+     }
+
+   div i{
+    margin: 32px 0px 0px -30px;
+   }
+
+   /* pagina cadastrar */
+   .btnCadastrar2{
+        position:absolute;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        flex-direction: column;
+        top:350px;
+        right: 250px;
+        margin-top:130px;
+   }
+   .inserir_nome,
+ .inserir_email2,
+.digite_senha2,
+.confirma_senha{
+    width: 350px;
+    height: 35px;
+    margin-top:25px;
+}
+}
+
+
+/*@media screen and (min-width: 280px) and (max-width:280px){
+
+    img.logo{ 
+    align-items: left;
+    justify-content: left;
+    text-align: center;
+    margin-top:30px ;
+    height: 200px;
+     width: 350px;
+     right: 50px;
+   
+ }
+
+ h1{
+
+    display: none;
+        
+    }
+
+    .container{ 
+        display:flex;
+        flex-direction:row;/*para alinhamento do lado do outro ,sempre no elemnto pai}/*
+      }
+    
+
+     .etiqueta{
+     height: 700px;
+     width: 450px;
+     right: -50px;
+
+     }
+     form.form{
+        position:absolute;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        flex-direction: column;
+        top:150px;
+        right:-80px;
+        margin-top:400px;
+        
+        
+     }
+     .form{
+        margin-bottom:30px;
+     }
+     .inserir_email, .digite_senha {
+        width: 350px;
+        height: 45px;
+        margin-top:20px;
+     }
+
+   div i{
+    margin: 32px 0px 0px -30px;
+   }
+
+   /* pagina cadastrar */
+   /*.btnCadastrar2{
+        position:absolute;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        flex-direction: column;
+        top:350px;
+        right: 250px;
+        margin-top:130px;
+   }
+   .inserir_nome,
+ .inserir_email2,
+.digite_senha2,
+.confirma_senha{
+    width: 350px;
+    height: 35px;
+    margin-top:25px;
+}*/
+
+@media screen and (min-width: 1280px) {
+
+    img.logo{ 
+    align-items: left;
+    justify-content: left;
+    text-align: center;
+    margin-top:30px ;
+    height: 2O0px;
+     width: 350px;
+   
+ }
+
+ h2{
+    position:none;
+    display: none;
+        
+    }
+
+    .container{ 
+        display:flex;
+        flex-direction:row;/*para alinhamento do lado do outro ,sempre no elemnto pai*/
+    }
+    h1{ 
+       display:flex;
+       margin-right: 300px;
+       padding: 50px;
+      background-color: black;
+      color: #F5B81D;
+      border-radius: 20px;
+      text-align: center ;
+      font-size: 35px;
+    }
+    .etiqueta{
+    height: 700px;
+    width: 450px;
+
+    }
+    form.form{
+       position:absolute;
+       display: flex;
+       align-items:center;
+       justify-content: center;
+       flex-direction: column;
+       top:150px;
+       right: 240px;
+       margin-top:60px;
+       
+    }
+    .form{
+       margin-bottom:30px;
+    }
+    .inserir_email, .digite_senha {
+       width: 350px;
+       height: 45px;
+       margin-top:25px;
+    }
+
+  div i{
+   margin: 32px 0px 0px -30px;
+  }
+
+  /* pagina cadastrar */
+  .btnCadastrar2{
+       position:absolute;
+       display: flex;
+       align-items:center;
+       justify-content: center;
+       flex-direction: column;
+       top:350px;
+       right: 250px;
+       margin-top:130px;
+  }
+  .inserir_nome,
+.inserir_email2,
+.digite_senha2,
+.confirma_senha{
+   width: 350px;
+   height: 35px;
+   margin-top:25px;
+}
+}

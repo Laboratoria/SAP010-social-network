@@ -3,7 +3,10 @@ import { signUpUser } from "../../lib/index.js";
 export default () => {
   const container = document.createElement("div");
 
-  const template = `
+
+ 
+
+  const template=`
   <header>
        <section> <img class="logo" src="imagens/logo mania.png" alt="logo" /> </section>
        </header>

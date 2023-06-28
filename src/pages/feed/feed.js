@@ -1,12 +1,12 @@
 
 import { getDoc, doc } from "firebase/firestore";
 import { db, auth } from "../../lib/firebase";
-
+import { logout } from "../../lib";
 import {
     pegarPost,
     criarPost,
     likePost,
-    
+
 } from "../../lib/firestone";
 
 
@@ -19,8 +19,9 @@ export default () => {
     const template = `
 
     <header class="header-feed">
-    <img src="imagens/logo branca feed.png" class="logo-feed">
-    <h1>  Olá, ${auth.currentUser.displayName} !<br> Bora Economizar? </h1>
+    <img src="imagens/logo branca feed.png" class="logo-feed"> 
+    <button class="btnSair" id="btn_Sair" type="button">Sair</button> 
+    <h4>  Olá, ${auth.currentUser.displayName} !<br> Bora Economizar? </h4>
     </header>
 
   <form id="formFeed" class="form-feed">
@@ -36,7 +37,7 @@ export default () => {
 `;
 
     container.innerHTML = template;
-    
+
 
 
     const btnPublicar = container.querySelector('.btn')
@@ -91,12 +92,12 @@ export default () => {
             postContainer.appendChild(postar)
 
             const btnLike = postar.querySelector('.btnLike')
-            
+
 
             btnLike.addEventListener('click', async () => {
                 const postId = btnLike.getAttribute('data-post-id');
                 const contadorLike = postar.querySelector('.contadorLike')
-                
+
                 try {
 
                     await likePost(db, postId, auth.currentUser.uid, auth);
@@ -123,9 +124,20 @@ export default () => {
 
         });
 
-        
-    };
-    mostrarPost()
-    return container;
+        const botaoSair = container.querySelector('.btnSair')
+        botaoSair.addEventListener('click', () => {
+            logout()
+                .then(() => {
+                    window.location.hash = '#home';
+                })
+                .catch(() => {
+                    alert('Erro ao Sair');
+                });
 
-};
+        });
+    }
+        mostrarPost()
+    
+        return container;
+
+    };
