@@ -84,7 +84,6 @@ export default () => {
     loginGoogle().then(() => {
       window.location.hash = '#feed';
     }).catch(() => {
-      alert('Erro ao fazer login com o Google');
     });
   });
 
