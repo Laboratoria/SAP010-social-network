@@ -4,37 +4,39 @@ export default () => {
   const container = document.createElement("div");
 
   const template = `
-    <div class="container" id="container-template">
+    
        <header>
-         <img class="logo" src="imagens/logo mania.png" alt="logo" />
+       <section> <img class="logo" src="imagens/logo mania.png" alt="logo" /> </section>
        </header>
-            <form class="form" id="form">
-                <img class="etiqueta" src="imagens/etiqueta de desconto preta.png" alt="etiqueta" />
-                <h2>  A REDE SOCIAL PARA QUEM <br>GOSTA DE ECONOMIZAR!</h2>
-                <p class="email">
-                <input type="text" class="inserir_email" id="inseriremail" placeholder="Digite seu e-mail"/>
-                </p>
-                <p class="senha">
-                <input type="password" class="digite_senha" id="digitesenha" placeholder="Digite sua senha"/>
-                <i class="bi bi-eye-fill" id="olinho-visual"></i> 
-                </p> 
-            </form>
-           
+      <div class="container" id="container-template">
+         <h1>  A REDE SOCIAL PARA QUEM <br>GOSTA DE ECONOMIZAR!</h1>
+        <img class="etiqueta" src="imagens/etiqueta de desconto preta.png" alt="etiqueta" />
+        <form class="form" id="form">
+           <h2>  A REDE SOCIAL PARA QUEM <br>GOSTA DE ECONOMIZAR!</h2>
+            <p class="email">
+              <input type="text" class="inserir_email" id="inseriremail" placeholder="Digite seu e-mail"/>
+            </p>
+            <p class="senha">
+              <input type="password" class="digite_senha" id="digitesenha" placeholder="Digite sua senha"/>
+              <i class="bi bi-eye-fill" id="olinho-visual"></i> 
+            </p> 
             <p class="form">
               <button class="btnLogar" id="btnLogar">LOGAR</button>
             </p>
-            <span id='usuarioAlertHome' class='alertHome'></span>
             <p class="form">
               <button class="logarGoogle" id="btnGoogle"><img src="imagens/google.png"> Entrar com Google</button>
             <p class="form">
               <a href="/#cadastrar" type="button" class="btnCadastrar" id="btnCadastrar">CADASTRE-SE</a>
             </p>
+        </form>
+           
             
     </div>
     
     `;
+  
+container.innerHTML = template;
 
-  container.innerHTML = template;
 
   const logar = container.querySelector(".btnLogar");
   logar.addEventListener("click", () => {
@@ -49,7 +51,7 @@ export default () => {
         const errorMessage = error.message;
         if (email.value === "" || password.value === "") {
           usuarioAlertHome.setAttribute('style', 'display: block');
-          usuarioAlertHome.innerHTML ="Todos os campos devem ser preenchidos!";
+          usuarioAlertHome.innerHTML = "Todos os campos devem ser preenchidos!";
         }
         if (errorMessage === "Firebase: Error (auth/user-not-found).") {
           usuarioAlertHome.setAttribute('style', 'display: block');
