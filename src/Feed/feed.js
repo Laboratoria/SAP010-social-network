@@ -145,3 +145,4 @@ async function publishPost() {
   closeButton.click();
 }
 window.publishPost = publishPost;
+
