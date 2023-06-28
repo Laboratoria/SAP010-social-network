@@ -221,6 +221,11 @@ nav ul {
 
 .formPost {
   display: flex;
+  flex-direction: column;
+}
+
+.form-bottom {
+  display: flex;
 }
 
 .inputContent {

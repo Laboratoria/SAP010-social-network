@@ -39,11 +39,13 @@ export const feedUser = () => {
         <span class='profileName' id="userName"></span>
       </div>
       <input id="userId" type="hidden"/>
-      <textarea class='inputContent' id="postContent" placeholder="Qual experiência você teve hoje?" required></textarea>
-      <form class='formPost'>
-      <img class='img-location' src="Img/location-feed.svg">
-      <textarea class='inputLocation' type="text" id="postLocation" placeholder="Restaurante"required></textarea>
-        <button type='button' class='buttonPublish' id="publishButton" onclick="publishPost()">Publicar</button>
+      <form id="postForm" class='formPost'>
+        <textarea class='inputContent' id="postContent" placeholder="Qual experiência você teve hoje?" required></textarea>
+        <div class="form-bottom">
+          <img class='img-location' src="Img/location-feed.svg">
+          <textarea class='inputLocation' type="text" id="postLocation" placeholder="Restaurante"required></textarea>
+          <button type='button' class='buttonPublish' id="publishButton" onclick="publishPost()">Publicar</button>
+        </div>
       </form>
     </div>
   </div>
@@ -90,7 +92,7 @@ export const feedUser = () => {
     }
   });
 
-  getFeedItems().then((items) => {
+  const renderCards = (items) => {
     const card = ({
       description,
       likes,
@@ -103,7 +105,10 @@ export const feedUser = () => {
         <div class="card-header">
           <div class="card-user">
             <div class="card-avatar"> <img src="${userAvatar}"/></div>
+            <div>
             <h5>${userName}</h5>
+            <h5>Nota: ${rating}/5</h5>
+            </div>
           </div>
           <div class="card-actions"> <img class="points-feed" src="Img/points-feed.svg"/> </div>
         </div>
@@ -117,7 +122,9 @@ export const feedUser = () => {
       </div>`);
     const postList = document.querySelector('#postList');
     postList.innerHTML = items.map(card).join('');
-  });
+  };
+
+  getFeedItems(renderCards);
 
   return container;
 };
@@ -140,9 +147,10 @@ async function publishPost() {
     userId: userId.value,
   };
 
-  await publish(post)
+  await publish(post);
   const closeButton = document.querySelector('#close');
   closeButton.click();
+  const form = document.querySelector('#postForm');
+  form.reset();
 }
 window.publishPost = publishPost;
-
