@@ -61,11 +61,10 @@ export default () => {
           <p class='dataPost'>${createdAtFormatted}</p>
         </div>
         <p class='textPost'>${description}</p>
-        <div class='image-icons'>
-          <span class='likePost' id='likes-counter-${postId}'>${whoLiked.length}</span>
-          <button type="button" class='icons-post' id='like-Post' data-post-id='${postId}'>
-            <a class='icons-post' id='likePost'><img src='./assets/likeicon.png' alt='like image' class='icons-post'></a>
-          </button>
+          <div class='image-icons'>
+            <button type="button" class='icons-post' id='like-Post' data-post-id='${postId}'>
+              <a class='icons-post' id='icons-post'><img src='./assets/likeicon.png' alt='like image' class='icons-post'></a>
+            </button>
           ${authorId === getUserId() ? `<button type="button" data-post-id='${postId}' class='icons-post' id='editPost'>
             <a class='icons-post'><img src='./assets/editicon.png' alt='edit image' class='icons-post'></a>
           </button>
@@ -73,6 +72,7 @@ export default () => {
             <img src='./assets/deleteicon.png' alt='delete image' class='icons-post'>
           </button>` : ''}
         </div>
+        <span class='likePost' id='likes-counter-${postId}'>${whoLiked.length}</span>
       </div>
 `;
 
