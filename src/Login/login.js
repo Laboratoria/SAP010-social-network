@@ -1,4 +1,4 @@
-import { authLogin, authLoginGoogle, authLoginFacebook } from '../lib/index';
+import { authLogin, authLoginGoogle } from '../lib/index';
 import './login.css';
 
 export const loginUser = () => {
@@ -100,18 +100,18 @@ export const loginUser = () => {
   loginGoogle();
 
   // login facebook
-  const loginFacebook = () => {
-    btnFacebook.addEventListener('click', () => {
-      authLoginFacebook()
-        .then(() => {
-          window.location.hash = '#feed';
-        })
-        .catch(() => {
-          txtError.innerHTML = 'Usuário ou senha incorretos';
-        });
-    });
-  };
+  // const loginFacebook = () => {
+  //   btnFacebook.addEventListener('click', () => {
+  //     authLoginFacebook()
+  //       .then(() => {
+  //         window.location.hash = '#feed';
+  //       })
+  //       .catch(() => {
+  //         txtError.innerHTML = 'Usuário ou senha incorretos';
+  //       });
+  //   });
+  // };
 
-  loginFacebook();
+  // loginFacebook();
   return container;
 };
