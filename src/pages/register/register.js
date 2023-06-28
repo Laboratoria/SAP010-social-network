@@ -80,11 +80,11 @@ export default () => {
         <p id='error-message' class='error-message'></p>
       </form>
     <nav>
-      <a class='btn-back' href='#login'><img src='./img/assets/arrow.png' alt='imagem de seta' width='50px'></a>
+      <a class='btn-back' href='#login'><img src='./assets/arrow.png' alt='imagem de seta' width='50px'></a>
     </nav> 
     </section>
     <figure class='image-register'>
-    <img src='./img/assets/imageregister.png' class='img-register' alt='registerImage'>
+    <img src='./assets/imageregister.png' class='img-register' alt='registerImage'>
     </figure>
   `;
 
