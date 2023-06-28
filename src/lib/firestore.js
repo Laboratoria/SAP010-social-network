@@ -9,7 +9,8 @@ import {
   doc,
   getDoc,
   updateDoc,
-  arrayUnion
+  arrayUnion,
+  arrayRemove,
 } from 'firebase/firestore';
 
 import { onAuthStateChanged } from 'firebase/auth';
@@ -171,17 +172,32 @@ export const editPostDoc = async (
 
 export const addLike = async (postId, newLike) => {
   const postRef = doc(db, 'post', postId);
-  
-  await updateDoc(postRef, {
-    postLikes: arrayUnion(newLike),
-  });
 
   const postSnapshot = await getDoc(postRef);
   if (postSnapshot.exists()) {
     const postData = postSnapshot.data();
-    const postLikes = postData.postLikes ; 
-    const likesCount = postLikes.length-1
-    console.log(likesCount)
-    return likesCount
+    const postLikes = postData.postLikes;
+    const hasLiked = postLikes.includes(newLike);
+
+    if (hasLiked) {
+      const updatedLikes = postLikes.filter(like => like !== newLike);
+      await updateDoc(postRef, {
+        postLikes: updatedLikes,
+      });
+      console.log('Like removido');
+    } else {
+      await updateDoc(postRef, {
+        postLikes: arrayUnion(newLike),
+      });
+      console.log('Like adicionado');
+    }
+  }
+
+  const updatedSnapshot = await getDoc(postRef);
+  if (updatedSnapshot.exists()) {
+    const updatedData = updatedSnapshot.data();
+    const updatedLikes = updatedData.postLikes;
+    const likesCount = updatedLikes.length-1;
+    return likesCount;
   }
 };
