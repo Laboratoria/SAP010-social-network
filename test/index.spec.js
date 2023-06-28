@@ -5,7 +5,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   auth,
-  // signOut,
+  signOut,
 } from 'firebase/auth';
 
 import {
@@ -13,7 +13,6 @@ import {
   signUp,
   signInGoogle,
   checkLogin,
-  // logout,
 } from '../src/lib/index.js';
 
 jest.mock('firebase/auth');
@@ -98,10 +97,8 @@ describe('checkLogin', () => {
   });
 });
 
-/* describe('logout', () => {
-  it('deve fazer logout do feed', () => {
-    signOut.mockResolvedValue({ user: {} });
-    logout();
+describe('deve fazer logout do feed', () => {
+  it('logout', () => {
     expect(signOut).toHaveBeenCalledTimes(1);
   });
-}); */
+});

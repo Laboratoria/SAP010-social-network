@@ -6,30 +6,30 @@ export const cadastro = () => {
 
   const templateCadastro = `
     
-    <section class="registerpage-form">
-      <img src="./img/logo.png" class="logo-repet" alt="Logo da rede social re.Pet">
+    <section class='registerpage-form'>
+      <img src='./img/logo.png' class='logo-repet' alt='Logo da rede social re.Pet'>
   
-      <form class="register-form">
+      <form class='register-form'>
   
-      <label for="nome"></label>
-      <input type="text" class="form-inputs-register" id="nome-cadastro" required placeholder="Nome completo">
+      <label for='nome'></label>
+      <input type='text' class='form-inputs-register' id='nome-cadastro' required placeholder='Nome completo'>
       </input>
   
-      <label for="email-cadastro"></label>
-      <input type="email" class="form-inputs-register"  id="email-cadastro" required placeholder="Exemplo@email.com">
+      <label for='email-cadastro'></label>
+      <input type='email' class='form-inputs-register'  id='email-cadastro' required placeholder='Exemplo@email.com'>
       </input>
       
-      <label for="senha-cadastro"></label>
-      <input type="password" class="form-inputs-register" id="senha-cadastro" required placeholder="Senha">
+      <label for='senha-cadastro'></label>
+      <input type='password' class='form-inputs-register' id='senha-cadastro' required placeholder='Senha'>
       </input>
   
-      <label for="confirmar-senha"></label>
-      <input type="password" class="form-inputs-register" id="confirmar-senha" required placeholder="Confirmar senha">
+      <label for='confirmar-senha'></label>
+      <input type='password' class='form-inputs-register' id='confirmar-senha' required placeholder='Confirmar senha'>
       </input>
 
-      <p id= "mensagem-erro" ></p>
+      <p id= 'mensagem-erro' ></p>
 
-      <button type="submit" id="sign-up" >Cadastrar</button>
+      <button type='submit' id='sign-up' >Cadastrar</button>
   
       </form>
        
@@ -37,7 +37,7 @@ export const cadastro = () => {
 
     </section>
   </section>
-      <h3> Já possui cadastro? <a class="entrar" href="/#login">Fazer login</a></h3>
+      <h3> Já possui cadastro? <a class='entrar' href='/#login'>Fazer login</a></h3>
       
       `;
 

@@ -1,4 +1,4 @@
-import {
+/* import {
   collection,
   addDoc,
   query,
@@ -26,7 +26,6 @@ export const criarPost = async (dadosPost) => {
 //  função de carregar os dados das postagens do banco de dados em ordem de data
 
 export const carregarPosts = async () => {
-  
   const q = query(collection(db, 'post'), orderBy('dataAtual', 'desc'));
   const querySnapshot = await getDocs(q);
   const arrayPosts = [];
@@ -34,9 +33,7 @@ export const carregarPosts = async () => {
     const data = post.data();
     data.id = post.id;
     arrayPosts.push(data);
-    
   });
-
   return arrayPosts;
 };
 
@@ -55,8 +52,7 @@ export const createUserData = async (nome) => {
 
 // recupera o Id do usuário atual
 export const getCurrentUserId = () =>
-  new Promise((resolve, reject) => {
-    onAuthStateChanged(auth, (user) => {
+  new Promise((resolve, reject) => { onAuthStateChanged(auth, (user) => {
       if (user) {
         resolve(user.uid);
       } else {
@@ -170,4 +166,4 @@ export const editPostDoc = async (
   });
 
   console.log('documento editado')
-};
+}; */
