@@ -13,7 +13,17 @@
 import { auth } from "./configfirebase.js";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
-const auth = getAuth();
+/* // Initialize Firebase Authentication and get a reference to the service
+import { createUserWithEmailAndPassword } from "firebase/auth";
+const auth = getAuth(app);
+
+const email = "abacate@teste.com";
+const password = "123456";
+createUserWithEmailAndPassword(auth, email, password); */
+
+//criar aqui função para fazer cadastro
+//criar aqui função para fazer login
+
 createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
