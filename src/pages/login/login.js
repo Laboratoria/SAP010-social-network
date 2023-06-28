@@ -1,13 +1,16 @@
-import CBD from "../imagens/CBD.png";
-
 import "../login/login.css";
+
+
+import CBD from "../imagens/CBD.png";
+import google from "../imagens/google.png";
+import facebook from "../imagens/facebook.png";
 
 
 export default () => {
   const container = document.createElement("div");
+  container.classList.add('container-login');
 
   const template = `
-	
 		<img class="img-CBD" src=${CBD} alt="logo app">
 		<div class="container">
 		<form class="form-entrar" action="#">
@@ -24,14 +27,7 @@ export default () => {
 		<span class="texto centro">Ainda não tem conta?</span>
 		<span class="texto centro">Criar nova conta</span>
 		</div>
-
-		
-		
-		
-		
-		</div>
-
-	`;
+		</div>`;
 
   container.innerHTML = template;
 
