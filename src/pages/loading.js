@@ -1,4 +1,4 @@
-import home from "./home/home.js";
+/*import home from "./home/home.js";
 import login from "./login/login.js";
 
 export default () => {
@@ -6,4 +6,4 @@ export default () => {
   window.addEventListener("load", () => {
     main.appendChild(home());
   });
-};
+};*/
