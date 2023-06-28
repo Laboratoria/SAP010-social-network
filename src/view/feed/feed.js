@@ -7,6 +7,7 @@ import {
   checkAuthor,
   editPostDoc,
   addLike,
+  numberOfLikes,
 } from '../../lib/firestore.js';
 import { logout } from '../../lib/index.js';
 
@@ -150,9 +151,10 @@ export const feed = () => {
 
       const loadNumberOfLikes = async () => {
         const postId = post.id;
-        const likeCounter = await addLike(postId, 0);
+        const likeCounter = await numberOfLikes(postId);
         const likeNumber = postCard.querySelector('.like-counter');
         likeNumber.textContent = `${likeCounter}`;
+        console.log('feed', likeCounter)
       };
 
       loadNumberOfLikes();
@@ -165,8 +167,7 @@ export const feed = () => {
         const currentUserId = await getCurrentUserId();
         const newLike = currentUserId;
         const likeCounter = await addLike(postId, newLike);
-        const likeNumber = postCard.querySelector('.like-counter');
-        likeNumber.textContent = `${likeCounter}`;
+        loadNumberOfLikes();
       });
 
       const editIcon = postCard.querySelector('.edit-icon');

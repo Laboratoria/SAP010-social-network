@@ -193,11 +193,16 @@ export const addLike = async (postId, newLike) => {
     }
   }
 
+};
+
+export const numberOfLikes = async (postId) => {
+  const postRef = doc(db, 'post', postId);
   const updatedSnapshot = await getDoc(postRef);
   if (updatedSnapshot.exists()) {
     const updatedData = updatedSnapshot.data();
     const updatedLikes = updatedData.postLikes;
-    const likesCount = updatedLikes.length-1;
+    const likesCount = updatedLikes.length;
+    console.log(likesCount)
     return likesCount;
   }
-};
+}
