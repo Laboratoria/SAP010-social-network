@@ -154,7 +154,7 @@ export const feed = () => {
         const likeCounter = await numberOfLikes(postId);
         const likeNumber = postCard.querySelector('.like-counter');
         likeNumber.textContent = `${likeCounter}`;
-        console.log('feed', likeCounter)
+        console.log('feed', likeCounter);
       };
 
       loadNumberOfLikes();
@@ -166,7 +166,7 @@ export const feed = () => {
         const postId = post.id;
         const currentUserId = await getCurrentUserId();
         const newLike = currentUserId;
-        const likeCounter = await addLike(postId, newLike);
+        await addLike(postId, newLike);
         loadNumberOfLikes();
       });
 
@@ -197,10 +197,8 @@ export const feed = () => {
           };
           modal.style.display = 'block';
 
-          document.getElementById('quero-doar').checked =
-            post.opcaoAdocao === 'Quero doar';
-          document.getElementById('quero-adotar').checked =
-            post.opcaoAdocao === 'Quero adotar';
+          document.getElementById('quero-doar').checked = post.opcaoAdocao === 'Quero doar';
+          document.getElementById('quero-adotar').checked = post.opcaoAdocao === 'Quero adotar';
           document.getElementById('idade').value = post.idadePet;
           document.getElementById('especie').value = post.especie;
           document.getElementById('sexo').value = post.sexo;
@@ -239,7 +237,7 @@ export const feed = () => {
               sexoEdit,
               especieEdit,
               opcaoAdocaoEdit,
-              contatoEdit
+              contatoEdit,
             );
 
             limparFormulário();
@@ -270,7 +268,7 @@ export const feed = () => {
       deleteIcon.addEventListener('click', async () => {
         if (isAuthor) {
           const confirmDelete = window.confirm(
-            'Tem certeza que deseja excluir esta postagem?'
+            'Tem certeza que deseja excluir esta postagem?',
           );
 
           if (confirmDelete) {
@@ -344,24 +342,22 @@ export const feed = () => {
         //  trecho para validação dos inputs de radio e textarea
         let validarInputs = true;
         const mensagemErroRadio = document.getElementById(
-          'mensagem-erro-radio'
+          'mensagem-erro-radio',
         );
         const mensagemErroTextarea = document.getElementById(
-          'mensagem-erro-textarea'
+          'mensagem-erro-textarea',
         );
 
         if (
           !document.querySelector('input[type="radio"][name="quero"]:checked')
         ) {
           validarInputs = false;
-          mensagemErroRadio.textContent =
-            'Campo obrigatório: favor selecionar uma opção.';
+          mensagemErroRadio.textContent = 'Campo obrigatório: favor selecionar uma opção.';
         }
 
         if (document.getElementById('mensagem').value === '') {
           validarInputs = false;
-          mensagemErroTextarea.textContent =
-            'Campo obrigatório: favor inserir uma mensagem.';
+          mensagemErroTextarea.textContent = 'Campo obrigatório: favor inserir uma mensagem.';
           document.getElementById('mensagem').classList.add('error-border');
         } else {
           document.getElementById('mensagem').classList.remove('error-border');

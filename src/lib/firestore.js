@@ -10,7 +10,6 @@ import {
   getDoc,
   updateDoc,
   arrayUnion,
-  arrayRemove,
 } from 'firebase/firestore';
 
 import { onAuthStateChanged } from 'firebase/auth';
@@ -53,16 +52,15 @@ export const createUserData = async (nome) => {
 };
 
 // recupera o Id do usuário atual
-export const getCurrentUserId = () =>
-  new Promise((resolve, reject) => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        resolve(user.uid);
-      } else {
-        reject(new Error('Usuário não autenticado'));
-      }
-    });
+export const getCurrentUserId = () => new Promise((resolve, reject) => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      resolve(user.uid);
+    } else {
+      reject(new Error('Usuário não autenticado'));
+    }
   });
+});
 
 // recupera todas as informações do usuário atual
 export function getCurrentUser() {
@@ -96,7 +94,7 @@ export const getUsername = async () => {
     const currentUserId = await getCurrentUserId();
     const q = query(
       collection(db, 'usernames'),
-      where('userId', '==', currentUserId)
+      where('userId', '==', currentUserId),
     );
     const querySnapshot = await getDocs(q);
 
@@ -105,7 +103,7 @@ export const getUsername = async () => {
       const username = currentDoc.data().name;
       return username;
     }
-    return null;
+    return console.log('não encontrado');
   } catch (error) {
     console.error(error);
     throw error;
@@ -113,17 +111,14 @@ export const getUsername = async () => {
 };
 
 // deleta a postagem
-export const deletePost = (id) =>
-  new Promise((resolve, reject) => {
-    try {
-      deleteDoc(doc(db, 'post', id));
-      console.log('Document deleted with ID: ', id);
-      resolve();
-    } catch (e) {
-      console.error('Error deleting document: ', e);
-      reject(e);
-    }
-  });
+export const deletePost = (id) => new Promise((resolve, reject) => {
+  try {
+    deleteDoc(doc(db, 'post', id));
+    resolve();
+  } catch (e) {
+    reject(e);
+  }
+});
 
 // checa se o ID do usuário atual é igual ao id do autor da postagem
 export const checkAuthor = async (postId) => {
@@ -132,13 +127,11 @@ export const checkAuthor = async (postId) => {
   const docSnapshot = await getDoc(postRef);
 
   if (
-    docSnapshot.exists() &&
-    docSnapshot.data().postAuthorId === currentUserId
+    docSnapshot.exists() && docSnapshot.data().postAuthorId === currentUserId
   ) {
     return true;
-  } else {
-    return false;
   }
+  return console.log('não encontrado');
 };
 
 // edita o doc da collection 'post'
@@ -152,7 +145,7 @@ export const editPostDoc = async (
   sexoEdit,
   especieEdit,
   opcaoAdocaoEdit,
-  contatoEdit
+  contatoEdit,
 ) => {
   const postRef = doc(db, 'post', postId);
 
@@ -166,8 +159,6 @@ export const editPostDoc = async (
     contato: contatoEdit,
     sexo: sexoEdit,
   });
-
-  console.log('documento editado');
 };
 
 export const addLike = async (postId, newLike) => {
@@ -180,19 +171,16 @@ export const addLike = async (postId, newLike) => {
     const hasLiked = postLikes.includes(newLike);
 
     if (hasLiked) {
-      const updatedLikes = postLikes.filter(like => like !== newLike);
+      const updatedLikes = postLikes.filter((like) => like !== newLike);
       await updateDoc(postRef, {
         postLikes: updatedLikes,
       });
-      console.log('Like removido');
     } else {
       await updateDoc(postRef, {
         postLikes: arrayUnion(newLike),
       });
-      console.log('Like adicionado');
     }
   }
-
 };
 
 export const numberOfLikes = async (postId) => {
@@ -202,7 +190,7 @@ export const numberOfLikes = async (postId) => {
     const updatedData = updatedSnapshot.data();
     const updatedLikes = updatedData.postLikes;
     const likesCount = updatedLikes.length;
-    console.log(likesCount)
     return likesCount;
   }
-}
+  return console.log('não encontrado');
+};
