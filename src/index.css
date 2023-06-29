@@ -12,17 +12,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  width: 100%;
+
 }
 
 body {
-  background-color: var(--blue);
   color: var(--black);
   font-family: "Comfortaa", cursive;
   text-align: center;
   justify-content: center;
   background-image: linear-gradient(var(--darkblue), 20%, var(--blue));
-}
+  background-repeat: no-repeat;
+  }
 
 main {
   text-align: center;
@@ -65,13 +65,13 @@ main {
 footer {
   color: var(--white);
   background-color: var(--darkblue);
-  width: 100%;
   padding: 1em;
   font-size: 0.6rem;
   position: absolute;
   bottom: 0;
   left: 0;
   z-index: 1;
+  width: 100%;
 }
 
 footer a {
@@ -116,4 +116,10 @@ footer a:hover {
     width: 15em;
     height: 2em;
   }
+
+  .title, .subtitle {
+    font-size: 1em;
+  }
+
+
 }

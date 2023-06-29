@@ -91,6 +91,8 @@ position: relative;
 @media screen and (max-width: 400px) {
     .img-register {
         width: 8em;
+        margin-bottom: 1.8em;
+
     }
 
     .inputs-register {
