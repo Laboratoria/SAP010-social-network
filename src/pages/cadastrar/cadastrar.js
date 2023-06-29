@@ -62,10 +62,7 @@ export default () => {
           usuarioAlert.setAttribute("style", "display: block");
           usuarioAlert.innerHTML = "Endereço de e-mail inválido!";
         }
-        if (
-          errorMessage ===
-          "Firebase: Password should be at least 6 characters (auth/weak-password)."
-        ) {
+        if (errorMessage === "Firebase: Password should be at least 6 characters (auth/weak-password).") {
           usuarioAlert.setAttribute("style", "display: block");
           usuarioAlert.innerHTML = "Sua senha deve ter ao menos 6 dígitos!";
         }
