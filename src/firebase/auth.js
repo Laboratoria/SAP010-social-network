@@ -78,7 +78,15 @@ export const logOut = () => {
   return signOut(auth);
 };
 
-export const checkLoggedUser = (check) => {
+export function checkLoggedUser() {
   const auth = getAppAuth();
-  return onAuthStateChanged(auth, check);
-};
+  return new Promise((resolve) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        resolve(true);
+      } else {
+        resolve(false);
+      }
+    });
+  });
+}
