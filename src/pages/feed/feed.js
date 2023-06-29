@@ -6,6 +6,7 @@ import {
     pegarPost,
     criarPost,
     likePost,
+    deletarPost
 
 } from "../../lib/firestone";
 
@@ -67,7 +68,7 @@ export default () => {
         }
     });
 
-    const mostrarPost = async () => {
+    async function mostrarPost() {
 
         const arrayPost = await pegarPost();
         const postContainer = container.querySelector('#postContainer')
@@ -83,8 +84,8 @@ export default () => {
                          <div class="btns">
                              <button class="btnLike" ${post.like.includes(auth.currentUser.uid) ? ' liked' : ''}" data-post-id="${post.id}">❤️</button>
                              <span class="contadorLike"> ${post.like.length}</span>
-                             <button class="btnEditar" data-id="${post.id}"> ✏️ </button>
-                             <button class="btnDeletar" data-id="${post.id}"> 🗑️ </button>
+                             <button class="btnEditar" data-post-id="${post.id}"> ✏️ </button>
+                             <button class="btnDeletar" data-post-id="${post.id}"> 🗑️ </button>
                          </div>
                     </section>
                     `
@@ -120,6 +121,23 @@ export default () => {
 
 
 
+            const btnDeletar = postar.querySelector('.btnDeletar')
+            btnDeletar.addEventListener('click', async () => {
+                const idPost = btnDeletar.getAttribute('data-post-id');
+                // if (post.author === auth.currentUser.uid) {
+                if (confirm('Tem certeza que deseja excluir esse post?')) {
+                    try {
+                        await deletarPost(idPost);
+                        postar.remove();
+                       
+                    } catch (error) {
+                        console.log('Erro ao exclur post:, error');
+                    }
+
+                } else {
+                    alert('Você só pode excluir seus próprios posts.');
+                }
+            });
 
 
         });
@@ -135,9 +153,11 @@ export default () => {
                 });
 
         });
-    }
-        mostrarPost()
-    
-        return container;
 
-    };
+
+    }
+    mostrarPost()
+
+    return container;
+
+};
