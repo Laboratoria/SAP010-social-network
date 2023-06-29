@@ -170,6 +170,10 @@
     width: 1.5em;   
 }
 
+.icones {
+    display: flex;
+    justify-content: space-between;
+}
 a {
     text-decoration: none;
 }
@@ -221,9 +225,8 @@ a {
         background-image: linear-gradient(to right, var(--darkblue), var(--blue));
     }
     .profilePhoto{
-        margin-bottom: 2em;
+        margin: 3em 0;
     }
-
 
     .img-timeline {
         position: fixed;
@@ -240,15 +243,13 @@ a {
         flex-direction: column;
         background-image: none;
         text-align: justify;
-        margin: 3em 2em;
-
-    }
+   }
     
     .icon-timeline {
         font-size: 0.9em;  
         color: var(--white); 
         width: 3em;
-        margin: 2em 2em 0 2em;
+        margin: 1em 1em 0 1em;
     }
     .icons-post {
         width: 2em;
