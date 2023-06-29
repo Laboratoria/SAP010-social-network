@@ -116,15 +116,10 @@ export const getUsername = async () => {
 // deleta a postagem
 
 export const deletePost = (id) => (
-  new Promise((resolve, reject) => {
-    try {
-      deleteDoc(doc(db, 'post', id));
-      console.log('Document deleted with ID: ', id);
-      resolve();
-    } catch (e) {
-      console.error('Error deleting document: ', e);
-      reject(e);
-    }
+  new Promise((resolve) => {
+    deleteDoc(doc(db, 'post', id));
+    console.log('Document deleted with ID: ', id);
+    resolve();
   })
 );
 
