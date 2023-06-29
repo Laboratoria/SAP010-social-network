@@ -57,34 +57,34 @@ export default () => {
   const registrationForm = document.createElement('div');
 
   const templateRegister = ` 
-    <section class='form-register'>
-      <h2 class='subtitle'>Cadastrar-se</h2>
-      <form class='register-form'>
-        <div>
+  <a class='btn-back' href='#login'><img src='./assets/arrow.png' class='btn-back' alt='imagem de seta'></a>
+
+    <div class='bloco'>
+      <section class='form-register'>
+        <h2 class='subtitle'>Cadastrar-se</h2>
+        <form class='register-form'>
           <input type='text' class='inputs-register' id='name-user' placeholder='NOME'>
           <input type='text' class='inputs-register' id='lastName-user' placeholder='SOBRENOME'>
           <input type='text' class='inputs-register' id='email-user' placeholder='EMAIL'>
           <input type='password' class='inputs-register' id='register-password' placeholder='CRIAR SENHA'>
-          <button type='button' id='show-eye' class='eye-eye'>
-            <span class='icons-eye'><i class='fas fa-eye-slash'></i></span> 
-            </button>
+          <button type='button' id='show-eye1' class='icon-eye1'>
+          <span class='icons-eye1'>
+            <span class='icon-container'><i class='fas fa-eye-slash'></i></span>
+          </span> 
+        </button>
           <input type='password' class='inputs-register' id='confirm-password' placeholder='CONFIRME SUA SENHA'>
-          <button type='button' id='show-eyes' class='eyes-eyes'>
-            <span class='icons-eyes'><i class='fas fa-eye-slash'></i></span> 
-            </button>
-
-        </div>
-        <div>
+          <button type='button' id='show-eye2' class='icon-eye2'>
+          <span class='icons-eye2'>
+            <span class='icon-container'><i class='fas fa-eye-slash'></i></span>
+          </span> 
+        </button>
           <button type='button' id='register-button' class='submit'>CADASTRAR</button>
-        </div> 
-        <p id='error-message' class='error-message'></p>
-      </form>
-    <nav>
-      <a class='btn-back' href='#login'><img src='./assets/arrow.png' alt='imagem de seta' width='50px'></a>
-    </nav> 
-    </section>
+          <p id='error-message' class='error-message'></p>
+        </form>
+      </section>
+    </div>
     <figure class='image-register'>
-    <img src='./assets/imageregister.png' class='img-register' alt='registerImage'>
+      <img src='./assets/imageregister.png' class='img-register' alt='registerImage'>
     </figure>
   `;
 
@@ -94,35 +94,41 @@ export default () => {
     .querySelector('#register-button')
     .addEventListener('click', registerUser);
 
-  const button = registrationForm.querySelector('.eye-eye');
-  button.addEventListener('click', () => {
-    const changeEye = registrationForm.querySelector('i');
-    const input = registrationForm.querySelector('#register-password');
-    if (input.getAttribute('type') === 'text') {
-      input.setAttribute('type', 'password');
-      changeEye.classList.remove('fa-eye');
-      changeEye.classList.add('fa-eye-slash');
-    } else {
-      input.setAttribute('type', 'text');
-      changeEye.classList.remove('fa-eye-slash');
-      changeEye.classList.add('fa-eye');
-    }
-  });
-
-  const btnEye = registrationForm.querySelector('.eyes-eyes');
-  btnEye.addEventListener('click', () => {
-    const changeEye = registrationForm.querySelector('i');
-    const input = registrationForm.querySelector('#confirm-password');
-    if (input.getAttribute('type') === 'text') {
-      input.setAttribute('type', 'password');
-      changeEye.classList.remove('fa-eye');
-      changeEye.classList.add('fa-eye-slash');
-    } else {
-      input.setAttribute('type', 'text');
-      changeEye.classList.remove('fa-eye-slash');
-      changeEye.classList.add('fa-eye');
-    }
-  });
+    const button = registrationForm.querySelector('.icon-eye1');
+    button.addEventListener('click', (event) => {
+      event.preventDefault(); // Evita o comportamento padrão do botão (submit, por exemplo)
+      event.stopPropagation();
+      const changeEye = button.querySelector('i');
+      const input = registrationForm.querySelector('#register-password');
+      if (input.getAttribute('type') === 'text') {
+        input.setAttribute('type', 'password');
+        changeEye.classList.remove('fa-eye');
+        changeEye.classList.add('fa-eye-slash');
+      } else {
+        input.setAttribute('type', 'text');
+        changeEye.classList.remove('fa-eye-slash');
+        changeEye.classList.add('fa-eye');
+      }
+    });
+    
+    const btnEye = registrationForm.querySelector('#show-eye2');
+    btnEye.addEventListener('click', (event) => {
+      event.preventDefault(); // Evita o comportamento padrão do botão (submit, por exemplo)
+      event.stopPropagation();
+      const changeEye = btnEye.querySelector('i');
+      const input = registrationForm.querySelector('#confirm-password');
+      if (input.getAttribute('type') === 'text') {
+        input.setAttribute('type', 'password');
+        changeEye.classList.remove('fa-eye');
+        changeEye.classList.add('fa-eye-slash');
+      } else {
+        input.setAttribute('type', 'text');
+        changeEye.classList.remove('fa-eye-slash');
+        changeEye.classList.add('fa-eye');
+      }
+    });
+    
+    
 
   return registrationForm;
 };

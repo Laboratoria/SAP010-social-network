@@ -15,7 +15,7 @@
     flex-direction: column;
     margin: 0;
     padding-bottom: 2.5rem;
-    }
+}
 
 .inputs-container {
     display: flex;
@@ -75,13 +75,11 @@
 }
 
 .button-eye {
-position: absolute;
-margin-left: 15em;
-margin-top: 30%;
-border: none;
-cursor: pointer;
-background-color: white;
-
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0);
+    transform: translate(100px, 50px); 
 }
 
 .icon-eye:hover {
@@ -128,7 +126,7 @@ background-color: white;
         justify-content: center;
         display: flex;
         filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 1));
-   }
+    }
 
     .login-form {
         display: flex;
@@ -149,11 +147,19 @@ background-color: white;
         color: var(--white);
     }
     .facebook-button, .google-button {
-    width: 10em;
-    height: 3em;
+        width: 10em;
+        height: 3em;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .inputs-register, .inputs-info{
+        width: 15em;
+        height: 2em;
     }
 
+
     .button-eye {
-    margin-top: 25%;
-    } 
+        transform: translate(80px, 40px); 
+    }        
 }
