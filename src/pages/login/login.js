@@ -1,3 +1,4 @@
+import { auth } from '../../firebase/app.js';
 import {
   loginWithEmail,
   loginGoogle,
@@ -39,6 +40,7 @@ export default () => {
           <p id='error-message' class='error-message'></p>
           <div class='text'>
             Esqueceu a senha? <br>
+            <button type='button' class='forgot-password'>Recuperar senha</button><br>
             Não possui uma conta?
             <button type='button' class='register-here'><a href='#register' class='register-here'>Cadastre-se</a></button>
           </div>
@@ -66,6 +68,7 @@ export default () => {
   const loginButton = container.querySelector('#login-button');
   const googleButton = container.querySelector('#google-button');
   const facebookButton = container.querySelector('#facebook-button');
+  const forgotPasswordButton = container.querySelector('.forgot-password');
 
   function printErrorMessage(message) {
     const errorMessage = document.getElementById('error-message');
@@ -86,6 +89,18 @@ export default () => {
       })
       .catch((error) => {
         const errorMessage = errorsFirebase(error.code) || 'Usuário e/ou senha incorretos';
+        printErrorMessage(errorMessage);
+      });
+  };
+
+  const handleForgotPassword = () => {
+    const email = emailInput.value;
+    auth.sendPasswordResetEmail(email)
+      .then(() => {
+        alert('Um e-mail foi enviado para redefinir sua senha. Verifique sua caixa de entrada.');
+      })
+      .catch((error) => {
+        const errorMessage = error.message || 'Falha ao enviar e-mail de recuperação de senha';
         printErrorMessage(errorMessage);
       });
   };
@@ -115,6 +130,8 @@ export default () => {
   googleButton.addEventListener('click', handleGoogleLogin);
 
   facebookButton.addEventListener('click', handleFacebookLogin);
+
+  forgotPasswordButton.addEventListener('click', handleForgotPassword);
 
   const button = container.querySelector('.button-eye');
   button.addEventListener('click', () => {
