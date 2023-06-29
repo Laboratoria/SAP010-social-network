@@ -175,4 +175,13 @@
     .button-eye {
         transform: translate(80px, 40px); 
     }        
+    .logo {
+        width: 8em;
+    }
+    .text{
+        font-size: 0.7em;
+    }
+    .register-here, .forgot-password {
+        font-size: 1em;
+    }
 }
