@@ -10,6 +10,7 @@ import { db } from '../Firebase/instalfirebase';
 export const getFeedItems = (renderItems) => {
   const feedPost = collection(db, 'Post');
   const q = query(feedPost, orderBy('createdAt', 'desc'));
+
   onSnapshot(q, (querySnapshot) => {
     const feedItems = [];
     querySnapshot.forEach((doc) => {
