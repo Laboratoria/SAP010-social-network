@@ -1,10 +1,10 @@
 import { logOut } from '../../fireBase/firebaseAuth.js';
-import { auth } from '../../fireBase/firebaseConfig.js'
+import { auth } from '../../fireBase/firebaseConfig.js';
 import {
   fetchPosts,
   createPost,
   likeCounter,
-  deslikeCounter
+  deslikeCounter,
 } from '../../fireBase/firebaseStore.js';
 import customAlert from '../../components/customAlert.js';
 
@@ -30,9 +30,9 @@ export default () => {
 
   feedContainer.innerHTML = content;
 
-  const inputText = feedContainer.querySelector('#input-text')
+  const inputText = feedContainer.querySelector('#input-text');
 
-  const buttonPublish = feedContainer.querySelector('#button-publish')
+  const buttonPublish = feedContainer.querySelector('#button-publish');
   buttonPublish.addEventListener('click', () => {
     createPost(
       // colocar a data
@@ -42,15 +42,16 @@ export default () => {
       inputText.value,
       // vai precisar usar o uid para poder saber se a publicação pertence ao usuario logado
       auth.currentUser.uid
-    ).then(() => {
-      customAlert('Seu post foi publicado com sucesso');
-      inputText.value = ''
-      showFeed();
-    })
-    .catch(() => {
-      customAlert('Erro ao publicar post')
-    })
-  })
+    )
+      .then(() => {
+        customAlert('Seu post foi publicado com sucesso');
+        inputText.value = '';
+        showFeed();
+      })
+      .catch(() => {
+        customAlert('Erro ao publicar post');
+      });
+  });
 
   const buttonLogOut = feedContainer.querySelector('#button-logout');
   buttonLogOut.addEventListener('click', () => {
@@ -63,8 +64,8 @@ export default () => {
         customAlert('Erro ao sair. Tente novamente.');
       });
   });
-
   showFeed();
+
   return feedContainer;
 };
 
@@ -72,9 +73,9 @@ async function showFeed() {
   const posts = await fetchPosts();
   const feedElement = document.getElementById('feed');
 
-  feedElement.innerHTML = ''
+  feedElement.innerHTML = '';
 
-  posts.forEach((post) => {
+  posts.forEach(post => {
     const postElement = createPostElement(post);
     feedElement.appendChild(postElement);
   });
@@ -98,47 +99,47 @@ function createPostElement(post) {
 
   postElement.innerHTML = content;
 
-  const textLikeCount = postElement.querySelector('#text-like-count')
+  const textLikeCount = postElement.querySelector('#text-like-count');
 
-  const buttonLike = postElement.querySelector('#button-like')
+  const buttonLike = postElement.querySelector('#button-like');
   buttonLike.addEventListener('click', () => {
-    const currentUser = auth.currentUser.displayName
-    const likesArray = post.likes
+    const currentUser = auth.currentUser.displayName;
+    const likesArray = post.likes;
 
     // Caso o usuario já esteja no array de likes, quer dizer que ele já deu like
     // então vamos tirar ele do array de likes
-    if (likesArray.includes(currentUser)){
+    if (likesArray.includes(currentUser)) {
       deslikeCounter(post.id, currentUser)
-      .then(() => {
-        // caso a função deslikeCounter tenha executado com sucesso (then)
-        // ou seja ele foi removido do array de likes dessa publicação lá no Firebase
-        // mas ainda precisamos tirar o usuario do array que esta na variavel local
-        const index = likesArray.indexOf(currentUser);
-        if (index !== -1) {
-          likesArray.splice(index, 1);
-        }
-        // depois vamos atualizar o campo com o numero de likes
-        textLikeCount.innerHTML = likesArray.length
-      })
-      .catch((error) => {
-        customAlert('Erro ao descurtir post')
-        console.log(error)
-      })
-    // Se não, quer dizer que o usuario ainda não esta no array de likes
-    // ou seja, não curtiu a publicação
+        .then(() => {
+          // caso a função deslikeCounter tenha executado com sucesso (then)
+          // ou seja ele foi removido do array de likes dessa publicação lá no Firebase
+          // mas ainda precisamos tirar o usuario do array que esta na variavel local
+          const index = likesArray.indexOf(currentUser);
+          if (index !== -1) {
+            likesArray.splice(index, 1);
+          }
+          // depois vamos atualizar o campo com o numero de likes
+          textLikeCount.innerHTML = likesArray.length;
+        })
+        .catch(error => {
+          customAlert('Erro ao descurtir post');
+          console.log(error);
+        });
+      // Se não, quer dizer que o usuario ainda não esta no array de likes
+      // ou seja, não curtiu a publicação
     } else {
       likeCounter(post.id, currentUser)
-      .then(() => {
-        // caso a função likeCounter tenha executado com sucesso (then)
-        // ou seja ele foi adicionado do array de likes dessa publicação lá no Firebase
-        // mas ainda precisamos adicionar o usuario no array que esta na variavel local
-        likesArray.push(currentUser)
-        textLikeCount.innerHTML = likesArray.length
-      })
-      .catch((error) => {
-        customAlert('Erro ao curtir post')
-        console.log(error)
-      })
+        .then(() => {
+          // caso a função likeCounter tenha executado com sucesso (then)
+          // ou seja ele foi adicionado do array de likes dessa publicação lá no Firebase
+          // mas ainda precisamos adicionar o usuario no array que esta na variavel local
+          likesArray.push(currentUser);
+          textLikeCount.innerHTML = likesArray.length;
+        })
+        .catch(error => {
+          customAlert('Erro ao curtir post');
+          console.log(error);
+        });
     }
   });
 

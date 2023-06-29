@@ -21,11 +21,11 @@ export const createUser = (email, password, displayName) =>
 //criar um catch?
 
 export const signIn = (email, password) =>
-signInWithEmailAndPassword(auth, email, password);
+  signInWithEmailAndPassword(auth, email, password);
 
 export const signInGoogle = () => {
-  const provider = new GoogleAuthProvider()
-  return signInWithPopup(auth, provider)
-}
+  const provider = new GoogleAuthProvider();
+  return signInWithPopup(auth, provider);
+};
 
 export const logOut = () => signOut(auth);
