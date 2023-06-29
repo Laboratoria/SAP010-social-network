@@ -93,8 +93,12 @@ function createPostElement(post) {
       <p class="date">${post.date}</p>
     </div>
     <p class="text">${post.text}</p>
-    <p id='button-like'><3</p>
+    <div class='container-btn'> 
+    <p id='button-like'><img src='./img/gostar.png' alt='like image' class='icons-post'></p>
     <p class="like" id='text-like-count'>${post.likes.length}</p>
+    <p id='button-edit'><img src='./img/editar.png' alt='edit image' class='icons-post'></p>
+    <p id='button-delete'><img src='./img/excluir.png' alt='delete image' class='icons-post'></p>
+    </div>
   `;
 
   postElement.innerHTML = content;
