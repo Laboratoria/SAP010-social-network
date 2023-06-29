@@ -106,3 +106,14 @@ body {
 .input-text::placeholder {
   color: #ffffff55;
 }
+
+.icons-post {
+  width: 20px;
+  height: 20px;
+}
+
+.botoesfeed {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
