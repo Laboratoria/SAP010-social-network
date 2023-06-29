@@ -20,6 +20,7 @@ const init = async () => {
           main.appendChild(timeline());
         } else {
           alert('Realize o login');
+          window.location.hash = '#login';
           main.appendChild(login());
         }
         break;
