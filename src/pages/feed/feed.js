@@ -36,7 +36,7 @@ export default () => {
   buttonPublish.addEventListener('click', () => {
     createPost(
       // colocar a data
-      0,
+      new Date(),
       // estamos usando o displayName para saber se o usuario esta dentro do array de likes ou não
       auth.currentUser.displayName,
       inputText.value,
@@ -87,10 +87,22 @@ function createPostElement(post) {
   const postElement = document.createElement('div');
   postElement.classList.add('post');
 
+  const { seconds, nanoseconds } = post.date;
+
+  const dataEmMilissegundos = seconds * 1000 + nanoseconds / 1000000;
+
+  const data = new Date(dataEmMilissegundos);
+  
+  const ano = data.getFullYear();
+  const mes = ("0" + (data.getMonth() + 1)).slice(-2);
+  const dia = ("0" + data.getDate()).slice(-2);
+  const hora = ("0" + data.getHours()).slice(-2);
+  const minuto = ("0" + data.getMinutes()).slice(-2);
+
   const content = `
     <div class="informations">
       <p class="name">${post.username}</p>
-      <p class="date">${post.date}</p>
+      <p class="date">${dia}/${mes}/${ano} ${hora}:${minuto}</p>
     </div>
     <p class="text">${post.text}</p>
     <p id='button-like'><3</p>
