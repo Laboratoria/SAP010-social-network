@@ -1,4 +1,3 @@
-
 import {
   addDoc,
   collection,
@@ -12,14 +11,12 @@ import { db, onAuthStateChanged } from 'firebase/auth';
 
 import { expect } from '@jest/globals';
 
-
 import {
   criarPost,
   carregarPosts,
   createUserData,
   getCurrentUserId,
   getCurrentUser,
-  getUsername,
   checkAuthor,
   deletePost,
 } from '../src/lib/firestore';
@@ -54,7 +51,10 @@ describe('carregarPosts', () => {
   it('deve carregar os posts', async () => {
     const querySnapshotMock = {
       docs: [
-        { id: 'postA', data: () => ({ titulo: 'Post A', conteudo: 'Quero adotar um Pet' }) },
+        {
+          id: 'postA',
+          data: () => ({ titulo: 'Post A', conteudo: 'Quero adotar um Pet' }),
+        },
       ],
     };
 
@@ -73,7 +73,6 @@ describe('createUserData', () => {
   it('deve criar os dados dos usuários quando passar pela autenticação', async () => {
     const mockUser = { uid: 'id' };
     const mockNome = 'nome';
-
     onAuthStateChanged.mockImplementationOnce((auth, callback) => callback(mockUser));
 
     await createUserData(mockNome);
@@ -85,7 +84,6 @@ describe('createUserData', () => {
     });
   });
 });
-
 
 describe('getCurrentUserId', () => {
   it('Deve retornar o Id do usuário conectado', async () => {
@@ -103,9 +101,7 @@ describe('getCurrentUserId', () => {
     onAuthStateChanged.mockImplementation((auth, callback) => {
       callback(null);
     });
-    await expect(getCurrentUserId()).rejects.toThrow(
-      'Usuário não autnticado.'
-    );
+    await expect(getCurrentUserId()).rejects.toThrow('Usuário não autnticado.');
   });
 });
 
@@ -145,10 +141,8 @@ describe('getCurrentUser', () => {
 
    it('Deve retornar o nome de usuário do documento encontrado', async () => {
     const
-  })  
+  })
 }); */
-
-
 
 describe('checkAuthor', () => {
   beforeEach(() => {
@@ -173,6 +167,8 @@ describe('checkAuthor', () => {
     expect(getDoc).toHaveBeenCalledWith(doc(db, 'post', mockPostId));
     expect(mockAuth.getCurrentUserId).toHaveBeenCalledTimes(1);
     expect(resultado).toBe(true);
+  });
+});
 
 describe('deletePost', () => {
   it('deve deletar uma publicação', async () => {
@@ -193,7 +189,5 @@ describe('deletePost', () => {
     // Verifica se a função deleteDoc foi chamada com o documento mockado
     expect(deleteDoc).toHaveBeenCalledTimes(1);
     expect(deleteDoc).toHaveBeenCalledWith(mockDoc);
-
   });
 });
-
