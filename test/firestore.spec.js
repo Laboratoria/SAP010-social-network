@@ -1,3 +1,4 @@
+
 import {
   addDoc,
   collection,
@@ -11,10 +12,14 @@ import { db, onAuthStateChanged } from 'firebase/auth';
 
 import { expect } from '@jest/globals';
 
+
 import {
   criarPost,
   carregarPosts,
   createUserData,
+  getCurrentUserId,
+  getCurrentUser,
+  getUsername,
   checkAuthor,
   deletePost,
 } from '../src/lib/firestore';
@@ -82,6 +87,69 @@ describe('createUserData', () => {
 });
 
 
+describe('getCurrentUserId', () => {
+  it('Deve retornar o Id do usuário conectado', async () => {
+    const mockUser = { uid: '123' };
+
+    onAuthStateChanged.mockImplementation((auth, callback) => {
+      callback(mockUser);
+    });
+
+    const userId = await getCurrentUserId();
+    expect(userId).toBe('123');
+  });
+
+  it('Deve retornar erro se o usuário não estiver autenticado', async () => {
+    onAuthStateChanged.mockImplementation((auth, callback) => {
+      callback(null);
+    });
+    await expect(getCurrentUserId()).rejects.toThrow(
+      'Usuário não autnticado.'
+    );
+  });
+});
+
+describe('getCurrentUser', () => {
+  it('Deve retornar o Id do usuário conectado', async () => {
+    const mockUser = { uid: '123' };
+
+    onAuthStateChanged.mockImplementation((auth, callback) => {
+      callback(mockUser);
+    });
+
+    const currentUser = await getCurrentUser();
+    expect(currentUser).toBe(mockUser);
+  });
+
+  it('Deve retornar erro se o usuário não estiver autenticado', async () => {
+    onAuthStateChanged.mockImplementation((auth, callback) => {
+      callback(null);
+    });
+    await expect(getCurrentUser()).rejects.toThrow('Usuário não autenticado.');
+  });
+});
+
+/* describe('getUsername', () => {
+  it('Deve retornar o nome do usuário do provedor "google.com" do usuário', async () => {
+    const mockCurrentUser = {
+      displayName: 'Maria da Silva',
+      providerData: [{ providerId: 'google.com' }],
+    };
+    getCurrentUser.mockResolvedValue(mockCurrentUser);
+
+    const username = await getUsername();
+
+    expect(username).toBe('Maria da Silva');
+    expect(getCurrentUserId).not.toHaveBeenCalled();
+  });
+
+   it('Deve retornar o nome de usuário do documento encontrado', async () => {
+    const
+  })  
+}); */
+
+
+
 describe('checkAuthor', () => {
   beforeEach(() => {
     jest.setTimeout(20000);
@@ -128,3 +196,4 @@ describe('deletePost', () => {
 
   });
 });
+
