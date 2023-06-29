@@ -64,6 +64,7 @@ export default () => {
         post.nome,
         post.like,
         post.texto
+        //colocar autor do post
       );
       feedElement.appendChild(postElement);
     });
@@ -74,6 +75,7 @@ export default () => {
   function createPostElement(date, name, like, text) {
     const postElement = document.createElement('div');
     postElement.classList.add('post');
+    //se o autor for o mesmo do usuario logado, deixar deletar/editar com "if"
 
     const content = `
       <div class="informations">
@@ -89,5 +91,6 @@ export default () => {
     return postElement;
   }
   showFeed();
+
   return feedContainer;
 };
