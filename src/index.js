@@ -2,6 +2,51 @@ import login from "./pages/Login/login.js";
 import perfil from "./pages/Perfil/perfil.js";
 import cadastro from "./pages/Cadastro/cadastro.js";
 
+document.addEventListener('DOMContentLoaded', function() {
+  const main = document.querySelector("#root");
+
+  const init = () => {
+    window.addEventListener("hashchange", () => {
+      main.innerHTML = '';
+      switch (window.location.hash) {
+        case '':
+          main.appendChild(login());
+          break;
+        case '#criarConta':
+          main.appendChild(cadastro());
+          break;
+        case '#entrarLogin':
+          main.appendChild(perfil());
+          break;
+        case '#voltar':
+          main.appendChild(login());
+          break;
+        case '#concluir':
+          main.appendChild(login());
+          break;
+        default:
+          main.appendChild(login());
+      }
+    });
+  };
+
+  window.addEventListener('load', () => {
+    main.appendChild(login());
+    init();
+  });
+});
+
+
+
+
+/* import login from "./pages/Login/login.js";
+import perfil from "./pages/Perfil/perfil.js";
+import cadastro from "./pages/Cadastro/cadastro.js";
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Seu código aqui
+  
 const main = document.querySelector("#root");
 const init = () => {
   
@@ -35,13 +80,13 @@ const entrarLogin = document.getElementById("btn-login-entrar");
 const criarSenhaLogin = document.getElementById("btn-login-criar-conta");
 
 entrarLogin.addEventListener("click", () => {
-  (window.location.hash) === "#entrarLogin";
+  (window.location.hash) = "#entrarLogin";
 });
   
 
 
 criarSenhaLogin.addEventListener("click", () => {
-  (window.location.hash) === "#criarConta";
+  (window.location.hash) = "#criarConta";
 });
   
 
@@ -51,14 +96,16 @@ const concluirCadastro = document.getElementById("btn-cad-concluir");
 //const logGoogleCadastro = document.getElementById("btn-cad-login-google");
 
 voltarCadastro.addEventListener("click", () => {
-  (window.location.hash) === "#voltar";
+  (window.location.hash) = "#voltar";
 });
   
 
 concluirCadastro.addEventListener("click", () => {
-  (window.location.hash) === "#concluir";
+  (window.location.hash) = "#concluir";
 });
   
+});
 
 
 
+ */

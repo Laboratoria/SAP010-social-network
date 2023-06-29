@@ -1,27 +1,69 @@
 //import { } from "../../lib/authUser.js";
+//import { loginWithUser } from '../../configFirebase/auth';
 
 export default () => {
+  const loginContainer = document.createElement('div');
+  const templateLogin = `
+    <form>
+      <fieldset>
+        <div>
+          <label for="usuario">Nome do usuário/E-mail</label>
+          <input type="text" class="usuario" id="usuario">
+        </div>
+        <div>
+          <label for="senha">Senha</label>
+          <input type="password" class="senha" id="senha">
+        </div>
+        <button class="btn" id="btn-login-entrar">Entrar</button>
+        <button class="btn" id="btn-login-esq-senha">Esqueceu a senha?</button>
+        <button class="btn" id="btn-login-google">Login com Google</button>
+        <button class="btn" id="btn-login-criar-conta">Não tem login? Crie sua conta agora</button>
+      </fieldset>
+    </form>`;
 
-  //aqui recebe a função criada no authUser para login
+  loginContainer.innerHTML = templateLogin;
 
-const login = document.createElement('div');
-const templateLogin = `<form>
-<fieldset>
-  <div>
-    <label for="">Nome do usuário/E-mail</label>
-    <input type="text" class="usuario" id="usuario">
-  </div>
-  <div>
-    <label for="">Senha</label>
-    <input type="password" class="senha" id="senha">
-  </div>
-  <button class="btn" id="btn-login-entrar">Entrar</button>
-  <button class="btn" id="btn-login-esq-senha">Esqueceu a senha?</button>
-  <button class="btn" id="btn-login-google">Login com Google</button>
-  <button class="btn" id="btn-login-criar-conta">Não tem login? Crie sua conta agora</button>
-</fieldset>
-</form>`;
+  // Informações preenchidas pelo usuário
+  const usuarioEntrada = loginContainer.querySelector("#usuario");
+  const senhaEntrada = loginContainer.querySelector("#senha");
 
-login.innerHTML = templateLogin;
-return login;
-}
+  // Botões
+  const entrarLoginBotao = loginContainer.querySelector("#btn-login-entrar");
+  const criarLoginBotao = loginContainer.querySelector("#btn-login-criar-conta");
+
+  entrarLoginBotao.addEventListener("click", () => {
+    window.location.hash = "#entrarLogin";
+  });
+
+  criarLoginBotao.addEventListener("click", () => {
+    window.location.hash = "#criarConta";
+  });
+
+  // Função de login
+  const firstLogin = () => {
+    const usuario = usuarioEntrada.value;
+    const senha = senhaEntrada.value;
+
+    // Chamada para a função de login
+    // loginWithUser(usuario, senha)
+    //   .then(() => {
+    //     window.location.hash = '#root';
+    //   })
+    //   .catch(() => {
+    //     const errorMessage = loginContainer.querySelector('#errorMessage');
+    //     errorMessage.textContent = 'Usuário ou senha incorretos';
+    //     errorMessage.style.display = 'block';
+    //   });
+    
+    // teste login
+    console.log(`Usuário: ${usuario} Senha: ${senha}`);
+  };
+
+  entrarLoginBotao.addEventListener('click', firstLogin);
+
+  criarLoginBotao.addEventListener('click', () => {
+    window.location.hash = '#criarConta';
+  });
+
+  return loginContainer;
+};
