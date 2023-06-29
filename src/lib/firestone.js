@@ -1,5 +1,5 @@
 import { getAuth } from "firebase/auth";
-import { app } from "./firebase.js";
+import { app, auth } from "./firebase.js";
 
 import {
     collection,
@@ -8,7 +8,8 @@ import {
     addDoc,
     getDoc,
     doc,
-    updateDoc
+    updateDoc,
+    deleteDoc
 } from "firebase/firestore";
 
 
@@ -47,17 +48,13 @@ export const pegarPost = async () => {
 
 // likes
 
-// export const getPostById = async (postID) => {
-//     const docRef = doc(db, 'posts', postID);
-//     const docSnap = await getDoc(docRef);
-//     return docSnap.data().like.length;
-// };
+
 
 export const likePost = async (db,  postId, userId) => {
-    // const currentUser = auth.currentUser;
-    // if (!currentUser) {
-    //   throw new Error('Usuário não está logado');
-    // }
+    const currentUser = auth.currentUser;
+    if (!currentUser) {
+      throw new Error('Usuário não está logado');
+    }
   
     const postRef = doc(db, 'post', postId);
     const postSnap = await getDoc(postRef);
@@ -72,3 +69,9 @@ export const likePost = async (db,  postId, userId) => {
   
     await updateDoc(postRef, { like: updatedLikeArray });
 };
+
+export const deletarPost = async (idPost) => {
+    const deletPost = await deleteDoc(doc(db, 'post', idPost));
+    return deletPost;
+    
+}
