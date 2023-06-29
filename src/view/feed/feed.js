@@ -352,8 +352,7 @@ export const feed = () => {
           !document.querySelector('input[type="radio"][name="quero"]:checked')
         ) {
           validarInputs = false;
-          mensagemErroRadio.textContent =
-            'Campo obrigatório: favor selecionar uma opção.';
+          mensagemErroRadio.textContent = 'Campo obrigatório: favor selecionar uma opção.';
         }
 
         if (document.getElementById('mensagem').value === '') {
