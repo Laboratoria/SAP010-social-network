@@ -100,7 +100,7 @@ export default () => {
         alert('Um e-mail foi enviado para redefinir sua senha. Verifique sua caixa de entrada.');
       })
       .catch((error) => {
-        const errorMessage = error.message || 'Falha ao enviar e-mail de recuperação de senha';
+        const errorMessage =  errorsFirebase(error.code) || 'Falha ao enviar e-mail de recuperação de senha';
         printErrorMessage(errorMessage);
       });
   };
