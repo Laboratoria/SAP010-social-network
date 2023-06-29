@@ -2,6 +2,8 @@ import {
   addDoc,
   collection,
   getDocs,
+  doc,
+  deleteDoc,
 } from 'firebase/firestore';
 
 import { db } from 'firebase/auth';
@@ -10,6 +12,7 @@ import {
   criarPost,
   carregarPosts,
   createUserData,
+  deletePost,
 } from '../src/lib/firestore';
 
 jest.mock('firebase/firestore');
@@ -62,5 +65,27 @@ describe('createUserData', () => {
       name: mockNome,
       userId: mockUser.uid,
     });
+  });
+});
+
+describe('deletePost', () => {
+  it('deve deletar uma publicação', async () => {
+    // Mock do ID da postagem
+    const postId = 'id-post';
+
+    // Mock do retorno da função doc
+    const mockDoc = 'mock-doc';
+    doc.mockReturnValueOnce(mockDoc);
+
+    // Chama a função deletePost passando o ID mockado
+    await deletePost(postId);
+
+    // Verifica se a função doc foi chamada com os parâmetros corretos
+    expect(doc).toHaveBeenCalledTimes(1);
+    expect(doc).toHaveBeenCalledWith(db, 'post', postId);
+
+    // Verifica se a função deleteDoc foi chamada com o documento mockado
+    expect(deleteDoc).toHaveBeenCalledTimes(1);
+    expect(deleteDoc).toHaveBeenCalledWith(mockDoc);
   });
 });
