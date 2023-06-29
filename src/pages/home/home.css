@@ -1,7 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap");
+
 .container-home {
-  background-color: rgb(150, 241, 241);
-  width: 100vw;
-  height: 100vh;
   margin: 0;
   padding: 0;
+  background-image: url(../imagens/backgroundMob.png);
+  background-repeat: no-repeat;
+  width: 380px;
+  height: 670px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.texto {
+  color: #f6f2e2;
+  text-align: center;
+  font-size: 20px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.img-CBD {
+  width: 231px;
+  height: 205px;
+  background-size: cover;
+  position: fixed;
+  top: 33%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-shrink: 0; /* Alterei para flex-shrink: 0 para evitar encolhimento */
+}
+
+.container-h1 {
+  width: 234px;
+  height: 109px;
+  display: flex; /* Adicionado display: flex para alinhar o h1 verticalmente */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Adicionado align-items: center para alinhar o h1 horizontalmente */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container-text {
+  display: flex;
+  width: 327px;
+  height: 303px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: calc(
+    57% + 109px
+  ); /* Posiciona o container-text abaixo do container-h1 */
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.seta {
+  color: rgb(255, 255, 255);
+  font-size: 50px;
+  flex-shrink: 0;
+  position: absolute;
+  bottom: 3%;
+  right: 13%;
 }
