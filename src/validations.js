@@ -12,6 +12,8 @@ export function errorsFirebase(error) {
       return 'Senha inválida';
     case 'auth/wrong-password':
       return 'Usuário e/ou senha incorretos';
+      case 'auth/missing-email':
+        return 'Insira o e-mail para a recuperação da senha';
     default:
       return '';
   }
