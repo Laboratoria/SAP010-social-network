@@ -7,6 +7,7 @@ import {
   updateProfile,
   FacebookAuthProvider,
   signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { app, db } from './app.js';
@@ -75,4 +76,9 @@ export const loginFacebook = () => {
 export const logOut = () => {
   const auth = getAppAuth();
   return signOut(auth);
+};
+
+export const checkLoggedUser = (check) => {
+  const auth = getAppAuth();
+  return onAuthStateChanged(auth, check);
 };

@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
   signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 
 import {
@@ -15,6 +16,7 @@ import {
   getUserId,
   getUserName,
   logOut,
+  checkLoggedUser,
 } from '../src/firebase/auth';
 
 jest.mock('firebase/auth');
@@ -149,5 +151,12 @@ describe('logOut', () => {
     });
     logOut();
     expect(signOut).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('checkLoggedUser', () => {
+  it('should verify if the user has logged in', () => {
+    checkLoggedUser();
+    expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
   });
 });
