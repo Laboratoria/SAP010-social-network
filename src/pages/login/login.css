@@ -50,7 +50,18 @@
 
 }
 
+.forgot-password {
+    text-decoration: none;
+    color: var(--black);
+    border: none;
+    width: 10em;
+    font-size: 1.1rem;
+    text-align: center;
+    background-color: var(--none);
+    font-weight: bold;
+    filter: drop-shadow(0px 0px 3px rgb(21, 92, 185));
 
+}
 .google-button, .facebook-button {
     background-color: var(--white);
     border: none;
@@ -112,7 +123,8 @@ background-color: white;
         margin-top: 70px;
     }
 
-    .register-here {
+    .register-here,
+    .forgot-password {
       background-color: var(--lightblue);
       filter: none;
       font-weight: none;
@@ -143,7 +155,8 @@ background-color: white;
 
     }
 
-    .register-here:hover {
+    .register-here:hover,
+    .forgot-password:hover {
         background-color: var(--darkblue);
         border-radius: 15px 15px 15px 15px;
         color: var(--white);
