@@ -244,6 +244,16 @@ div i{
    margin: 20px 0px 0px -30px;
 
 }
+.alertHome {
+    color: #F5B81D;
+    position: absolute;
+    text-align: center;
+}
+.alertCadastro {
+    color: #F5B81D;
+    position: absolute;
+    text-align: center;
+}
 
 @media screen and (min-width: 700px) and (max-width:760px) {
 

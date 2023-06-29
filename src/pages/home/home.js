@@ -23,6 +23,7 @@ export default () => {
             <p class="form">
               <button class="btnLogar" id="btnLogar">LOGAR</button>
             </p>
+            <span id='usuarioAlertHome' class='alertHome'></span>
             <p class="form">
               <button class="logarGoogle" id="btnGoogle"><img src="imagens/google.png"> Entrar com Google</button>
             <p class="form">
