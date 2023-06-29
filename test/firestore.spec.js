@@ -2,14 +2,19 @@ import {
   addDoc,
   collection,
   getDocs,
+  getDoc,
+  doc,
 } from 'firebase/firestore';
 
-import { db } from 'firebase/auth';
+import { db, onAuthStateChanged } from 'firebase/auth';
+
+import { expect } from '@jest/globals';
 
 import {
   criarPost,
   carregarPosts,
   createUserData,
+  checkAuthor,
 } from '../src/lib/firestore';
 
 jest.mock('firebase/firestore');
@@ -20,7 +25,7 @@ beforeEach(() => {
 });
 
 describe('criarPost', () => {
-  const dadosPost = {
+  const mockPost = {
     idadePet: 'filhote',
     especie: 'Cachorro',
     sexo: 'Fêmea',
@@ -31,36 +36,71 @@ describe('criarPost', () => {
   };
 
   it('deve criar um post', async () => {
-    const docRef = { id: 'document_id' };
-    addDoc.mockResolvedValueOnce(docRef);
+    await criarPost(mockPost);
 
-    await criarPost(dadosPost);
-
-    expect(addDoc).toHaveBeenCalledTimes(1);
-    expect(addDoc).toHaveBeenCalledWith(collection(db, 'post'), dadosPost);
+    expect(collection).toHaveBeenCalledWith(db, 'post');
+    expect(addDoc).toHaveBeenCalledWith(collection(), mockPost);
   });
 });
 
 describe('carregarPosts', () => {
   it('deve carregar os posts', async () => {
-    await carregarPosts();
+    const querySnapshotMock = {
+      docs: [
+        { id: 'postA', data: () => ({ titulo: 'Post A', conteudo: 'Quero adotar um Pet' }) },
+      ],
+    };
+
+    getDocs.mockResolvedValueOnce(querySnapshotMock);
+
+    const retornar = await carregarPosts();
+
     expect(getDocs).toHaveBeenCalledTimes(1);
+    expect(retornar).toEqual([
+      { id: 'postA', titulo: 'Post A', conteudo: 'Quero adotar um Pet' },
+    ]);
   });
 });
 
 describe('createUserData', () => {
-  it('deve criar os dados dos usuários', async () => {
+  it('deve criar os dados dos usuários quando passar pela autenticação', async () => {
     const mockUser = { uid: 'id' };
     const mockNome = 'nome';
 
-    db.mockReturnValueOnce({ currentUser: mockUser });
+    onAuthStateChanged.mockImplementationOnce((auth, callback) => callback(mockUser));
 
     await createUserData(mockNome);
 
-    expect(addDoc).toHaveBeenCalledTimes(1);
-    expect(addDoc).toHaveBeenCalledWith(collection(db, 'usernames'), {
+    expect(collection).toHaveBeenCalledWith(db, 'usernames');
+    expect(addDoc).toHaveBeenCalledWith(collection(), {
       name: mockNome,
       userId: mockUser.uid,
     });
+  });
+});
+
+describe('checkAuthor', () => {
+  beforeEach(() => {
+    jest.setTimeout(20000);
+  });
+  it('deve checar se o usuário logado é o autor das suas postagens', async () => {
+    const mockPostId = 'postA';
+    const mockCurrentUserId = 'userABC';
+
+    const mockAuth = {
+      getCurrentUserId: jest.fn().mockResolvedValue(mockCurrentUserId),
+    };
+
+    const mockDocSnapshot = {
+      exists: true,
+      data: jest.fn(),
+    };
+    getDoc.mockResolvedValue(mockDocSnapshot);
+
+    const resultado = await checkAuthor(mockPostId, mockAuth);
+
+    expect(getDoc).toHaveBeenCalledWith(doc(db, 'post', mockPostId));
+    expect(mockAuth.getCurrentUserId).toHaveBeenCalledTimes(1);
+    expect(resultado).toBe(true);
   });
 });

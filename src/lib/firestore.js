@@ -27,15 +27,11 @@ export const criarPost = async (dadosPost) => {
 //  função de carregar os dados das postagens do banco de dados em ordem de data
 
 export const carregarPosts = async () => {
-  const q = query(collection(db, 'post'), orderBy('dataAtual', 'desc'));
-  const querySnapshot = await getDocs(q);
-  const arrayPosts = [];
-  querySnapshot.forEach((post) => {
+  const querySnapshot = await getDocs(query(collection(db, 'post'), orderBy('dataAtual', 'desc')));
+  return querySnapshot.docs.map((post) => {
     const data = post.data();
-    data.id = post.id;
-    arrayPosts.push(data);
+    return { ...data, id: post.id };
   });
-  return arrayPosts;
 };
 
 //  Adcionar nome e ID à coleção 'usernames'
