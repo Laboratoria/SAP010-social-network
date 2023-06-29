@@ -101,7 +101,7 @@ describe('getCurrentUserId', () => {
     onAuthStateChanged.mockImplementation((auth, callback) => {
       callback(null);
     });
-    await expect(getCurrentUserId()).rejects.toThrow('Usuário não autnticado.');
+    await expect(getCurrentUserId()).rejects.toThrow('Usuário não autenticado.');
   });
 });
 
@@ -145,9 +145,6 @@ describe('getCurrentUser', () => {
 }); */
 
 describe('checkAuthor', () => {
-  beforeEach(() => {
-    jest.setTimeout(20000);
-  });
   it('deve checar se o usuário logado é o autor das suas postagens', async () => {
     const mockPostId = 'postA';
     const mockCurrentUserId = 'userABC';

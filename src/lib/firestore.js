@@ -68,7 +68,7 @@ export function getCurrentUser() {
       if (user) {
         resolve(user);
       } else {
-        reject(new Error('Usuário não autenticado'));
+        reject(new Error('Usuário não autenticado.'));
       }
     });
   });
