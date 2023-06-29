@@ -30,12 +30,24 @@ export default () => {
 
   cadastroContainer.innerHTML = templateCadastro;
 
+  // Informações preenchidas pelo usuário
   const nomeEntrada = cadastroContainer.querySelector('#nome-completo');
   const nomeUsuarioEntrada = cadastroContainer.querySelector('#usuario');
   const emailEntrada = cadastroContainer.querySelector('#email');
   const senhaEntrada = cadastroContainer.querySelector('#senha');
+
+    // Botões
   const botaoConcluir = cadastroContainer.querySelector('#btn-cad-concluir');
   const botaoVoltar = cadastroContainer.querySelector('#btn-cad-voltar');
+
+  botaoConcluir.addEventListener("click", () => {
+    window.location.hash = "#entrarLogin";
+  });
+
+  botaoVoltar.addEventListener("click", () => {
+    window.location.hash = "#voltar";
+  });
+
 
   const registerUser = () => {
     const name = nomeEntrada.value;
