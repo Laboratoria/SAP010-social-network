@@ -9,12 +9,14 @@ import {
 
 import { auth } from './firebaseConfig.js';
 
+export const currentUser = auth.currentUser
+
 // cadastro de usuarios novos
-export const createUser = (email, password, name, lastName, username) =>
+export const createUser = (email, password, displayName) =>
   createUserWithEmailAndPassword(auth, email, password).then(userCredential => {
     // Depois que criou o usuário executa a função baixo
     const user = userCredential.user; // atualiza o perfil do usuário
-    return updateProfile(user, { name, lastName, username });
+    return updateProfile(user, { displayName });
   });
 //criar um catch?
 

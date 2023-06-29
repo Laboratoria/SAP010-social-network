@@ -89,8 +89,6 @@ export default () => {
       createUser(
         emailElement.value,
         passwordElement.value,
-        nameElement.value,
-        lastNameElement.value,
         userElement.value
       )
         .then(() =>
