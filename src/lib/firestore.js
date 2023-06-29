@@ -65,7 +65,6 @@ export const getCurrentUserId = () => (
   })
 );
 
-
 // recupera todas as informações do usuário atual
 export function getCurrentUser() {
   return new Promise((resolve, reject) => {
@@ -129,18 +128,15 @@ export const deletePost = (id) => (
   })
 );
 
-
 // checa se o ID do usuário atual é igual ao id do autor da postagem
 export const checkAuthor = async (postId) => {
   const currentUserId = await getCurrentUserId();
   const postRef = doc(db, 'post', postId);
   const docSnapshot = await getDoc(postRef);
 
-
   return (
     docSnapshot.exists() && docSnapshot.data().postAuthorId === currentUserId
   );
-
 };
 
 // edita o doc da collection 'post'
@@ -169,8 +165,6 @@ export const editPostDoc = async (
     sexo: sexoEdit,
   });
 };
-
-
 
 export const addLike = async (postId, newLike) => {
   const postRef = doc(db, 'post', postId);
@@ -204,5 +198,4 @@ export const numberOfLikes = async (postId) => {
     return likesCount;
   }
   return console.log('não encontrado');
-
 };
