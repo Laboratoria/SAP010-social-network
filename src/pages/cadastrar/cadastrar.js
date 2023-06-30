@@ -7,14 +7,13 @@ export default () => {
  
 
   const template=`
-  <header>
-       <section> <img class="logo" src="imagens/logo mania.png" alt="logo" /> </section>
-       </header>
-      <div class="container" id="container-template">
-         <h1>  A REDE SOCIAL PARA QUEM <br>GOSTA DE ECONOMIZAR!</h1>
-        <img class="etiqueta" src="imagens/etiqueta de desconto preta.png" alt="etiqueta" />
+  <div class="container" id="container-template">
+    <header>
+      <img class="logo" src= "imagens/logo mania.png" alt="logo">
+    </header>
     <form class="form" id="form">
-               <h2>A REDE SOCIAL PARA QUEM <br> GOSTA DE ECONOMIZAR!</h2>
+            <img class="etiqueta" src="imagens/etiqueta de desconto preta.png" alt="etiqueta" />
+                <h2>A REDE SOCIAL PARA QUEM <br> GOSTA DE ECONOMIZAR!</h2>
                 <p class="nome">
                 <input type="text" class="inserir_nome" id="inserirnome" placeholder="Digite seu Nome e Sobrenome"/>
                 </p>
@@ -35,43 +34,53 @@ export default () => {
             </p>
        </div>
     </div>
+  
     
     `;
 
-  container.innerHTML = template;
+container.innerHTML = template;
 
-  const register = container.querySelector(".btnCadastrar2");
-  register.addEventListener("click", () => {
-    const email2 = container.querySelector(".inserir_email2");
-    const password2 = container.querySelector(".digite_senha2");
-    const name = container.querySelector(".inserir_nome");
-    const passwordrepet = container.querySelector(".confirma_senha");
 
-    signUpUser(name.value, email2.value, password2.value, passwordrepet.value)
-      .then(() => {
-        alert("Usuário cadastrado com sucesso!");
-        window.location.hash = "#feed";
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        if (errorMessage === "Firebase: Error (auth/email-already-in-use).") {
-          usuarioAlert.setAttribute("style", "display: block");
-          usuarioAlert.innerHTML = "E-mail já cadastrado!";
-        }
-        if (errorMessage === "Firebase: Error (auth/invalid-email).") {
-          usuarioAlert.setAttribute("style", "display: block");
-          usuarioAlert.innerHTML = "Endereço de e-mail inválido!";
-        }
-        if (errorMessage === "Firebase: Password should be at least 6 characters (auth/weak-password).") {
-          usuarioAlert.setAttribute("style", "display: block");
-          usuarioAlert.innerHTML = "Sua senha deve ter ao menos 6 dígitos!";
-        }
-        if (password2.value !== passwordrepet.value) {
-          usuarioAlert.setAttribute("style", "display: block");
-          usuarioAlert.innerHTML = "As senhas devem ser iguais!";
-        }
-      });
+
+const email2 = container.querySelector(".inserir_email2")
+const password2 = container.querySelector(".digite_senha2")
+const name = container.querySelector(".inserir_nome")
+const passwordrepet = container.querySelector(".confirma_senha")
+const register = container.querySelector(".btnCadastrar2")
+ 
+register.addEventListener('click', () => {
+ 
+
+  signUpUser(name.value, email2.value, password2.value).then(() => {
+  
+      alert('Usuário cadastrado com sucesso!')
+      window.location.hash = '#feed';
+              
+  })
+  .catch((error) => {
+    const errorMessage = error.message;
+    if (errorMessage === 'Firebase: Error (auth/email-already-in-use).') {
+      usuarioAlert.setAttribute('style', 'display: block');
+      usuarioAlert.innerHTML = 'E-mail já cadastrado!';
+    }
+    if (errorMessage === 'Firebase: Error (auth/invalid-email).') {
+      usuarioAlert.setAttribute('style', 'display: block');
+      usuarioAlert.innerHTML ='Endereço de e-mail inválido!';
+    }
+    if (errorMessage === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+      usuarioAlert.setAttribute('style', 'display: block');
+      usuarioAlert.innerHTML = 'Sua senha deve ter ao menos 6 dígitos!';
+    }
+    if (password2.value !== passwordrepet.value){
+      usuarioAlert.setAttribute('style', 'display: block');
+      usuarioAlert.innerHTML ='As senhas devem ser iguais!';
+    }
+  
   });
+
+      
+});
+
 
   return container;
 };
