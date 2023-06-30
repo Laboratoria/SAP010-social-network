@@ -5,6 +5,7 @@ import {
   getDoc,
   doc,
   deleteDoc,
+  updateDoc,
 } from 'firebase/firestore';
 
 import { db, onAuthStateChanged } from 'firebase/auth';
@@ -19,6 +20,8 @@ import {
   getCurrentUser,
   checkAuthor,
   deletePost,
+  editPostDoc,
+  addLike,
 } from '../src/lib/firestore';
 
 jest.mock('firebase/firestore');
@@ -186,5 +189,106 @@ describe('deletePost', () => {
     // Verifica se a função deleteDoc foi chamada com o documento mockado
     expect(deleteDoc).toHaveBeenCalledTimes(1);
     expect(deleteDoc).toHaveBeenCalledWith(mockDoc);
+  });
+});
+
+describe('editPostDoc', () => {
+  it('deve atualizar os dados de um post', async () => {
+    // Mock dos parâmetros
+    const postId = 'id-post';
+    const racaEdit = 'Nova Raça';
+    const mensagemEdit = 'Nova Mensagem';
+    const localizacaoEdit = 'Nova Localização';
+    const idadeEdit = 'Nova Idade';
+    const sexoEdit = 'Novo Sexo';
+    const especieEdit = 'Nova Espécie';
+    const opcaoAdocaoEdit = 'Nova Opção de Adoção';
+    const contatoEdit = 'Novo Contato';
+
+    // Mock do documento de post
+    const mockPostRef = 'mock-post-ref';
+    doc.mockReturnValueOnce(mockPostRef);
+
+    // Chama a função editPostDoc com os parâmetros mockados
+    await editPostDoc(
+      postId,
+      racaEdit,
+      mensagemEdit,
+      localizacaoEdit,
+      idadeEdit,
+      sexoEdit,
+      especieEdit,
+      opcaoAdocaoEdit,
+      contatoEdit,
+    );
+
+    // Verifica se a função doc foi chamada com os parâmetros corretos
+    expect(doc).toHaveBeenCalledTimes(1);
+    expect(doc).toHaveBeenCalledWith(db, 'post', postId);
+
+    // Verifica se a função updateDoc foi chamada com o documento
+    expect(updateDoc).toHaveBeenCalledTimes(1);
+    expect(updateDoc).toHaveBeenCalledWith(mockPostRef, {
+      raca: racaEdit,
+      mensagem: mensagemEdit,
+      localizacao: localizacaoEdit,
+      idadePet: idadeEdit,
+      especie: especieEdit,
+      opcaoAdocao: opcaoAdocaoEdit,
+      contato: contatoEdit,
+      sexo: sexoEdit,
+    });
+  });
+});
+
+describe('addLike', () => {
+  it('deve adicionar ou remover um like em um post existente', async () => {
+    // Mock do ID do post e do novo like
+    const postId = 'id-post';
+    const newLike = 'usuário1';
+
+    // Mock do snapshot do post existente com likes
+    const mockPostSnapshot = {
+      exists: true,
+      data: () => ({
+        postLikes: ['usuário2', 'usuário3', 'usuário1'],
+      }),
+    };
+    getDoc.mockResolvedValueOnce(mockPostSnapshot);
+
+    // Chama a função addLike passando o ID do post e o novo like
+    await addLike(postId, newLike);
+
+    // Verifica se a função getDoc foi chamada com os parâmetros corretos
+    expect(getDoc).toHaveBeenCalledTimes(1);
+    expect(getDoc).toHaveBeenCalledWith(doc(db, 'post', postId));
+
+    // Verifica se a função updateDoc foi cham c/ doc mockado e o novo estado dos likes corretos
+    expect(updateDoc).toHaveBeenCalledTimes(1);
+    expect(updateDoc).toHaveBeenCalledWith(doc(db, 'post', postId), {
+      postLikes: ['usuário2', 'usuário3'],
+    });
+  });
+
+  it('não deve modificar os likes em um post inexistente', async () => {
+    // Mock do ID do post inexistente
+    const postId = 'id-post-inexistente';
+    const newLike = 'usuário1';
+
+    // Mock do snapshot do post inexistente
+    const mockPostSnapshot = {
+      exists: false,
+    };
+    getDoc.mockResolvedValueOnce(mockPostSnapshot);
+
+    // Chama a função addLike passando o ID do post inexistente e o novo like
+    await addLike(postId, newLike);
+
+    // Verifica se a função getDoc foi chamada com os parâmetros corretos
+    expect(getDoc).toHaveBeenCalledTimes(1);
+    expect(getDoc).toHaveBeenCalledWith(doc(db, 'post', postId));
+
+    // Verifica se a função updateDoc não foi chamada
+    expect(updateDoc).not.toHaveBeenCalled();
   });
 });

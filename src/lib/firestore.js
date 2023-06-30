@@ -114,7 +114,6 @@ export const getUsername = async () => {
 export const deletePost = (id) => (
   new Promise((resolve) => {
     deleteDoc(doc(db, 'post', id));
-    console.log('Document deleted with ID: ', id);
     resolve();
   })
 );
@@ -161,7 +160,7 @@ export const addLike = async (postId, newLike) => {
   const postRef = doc(db, 'post', postId);
 
   const postSnapshot = await getDoc(postRef);
-  if (postSnapshot.exists()) {
+  if (postSnapshot.exists) { // Correção: verifica a propriedade exists
     const postData = postSnapshot.data();
     const postLikes = postData.postLikes;
     const hasLiked = postLikes.includes(newLike);
