@@ -16,9 +16,9 @@ export const feed = () => {
   const templateFeed = `
       <header class='feed-header'>
       <div class='logo-sair-container'>
-      <img src='../../img/logo.png' class='logo-repet' id='logo-repet-feed'> <button id='sair'> Sair </button> </div>
+      <img src='../../img/logo.png' class='logo-repet' id='logo-repet-feed'></div>
       <div class='icon-welcome'> <img src='../../img/usericon.png' alt='ícone de usuário' class='user-icon'/> 
-      <p class='boas-vindas'>Seja bem-vindo(a) </p> </div>
+      <p class='boas-vindas'>Seja bem-vindo(a) </p> <img src='../../img/sign-out-alt.png' class='btn-logout' id='btn-logout'></div>
       <a class='feedPage' href='/#feed'></a>
 
       <button id='post'>Crie seu post aqui!</button>
@@ -82,9 +82,10 @@ export const feed = () => {
 
             <p id='mensagem-erro-textarea' class='mensagem-erro'></p>
 
+            <div class='-confirm'>
             <button type='submit' class='publicar' id='publicar'>Publicar</button>
             <button type='submit' class='editar' id='editar'>Editar</button>
-
+            </div>
             </form>
 
 
@@ -289,7 +290,7 @@ export const feed = () => {
 
   carregarFeed();
 
-  container.querySelector('#sair').addEventListener('click', () => {
+  container.querySelector('#btn-logout').addEventListener('click', () => {
     logout();
     window.location.hash = '#home';
   });

@@ -40,15 +40,25 @@ textarea {
   width: 100%;
 }
 
-.publicar {
+.container-confirm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  height: 100%;
+}
+
+.publicar,
+.editar {
   background: rgba(238, 238, 238, 0.933333);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: black;
-  padding: 10px 30px 10px 30px;
+  padding: 10px 30px;
   border-radius: 10px;
   text-decoration: none;
   border: none;
-  margin-top: 10px;
+  display: end;
+  margin: 0 auto;
 }
 
 .fechar {
@@ -69,6 +79,7 @@ button {
   border: none;
   margin-top: 10px;
   width: fit-content;
+  justify-self: flex-start;
 }
 
 button:hover {
@@ -87,6 +98,7 @@ button:hover {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+
 .feed-header {
   margin: 30px 0px;
   text-align: center;
@@ -99,16 +111,21 @@ button:hover {
 .boas-vindas {
   font-size: 1.3rem;
 }
-#sair {
-  align-self: flex-end;
-  margin-left: 50px;
-  margin-right: 30px;
+#btn-logout {
+  width: 20px;
+  height: 20px;
+  margin-top: 25px;
+  margin-left: 10px;
 }
+#btn-logout:hover {
+  transform: scale(1.2);
+}
+
 #logo-repet-feed {
-  margin-left: 20px;
-  margin-right: 50px;
   width: 100px;
   margin-top: 0;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .logo-sair-container {
@@ -116,12 +133,13 @@ button:hover {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  align-items: center;
   flex-wrap: wrap;
 }
 .user-icon {
-  width: 30px;
-  height: 30px;
-  margin-top: 15px;
+  width: 20px;
+  height: 20px;
+  margin-top: 25px;
   margin-right: 10px;
 }
 .icon-welcome {
@@ -144,9 +162,9 @@ button:hover {
 }
 
 .adopt-option {
-  font-weight: bold;
+  font-weight: 700;
   background-color: rgba(101, 202, 213, 1);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   width: 130px;
   margin-bottom: 10px;
   color: #1d1c1c;
@@ -204,6 +222,10 @@ button:hover {
   border: 1px solid red;
 }
 
+.icon-container {
+  display: flex;
+  align-items: center;
+}
 
 .material-icons {
   cursor: default;
@@ -214,7 +236,7 @@ button:hover {
   transform: scale(1.2);
 }
 .like-counter {
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   margin-left: 10px;
 }
 
