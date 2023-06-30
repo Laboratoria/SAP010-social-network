@@ -41,6 +41,7 @@ export default () => {
       // estamos usando o displayName para saber se o usuario esta dentro do array de likes ou não
       auth.currentUser.displayName,
       inputText.value,
+
       // vai precisar usar o uid para poder saber se a publicação pertence ao usuario logado
       auth.currentUser.uid
     )
@@ -116,47 +117,58 @@ function createPostElement(post) {
 
   postElement.innerHTML = content;
 
+
   const textLikeCount = postElement.querySelector('#text-like-count');
 
+  let processingClick = false
   const buttonLike = postElement.querySelector('#button-like');
   buttonLike.addEventListener('click', () => {
     const currentUser = auth.currentUser.displayName;
     const likesArray = post.likes;
 
-    // Caso o usuario já esteja no array de likes, quer dizer que ele já deu like
-    // então vamos tirar ele do array de likes
-    if (likesArray.includes(currentUser)) {
-      deslikeCounter(post.id, currentUser)
-        .then(() => {
-          // caso a função deslikeCounter tenha executado com sucesso (then)
-          // ou seja ele foi removido do array de likes dessa publicação lá no Firebase
-          // mas ainda precisamos tirar o usuario do array que esta na variavel local
-          const index = likesArray.indexOf(currentUser);
-          if (index !== -1) {
-            likesArray.splice(index, 1);
-          }
-          // depois vamos atualizar o campo com o numero de likes
-          textLikeCount.innerHTML = likesArray.length;
-        })
-        .catch(error => {
-          customAlert('Erro ao descurtir post');
-          console.log(error);
-        });
-      // Se não, quer dizer que o usuario ainda não esta no array de likes
-      // ou seja, não curtiu a publicação
-    } else {
-      likeCounter(post.id, currentUser)
-        .then(() => {
-          // caso a função likeCounter tenha executado com sucesso (then)
-          // ou seja ele foi adicionado do array de likes dessa publicação lá no Firebase
-          // mas ainda precisamos adicionar o usuario no array que esta na variavel local
-          likesArray.push(currentUser);
-          textLikeCount.innerHTML = likesArray.length;
-        })
-        .catch(error => {
-          customAlert('Erro ao curtir post');
-          console.log(error);
-        });
+    if (!processingClick) {
+      processingClick = true
+      // Caso o usuario já esteja no array de likes, quer dizer que ele já deu like
+      // então vamos tirar ele do array de likes
+      if (likesArray.includes(currentUser)) {
+        deslikeCounter(post.id, currentUser)
+          .then(() => {
+            // caso a função deslikeCounter tenha executado com sucesso (then)
+            // ou seja ele foi removido do array de likes dessa publicação lá no Firebase
+            // mas ainda precisamos tirar o usuario do array que esta na variavel local
+            const index = likesArray.indexOf(currentUser);
+            if (index !== -1) {
+              likesArray.splice(index, 1);
+            }
+            // depois vamos atualizar o campo com o numero de likes
+            textLikeCount.innerHTML = likesArray.length;
+          })
+          .catch(error => {
+            customAlert('Erro ao descurtir post');
+            console.log(error);
+          })
+          .finally(() => {
+            processingClick = false
+          });
+        // Se não, quer dizer que o usuario ainda não esta no array de likes
+        // ou seja, não curtiu a publicação
+      } else {
+        likeCounter(post.id, currentUser)
+          .then(() => {
+            // caso a função likeCounter tenha executado com sucesso (then)
+            // ou seja ele foi adicionado do array de likes dessa publicação lá no Firebase
+            // mas ainda precisamos adicionar o usuario no array que esta na variavel local
+            likesArray.push(currentUser);
+            textLikeCount.innerHTML = likesArray.length;
+          })
+          .catch(error => {
+            customAlert('Erro ao curtir post');
+            console.log(error);
+          })
+          .finally(() => {
+            processingClick = false
+          });
+      }
     }
   });
 
