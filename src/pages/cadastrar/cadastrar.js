@@ -7,14 +7,13 @@ export default () => {
  
 
   const template=`
-  <header>
-       <section> <img class="logo" src="imagens/logo mania.png" alt="logo" /> </section>
-       </header>
-      <div class="container" id="container-template">
-         <h1>  A REDE SOCIAL PARA QUEM <br>GOSTA DE ECONOMIZAR!</h1>
-        <img class="etiqueta" src="imagens/etiqueta de desconto preta.png" alt="etiqueta" />
+  <div class="container" id="container-template">
+    <header>
+      <img class="logo" src= "imagens/logo mania.png" alt="logo">
+    </header>
     <form class="form" id="form">
-               <h2>A REDE SOCIAL PARA QUEM <br> GOSTA DE ECONOMIZAR!</h2>
+            <img class="etiqueta" src="imagens/etiqueta de desconto preta.png" alt="etiqueta" />
+                <h2>A REDE SOCIAL PARA QUEM <br> GOSTA DE ECONOMIZAR!</h2>
                 <p class="nome">
                 <input type="text" class="inserir_nome" id="inserirnome" placeholder="Digite seu Nome e Sobrenome"/>
                 </p>
@@ -35,6 +34,7 @@ export default () => {
             </p>
        </div>
     </div>
+  
     
     `;
 
