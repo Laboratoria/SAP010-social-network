@@ -124,7 +124,7 @@ export default () => {
             const btnDeletar = postar.querySelector('.btnDeletar')
             btnDeletar.addEventListener('click', async () => {
                 const idPost = btnDeletar.getAttribute('data-post-id');
-                // if (post.author === auth.currentUser.uid) {
+                if (post.author === auth.currentUser.uid) {
                 if (confirm('Tem certeza que deseja excluir esse post?')) {
                     try {
                         await deletarPost(idPost);
