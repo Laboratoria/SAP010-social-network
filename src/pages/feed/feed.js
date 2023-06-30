@@ -22,7 +22,7 @@ export default () => {
     <header class="header-feed">
     <img src="imagens/logo branca feed.png" class="logo-feed"> 
     <button class="btnSair" id="btn_Sair" type="button">Sair</button> 
-    <h1>  Olá, ${auth.currentUser.displayName} !<br> Bora Economizar? </h1>
+    <h4>  Olá, ${auth.currentUser.displayName} !<br> Bora Economizar? </h4>
     </header>
 
   <form id="formFeed" class="form-feed">
