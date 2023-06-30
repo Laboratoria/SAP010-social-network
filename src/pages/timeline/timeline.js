@@ -80,10 +80,12 @@ export default () => {
   };
 
   const loadPosts = async () => {
+  await accessPost(updateListPost);
+ 
+  };
+  const updateListPost = (TodosPosts) => {
     postList.innerHTML = '';
-    const postsFirestore = await accessPost();
-
-    postsFirestore.forEach(async (post) => {
+    TodosPosts.forEach(async (post) => {
       const {
         name, createdAt, description, id, author, whoLiked,
       } = post;
@@ -115,8 +117,7 @@ export default () => {
         }
       });
     });
-  };
-
+  }
   const handlePostBtnClick = () => {
     const description = descriptionPost.value;
 
@@ -126,8 +127,6 @@ export default () => {
       createPost(description)
         .then(() => {
           descriptionPost.value = '';
-          // createPostElement.insertBefore - ajustar
-          loadPosts(); // substituir
           alert('Publicação efetuada com sucesso!');
         })
         .catch(() => {

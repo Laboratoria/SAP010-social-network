@@ -10,6 +10,7 @@ import {
   updateDoc,
   getDoc,
   arrayRemove,
+  onSnapshot
 } from 'firebase/firestore';
 import { getAppAuth } from './auth';
 import { app } from './app';
@@ -28,16 +29,20 @@ export const createPost = (description) => {
   });
 };
 
-export const accessPost = async () => {
+export const accessPost = (updateListPost) => {
   const allPosts = [];
-  const postQuery = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
-  const querySnapshot = await getDocs(postQuery);
-  querySnapshot.forEach((post) => {
-    const data = post.data();
-    data.id = post.id;
-    allPosts.push(data);
-  });
-  return allPosts;
+    const postQuery = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
+
+    onSnapshot(postQuery, (querySnapshot) => {
+      allPosts.length = 0;
+
+      querySnapshot.forEach((post) => {
+        const data = post.data();
+        data.id = post.id;
+        allPosts.push(data);
+      });
+      updateListPost(allPosts);
+    })
 };
 
 export const deletePost = async (postId) => {
