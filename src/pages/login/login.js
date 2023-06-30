@@ -1,6 +1,6 @@
 import './login.css';
 
-import CBD from '../imagens/CBD.png';
+import CBD from '../imagens/CBDCNNCT-IMG/logodesktopsemsombra.png';
 import google from '../imagens/google.png';
 import facebook from '../imagens/facebook.png';
 
@@ -9,7 +9,7 @@ export default () => {
   container.classList.add('container-login');
 
   const template = `
-  <img class="img-CBD" src=${CBD} alt="logo app">
+  <img class="img-CBD1" src=${CBD} alt="logo app">
   <div class="container">
   <form class="form-entrar" action="#">
   <input class="input" type="email" name="email" id="" placeholder="E-MAIL" class="centro">
@@ -22,8 +22,8 @@ export default () => {
   <img class="img-google" src=${google} alt="logo Google">
   <img class="img-facebook" src=${facebook} alt="logo Facebook">
   </div>
-  <span class="texto centro">Ainda não tem conta?</span>
-  <span class="texto centro">Criar nova conta</span>
+  <span class="texto1 centro">Ainda não tem conta?</span>
+  <span class="texto1 centro">Criar nova conta</span>
   </div>
   </div>`;
 
