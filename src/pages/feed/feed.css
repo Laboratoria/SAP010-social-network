@@ -117,3 +117,8 @@ body {
   width: 20px;
   height: 20px;
 }
+
+.container-btn {
+  display: flex;
+  display: inline-flex;
+}

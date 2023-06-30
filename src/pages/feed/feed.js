@@ -1,10 +1,11 @@
-import { logOut } from '../../fireBase/firebaseAuth.js';
+import { currentUser, logOut } from '../../fireBase/firebaseAuth.js';
 import { auth } from '../../fireBase/firebaseConfig.js';
 import {
   fetchPosts,
   createPost,
   likeCounter,
   deslikeCounter,
+  deletePost,
 } from '../../fireBase/firebaseStore.js';
 import customAlert from '../../components/customAlert.js';
 
@@ -92,12 +93,12 @@ function createPostElement(post) {
   const dataEmMilissegundos = seconds * 1000 + nanoseconds / 1000000;
 
   const data = new Date(dataEmMilissegundos);
-  
+
   const ano = data.getFullYear();
-  const mes = ("0" + (data.getMonth() + 1)).slice(-2);
-  const dia = ("0" + data.getDate()).slice(-2);
-  const hora = ("0" + data.getHours()).slice(-2);
-  const minuto = ("0" + data.getMinutes()).slice(-2);
+  const mes = ('0' + (data.getMonth() + 1)).slice(-2);
+  const dia = ('0' + data.getDate()).slice(-2);
+  const hora = ('0' + data.getHours()).slice(-2);
+  const minuto = ('0' + data.getMinutes()).slice(-2);
 
 
 
@@ -159,6 +160,15 @@ function createPostElement(post) {
           console.log(error);
         });
     }
+  });
+
+  const buttonDelete = postElement.querySelector('#button-delete');
+  buttonDelete.addEventListener('click', async () => {
+    console.log('clicou no botao');
+    await deletePost(post.id);
+
+    // const isAuthor = currentUser;
+    // if (isAuthor === post.uid) {
   });
 
   return postElement;
