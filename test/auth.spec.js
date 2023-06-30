@@ -5,7 +5,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
   signOut,
-  // onAuthStateChanged,
+  onAuthStateChanged,
 } from 'firebase/auth';
 
 import {
@@ -16,7 +16,7 @@ import {
   getUserId,
   getUserName,
   logOut,
-  // checkLoggedUser,
+  checkLoggedUser,
 } from '../src/firebase/auth';
 
 jest.mock('firebase/auth');
@@ -35,15 +35,21 @@ const mockUpdateUserProfile = {
   displayName: 'Maria da Silva',
 };
 
+const authUser = {
+  currentUser: {},
+};
+
 describe('loginGoogle', () => {
-  it('expect to be a function', () => {
+  it('should be a function', () => {
     expect(typeof loginGoogle).toBe('function');
   });
 
   it('should log in with Google Account', async () => {
+    const authMock = getAuth();
     signInWithPopup.mockResolvedValueOnce(mockUserCredential);
     await loginGoogle();
     expect(signInWithPopup).toHaveBeenCalledTimes(1);
+    expect(signInWithPopup).toHaveBeenCalledWith(authMock, expect.any(Object));
   });
 });
 
@@ -52,24 +58,22 @@ afterEach(() => {
 });
 
 describe('loginFacebook', () => {
-  it('expect to be a function', () => {
+  it('should be a function', () => {
     expect(typeof loginFacebook).toBe('function');
   });
 
   it('should log in with Facebook Account', async () => {
+    const authMock = getAuth();
     signInWithPopup.mockResolvedValueOnce(mockUserCredential);
     await loginFacebook();
     expect(signInWithPopup).toHaveBeenCalledTimes(1);
+    expect(signInWithPopup).toHaveBeenCalledWith(authMock, expect.any(Object));
   });
 });
 
-const auth = {
-  currentUser: {},
-};
-getAuth.mockReturnValue(auth);
-
 describe('createUserWithEmail', () => {
   it('should create a new user', async () => {
+    const authMock = getAuth();
     createUserWithEmailAndPassword.mockResolvedValue(mockUserCredential);
     updateProfile.mockResolvedValue(mockUpdateUserProfile);
     const name = 'Social';
@@ -81,7 +85,7 @@ describe('createUserWithEmail', () => {
 
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
     expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(
-      auth,
+      authMock,
       email,
       password,
     );
@@ -90,14 +94,15 @@ describe('createUserWithEmail', () => {
 
 describe('loginWithEmail', () => {
   it('should login with an email and password', async () => {
-    signInWithEmailAndPassword.mockResolvedValue(auth);
+    const authMock = getAuth();
+    signInWithEmailAndPassword.mockResolvedValue(authUser);
     const newEmail = 'network@socialcom';
     const newPassword = 'network123';
     await loginWithEmail(newEmail, newPassword);
 
     expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
     expect(signInWithEmailAndPassword).toHaveBeenCalledWith(
-      auth,
+      authMock,
       newEmail,
       newPassword,
     );
@@ -105,14 +110,14 @@ describe('loginWithEmail', () => {
 });
 
 describe('getUserId', () => {
-  it('should return the current user ID', async () => {
+  it('should return the current user ID', () => {
     const userId = 'user123';
-    const authTest = {
+    const authMock = {
       currentUser: {
         uid: userId,
       },
     };
-    getAuth.mockReturnValue(authTest);
+    getAuth.mockReturnValue(authMock);
 
     const result = getUserId();
 
@@ -121,22 +126,23 @@ describe('getUserId', () => {
 });
 
 describe('getUserName', () => {
-  it('Return the user name if user is authenticated', () => {
-    const authUser = {
+  it('should return the user name if the user is authenticated', () => {
+    const displayName = 'Maria Silva';
+    const authMock = {
       currentUser: {
-        displayName: 'Maria Silva',
+        displayName,
       },
     };
-    getAuth.mockReturnValue(authUser);
+    getAuth.mockReturnValue(authMock);
 
     const result = getUserName();
 
-    expect(result).toBe('Maria Silva');
+    expect(result).toBe(displayName);
   });
 
-  it('return viajante if user is not authenticated', () => {
-    const authUser = 'viajante';
-    getAuth.mockReturnValue(authUser);
+  it('should return "viajante" if the user is not authenticated', () => {
+    const authMock = 'viajante';
+    getAuth.mockReturnValue(authMock);
 
     const result = getUserName();
 
@@ -146,17 +152,50 @@ describe('getUserName', () => {
 
 describe('logOut', () => {
   it('should log out the user', () => {
+    const authMock = getAuth();
     signOut.mockResolvedValue({
       user: {},
     });
     logOut();
     expect(signOut).toHaveBeenCalledTimes(1);
+    expect(signOut).toHaveBeenCalledWith(authMock);
   });
 });
 
-// describe('checkLoggedUser', () => {
-//   it('should verify if the user has logged in', () => {
-//     checkLoggedUser();
-//     expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
-//   });
-// });
+describe('checkLoggedUser', () => {
+  it('should be a function', () => {
+    expect(typeof checkLoggedUser).toBe('function');
+  });
+
+  it('should resolve to true if the user is logged in', async () => {
+    const authMock = getAuth();
+    const onAuthStateChangedMock = jest.fn((auth, callback) => {
+      callback({ uid: 'user123' });
+    });
+    onAuthStateChanged.mockImplementation(onAuthStateChangedMock);
+
+    const result = await checkLoggedUser();
+
+    expect(result).toBe(true);
+    expect(onAuthStateChangedMock).toHaveBeenCalledWith(
+      authMock,
+      expect.any(Function),
+    );
+  });
+
+  it('should resolve to false if the user is not logged in', async () => {
+    const authMock = getAuth();
+    const onAuthStateChangedMock = jest.fn((auth, callback) => {
+      callback(null);
+    });
+    onAuthStateChanged.mockImplementation(onAuthStateChangedMock);
+
+    const result = await checkLoggedUser();
+
+    expect(result).toBe(false);
+    expect(onAuthStateChangedMock).toHaveBeenCalledWith(
+      authMock,
+      expect.any(Function),
+    );
+  });
+});

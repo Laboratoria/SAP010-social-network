@@ -24,14 +24,9 @@ export default () => {
   }
 
   async function registerUser() {
-    const
-      {
-        name,
-        lastName,
-        email,
-        password,
-        confirmPassword,
-      } = getInputValues();
+    const {
+      name, lastName, email, password, confirmPassword,
+    } = getInputValues();
     const validationErrors = validateRegister(name, lastName, email, password);
 
     if (validationErrors.length > 0) {
@@ -94,41 +89,39 @@ export default () => {
     .querySelector('#register-button')
     .addEventListener('click', registerUser);
 
-    const button = registrationForm.querySelector('.icon-eye1');
-    button.addEventListener('click', (event) => {
-      event.preventDefault(); // Evita o comportamento padrão do botão (submit, por exemplo)
-      event.stopPropagation();
-      const changeEye = button.querySelector('i');
-      const input = registrationForm.querySelector('#register-password');
-      if (input.getAttribute('type') === 'text') {
-        input.setAttribute('type', 'password');
-        changeEye.classList.remove('fa-eye');
-        changeEye.classList.add('fa-eye-slash');
-      } else {
-        input.setAttribute('type', 'text');
-        changeEye.classList.remove('fa-eye-slash');
-        changeEye.classList.add('fa-eye');
-      }
-    });
-    
-    const btnEye = registrationForm.querySelector('#show-eye2');
-    btnEye.addEventListener('click', (event) => {
-      event.preventDefault(); // Evita o comportamento padrão do botão (submit, por exemplo)
-      event.stopPropagation();
-      const changeEye = btnEye.querySelector('i');
-      const input = registrationForm.querySelector('#confirm-password');
-      if (input.getAttribute('type') === 'text') {
-        input.setAttribute('type', 'password');
-        changeEye.classList.remove('fa-eye');
-        changeEye.classList.add('fa-eye-slash');
-      } else {
-        input.setAttribute('type', 'text');
-        changeEye.classList.remove('fa-eye-slash');
-        changeEye.classList.add('fa-eye');
-      }
-    });
-    
-    
+  const button = registrationForm.querySelector('.icon-eye1');
+  button.addEventListener('click', (event) => {
+    event.preventDefault(); // Evita o comportamento padrão do botão (submit, por exemplo)
+    event.stopPropagation();
+    const changeEye = button.querySelector('i');
+    const input = registrationForm.querySelector('#register-password');
+    if (input.getAttribute('type') === 'text') {
+      input.setAttribute('type', 'password');
+      changeEye.classList.remove('fa-eye');
+      changeEye.classList.add('fa-eye-slash');
+    } else {
+      input.setAttribute('type', 'text');
+      changeEye.classList.remove('fa-eye-slash');
+      changeEye.classList.add('fa-eye');
+    }
+  });
+
+  const btnEye = registrationForm.querySelector('#show-eye2');
+  btnEye.addEventListener('click', (event) => {
+    event.preventDefault(); // Evita o comportamento padrão do botão (submit, por exemplo)
+    event.stopPropagation();
+    const changeEye = btnEye.querySelector('i');
+    const input = registrationForm.querySelector('#confirm-password');
+    if (input.getAttribute('type') === 'text') {
+      input.setAttribute('type', 'password');
+      changeEye.classList.remove('fa-eye');
+      changeEye.classList.add('fa-eye-slash');
+    } else {
+      input.setAttribute('type', 'text');
+      changeEye.classList.remove('fa-eye-slash');
+      changeEye.classList.add('fa-eye');
+    }
+  });
 
   return registrationForm;
 };

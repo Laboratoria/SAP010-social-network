@@ -79,10 +79,6 @@ export default () => {
     return postElement;
   };
 
-  const loadPosts = async () => {
-  await accessPost(updateListPost);
- 
-  };
   const updateListPost = (TodosPosts) => {
     postList.innerHTML = '';
     TodosPosts.forEach(async (post) => {
@@ -113,11 +109,16 @@ export default () => {
           }
           likesCounter.innerText = currentLikes;
         } catch (error) {
-          console.error('Error al dar like:', error);
+          console.error('Error ao dar like:', error);
         }
       });
     });
-  }
+  };
+
+  const loadPosts = async () => {
+    await accessPost(updateListPost);
+  };
+
   const handlePostBtnClick = () => {
     const description = descriptionPost.value;
 
