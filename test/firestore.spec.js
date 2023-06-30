@@ -131,7 +131,7 @@ describe('likePost', () => {
       data: jest.fn(() => mockPostData),
     });
     const mockUpdateDoc = jest.fn().mockResolvedValue();
-    const result = await likePost(mockPostId, mockUserId, mockGetDoc, mockUpdateDoc);
+    const result = await likePost(mockPostId, mockUserId);
     expect(mockGetDoc).toHaveBeenCalledWith(
       doc(db, 'posts', mockPostId),
     );
