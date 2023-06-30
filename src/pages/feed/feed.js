@@ -161,12 +161,13 @@ function createPostElement(post) {
   });
 
   const buttonDelete = postElement.querySelector('#button-delete');
-  const isAuthor = currentUser;
-  if (isAuthor === post.uid) {
-    buttonDelete.addEventListener('click', async () => {
-      await deletePost(post.id);
-    });
-  }
+  buttonDelete.addEventListener('click', async () => {
+    console.log('clicou no botao');
+    await deletePost(post.id);
+
+    // const isAuthor = currentUser;
+    // if (isAuthor === post.uid) {
+  });
 
   return postElement;
 }

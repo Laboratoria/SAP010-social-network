@@ -27,16 +27,16 @@ export const userData = (
     username: userElement,
   });
 
-//aqui virá as funções de postagem, para ficarem guardadas
+// aqui virá as funções de postagem, para ficarem guardadas
 
 export const createPost = (date, username, text, uid) =>
   addDoc(collection(db, collectionPosts), {
-    date: date,
-    username: username,
+    date,
+    username,
     // array de likes vai guardar os displayName de todos os usuarios que curtiram uma publicação
     likes: [],
-    text: text,
-    uid: uid,
+    text,
+    uid,
   });
 
 export const fetchPosts = async () => {
@@ -71,5 +71,5 @@ export const deslikeCounter = async (postId, username) =>
   });
 
 export const deletePost = async postId => {
-  await deleteDoc(doc(db, 'Post', postId));
+  await deleteDoc(doc(db, 'posts', postId));
 };
