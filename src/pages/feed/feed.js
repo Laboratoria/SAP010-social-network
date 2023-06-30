@@ -78,14 +78,14 @@ async function showFeed() {
   feedElement.innerHTML = '';
 
   posts.forEach(post => {
-    const postElement = createPostElement(post);
+    const postElement = createPostElement(post, feedElement);
     feedElement.appendChild(postElement);
   });
 
   return feedElement;
 }
 
-function createPostElement(post) {
+function createPostElement(post, feedElement) {
   const postElement = document.createElement('div');
   postElement.classList.add('post');
 
@@ -108,21 +108,20 @@ function createPostElement(post) {
     </div>
     <p class="text">${post.text}</p>
     <div class='container-btn'> 
-    <p id='button-like'><img src='./img/gostar.png' alt='like image' class='icons-post'></p>
-    <p class="like" id='text-like-count'>${post.likes.length}</p>
-    <p id='button-edit'><img src='./img/editar.png' alt='edit image' class='icons-post'></p>
-    <p id='button-delete'><img src='./img/excluir.png' alt='delete image' class='icons-post'></p>
+      <p id='button-like'><img src='./img/gostar.png' alt='like image' class='icons-post'></p>
+      <p class="like" id='text-like-count'>${post.likes.length}</p>
+      <p id='button-edit'><img src='./img/editar.png' alt='edit image' class='icons-post'></p>
+      <p id='button-delete'><img src='./img/excluir.png' alt='delete image' class='icons-post'></p>
     </div>
   `;
 
   postElement.innerHTML = content;
 
-
   const textLikeCount = postElement.querySelector('#text-like-count');
 
   let processingClick = false
   const buttonLike = postElement.querySelector('#button-like');
-  buttonLike.addEventListener('click', () => {
+  buttonLike.addEventListener('click', async () => {
     const currentUser = auth.currentUser.displayName;
     const likesArray = post.likes;
 
@@ -131,43 +130,23 @@ function createPostElement(post) {
       // Caso o usuario já esteja no array de likes, quer dizer que ele já deu like
       // então vamos tirar ele do array de likes
       if (likesArray.includes(currentUser)) {
-        deslikeCounter(post.id, currentUser)
-          .then(() => {
-            // caso a função deslikeCounter tenha executado com sucesso (then)
-            // ou seja ele foi removido do array de likes dessa publicação lá no Firebase
-            // mas ainda precisamos tirar o usuario do array que esta na variavel local
-            const index = likesArray.indexOf(currentUser);
-            if (index !== -1) {
-              likesArray.splice(index, 1);
-            }
-            // depois vamos atualizar o campo com o numero de likes
-            textLikeCount.innerHTML = likesArray.length;
-          })
-          .catch(error => {
-            customAlert('Erro ao descurtir post');
-            console.log(error);
-          })
-          .finally(() => {
-            processingClick = false
-          });
-        // Se não, quer dizer que o usuario ainda não esta no array de likes
-        // ou seja, não curtiu a publicação
+        await deslikeCounter(post.id, currentUser)
+        //foi removido do array de likes dessa publicação lá no Firebase
+        // mas ainda precisamos tirar o usuario do array que esta na variavel local
+        const index = likesArray.indexOf(currentUser);
+        if (index !== -1) {
+          likesArray.splice(index, 1);
+        }
+        // depois vamos atualizar o campo com o numero de likes
+        textLikeCount.innerHTML = likesArray.length;
+        processingClick = false
       } else {
-        likeCounter(post.id, currentUser)
-          .then(() => {
-            // caso a função likeCounter tenha executado com sucesso (then)
-            // ou seja ele foi adicionado do array de likes dessa publicação lá no Firebase
-            // mas ainda precisamos adicionar o usuario no array que esta na variavel local
-            likesArray.push(currentUser);
-            textLikeCount.innerHTML = likesArray.length;
-          })
-          .catch(error => {
-            customAlert('Erro ao curtir post');
-            console.log(error);
-          })
-          .finally(() => {
-            processingClick = false
-          });
+        await likeCounter(post.id, currentUser)
+        // foi adicionado do array de likes dessa publicação lá no Firebase
+        // mas ainda precisamos adicionar o usuario no array que esta na variavel local
+        likesArray.push(currentUser);
+        textLikeCount.innerHTML = likesArray.length;
+        processingClick = false
       }
     }
   });
@@ -176,6 +155,8 @@ function createPostElement(post) {
   buttonDelete.addEventListener('click', async () => {
     console.log('clicou no botao');
     await deletePost(post.id);
+
+    feedElement.removeChild(postElement)
 
     // const isAuthor = currentUser;
     // if (isAuthor === post.uid) {
