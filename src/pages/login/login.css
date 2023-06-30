@@ -51,7 +51,7 @@ ul {
 	border-radius: 17px;
 }
 
-.img-CBD {
+.img-CBD1 {
 	display: flex;
 	justify-content: center;
 	margin-bottom: 1rem;
@@ -63,7 +63,7 @@ ul {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
-	width: 100vw;
+	/* width: 100vw; */
 	justify-items: center;
 	/* align-items: center; */
 }
@@ -111,7 +111,7 @@ ul {
 	left: 90px;
 }
 
-.texto {
+.texto1 {
 	color: #1877F2;
 	font-size: x-small;
 }
