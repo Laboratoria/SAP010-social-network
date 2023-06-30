@@ -1,4 +1,4 @@
-import { 
+import {
   collection,
   addDoc,
   getDocs,
@@ -6,12 +6,13 @@ import {
   doc,
   arrayUnion,
   arrayRemove,
+  deleteDoc,
 } from 'firebase/firestore';
 
 import { db } from './firebaseConfig';
 
-const collectionInfosAdd = 'infos-add'
-const collectionPosts = 'posts'
+const collectionInfosAdd = 'infos-add';
+const collectionPosts = 'posts';
 
 export const userData = (
   nameElement,
@@ -28,19 +29,14 @@ export const userData = (
 
 //aqui virá as funções de postagem, para ficarem guardadas
 
-export const createPost = (
-  date,
-  username,
-  text,
-  uid
-) =>
+export const createPost = (date, username, text, uid) =>
   addDoc(collection(db, collectionPosts), {
     date: date,
     username: username,
     // array de likes vai guardar os displayName de todos os usuarios que curtiram uma publicação
     likes: [],
     text: text,
-    uid: uid
+    uid: uid,
   });
 
 export const fetchPosts = async () => {
@@ -50,7 +46,7 @@ export const fetchPosts = async () => {
   const snapshot = await getDocs(postsCollection);
   const posts = [];
 
-  snapshot.forEach((doc) => {
+  snapshot.forEach(doc => {
     // cria um objeto post para cada dado dentro do documento (ultima aba da direita)
     const post = doc.data();
     // o post vai ter todos os campos da coleção (date, likes, text, uid, username)
@@ -62,20 +58,18 @@ export const fetchPosts = async () => {
   });
 
   return posts;
-}
+};
 
-export const likeCounter = async (
-  postId,
-  username
-) =>
+export const likeCounter = async (postId, username) =>
   updateDoc(doc(db, collectionPosts, postId), {
-    likes: arrayUnion(username)
+    likes: arrayUnion(username),
   });
 
-export const deslikeCounter = async (
-  postId,
-  username
-) =>
+export const deslikeCounter = async (postId, username) =>
   updateDoc(doc(db, collectionPosts, postId), {
-    likes: arrayRemove(username)
+    likes: arrayRemove(username),
   });
+
+export const deletePost = async postId => {
+  await deleteDoc(doc(db, 'Post', postId));
+};
