@@ -248,12 +248,17 @@ div i{
     color: #F5B81D;
     position: absolute;
     text-align: center;
-}
-.alertCadastro {
+    margin-top: 100%;
+ 
+  }
+ .alertCadastro {
     color: #F5B81D;
     position: absolute;
-    text-align: center;
-}
+    font-family: 'Roboto';
+    margin-left: 18%;
+    margin-top: 2%;
+} 
+
 
 @media screen and (min-width: 700px) and (max-width:760px) {
 
