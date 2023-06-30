@@ -232,13 +232,13 @@ footer{
     margin-top: 100%;
  
   }
-#usuarioAlert {
+ .alertCadastro {
     color: #F5B81D;
     position: absolute;
     font-family: 'Roboto';
     margin-left: 18%;
     margin-top: 2%;
-}
+} 
  @media screen and (mix-width: 414x) and (max-width:900px){
 
     .container{

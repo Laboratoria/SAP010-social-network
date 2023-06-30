@@ -10,9 +10,9 @@ import { getAuth, updateProfile} from 'firebase/auth';
 
 
 
-export const signUpUser = (name, email2, password2 ) => {
+export const signUpUser = async (name, email2, password2 ) => {
   const authAccount = getAuth(app);
-  createUserWithEmailAndPassword(auth, email2,password2, );
+  await createUserWithEmailAndPassword(authAccount, email2,password2, );
 
   return updateProfile(authAccount.currentUser, {
     displayName: name,

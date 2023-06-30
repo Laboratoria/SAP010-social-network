@@ -38,16 +38,15 @@ export default () => {
 container.innerHTML = template;
 
 
+
+const email2 = container.querySelector(".inserir_email2")
+const password2 = container.querySelector(".digite_senha2")
+const name = container.querySelector(".inserir_nome")
+const passwordrepet = container.querySelector(".confirma_senha")
 const register = container.querySelector(".btnCadastrar2")
- register.addEventListener('click', () => {
-  const email2 = container.querySelector(".inserir_email2")
-  const password2 = container.querySelector(".digite_senha2")
-  const name = container.querySelector(".inserir_nome")
-  const passwordrepet = container.querySelector(".confirma_senha")
-
-
  
-  
+register.addEventListener('click', () => {
+ 
 
   signUpUser(name.value, email2.value, password2.value).then(() => {
   
@@ -77,7 +76,7 @@ const register = container.querySelector(".btnCadastrar2")
   });
 
       
-  });
+});
 
 
 
