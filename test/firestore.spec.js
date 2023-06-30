@@ -125,6 +125,7 @@ describe('likePost', () => {
     const mockPostData = {
       whoLiked: ['userId'],
     };
+
     const mockGetDoc = jest.fn().mockResolvedValueOnce({
       exists: true,
       data: jest.fn(() => mockPostData),
