@@ -99,6 +99,8 @@ function createPostElement(post) {
   const hora = ("0" + data.getHours()).slice(-2);
   const minuto = ("0" + data.getMinutes()).slice(-2);
 
+
+
   const content = `
     <div class="informations">
       <p class="name">${post.username}</p>
