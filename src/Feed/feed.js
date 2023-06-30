@@ -2,6 +2,17 @@ import './feed.css';
 import { authStateChanged } from '../lib/index';
 import { getFeedItems, publish, editPost } from '../lib/firestore';
 
+// Função para abrir o modal
+function openModal() {
+  modal.style.display = 'block'; // Exibe o modal
+}
+
+// Função para fechar o modal
+function closeModal() {
+  modal.style.display = 'none'; // Oculta o modal
+}
+
+
 export const feedUser = () => {
   const container = document.createElement('div');
 
@@ -58,16 +69,7 @@ export const feedUser = () => {
   // const publishButton = container.getElementById('publishButton');
   const openPublishButton = container.querySelector('#experienceButton');
 
-  // Função para abrir o modal
-  function openModal() {
-    modal.style.display = 'block'; // Exibe o modal
-  }
-
-  // Função para fechar o modal
-  function closeModal() {
-    modal.style.display = 'none'; // Oculta o modal
-  }
-
+  
   openPublishButton.addEventListener('click', openModal);
   closeButton.addEventListener('click', closeModal);
   window.addEventListener('click', (event) => {
