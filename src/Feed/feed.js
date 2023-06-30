@@ -1,6 +1,6 @@
 import './feed.css';
 import { authStateChanged } from '../lib/index';
-import { getFeedItems, publish } from '../lib/firestore';
+import { getFeedItems, publish, editPost } from '../lib/firestore';
 
 export const feedUser = () => {
   const container = document.createElement('div');
@@ -100,6 +100,7 @@ export const feedUser = () => {
       restaurantName,
       userAvatar,
       userName,
+      userId,
     }) => (
       `<div class="card">
         <div class="card-header">
@@ -111,7 +112,7 @@ export const feedUser = () => {
             </div>
           </div>
           <div class="card-actions">
-            <img class="points-feed" id='' src="Img/pen.png"/>
+            <img class="points-feed" id='editPost' src="Img/pen.png"/>
             <img class="points-feed" id='' src="Img/bin.png"/>
           </div>
         </div>
@@ -125,9 +126,28 @@ export const feedUser = () => {
       </div>`);
     const postList = document.querySelector('#postList');
     postList.innerHTML = items.map(card).join('');
+
+    const inputEditPost = document.getElementById('editPost');
+
+        if (inputEditPost) {
+      inputEditPost.addEventListener('click', () => {
+           const confirmEdit = window.prompt('Digite o novo comentário:');
+            if (confirmEdit) {
+          editPost(userId, { Comentario: confirmEdit })
+            .then(() => {
+              publishPost();
+            })
+            .catch((error) => {
+              console.log('Erro ao editar o comentário:', error);
+            });
+        }
+      });
+    }
   };
 
   getFeedItems(renderCards);
+
+ 
 
   return container;
 };

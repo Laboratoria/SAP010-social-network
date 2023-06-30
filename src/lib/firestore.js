@@ -4,6 +4,8 @@ import {
   addDoc,
   orderBy,
   onSnapshot,
+  updateDoc,
+  doc,
 } from 'firebase/firestore';
 import { db } from '../Firebase/instalfirebase';
 
@@ -27,4 +29,13 @@ export const getFeedItems = (renderItems) => {
 
 export const publish = async (post) => {
   await addDoc(collection(db, 'Post'), post);
+};
+
+// função de editar post
+
+export const editPost = async (id, textPost) => {
+  const refDoc = doc(db, 'Posts', `${id}`);
+  await updateDoc(refDoc, {
+    content: textPost,
+  });
 };
