@@ -30,13 +30,16 @@ export const feed = () => {
        
           <form id='form-post'>
             <br>
-            
+            <div class="form-container">
+            <div class="radio-container"> <div id="adotar-container">
             <input type='radio'  id='quero-adotar' name='quero' value='Quero adotar' required>
-            <label for='quero-adotar'>Quero adotar</label>
+            <label for='quero-adotar'>Quero adotar</label></div>
            
+            <div id="adotar-container"> 
             <input type='radio'  id='quero-doar' name='quero' value='Quero doar' required>
-            <label for='quero-doar'>Quero doar</label>
-            <br>
+            <label for='quero-doar'>Quero doar</label></div>
+            </div>
+            
             <p id='mensagem-erro-radio' class='mensagem-erro'></p>
             
             <label for='especie' class='label-class'>Espécie:</label> 
@@ -55,7 +58,7 @@ export const feed = () => {
             <option value='Sem Preferência'>Sem Preferência</option>
             </select>
 
-            <br>
+            
             <label for='idade' class='label-class'>Idade do pet:</label>
             <select name='select' id='idade' class='modal-input-area'>
             <option value='' selected disabled >Selecionar</option>
@@ -68,7 +71,7 @@ export const feed = () => {
             </select>
             <label for='raca' class='label-class'>Raça:</label>
             <input type='text' class='modal-input-area' id='raca' name='raca' placeholder='Exemplo: Bulldog'>
-            <br>
+            
             
             
             <label for='localização' class='label-class'>Localização:</label>
@@ -76,16 +79,17 @@ export const feed = () => {
             
             <label for='contato' class='label-class'>Contato:</label>
             <input type='text' class='modal-input-area' id='contato' name='contato' placeholder='(xx) xxxxx-xxxx'>
-            <br>
+            
             <textarea id='mensagem' name='mensagem' rows='4' cols='20' required placeholder=' Escreva sua mensagem aqui.'></textarea>
-            <br>
-
+           
+            </div>
             <p id='mensagem-erro-textarea' class='mensagem-erro'></p>
 
-            <div class='-confirm'>
+            <div class='container-confirm'>
             <button type='submit' class='publicar' id='publicar'>Publicar</button>
             <button type='submit' class='editar' id='editar'>Editar</button>
             </div>
+           
             </form>
 
 
@@ -175,7 +179,6 @@ export const feed = () => {
 
       editIcon.addEventListener('click', async (event) => {
         event.preventDefault();
-
         const postId = post.id;
 
         const isAuthor = await checkAuthor(postId);
