@@ -5,8 +5,8 @@
   padding: 0;
   background-image: url(../imagens/backgroundMob.png);
   background-repeat: no-repeat;
-  width: 380px;
-  height: 670px;
+  width: 100vw;
+  height: 100vh;
   position: relative;
   background-size: cover;
   background-position: center;
@@ -27,7 +27,7 @@
   height: 205px;
   background-size: cover;
   position: fixed;
-  top: 33%;
+  top: 17%;
   left: 50%;
   transform: translate(-50%, -50%);
   flex-shrink: 0; /* Alterei para flex-shrink: 0 para evitar encolhimento */
@@ -41,7 +41,7 @@
   justify-content: center;
   align-items: center; /* Adicionado align-items: center para alinhar o h1 horizontalmente */
   position: fixed;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -55,7 +55,7 @@
   align-items: center;
   position: fixed;
   top: calc(
-    57% + 109px
+    55% + 109px
   ); /* Posiciona o container-text abaixo do container-h1 */
   left: 50%;
   transform: translate(-50%, -50%);
@@ -70,4 +70,50 @@
   right: 13%;
   cursor: pointer;
   text-decoration: none;
+  position: fixed;
+}
+
+
+ @media screen and (min-width: 768px) {  /*tablet */
+  .container-home {
+    background-image: url(../imagens/CBDCNNCT-IMG/BGDESKTOP80.png);
+  }
+
+  .img-CBD {
+    width: 379px;
+    height: 379px;
+    /* left: 20%;
+    top: 30%; */
+    top: 30%;
+  }
+ 
+  .container-h1 {
+    width: 234px;
+    height: 109px;
+    /* left: 19.5%;
+    top: 55%; */
+    font-size: 30px;
+    top: 55%;
+  }
+  
+  .container-text {
+    width: 500px;
+    height: 440.539px;
+    /* left: 19.5%;
+    top: calc(
+    65% + 109px
+  ); */
+  top: calc(
+    65% + 109px
+  );
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width: 992px) { /*laptops/desktops*/
+  
+}
+
+@media screen and (min-width: 1200px) { /*large laptops*/
+
 }

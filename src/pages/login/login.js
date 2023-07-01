@@ -12,8 +12,8 @@ export default () => {
   <img class="img-CBD1" src=${CBD} alt="logo app">
   <div class="container">
   <form class="form-entrar" action="#">
-  <input class="input" type="email" name="email" id="" placeholder="E-MAIL" class="centro">
-  <input class="input" type="password" name="senha" id="" placeholder="SENHA" class="centro">
+  <input class="input centro" type="email" name="email" id="" placeholder="E-MAIL">
+  <input class="input centro" type="password" name="senha" id="" placeholder="SENHA">
   <button type="submit" class="entrar centro">ENTRAR</button>
   </form>
   <div class="ou-box">
