@@ -47,30 +47,49 @@
 - [7. Desenvolvedoras](#7-desenvolvedoras)
 
 ---
-<!-- ## 3. Desenho de interface de usuário
-### 3.1 Protótipo de baixa fidelidade:
+## 1. Resumo do projeto
+ExplorAí é uma rede social voltada para viajantes que gostariam de compartilhar suas experiências e receber dicas sobre viagens. Neste projeto, foi desenvolvida uma SPA (Single Page Application) responsiva. Nela, é possível fazer, editar, curtir e excluir publicações.
 
-Versão mobile:
+## 2 Histórias de usuários
+Foram definidas as seguintes histórias de usuários, com respectivos critérios de aceitação e definições de pronto:
 
-<img src = "src/img/Prot%C3%B3tipo%20de%20baixa%20fidelidade%20vers%C3%A3o%20mobile.jpeg" width = "400px" height = 300px/>
+__Usuário 1:__
 
+_Como usuário, gostaria de ter uma conta na rede social, na qual pudesse fazer login e logout._
 
-Versão desktop:
+Critérios de aceitação:
 
-<img src = "src/img/Prot%C3%B3tipo%20de%20baixa%20fidelidade%20vers%C3%A3o%20desktop.jpeg" width = "400px" height = 300px/>
+* O usuário pode criar sua conta pessoal;
+* O usuário pode fazer login em sua conta;
+* O usuário pode fazer logout de sua conta.
 
+Definições de pronto:
 
-### 3.2 Protótipos de alta fidelidade: -->
+* O botão cadastre-se permite que o usuário crie a sua conta pessoal com e-mail e senha após preencher seus dados.
+* Através do botão entrar, o usuário pode acessar sua conta com e-mail e senha; através do botão google o usuário pode logar com sua conta do google, e através do botão facebook, o usuário pode logar com sua conta do facebook.
+* Através do botão sair, o usuário pode deslogar da rede social.
 
-<!-- Versão mobile:
-Acesse [aqui](https://www.figma.com/proto/8hKLQYcc6QPfRtdsGxTv9T/Social-Network?type=design&node-id=51-165&scaling=scale-down&page-id=0%3A1&starting-point-node-id=51%3A165&show-proto-sidebar=1)
-<img src =src/img/Prot%C3%B3tipo%20de%20alta%20fidelidade%20vers%C3%A3o%20mobile.PNG/>
+__Usuário 2:__
 
-Acesse [aqui](https://www.figma.com/proto/8hKLQYcc6QPfRtdsGxTv9T/Social-Network?type=design&node-id=288-783&scaling=scale-down&page-id=51%3A523&starting-point-node-id=288%3A783&show-proto-sidebar=1)
-<img src = "src/img/Prot%C3%B3tipo%20de%20alta%20fidelidade%20vers%C3%A3o%20desktop.PNG"/> -->
+_Como viajante, eu gostaria de trocar experiências sobre viagens com outros viajantes._
 
-<!-- ### 3.2 Paleta de cores utilizada:
-<img src ="src/img/paleta%20de%20cores.PNG"/> -->
+Critérios de aceitação:
+* O usuário pode visualizar posts dentro da rede social;
+* O usuário pode criar posts dentro da rede social.
+
+Definição de pronto:
+* Após logar, o usuário consegue visualizar posts criados por outros usuários da rede;
+* Após digitar seu texto e clicar no botão compartilhar, o usuário pode publicar o seu post e permitir que outros usuários também o leiam.
+
+__Usuário 3:__
+
+_Como usuário, permitir que outras pessoas saibam que gostei de suas publicações._
+
+Critério de aceitação:
+* O usuário pode curtir os posts.
+
+Definição de pronto:
+* O botão curtir permite que o usuário deixe e retire o seu like nas publicações .
 
 
 
