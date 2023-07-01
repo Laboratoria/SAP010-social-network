@@ -80,12 +80,12 @@ Prepare-se para voar em um universo de descobertas. Nós da TravellersBook acred
 
 ### Protótipo de baixa fidelidade:
 
-![Alt text](src/img/prototipo_baixa.jpeg)
+![Alt text](/src/img/prototipo_baixa.jpeg)
 ![Alt text](src/img/prototipo_baixa2.jpeg)
 
 ### Protótipo de alta fidelidade:
 
-![Alt text](src/img/prototipo_alta.jpeg)
+![Alt text](src/img/prototipo_alta.png)
 
 ## 4. Historias do usuário
 
