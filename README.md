@@ -38,17 +38,17 @@
 
 ## Índice
 
-- [1. Resumo do projeto]()
-- [2. Histórias de usuários]()
-- [3. Desenho de interface do usuário]()
-- [4. Testes de usabilidade]()
-- [5. Testes unitários]()
-- [6. Objetivos alcançados]()
+- [1. Resumo do projeto](#1-resumo-do-projeto)
+- [2. Histórias de usuários](#2-histórias-de-usuários)
+- [3. Desenho de interface do usuário](#3-desenhos-de-interface-do-usuário)
+- [4. Testes de usabilidade](#4-testes-de-usabilidade)
+- [5. Testes unitários](#5-testes-unitários)
+- [6. Objetivos alcançados](#6-objetivos-alcançados)
 - [7. Desenvolvedoras](#7-desenvolvedoras)
 
 ---
 ## 1. Resumo do projeto
-ExplorAí é uma rede social voltada para viajantes que gostariam de compartilhar suas experiências e receber dicas sobre viagens. Neste projeto, foi desenvolvida uma SPA (Single Page Application) responsiva. Nela, é possível fazer, editar, curtir e excluir publicações.
+ExplorAí é uma rede social voltada para viajantes que gostariam de compartilhar suas experiências e receber dicas sobre viagens. Neste projeto, foi desenvolvida uma SPA (Single Page Application) responsiva, seguindo a técnica mobile first. 
 
 ## 2 Histórias de usuários
 Foram definidas as seguintes histórias de usuários, com respectivos critérios de aceitação e definições de pronto:
@@ -89,7 +89,25 @@ Critério de aceitação:
 * O usuário pode curtir os posts.
 
 Definição de pronto:
-* O botão curtir permite que o usuário deixe e retire o seu like nas publicações .
+* O botão curtir permite que o usuário deixe e retire o seu like nas publicações.
+
+## 3. Desenhos de interface do usuário
+### 3.1 Protótipos de baixa fidelidade
+#### versão mobile:
+![Alt text](<src/assets/Protótipo de baixa fidelidade versão mobile.jpeg>)
+#### versão desktop:
+![Alt text](<src/assets/Protótipo de baixa fidelidade versão desktop.jpeg>)
+### 3.2. Protótipos de alta fidelidade
+#### versão mobile:
+![Alt text](<src/assets/Protótipo de alta fidelidade - versão mobile.png>)
+#### versão desktop:
+![Alt text](<src/assets/Protótipo de alta fidelidade - versão desktop.png>)
+
+
+## 4. Testes de usabilidade
+<!-- Os testes de usabilidade foram feitos com potenciais usuários primeiramente através da plataforma Figma, na qual foi feito um protótipo interativo. Demais testes foram feito ao longo do desenvolvimento do projeto através do deploy. Através do feedback de usuários foram implementadas melhorias como a possibilidade de resgate da senha. -->
+
+## 5. Testes unitários
 
 ## 6. Objetivos alcançados
 
@@ -111,10 +129,7 @@ Definição de pronto:
 - [x] Usuário pode publicar posts;
 - [x] Usuário pode curtir publicações;
 - [x] Usuário pode editar e excluir as suas publicações;
-- [x] Posts são atualizados em tempo real;
-
-
-
+- [x] Posts são atualizados em tempo real.
 
 
 ## 7. Desenvolvedoras
