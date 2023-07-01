@@ -17,7 +17,7 @@ export const loginUser = () => {
         <h1 class="login-titulo">Food Review</h1>
         <input id= "txtEmail" type="text" placeholder="Email" required />
         <input id= "txtPassword" type="password" placeholder="Senha" required/>
-        <span class="txt-error" id="txtError"></span>
+        <span class="txtError" id="txtError"></span>
         <div class="buttons">
           <button class="full-width" id= "btnLogin" type="submit" name="send2">Entrar</button>
           <div class="social">

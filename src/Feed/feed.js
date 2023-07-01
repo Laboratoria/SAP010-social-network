@@ -5,13 +5,17 @@ import { getFeedItems, publish } from '../lib/firestore';
 export const feedUser = () => {
   const container = document.createElement('div');
 
-  const template = ` 
+  const template = `
+  <header>
+    <img class='menuIcon' src='Img/menuIcon.png' alt='Menu Hamburguinho'>
+    <h1 class='tituloMenu'>Food Review</h1>
+  </header>
   <main>
     <sidebar class='sidebar'>
-      <header class='header'>
-        <h1>Food Review</h1>
-      </header>
-      <nav>
+      <article class='header'>
+        <h2>Food Review</h2>
+      </article>
+      <nav const='menu'>
         <ul>
           <li class="nav-item"><a href="#feed"><img width="34px" height="34px" src="Img/home-feed.svg"/>Feed</a></li>
           <li class="nav-item"><a href="#perfil"><img src="Img/profile-feed.svg"/>Perfil</a></li>
@@ -22,7 +26,7 @@ export const feedUser = () => {
     </sidebar>
 
     <section class="feed">
-      <img src="Img/bg-feed.png"/>
+      <img class='imgFeed'src="Img/bg-feed.png"/>
       <div class="boxExperience">
         <button id="experienceButton" class="experience-button">Qual experiência você teve hoje?</button>
       </div>
@@ -33,7 +37,7 @@ export const feedUser = () => {
  </main>
   <div id="createPost" class="post">
     <div class="post-content">
-      <span id= "close" class="close" onclick="closeModal()">&times;</span>
+      <span id= "close" class="close">&times;</span>
       <div class='photo'>
         <img referrerpolicy='no-referrer' class='profilePicture' id="userPhoto" src="" alt="Foto do perfil">
         <span class='profileName' id="userName"></span>
@@ -100,19 +104,20 @@ export const feedUser = () => {
       restaurantName,
       userAvatar,
       userName,
+      userId,
     }) => (
       `<div class="card">
         <div class="card-header">
           <div class="card-user">
-            <div class="card-avatar"> <img src="${userAvatar}"/></div>
+            <div class="card-avatar"> <img referrerpolicy='no-referrer' src="${userAvatar}"/></div>
             <div>
             <h5>${userName}</h5>
             <h5>Nota: ${rating}/5</h5>
             </div>
           </div>
-          <div class="card-actions">
+          <div>
             <img class="points-feed" id='' src="Img/pen.png"/>
-            <img class="points-feed" id='' src="Img/bin.png"/>
+            <img class="points-feed" id='cardActions' src="Img/bin.png"/>
           </div>
         </div>
         <div class="card-description"> 
