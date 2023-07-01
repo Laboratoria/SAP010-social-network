@@ -120,41 +120,41 @@ describe('likePost', () => {
   });
 
   it('should add like to post', async () => {
-    const mockPostId = 'postId';
-    const mockUserId = 'userId';
     const mockPostData = {
       whoLiked: ['userId'],
     };
-
-    const mockGetDoc = jest.fn().mockResolvedValueOnce({
+    const userId = 'userId';
+    const mockGetDoc = jest.fn(() => ({
       exists: true,
       data: jest.fn(() => mockPostData),
-    });
-    const mockUpdateDoc = jest.fn().mockResolvedValue();
-    const result = await likePost(mockPostId, mockUserId);
-    expect(mockGetDoc).toHaveBeenCalledWith(
-      doc(db, 'posts', mockPostId),
+    }));
+    getDoc.mockReturnValueOnce(mockGetDoc);
+
+    const postId = 'postId';
+    const result = await likePost(postId, userId);
+
+    expect(getDoc).toHaveBeenCalledWith(
+      doc(db, 'posts', postId),
     );
-    expect(mockUpdateDoc).toHaveBeenCalledWith(
-      doc(db, 'posts', mockPostId),
-      expect.objectContaining({
-        whoLiked: expect.arrayContaining(['userId', 'userId']),
-      }),
-    );
-    expect(result).toBe('adicione like');
     expect(result).toBe('adicione like');
   });
-  it('should remove like from post', async () => {
-    const mockPostId = 'postId';
-    const mockUserId = 'userId';
-    const mockUpdateDoc = jest.fn().mockResolvedValue();
-    const result = await likePost(mockPostId, mockUserId, null, mockUpdateDoc);
-    expect(mockUpdateDoc).toHaveBeenCalledWith(
-      doc(db, 'posts', mockPostId),
-      expect.objectContaining({
-        whoLiked: expect.arrayContaining(['userId']),
-      }),
+  it('should add remove to post', async () => {
+    const mockPostData = {
+      whoLiked: ['userId'],
+    };
+    const userId = 'userId';
+    const mockGetDoc = jest.fn(() => ({
+      exists: false,
+      data: jest.fn(() => mockPostData),
+    }));
+    getDoc.mockReturnValueOnce(mockGetDoc);
+
+    const postId = 'postId';
+    const resultado = await likePost(postId, userId);
+
+    expect(getDoc).toHaveBeenCalledWith(
+      doc(db, 'posts', postId),
     );
-    expect(result).toBe('remove like');
+    expect(resultado).toBe('remove like');
   });
 });

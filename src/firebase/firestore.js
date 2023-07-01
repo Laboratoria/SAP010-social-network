@@ -85,18 +85,16 @@ export const likePost = async (postId, userId) => {
           whoLiked.push(userId);
           await updateDoc(docRef, { whoLiked });
         }
-        return 'adicione like';
       }
-    } else {
-      const washingtonRef = doc(db, 'posts', postId);
-      await updateDoc(washingtonRef, {
-        whoLiked: arrayRemove(userId),
-      });
-      return 'remove like';
+      return 'adicione like';
     }
+    const washingtonRef = doc(db, 'posts', postId);
+    await updateDoc(washingtonRef, {
+      whoLiked: arrayRemove(userId),
+    });
+    return 'remove like';
   } catch (error) {
     console.error('Error ao dar like:', error);
     throw error;
   }
-  return '';
 };
