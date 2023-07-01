@@ -10,11 +10,19 @@ export const getLoginPage = () => {
   loginContainer.classList.add('login-container')
 
   const content = `
+  <section class="container">
     <section class="section-logo">
       <img src="../img/balão1.png" alt="balão"></img>
       <h2>TravellersBook</h2>
     </section>
+    <section class="texto-login">
+    <h4>Imagine ter acesso a um mundo de conhecimento de viajantes experientes, prontos para compartilhar suas dicas e segredos para criar viagens inesquecíveis.  Aqui você pode explorar destinos exóticos, cidades vibrantes e gastronomias incríveis  de forma mais autêntica. <br><br>
+    Prepare-se para voar por um universo de descobertas. Na TravellersBook acreditamos que a viagem é muito mais do que um destino - é uma jornada enriquecedora que nos conecta e nos transforma.</h4>
+    </section>
+    </section>
 
+    <section class="container">
+    <h4>Explore, compartilhe, viaje com seu guia pessoal de aventuras.</h4>
     <form class="form-login">
       <span class="text-title">Faça seu login</span>
       <input class="input-login" type="email" id="input-email" placeholder="user@email.com" />
@@ -30,6 +38,7 @@ export const getLoginPage = () => {
       <button class="button-new-account" id="button-new-account" type="button">Crie uma conta</button>
       <!--criar um link de redirecionameto para criar nova conta, para usar a função implementada no js-->
     </form>
+    </section>
   `
   // o content é uma string que tem o conteúdo da página HTML
   // loginContainer é a div. o innerHTML é um atributo da div que é um "valor", tudo que está dentro da tag do elemento.

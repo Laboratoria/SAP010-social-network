@@ -1,22 +1,28 @@
-.login-container{
-  display:flex;
+.login-container {
+  display: flex;
   flex-direction: column;
+  width: 100%;
   align-items: center;
 }
 
-.form-login{
-  display:flex;
+.container {
+  width: 45%;
+  padding: 20px;
+}
+
+.form-login {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80vw ;
-  background:#5555;
+  width: 65%;
+  background: #5555;
   border-radius: 30px;
   padding: 20px 20px 20px 20px;
   margin-top: 3vh;
   margin-bottom: 16px;
 }
 
-.input-login{
+.input-login {
   border-radius: 20px;
   height: 30px;
   border: none;
@@ -27,26 +33,26 @@
   color: #fff;
 }
 
-.input-login::placeholder{
+.input-login::placeholder {
   color: #ffffff55;
 }
 
-.input-login:focus{
+.input-login:focus {
   outline: none
 }
 
-.input-error{
+.input-error {
   border: 1.5px solid #9D2045;
 }
 
 .text-email-error,
-.text-password-error{
+.text-password-error {
   font-family: 'arial', cursive;
   font-size: 15px;
   color: #9D2045;
 }
 
-.text-password-error{
+.text-password-error {
   margin-bottom: 8px;
 }
 
@@ -54,14 +60,16 @@
   width: 40px;
 }
 
-.text-google, .text-new-account{
+.text-google,
+.text-new-account {
   font-family: 'arial', cursive;
   font-size: 15px;
-  color:#fff
+  color: #fff
 }
 
-.button-login, .button-login-google,
-.button-new-account{
+.button-login,
+.button-login-google,
+.button-new-account {
   color: #fff;
   border-radius: 20px;
   border: none;
@@ -87,31 +95,66 @@
   width: 125px;
 }
 
-@media (min-width: 900px){
-  #root{
-    width: 900px;
-  }
+.texto-login {
+  display: none;
+}
 
-  .login-container{
-    width: 700px;
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+
+  /*   #root{
+    width: 100wh;
+  } */
+  .login-container {
+    display: flex;
     flex-direction: row;
-    justify-content: space-around;
   }
 
-  .form-login{
-    width: 20vw;
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 45%;
+    padding: 20px;
   }
 
-  .text-google, .text-new-account{
+  .texto-login {
+    display: flex;
+    text-align: justify;
+
+    font-family: 'Amatic SC', cursive;
+    color: white;
+  }
+
+  .section-logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+  }
+
+  .form-login {
+    width: 65%;
+  }
+
+  .text-google,
+  .text-new-account {
     font-size: 10px;
   }
 
-  .input-error{
+  .input-error {
     border: 1px solid #9D2045;
   }
 
   .text-email-error,
-  .text-password-error{
+  .text-password-error {
     font-size: 10px;
   }
 
@@ -127,4 +170,3 @@
     width: 125px;
   }
 }
-
