@@ -166,10 +166,7 @@ function createPostElement(post, feedElement) {
       console.log('clicou no botao');
       await deletePost(post.id);
 
-      feedElement.removeChild(postElement)
-
-      // const isAuthor = currentUser;
-      // if (isAuthor === post.uid) {
+      feedElement.removeChild(postElement),
     })
   }
 
