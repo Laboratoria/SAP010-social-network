@@ -6,12 +6,10 @@ a {
 #root {
   width: 100vw;
   height: 100vh;
-  
 }
 
 main {
   display: flex;
-  flex-direction: row;
   background-color: var(--BackcgroundColor);
 }
 
@@ -21,7 +19,15 @@ main {
   height: 100vh;
 }
 
-.sidebar header {
+.menuIcon {
+  display: none;
+}
+
+.tituloMenu {
+  display: none;
+}
+
+.sidebar article {
   background-color: var(--TextColor);
   color: var(--CorSecundaria);
   display: flex;
@@ -29,7 +35,7 @@ main {
   align-items: center;
 }
 
-header h1 {
+article h2 {
   font-size: 24px;
   width: 245px;
   height: 68px;
@@ -69,6 +75,7 @@ nav ul {
   height: 26px;
   margin-right: 12px;
 } 
+
 .feed {
   display: flex;
   flex-direction: column;
@@ -127,7 +134,7 @@ nav ul {
 .card-description{
   margin-top: 15px;
   text-align: left;
-  line-height: 140%;
+  line-height: 30px;
 }
 
 .card-restaurant{
@@ -135,6 +142,10 @@ nav ul {
   flex-direction: row;
   gap: 4px;
   margin-right: 30px;
+}
+
+.card-likes {
+  font-size: 1rem;
 }
 
 .post {
@@ -152,8 +163,9 @@ nav ul {
 .post-content {
   position: relative;
   background-color: #fefefe;
-  top:10%;
-  left: 37%;
+  top:90px;
+  margin-right: 30px;
+  left: 570px;
   padding: 10px;
   border: 1px solid #888;
   width: 80vw;
@@ -273,6 +285,7 @@ nav ul {
   height: 20px;
   position: relative;
   bottom: 20px;
+  cursor: pointer;
 }
 
 .inputLocation {
@@ -312,4 +325,290 @@ nav ul {
 
 .post-list::-webkit-scrollbar{
   display: none;
+}
+
+@media screen and (max-width: 1235px) {
+  .post-content {
+    left: 33%;
+    width: 60vw;
+    max-height: 600px;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .sidebar {
+    width: 200px;
+  }
+  
+  article h2 {
+    font-size: 1.2rem;
+    width: 10vw;
+    text-align: center;
+  }
+  
+  .nav-item > a {
+    font-size: 1.2rem;
+    padding-inline: 25px;
+  }
+  
+  .nav-item img {
+    width: 23px;
+    height: 23px;
+    margin-right: 10px;
+  }
+  
+  .card {
+    min-width: 500px;
+  }
+  
+  .card-avatar img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .card-description{
+    font-size: 0.9rem;
+  }
+
+  .card-restaurant{
+    gap: 4px;
+    margin-right: 20px;
+    font-size: 0.8rem;
+  }
+
+  .card-likes {
+    font-size: 0.8rem;
+  }
+  
+  .post-content {
+    left: 33%;
+    width: 60vw;
+    max-height: 500px;
+  }
+
+  .close {
+    font-size: 1.5rem;
+  }
+
+  .profilePicture {
+    width: 45px;
+  }
+  
+  .profileName {
+    font-size: 0.9rem;
+    padding: 11px 10px;
+  }
+  
+  .imgFeed {
+    display: none;
+  }
+
+  .img-location {
+    width: 20px;
+    height: 20px; 
+    margin-top: 20px;
+  }
+
+  .img-location-feed {
+    width: 15px;
+  }
+  
+  .points-feed {
+    width: 16px;
+    height: 16px;
+    bottom: 15px;
+  }
+   
+  .buttonPublish {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  header {
+    background-color: var(--CorSecundaria);
+  }
+  
+  .menuIcon {
+    display: flex;
+    position:absolute;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+
+  .tituloMenu{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: #fefefe;
+    font-size: 1rem;
+    padding: 15px 50px;
+  }
+
+  .sidebar {
+   display: none;
+  }
+
+  .feed {
+    margin: 30px 20px 0px 20px;
+    bottom: 30px;
+    height: 95vh;
+  }
+  
+  .card {
+    min-width: 500px;
+  }
+  
+  .card-avatar img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .card-description{
+    font-size: 0.9rem;
+  }
+
+  .card-restaurant{
+    margin-right: 20px;
+    font-size: 0.8rem;
+  }
+
+  .card-likes {
+    font-size: 0.8rem;
+  }
+  
+  .post-content {
+    left: 15%;
+    width: 70vw;
+    max-height: 500px;
+  }
+
+  .close {
+    font-size: 1.5rem;
+  }
+
+  .inputContent {
+    font-size: 0.8rem;
+  }
+
+  .inputLocation {
+    font-size: 0.7rem;
+    padding: 8px;
+  }
+
+  .profilePicture {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .profileName {
+    font-size: 0.9rem;
+    padding: 11px 10px;
+  }
+  
+  .img-location {
+    width: 15px;
+    height: 20px; 
+    margin-top: 20px;
+  }
+   
+  .buttonPublish {
+    font-size: 0.7rem;
+  }
+
+  .imgFeed {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 552px) {
+  header {
+    width: 100vw;
+  }
+  
+  .tituloMenu{
+    align-items: center;
+  }
+
+  main {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--BackcgroundColor);
+  }
+
+  .feed {
+    margin: 30px 15px 0px 10px;
+    bottom: 20px;
+    height: 94vh;
+  }
+  
+  .card {
+    min-width: 450px;
+    width: 50px;
+  }
+
+  .card-user {
+    font-size: 0.9rem;
+  }
+  
+  .post-content {
+    left: 10%;
+    width: 80vw;
+  }
+
+  .profilePicture {
+    width: 45px;
+  }
+  
+  .img-location {
+    width: 15px;
+    height: 20px; 
+    margin-top: 20px;
+  }
+
+  .img-location-feed {
+    width: 15px;
+  }
+  
+  .points-feed {
+    width: 16px;
+    height: 16px;
+    bottom: 15px;
+  }
+
+  .buttonPublish {
+    font-size: 0.7rem;
+  }
+
+  .inputContent {
+    margin-left: 10px;
+    font-size: 0.8rem;
+  }
+
+  .imgFeed {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 486px) {
+  .feed {
+    bottom: 20px;
+    height: 110vh;
+  }
+  
+  .card {
+    min-width: 500px;
+    width: 50px;
+  }
+  
+  .post-content {
+    left: 17%;
+    width: 80vw;
+  }
+  
+  .profileName {
+    font-size: 0.9rem;
+    padding: 11px 10px;
+  }
 }
