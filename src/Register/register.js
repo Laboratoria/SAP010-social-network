@@ -19,7 +19,7 @@ export const registerUser = () => {
           <input class='inputs' id='registerName' type="text" placeholder="Nome completo *" required/>
           <input class='inputs' id='registerEmail' type="email" placeholder="Email *" required/>
           <input class='inputs' id='registerPassword' type="password" placeholder="Senha *" required/>
-          <span class='txt-error' id='errorRegister'></span>
+          <span class='txtError' id='errorRegister'></span>
         </div>
         <div class="botoes-register">
           <button class="button-register" id='btnregister' type="submit">Cadastrar</button>
@@ -80,6 +80,7 @@ export const registerUser = () => {
         newUser(emailInputRegister, passwordRegister, nameRegister2)
           .then(() => {
             window.location.hash = '#feed';
+            alert('Cadastro efetuado com sucesso, seja bem vindo(a)!');
           })
           .catch(() => {
             errorTxt.setAttribute('style', 'display: block');

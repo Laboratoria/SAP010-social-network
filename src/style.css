@@ -22,7 +22,6 @@
 body {
     background-color: var(--BackcgroundColorDark);
     height: 100vh;
-    height: auto;
     overflow: hidden;
 }
 

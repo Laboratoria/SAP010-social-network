@@ -136,6 +136,12 @@
   width: 100%;
 }
 
+.txtError {
+  font-size: 0.8rem;
+  margin-top: 5px;
+  color: #FF0000;
+}
+
 @media screen and (max-width: 1350px) {
   .backgroundTwo{
     border-width: 990px 980px 0 0;
@@ -300,6 +306,12 @@
   .form .messageLogin {
     font-size: 0.8rem;
   }
+
+  .txtError {
+    font-size: 0.7rem;
+    margin-top: 5px;
+    color: #FF0000;
+  }
 }
 
 @media screen and (max-width: 490px) {
@@ -361,5 +373,11 @@
   .form .messageLogin {
     font-size: 0.8rem;
     margin-top: 15px;
+  }
+
+  .txtError {
+    font-size: 0.7rem;
+    margin-top: 5px;
+    color: #FF0000;
   }
 }
