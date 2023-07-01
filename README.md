@@ -91,6 +91,30 @@ Critério de aceitação:
 Definição de pronto:
 * O botão curtir permite que o usuário deixe e retire o seu like nas publicações .
 
+## 6. Objetivos alcançados
+
+- [x] Criação de uma SPA;
+- [x] Responsivo;
+- [x] Criação dos testes;
+- [x] Testes unitários cobrem mais do que 70% de statements, functions, lines e branches;
+- [x] Login através do firebase;
+- [x] Usuário pode criar conta;
+- [x] Usuário pode logar com google, facebook e e-mail e senha;
+- [x] Usuário pode recuperar a sua senha;
+- [x] Somente usuários com contas válidas têm acesso permitido;
+- [x] A conta do usuário deve ser um email válido;
+- [x] Conteúdos digitados nos inputs de senha são secretos, podendo o usuário optar por visualizá-los ou não;
+- [x] Formulários de registro e login passam por uma validação;
+- [x] Em casos de erro, mensagens descritivas devem são exibidas para ajudar o usuário;
+- [x] Ao publicar, é verificado se há  conteúdo no input.
+- [x] O conteúdo da timeline apenas é mostrado se o usuário estiver logado;
+- [x] Usuário pode publicar posts;
+- [x] Usuário pode curtir publicações;
+- [x] Usuário pode editar e excluir as suas publicações;
+- [x] Posts são atualizados em tempo real;
+
+
+
 
 
 ## 7. Desenvolvedoras
