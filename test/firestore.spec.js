@@ -161,6 +161,11 @@ describe('getUsername', () => {
 
     expect(username).toBe('Alice');
   });
+  it('deve retornar null quando currentUser é nulo ou indefinido', async () => {
+    const currentUser = null;
+    const username = await getUsername(currentUser, 'userId');
+    expect(username).toBeNull();
+  });
 });
 
 describe('checkAuthor', () => {
