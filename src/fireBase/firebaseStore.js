@@ -11,22 +11,13 @@ import {
 
 import { db } from './firebaseConfig';
 
-const collectionInfosAdd = 'infos-add';
-const collectionPosts = 'posts';
-
-export const editPost = async (postId, newText) => {
-  await updateDoc(doc(db, "posts", postId), {
-    text: newText,
-  });
-};
-
 export const userData = (
   nameElement,
   lastnameElement,
   emailElement,
   userElement
 ) =>
-  addDoc(collection(db, collectionInfosAdd), {
+  addDoc(collection(db, 'infos-add'), {
     name: nameElement,
     lastname: lastnameElement,
     email: emailElement,
@@ -36,7 +27,7 @@ export const userData = (
 // aqui virá as funções de postagem, para ficarem guardadas
 
 export const createPost = (date, username, text, uid) =>
-  addDoc(collection(db, collectionPosts), {
+  addDoc(collection(db, 'posts'), {
     date,
     username,
     // array de likes vai guardar os displayName de todos os usuarios que curtiram uma publicação
@@ -47,7 +38,7 @@ export const createPost = (date, username, text, uid) =>
 
 export const fetchPosts = async () => {
   // pega a coleção de posts do firebase
-  const postsCollection = collection(db, collectionPosts);
+  const postsCollection = collection(db, 'posts');
   // pega todos os documentos dentro da coleção de posts
   const snapshot = await getDocs(postsCollection);
   const posts = [];
@@ -77,14 +68,20 @@ export const fetchPosts = async () => {
 };
 
 export const likeCounter = async (postId, username) =>
-  updateDoc(doc(db, collectionPosts, postId), {
+  updateDoc(doc(db, 'posts', postId), {
     likes: arrayUnion(username),
   });
 
 export const deslikeCounter = async (postId, username) =>
-  updateDoc(doc(db, collectionPosts, postId), {
+  updateDoc(doc(db, 'posts', postId), {
     likes: arrayRemove(username),
   });
+
+export const editPost = async (postId, newText) => {
+  await updateDoc(doc(db, 'posts', postId), {
+    text: newText,
+  });
+};
 
 export const deletePost = async postId => {
   await deleteDoc(doc(db, 'posts', postId));

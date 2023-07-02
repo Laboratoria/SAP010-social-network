@@ -9,8 +9,6 @@ import {
 
 import { auth } from './firebaseConfig.js';
 
-export const currentUser = auth.currentUser
-
 // cadastro de usuarios novos
 export const createUser = (email, password, displayName) =>
   createUserWithEmailAndPassword(auth, email, password).then(userCredential => {
