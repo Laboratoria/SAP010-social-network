@@ -1,6 +1,6 @@
 import './feed.css';
 import { authStateChanged } from '../lib/index';
-import { getFeedItems, publish } from '../lib/firestore';
+import { dislike, getFeedItems, like, publish } from '../lib/firestore';
 
 export const feedUser = () => {
   const container = document.createElement('div');
@@ -105,29 +105,41 @@ export const feedUser = () => {
       userAvatar,
       userName,
       userId,
-    }) => (
-      `<div class="card">
-        <div class="card-header">
-          <div class="card-user">
-            <div class="card-avatar"> <img referrerpolicy='no-referrer' src="${userAvatar}"/></div>
+      id,
+    }) => {
+      // myUserId pega o id do usuário logado.
+      const myUserId = document.getElementById('userId').value;
+      // o liked valida se o id do usuário logado está dentro da lista de usuários que deram like.
+      const liked = likes.find((like) => like.userId === myUserId) != null;
+
+      return (
+        `<div class="card">
+          <div class="card-header">
+            <div class="card-user">
+              <div class="card-avatar"> <img referrerpolicy='no-referrer' src="${userAvatar}"/></div>
+              <div>
+              <h5>${userName}</h5>
+              <h5>Nota: ${rating}/5</h5>
+              </div>
+            </div>
             <div>
-            <h5>${userName}</h5>
-            <h5>Nota: ${rating}/5</h5>
+              <img class="points-feed" id='' src="Img/pen.png"/>
+              <img class="points-feed" id='cardActions' src="Img/bin.png"/>
             </div>
           </div>
-          <div>
-            <img class="points-feed" id='' src="Img/pen.png"/>
-            <img class="points-feed" id='cardActions' src="Img/bin.png"/>
+          <div class="card-description"> 
+            <p>${description}</p>
           </div>
-        </div>
-        <div class="card-description"> 
-          <p>${description}</p>
-        </div>
-        <div class="card-info">
-          <div class="card-likes">${likes}</div>
-          <div class="card-restaurant"> <img class="img-location-feed" src="Img/location-feed.svg"/> ${restaurantName}</div>
-        </div>
-      </div>`);
+          <div class="card-info">
+            <div class="card-likes">
+              <img src="${liked ? 'Img/heart-feed-total.svg' : 'Img/heart-feed.svg'}" onclick="likePost('${id}', ${liked})" />
+              ${likes.length}
+            </div>
+            <div class="card-restaurant"> <img class="img-location-feed" src="Img/location-feed.svg"/> ${restaurantName}</div>
+          </div>
+        </div>`
+      );
+    };
     const postList = document.querySelector('#postList');
     postList.innerHTML = items.map(card).join('');
   };
@@ -162,3 +174,14 @@ async function publishPost() {
   form.reset();
 }
 window.publishPost = publishPost;
+
+async function likePost(postId, liked) {
+  const userId = document.getElementById('userId').value;
+
+  if (liked) {
+    await dislike(postId, userId);
+  } else {
+    await like(postId, userId);
+  }
+}
+window.likePost = likePost;
