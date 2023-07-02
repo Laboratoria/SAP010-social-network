@@ -1,15 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #008da1;
-  background-image: linear-gradient(to top, #86c0ca, #008da1);
-  height: 100vh;
-  width: 100%;
-}
-
 .feed-container {
+  height: auto;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
