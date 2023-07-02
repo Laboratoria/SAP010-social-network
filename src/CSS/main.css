@@ -49,7 +49,7 @@ body {
 
 .customAlert {
   position: fixed;
-  top: 20px;
+  bottom: 20px;
   background-color: #33333355;
   color: #fff;
   padding: 12px 20px;
