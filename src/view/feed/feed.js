@@ -180,8 +180,8 @@ export const feed = () => {
       editIcon.addEventListener('click', async (event) => {
         event.preventDefault();
         const postId = post.id;
-
-        const isAuthor = await checkAuthor(postId);
+        const currentUserId = await getCurrentUserId();
+        const isAuthor = await checkAuthor(postId, currentUserId);
         console.log(isAuthor);
 
         if (isAuthor) {
@@ -258,7 +258,8 @@ export const feed = () => {
       const deleteIcon = postCard.querySelector('.delete-icon');
 
       // chama a função checkAuthor e verifica todos os posts sendo gerados
-      const isAuthor = await checkAuthor(post.id);
+      const currentUserId = await getCurrentUserId();
+      const isAuthor = await checkAuthor(post.id, currentUserId);
 
       if (isAuthor) {
         // verifica o retorno da função checkAuthor e exibe ou não o ícone da lixeira

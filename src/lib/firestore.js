@@ -119,8 +119,7 @@ export const deletePost = (id) => (
 );
 
 // checa se o ID do usuário atual é igual ao id do autor da postagem
-export const checkAuthor = async (postId) => {
-  const currentUserId = await getCurrentUserId();
+export const checkAuthor = async (postId, currentUserId) => {
   const postRef = doc(db, 'post', postId);
   const docSnapshot = await getDoc(postRef);
 

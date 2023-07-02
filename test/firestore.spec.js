@@ -150,22 +150,17 @@ describe('getCurrentUser', () => {
 describe('checkAuthor', () => {
   it('deve checar se o usuário logado é o autor das suas postagens', async () => {
     const mockPostId = 'postA';
-    const mockCurrentUserId = 'userABC';
-
-    const mockAuth = {
-      getCurrentUserId: jest.fn().mockResolvedValue(mockCurrentUserId),
-    };
+    const mockCurrentUserId = 'UserABC';
 
     const mockDocSnapshot = {
-      exists: true,
-      data: jest.fn(),
+      exists: jest.fn().mockReturnValue(true),
+      data: jest.fn().mockReturnValue({ postAuthorId: mockCurrentUserId }),
     };
     getDoc.mockResolvedValue(mockDocSnapshot);
 
-    const resultado = await checkAuthor(mockPostId, mockAuth);
+    const resultado = await checkAuthor(mockPostId, mockCurrentUserId);
 
     expect(getDoc).toHaveBeenCalledWith(doc(db, 'post', mockPostId));
-    expect(mockAuth.getCurrentUserId).toHaveBeenCalledTimes(1);
     expect(resultado).toBe(true);
   });
 });
