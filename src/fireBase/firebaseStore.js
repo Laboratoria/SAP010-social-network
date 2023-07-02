@@ -63,6 +63,16 @@ export const fetchPosts = async () => {
     posts.push(post);
   });
 
+  posts.sort((post1, post2) => {
+    if (post1.date > post2.date) {
+      return -1
+    }
+    if (post1.date < post2.date) {
+      return 1
+    }
+    return 0
+  })
+
   return posts;
 };
 
