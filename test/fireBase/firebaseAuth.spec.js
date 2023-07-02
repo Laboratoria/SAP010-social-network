@@ -30,7 +30,7 @@ const email = 'test@email.com';
 const password = 'password';
 const name = 'Name';
 const lastName = 'LastName';
-const username = 'username';
+const displayName = 'displayName';
 
 const invalidEmail = 'test.email.com';
 const invalidPassword = '123';
@@ -49,13 +49,13 @@ it('Expected to create a new user and update its profile', async () => {
   createUserWithEmailAndPassword.mockResolvedValueOnce(userCredential);
   updateProfile.mockResolvedValueOnce();
 
-  await createUser(email, password, name, lastName, username);
+  await createUser(email, password, displayName);
   //Validações - Depois de terminar de executar vai validar o que aconteceu.
   expect(typeof createUser).toBe('function');
   expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
   expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(undefined, email, password);
   expect(updateProfile).toHaveBeenCalledTimes(1);
-  expect(updateProfile).toHaveBeenCalledWith(userCredential.user, { name, lastName, username });
+  expect(updateProfile).toHaveBeenCalledWith(userCredential.user, { displayName });
 });
 
 it('Expected creat user invalid e-mail', async () => {

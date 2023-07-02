@@ -20,5 +20,3 @@ export const app = initializeApp(firebaseConfig);
 //auth é para pegar a autenticação do firebase
 export const auth = getAuth(app);
 export const db = getFirestore(app);
-
-console.log(auth)

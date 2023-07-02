@@ -1,4 +1,4 @@
-import { currentUser, logOut } from '../../fireBase/firebaseAuth.js';
+import { logOut } from '../../fireBase/firebaseAuth.js';
 import { auth} from '../../fireBase/firebaseConfig.js';
 import {
   fetchPosts,
@@ -20,13 +20,14 @@ export default () => {
 
       <nav class="menu">
         <a href='#home'>Home</a>
-        <a href='#publicar'>Publicar</a>
         <a id='button-logout'>Sair</a>
       </nav>
     </section>
 
-    <input id='input-text' class='input-text' type='text' placeholder='Compartilhe suas aventuras...'></input>
-    <button id='button-publish' class='button-publish'>Publicar</button>
+    <section class="publish">
+      <input id='input-text' class='input-text' type='text' placeholder='Compartilhe suas aventuras...'></input>
+      <button id='button-publish' class='button-publish'>Publicar</button>
+    </section>
 
     <div id="feed"></div>`;
 
@@ -100,8 +101,13 @@ function createPostElement(post, feedElement) {
   const minuto = ('0' + data.getMinutes()).slice(-2);
 
   const btnEdit =
-    post.username === auth.currentUser.displayName
+    post.uid === auth.currentUser.uid
       ? "<p class='button-edit'><img src='./img/editar.png' alt='edit image' class='icons-post'></p>"
+      : '';
+
+  const btnDelete =
+    post.uid === auth.currentUser.uid
+      ? "<p class='button-delete'id='button-delete'><img src='./img/excluir.png' alt='delete image' class='icons-post'></p>"
       : '';
 
   const content = `
@@ -114,7 +120,7 @@ function createPostElement(post, feedElement) {
       <p id='button-like'><img src='./img/gostar.png' alt='like image' class='icons-post'></p>
       <p class="like" id='text-like-count'>${post.likes.length}</p>
       ${btnEdit}
-      <p id='button-delete'><img src='./img/excluir.png' alt='delete image' class='icons-post'></p>
+      ${btnDelete}
     </div>
   `;
 
@@ -155,22 +161,19 @@ function createPostElement(post, feedElement) {
   });
 
   const buttonDelete = postElement.querySelector('#button-delete');
-  buttonDelete.addEventListener('click', async () => {
-    console.log('clicou no botao');
-    await deletePost(post.id);
+  if (buttonDelete) {
+    buttonDelete.addEventListener('click', async () => {
+      console.log('clicou no botao');
+      await deletePost(post.id);
 
-    feedElement.removeChild(postElement)
+      feedElement.removeChild(postElement)
 
-    // const isAuthor = currentUser;
-    // if (isAuthor === post.uid) {
-  });
+      // const isAuthor = currentUser;
+      // if (isAuthor === post.uid) {
+    })
+  }
 
 
-
-  
-  
-  // ...
-  
   // Inside the createPostElement function
   const buttonEdit = postElement.querySelector('.button-edit');
   if (buttonEdit) {
