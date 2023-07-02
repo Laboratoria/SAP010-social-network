@@ -75,22 +75,14 @@ export function getCurrentUser() {
 }
 
 // primeiro verifica o provedor de login, depois recupera e retorna o username
-export const getUsername = async () => {
-  try {
-    const currentUser = await getCurrentUser();
+export const getUsername = async (currentUser, currentUserId) => {
+  if (currentUser) {
+    const providerData = await currentUser.providerData;
 
-    if (currentUser) {
-      const providerData = await currentUser.providerData;
-
-      if (
-        providerData.some((provider) => provider.providerId === 'google.com')
-      ) {
-        const username = currentUser.displayName;
-        return username;
-      }
+    if (providerData.some((provider) => provider.providerId === 'google.com')) {
+      const username = currentUser.displayName;
+      return username;
     }
-
-    const currentUserId = await getCurrentUserId();
     const q = query(
       collection(db, 'usernames'),
       where('userId', '==', currentUserId),
@@ -102,11 +94,8 @@ export const getUsername = async () => {
       const username = currentDoc.data().name;
       return username;
     }
-    return console.log('não encontrado');
-  } catch (error) {
-    console.error(error);
-    throw error;
   }
+  return null;
 };
 
 // deleta a postagem
