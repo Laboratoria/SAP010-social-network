@@ -6,20 +6,27 @@ import {
   likePost,
   deletePost,
 } from '../../firebase/firestore.js';
+import photoicon from '../../assets/photoicon.png';
+import homeicon from '../../assets/homeicon.png';
+import exiticon from '../../assets/exiticon.png';
+import imagetimeline from '../../assets/imagetimeline.png';
+import likeicon from '../../assets/likeicon.png';
+import editicon from '../../assets/editicon.png';
+import deleteicon from '../../assets/deleteicon.png';
 
 export default () => {
   const timeline = document.createElement('div');
   const viewPost = `
   <div class="container">
     <div class='left-timeline'>
-      <img src='./assets/icon-photo.png' alt='Foto de perfil' class='profilePhoto'>
+      <img src='${photoicon}' alt='Foto de perfil' class='profilePhoto'>
       <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
       <figure class='icones'>
-        <button type="button" class='button-timeline' id='home-btn'><img src="./assets/icon-home.png" class="icon-timeline" alt="Icone home"></button>
-        <button type="button" class='button-timeline' id='logout-btn'><img src='./assets/icon-sair.png' class="icon-timeline" alt='logout icon'></button>
+        <button type="button" class='button-timeline' id='home-btn'><img src='${homeicon}' class="icon-timeline" alt="Icone home"></button>
+        <button type="button" class='button-timeline' id='logout-btn'><img src='${exiticon}' class="icon-timeline" alt='logout icon'></button>
       </figure>
     </div>
-    <img src="./assets/imagetimeline.png" class="img-timeline" alt="edit image" >
+    <img src="${imagetimeline}" class="img-timeline" alt="edit image" >
     <div class="right-timeline">
       <div class="input-container">
         <textarea class="input-message" id="postArea" placeholder="COMPARTILHE UMA EXPERIÊNCIA..."></textarea>
@@ -63,13 +70,13 @@ export default () => {
         <p class='textPost'>${description}</p>
           <div class='image-icons'>
             <button type="button" class='icons-post' id='like-Post' data-post-id='${postId}'>
-              <a class='icons-post' id='icons-post'><img src='./assets/likeicon.png' alt='like image' class='icons-post'></a>
+              <a class='icons-post' id='icons-post'><img src='${likeicon}' alt='like image' class='icons-post'></a>
             </button>
           ${authorId === getUserId() ? `<button type="button" data-post-id='${postId}' class='icons-post' id='editPost'>
-            <a class='icons-post'><img src='./assets/editicon.png' alt='edit image' class='icons-post'></a>
+            <a class='icons-post'><img src='${editicon}' alt='edit image' class='icons-post'></a>
           </button>
           <button type="button" class='icons-post' id='btn-delete' data-post-id='${postId}'>
-            <img src='./assets/deleteicon.png' alt='delete image' class='icons-post'>
+            <img src='${deleteicon}' alt='delete image' class='icons-post'>
           </button>` : ''}
         </div>
         <span class='likePost' id='likes-counter-${postId}'>${whoLiked.length}</span>
