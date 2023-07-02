@@ -1,11 +1,12 @@
 import { currentUser, logOut } from '../../fireBase/firebaseAuth.js';
-import { auth } from '../../fireBase/firebaseConfig.js';
+import { auth} from '../../fireBase/firebaseConfig.js';
 import {
   fetchPosts,
   createPost,
   likeCounter,
   deslikeCounter,
   deletePost,
+  editPost
 } from '../../fireBase/firebaseStore.js';
 import customAlert from '../../components/customAlert.js';
 
@@ -14,20 +15,20 @@ export default () => {
   feedContainer.classList.add('feed-container');
 
   const content = `
-  <section class="header">
-    <h2 class="titleHeader">TravellersBook<img class="logoHeader" src="./img/balão1.png" alt="balão"></h2>
+    <section class="header">
+      <h2 class="titleHeader">TravellersBook<img class="logoHeader" src="./img/balão1.png" alt="balão"></h2>
 
-    <nav class="menu">
-      <a href='#home'>Home</a>
-      <a href='#publicar'>Publicar</a>
-      <a id='button-logout'>Sair</a>
-    </nav>
-  </section>
+      <nav class="menu">
+        <a href='#home'>Home</a>
+        <a href='#publicar'>Publicar</a>
+        <a id='button-logout'>Sair</a>
+      </nav>
+    </section>
 
-  <input id='input-text' class='input-text' type='text' placeholder='Compartilhe suas aventuras...'></input>
-  <button id='button-publish' class='button-publish'>Publicar</button>
+    <input id='input-text' class='input-text' type='text' placeholder='Compartilhe suas aventuras...'></input>
+    <button id='button-publish' class='button-publish'>Publicar</button>
 
-  <div id="feed"></div>`;
+    <div id="feed"></div>`;
 
   feedContainer.innerHTML = content;
 
@@ -36,13 +37,9 @@ export default () => {
   const buttonPublish = feedContainer.querySelector('#button-publish');
   buttonPublish.addEventListener('click', () => {
     createPost(
-      // colocar a data
       new Date(),
-      // estamos usando o displayName para saber se o usuario esta dentro do array de likes ou não
       auth.currentUser.displayName,
       inputText.value,
-
-      // vai precisar usar o uid para poder saber se a publicação pertence ao usuario logado
       auth.currentUser.uid
     )
       .then(() => {
@@ -88,6 +85,7 @@ async function showFeed() {
 function createPostElement(post, feedElement) {
   const postElement = document.createElement('div');
   postElement.classList.add('post');
+  postElement.setAttribute('data-post-id', post.id);
 
   const { seconds, nanoseconds } = post.date;
 
@@ -101,6 +99,11 @@ function createPostElement(post, feedElement) {
   const hora = ('0' + data.getHours()).slice(-2);
   const minuto = ('0' + data.getMinutes()).slice(-2);
 
+  const btnEdit =
+    post.username === auth.currentUser.displayName
+      ? "<p class='button-edit'><img src='./img/editar.png' alt='edit image' class='icons-post'></p>"
+      : '';
+
   const content = `
     <div class="informations">
       <p class="name">${post.username}</p>
@@ -110,7 +113,7 @@ function createPostElement(post, feedElement) {
     <div class='container-btn'> 
       <p id='button-like'><img src='./img/gostar.png' alt='like image' class='icons-post'></p>
       <p class="like" id='text-like-count'>${post.likes.length}</p>
-      <p id='button-edit'><img src='./img/editar.png' alt='edit image' class='icons-post'></p>
+      ${btnEdit}
       <p id='button-delete'><img src='./img/excluir.png' alt='delete image' class='icons-post'></p>
     </div>
   `;
@@ -161,6 +164,36 @@ function createPostElement(post, feedElement) {
     // const isAuthor = currentUser;
     // if (isAuthor === post.uid) {
   });
+
+
+
+  
+  
+  // ...
+  
+  // Inside the createPostElement function
+  const buttonEdit = postElement.querySelector('.button-edit');
+  if (buttonEdit) {
+    buttonEdit.addEventListener('click', () => {
+      const postId = postElement.getAttribute('data-post-id');
+      const newText = prompt('Digite o novo texto:');
+      if (newText) {
+        editPost(postId, newText)
+          .then(() => {
+            const textElement = postElement.querySelector('.text');
+            textElement.textContent = newText;
+            alert('Post atualizado com sucesso!');
+          })
+          .catch((error) => {
+            console.error('Erro ao editar o post:', error);
+            alert('Ocorreu um erro ao editar o post. Por favor, tente novamente mais tarde.');
+          });
+      }
+    });
+  }
+  
+  
+
 
   return postElement;
 }

@@ -14,6 +14,12 @@ import { db } from './firebaseConfig';
 const collectionInfosAdd = 'infos-add';
 const collectionPosts = 'posts';
 
+export const editPost = async (postId, newText) => {
+  await updateDoc(doc(db, "posts", postId), {
+    text: newText,
+  });
+};
+
 export const userData = (
   nameElement,
   lastnameElement,
@@ -83,3 +89,4 @@ export const deslikeCounter = async (postId, username) =>
 export const deletePost = async postId => {
   await deleteDoc(doc(db, 'posts', postId));
 };
+
