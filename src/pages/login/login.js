@@ -5,6 +5,9 @@ import {
   loginFacebook,
 } from '../../firebase/auth.js';
 import { errorsFirebase } from '../../validations.js';
+import logologin from '../../assets/logologin.png';
+import icongoogle from '../../assets/icongoogle.png';
+import iconfacebook from '../../assets/iconfacebook.png';
 
 export default () => {
   const container = document.createElement('div');
@@ -13,7 +16,7 @@ export default () => {
     <section class='login-wrap'>
       <div class='left'>
         <figure class='logo-container'>
-          <img src='./assets/logologin.png' class='logo' alt='Logo da ExploraAí'>
+          <img src='${logologin}' class='logo' alt='logologin'>
         </figure>
         <h1 class='title'>ExplorAí!</h1>
         <br>
@@ -50,10 +53,10 @@ export default () => {
           </div>
           <figure>
             <button type='button' class='google-button' id='google-button'>
-              <img src='./assets/icongoogle.png' class='google-img' alt='Logo do Google'>
+              <img src='${icongoogle}' class='google-img' alt='icongoogle'>
             </button>
             <button type='button' class='facebook-button' id='facebook-button'>
-              <img src='./assets/iconfacebook.png' class='facebook-img' alt='Logo do facebook'>
+              <img src='${iconfacebook}' class='facebook-img' alt='iconfacebook'>
             </button>
             <p id='errorLogar' class='error-message'></p>
           </figure>
