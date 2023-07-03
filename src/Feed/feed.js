@@ -1,6 +1,12 @@
 import './feed.css';
 import { authStateChanged } from '../lib/index';
-import { getFeedItems, publish, editPost } from '../lib/firestore';
+import {
+  dislike,
+  getFeedItems,
+  like,
+  publish,
+  editPost,
+} from '../lib/firestore';
 
 
 export const feedUser = () => {
@@ -104,49 +110,44 @@ export const feedUser = () => {
       restaurantName,
       userAvatar,
       userName,
-      }) => (
-      `<div class="card">
-        <div class="card-header">
-          <div class="card-user">
-            <div class="card-avatar"> <img referrerpolicy='no-referrer' src="${userAvatar}"/></div>
+      id,
+    }) => {
+      // myUserId pega o id do usuário logado.
+      const myUserId = document.getElementById('userId').value;
+      // o liked valida se o id do usuário logado está dentro da lista de usuários que deram like.
+      const liked = likes.find((item) => item.userId === myUserId) != null;
+
+      return (
+        `<div class="card">
+          <div class="card-header">
+            <div class="card-user">
+              <div class="card-avatar"> <img referrerpolicy='no-referrer' src="${userAvatar}"/></div>
+              <div>
+              <h5>${userName}</h5>
+              <h5>Nota: ${rating}/5</h5>
+              </div>
+            </div>
             <div>
-            <h5>${userName}</h5>
-            <h5>Nota: ${rating}/5</h5>
+              <img class="points-feed" id='editPostButton' src="Img/pen.png" onclick="editPostUser('${id}', '${description}')" />
+              <img class="points-feed" id='cardActions' src="Img/bin.png"/>
             </div>
           </div>
-          <div>
-            <img class="points-feed" id='editPost' src="Img/pen.png"/>
-            <img class="points-feed" id='cardActions' src="Img/bin.png"/>
+          <div class="card-description"> 
+            <p>${description}</p>
           </div>
-        <div class="card-description"> 
-          <p>${description}</p>
-        </div>
-        <div class="card-info">
-          <div class="card-likes">${likes}</div>
-          <div class="card-restaurant"> <img class="img-location-feed" src="Img/location-feed.svg"/> ${restaurantName}</div>
-        </div>
-      </div>`);
+          <div class="card-info">
+            <div class="card-likes">
+              <img src="${liked ? 'Img/heart-feed-total.svg' : 'Img/heart-feed.svg'}" onclick="likePost('${id}', ${liked})" />
+              ${likes.length}
+            </div>
+            <div class="card-restaurant"> <img class="img-location-feed" src="Img/location-feed.svg"/> ${restaurantName}</div>
+          </div>
+        </div>`
+      );
+    };
     const postList = document.querySelector('#postList');
     postList.innerHTML = items.map(card).join('');
 
-    const inputEditPost = document.getElementById('editPostButton');
-    const userId = userIdInput.dataset.userId;
-
-        if (inputEditPost) {
-      inputEditPost.addEventListener('click', () => {
-        const userId = document.getElementById('userIdInput').dataset.userId;
-            const confirmEdit = window.prompt('Digite o novo comentário:');
-            if (confirmEdit) {
-          editPost(userId, { Comentario: confirmEdit })
-            .then(() => {
-              renderCards();
-            })
-            .catch((error) => {
-              console.log('Erro ao editar o comentário:', error);
-            });
-        }
-      });
-    }
   };
 
   getFeedItems(renderCards);
@@ -165,7 +166,6 @@ async function publishPost() {
 
   const post = {
     description: postContent.value,
-    likes: 0,
     rating: 2,
     restaurantName: postLocation.value,
     userAvatar: userPhotoElement.src,
@@ -181,3 +181,36 @@ async function publishPost() {
   form.reset();
 }
 window.publishPost = publishPost;
+
+async function likePost(postId, liked) {
+  const userId = document.getElementById('userId').value;
+
+  if (liked) {
+    await dislike(postId, userId);
+  } else {
+    await like(postId, userId);
+  }
+}
+window.likePost = likePost;
+
+async function editPostUser() {
+  const userId = document.getElementById('userId').value;
+  console.log (userId)
+  const editarButton = document.getElementById('editPostButton');
+
+  if (editarButton) {
+  editarButton.addEventListener('click', () => {
+        const confirmEdit = window.prompt('Digite o novo comentário:');
+        if (confirmEdit) {
+      editPost(userId, { Comentario: confirmEdit })
+        .then(() => {
+          renderCards();
+        })
+        .catch((error) => {
+          console.log('Erro ao editar o comentário:', error);
+        });
+    }
+  });
+}
+};
+window.editPostUser = editPostUser;
