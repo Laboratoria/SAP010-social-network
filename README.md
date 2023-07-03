@@ -100,7 +100,7 @@ Definição de pronto:
 #### versão mobile:
 <img src="src/assets/Protótipo de alta fidelidade versão mobile.png" width="520em"/>
 
-#### versão mobile:
+#### versão desktop:
 <img src="src/assets/Protótipo de alta fidelidade versão desktop.png" width="520em"/>
 
 </div>
