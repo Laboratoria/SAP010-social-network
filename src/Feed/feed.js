@@ -1,6 +1,11 @@
 import './feed.css';
 import { authStateChanged } from '../lib/index';
-import { dislike, getFeedItems, like, publish } from '../lib/firestore';
+import {
+  dislike,
+  getFeedItems,
+  like,
+  publish,
+} from '../lib/firestore';
 
 export const feedUser = () => {
   const container = document.createElement('div');
@@ -104,13 +109,12 @@ export const feedUser = () => {
       restaurantName,
       userAvatar,
       userName,
-      userId,
       id,
     }) => {
       // myUserId pega o id do usuário logado.
       const myUserId = document.getElementById('userId').value;
       // o liked valida se o id do usuário logado está dentro da lista de usuários que deram like.
-      const liked = likes.find((like) => like.userId === myUserId) != null;
+      const liked = likes.find((item) => item.userId === myUserId) != null;
 
       return (
         `<div class="card">
@@ -158,7 +162,6 @@ async function publishPost() {
 
   const post = {
     description: postContent.value,
-    likes: 0,
     rating: 2,
     restaurantName: postLocation.value,
     userAvatar: userPhotoElement.src,
