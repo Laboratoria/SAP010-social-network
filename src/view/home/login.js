@@ -1,12 +1,12 @@
 import { signIn, signInGoogle } from '../../lib/index.js';
-
+import logo from '../../img/logo.png'
 export const login = () => {
   const container = document.createElement('div');
 
   const templateLogin = `
     
     <section class='loginpage-form'>
-    <img src='./img/logo.png' class='logo-repet' alt='Logo da rede social re.Pet'>
+    <img src='${logo}' class='logo-repet' alt='Logo da rede social re.Pet'>
     <form class='login-input-container'>
     <label for='email-login'></label>
     <input class='form-inputs' type='email' id='email-login' required placeholder='Email'>

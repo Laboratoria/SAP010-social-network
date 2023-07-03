@@ -1,9 +1,10 @@
+import logo from '../../img/logo.png'
 export const home = () => {
   const container = document.createElement('div');
 
   const templateHome = `
       <section class='homepage-form'>
-      <img src='./img/logo.png' class='logo-repet' alt='Logo da rede social re.Pet'>
+      <img src='${logo}' class='logo-repet' alt='Logo da rede social re.Pet'>
         <p> Já possui cadastro?</p>
         <a class='homepage-button' href='/#login'>Entrar</a>
         <p> Não possui cadastro?</p>

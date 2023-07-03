@@ -1,13 +1,13 @@
 import { signUp } from '../../lib';
 import { createUserData } from '../../lib/firestore';
-
+import logo from '../../img/logo.png'
 export const cadastro = () => {
   const container = document.createElement('div');
 
   const templateCadastro = `
     
     <section class='registerpage-form'>
-      <img src='./img/logo.png' class='logo-repet' alt='Logo da rede social re.Pet'>
+      <img src='${logo}' class='logo-repet' alt='Logo da rede social re.Pet'>
   
       <form class='register-form'>
   
