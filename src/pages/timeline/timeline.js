@@ -8,11 +8,11 @@ import {
 } from '../../firebase/firestore.js';
 import photoicon from '../../assets/photoicon.png';
 import homeicon from '../../assets/homeicon.png';
-import exiticon from '../../assets/exiticon.png';
-import imagetimeline from '../../assets/imagetimeline.png';
-import likeicon from '../../assets/likeicon.png';
-import editicon from '../../assets/editicon.png';
-import deleteicon from '../../assets/deleteicon.png';
+import exiticon from '../../assets/iconExit.png';
+import imagetimeline from '../../assets/imageTimeline.png';
+import likeicon from '../../assets/iconLike.png';
+import editicon from '../../assets/iconEdit.png';
+import deleteicon from '../../assets/iconDelete.png';
 
 export default () => {
   const timeline = document.createElement('div');
