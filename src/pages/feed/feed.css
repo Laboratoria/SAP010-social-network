@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+
+.feed-container {
+  height: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#feed {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.titleHeader {
+  font-family: 'Amatic SC', cursive;
+  font-size: 30px;
+  color: #fff;
+}
+
+.logoHeader {
+  width: 40px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.post {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #da5536;
+  border-radius: 5px;
+  width: 90%;
+}
+
+.post p {
+  margin: 0;
+  padding: 5px;
+  color: white;
+}
+
+.logoHeader {
+  width: 35px;
+  height: 35px;
+}
+
+.menu {
+  display: flex;
+  width: 40%;
+  align-items: center;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Amatic SC', cursive;
+  padding: 20px;
+  font-size: clamp(1em, 1em + 1vw, 1em);
+}
+
+.date, .name {
+  font-family: 'Amatic SC', cursive;
+  font-size: 20px;
+  color: #fff;
+}
+
+.informations {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-publish {
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 8px;
+  background-color: #c95a3e;
+  border: #fff;
+  width: 125px;
+  align-items: center;
+}
+
+.input-text {
+  border-radius: 5px;
+  height: 50px;
+  border: none;
+  margin: 8px 8px 2px 8px;
+  width: 90%;
+  padding-left: 10px;
+  background-color: #d9d9d955;
+  color: #fff;
+}
+
+.input-text::placeholder {
+  color: #ffffff55;
+}
+
+.icons-post {
+  width: 20px;
+  height: 20px;
+}
+
+.botoesfeed {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.container-btn {
+  display: flex;
+  display: inline-flex;
+}

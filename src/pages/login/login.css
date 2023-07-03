@@ -1,0 +1,177 @@
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.container {
+  width: 45%;
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 65%;
+  background: #5555;
+  border-radius: 30px;
+  padding: 20px 20px 20px 20px;
+  margin-top: 3vh;
+  margin-bottom: 16px;
+}
+
+.input-login {
+  border-radius: 20px;
+  height: 30px;
+  border: none;
+  margin: 8px 8px 2px 8px;
+  width: 90%;
+  padding-left: 10px;
+  background-color: #D9D9D955;
+  color: #fff;
+}
+
+.input-login::placeholder {
+  color: #ffffff55;
+}
+
+.input-login:focus {
+  outline: none
+}
+
+.input-error {
+  border: 1.5px solid #9D2045;
+}
+
+.text-email-error,
+.text-password-error {
+  font-family: 'arial', cursive;
+  font-size: 15px;
+  color: #9D2045;
+}
+
+.text-password-error {
+  margin-bottom: 8px;
+}
+
+.logo-google {
+  width: 40px;
+}
+
+.text-google,
+.text-new-account {
+  font-family: 'arial', cursive;
+  font-size: 15px;
+  color: #fff
+}
+
+.button-login,
+.button-login-google,
+.button-new-account {
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 8px;
+}
+
+.button-login {
+  margin-top: 8px;
+  background-color: #193549;
+  width: 125px;
+}
+
+.button-login-google {
+  background-color: transparent;
+  border: none;
+}
+
+.button-new-account {
+  background-color: #C95A3E;
+  border: #fff;
+  width: 125px;
+}
+
+.texto-login {
+  display: none;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+
+  /*   #root{
+    width: 100wh;
+  } */
+  .login-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 45%;
+    padding: 20px;
+  }
+
+  .texto-login {
+    display: flex;
+    text-align: justify;
+
+    font-family: 'Amatic SC', cursive;
+    color: white;
+  }
+
+  .section-logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+  }
+
+  .form-login {
+    width: 65%;
+  }
+
+  .text-google,
+  .text-new-account {
+    font-size: 10px;
+  }
+
+  .input-error {
+    border: 1px solid #9D2045;
+  }
+
+  .text-email-error,
+  .text-password-error {
+    font-size: 10px;
+  }
+
+  .logo-google {
+    width: 30px;
+  }
+
+  .button-login {
+    width: 125px;
+  }
+
+  .button-new-account {
+    width: 125px;
+  }
+}
