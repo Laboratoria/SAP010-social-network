@@ -9,7 +9,7 @@ import {
 import photoicon from '../../assets/iconPhoto.png';
 import homeicon from '../../assets/iconHome.png';
 import exiticon from '../../assets/iconExit.png';
-import imagetimeline from '../../assets/imagetimeline.png';
+import imagetimeline from '../../assets/imageTimeline.png';
 import likeicon from '../../assets/iconLike.png';
 import editicon from '../../assets/iconEdit.png';
 import deleteicon from '../../assets/iconDelete.png';
@@ -72,7 +72,9 @@ export default () => {
           <div class='image-icons'>
             <button type='button' class='icons-post' id='like-Post' data-post-id='${postId}'>
               <a class='icons-post' id='icons-post'><img src='${likeicon}' alt='like image' class='icons-post'></a>
+              <span class='likePost' id='likes-counter-${postId}'>${whoLiked.length}</span>
             </button>
+            
           ${authorId === getUserId() ? `<button type='button' data-post-id='${postId}' class='icons-post' id='editPost'>
             <a class='icons-post'><img src='${editicon}' alt='edit image' class='icons-post'></a>
           </button>
@@ -80,7 +82,6 @@ export default () => {
             <img src='${deleteicon}' alt='delete image' class='icons-post'>
           </button>` : ''}
         </div>
-        <span class='likePost' id='likes-counter-${postId}'>${whoLiked.length}</span>
       </div>
 `;
 
