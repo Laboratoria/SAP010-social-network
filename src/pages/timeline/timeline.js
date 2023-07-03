@@ -9,7 +9,7 @@ import {
 import photoicon from '../../assets/iconPhoto.png';
 import homeicon from '../../assets/iconHome.png';
 import exiticon from '../../assets/iconExit.png';
-import imagetimeline from '../../assets/imageTimeline.png';
+import imagetimeline from '../../assets/imagetimeline.png';
 import likeicon from '../../assets/iconLike.png';
 import editicon from '../../assets/iconEdit.png';
 import deleteicon from '../../assets/iconDelete.png';
