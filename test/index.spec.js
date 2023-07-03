@@ -30,7 +30,7 @@ import {
   authLogin,
   authLoginGoogle,
   /* authStateChanged, */
-  logout,
+  /* logout, */
 } from '../src/lib/index.js';
 import {
   db,
