@@ -287,5 +287,13 @@ a {
     .img-timeline {
         display: none;
     }
-}
+
+    .container {
+        margin-bottom: 1em;
+    }
+
+    .right-timeline {
+        margin-top: 10em;
+    }
+}   
 
