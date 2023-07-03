@@ -80,7 +80,7 @@ export const registerUser = () => {
         newUser(emailInputRegister, passwordRegister, nameRegister2)
           .then(() => {
             window.location.hash = '#feed';
-            alert('Cadastro efetuado com sucesso, seja bem vindo(a)!');
+            window.alert('Cadastro efetuado com sucesso, seja bem vindo(a)!');
           })
           .catch(() => {
             errorTxt.setAttribute('style', 'display: block');

@@ -4,6 +4,9 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  /* signOut, */
+  /* getAuth, */
+  /* onAuthStateChanged, */
 } from 'firebase/auth';
 import {
   doc,
@@ -20,11 +23,14 @@ import {
   dislike,
   publish,
   getFeedItems,
+  /* deletePost, */
 } from '../src/lib/firestore.js';
 import {
   newUser,
   authLogin,
   authLoginGoogle,
+  /* authStateChanged, */
+  /* logout, */
 } from '../src/lib/index.js';
 import {
   db,

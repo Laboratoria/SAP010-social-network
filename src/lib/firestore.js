@@ -102,3 +102,7 @@ export const like = async (postId, userId) => {
 export const dislike = async (postId, userId) => {
   await deleteDoc(doc(db, 'PostLikes', `${postId}_${userId}`));
 };
+
+export const deletePost = async (postId) => {
+  await deleteDoc(doc(db, 'Post', postId));
+};
