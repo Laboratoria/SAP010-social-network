@@ -111,7 +111,7 @@ export default () => {
         try {
           const likeLike = await likePost(postId, getUserId());
           let currentLikes = parseInt(likesCounter.innerText, 10);
-          if (likeLike === 'adicione like') {
+          if (likeLike === 'add like') {
             currentLikes += 1;
           } else {
             currentLikes -= 1;
@@ -154,7 +154,7 @@ export default () => {
       if (window.confirm('Tem certeza de que deseja excluir a publicação?')) {
         deletePost(postId)
           .then(() => {
-            target.closest('.post-container').remove(); // remove da tela os posts que são excluídos
+            target.closest('.post-container').remove();
             alert('Publicação excluída com sucesso!');
           })
           .catch((error) => {
