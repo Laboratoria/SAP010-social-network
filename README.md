@@ -98,10 +98,12 @@ Definição de pronto:
 <div align="center">
 
 #### versão mobile:
-<img src="src/assets/Protótipo de alta fidelidade versão mobile.png" width="500em"/>
+<img src="src/assets/Protótipo de alta fidelidade versão mobile.png" width="520em"/>
 
-#### versão desktop:
-<img src="src/assets/Protótipo de alta fidelidade versão desktop.png" width="500em"/>
+#### versão mobile:
+<img src="src/assets/Protótipo de alta fidelidade versão desktop.png" width="520em"/>
+
+</div>
 
 
 ## 4. Testes de usabilidade
@@ -114,6 +116,11 @@ Definição de pronto:
 
 ## 5. Testes unitários
 
+### Cobertura de testes unitários com jest:
+
+<div align="center">
+<img src="src/assets/testes unitários.PNG" width="520em"/>
+</div>
 
 ## 6. Objetivos alcançados
 
