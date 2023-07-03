@@ -5,7 +5,7 @@
 
 <div align="center">
 
-  <!-- Acesse o projeto [aqui](inserir link do gh-pages depois de pronto/)   -->
+   Acesse o projeto através do [Gh-pages](https://rbcribeiro.github.io/SAP010-social-network/) e do [Firebase Hosting](https://social-network-lab-3ce72.firebaseapp.com/)
   <br>
   Status do projeto: Em andamento 🚧 <br>
   Ferramentas e tecnologias utilizadas: <br>
@@ -48,7 +48,7 @@
 
 ---
 ## 1. Resumo do projeto
-ExplorAí é uma rede social voltada para viajantes que gostariam de compartilhar suas experiências e receber dicas sobre viagens. Neste projeto, foi desenvolvida uma SPA (Single Page Application) responsiva, seguindo a técnica mobile first. 
+ExplorAí é uma rede social voltada para viajantes que gostariam de compartilhar suas experiências e receber dicas sobre viagens. Neste projeto, foi desenvolvida uma SPA (Single Page Application) responsiva. 
 
 ## 2 Histórias de usuários
 Foram definidas as seguintes histórias de usuários, com respectivos critérios de aceitação e definições de pronto:
@@ -93,19 +93,37 @@ Definição de pronto:
 
 ## 3. Desenhos de interface do usuário
 ### 3.1 Protótipos de baixa fidelidade
+
+<div align="center">
+
 #### versão mobile:
-![Alt text](<src/assets/Protótipo de baixa fidelidade versão mobile.jpeg>)
+<img src="src/assets/Protótipo de baixa fidelidade versão mobile.jpeg" width="300em"/>
+
 #### versão desktop:
-![Alt text](<src/assets/Protótipo de baixa fidelidade versão desktop.jpeg>)
+<img src="src/assets/Protótipo de baixa fidelidade versão desktop.jpeg" width="300em"/>
+
+</div>
+
 ### 3.2. Protótipos de alta fidelidade
+
+<div align="center">
+
 #### versão mobile:
-![Alt text](<src/assets/Protótipo de alta fidelidade - versão mobile.png>)
+<img src="src/assets/Protótipo de alta fidelidade - versão mobile.png" width="300em"/>
+
 #### versão desktop:
-![Alt text](<src/assets/Protótipo de alta fidelidade - versão desktop.png>)
+<img src="src/assets/Protótipo de alta fidelidade versão desktop.PNG" width="300em"/>
+
+</div>
 
 
 ## 4. Testes de usabilidade
-<!-- Os testes de usabilidade foram feitos com potenciais usuários primeiramente através da plataforma Figma, na qual foi feito um protótipo interativo. Demais testes foram feito ao longo do desenvolvimento do projeto através do deploy. Através do feedback de usuários foram implementadas melhorias como a possibilidade de resgate da senha. -->
+ Os testes de usabilidade foram feitos com potenciais usuários primeiramente através da plataforma Figma, na qual foi feito um protótipo interativo. Demais testes foram feito ao longo do desenvolvimento do projeto através do deploy. 
+ Através do feedback de usuários foram implementadas as seguintes melhorias:
+ 
+ * Retirada da imagem abaixo das postagens na timeline na versão mobile, para que o espaço pudesse ser melhor aproveitado e para que facilitasse a visualização das últimas postagens;
+ * Ajustes nas imagens dos botões de google e facebook para que ficassem exatamente das cores dos logos dos respectivos sites, afim de que o usuário identificasse mais rapidamente que se tratavam de botões de login com google e com facebook;
+ * Compactação dos textos na página de login, para facilitar a visualização dos botões de registrar e cadastrar por parte do usuário.
 
 ## 5. Testes unitários
 
