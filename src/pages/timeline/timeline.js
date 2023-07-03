@@ -17,24 +17,24 @@ import deleteicon from '../../assets/deleteicon.png';
 export default () => {
   const timeline = document.createElement('div');
   const viewPost = `
-  <div class="container">
+  <div class='container'>
     <div class='left-timeline'>
-      <img src='${photoicon}' alt='Foto de perfil' class='profilePhoto'>
-      <p class="postTitle">Olá ${getUserName()}, bem-vindo(a) de volta!</p>
+      <img src='${photoicon}' alt='Foto de perfil' class='profilePhoto' />
+      <p class='postTitle'>Olá ${getUserName()}, bem-vindo(a) de volta!</p>
       <figure class='icones'>
-        <button type="button" class='button-timeline' id='home-btn'><img src='${homeicon}' class="icon-timeline" alt="Icone home"></button>
-        <button type="button" class='button-timeline' id='logout-btn'><img src='${exiticon}' class="icon-timeline" alt='logout icon'></button>
+        <button type='button' class='button-timeline' id='home-btn'><img src='${homeicon}' class='icon-timeline' alt='Icone home'></button>
+        <button type='button' class='button-timeline' id='logout-btn'><img src='${exiticon}' class='icon-timeline' alt='logout icon'></button>
       </figure>
     </div>
-    <img src="${imagetimeline}" class="img-timeline" alt="edit image" >
-    <div class="right-timeline">
-      <div class="input-container">
-        <textarea class="input-message" id="postArea" placeholder="COMPARTILHE UMA EXPERIÊNCIA..."></textarea>
-        <button class="shareBtn" id="sharePost">COMPARTILHAR</button>
+    <img src='${imagetimeline}' class='img-timeline' alt='edit image' />
+    <div class='right-timeline'>
+      <div class='input-container'>
+        <textarea class='input-message' id='postArea' placeholder='COMPARTILHE UMA EXPERIÊNCIA...'></textarea>
+        <button class='shareBtn' id='sharePost'>COMPARTILHAR</button>
       </div>
-    <div id="postList"></div>
-  </div>
+      <div id='postList'></div>
     </div>
+  </div>
   `;
 
   timeline.innerHTML = viewPost;
@@ -62,20 +62,20 @@ export default () => {
     const createdAtFormatted = `${createdAtFormattedDate} ~ ${createdAtFormattedTime}`;
     const postElement = document.createElement('div');
     postElement.innerHTML = `
-      <div class="post-container">
+      <div class='post-container'>
         <div class='nameUser'>
           <p class='userName'>${name}</p>
           <p class='dataPost'>${createdAtFormatted}</p>
         </div>
         <p class='textPost'>${description}</p>
           <div class='image-icons'>
-            <button type="button" class='icons-post' id='like-Post' data-post-id='${postId}'>
+            <button type='button' class='icons-post' id='like-Post' data-post-id='${postId}'>
               <a class='icons-post' id='icons-post'><img src='${likeicon}' alt='like image' class='icons-post'></a>
             </button>
-          ${authorId === getUserId() ? `<button type="button" data-post-id='${postId}' class='icons-post' id='editPost'>
+          ${authorId === getUserId() ? `<button type='button' data-post-id='${postId}' class='icons-post' id='editPost'>
             <a class='icons-post'><img src='${editicon}' alt='edit image' class='icons-post'></a>
           </button>
-          <button type="button" class='icons-post' id='btn-delete' data-post-id='${postId}'>
+          <button type='button' class='icons-post' id='btn-delete' data-post-id='${postId}'>
             <img src='${deleteicon}' alt='delete image' class='icons-post'>
           </button>` : ''}
         </div>
