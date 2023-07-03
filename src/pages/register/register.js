@@ -93,7 +93,7 @@ export default () => {
 
   const button = registrationForm.querySelector('.icon-eye1');
   button.addEventListener('click', (event) => {
-    event.preventDefault(); // Evita o comportamento padrão do botão (submit, por exemplo)
+    event.preventDefault();
     event.stopPropagation();
     const changeEye = button.querySelector('i');
     const input = registrationForm.querySelector('#register-password');
@@ -110,7 +110,7 @@ export default () => {
 
   const btnEye = registrationForm.querySelector('#show-eye2');
   btnEye.addEventListener('click', (event) => {
-    event.preventDefault(); // Evita o comportamento padrão do botão (submit, por exemplo)
+    event.preventDefault();
     event.stopPropagation();
     const changeEye = btnEye.querySelector('i');
     const input = registrationForm.querySelector('#confirm-password');
