@@ -3,12 +3,7 @@
 
 export default () => {
   const loginContainer = document.createElement('div');
-
-  // Informações preenchidas pelo usuário
-  const usuarioEntrada = loginContainer.querySelector("#usuario");
-  const senhaEntrada = loginContainer.querySelector("#senha");
-const login = document.createElement('div');
-const templateLogin = `<form>
+  const templateLogin = `<form>
 <fieldset>
   <div>
     <label for="">Nome do usuário/E-mail</label>
@@ -31,6 +26,10 @@ const templateLogin = `<form>
 </form>`;
 
 loginContainer.innerHTML = templateLogin;
+
+  // Informações preenchidas pelo usuário
+  const usuarioEntrada = loginContainer.querySelector("#usuario");
+  const senhaEntrada = loginContainer.querySelector("#senha");
 
   // Botões
   const entrarLoginBotao = loginContainer.querySelector("#btn-login-entrar");
