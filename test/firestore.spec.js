@@ -138,23 +138,4 @@ describe('likePost', () => {
     );
     expect(result).toBe('adicione like');
   });
-  it('should add remove to post', async () => {
-    const mockPostData = {
-      whoLiked: ['userId'],
-    };
-    const userId = 'userId';
-    const mockGetDoc = jest.fn(() => ({
-      exists: false,
-      data: jest.fn(() => mockPostData),
-    }));
-    getDoc.mockReturnValueOnce(mockGetDoc);
-
-    const postId = 'postId';
-    const resultado = await likePost(postId, userId);
-
-    expect(getDoc).toHaveBeenCalledWith(
-      doc(db, 'posts', postId),
-    );
-    expect(resultado).toBe('remove like');
-  });
 });

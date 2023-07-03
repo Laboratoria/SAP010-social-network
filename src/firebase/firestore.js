@@ -73,28 +73,23 @@ export const hasUserLikedPost = async (postId) => {
 };
 
 export const likePost = async (postId, userId) => {
-  try {
-    const userHasLikedPost = await hasUserLikedPost(postId);
-    if (!userHasLikedPost) {
-      const docRef = doc(db, 'posts', postId);
-      const postDoc = await getDoc(docRef);
-      if (postDoc && postDoc.exists) {
-        const post = postDoc.data();
-        const { whoLiked } = post;
-        if (!whoLiked.includes(userId)) {
-          whoLiked.push(userId);
-          await updateDoc(docRef, { whoLiked });
-        }
+  const userHasLikedPost = await hasUserLikedPost(postId);
+  if (!userHasLikedPost) {
+    const docRef = doc(db, 'posts', postId);
+    const postDoc = await getDoc(docRef);
+    if (postDoc && postDoc.exists) {
+      const post = postDoc.data();
+      const { whoLiked } = post;
+      if (!whoLiked.includes(userId)) {
+        whoLiked.push(userId);
+        await updateDoc(docRef, { whoLiked });
       }
-      return 'adicione like';
     }
-    const washingtonRef = doc(db, 'posts', postId);
-    await updateDoc(washingtonRef, {
-      whoLiked: arrayRemove(userId),
-    });
-    return 'remove like';
-  } catch (error) {
-    console.error('Error ao dar like:', error);
-    throw error;
+    return 'add like';
   }
+  const washingtonRef = doc(db, 'posts', postId);
+  await updateDoc(washingtonRef, {
+    whoLiked: arrayRemove(userId),
+  });
+  return 'remove like';
 };
