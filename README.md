@@ -93,7 +93,7 @@ Definição de pronto:
 
 ## 3. Desenhos de interface do usuário
 
-### Protótipos de alta fidelidade
+### Protótipos de alta fidelidade feitos na plataforma Figma:
 
 <div align="center">
 
