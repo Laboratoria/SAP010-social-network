@@ -12,14 +12,18 @@ import {
 } from '../../lib/firestore.js';
 import { logout } from '../../lib/index.js';
 
+import logo from '../../img/logo.png'
+import userIcon from '../../img/usericon.png'
+import signOut from '../../img/sign-out-alt.png'
+
 export const feed = () => {
   const container = document.createElement('div');
   const templateFeed = `
       <header class='feed-header'>
       <div class='logo-sair-container'>
-      <img src='../../img/logo.png' class='logo-repet' id='logo-repet-feed'></div>
-      <div class='icon-welcome'> <img src='../../img/usericon.png' alt='ícone de usuário' class='user-icon'/> 
-      <p class='boas-vindas'>Seja bem-vindo(a) </p> <img src='../../img/sign-out-alt.png' class='btn-logout' id='btn-logout'></div>
+      <img src='${logo}' class='logo-repet' id='logo-repet-feed'></div>
+      <div class='icon-welcome'> <img src='${userIcon}' alt='ícone de usuário' class='user-icon'/> 
+      <p class='boas-vindas'>Seja bem-vindo(a) </p> <img src='${signOut}' class='btn-logout' id='btn-logout'></div>
       <a class='feedPage' href='/#feed'></a>
 
       <button id='post'>Crie seu post aqui!</button>
