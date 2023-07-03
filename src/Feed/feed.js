@@ -5,6 +5,7 @@ import {
   getFeedItems,
   like,
   publish,
+  deletePost,
 } from '../lib/firestore';
 
 export const feedUser = () => {
@@ -12,7 +13,7 @@ export const feedUser = () => {
 
   const template = `
   <header>
-    <img class='menuIcon' src='Img/menuIcon.png' alt='Menu Hamburguinho'>
+      <img class='menuIcon' src='Img/menuIcon.png' alt='Menu Hamburguinho'>
     <h1 class='tituloMenu'>Food Review</h1>
   </header>
   <main>
@@ -23,7 +24,6 @@ export const feedUser = () => {
       <nav const='menu'>
         <ul>
           <li class="nav-item"><a href="#feed"><img width="34px" height="34px" src="Img/home-feed.svg"/>Feed</a></li>
-          <li class="nav-item"><a href="#perfil"><img src="Img/profile-feed.svg"/>Perfil</a></li>
           <li class="nav-item"><a href="#sobre"><img src="Img/info-feed.svg"/>Sobre</a></li>
           <li class="nav-item"><a href="#sair"><img src="Img/logout-feed.svg"/>Sair</a></li>
         </ul>
@@ -109,6 +109,7 @@ export const feedUser = () => {
       restaurantName,
       userAvatar,
       userName,
+      userId,
       id,
     }) => {
       // myUserId pega o id do usuário logado.
@@ -126,12 +127,12 @@ export const feedUser = () => {
               <h5>Nota: ${rating}/5</h5>
               </div>
             </div>
-            <div>
-              <img class="points-feed" id='' src="Img/pen.png"/>
-              <img class="points-feed" id='cardActions' src="Img/bin.png"/>
-            </div>
+            ${userId === myUserId ? `<div class='card-actions'>
+                <img class="points-feed" id='editarPostButton' src="Img/pen.png" alt='Lapis ilustrativo'/>
+                <img class="points-feed" onclick='postDelete("${id}")' src='Img/bin.png' alt='Lixo ilustrativo'/>
+              </div>` : ''}
           </div>
-          <div class="card-description"> 
+          <div class="card-description">
             <p>${description}</p>
           </div>
           <div class="card-info">
@@ -178,6 +179,7 @@ async function publishPost() {
 }
 window.publishPost = publishPost;
 
+// Função de like e deslike
 async function likePost(postId, liked) {
   const userId = document.getElementById('userId').value;
 
@@ -188,3 +190,11 @@ async function likePost(postId, liked) {
   }
 }
 window.likePost = likePost;
+
+// Função deletar post
+async function postDelete(id) {
+  if (window.confirm('Deseja mesmo excluir esse post?')) {
+    await deletePost(id);
+  }
+}
+window.postDelete = postDelete;

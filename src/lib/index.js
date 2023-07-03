@@ -27,6 +27,7 @@ export const newUser = async (email, senha, displayName) => {
   await updateProfile(auth.currentUser, { displayName });
 };
 
+// função para logout do site
 export const logout = async () => {
   await signOut(auth);
   window.location.hash = '';

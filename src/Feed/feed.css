@@ -19,7 +19,7 @@ main {
   height: 100vh;
 }
 
-.menuIcon {
+.menuIcon, #chec {
   display: none;
 }
 
@@ -63,7 +63,8 @@ nav ul {
 .nav-item:last-child {
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 25px;
+  list-style: none;
 }
 
 .nav-item:last-child > a {
@@ -456,7 +457,7 @@ nav ul {
   }
 
   .sidebar {
-   display: none;
+    display: none;
   }
 
   .feed {
