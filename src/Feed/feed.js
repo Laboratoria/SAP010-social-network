@@ -2,16 +2,6 @@ import './feed.css';
 import { authStateChanged } from '../lib/index';
 import { getFeedItems, publish, editPost } from '../lib/firestore';
 
-// Função para abrir o modal
-function openModal() {
-  modal.style.display = 'block'; // Exibe o modal
-}
-
-// Função para fechar o modal
-function closeModal() {
-  modal.style.display = 'none'; // Oculta o modal
-}
-
 
 export const feedUser = () => {
   const container = document.createElement('div');
@@ -67,13 +57,21 @@ export const feedUser = () => {
   `;
 
   container.innerHTML = template;
-
+  
   const modal = container.querySelector('#createPost');
   const closeButton = container.querySelector('#close');
-  // const publishButton = container.getElementById('publishButton');
   const openPublishButton = container.querySelector('#experienceButton');
 
-  
+  // Função para abrir o modal
+  function openModal() {
+  modal.style.display = 'block'; // Exibe o modal
+}
+
+// Função para fechar o modal
+  function closeModal() {
+  modal.style.display = 'none'; // Oculta o modal
+}
+
   openPublishButton.addEventListener('click', openModal);
   closeButton.addEventListener('click', closeModal);
   window.addEventListener('click', (event) => {
@@ -106,8 +104,7 @@ export const feedUser = () => {
       restaurantName,
       userAvatar,
       userName,
-      userId,
-    }) => (
+      }) => (
       `<div class="card">
         <div class="card-header">
           <div class="card-user">
@@ -121,7 +118,6 @@ export const feedUser = () => {
             <img class="points-feed" id='editPost' src="Img/pen.png"/>
             <img class="points-feed" id='cardActions' src="Img/bin.png"/>
           </div>
-        </div>
         <div class="card-description"> 
           <p>${description}</p>
         </div>
@@ -133,15 +129,17 @@ export const feedUser = () => {
     const postList = document.querySelector('#postList');
     postList.innerHTML = items.map(card).join('');
 
-    const inputEditPost = document.getElementById('editPost');
+    const inputEditPost = document.getElementById('editPostButton');
+    const userId = userIdInput.dataset.userId;
 
         if (inputEditPost) {
       inputEditPost.addEventListener('click', () => {
-           const confirmEdit = window.prompt('Digite o novo comentário:');
+        const userId = document.getElementById('userIdInput').dataset.userId;
+            const confirmEdit = window.prompt('Digite o novo comentário:');
             if (confirmEdit) {
           editPost(userId, { Comentario: confirmEdit })
             .then(() => {
-              publishPost();
+              renderCards();
             })
             .catch((error) => {
               console.log('Erro ao editar o comentário:', error);
