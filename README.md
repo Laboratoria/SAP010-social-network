@@ -97,10 +97,10 @@ Definição de pronto:
 <div align="center">
 
 #### versão mobile:
-<img src="src/assets/Protótipo de baixa fidelidade versão mobile.jpeg" width="300em"/>
+<img src="src/assets/Protótipo de baixa fidelidade versão mobile.jpeg" width="400em"/>
 
 #### versão desktop:
-<img src="src/assets/Protótipo de baixa fidelidade versão desktop.jpeg" width="300em"/>
+<img src="src/assets/Protótipo de baixa fidelidade versão desktop.jpeg" width="400em"/>
 
 </div>
 
@@ -109,10 +109,10 @@ Definição de pronto:
 <div align="center">
 
 #### versão mobile:
-<img src="src/assets/Protótipo de alta fidelidade - versão mobile.png" width="300em"/>
+<img src="src/assets/Protótipo de alta fidelidade - versão mobile.png" width="400em"/>
 
 #### versão desktop:
-<img src="src/assets/Protótipo de alta fidelidade versão desktop.PNG" width="300em"/>
+<img src="src/assets/Protótipo de alta fidelidade versão desktop.PNG" width="400em"/>
 
 </div>
 
