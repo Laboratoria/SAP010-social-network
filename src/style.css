@@ -22,3 +22,27 @@ text-align: center;
 .logo{
 max-width: 200px;
 }
+
+fieldset{
+    border: none;
+}
+
+.btn{
+cursor: pointer;
+background-color: #5FEA4B;
+color:white;
+border:none;
+border-radius: 10px;
+max-width: 300px;
+width: 100%;
+padding: 20px;
+margin: 5px 0;
+}
+
+.btn-escuro{
+    background-color: #317e25d5;
+}
+
+.btn-transparente{
+background-color: transparent;
+}
