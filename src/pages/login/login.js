@@ -6,8 +6,8 @@ import {
 } from '../../firebase/auth.js';
 import { errorsFirebase } from '../../validations.js';
 import logologin from '../../assets/logologin.png';
-import googleicon from '../../assets/googleicon.png';
-import facebookicon from '../../assets/facebookicon.png';
+import icongoogle from '../../assets/iconGoogle.png';
+import iconfacebook from '../../assets/iconFacebook.png';
 
 export default () => {
   const container = document.createElement('div');
@@ -42,21 +42,18 @@ export default () => {
           </nav>
           <p id='error-message' class='error-message'></p>
           <div class='text'>
-            Esqueceu a senha? <br>
             <button type='button' class='forgot-password'>Recuperar senha</button><br>
-            Não possui uma conta?
-            <button type='button' class='register-here'><a href='#register' class='register-here'>Cadastre-se</a></button>
+            <button type='button' class='register-here'><a href='#register' class='register-here'>Cadastrar</a></button>
           </div>
           <div class='text'>
-            Ou <br>
             Entrar com:
           </div>
           <figure>
             <button type='button' class='google-button' id='google-button'>
-              <img src= '${googleicon}' class='google-img' alt='Logo do Google'>
+              <img src= '${icongoogle}' class='google-img' alt='Logo do Google'>
             </button>
             <button type='button' class='facebook-button' id='facebook-button'>
-              <img src='${facebookicon}' class='facebook-img' alt='Logo do facebook'>
+              <img src='${iconfacebook}' class='facebook-img' alt='Logo do facebook'>
             </button>
             <p id='errorLogar' class='error-message'></p>
           </figure>
