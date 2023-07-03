@@ -98,13 +98,11 @@ Definição de pronto:
 <div align="center">
 
 #### versão mobile:
-<img src="src/assets/Protótipo de alta fidelidade versão mobile....PNG" width="400em"/>
+<img src="src/assets/Protótipo de alta fidelidade versão mobile.png" width="500em"/>
 
 #### versão desktop:
-<img src="src/assets/Protótipo de alta fidelidade versão desktop...PNG" width="400em"/>
+<img src="src/assets/Protótipo de alta fidelidade versão desktop.png" width="500em"/>
 
-</div>
-![Alt text](<src/assets/Protótipo de alta fidelidade versão mobile...PNG>)
 
 ## 4. Testes de usabilidade
  Os testes de usabilidade foram feitos com potenciais usuários primeiramente através da plataforma Figma, na qual foi feito um protótipo interativo. Demais testes foram feito ao longo do desenvolvimento do projeto através do deploy. 
@@ -116,12 +114,12 @@ Definição de pronto:
 
 ## 5. Testes unitários
 
+
 ## 6. Objetivos alcançados
 
 - [x] Criação de uma SPA;
 - [x] Responsivo;
-- [x] Criação dos testes;
-- [x] Testes unitários cobrem mais do que 70% de statements, functions, lines e branches;
+- [x] Criação dos testes unitários;
 - [x] Login através do firebase;
 - [x] Usuário pode criar conta;
 - [x] Usuário pode logar com google, facebook e e-mail e senha;
