@@ -1,12 +1,12 @@
 import { logOut } from '../../fireBase/firebaseAuth.js';
-import { auth} from '../../fireBase/firebaseConfig.js';
+import { auth } from '../../fireBase/firebaseConfig.js';
 import {
   fetchPosts,
   createPost,
   likeCounter,
   deslikeCounter,
   deletePost,
-  editPost
+  editPost,
 } from '../../fireBase/firebaseStore.js';
 import customAlert from '../../components/customAlert.js';
 
@@ -128,18 +128,18 @@ function createPostElement(post, feedElement) {
 
   const textLikeCount = postElement.querySelector('#text-like-count');
 
-  let processingClick = false
+  let processingClick = false;
   const buttonLike = postElement.querySelector('#button-like');
   buttonLike.addEventListener('click', async () => {
     const currentUser = auth.currentUser.displayName;
     const likesArray = post.likes;
 
     if (!processingClick) {
-      processingClick = true
+      processingClick = true;
       // Caso o usuario já esteja no array de likes, quer dizer que ele já deu like
       // então vamos tirar ele do array de likes
       if (likesArray.includes(currentUser)) {
-        await deslikeCounter(post.id, currentUser)
+        await deslikeCounter(post.id, currentUser);
         //foi removido do array de likes dessa publicação lá no Firebase
         // mas ainda precisamos tirar o usuario do array que esta na variavel local
         const index = likesArray.indexOf(currentUser);
@@ -148,14 +148,14 @@ function createPostElement(post, feedElement) {
         }
         // depois vamos atualizar o campo com o numero de likes
         textLikeCount.innerHTML = likesArray.length;
-        processingClick = false
+        processingClick = false;
       } else {
-        await likeCounter(post.id, currentUser)
+        await likeCounter(post.id, currentUser);
         // foi adicionado do array de likes dessa publicação lá no Firebase
         // mas ainda precisamos adicionar o usuario no array que esta na variavel local
         likesArray.push(currentUser);
         textLikeCount.innerHTML = likesArray.length;
-        processingClick = false
+        processingClick = false;
       }
     }
   });
@@ -166,13 +166,12 @@ function createPostElement(post, feedElement) {
       console.log('clicou no botao');
       await deletePost(post.id);
 
-      feedElement.removeChild(postElement)
+      feedElement.removeChild(postElement);
 
       // const isAuthor = currentUser;
       // if (isAuthor === post.uid) {
-    })
+    });
   }
-
 
   // Inside the createPostElement function
   const buttonEdit = postElement.querySelector('.button-edit');
@@ -187,16 +186,15 @@ function createPostElement(post, feedElement) {
             textElement.textContent = newText;
             alert('Post atualizado com sucesso!');
           })
-          .catch((error) => {
+          .catch(error => {
             console.error('Erro ao editar o post:', error);
-            alert('Ocorreu um erro ao editar o post. Por favor, tente novamente mais tarde.');
+            alert(
+              'Ocorreu um erro ao editar o post. Por favor, tente novamente mais tarde.'
+            );
           });
       }
     });
   }
-  
-  
-
 
   return postElement;
 }

@@ -1,4 +1,3 @@
-
 .login-container {
   display: flex;
   flex-direction: column;
@@ -34,7 +33,7 @@
   margin: 8px 8px 2px 8px;
   width: 90%;
   padding-left: 10px;
-  background-color: #D9D9D955;
+  background-color: #d9d9d955;
   color: #fff;
 }
 
@@ -43,18 +42,18 @@
 }
 
 .input-login:focus {
-  outline: none
+  outline: none;
 }
 
 .input-error {
-  border: 1.5px solid #9D2045;
+  border: 1.5px solid #9d2045;
 }
 
 .text-email-error,
 .text-password-error {
   font-family: 'arial', cursive;
   font-size: 15px;
-  color: #9D2045;
+  color: #9d2045;
 }
 
 .text-password-error {
@@ -69,7 +68,7 @@
 .text-new-account {
   font-family: 'arial', cursive;
   font-size: 15px;
-  color: #fff
+  color: #fff;
 }
 
 .button-login,
@@ -95,7 +94,7 @@
 }
 
 .button-new-account {
-  background-color: #C95A3E;
+  background-color: #c95a3e;
   border: #fff;
   width: 125px;
 }
@@ -113,7 +112,6 @@
 }
 
 @media (min-width: 900px) {
-
   /*   #root{
     width: 100wh;
   } */
@@ -142,7 +140,6 @@
     width: 100%;
     display: flex;
     align-items: center;
-
   }
 
   .form-login {
@@ -155,7 +152,7 @@
   }
 
   .input-error {
-    border: 1px solid #9D2045;
+    border: 1px solid #9d2045;
   }
 
   .text-email-error,
