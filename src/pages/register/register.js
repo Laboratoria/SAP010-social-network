@@ -54,7 +54,7 @@ export default () => {
   const registrationForm = document.createElement('div');
 
   const templateRegister = ` 
-  <a class='btn-back' href='#login'><img src='${arrow}' class='btn-back' alt='arrow'></a>
+  <a class='btn-back' href='#login'><img src='${arrow}' class='btn-back' alt='imagem de seta'></a>
 
     <div class='bloco'>
       <section class='form-register'>
@@ -81,7 +81,7 @@ export default () => {
       </section>
     </div>
     <figure class='image-register'>
-      <img src='${imageregister}' class='img-register' alt='imageregister'>
+      <img src='${imageregister}' class='img-register' alt='registerImage'>
     </figure>
   `;
 

@@ -6,8 +6,8 @@ import {
 } from '../../firebase/auth.js';
 import { errorsFirebase } from '../../validations.js';
 import logologin from '../../assets/logologin.png';
-import icongoogle from '../../assets/icongoogle.png';
-import iconfacebook from '../../assets/iconfacebook.png';
+import googleicon from '../../assets/googleicon.png';
+import facebookicon from '../../assets/facebookicon.png';
 
 export default () => {
   const container = document.createElement('div');
@@ -16,7 +16,7 @@ export default () => {
     <section class='login-wrap'>
       <div class='left'>
         <figure class='logo-container'>
-          <img src='${logologin}' class='logo' alt='logologin'>
+          <img src= ${logologin} class='logo' alt='Logo da ExploraAí'>
         </figure>
         <h1 class='title'>ExplorAí!</h1>
         <br>
@@ -53,10 +53,10 @@ export default () => {
           </div>
           <figure>
             <button type='button' class='google-button' id='google-button'>
-              <img src='${icongoogle}' class='google-img' alt='icongoogle'>
+              <img src= '${googleicon}' class='google-img' alt='Logo do Google'>
             </button>
             <button type='button' class='facebook-button' id='facebook-button'>
-              <img src='${iconfacebook}' class='facebook-img' alt='iconfacebook'>
+              <img src='${facebookicon}' class='facebook-img' alt='Logo do facebook'>
             </button>
             <p id='errorLogar' class='error-message'></p>
           </figure>
