@@ -3,6 +3,12 @@
 export default () => {
   const cadastroContainer = document.createElement('div');
   const templateCadastro = `
+  <header>
+    <picture><img class="logo" src="./img/logo_contraplano.png"></picture>
+  </header>
+  <div>
+    <h2>Bem vinde a sua rede social de filmes</h2>
+  </div>
     <form action="">
       <fieldset>
         <legend>Cadastre-se</legend>
@@ -26,7 +32,12 @@ export default () => {
         <button class="btn" id="btn-cad-concluir">Concluir cadastro</button>
         <button class="btn" id="btn-cad-login-google">Login com Google</button>
       </fieldset>
-    </form>`;
+    </form>
+  <footer>
+    <h5>Bootcamp Laboratoria - Projeto Rede Social</h5>
+    <h6>Desenvolvido por Larissa, Maila e Vitória</h6>
+    <p>2023</p>
+  </footer>`;
 
   cadastroContainer.innerHTML = templateCadastro;
 
@@ -36,7 +47,7 @@ export default () => {
   const emailEntrada = cadastroContainer.querySelector('#email');
   const senhaEntrada = cadastroContainer.querySelector('#senha');
 
-    // Botões
+  // Botões
   const botaoConcluir = cadastroContainer.querySelector('#btn-cad-concluir');
   const botaoVoltar = cadastroContainer.querySelector('#btn-cad-voltar');
 

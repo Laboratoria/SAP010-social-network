@@ -4,7 +4,13 @@
 export default () => {
   const loginContainer = document.createElement('div');
   const templateLogin = `
-    <form>
+  <header>
+    <picture><img class="logo" src="./img/logo_contraplano.png"></picture>
+  </header>
+  <div>
+    <h2>Bem vinde a sua rede social de filmes</h2>
+  </div>
+    <form id="formulário">
       <fieldset>
         <div>
           <label for="usuario">Nome do usuário/E-mail</label>
@@ -19,9 +25,17 @@ export default () => {
         <button class="btn" id="btn-login-google">Login com Google</button>
         <button class="btn" id="btn-login-criar-conta">Não tem login? Crie sua conta agora</button>
       </fieldset>
-    </form>`;
+    </form>
+  <footer>
+    <h5>Bootcamp Laboratoria - Projeto Rede Social</h5>
+    <h6>Desenvolvido por Larissa, Maila e Vitória</h6>
+    <p>2023</p>
+  </footer>`;
 
   loginContainer.innerHTML = templateLogin;
+
+  
+
 
   // Informações preenchidas pelo usuário
   const usuarioEntrada = loginContainer.querySelector("#usuario");
