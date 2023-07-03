@@ -3,6 +3,7 @@ import {
   criarPost,
   getUsername,
   getCurrentUserId,
+  getCurrentUser,
   deletePost,
   checkAuthor,
   editPostDoc,
@@ -99,11 +100,6 @@ export const feed = () => {
   `;
 
   container.innerHTML = templateFeed;
-  const feedHeader = container.querySelector('.feed-header p');
-
-  getUsername().then((username) => {
-    feedHeader.textContent += ` ${username}!`;
-  });
 
   const limparFormulário = () => {
     document.getElementById('quero-doar').checked = false;
@@ -120,6 +116,12 @@ export const feed = () => {
   };
 
   const carregarFeed = async () => {
+    const feedHeader = container.querySelector('.feed-header p');
+    const currentUser = await getCurrentUser();
+    const currentUserId = await getCurrentUserId();
+    getUsername(currentUser, currentUserId).then((username) => {
+      feedHeader.textContent += ` ${username}!`;
+    });
     const posts = await carregarPosts();
 
     const feedPage = container.querySelector('.feed-page');
@@ -169,7 +171,6 @@ export const feed = () => {
       likeIcon.addEventListener('click', async (event) => {
         event.preventDefault();
         const postId = post.id;
-        const currentUserId = await getCurrentUserId();
         const newLike = currentUserId;
         await addLike(postId, newLike);
         loadNumberOfLikes();
@@ -180,8 +181,7 @@ export const feed = () => {
       editIcon.addEventListener('click', async (event) => {
         event.preventDefault();
         const postId = post.id;
-
-        const isAuthor = await checkAuthor(postId);
+        const isAuthor = await checkAuthor(postId, currentUserId);
         console.log(isAuthor);
 
         if (isAuthor) {
@@ -258,7 +258,7 @@ export const feed = () => {
       const deleteIcon = postCard.querySelector('.delete-icon');
 
       // chama a função checkAuthor e verifica todos os posts sendo gerados
-      const isAuthor = await checkAuthor(post.id);
+      const isAuthor = await checkAuthor(post.id, currentUserId);
 
       if (isAuthor) {
         // verifica o retorno da função checkAuthor e exibe ou não o ícone da lixeira
@@ -319,9 +319,9 @@ export const feed = () => {
       event.preventDefault();
 
       try {
-        const username = await getUsername();
-
+        const currentUser = await getCurrentUser();
         const currentUserId = await getCurrentUserId();
+        const username = await getUsername(currentUser, currentUserId);
 
         let opcao = '';
         if (document.getElementById('quero-doar').checked) {

@@ -22,6 +22,7 @@ import {
   deletePost,
   editPostDoc,
   addLike,
+  getUsername,
 } from '../src/lib/firestore';
 
 jest.mock('firebase/firestore');
@@ -128,44 +129,59 @@ describe('getCurrentUser', () => {
   });
 });
 
-/* describe('getUsername', () => {
-  it('Deve retornar o nome do usuário do provedor "google.com" do usuário', async () => {
-    const mockCurrentUser = {
-      displayName: 'Maria da Silva',
-      providerData: [{ providerId: 'google.com' }],
-    };
-    getCurrentUser.mockResolvedValue(mockCurrentUser);
-
-    const username = await getUsername();
-
-    expect(username).toBe('Maria da Silva');
-    expect(getCurrentUserId).not.toHaveBeenCalled();
+describe('getUsername', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
   });
 
-   it('Deve retornar o nome de usuário do documento encontrado', async () => {
-    const
-  })
-}); */
+  it('deve retornar o nome de usuário quando o usuário atual existe e usa o provedor do Google', async () => {
+    const currentUser = {
+      providerData: [{ providerId: 'google.com' }],
+      displayName: 'Maria da Silva',
+    };
+
+    const username = await getUsername(currentUser, 'userId');
+
+    expect(username).toBe('Maria da Silva');
+  });
+
+  it('deve retornar o nome de usuário do primeiro documento da consulta quando o usuário atual não usa o provedor do Google', async () => {
+    const currentUser = {
+      providerData: [{ providerId: 'facebook.com' }],
+    };
+
+    const mockQuerySnapshot = {
+      empty: false,
+      docs: [{ data: () => ({ name: 'Alice' }) }],
+    };
+
+    getDocs.mockResolvedValueOnce(mockQuerySnapshot);
+
+    const username = await getUsername(currentUser, 'userId');
+
+    expect(username).toBe('Alice');
+  });
+  it('deve retornar null quando currentUser é nulo ou indefinido', async () => {
+    const currentUser = null;
+    const username = await getUsername(currentUser, 'userId');
+    expect(username).toBeNull();
+  });
+});
 
 describe('checkAuthor', () => {
   it('deve checar se o usuário logado é o autor das suas postagens', async () => {
     const mockPostId = 'postA';
-    const mockCurrentUserId = 'userABC';
-
-    const mockAuth = {
-      getCurrentUserId: jest.fn().mockResolvedValue(mockCurrentUserId),
-    };
+    const mockCurrentUserId = 'UserABC';
 
     const mockDocSnapshot = {
-      exists: true,
-      data: jest.fn(),
+      exists: jest.fn().mockReturnValue(true),
+      data: jest.fn().mockReturnValue({ postAuthorId: mockCurrentUserId }),
     };
     getDoc.mockResolvedValue(mockDocSnapshot);
 
-    const resultado = await checkAuthor(mockPostId, mockAuth);
+    const resultado = await checkAuthor(mockPostId, mockCurrentUserId);
 
     expect(getDoc).toHaveBeenCalledWith(doc(db, 'post', mockPostId));
-    expect(mockAuth.getCurrentUserId).toHaveBeenCalledTimes(1);
     expect(resultado).toBe(true);
   });
 });
