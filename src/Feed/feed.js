@@ -13,8 +13,26 @@ export const feedUser = () => {
 
   const template = `
   <header>
-      <img class='menuIcon' src='Img/menuIcon.png' alt='Menu Hamburguinho'>
-    <h1 class='tituloMenu'>Food Review</h1>
+    <nav>
+      <div class="navbar">
+        <div class="container nav-container">
+          <input class="checkbox" type="checkbox" name="" id="" />
+          <div class="hamburger-lines">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
+          </div>
+          <div class="nameHeader">
+            <h1>Food Review</h1>
+          </div>
+          <div class="menu-items">
+            <li><a href="#feed">Feed</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#sair">Sair</a></li>
+          </div>
+        </div>
+      </div>
+    </nav>
   </header>
   <main>
     <sidebar class='sidebar'>
