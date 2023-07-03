@@ -217,7 +217,7 @@ export const feed = () => {
 
           const submitButton = document.getElementById('editar');
 
-          submitButton.addEventListener('click', async () => {
+          submitButton.addEventListener('click', async (event) => {
             event.preventDefault();
 
             let opcao = '';
@@ -295,7 +295,7 @@ export const feed = () => {
     });
   };
 
-  carregarFeed();
+ carregarFeed()
 
   container.querySelector('#btn-logout').addEventListener('click', () => {
     logout();
