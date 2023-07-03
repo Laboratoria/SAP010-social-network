@@ -1,6 +1,5 @@
 import './feed.css';
-
-// import { getUserName, getAppAuth } from '../../configFirebase/auth';
+import { querySnapshot } from '../../configFirebase/auth';
 
 export default () => {
   const container = document.createElement('div');
@@ -43,5 +42,8 @@ export default () => {
   `;
 
   container.innerHTML = template;
+
+  console.log(querySnapshot());
+
   return container;
 };
