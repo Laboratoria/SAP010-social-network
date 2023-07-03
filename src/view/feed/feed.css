@@ -15,7 +15,6 @@ html {
   height: 100%;
   overflow: auto;
   overflow-y: hidden;
-
 }
 
 .modal-content {
@@ -25,10 +24,11 @@ html {
   padding: 20px;
   border: 1px solid #888;
   width: 75%;
-  height: fit-content;
+  height: 80%;
   max-width: 600px;
   border-radius: 10px;
   position: relative;
+  overflow: auto;
 }
 
 .label-class {
