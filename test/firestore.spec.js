@@ -136,6 +136,6 @@ describe('likePost', () => {
     expect(getDoc).toHaveBeenCalledWith(
       doc(db, 'posts', postId),
     );
-    expect(result).toBe('adicione like');
+    expect(result).toBe('add like');
   });
 });
