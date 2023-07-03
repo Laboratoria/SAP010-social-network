@@ -7,7 +7,10 @@ import {
   getAuth, createUserWithEmailAndPassword,
   signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile,
 } from 'firebase/auth';
-import { app } from './configFirebase.js';
+
+import {
+  app, db, collection, getDocs,
+} from './configFirebase.js';
 
 // login google
 export const getAppAuth = () => getAuth(app);
@@ -52,4 +55,11 @@ export const getUserName = () => {
     return user.displayName;
   }
   return null;
+};
+
+export const querySnapshot = async () => {
+  await getDocs(collection(db, 'Post'));
+  querySnapshot.forEach((doc) => {
+    console.log(doc.id, ' => ', doc.data());
+  });
 };
