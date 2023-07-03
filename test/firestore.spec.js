@@ -5,6 +5,9 @@ import {
   db,
   deleteDoc,
   updateDoc,
+  onSnapshot,
+  collection,
+  orderBy,
 } from 'firebase/firestore';
 
 import {
@@ -13,6 +16,7 @@ import {
   deletePost,
   updatePost,
   likePost,
+  accessPost,
 } from '../src/firebase/firestore';
 import { getAppAuth } from '../src/firebase/auth';
 
@@ -73,9 +77,7 @@ describe('hasUserLikedPost', () => {
     const postId = 'postId';
     const resultado = await hasUserLikedPost(postId);
 
-    expect(getDoc).toHaveBeenCalledWith(
-      doc(db, 'posts', postId),
-    );
+    expect(getDoc).toHaveBeenCalledWith(doc(db, 'posts', postId));
     expect(resultado).toBe(true);
   });
 
@@ -92,9 +94,7 @@ describe('hasUserLikedPost', () => {
     const postId = 'postId';
     const resultado = await hasUserLikedPost(postId);
 
-    expect(getDoc).toHaveBeenCalledWith(
-      doc(undefined, 'posts', postId),
-    );
+    expect(getDoc).toHaveBeenCalledWith(doc(undefined, 'posts', postId));
     expect(resultado).toBe(false);
   });
 
@@ -107,9 +107,7 @@ describe('hasUserLikedPost', () => {
     const postId = 'postId';
     const resultado = await hasUserLikedPost(postId);
 
-    expect(getDoc).toHaveBeenCalledWith(
-      doc(undefined, 'posts', postId),
-    );
+    expect(getDoc).toHaveBeenCalledWith(doc(undefined, 'posts', postId));
     expect(resultado).toBe(false);
   });
 });
@@ -133,9 +131,35 @@ describe('likePost', () => {
     const postId = 'postId';
     const result = await likePost(postId, userId);
 
-    expect(getDoc).toHaveBeenCalledWith(
-      doc(db, 'posts', postId),
-    );
+    expect(getDoc).toHaveBeenCalledWith(doc(db, 'posts', postId));
     expect(result).toBe('add like');
+  });
+});
+
+describe('accessPost', () => {
+  test('should update the post list', () => {
+    const updateListPostMock = jest.fn();
+    const mockSnapshot = {
+      forEach: jest.fn((callback) => {
+        const mockPost = { data: jest.fn(() => ({})), id: 'post-id' };
+        callback(mockPost);
+      }),
+    };
+
+    const mockCollection = jest.fn();
+    const mockQuery = jest.fn();
+    const mockOnSnapshot = jest.fn((postQuery, callback) => {
+      callback(mockSnapshot);
+    });
+    collection.mockReturnValueOnce(mockCollection);
+    orderBy.mockReturnValueOnce(mockQuery);
+    onSnapshot.mockImplementationOnce(mockOnSnapshot);
+
+    accessPost(updateListPostMock);
+
+    expect(collection).toHaveBeenCalledWith(db, 'posts');
+    expect(orderBy).toHaveBeenCalledWith('createdAt', 'desc');
+    expect(mockSnapshot.forEach).toHaveBeenCalled();
+    expect(updateListPostMock).toHaveBeenCalledWith([{ id: 'post-id' }]);
   });
 });
