@@ -105,7 +105,7 @@ Definição de pronto:
 
 
 ## 4. Testes de usabilidade
-<!-- Os testes de usabilidade foram feitos com potenciais usuários primeiramente através da plataforma Figma, na qual foi feito um protótipo interativo. Demais testes foram feito ao longo do desenvolvimento do projeto através do deploy. Através do feedback de usuários foram implementadas melhorias como a possibilidade de resgate da senha. -->
+<!-- Os testes de usabilidade foram feitos com potenciais usuários primeiramente através da plataforma Figma, na qual foi feito um protótipo interativo. Demais testes foram feito ao longo do desenvolvimento do projeto através do deploy. Através do feedback de usuários foram implementadas melhorias como a possibilidade de resgate da senha e. -->
 
 ## 5. Testes unitários
 
