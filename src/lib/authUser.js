@@ -11,7 +11,7 @@
 //verificação de senha
 //verificação de erro (catch e erros para fazer validação)
 import { auth } from "./configfirebase.js";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, reauthenticateWithCredential, signInWithEmailAndPassword } from "firebase/auth";
 
 /* // Initialize Firebase Authentication and get a reference to the service
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -24,7 +24,7 @@ createUserWithEmailAndPassword(auth, email, password); */
 //criar aqui função para fazer cadastro
 //criar aqui função para fazer login
 
-createUserWithEmailAndPassword(auth, email, password)
+/* createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
@@ -36,5 +36,21 @@ createUserWithEmailAndPassword(auth, email, password)
     const errorMessage = error.message;
     console.log("deu errado", errorCode, errorMessage)
     // ..
-  });
+  }); */
+
+  export function login(email, senha){
+    //verificar preenchimento pelo usuario de usuario e senha (antes de passar por teste de login)
+    //INVALID_EMAIL (usar para criar função de verificação)
+    
+    return signInWithEmailAndPassword(auth, email, senha);
+
+  };
+
+  export function cadastro(nomeCompleto, usuario, email, senha){
+    //verificar preenchimento pelo usuario de usuario e senha (antes de passar por teste de cadastro)
+    //verificar quais parametros vão ser vinculados ao perfil via firebase
+    
+    return createUserWithEmailAndPassword(email, senha);
+
+  };
 
