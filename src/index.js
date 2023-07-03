@@ -2,6 +2,7 @@ import login from "./pages/Login/login.js";
 import perfil from "./pages/Perfil/perfil.js";
 import cadastro from "./pages/Cadastro/cadastro.js";
 
+
 document.addEventListener('DOMContentLoaded', function() {
   const main = document.querySelector("#root");
 

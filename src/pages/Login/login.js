@@ -27,6 +27,9 @@ export default () => {
 
 loginContainer.innerHTML = templateLogin;
 
+  
+
+
   // Informações preenchidas pelo usuário
   const usuarioEntrada = loginContainer.querySelector("#usuario");
   const senhaEntrada = loginContainer.querySelector("#senha");
