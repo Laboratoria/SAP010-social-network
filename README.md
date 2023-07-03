@@ -136,7 +136,7 @@ Definição de pronto:
 - [x] Conteúdos digitados nos inputs de senha são secretos, podendo o usuário optar por visualizá-los ou não;
 - [x] Formulários de registro e login passam por uma validação;
 - [x] Em casos de erro, mensagens descritivas devem são exibidas para ajudar o usuário;
-- [x] Ao publicar, é verificado se há  conteúdo no input.
+- [x] Ao publicar, é verificado se há  conteúdo no input;
 - [x] O conteúdo da timeline apenas é mostrado se o usuário estiver logado;
 - [x] Usuário pode publicar posts;
 - [x] Usuário pode curtir publicações;
