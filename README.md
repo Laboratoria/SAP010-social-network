@@ -92,30 +92,19 @@ Definição de pronto:
 * O botão curtir permite que o usuário deixe e retire o seu like nas publicações.
 
 ## 3. Desenhos de interface do usuário
-### 3.1 Protótipos de baixa fidelidade
+
+### Protótipos de alta fidelidade
 
 <div align="center">
 
 #### versão mobile:
-<img src="src/assets/Protótipo de baixa fidelidade versão mobile.jpeg" width="400em"/>
+<img src="src/assets/Protótipo de alta fidelidade versão mobile....PNG" width="400em"/>
 
 #### versão desktop:
-<img src="src/assets/Protótipo de baixa fidelidade versão desktop.jpeg" width="400em"/>
+<img src="src/assets/Protótipo de alta fidelidade versão desktop...PNG" width="400em"/>
 
 </div>
-
-### 3.2. Protótipos de alta fidelidade
-
-<div align="center">
-
-#### versão mobile:
-<img src="src/assets/Protótipo de alta fidelidade - versão mobile.png" width="400em"/>
-
-#### versão desktop:
-<img src="src/assets/Protótipo de alta fidelidade versão desktop.PNG" width="400em"/>
-
-</div>
-
+![Alt text](<src/assets/Protótipo de alta fidelidade versão mobile...PNG>)
 
 ## 4. Testes de usabilidade
  Os testes de usabilidade foram feitos com potenciais usuários primeiramente através da plataforma Figma, na qual foi feito um protótipo interativo. Demais testes foram feito ao longo do desenvolvimento do projeto através do deploy. 
