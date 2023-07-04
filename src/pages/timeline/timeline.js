@@ -180,9 +180,7 @@ export default () => {
   };
 
   postBtn.addEventListener('click', handlePostBtnClick);
-  postBtn.addEventListener('touchstart', handlePostBtnClick);
   postList.addEventListener('click', handlePostListClick);
-  postList.addEventListener('touchstart', handlePostListClick);
 
   logOutBtn.addEventListener('click', () => {
     logOut()
