@@ -6,7 +6,6 @@ import {
   setDoc,
   orderBy,
   onSnapshot,
-  updateDoc,
   deleteDoc,
 } from 'firebase/firestore';
 import { db } from '../Firebase/instalfirebase';
@@ -87,12 +86,15 @@ export const publish = async (post) => {
 
 // função de editar post
 
-export const editPost = async (id, textPost) => {
-  const refDoc = doc(db, 'Posts', `${id}`);
-  await updateDoc(refDoc, {
-    content: textPost,
-  });
+export const editItem = async (id, post) => {
+  const refDoc = doc(db, 'Post', id);
+  await setDoc(refDoc, post);
 };
+
+// export const editItem = async (postId, post) => {
+//   await setDoc (doc(db, 'Post', postId), post);
+// };
+
 // usado set doc para gerarmos nosso proprio id ex:post1_user1..., se usasemos
 // o addDoc o firebase geraria aleatoriamente ex:fmrjavnmdfkjnv
 export const like = async (postId, userId) => {
