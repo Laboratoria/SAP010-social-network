@@ -1,10 +1,10 @@
 // Firebase configuration
+import { getFirestore, collection, getDocs, addDoc} from 'firebase/firestore';
 
 import { initializeApp } from 'firebase/app';
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 import { getAuth } from 'firebase/auth';
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 const firebaseConfig = ({
   apiKey: 'AIzaSyDJEA0F1mx6VNcCZRfXe6SH4mw9uNpaFnY',
@@ -20,7 +20,6 @@ const firebaseConfig = ({
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-// export const get = getFirestore(app);
 export const db = getFirestore(app);
 
-export { collection, getDocs };
+export { collection, getDocs, addDoc };

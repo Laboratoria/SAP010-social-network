@@ -1,7 +1,8 @@
 import './feed.css';
-import { querySnapshot } from '../../configFirebase/auth';
+import { publicações } from '../../configFirebase/post.js';
 
 export default () => {
+
   const container = document.createElement('div');
 
   const template = `
@@ -43,7 +44,16 @@ export default () => {
 
   container.innerHTML = template;
 
-  console.log(querySnapshot());
+  const btnPostagem = container.querySelector('#postagemID');
+
+  btnPostagem.addEventListener('click', async () => {
+    const mensagem = container.querySelector('#areaMensagem').value;
+    
+    if (mensagem.length > 0){
+      await publicações()
+    } else {
+      alert ("Digite sua mensagem!")
+    }});
 
   return container;
 };
