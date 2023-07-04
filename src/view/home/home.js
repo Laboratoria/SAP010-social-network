@@ -1,4 +1,5 @@
-import logo from '../../img/logo.png'
+import logo from '../../img/logo.png';
+
 export const home = () => {
   const container = document.createElement('div');
 

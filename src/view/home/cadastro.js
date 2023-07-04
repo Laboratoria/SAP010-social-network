@@ -1,6 +1,7 @@
 import { signUp } from '../../lib';
 import { createUserData } from '../../lib/firestore';
-import logo from '../../img/logo.png'
+import logo from '../../img/logo.png';
+
 export const cadastro = () => {
   const container = document.createElement('div');
 

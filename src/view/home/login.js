@@ -1,5 +1,6 @@
 import { signIn, signInGoogle } from '../../lib/index.js';
-import logo from '../../img/logo.png'
+import logo from '../../img/logo.png';
+
 export const login = () => {
   const container = document.createElement('div');
 

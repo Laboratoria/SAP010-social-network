@@ -12,9 +12,9 @@ import {
 } from '../../lib/firestore.js';
 import { logout } from '../../lib/index.js';
 
-import logo from '../../img/logo.png'
-import userIcon from '../../img/usericon.png'
-import signOut from '../../img/sign-out-alt.png'
+import logo from '../../img/logo.png';
+import userIcon from '../../img/usericon.png';
+import signOut from '../../img/sign-out-alt.png';
 
 export const feed = () => {
   const container = document.createElement('div');
@@ -182,8 +182,7 @@ export const feed = () => {
 
       const editIcon = postCard.querySelector('.edit-icon');
 
-      editIcon.addEventListener('click', async (event) => {
-        event.preventDefault();
+      editIcon.addEventListener('click', async () => {
         const postId = post.id;
         const isAuthor = await checkAuthor(postId, currentUserId);
         console.log(isAuthor);
@@ -295,7 +294,7 @@ export const feed = () => {
     });
   };
 
- carregarFeed()
+  carregarFeed();
 
   container.querySelector('#btn-logout').addEventListener('click', () => {
     logout();
