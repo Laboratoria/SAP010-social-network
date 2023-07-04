@@ -1,7 +1,10 @@
 
 # Social Network - re.Pet 
 
-Terceiro projeto do bootcamp Laboratoria.
+
+<img src="src/img/logo.png" width="200px" style="border-radius:15%">
+
+<br>
 
 * Link do Projeto: [re.Pet](https://rede-social-9ce25.web.app/)
 
@@ -16,7 +19,7 @@ Terceiro projeto do bootcamp Laboratoria.
 * [5. Testes de usabilidade](#5-testes-de-usabilidade-❗)
 * [6. Checklist dos objetivos de aprendizagem](#6-checklist-dos-objetivos-de-aprendizagem-✅)
 * [7. Ferramentas utilizadas](#7-ferramentas-utilizadas-🛠️)
-* [8. Desenvolvedoras](#8-desenvolvedoras-👩‍💻)
+* [8. Desenvolvedoras](#8-desenvolvedoras👩‍💻)
 
 ## 1. Introdução 🐶
 
