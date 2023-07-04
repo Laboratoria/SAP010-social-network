@@ -5,23 +5,6 @@ Terceiro projeto do bootcamp Laboratoria.
 
 * Link do Projeto: [re.Pet](https://rede-social-9ce25.web.app/)
 
-Desenvolvido por:
-
-Cristyna Costa
-
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/cristyna-becker-costa-a36477178/)
-[![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/CristynaBC)
-
-
-Fernanda Caniçais
-
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/fernandacanicais/)
-[![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/fernanda-canicais)
-
-Fernanda Souza
-
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/fernandaasouza/)
-[![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/fernanda-asouza)
 
 
 ## Índice
@@ -29,10 +12,11 @@ Fernanda Souza
 * [1. Introdução](#1-introdução-🐶)
 * [2. Resumo do projeto](#2-resumo-do-projeto-🐱)
 * [3. Histórias de usuários](#3-histórias-de-usuário-💬)
-* [4. Desenvolvimento de projeto & Protótipos](#4-desenvolvimento-de-projeto--protótipos-✒️)
+* [4. Desenvolvimento de projeto & protótipos](#4-desenvolvimento-de-projeto--protótipos-✒️)
 * [5. Testes de usabilidade](#5-testes-de-usabilidade-❗)
 * [6. Checklist dos objetivos de aprendizagem](#6-checklist-dos-objetivos-de-aprendizagem-✅)
 * [7. Ferramentas utilizadas](#7-ferramentas-utilizadas-🛠️)
+* [8. Desenvolvedoras](#8-desenvolvedoras-👩‍💻)
 
 ## 1. Introdução 🐶
 
@@ -54,7 +38,8 @@ Para compreender as necessidades dos usuários, conduzimos entrevistas para iden
 
 ### 3.1 História 1
 
-    “Eu como usuário gostaria de ter a opção de entrar caso já tenha o cadastro, ou criar uma nova conta. Além disso, entrar utilizando minha conta Google para que o Login seja mais rápido e fácil.”
+    “Eu como usuário gostaria de ter a opção de entrar caso já tenha o cadastro, ou criar uma nova conta.
+    Além disso, entrar utilizando minha conta Google para que o Login seja mais rápido e fácil.”
  
 >Critérios de aceitação: 
 
@@ -71,7 +56,8 @@ Para compreender as necessidades dos usuários, conduzimos entrevistas para iden
 
 
 ### 3.2 História 2
-    “Eu como alguém que gostaria de compartilhar um animal que está para adoção, gostaria de poder publicar em forma de mensagem sobre as informações do animal”
+    “Eu como alguém que gostaria de compartilhar um animal que está para adoção, 
+    gostaria de poder publicar em forma de mensagem sobre as informações do animal”
  
 >Critérios de aceitação
 
@@ -164,3 +150,22 @@ A seguir, descrevemos os principais problemas encontrados pelos usuários e suas
 <br>
 
 [![My Skills](https://skillicons.dev/icons?i=js,html,css,firebase,figma,github&perline=3)](https://skillicons.dev)
+
+## 8. Desenvolvedoras👩‍💻 
+
+
+Cristyna Costa
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/cristyna-becker-costa-a36477178/)
+[![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/CristynaBC)
+
+
+Fernanda Caniçais
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/fernandacanicais/)
+[![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/fernanda-canicais)
+
+Fernanda Souza
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/fernandaasouza/)
+[![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/fernanda-asouza)
