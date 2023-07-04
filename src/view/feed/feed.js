@@ -1,6 +1,6 @@
 import {
-  carregarPosts,
-  criarPost,
+  loadPosts,
+  createPost,
   getUsername,
   getCurrentUserId,
   getCurrentUser,
@@ -119,14 +119,14 @@ export const feed = () => {
     document.getElementById('mensagem-erro-textarea').textContent = '';
   };
 
-  const carregarFeed = async () => {
+  const loadFeed = async () => {
     const feedHeader = container.querySelector('.feed-header p');
     const currentUser = await getCurrentUser();
     const currentUserId = await getCurrentUserId();
     getUsername(currentUser, currentUserId).then((username) => {
       feedHeader.textContent += ` ${username}!`;
     });
-    const posts = await carregarPosts();
+    const posts = await loadPosts();
 
     const feedPage = container.querySelector('.feed-page');
     feedPage.innerHTML = '';
@@ -294,7 +294,7 @@ export const feed = () => {
     });
   };
 
-  carregarFeed();
+  loadFeed();
 
   container.querySelector('#btn-logout').addEventListener('click', () => {
     logout();
@@ -386,13 +386,13 @@ export const feed = () => {
             postLikes,
           };
 
-          await criarPost(dadosPost);
+          await createPost(dadosPost);
 
           // Limpa os campos do formulário
           limparFormulário();
 
           // Recarrega o feed com a nova postagem
-          await carregarFeed();
+          window.location.reload()
           const modal = container.querySelector('#meuModal');
 
           modal.style.display = 'none';

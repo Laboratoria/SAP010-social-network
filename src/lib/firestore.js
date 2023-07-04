@@ -20,13 +20,13 @@ import { auth } from './index.js';
 
 //  função de criar um post no banco de dados
 
-export const criarPost = async (dadosPost) => {
+export const createPost = async (dadosPost) => {
   await addDoc(collection(db, 'post'), dadosPost);
 };
 
 //  função de carregar os dados das postagens do banco de dados em ordem de data
 
-export const carregarPosts = async () => {
+export const loadPosts = async () => {
   const querySnapshot = await getDocs(query(collection(db, 'post'), orderBy('dataAtual', 'desc')));
   return querySnapshot.docs.map((post) => {
     const data = post.data();

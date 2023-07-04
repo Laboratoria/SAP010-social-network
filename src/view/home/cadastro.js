@@ -1,4 +1,4 @@
-import { signUp } from '../../lib';
+import { signUp, signInGoogle } from '../../lib';
 import { createUserData } from '../../lib/firestore';
 import logo from '../../img/logo.png';
 
@@ -33,6 +33,12 @@ export const cadastro = () => {
       <button type='submit' id='sign-up' >Cadastrar</button>
   
       </form>
+      <div class='google-login'>
+      <div class='google-icon-wrapper'>
+        <img class='google-icon' src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'/>
+      </div> 
+      <a id='botao-google'>  Entrar com o Google </a> 
+    </div>
        
     </div>
 
@@ -84,6 +90,16 @@ export const cadastro = () => {
     } else {
       container.querySelector('#mensagem-erro').innerHTML = 'As senhas devem ser as mesmas.';
     }
+  });
+
+  container.querySelector('#botao-google').addEventListener('click', () => {
+    signInGoogle()
+      .then(() => {
+        window.location.hash = '#feed';
+      })
+      .catch(() => {
+        container.querySelector('#mensagem-erro').innerHTML = 'Erro, tente novamente!';
+      });
   });
 
   return container;

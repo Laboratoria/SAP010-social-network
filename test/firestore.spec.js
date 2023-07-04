@@ -13,8 +13,8 @@ import { db, onAuthStateChanged } from 'firebase/auth';
 import { expect } from '@jest/globals';
 
 import {
-  criarPost,
-  carregarPosts,
+  createPost,
+  loadPosts,
   createUserData,
   getCurrentUserId,
   getCurrentUser,
@@ -32,7 +32,7 @@ beforeEach(() => {
   jest.clearAllMocks();
 });
 
-describe('criarPost', () => {
+describe('createPost', () => {
   const mockPost = {
     idadePet: 'filhote',
     especie: 'Cachorro',
@@ -44,14 +44,14 @@ describe('criarPost', () => {
   };
 
   it('deve criar um post', async () => {
-    await criarPost(mockPost);
+    await createPost(mockPost);
 
     expect(collection).toHaveBeenCalledWith(db, 'post');
     expect(addDoc).toHaveBeenCalledWith(collection(), mockPost);
   });
 });
 
-describe('carregarPosts', () => {
+describe('loadPosts', () => {
   it('deve carregar os posts', async () => {
     const querySnapshotMock = {
       docs: [
@@ -64,7 +64,7 @@ describe('carregarPosts', () => {
 
     getDocs.mockResolvedValueOnce(querySnapshotMock);
 
-    const retornar = await carregarPosts();
+    const retornar = await loadPosts();
 
     expect(getDocs).toHaveBeenCalledTimes(1);
     expect(retornar).toEqual([
