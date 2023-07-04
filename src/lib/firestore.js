@@ -34,6 +34,7 @@ export const getFeedItems = (renderItems) => {
 
   const feedPost = collection(db, 'Post');
   const q = query(feedPost, orderBy('createdAt', 'desc'));
+
   onSnapshot(q, (querySnapshot) => {
     // limpa a variavel de posts para adicionar os itens novamente abaixo
     feedItems = [];
@@ -82,6 +83,17 @@ export const getFeedItems = (renderItems) => {
 export const publish = async (post) => {
   await addDoc(collection(db, 'Post'), post);
 };
+
+// função de editar post
+
+export const editItem = async (id, post) => {
+  const refDoc = doc(db, 'Post', id);
+  await setDoc(refDoc, post);
+};
+
+// export const editItem = async (postId, post) => {
+//   await setDoc (doc(db, 'Post', postId), post);
+// };
 
 // usado set doc para gerarmos nosso proprio id ex:post1_user1..., se usasemos
 // o addDoc o firebase geraria aleatoriamente ex:fmrjavnmdfkjnv

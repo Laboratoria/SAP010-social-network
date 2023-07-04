@@ -5,12 +5,12 @@ import {
   getFeedItems,
   like,
   publish,
+  editItem,
   deletePost,
 } from '../lib/firestore';
 
 export const feedUser = () => {
   const container = document.createElement('div');
-
   const template = `
   <header>
     <nav>
@@ -67,6 +67,7 @@ export const feedUser = () => {
       </div>
       <input id="userId" type="hidden"/>
       <form id="postForm" class='formPost'>
+      <input id="postPublishId" type="hidden"/>
         <textarea class='inputContent' id="postContent" placeholder="Qual experiência você teve hoje?" required></textarea>
         <div class="form-bottom">
           <img class='img-location' src="Img/location-feed.svg">
@@ -79,10 +80,8 @@ export const feedUser = () => {
   `;
 
   container.innerHTML = template;
-
   const modal = container.querySelector('#createPost');
   const closeButton = container.querySelector('#close');
-  // const publishButton = container.getElementById('publishButton');
   const openPublishButton = container.querySelector('#experienceButton');
 
   // Função para abrir o modal
@@ -146,7 +145,7 @@ export const feedUser = () => {
               </div>
             </div>
             ${userId === myUserId ? `<div class='card-actions'>
-                <img class="points-feed" id='editarPostButton' src="Img/pen.png" alt='Lapis ilustrativo'/>
+                <img class="points-feed" id='editPostButton' src="Img/pen.png" onclick="editPostUser('${id}', '${description}', '${restaurantName}')" alt='Lapis ilustrativo'/>
                 <img class="points-feed" onclick='postDelete("${id}")' src='Img/bin.png' alt='Lixo ilustrativo'/>
               </div>` : ''}
           </div>
@@ -168,7 +167,6 @@ export const feedUser = () => {
   };
 
   getFeedItems(renderCards);
-
   return container;
 };
 
@@ -178,6 +176,7 @@ async function publishPost() {
   const postLocation = document.getElementById('postLocation');
   const postContent = document.getElementById('postContent');
   const userId = document.getElementById('userId');
+  const postId = document.getElementById('postPublishId');
 
   const post = {
     description: postContent.value,
@@ -188,8 +187,12 @@ async function publishPost() {
     createdAt: new Date(),
     userId: userId.value,
   };
-
-  await publish(post);
+  if (postId.value == null) {
+    await publish(post);
+  } else {
+    await editItem(postId.value, post);
+    window.alert('Postagem editada com sucesso!');
+  }
   const closeButton = document.querySelector('#close');
   closeButton.click();
   const form = document.querySelector('#postForm');
@@ -208,6 +211,19 @@ async function likePost(postId, liked) {
   }
 }
 window.likePost = likePost;
+
+// função editar post
+async function editPostUser(id, description, restaurantName) {
+  const openPublishButton = document.querySelector('#experienceButton');
+  const postLocation = document.getElementById('postLocation');
+  const postContent = document.getElementById('postContent');
+  const postId = document.getElementById('postPublishId');
+  postContent.value = description;
+  postLocation.value = restaurantName;
+  postId.value = id;
+  openPublishButton.click();
+}
+window.editPostUser = editPostUser;
 
 // Função deletar post
 async function postDelete(id) {
