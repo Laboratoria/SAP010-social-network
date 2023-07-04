@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.19.4",
+    "@jest/globals": "^29.5.0",
     "eslint": "^8.3.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.18.2",
@@ -41,5 +42,8 @@
     "createdAt": "2023-05-16T13:46:37.371Z",
     "version": "6.2.0",
     "commit": "6a23c58a18f96b4dc3b7b1566dcac06ca9c3ec14"
+  },
+  "dependencies": {
+    "firebase": "^9.22.1"
   }
 }
