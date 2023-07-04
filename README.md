@@ -9,14 +9,14 @@ Terceiro projeto do bootcamp Laboratoria.
 
 ## Índice
 
-*[1. Introdução](#1-introdução-🐶)
-*[2. Resumo do projeto](#2-resumo-do-projeto-🐱)
-*[3. Histórias de usuários](#3-histórias-de-usuário-💬)
-*[4. Desenvolvimento de projeto & protótipos](#4-desenvolvimento-de-projeto--protótipos-✒️)
-*[5. Testes de usabilidade](#5-testes-de-usabilidade-❗)
-*[6. Checklist dos objetivos de aprendizagem](#6-checklist-dos-objetivos-de-aprendizagem-✅)
-*[7. Ferramentas utilizadas](#7-ferramentas-utilizadas-🛠️)
-*[8. Desenvolvedoras](#8-desenvolvedoras-👩‍💻)
+* [1. Introdução](#1-introdução-🐶)
+* [2. Resumo do projeto](#2-resumo-do-projeto-🐱)
+* [3. Histórias de usuários](#3-histórias-de-usuário-💬)
+* [4. Desenvolvimento de projeto & protótipos](#4-desenvolvimento-de-projeto--protótipos-✒️)
+* [5. Testes de usabilidade](#5-testes-de-usabilidade-❗)
+* [6. Checklist dos objetivos de aprendizagem](#6-checklist-dos-objetivos-de-aprendizagem-✅)
+* [7. Ferramentas utilizadas](#7-ferramentas-utilizadas-🛠️)
+* [8. Desenvolvedoras](#8-desenvolvedoras-👩‍💻)
 
 ## 1. Introdução 🐶
 
