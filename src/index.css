@@ -14,10 +14,6 @@
   box-sizing: border-box;
   width: 100%;
 }
-@media screen and (max-width: 480px) {
-  * {width: auto;
-  }
-}
 
 body {
   color: var(--black);
