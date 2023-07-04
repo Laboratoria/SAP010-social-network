@@ -69,7 +69,7 @@ export default () => {
             <span class='icon-container'><i class='fas fa-eye-slash'></i></span>
           </span> 
         </button>
-          <input type='password' class='inputs-register' id='confirm-password' placeholder='CONFIRME SUA SENHA'>
+          <input type='password' class='inputs-register' id='confirm-password' placeholder='CONFIRME SENHA'>
           <button type='button' id='show-eye2' class='icon-eye2'>
           <span class='icons-eye2'>
             <span class='icon-container'><i class='fas fa-eye-slash'></i></span>
