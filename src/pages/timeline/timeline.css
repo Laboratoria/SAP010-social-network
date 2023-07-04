@@ -162,7 +162,6 @@
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1em;
-    /* margin: 0 4em 0 0; */
     align-items: center;
 }
 
@@ -276,11 +275,7 @@ a {
    }
 }
 @media screen and (max-width: 480px) {
-    .img-timeline {
-        display: none;
-    }
-
-    .container {
+     .container {
         margin-bottom: 1em;
     }
 
@@ -289,3 +284,8 @@ a {
     }
 }   
 
+@media screen and (max-width: 851px) {
+    .img-timeline {
+      display: none;
+    }
+  }
