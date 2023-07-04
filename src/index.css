@@ -111,7 +111,10 @@ footer a:hover {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
+  * {width: auto;
+  }
+
   .submit {
     width: 15em;
     height: 2em;
