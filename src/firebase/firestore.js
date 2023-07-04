@@ -83,9 +83,9 @@ export const likePost = async (postId, userId) => {
       if (!whoLiked.includes(userId)) {
         whoLiked.push(userId);
         await updateDoc(docRef, { whoLiked });
+        return 'add like';
       }
     }
-    return 'add like';
   }
   const washingtonRef = doc(db, 'posts', postId);
   await updateDoc(washingtonRef, {

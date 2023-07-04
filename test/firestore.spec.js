@@ -117,7 +117,7 @@ describe('likePost', () => {
     jest.clearAllMocks();
   });
 
-  it('should add like to post', async () => {
+  it('should remove like to post', async () => {
     const mockPostData = {
       whoLiked: ['userId'],
     };
@@ -131,6 +131,21 @@ describe('likePost', () => {
     const postId = 'postId';
     const result = await likePost(postId, userId);
 
+    expect(getDoc).toHaveBeenCalledWith(doc(db, 'posts', postId));
+    expect(result).toBe('remove like');
+  });
+  it('should add like to post', async () => {
+    const mockPostData = {
+      whoLiked: ['userId'],
+    };
+    const userId = 'userId';
+    const mockGetDoc = {
+      exists: true,
+      data: jest.fn(() => mockPostData),
+    };
+    const postId = 'postId';
+    const result = await likePost(postId, userId);
+    getDoc.mockReturnValueOnce(mockGetDoc);
     expect(getDoc).toHaveBeenCalledWith(doc(db, 'posts', postId));
     expect(result).toBe('add like');
   });
