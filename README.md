@@ -108,19 +108,31 @@ A seguir, descrevemos os principais problemas encontrados pelos usuários e suas
 
 1 - A janela para preencher as informações da postagem ficou parcialmente escondida na barra de tarefas, dificultando sua visualização e utilização adequada.
 
-    Para solucionar este problema, optamos pela adição de uma barra de rolagem na janela modal do formulário de postagem, essa solução garante uma experiência mais consistente para os usuários, independentemente do tamanho da tela em que estão utilizando a aplicação, sem modificar a estrutura do formulário.
+    Para solucionar este problema, optamos pela adição de uma barra de rolagem na 
+    janela modal do formulário de postagem, essa solução garante uma experiência
+    mais consistente para os usuários, independentemente do tamanho da tela 
+    em que estão utilizando a aplicação, sem modificar a estrutura do formulário.
 
 2 - Ao cadastrar o telefone, não foi estabelecido um limite de caracteres, o que pode levar a erros de digitação e dificultar o contato correto.
 
-    Para este problema, adicionamos requisitos específicos no campo “contato”  do formulário, como a limitação da quantidade de dígitos para nove dígitos,  evitando assim possíveis erros de digitação.
+    Para este problema, adicionamos requisitos específicos no campo “contato” 
+    do formulário, como a limitação da quantidade de dígitos para nove dígitos,
+    evitando assim possíveis erros de digitação.
 
 3 - Alguns usuários relataram que, ao realizar uma postagem com um texto longo, a visualização no feed não se ajustou adequadamente ao tamanho, resultando em um transbordamento do conteúdo da postagem.
 	
-	Para solucionar este problema, adicionamos uma barra de rolagem no campo “mensagem” da postagem publicada em caso de textos muito extensos, optou-se por essa solução para preservar a consistência do tamanho das postagens, sem limitar o conteúdo das mesmas.
+	Para solucionar este problema, adicionamos uma barra de rolagem no
+	campo “mensagem” da postagem publicada em caso de textos muito extensos,
+	optou-se por essa solução para preservar a consistência do tamanho das
+	postagens, sem limitar o conteúdo das mesmas.
 
 4- Após editar uma postagem, não era possível editar a postagem novamente.
 
-	Foi identificado um problema no envio do formulário de edição de conteúdo da postagem, para solucionar esse problema, foi adicionado um evento preventDefault( ) no formulário de edição. Isso permite que o usuário permaneça na mesma página e continue interagindo com a postagem, incluindo a possibilidade de realizar edições adicionais, se necessário.
+	Foi identificado um problema no envio do formulário de edição de
+ 	conteúdo da postagem, para solucionar esse problema, foi adicionado
+	um evento preventDefault( ) no formulário de edição. Isso permite que o usuário
+	permaneça na mesma página e continue interagindo com a postagem, 
+  	incluindo a possibilidade de realizar edições adicionais, se necessário.
 
 
 
