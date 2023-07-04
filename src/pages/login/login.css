@@ -41,6 +41,7 @@ ul {
   align-items: center;
   justify-content: center;
   outline: none;
+  text-decoration: none;
 }
 
 .container {
