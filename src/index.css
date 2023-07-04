@@ -14,6 +14,10 @@
   box-sizing: border-box;
   width: 100%;
 }
+@media screen and (max-width: 480px) {
+  * {width: auto;
+  }
+}
 
 body {
   color: var(--black);
@@ -111,7 +115,10 @@ footer a:hover {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
+  * {width: auto;
+  }
+
   .submit {
     width: 15em;
     height: 2em;

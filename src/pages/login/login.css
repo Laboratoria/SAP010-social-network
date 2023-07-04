@@ -167,7 +167,7 @@
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
     .inputs-register, .inputs-info{
         width: 15em;
         height: 2em;
@@ -175,7 +175,7 @@
 
 
     .button-eye {
-        transform: translate(22%, 270%); 
+        transform: translate(400%, 270%); 
     }        
     .logo {
         width: 8em;

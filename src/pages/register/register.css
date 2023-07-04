@@ -90,7 +90,7 @@ position: relative;
 }
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
     .img-register {
         width: 8em;
         margin-bottom: 1.8em;
@@ -103,10 +103,10 @@ position: relative;
     }
    
     .icon-eye1 {
-        transform: translate(-5%, -130%); 
+        transform: translate(350%, -130%); 
     }
     
     .icon-eye2 {
-        transform: translate(90px, -20px); 
+        transform: translate(160px, -20px); 
     }
 }

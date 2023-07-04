@@ -283,7 +283,7 @@ a {
         width: 80%;
    }
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 480px) {
     .img-timeline {
         display: none;
     }
