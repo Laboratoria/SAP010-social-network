@@ -177,7 +177,7 @@ async function publishPost() {
   const postContent = document.getElementById('postContent');
   const userId = document.getElementById('userId');
   const postId = document.getElementById('postPublishId');
-
+console.log (postId.value)
   const post = {
     description: postContent.value,
     rating: 2,
@@ -187,7 +187,7 @@ async function publishPost() {
     createdAt: new Date(),
     userId: userId.value,
   };
-  if (postId.value == null) {
+  if (postId.value === '') {
     await publish(post);
   } else {
     await editItem(postId.value, post);
@@ -197,7 +197,7 @@ async function publishPost() {
   closeButton.click();
   const form = document.querySelector('#postForm');
   form.reset();
-}
+};
 window.publishPost = publishPost;
 
 // Função de like e deslike
