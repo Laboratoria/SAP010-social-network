@@ -392,7 +392,7 @@ export const feed = () => {
           limparFormulário();
 
           // Recarrega o feed com a nova postagem
-          window.location.reload()
+          window.location.reload();
           const modal = container.querySelector('#meuModal');
 
           modal.style.display = 'none';
