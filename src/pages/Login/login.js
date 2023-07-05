@@ -3,7 +3,7 @@ import { login } from "../../lib/authUser.js";
 
 export default () => {
   const loginContainer = document.createElement('div');
-  const templateLogin = `<header>
+  const templateLogin = `<div id="loginBackground"></div><div><header>
   <picture><img class="logo" src="./img/logo_contraplano.png"></picture>
 </header>
 <div>
@@ -34,8 +34,9 @@ export default () => {
 <h5>Bootcamp Laboratoria - Projeto Rede Social</h5>
 <h6>Desenvolvido por Larissa, Maila e Vitória</h6>
 <p>2023</p>
-</footer>`;
+</footer></div>`;
 
+loginContainer.id = "login"
 loginContainer.innerHTML = templateLogin;
 
   // Informações preenchidas pelo usuário
@@ -57,10 +58,11 @@ loginContainer.innerHTML = templateLogin;
       .then(() => {
         window.location.hash = '#perfil';
       })
-      .catch(() => {
+      .catch((err) => {
         const errorMessage = loginContainer.querySelector('#errorMessage');
         errorMessage.textContent = 'Usuário ou senha incorretos';
         errorMessage.style.display = 'block';
+        console.log(err);
       });
     
     // teste login

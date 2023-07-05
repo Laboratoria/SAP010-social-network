@@ -2,7 +2,7 @@
 
 export default () => {
   const cadastroContainer = document.createElement('div');
-  const templateCadastro = `
+  const templateCadastro = `<div id="loginBackground"></div><div> 
   <header>
     <picture><img class="logo" src="./img/logo_contraplano.png"></picture>
   </header>
@@ -37,8 +37,8 @@ export default () => {
     <h5>Bootcamp Laboratoria - Projeto Rede Social</h5>
     <h6>Desenvolvido por Larissa, Maila e Vitória</h6>
     <p>2023</p>
-  </footer>`;
-
+  </footer></div>`;
+  cadastroContainer.id ="login"
   cadastroContainer.innerHTML = templateCadastro;
 
   // Informações preenchidas pelo usuário
