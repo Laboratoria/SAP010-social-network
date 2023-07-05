@@ -4,7 +4,7 @@ import CBD from '../imagens/CBDCNNCT-IMG/logodesktopsombreada.png';
 // import "../../main.js";
 
 export default () => {
-  const container = document.createElement('div');
+  const container = document.createElement('section');
   container.classList.add('container-home');
 
   const templateHome = `

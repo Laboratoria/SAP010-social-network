@@ -37,12 +37,12 @@ window.addEventListener('load', () => {
   init();
 });
 
-const novaConta = document.getElementById('cadastro'); /* evento para criar nova conta */
-window.onload = function () {
-  novaConta.addEventListener('click', () => {
-    window.location.hash = '/#cadastro';
-  });
-};
+// const novaConta = document.getElementById('cadastro'); /* evento para criar nova conta */
+// window.onload = function () {
+//   novaConta.addEventListener('click', () => {
+//     window.location.hash = '/#cadastro';
+//   });
+// };
 
 // const google = document.getElementById("entrarGoogle"); /*evento para entrar com a conta google*/
 // google.addEventListener("click", (e) => {

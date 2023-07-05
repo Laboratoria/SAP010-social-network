@@ -1,7 +1,7 @@
 import './feed.css';
 
 export default () => {
-  const containerFeed = document.createElement('div');
+  const containerFeed = document.createElement('section');
   containerFeed.classList.add('container-feed');
 
   const templateFeed = `
