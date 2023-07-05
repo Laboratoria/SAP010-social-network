@@ -1,35 +1,26 @@
-import './feed.css';
+import './novoPost.css';
 import loguinho from '../imagens/CBDCNNCT-IMG/logologuinhamobilefeed.png';
 import perfil from '../imagens/icones/perfil.png';
 import novoPost from '../imagens/icones/novoPost.png';
 import sair from '../imagens/icones/sair.png';
 
 export default () => {
-  const containerFeed = document.createElement('section');
-  containerFeed.classList.add('container-feed');
+  const containerNovoPost = document.createElement('section');
+  containerNovoPost.classList.add('container-novoPost');
 
-  const templateFeed = `
+  const templateNovoPost = `
   <figure><img class="img-loguinho" src=${loguinho} alt="logo app" title="Logo CBD Connection"></figure>
-  <nav>
-  <a href="#perfil" id="feed" class="">nome</a>
-  </nav>
-  <p>Tela de Feed </p>
-  <span class="tipoUsuario1"></span>
-  <div class="containerVerdeFeed">
-  <span class="nomeUsuario"></span>
-  <span class="tipoUsuario"></span>
-  </div>
-  
-  <footer>
+  <p> Tela nova Postagem </p>
+
+   <footer>
   <a href="#perfil" id="iconePerfil"><img class="iconesFooter" src=${perfil} alt="icone perfil" title="Ícone Perfil"></a>
   <a href="#novoPost" id="iconeNovoPost"><img class="iconesFooter" src=${novoPost} alt="icone criar nova postagem" title="Ícone para Nova Postagem"></a>
   <a href="#home" id="iconeSair"><img class="iconesFooter" src=${sair} alt="icone sair" title="Ícone para Deslogar"></a>
   </footer>
 
-
   `;
 
-  containerFeed.innerHTML = templateFeed;
+  containerNovoPost.innerHTML = templateNovoPost;
 
-  return containerFeed;
+  return containerNovoPost;
 };

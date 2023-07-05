@@ -7,6 +7,8 @@ import login from './pages/login/login.js';
 import home from './pages/home/home.js';
 import cadastro from './pages/cadastro/cadastro.js';
 import feed from './pages/feed/feed.js';
+import perfil from './pages/perfil/perfil.js';
+import novoPost from './pages/novoPost/novoPost.js';
 
 const main = document.getElementById('root');
 const init = () => {
@@ -26,6 +28,12 @@ const init = () => {
       case '#feed':
         main.appendChild(feed());
         break;
+      case '#perfil':
+        main.appendChild(perfil());
+        break;
+      case '#novoPost':
+        main.appendChild(novoPost());
+        break;
       default:
         main.appendChild(home());
     }
@@ -37,12 +45,12 @@ window.addEventListener('load', () => {
   init();
 });
 
-const novaConta = document.getElementById('cadastro'); /* evento para criar nova conta */
-window.onload = function () {
-  novaConta.addEventListener('click', () => {
-    window.location.hash = '/#cadastro';
-  });
-};
+// const novaConta = document.getElementById('cadastro'); /* evento para criar nova conta */
+// window.onload = function () {
+//   novaConta.addEventListener('click', () => {
+//     window.location.hash = '/#cadastro';
+//   });
+// };
 
 // const google = document.getElementById("entrarGoogle"); /*evento para entrar com a conta google*/
 // google.addEventListener("click", (e) => {

@@ -5,7 +5,7 @@ import google from '../imagens/google.png';
 import facebook from '../imagens/facebook.png';
 
 export default () => {
-  const containerLogin = document.createElement('div');
+  const containerLogin = document.createElement('section');
   containerLogin.classList.add('container-login');
 
   const templateLogin = `
