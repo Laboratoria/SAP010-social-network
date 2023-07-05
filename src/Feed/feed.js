@@ -35,19 +35,13 @@ export const feedUser = () => {
     </nav>
   </header>
   <main>
-    <sidebar class='sidebar'>
-      <article class='header'>
-        <h2>Food Review</h2>
-      </article>
-      <nav const='menu'>
-        <ul>
-          <li class="nav-item"><a href="#feed"><img width="34px" height="34px" src="Img/home-feed.svg"/>Feed</a></li>
-          <li class="nav-item"><a href="#sobre"><img src="Img/info-feed.svg"/>Sobre</a></li>
-          <li class="nav-item"><a href="#sair"><img src="Img/logout-feed.svg"/>Sair</a></li>
+      <nav class="nav__cont">
+        <ul class="nav">
+          <li class="nav__items"><a href="#feed"><img src="Img/home-feed.svg"/>Feed</a></li>
+          <li class="nav__items"><a href="#sobre"><img src="Img/info-feed.svg"/>Sobre</a></li>
+          <li class="nav__items"><a href="#sair"><img src="Img/logout-feed.svg"/>Sair</a></li>
         </ul>
       </nav>
-    </sidebar>
-
     <section class="feed">
       <img class='imgFeed'src="Img/bg-feed.png"/>
       <div class="boxExperience">
