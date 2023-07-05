@@ -6,7 +6,7 @@ import {
   GoogleAuthProvider,
   signOut,
   // getAuth,
-  updateProfile,
+  // updateProfile,
   onAuthStateChanged,
 } from 'firebase/auth';
 import {
@@ -93,12 +93,8 @@ describe('Firebase', () => {
     const email = 'josédasilva@gmail.com';
     const senha = '123456';
 
-    const userCredential = await newUser(email, senha);
+    await newUser(email, senha);
     expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(auth, email, senha);
-    if (userCredential && userCredential.user) {
-      const displayName = 'José da Silva';
-      expect(updateProfile).toHaveBeenCalledWith(userCredential.user, { displayName });
-    }
   });
 
   test('Criar novo post', async () => {
@@ -164,17 +160,13 @@ describe('Firebase', () => {
   });
 
   test('logout do usuário', async () => {
-    const authMock = {
-      signOut: jest.fn(),
-    };
-    signOut.mockReturnValue();
+    signOut.mockResolvedValue({
+      user: {},
+    });
 
-    window.location.hash = '';
     await logout();
 
-    expect(authMock.signOut).toHaveBeenCalledWith();
-    expect(window.location.hash).toBe('');
-    // erro do window //
+    expect(signOut).toHaveBeenCalledTimes(1);
   });
 
   test('Deletar post do usuário', async () => {

@@ -40,8 +40,8 @@ export const aboutUs = () => {
                 <div class="darken"></div>
                 <div class="content">
                     <ul>
-                        <li><a href="https://www.linkedin.com/in/mislenemoura/"><span class="fab fa-linkedin"></span></a></li>
-                        <li><a href="https://github.com/MisleneSM"><span class="fab fa-github"></span></a></li>
+                        <li><a href="https://www.linkedin.com/in/mislenemoura/" target="_blank"><span class="fab fa-linkedin"></span></a></li>
+                        <li><a href="https://github.com/MisleneSM" target="_blank"><span class="fab fa-github"></span></a></li>
                     </ul>
                 </div>
             </div>
@@ -54,10 +54,8 @@ export const aboutUs = () => {
                 <div class="darken"></div>
                 <div class="content">
                     <ul>
-                    <li><a href="https://www.linkedin.com/in/niviacristina/"><span class="fab fa-linkedin"></span></a></li>
-                    <li><a href="https://github.com/Nivicris"><span class="fab fa-github"></span></a></li>
-                    <li><a href="https://www.instagram.com/nivicris/"><span class="fab fa-instagram"></span></a></li>
-                    <li><a href=""><span class="fab fa-facebook"></span></a></li>
+                      <li><a href="https://www.linkedin.com/in/niviacristina/" target="_blank"><span class="fab fa-linkedin"></span></a></li>
+                      <li><a href="https://github.com/Nivicris" target="_blank"><span class="fab fa-github"></span></a></li>
                     </ul>
                 </div>
             </div>
@@ -70,10 +68,8 @@ export const aboutUs = () => {
                 <div class="darken"></div>
                 <div class="content">
                     <ul>
-                    <li><a href="https://www.linkedin.com/in/roxaneprincipe/"><span class="fab fa-linkedin"></span></a></li>
-                    <li><a href="https://github.com/roxanevp"><span class="fab fa-github"></span></a></li>
-                    <li><a href="https://www.instagram.com/roxanevazp/"><span class="fab fa-instagram"></span></a></li>
-                    <li><a href="https://www.facebook.com/roxane.vaz.3"><span class="fab fa-facebook"></span></a></li>
+                      <li><a href="https://www.linkedin.com/in/roxaneprincipe/" target="_blank"><span class="fab fa-linkedin"></span></a></li>
+                      <li><a href="https://github.com/roxanevp" target="_blank"><span class="fab fa-github"></span></a></li>
                     </ul>
                 </div>
             </div>

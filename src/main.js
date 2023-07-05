@@ -15,7 +15,8 @@ export const routes = () => {
   root.innerHTML = '';
 
   if (isLoggedIn()) {
-    switch (window.location.hash) {
+    const hash = window.location.hash;
+    switch (hash) {
       case '':
       case '#feed':
         root.appendChild(feedUser());
@@ -30,10 +31,8 @@ export const routes = () => {
         root.appendChild(feedUser());
         break;
     }
-
     return;
   }
-
   switch (window.location.hash) {
     case '':
     case '#login':

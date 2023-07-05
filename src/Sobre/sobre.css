@@ -1,7 +1,7 @@
 /*conteudo sobre nos*/
 
 #cubeContainer {
-  overflow: scroll;
+  overflow: none;
   z-index: 1;
   -ms-overflow-style: none;
   scrollbar-width: none;
