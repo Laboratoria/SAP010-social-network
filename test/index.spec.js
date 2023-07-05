@@ -5,8 +5,9 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
-  /* getAuth, */
-  /* onAuthStateChanged, */
+  // getAuth,
+  updateProfile,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import {
   doc,
@@ -23,13 +24,14 @@ import {
   dislike,
   publish,
   getFeedItems,
+  editItem,
   deletePost,
 } from '../src/lib/firestore.js';
 import {
   newUser,
   authLogin,
   authLoginGoogle,
-  /* authStateChanged, */
+  authStateChanged,
   logout,
 } from '../src/lib/index.js';
 import {
@@ -91,9 +93,12 @@ describe('Firebase', () => {
     const email = 'josédasilva@gmail.com';
     const senha = '123456';
 
-    await newUser(email, senha);
-
+    const userCredential = await newUser(email, senha);
     expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(auth, email, senha);
+    if (userCredential && userCredential.user) {
+      const displayName = 'José da Silva';
+      expect(updateProfile).toHaveBeenCalledWith(userCredential.user, { displayName });
+    }
   });
 
   test('Criar novo post', async () => {
@@ -105,6 +110,13 @@ describe('Firebase', () => {
 
     expect(collection).toHaveBeenCalledWith(db, collectionName);
     expect(addDoc).toHaveBeenCalledWith(mockCollection, post);
+  });
+
+  test('deve chamar o callback corretamente', () => {
+    const onAuthStateChangedMock = jest.fn();
+    onAuthStateChanged.mockImplementation(onAuthStateChangedMock);
+    authStateChanged(onAuthStateChangedMock);
+    expect(onAuthStateChangedMock).toHaveBeenCalled();
   });
 
   test('Pega os itens e mostra na página', () => {
@@ -171,5 +183,18 @@ describe('Firebase', () => {
     await deletePost(postId);
     expect(doc).toHaveBeenCalledWith(db, 'Post', postId);
     expect(deleteDoc).toHaveBeenCalledWith(doc(db, 'Post', postId));
+  });
+
+  test('deve atualizar o post existente após edição', async () => {
+    // const collectionName = 'PostLikes';
+    const id = 'post1';
+    const post = {
+      description: 'Restaurante muito bom',
+      restaurantName: 'Oue',
+    };
+    const refDoc = `${db}_Post_${id}`;
+    await editItem(id, post);
+    expect(doc).toHaveBeenCalledWith(db, 'Post', id);
+    expect(setDoc).toHaveBeenCalledWith(refDoc, post);
   });
 });
