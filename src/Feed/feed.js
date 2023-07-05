@@ -185,6 +185,7 @@ async function publishPost() {
     await publish(post);
   } else {
     await editItem(postId.value, post);
+    postId.value = '';
     window.alert('Postagem editada com sucesso!');
   }
   const closeButton = document.querySelector('#close');

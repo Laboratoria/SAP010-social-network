@@ -33,7 +33,7 @@ export const aboutUs = () => {
               <div id="cubes">
             <div class="cube p1">
                 <div class="name">
-                    <h1>Misleine Moura</h1>
+                    <h1>Mislene Moura</h1>
                     <p>Web Developer</p>
                 </div>
                 <div class="innerBorder"></div>
@@ -42,8 +42,6 @@ export const aboutUs = () => {
                     <ul>
                         <li><a href="https://www.linkedin.com/in/mislenemoura/"><span class="fab fa-linkedin"></span></a></li>
                         <li><a href="https://github.com/MisleneSM"><span class="fab fa-github"></span></a></li>
-                        <li><a href="https://www.instagram.com/mislenetv/"><span class="fab fa-instagram"></span></a></li>
-                        <li><a href="https://www.facebook.com/mislene.moura.1"><span class="fab fa-facebook"></span></a></li>
                     </ul>
                 </div>
             </div>
