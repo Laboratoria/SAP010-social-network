@@ -4,7 +4,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
-  /* signOut, */
+  signOut,
   /* getAuth, */
   /* onAuthStateChanged, */
 } from 'firebase/auth';
@@ -23,14 +23,14 @@ import {
   dislike,
   publish,
   getFeedItems,
-  /* deletePost, */
+  deletePost,
 } from '../src/lib/firestore.js';
 import {
   newUser,
   authLogin,
   authLoginGoogle,
   /* authStateChanged, */
-  /* logout, */
+  logout,
 } from '../src/lib/index.js';
 import {
   db,
@@ -149,5 +149,27 @@ describe('Firebase', () => {
 
     expect(doc).toHaveBeenCalledWith(db, collectionName, id);
     expect(deleteDoc).toHaveBeenCalledWith(mockDoc);
+  });
+
+  test('logout do usuário', async () => {
+    const authMock = {
+      signOut: jest.fn(),
+    };
+    signOut.mockReturnValue();
+
+    window.location.hash = '';
+    await logout();
+
+    expect(authMock.signOut).toHaveBeenCalledWith();
+    expect(window.location.hash).toBe('');
+    // erro do window //
+  });
+
+  test('Deletar post do usuário', async () => {
+    const postId = 'exemplo-id';
+    deleteDoc.mockResolvedValue();
+    await deletePost(postId);
+    expect(doc).toHaveBeenCalledWith(db, 'Post', postId);
+    expect(deleteDoc).toHaveBeenCalledWith(doc(db, 'Post', postId));
   });
 });

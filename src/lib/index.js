@@ -30,5 +30,5 @@ export const newUser = async (email, senha, displayName) => {
 // função para logout do site
 export const logout = async () => {
   await signOut(auth);
-  window.location.hash = '';
+  location.hash = '';
 };
