@@ -42,8 +42,6 @@ export const feedUser = () => {
           <li class="nav__items"><a href="#sair"><img src="Img/logout-feed.svg"/>Sair</a></li>
         </ul>
       </nav>
-   
-
     <section class="feed">
       <img class='imgFeed'src="Img/bg-feed.png"/>
       <div class="boxExperience">
