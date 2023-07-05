@@ -9,7 +9,7 @@ export default () => {
 <div>
   <h2>Bem vinde a sua rede social de filmes</h2>
 </div>
-  <form>
+<form>
 <fieldset>
   <div>
     <label for="">E-mail</label>
