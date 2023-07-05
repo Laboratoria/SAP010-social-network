@@ -17,26 +17,12 @@ main {
   overflow: scroll;
 }
 
-.sidebar {
-  width: 254px;
-  background-color: var(--CorSecundaria);
-  height: 100vh;
-}
-
 .menuIcon, #chec {
   display: none;
 }
 
 .tituloMenu {
   display: none;
-}
-
-.sidebar article {
-  background-color: var(--TextColor);
-  color: var(--CorSecundaria);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 article h2 {
@@ -47,39 +33,6 @@ article h2 {
   justify-content: center;
   align-items: center;
 }
-
-nav ul {
-  display: flex;
-  flex-direction: column;
-  padding-top: 12px;
-}
-
-.nav-item > a {
-  color: var(--TextColor);
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  width: 245px;
-  height: 68px;
-  padding-inline: 32px;
-}
-
-.nav-item:last-child {
-  position: absolute;
-  bottom: 0;
-  left: 25px;
-  list-style: none;
-}
-
-.nav-item:last-child > a {
-  justify-content: center;
-}
-
-.nav-item img {
-  width: 26px;
-  height: 26px;
-  margin-right: 12px;
-} 
 
 .feed {
   display: flex;
@@ -107,14 +60,6 @@ nav ul {
   max-width: 600px;
   
 }
-
-.card-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .card-info {
   display: flex;
   flex-direction: row;
@@ -285,13 +230,16 @@ nav ul {
 .card-actions {
   display: flex;
   gap: 8px;
+  margin: 0;
 }
 
 .points-feed {
   width: 20px;
   height: 20px;
   position: relative;
-  bottom: 20px;
+  left: 87%;
+  bottom: 40px;
+  margin: 0;
   cursor: pointer;
 }
 
@@ -367,7 +315,7 @@ nav ul {
   height: 60px;
 }
 
-.navbar .menu-items {
+ .navbar .menu-items {
   padding-top: 120px;
   box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
   height: 100vh;
@@ -380,7 +328,9 @@ nav ul {
   transition: transform 0.5s ease-in-out;
   text-align: center;
   background-color: #f9ab59;
-}
+  z-index: 3;
+  position: relative;
+} 
 
 .navbar .nav-container li {
   list-style: none;
@@ -411,10 +361,10 @@ nav ul {
     width: 200px;
   }
 
-  .navbar .menu-items {
+  /.navbar .menu-items {
     position: relative;
     z-index: 2;
-  }
+  } 
   
   article h2 {
     font-size: 1.2rem;
@@ -422,16 +372,16 @@ nav ul {
     text-align: center;
   }
   
-  .nav-item > a {
+   .nav-item > a {
     font-size: 1.2rem;
     padding-inline: 25px;
-  }
+  } 
   
-  .nav-item img {
+   .nav-item img {
     width: 23px;
     height: 23px;
     margin-right: 10px;
-  }
+  } 
   
   .card-avatar img {
     width: 40px;
@@ -486,9 +436,13 @@ nav ul {
   }
   
   .points-feed {
-    width: 16px;
-    height: 16px;
-    bottom: 15px;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    left: 87%;
+    bottom: 40px;
+    margin: 0;
+    cursor: pointer;
   }
    
   .buttonPublish {
@@ -722,9 +676,13 @@ nav ul {
   }
   
   .points-feed {
-    width: 16px;
-    height: 16px;
-    bottom: 15px;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    left: 87%;
+    bottom: 40px;
+    margin: 0;
+    cursor: pointer;
   }
 
   .buttonPublish {
@@ -763,5 +721,115 @@ nav ul {
   .profileName {
     font-size: 0.9rem;
     padding: 11px 10px;
+  }
+}
+
+
+/* inicio novo sidebar*/
+
+.nav__cont {
+  position: fixed;
+  width: 60px;
+  top: 0;
+  height: 100vh;
+  z-index: 100;
+  background-color: #ff6400;
+  overflow: hidden;
+  transition: width 0.5s ease;
+  box-shadow: 4px 7px 10px rgba(0, 0, 0, 0.4);
+}
+
+.nav__cont:hover {
+  width: 200px;
+}
+
+@media screen and (max-width: 730px) {
+  .nav__cont {
+    width: 80px;
+    display: none;
+  }
+}
+
+.nav:first-child {
+  padding-top: 5.5rem;
+}
+
+.nav__items {
+  padding-bottom: 4rem;
+}
+
+.nav__items a {
+  position: relative;
+  top: -35px;
+  padding-left: 25px;
+  padding-right: 15px;
+  margin-right: 40px;
+  text-decoration: none;
+  color: #2A2C41;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.nav__items a:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+  background: radial-gradient(circle at 94.02% 88.03%, #f9ab59, transparent 100%);
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: -10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.nav__items:last-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__items:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__items:not(:first-child):not(:last-child) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__items:hover a:after {
+  opacity: 1;
+}
+
+.nav__items img {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: block;
+  margin-left: -10px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 600px) {
+  .nav__items img {
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    display: block;
+    margin-left: -10px;
+    cursor: pointer;
   }
 }
