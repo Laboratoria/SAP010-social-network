@@ -7,6 +7,8 @@ import login from './pages/login/login.js';
 import home from './pages/home/home.js';
 import cadastro from './pages/cadastro/cadastro.js';
 import feed from './pages/feed/feed.js';
+import perfil from './pages/perfil/perfil.js';
+import novoPost from './pages/novoPost/novoPost.js';
 
 const main = document.getElementById('root');
 const init = () => {
@@ -25,6 +27,12 @@ const init = () => {
         break;
       case '#feed':
         main.appendChild(feed());
+        break;
+      case '#perfil':
+        main.appendChild(perfil());
+        break;
+      case '#novoPost':
+        main.appendChild(novoPost());
         break;
       default:
         main.appendChild(home());
