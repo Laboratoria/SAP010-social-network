@@ -1,9 +1,8 @@
 import login from "./pages/Login/login.js";
 import perfil from "./pages/Perfil/perfil.js";
 import cadastro from "./pages/Cadastro/cadastro.js";
+import feed from "./pages/Feed/feed.js";
 
-
-document.addEventListener('DOMContentLoaded', function () {
   const main = document.querySelector("#root");
 
   const init = () => {
@@ -13,18 +12,21 @@ document.addEventListener('DOMContentLoaded', function () {
         case '':
           main.appendChild(login());
           break;
-        case '#criarConta':
+        case '#login':
+          main.appendChild(login());
+          break;
+        case '#cadastro':
           main.appendChild(cadastro());
           break;
         case '#perfil':
           main.appendChild(perfil());
           break;
-        case '#voltar':
-          main.appendChild(login());
+        case '#feed':
+          main.appendChild(feed());
           break;
-        case '#concluir':
-          main.appendChild(login());
-          break;
+          /*         case '#concluir':
+          main.appendChild(feed());
+          break; */
         default:
           main.appendChild(login());
       }
@@ -35,4 +37,5 @@ document.addEventListener('DOMContentLoaded', function () {
     main.appendChild(login());
     init();
   });
-});
+
+//incluir validação para redirecionamento da pagina (main) video palomita

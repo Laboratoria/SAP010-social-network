@@ -1,6 +1,5 @@
 //import { myFunction } from './lib/firebase.js';
 
-
 /* // Versão ANTIGA - NAO USAR - CUIDADO! FOGE! CORRE!
 firebase.auth().qualquerCoisa()
   .then(....) 
@@ -10,10 +9,10 @@ firebase.firestore().qualquerCoisa()
   .then(....) 
   .catch(....) */
   
-
 //myFunction();
 
 // Import the functions you need from the SDKs you need
+//import { getFirestore } from 'firebase/firestore';
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
@@ -35,6 +34,8 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
+
+//para o feed usar db
+//export const db = getFirestore(app);
