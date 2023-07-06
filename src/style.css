@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 html{
 width: 100%;
 height: 100%;
@@ -50,6 +54,7 @@ background-color: transparent;
     width: 100vw;
     height: 100vh;
     display: flex;
+    overflow: hidden;
 }
 
 #login > div{
@@ -58,10 +63,24 @@ background-color: transparent;
     justify-content: center;
     width: 100%;
     height: 100%;
+    overflow-y: scroll;
+}
+
+#login > div::-webkit-scrollbar{
+    display: none;
 }
 
 #loginBackground{
     background-image: url("./img/login_background.png");
     background-size: cover;
     background-position: center;
+}
+
+@media screen and (max-width: 800px){
+#login{
+    flex-wrap: wrap;
+}
+#login > div:first-child{
+    display: none;
+}
 }
