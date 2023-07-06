@@ -1,0 +1,383 @@
+.backgroundTwo{
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 1300px 990px 0 0;
+  border-color: #ff4400 transparent transparent transparent;
+}
+
+.imagemMap {
+  display: none;
+}
+
+.imagemLogo {
+  bottom: 10px;
+  left: 80px;
+  position: absolute;
+  right: 100px;
+  top: 150px;
+  width: 750px;
+}
+
+.subtitulo {
+  color: var(--CorTerciaria);
+  font-family: 'Prompt', sans-serif;
+  font-size: 3rem;
+  left: 20px;
+  position: absolute;
+  top: 10px;
+}
+
+.login-page {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.login-titulo {
+  color: var(--CorPrimaria);
+  font-size: 2.7rem;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.form {
+  backdrop-filter: blur(2px);
+  box-shadow: 0px 0px 12px 0px rgba(28, 28, 28, 0.15);
+  border-radius: 15px;
+  background-color: var(--CorTerciaria);
+  -moz-box-shadow: 0px 0px 12px 0px rgba(28, 28, 28, 0.15);
+  position: absolute;
+  padding: 45px;
+  right: 60px;
+  top: 200px;
+  text-align: center;
+  -webkit-box-shadow: 0px 0px 12px 0px rgba(28, 28, 28, 0.15);
+  width: 430px;
+}
+
+.form input {
+  background: var(--CorTerciaria);
+  border: 0;
+  border-bottom: 1px solid #bababa;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  margin-top: 30px;
+  outline: 0;
+  padding: 7px 10px;
+  width: 100%;
+}
+
+.form button {
+  border-radius: 5px;
+  background: var(--CorPrimaria);
+  border: 0;
+  color: var(--CorTerciaria);
+  cursor: pointer;
+  font-size: 1em;
+  font-family: 'Prompt', sans-serif;
+  justify-content: center;
+  margin-top: 25px;
+  padding: 10px 40px;
+}
+
+.form button:hover,
+.form button:active,
+.form button:focus {
+  background: var(--CorSecundaria);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logo {
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 20px;
+  width: 32px;
+}
+
+.form .messageLogin {
+  color: var(--CorPrimaria);
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+.form .messageLogin a {
+  color: var(--CorPrimaria);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.form .login-form {
+  display: none;
+}
+
+.show {
+  display: block !important;
+}
+
+.buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  justify-content: space-between;
+}
+
+.social {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  justify-content: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.txtError {
+  font-size: 0.8rem;
+  margin-top: 5px;
+  color: #FF0000;
+}
+
+@media screen and (max-width: 1350px) {
+  .backgroundTwo{
+    border-width: 990px 980px 0 0;
+  }
+
+  .subtitulo {
+    font-size: 2.8rem;
+  }
+
+  .imagemLogo {
+    top: 160px;
+    width: 650px;
+  }
+
+  .form {
+    right: 30px;
+  }
+}
+
+@media screen and (max-width: 1237px) {
+  .backgroundTwo{
+    border-width: 990px 859px 0 0;
+  }
+
+  .imagemLogo {
+    left: 20px;
+    position: absolute;
+    top: 160px;
+    width: 650px;
+  }
+
+  .subtitulo {
+    font-size: 2.6rem;
+  }
+}
+
+@media screen and (max-width: 1118px) {
+  .backgroundTwo{
+    border-width: 990px 750px 0 0;
+  }
+
+  .imagemLogo {
+    left: 5px;
+    top: 160px;
+    width: 550px;
+  }
+
+  .subtitulo {
+    font-size: 2.3rem;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .backgroundTwo {
+    border-width: 990px 750px 0 0;
+  }
+
+  .imagemLogo {
+    left: 5px;
+    top: 160px;
+    width: 550px;
+  }
+
+  .subtitulo {
+    font-size: 2.3rem;
+  }
+}
+
+@media screen and (max-width:1010px) {
+  .backgroundTwo {
+    border-width: 990px 690px 0 0;
+  }
+
+  .imagemLogo {
+    left: 25px;
+    top: 200px;
+    width: 50vw;
+  }
+
+  .subtitulo {
+    font-size: 2rem;
+  }
+
+  .login-titulo {
+    font-size: 1.6rem;
+  }
+
+  .form {
+    right: 30px;
+    width: 42vw;
+  }
+
+  .form button {
+    padding: 10px 20px;
+  }
+
+  .logo {
+    margin-top: 25px;
+    width: 30px;
+  }
+
+  .form .messageLogin {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .imagemMap {
+    display: flex;
+    left: 90px;
+    margin-right: 10px;
+    position: absolute;
+    right: 20px;
+    transform: rotate(-4.39deg);
+    top: 45px;
+    width: 60vw;
+  }
+
+  .backgroundTwo{
+    border-width: 405px 500px 0 0;
+  }
+
+  .imagemLogo {
+    display: none;
+  }
+
+  .subtitulo {
+    font-size: 1.3rem; 
+  }
+
+  .login-titulo {
+    font-size: 1.8rem;
+  }
+
+  .form {
+    height: 310px;
+    left: 80px;
+    right: 12px;
+    top: 340px;
+    width: 65vw;
+  }
+
+  .form input {
+    display: flex;
+    font-size: 0.8rem;
+    margin-top: 25px;
+    padding: 5px 10px;
+  }
+
+  .form button {
+    font-size: 0.7rem;
+    margin-left: 2px;
+    padding: 8px;
+    width: 80vw;
+  }
+
+  .logo {
+    margin-right: 6px;
+    margin-top: 28px;
+  }
+
+  .form .messageLogin {
+    font-size: 0.8rem;
+  }
+
+  .txtError {
+    font-size: 0.7rem;
+    margin-top: 5px;
+    color: #FF0000;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .imagemMap {
+    display: flex;
+    left: 90px;
+    margin-right: 10px;
+    position: absolute;
+    right: 25px;
+    top: 8px;
+    transform: rotate(-4.39deg);
+    width: 300px;
+  }
+
+  .imagemLogo {
+    display: none;
+  }
+
+  .backgroundTwo {
+    border-width: 385px 480px 0 0;
+  }
+
+  .subtitulo {
+    display: none;
+  }
+
+  .login-titulo {
+    font-size: 1.8rem;
+    top: 15px;
+  }
+
+  .form {
+    height: 370px;
+    left: 95px;
+    right: 85px;
+    top: 320px;
+    width: 300px;
+  }
+
+  .form input {
+    display: flex;
+    font-size: 0.8rem;
+    margin-top: 25px;
+    padding: 5px 10px;
+  }
+
+  .form button {
+    font-size: 0.8rem;
+    margin-left: 9px;
+    padding: 8px;
+    width: 80px;
+  }
+
+  .logo {
+    margin-right: 2px;
+    margin-top: 25px;
+  }
+
+  .form .messageLogin {
+    font-size: 0.8rem;
+    margin-top: 15px;
+  }
+
+  .txtError {
+    font-size: 0.7rem;
+    margin-top: 5px;
+    color: #FF0000;
+  }
+}

@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt&family=Sunflower:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
+:root {
+    --CorPrimaria: #ff4500;
+    --CorSecundaria: #f9ab59;
+    --CorTerciaria: #fff;
+    --CorQuartenaria: #f2f2f2;
+    --BackcgroundColorLight: #E6E6E7;
+    --BackcgroundColor: #e1e1e3;
+    --BackcgroundColorDark: #CFCFD3;
+    --TextColor: #2A2C41;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.loadPages{
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 10px;
+}
