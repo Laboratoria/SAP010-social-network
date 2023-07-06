@@ -25,10 +25,10 @@ body {
   flex-direction: column;
 }
 
-nav {
+ nav {
   display: flex;
-  width: 100vw;
-}
+  justify-content: center;
+} 
 
 ul {
   display: inline-block;
