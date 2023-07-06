@@ -13,8 +13,8 @@ export default () => {
        alimente seu conhecimento em defesa pessoal.</p>
     </article>
     <div class="botoes">
-    <button id="btn-cinza">Entrar</button>
-    <button id="btn-branco">Cadastrar</button>
+    <button id="btn-cinza"><a href="/#login">Entrar</a></button>
+    <button id="btn-branco"><a href="/#cadastro">Cadastrar</a></button>
     </div>`;
 
     container.innerHTML = template;
