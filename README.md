@@ -119,7 +119,7 @@ Definição de pronto:
 ### Cobertura de testes unitários com jest:
 
 <div align="center">
-<img src="src/assets/testes unitários.PNG" width="520em"/>
+<img src="src/assets/testes.png" width="520em"/>
 </div>
 
 ## 6. Objetivos alcançados
