@@ -136,16 +136,16 @@ describe('likePost', () => {
   });
   it('should add like to post', async () => {
     const mockPostData = {
-      whoLiked: ['userId'],
+      whoLiked: [''],
     };
     const userId = 'userId';
     const mockGetDoc = {
       exists: true,
       data: jest.fn(() => mockPostData),
     };
+    getDoc.mockResolvedValue(mockGetDoc);
     const postId = 'postId';
     const result = await likePost(postId, userId);
-    getDoc.mockReturnValueOnce(mockGetDoc);
     expect(getDoc).toHaveBeenCalledWith(doc(db, 'posts', postId));
     expect(result).toBe('add like');
   });
