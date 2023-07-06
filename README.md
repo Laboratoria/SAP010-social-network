@@ -43,38 +43,20 @@ O Food Review é um website voltado para os amantes de lugares culinários, com 
 
 ## 2. Histórias de Usuários :mag:
 
-### História de usuário 2.1
-
-Como usuário(a), gostaria de poder acessar um site onde possa criar ou acessar com a minha própria conta do google inserindo o meu e-mail e senha.
-
-### História de usuário 2.2
-
-Como usuário(a) e amantes de restaurantes gostaria de realizar publicações, e ter acesso a outros posts de usuários acessantes.
-
-### História de usuário 2.3
-
-Como usuário(a) e amantes de restaurantes conseguir interagir com os posts de outros acessantes, dando likes e removendo nas publicações.
-
-### História de usuário 4 
-
-Como usuário(a) e amantes de restaurantes após determinada publicação, gostaria de deletar as minhas postagens, nas quais não for do meu interesse.
-
-### História de usuário 5 
-
-Como usuário(a), gostaria de após interagir aos posts e fazer publicações, realizar o desvínculo da minha conta, me desconectando do site.
-
+<img src="src/img/historias-usuarios.png" width="520em"/>
 
 ## 3. Protótipo :pen:
 
 Desenvolvemos nossos protótipos de alta fidelidade no Figma, tendo em mente um tema moderno e sofisticado, escolhendo cores presente na gastronomia.
 
 ### Versão Mobile
-<img src="src/img/prototipo-mobile1.jpg" width="520em"/>
+
 <img src="src/img/prototipo-mobile2.jpg" width="520em"/>
+<img src="src/img/feed-mobile1.png" width="520em"/>
 
 ### Versão Web
 <img src="src/img/prototipo-web1.jpg" width="520em"/>
-<img src="src/img/prototipo-web2.jpg" width="520em"/>
+<img src="src/img/feed-desktop.png" width="520em"/>
 
 ## 4. Teste de Usuabilidade :iphone:
 
@@ -92,6 +74,8 @@ Desenvolvemos nossos protótipos de alta fidelidade no Figma, tendo em mente um 
 ## 5. Testes Unitários :ok_hand:
 
 Desenvolvemos testes unitários abrangendo as funcionalidades do Firebase e do Firestore. 
+
+<img src="src/img/testes-unitarios.png" width="520em"/>
 
 
 ## 6. Objetivos alcançados :white_check_mark:
@@ -118,18 +102,16 @@ Desenvolvemos testes unitários abrangendo as funcionalidades do Firebase e do F
 ## 7. Equipe do Projeto :busts_in_silhouette:
 
 <div align="center">
-Desenvolvido por 
+Desenvolvido por:
+ 
   <br>
-   Mislene Moura <br>
-  [Linkedin](https://www.linkedin.com/in/mislenemoura/) | [Github](https://github.com/MisleneSM)
+  Mislene Moura<br>
+  <a href="https://www.linkedin.com/in/mislenemoura/">Linkedin</a> | <a href="https://github.com/MisleneSM">Github</a>
   <br>
   Nívia Miranda <br> 
-  [Linkedin](https://www.linkedin.com/in/niviacristina/) | [Github](https://github.com/Nivicris)
+  <a href="https://www.linkedin.com/in/niviacristina/">Linkedin</a> | <a href="https://github.com/Nivicris">Github</a>
   <br>
-   Roxane Príncipe <br>
-  [Linkedin](https://www.linkedin.com/in/roxaneprincipe/) | [Github](https://github.com/roxanevp)
-  </div>
-
-
-
+  Roxane Príncipe<br>
+  <a href="https://www.linkedin.com/in/roxaneprincipe/">Linkedin</a> | <a href="https://github.com/roxanevp">Github</a>
+  
 
