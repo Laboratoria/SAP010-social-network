@@ -75,7 +75,8 @@ Desenvolvemos nossos protótipos de alta fidelidade no Figma, tendo em mente um 
 
 Desenvolvemos testes unitários abrangendo as funcionalidades do Firebase e do Firestore. 
 
-<img src="src/img/testes-unitarios.png" width="520em"/>
+<!-- <img src="src/img/testes-unitarios.png" width="520em"/> -->
+![Testes Unitários](src/Img/testes-unitarios.png)
 
 ## 6. Objetivos alcançados :white_check_mark:
 
