@@ -1,4 +1,5 @@
 //import { createUserWithEmail } from '../../configFirebase/auth';
+import { cadastroUsuarioSenha } from "../../lib/authUser.js";
 
 export default () => {
   const cadastroContainer = document.createElement('div');
@@ -31,6 +32,7 @@ export default () => {
         <button class="btn" id="btn-cad-voltar">Voltar</button>
         <button class="btn" id="btn-cad-concluir">Concluir cadastro</button>
         <button class="btn" id="btn-cad-login-google">Login com Google</button>
+        <div id="errorMessage" class="error">
       </fieldset>
     </form>
   <footer>
@@ -48,41 +50,65 @@ export default () => {
   const senhaEntrada = cadastroContainer.querySelector('#senha');
 
   // Botões
-  const botaoConcluir = cadastroContainer.querySelector('#btn-cad-concluir');
+  const botaoCadastrar = cadastroContainer.querySelector('#btn-cad-concluir');
   const botaoVoltar = cadastroContainer.querySelector('#btn-cad-voltar');
 
-  botaoConcluir.addEventListener("click", () => {
-    window.location.hash = "#entrarLogin";
+/*   botaoCadastrar.addEventListener("click", () => {
+    window.location.hash = "#feed";
   });
 
   botaoVoltar.addEventListener("click", () => {
     window.location.hash = "#voltar";
-  });
+  }); */
 
 
   const registerUser = () => {
-    const name = nomeEntrada.value;
+    const nomeCompleto = nomeEntrada.value;
     const usuario = nomeUsuarioEntrada.value;
     const email = emailEntrada.value;
     const senha = senhaEntrada.value;
 
     // Chamada para a função createUserWithEmail
-    // createUserWithEmail(name, usuario, email, senha)
-    //   .then(() => {
-    //     // Cadastro concluído com sucesso
-    //   })
-    //   .catch((error) => {
-    //     // Lidar com erros durante o cadastro
-    //   });
+    cadastroUsuarioSenha(nomeCompleto, usuario, email, senha)
+      .then(() => {
+         // Cadastro concluído com sucesso
+        //window.location.hash = '#feed';
+      })
+      .catch((error) => {
+        // Lidar com erros durante o cadastro
+        const errorMessage = cadastroContainer.querySelector('#errorMessage');
+        errorMessage.style.display = 'block';
+        switch(error.code){
+          case 'auth/missing-email':
+            errorMessage.textContent = 'Preencha o e-mail!';
+            errorMessage.style.display = 'block';
+            break;
+
+          case 'auth/email-already-in-use':
+            errorMessage.textContent = 'E-mail já está em uso!';
+            errorMessage.style.display = 'block';
+            break;
+
+          case 'auth/missing-password':
+            errorMessage.textContent = 'Preencha a senha!';
+            errorMessage.style.display = 'block';
+            break;
+  
+          case 'auth/invalid-password':
+            errorMessage.textContent = 'A senha é inválida, precisa ter pelo menos 6 caracteres.';
+            errorMessage.style.display = 'block';
+            break;
+        }
+      });
 
     // Teste cadastro
-    console.log(`Nome: ${name} Usuário: ${usuario} Email: ${email} Senha: ${senha}`);
+    console.log(`Nome: ${nomeCompleto} Usuário: ${usuario} Email: ${email} Senha: ${senha}`);
   };
 
-  botaoConcluir.addEventListener('click', registerUser);
+  botaoCadastrar.addEventListener('click', registerUser());
 
   botaoVoltar.addEventListener('click', () => {
-    window.location.hash = '';
+    window.location.hash = '#login';
   });
 
   return cadastroContainer;

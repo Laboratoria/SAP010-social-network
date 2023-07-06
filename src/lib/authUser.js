@@ -1,17 +1,10 @@
-// aqui exportaras las funciones que necesites
-// lembrar de colocar export nas funções
-//verificar import e export de cada arquivo para ver os vinculos
-/* export const myFunction = () => {
-  // aqui tu codigo
-  console.log('Hola mundo!');
-}; */
-
-
 //criacao de usuario
 //verificação de senha
 //verificação de erro (catch e erros para fazer validação)
-import { auth } from "./configfirebase.js";
-import { createUserWithEmailAndPassword, reauthenticateWithCredential, signInWithEmailAndPassword } from "firebase/auth";
+//import { getAppAuth, getAuth } from "./configfirebase.js";
+import { app } from "./configfirebase.js";
+
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from "firebase/auth";
 
 /* // Initialize Firebase Authentication and get a reference to the service
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -38,19 +31,50 @@ createUserWithEmailAndPassword(auth, email, password); */
     // ..
   }); */
 
-  export function login(email, senha){
-    //verificar preenchimento pelo usuario de usuario e senha (antes de passar por teste de login)
-    //INVALID_EMAIL (usar para criar função de verificação)
-    
-    return signInWithEmailAndPassword(auth, email, senha);
-
-  };
-
-  export function cadastro(nomeCompleto, usuario, email, senha){
+  //Criar Usuário
+  export function cadastroUsuarioSenha(nomeCompleto, usuario, email, senha){
+    const auth = getAppAuth();
+  return createUserWithEmailAndPassword(auth, nomeCompleto, usuario, email, senha).then(
+    (userCredential) => {
+      const user = userCredential.user;
+      window.location.hash = '#feed';
+      updateProfile(user, {
+        displayName: `${usuario}`,
+      });
+    },
+  );
     //verificar preenchimento pelo usuario de usuario e senha (antes de passar por teste de cadastro)
     //verificar quais parametros vão ser vinculados ao perfil via firebase
-    
-    return createUserWithEmailAndPassword(email, senha);
+  };  
 
-  };
+  //Login
+  export function loginEmail(email, senha){
+        const auth = getAppAuth();
+        return signInWithEmailAndPassword(auth, email, senha)
+        //verificar preenchimento pelo usuario de usuario e senha (antes de passar por teste de login)
+        //INVALID_EMAIL (usar para criar função de verificação)    
+    };
+        
+ // login google
+export const getAppAuth = () => getAuth(app);
+export const loginGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  const auth = getAppAuth();
+  return signInWithPopup(auth, provider);
+}; 
 
+// autenticacao usuario testando
+export const getUserName = () => {
+  const auth = getAppAuth();
+  const user = auth.currentUser;
+  if (user) {
+    return user.displayName;
+  }
+  return null;
+};
+
+// id do usuario no firebase
+export const getUserId = () => {
+  const auth = getAppAuth();
+  return auth.currentUser.uid;
+};

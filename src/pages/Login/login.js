@@ -1,5 +1,5 @@
-import { login } from "../../lib/authUser.js";
-//import { } from '../../configFirebase/auth';
+import { loginEmail, loginGoogle } from "../../lib/authUser.js";
+//import { login, loginGoogle } from '../../configFirebase/auth';
 
 export default () => {
   const loginContainer = document.createElement('div');
@@ -36,7 +36,6 @@ export default () => {
 <p>2023</p>
 </footer></div>`;
 
-loginContainer.id = "login"
 loginContainer.innerHTML = templateLogin;
 
   // Informações preenchidas pelo usuário
@@ -46,23 +45,22 @@ loginContainer.innerHTML = templateLogin;
   // Botões
   const entrarLoginBotao = loginContainer.querySelector("#btn-login-entrar");
   const criarLoginBotao = loginContainer.querySelector("#btn-login-criar-conta");
+//  const criarLoginGoogleBotao = loginContainer.querySelector("btn-login-google");
 
   // Função de login
-  const firstLogin = (event) => {
-    event.preventDefault();
+  const firstLogin = () => {
     const email = emailEntrada.value;
     const senha = senhaEntrada.value;
 
     // Chamada para a função de login
-    login(email, senha)
+    loginEmail(email, senha)
       .then(() => {
-        window.location.hash = '#perfil';
+        window.location.hash = '#feed';
       })
-      .catch((err) => {
+      .catch(() => {
         const errorMessage = loginContainer.querySelector('#errorMessage');
-        errorMessage.textContent = 'Usuário ou senha incorretos';
+        errorMessage.textContent = 'Informações de e-mail ou senha incorretas';
         errorMessage.style.display = 'block';
-        console.log(err);
       });
     
     // teste login
@@ -70,9 +68,20 @@ loginContainer.innerHTML = templateLogin;
   };
 
   entrarLoginBotao.addEventListener('click', firstLogin);
+/* 
+  // Login Google
+  criarLoginGoogleBotao.addEventListener('click', () => {
+    loginGoogle().then(() => {
+      window.location.hash = '#feed';
+    }).catch(() => {
+    });
+  });
+ */
 
-  criarLoginBotao.addEventListener('click', () => {
-    window.location.hash = '#criarConta';
+
+  criarLoginBotao.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.hash = '#cadastro';
   });
 
   return loginContainer;
