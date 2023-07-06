@@ -98,7 +98,6 @@ Desenvolvemos testes unitários abrangendo as funcionalidades do Firebase e do F
 
 ## 7. Equipe do Projeto :busts_in_silhouette:
 
-
 <div align="center">
 Desenvolvido por:
  
