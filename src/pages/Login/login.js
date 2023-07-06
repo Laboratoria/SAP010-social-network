@@ -48,7 +48,8 @@ loginContainer.innerHTML = templateLogin;
 //  const criarLoginGoogleBotao = loginContainer.querySelector("btn-login-google");
 
   // Função de login
-  const firstLogin = () => {
+  const firstLogin = (event) => {
+    event.preventDefault();
     const email = emailEntrada.value;
     const senha = senhaEntrada.value;
 
@@ -65,9 +66,11 @@ loginContainer.innerHTML = templateLogin;
     
     // teste login
     console.log(`Usuário: ${email} Senha: ${senha}`);
+    return false;
   };
 
   entrarLoginBotao.addEventListener('click', firstLogin);
+  
 /* 
   // Login Google
   criarLoginGoogleBotao.addEventListener('click', () => {
