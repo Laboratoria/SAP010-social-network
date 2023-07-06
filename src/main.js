@@ -9,6 +9,7 @@ import cadastro from './pages/cadastro/cadastro.js';
 import feed from './pages/feed/feed.js';
 import perfil from './pages/perfil/perfil.js';
 import novoPost from './pages/novoPost/novoPost.js';
+import infopage from './pages/infopage/infopage.js';
 
 const main = document.getElementById('root');
 const init = () => {
@@ -33,6 +34,9 @@ const init = () => {
         break;
       case '#novoPost':
         main.appendChild(novoPost());
+        break;
+        case '#infopage':
+        main.appendChild(infopage());
         break;
       default:
         main.appendChild(home());
