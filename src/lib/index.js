@@ -24,7 +24,8 @@ export const authLoginGoogle = () => signInWithPopup(auth, authProvedor);
 // incluir displayName nos parametros se for usar futuramente
 export const newUser = async (email, senha, displayName) => {
   const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
-  await updateProfile(userCredential.user, { displayName });
+  // if (userCredential && userCredential.user) {
+  await updateProfile(userCredential.user, { displayName }); 
 };
 
 // função para logout do site

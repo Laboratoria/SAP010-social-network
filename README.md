@@ -7,28 +7,19 @@
 
 <div align="center">
   
-  ### Tecnologias utilizadas:
+  ### Tecnologias utilizadas:  
 
-  <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics">
-  <img src="https://skillicons.dev/icons?i=html"/>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">
-  <img src="https://skillicons.dev/icons?i=css"/>
-  <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript">
-  <img src="https://skillicons.dev/icons?i=js"/>
-  <a href="https://git-scm.com/">
-  <img src="https://skillicons.dev/icons?i=git"/>
-  <a href="https://github.com/">
-  <img src="https://skillicons.dev/icons?i=github"/>
-  <a href="https://jestjs.io/pt-BR/">
-  <img src="https://skillicons.dev/icons?i=jest"/>
-  <a href="https://figma.com/">
-  <img src="https://skillicons.dev/icons?i=figma"/>
-  <a href="https://firebase.google.com/">
-  <img src="https://skillicons.dev/icons?i=firebase"/>
-  <a href="https://code.visualstudio.com/">
-  <img src="https://skillicons.dev/icons?i=vscode"/>
-   <a href="https://nodejs.org/en">
-  <img src="https://skillicons.dev/icons?i=nodejs"/>
+  <br>
+  <img align="center" alt="git" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
+  <img align="center" alt="Rafa-HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+  <img align="center" alt="Rafa-CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
+  <img align="center" alt="Rafa-Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
+  <img align="center" alt="vscode" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" />
+  <img align="center" alt="Figma" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" />
+  <img align="center" alt="Jest" height="30" width="40" src="https://www.svgrepo.com/show/353930/jest.svg" />
+  <img align="center" alt="Firestore" height="30" width="40" src="https://skillicons.dev/icons?i=firebase"/>
+  <img align="center" alt="Trello" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain.svg"/>
+  <br>
   </div>
 
   ---
@@ -46,21 +37,21 @@
 
 ***
 
-## 1. Resumo do Projeto :notebook:
+## 1. Resumo do Projeto 📓
 
 O Food Review é um website voltado para os amantes de lugares culinários, com intuito de trazer referências de restaurantes de vários tipos e gostos para os nossos usuários. Além disso, você terá a oportunidade de fazer suas próprias recomendações, interagir com publicações e posts, e expressar suas preferências. Neste projeto, foi desenvolvida uma SPA (Single Page Application) responsiva.
 
 ## 2. Histórias de Usuários :mag:
 
-### História de usuário 1
+### História de usuário 2.1
 
 Como usuário(a), gostaria de poder acessar um site onde possa criar ou acessar com a minha própria conta do google inserindo o meu e-mail e senha.
 
-### História de usuário 2
+### História de usuário 2.2
 
 Como usuário(a) e amantes de restaurantes gostaria de realizar publicações, e ter acesso a outros posts de usuários acessantes.
 
-### História de usuário 3 
+### História de usuário 2.3
 
 Como usuário(a) e amantes de restaurantes conseguir interagir com os posts de outros acessantes, dando likes e removendo nas publicações.
 
@@ -78,24 +69,34 @@ Como usuário(a), gostaria de após interagir aos posts e fazer publicações, r
 Desenvolvemos nossos protótipos de alta fidelidade no Figma, tendo em mente um tema moderno e sofisticado, escolhendo cores presente na gastronomia.
 
 ### Versão Mobile
+<img src="src/img/prototipo-mobile1.jpg" width="520em"/>
+<img src="src/img/prototipo-mobile2.jpg" width="520em"/>
 
 ### Versão Web
-![Protótipo_Web_1](<src/Img/Protótipo WEB 1.jpg>)
-![Protótipo_Web_2](<src/Img/Protótipo WEB 2.jpg>)
+<img src="src/img/prototipo-web1.jpg" width="520em"/>
+<img src="src/img/prototipo-web2.jpg" width="520em"/>
 
 ## 4. Teste de Usuabilidade :iphone:
 
+ Os testes de usabilidade foram feitos com potenciais usuários ao longo do desenvolvimento do projeto. 
+
+ Através do feedback de usuários foram implementadas as seguintes alterações:
+ 
+ * Adicionamos um link de volta na tela de cadastro que permite o usuário retornar facilmente à tela de login, caso já possua um cadastro.
+ * Incluir uma mensagem informado que o cadastro foi realizado com sucesso.
+ * Retirar a opção de login com o facebook, por apresentar problemas no momento de efetivar a autenticação de alguns usuários.
+ * Inserir algum conteúdo que esclareça qual é o objetivo de nossa rede social.
+
+ Essas alterações foram feitas com base no feedback fornecido pelos usuários para aprimorar a sua experiência geral do nosso projeto.
 
 ## 5. Testes Unitários :ok_hand:
 
-
-
+Desenvolvemos testes unitários abrangendo as funcionalidades do Firebase e do Firestore. 
 
 
 ## 6. Objetivos alcançados :white_check_mark:
 
 * [:star:] construir uma Single-page Application (SPA) responsiva na qual seja possível ler e escrever dados;
-* [:star:] Responsivo;
 * [:star:] Criação dos testes unitários;
 * [:star:] Login com Firebase;
 * [:star:] Usuário pode criar conta;
