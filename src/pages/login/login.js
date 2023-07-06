@@ -2,7 +2,7 @@ import './login.css';
 // import { login } from '../serviceFirebase/firebaseAuth.js';
 import CBD from '../imagens/CBDCNNCT-IMG/logodesktopsemsombra.png';
 import google from '../imagens/google.png';
-import facebook from '../imagens/facebook.png';
+// import facebook from '../imagens/facebook.png';
 
 export default () => {
   const containerLogin = document.createElement('section');
@@ -21,7 +21,7 @@ export default () => {
   <span class="ou">OU</span>
   <div class="login-redes">
   <img id="entrarGoogle"class="img-google" src=${google} alt="logo Google">
-  <img class="img-facebook" src=${facebook} alt="logo Facebook">
+ 
   </div>
   <span id="pass-alert" class="input-error"></span>
   <span id="user-alert" class="input-error"></span>
@@ -33,6 +33,7 @@ export default () => {
   </div>
   </div>`;
 
+  // <img class="img-facebook" src=${facebook} alt="logo Facebook">
   /* <button id="btnEntrar" type="submit" class="entrar centro">
   ENTRAR
 </button>; */
