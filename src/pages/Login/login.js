@@ -71,7 +71,8 @@ loginContainer.innerHTML = templateLogin;
 
   entrarLoginBotao.addEventListener('click', firstLogin);
 
-  criarLoginBotao.addEventListener('click', () => {
+  criarLoginBotao.addEventListener('click', (event) => {
+    event.preventDefault();
     window.location.hash = '#criarConta';
   });
 
