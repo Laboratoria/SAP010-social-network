@@ -35,7 +35,7 @@ export default () => {
 <h6>Desenvolvido por Larissa, Maila e Vitória</h6>
 <p>2023</p>
 </footer></div>`;
-
+loginContainer.id = "login";
 loginContainer.innerHTML = templateLogin;
 
   // Informações preenchidas pelo usuário
