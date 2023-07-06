@@ -57,10 +57,14 @@ background-color: transparent;
     overflow: hidden;
 }
 
+#login > div::before, #login > div::after {
+    content: '';
+    margin: auto;
+}
+
 #login > div{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: 100%;
     height: 100%;
     overflow-y: scroll;
