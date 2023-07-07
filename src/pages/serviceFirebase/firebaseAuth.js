@@ -14,12 +14,12 @@ export const Auth = getAuth(app);
 
 // cadastro de usuarios novos
 
- const createUser = (email, senha, nome, sobrenome, displayName) => {
+ const createUser = (nome, email, senha) => {
   createUserWithEmailAndPassword(Auth, email, senha)
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user; // aqui atualizar o perfil do usuario
-    return updateProfile(user, { nome, sobrenome, displayName });
+    return updateProfile(user, { nome });
     // ...
   });
 };
