@@ -56,7 +56,7 @@ createUserWithEmailAndPassword(auth, email, password); */
     };
         
  // login google
-export const getAppAuth = () => getAuth(app);
+//export const getAppAuth = () => getAuth(app);
 export const loginGoogle = () => {
   const provider = new GoogleAuthProvider();
   const auth = getAppAuth();
