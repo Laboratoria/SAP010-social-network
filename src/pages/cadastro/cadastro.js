@@ -1,5 +1,6 @@
 import './cadastro.css';
 import CBD from '../imagens/CBDCNNCT-IMG/logodesktopsemsombra.png';
+import { createUser } from '../serviceFirebase/firebaseAuth.js';
 
 export default () => {
   const containerCadastro = document.createElement('section');
@@ -19,7 +20,7 @@ export default () => {
   <input type="password" id="confirmarSenha" class="input centro" placeholder="CONFIRMAR SENHA" required>
   <input type="radio" id="paciente" name="opcaoPerfil" value="paciente">SOU PACIENTE</input>
   <input type="radio" id="prescritor" name="opcaoPerfil" value="prescritor">SOU PRESCRITOR</input>
-  <a id="btnCriar" class="entrar centro" href="/#feed">CRIAR CONTA</a> 
+  <button id="btnCriar" class="entrar centro" >CRIAR CONTA</button> 
   </form>
   </div>
 
@@ -27,6 +28,23 @@ export default () => {
   `;
 
   containerCadastro.innerHTML = templateCadastro;
+
+  const nome = containerCadastro.getElementById('nome');
+  const email = containerCadastro.getElementById('email');
+  const senha = containerCadastro.getElementById('senha');
+  const confirmarSenha = containerCadastro.getElementById('confirmarSenha');
+  const btnCriar = containerCadastro.getElementById('btnCriar');
+
+  btnCriar.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (senha.value !== confirmarSenha.value) {
+      alert('As senhas não conferem'); /* tirar o alert */
+      return;
+    }
+    createUser(nome.value, email.value, senha.value).then((user) => {
+      console.log(user);
+    });
+  });
 
   return containerCadastro;
 };
