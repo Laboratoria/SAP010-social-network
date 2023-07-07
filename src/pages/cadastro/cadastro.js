@@ -1,5 +1,6 @@
 import './cadastro.css';
 import CBD from '../imagens/CBDCNNCT-IMG/logodesktopsemsombra.png';
+import { createUser } from '../serviceFirebase/firebaseAuth.js';
 
 export default () => {
   const containerCadastro = document.createElement('section');
@@ -17,10 +18,11 @@ export default () => {
   <input type="email" id="email" class="input centro" placeholder="E-MAIL" required> 
   <input type="password" id="senha" class="input centro" placeholder="SENHA" required>
   <input type="password" id="confirmarSenha" class="input centro" placeholder="CONFIRMAR SENHA" required>
+  <p class="erro" id="erro"></p>
   <input type="radio" id="paciente" class="opção" name="opcaoPerfil" value="paciente">SOU PACIENTE</input>
   <input type="radio" id="prescritor" class="opção" name="opcaoPerfil" value="prescritor">SOU PRESCRITOR</input>
   <a id="btnCriar" class="entrar centro" href="/#feed">CRIAR CONTA</a> 
-  </form>
+  </form
   </div>
 
   
@@ -28,5 +30,43 @@ export default () => {
 
   containerCadastro.innerHTML = templateCadastro;
 
+  const nome = containerCadastro.getElementById('nome');
+  const email = containerCadastro.getElementById('email');
+  const senha = containerCadastro.getElementById('senha');
+  const confirmarSenha = containerCadastro.getElementById('confirmarSenha');
+  const btnCriar = containerCadastro.getElementById('btnCriar');
+  const mensagemErro = containerCadastro.getElementById('erro');
+
+  btnCriar.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (nome.value === '') {
+      mensagemErro.innerHTML = 'Preencha o campo nome!';
+      return;
+    }
+    if (email.value === '') {
+      mensagemErro.innerHTML = 'Preencha o campo email!';
+      return;
+    }
+    if (senha.value === '') {
+      mensagemErro.innerHTML = 'Preencha o campo senha!';
+      return;
+    }
+    if (senha.value !== confirmarSenha.value) {
+      mensagemErro.innerHTML = 'As senhas não conferem ';
+      return;
+    }
+    createUser(nome.value, email.value, senha.value).then((user) => {
+      console.log(user);
+    }).catch((erro) => {
+      mensagemErro.innerHTML = 'não cadastrado';
+      console.log(erro);
+    });
+  });
+
   return containerCadastro;
 };
+
+// catch (erro) {
+//   mensagemErro.innerHTML = `<p>CEP inválido. Tente novamente!</p>`
+//   console.log(erro);
+// }
