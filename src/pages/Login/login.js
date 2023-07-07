@@ -45,7 +45,7 @@ loginContainer.innerHTML = templateLogin;
   // Botões
   const entrarLoginBotao = loginContainer.querySelector("#btn-login-entrar");
   const criarLoginBotao = loginContainer.querySelector("#btn-login-criar-conta");
-//  const criarLoginGoogleBotao = loginContainer.querySelector("btn-login-google");
+ const criarLoginGoogleBotao = loginContainer.querySelector("#btn-login-google");
 
   // Função de login
   const firstLogin = (event) => {
@@ -71,15 +71,18 @@ loginContainer.innerHTML = templateLogin;
 
   entrarLoginBotao.addEventListener('click', firstLogin);
   
-/* 
+ 
   // Login Google
   criarLoginGoogleBotao.addEventListener('click', () => {
+    console.log("entrei");
     loginGoogle().then(() => {
+      console.log("entrei no then")
       window.location.hash = '#feed';
-    }).catch(() => {
+    }).catch((error) => {
+      console.log(error);
     });
   });
- */
+ 
 
 
   criarLoginBotao.addEventListener('click', (event) => {

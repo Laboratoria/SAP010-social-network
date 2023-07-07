@@ -9,9 +9,7 @@ import feed from "./pages/Feed/feed.js";
     window.addEventListener("hashchange", () => {
       main.innerHTML = '';
       switch (window.location.hash) {
-        case '':
-          main.appendChild(login());
-          break;
+        case '':         
         case '#login':
           main.appendChild(login());
           break;

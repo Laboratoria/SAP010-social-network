@@ -34,8 +34,9 @@ createUserWithEmailAndPassword(auth, email, password); */
   //Criar Usuário
   export function cadastroUsuarioSenha(nomeCompleto, usuario, email, senha){
     const auth = getAppAuth();
-  return createUserWithEmailAndPassword(auth, nomeCompleto, usuario, email, senha).then(
+  return createUserWithEmailAndPassword(auth, email, senha).then(
     (userCredential) => {
+      console.log("entrei");
       const user = userCredential.user;
       window.location.hash = '#feed';
       updateProfile(user, {

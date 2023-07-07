@@ -62,7 +62,8 @@ export default () => {
   }); */
 
 
-  const registerUser = () => {
+  const registerUser = (event) => {
+    event.preventDefault();
     const nomeCompleto = nomeEntrada.value;
     const usuario = nomeUsuarioEntrada.value;
     const email = emailEntrada.value;
@@ -70,10 +71,7 @@ export default () => {
 
     // Chamada para a função createUserWithEmail
     cadastroUsuarioSenha(nomeCompleto, usuario, email, senha)
-      .then(() => {
-         // Cadastro concluído com sucesso
-        //window.location.hash = '#feed';
-      })
+      
       .catch((error) => {
         // Lidar com erros durante o cadastro
         const errorMessage = cadastroContainer.querySelector('#errorMessage');
@@ -105,9 +103,10 @@ export default () => {
     console.log(`Nome: ${nomeCompleto} Usuário: ${usuario} Email: ${email} Senha: ${senha}`);
   };
 
-  botaoCadastrar.addEventListener('click', registerUser());
+  botaoCadastrar.addEventListener('click', registerUser);
 
-  botaoVoltar.addEventListener('click', () => {
+  botaoVoltar.addEventListener('click', (event) => {
+    event.preventDefault();
     window.location.hash = '#login';
   });
 
