@@ -49,7 +49,7 @@ export default () => {
   const emailEntrada = cadastroContainer.querySelector('#email');
   const senhaEntrada = cadastroContainer.querySelector('#senha');
 
-  // Botões
+  // Botões para cadastrar
   const botaoCadastrar = cadastroContainer.querySelector('#btn-cad-concluir');
   const botaoVoltar = cadastroContainer.querySelector('#btn-cad-voltar');
 
