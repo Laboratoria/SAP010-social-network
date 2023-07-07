@@ -1,35 +1,9 @@
-//criacao de usuario
 //verificação de senha
 //verificação de erro (catch e erros para fazer validação)
 //import { getAppAuth, getAuth } from "./configfirebase.js";
 import { app } from "./configfirebase.js";
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from "firebase/auth";
-
-/* // Initialize Firebase Authentication and get a reference to the service
-import { createUserWithEmailAndPassword } from "firebase/auth";
-const auth = getAuth(app);
-
-const email = "abacate@teste.com";
-const password = "123456";
-createUserWithEmailAndPassword(auth, email, password); */
-
-//criar aqui função para fazer cadastro
-//criar aqui função para fazer login
-
-/* createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    console.log("Logado:", user);
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log("deu errado", errorCode, errorMessage)
-    // ..
-  }); */
 
   //Criar Usuário
   export function cadastroUsuarioSenha(nomeCompleto, usuario, email, senha){
@@ -57,7 +31,7 @@ createUserWithEmailAndPassword(auth, email, password); */
     };
         
  // login google
-//export const getAppAuth = () => getAuth(app);
+export const getAppAuth = () => getAuth(app);
 export const loginGoogle = () => {
   const provider = new GoogleAuthProvider();
   const auth = getAppAuth();
