@@ -18,9 +18,15 @@ export default () => {
   <input type="email" id="email" class="input centro" placeholder="E-MAIL" required> 
   <input type="password" id="senha" class="input centro" placeholder="SENHA" required>
   <input type="password" id="confirmarSenha" class="input centro" placeholder="CONFIRMAR SENHA" required>
+<<<<<<< HEAD
   <input type="radio" id="paciente" name="opcaoPerfil" value="paciente">SOU PACIENTE</input>
   <input type="radio" id="prescritor" name="opcaoPerfil" value="prescritor">SOU PRESCRITOR</input>
   <button id="btnCriar" class="entrar centro" >CRIAR CONTA</button> 
+=======
+  <input type="radio" id="paciente" class="opção" name="opcaoPerfil" value="paciente">SOU PACIENTE</input>
+  <input type="radio" id="prescritor" class="opção" name="opcaoPerfil" value="prescritor">SOU PRESCRITOR</input>
+  <a id="btnCriar" class="entrar centro" href="/#feed">CRIAR CONTA</a> 
+>>>>>>> b93c1e8ee1ee5dc20e073e70e0ba75d487bcce9b
   </form>
   </div>
 
