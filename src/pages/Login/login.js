@@ -70,7 +70,7 @@ loginContainer.innerHTML = templateLogin;
   };
 
   entrarLoginBotao.addEventListener('click', firstLogin);
-  
+
 /* 
   // Login Google
   criarLoginGoogleBotao.addEventListener('click', () => {
