@@ -36,3 +36,4 @@ export default () => {
 
   return feedContainer;
 };
+//chamar função getAuth
