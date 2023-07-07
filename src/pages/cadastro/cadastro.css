@@ -5,4 +5,39 @@
 
 #csscadastro {
     background-color: #ffff;
+    height: 100vh;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+}
+
+main {
+    height: 100vh;
+}
+
+#menina-cadastro {
+    height: 359px;
+}
+
+#picture-cadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e1e;
+    border-radius: 0 0 32px 32px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+header > h1 {
+    font-size: 15px;
+    font-weight: 600;
 }

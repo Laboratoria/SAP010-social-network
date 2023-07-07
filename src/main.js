@@ -13,6 +13,7 @@ const principal = document.querySelector("#principal");
 const init = () => {
     window.addEventListener("hashchange", () => {
         principal.innerHTML = "";
+        console.log(window.location.hash);
         switch (window.location.hash) {
             case "":
                 principal.appendChild(home());

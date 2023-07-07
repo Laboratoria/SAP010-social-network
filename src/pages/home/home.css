@@ -22,7 +22,7 @@ main {
     height: 359px;
 }
 
-picture {
+#picture-home {
     display: flex;
     justify-content: center;
     align-items: center;
