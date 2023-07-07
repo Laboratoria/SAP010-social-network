@@ -21,16 +21,17 @@ const init = () => {
             case "#login":
                 principal.appendChild(login());
                 break;
-            case "#cadastro":
-                principal.appendChild(cadastro());
-                break;
             default:
-                principal.appendChild(home());
+                if (window.location.hash.includes("cadastro")) {
+                    principal.appendChild(cadastro());
+                } else {
+                    principal.appendChild(home());
+                }
         }
-    })
-}
+    });
+};
 
 window.addEventListener("load", () => {
     principal.appendChild(home());
     init();
-})
+});
