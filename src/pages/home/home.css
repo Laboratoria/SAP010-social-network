@@ -63,6 +63,8 @@ h1 {
     color: #FFFF;
     border: currentColor;
     cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 #btn-branco {
@@ -78,6 +80,8 @@ h1 {
     box-shadow: 0px 4px 0px 0px #afafaf;
     border: currentColor;
     cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 #btn-cinza a {

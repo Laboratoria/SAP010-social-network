@@ -37,7 +37,44 @@ header {
     flex-direction: column;
 }
 
-header > h1 {
+header>h1 {
     font-size: 15px;
     font-weight: 600;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 21px;
+}
+
+input {
+    width: 279px;
+    height: 50px;
+    font-size: 24px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+#btn-vermelho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 328px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 800;
+    border-radius: 8px;
+    background-color: #950909;
+    color: #ffff;
+    margin-top: 23px;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    border: currentColor;
+    box-shadow: 0px 4px 0px 0px #520000;
 }
