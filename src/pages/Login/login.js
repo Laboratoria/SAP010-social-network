@@ -69,9 +69,9 @@ loginContainer.innerHTML = templateLogin;
     return false;
   };
 
-  entrarLoginBotao.addEventListener('click', firstLogin);
-  
+  entrarLoginBotao.addEventListener('click', firstLogin);  
  
+
   // Login Google
   criarLoginGoogleBotao.addEventListener('click', () => {
     console.log("entrei");
