@@ -1,5 +1,6 @@
 export default () => {
     const container = document.createElement('div');
+    container.id = "csshome";
 
     const template = `
     <picture>

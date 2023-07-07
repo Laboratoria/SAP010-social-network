@@ -4,9 +4,18 @@
 }
 
 body {
-    background-color: #930909;
     font-family: 'Open Sans', sans-serif;
     font-family: 'Poppins', sans-serif;
+    height: 100vh;
+}
+
+#csshome {
+    background-color: #930909;
+    height: 100vh;
+}
+
+main {
+    height: 100vh;
 }
 
 #menina-home {
