@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #930909;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+#menina-home {
+    height: 359px;
+}
+
+picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFF;
+    border-radius: 0 0 32px 32px;
+}
+
+article {
+    color: #FFFF;
+    padding: 24px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+.botoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#btn-cinza {
+    display: flex;
+    width: 320px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px auto;
+    background-color: #1E1E1E;
+    border-radius: 8px;
+    box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.80);
+    font-weight: bolder;
+    color: #FFFF;
+    border: currentColor;
+    cursor: pointer;
+}
+
+#btn-branco {
+    display: flex;
+    width: 320px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 8px;
+    font-weight: bolder;
+    background: #FFF;
+    box-shadow: 0px 4px 0px 0px #afafaf;
+    border: currentColor;
+    cursor: pointer;
+}
+
+#btn-cinza a {
+    text-decoration: none;
+    color: #FFFF;
+    padding: 10px 138px;
+}
+
+#btn-branco a {
+    text-decoration: none;
+    color: #930909;
+    padding: 10px 138px;
+}
