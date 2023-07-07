@@ -31,7 +31,6 @@ export default () => {
         </div>
         <button class="btn" id="btn-cad-voltar">Voltar</button>
         <button class="btn" id="btn-cad-concluir">Concluir cadastro</button>
-        <button class="btn" id="btn-cad-login-google">Login com Google</button>
         <div id="errorMessage" class="error">
       </fieldset>
     </form>
