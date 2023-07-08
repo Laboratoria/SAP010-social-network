@@ -30,12 +30,12 @@ export default () => {
 
   containerCadastro.innerHTML = templateCadastro;
 
-  const nome = containerCadastro.getElementById('nome');
-  const email = containerCadastro.getElementById('email');
-  const senha = containerCadastro.getElementById('senha');
-  const confirmarSenha = containerCadastro.getElementById('confirmarSenha');
-  const btnCriar = containerCadastro.getElementById('btnCriar');
-  const mensagemErro = containerCadastro.getElementById('erro');
+  const nome = containerCadastro.querySelector('#nome');
+  const email = containerCadastro.querySelector('#email');
+  const senha = containerCadastro.querySelector('#senha');
+  const confirmarSenha = containerCadastro.querySelector('#confirmarSenha');
+  const btnCriar = containerCadastro.querySelector('#btnCriar');
+  const mensagemErro = containerCadastro.querySelector('#erro');
 
   btnCriar.addEventListener('click', (e) => {
     e.preventDefault();
