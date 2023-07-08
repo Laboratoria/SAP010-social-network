@@ -15,7 +15,8 @@ const template = `<picture id="picture-cadastro">
 <input type="email" id="input-email" name="email" placeholder="Email">
 <input type="password" id="input-senha" name="senha" placeholder="Senha">
 <button id="btn-vermelho">Cadastrar</button>
-</form>`;
+</form>
+<p>Já tem uma conta?&nbsp;<a href="/#login">Entrar</a></p>`;
 
 container.innerHTML = template;
 
