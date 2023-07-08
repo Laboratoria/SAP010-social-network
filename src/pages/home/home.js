@@ -3,7 +3,7 @@ export default () => {
     container.id = "csshome";
 
     const template = `
-    <picture>
+    <picture id="picture-home">
     <img src="imagens/menina.png" alt="menina fazendo movimento de arte marcial" id="menina-home">
     </picture>
     <article>
