@@ -2,7 +2,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  updateProfile, onAuthStateChanged,
+  updateProfile, onAuthStateChanged, GoogleAuthProvider, signInWithPopup,
 } from 'firebase/auth';
 import { app } from '../../firebaseInit.config.js';
 // GoogleAuthProvider,  signInWithPopup,  signOut,
@@ -22,11 +22,15 @@ const createUser = (nome, email, senha) => createUserWithEmailAndPassword(Auth, 
 const login = (email, senha) => signInWithEmailAndPassword(Auth, email, senha);
 const addonAuthStateChanged = (callback) => onAuthStateChanged(Auth, callback);
 
-// const login = (email, senha) => {
-//   signInWithEmailAndPassword(Auth, email, senha);
-// };
+const loginGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  return signInWithPopup(Auth, provider);
+};
+// const provider = new GoogleAuthProvider() => signInWithPopup(auth, provider);
 
-export { createUser, login, addonAuthStateChanged };
+export {
+  createUser, login, addonAuthStateChanged, loginGoogle,
+};
 // export const googleLogin = () => {
 //   const provider = new GoogleAuthProvider();
 //   return signInWithPopup(Auth, provider);

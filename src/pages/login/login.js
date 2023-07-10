@@ -1,5 +1,5 @@
 import './login.css';
-import { login, addonAuthStateChanged } from '../serviceFirebase/firebaseAuth';
+import { login, loginGoogle } from '../serviceFirebase/firebaseAuth';
 import CBD from '../imagens/CBDCNNCT-IMG/logodesktopsemsombra.png';
 import google from '../imagens/google.png';
 
@@ -47,6 +47,7 @@ export default () => {
   const email = containerLogin.querySelector('#email');
   const senha = containerLogin.querySelector('#senha');
   const mensagemErroLogin = containerLogin.querySelector('#loginErro');
+  const btnGoogle = containerLogin.querySelector('#entrarGoogle');
 
   // Adicionar evento de clique no botão para validar os inputs email e senha
   btnLogin.addEventListener('click', async (e) => {
@@ -61,19 +62,26 @@ export default () => {
     }
 
     login(email.value, senha.value)
-      .then(() => {
-        addonAuthStateChanged((user) => {
-          if (user) {
-            window.location.hash = '#feed';
-          } else {
-            console.log('Não foi possível realizar o login');
-          }
-        });
+      .then((user) => {
+        window.location.hash = '#feed';
+        console.log(user);
       })
       .catch((error) => {
         console.log('Erro ao fazer o login:', error);
       });
   });
+
+  btnGoogle.addEventListener('click', async () => {
+    loginGoogle().then((user) => {
+      window.location.hash = '#feed';
+      console.log(user);
+    })
+      .catch((error) => {
+        console.log('Erro ao fazer o login:', error);
+      });
+    console.log('loginGoogle');
+  });
+
   return containerLogin;
 };
 
