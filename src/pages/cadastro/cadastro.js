@@ -21,7 +21,8 @@ export default () => {
   <p class="erro" id="erro"></p>
   <input type="radio" id="paciente" class="opção" name="opcaoPerfil" value="paciente">SOU PACIENTE</input>
   <input type="radio" id="prescritor" class="opção" name="opcaoPerfil" value="prescritor">SOU PRESCRITOR</input>
-  <a id="btnCriar" class="entrar centro" href="/#feed">CRIAR CONTA</a> 
+  <button type="submit" id="btnCriar" class="entrar centro" >CRIAR CONTA</button>
+  
   </form
   </div>
 
@@ -55,18 +56,29 @@ export default () => {
       mensagemErro.innerHTML = 'As senhas não conferem ';
       return;
     }
-    createUser(nome.value, email.value, senha.value).then((user) => {
-      console.log(user);
-    }).catch((erro) => {
-      mensagemErro.innerHTML = 'não cadastrado';
-      console.log(erro);
-    });
-  });
+    // if (perfilPaciente.value === '' && perfilPrescritor.value === '') {
+    //   mensagemErro.innerHTML = 'Selecione um perfil!';
+    // }
 
+    createUser(nome.value, email.value, senha.value)
+      .then(() => {
+      // usuário cadastrado com sucesso
+        window.location.href = '/#perfil';
+      })
+      .catch((error) => {
+        mensagemErro.innerHTML = 'não cadastrado';
+        console.log(error);
+      });
+    // if (Auth.currentUser) {
+    //   window.location.href = '#feed';
+    /* aqui ele não está autenticando e já vai para a tela de feed */
+    // .then((user) => {
+    //   console.log(user);
+    // }.catch((erro) => {
+    //   mensagemErro.innerHTML = 'não cadastrado';
+    //   console.log(erro);
+  });
   return containerCadastro;
 };
 
-// catch (erro) {
-//   mensagemErro.innerHTML = `<p>CEP inválido. Tente novamente!</p>`
-//   console.log(erro);
-// }
+/* <a id="btnCriar" class="entrar centro" href="/#feed">CRIAR CONTA</a>  */
