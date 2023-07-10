@@ -22,10 +22,18 @@ main {
     height: 325px;
 }
 
+#picture-cadastro nav {
+    background-color: #1e1e1e;
+    position: relative;
+    right: 45%;
+    height: 30px;
+}
+
 #picture-cadastro {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-color: #1e1e1e;
     border-radius: 0 0 32px 32px;
 }
@@ -42,12 +50,12 @@ header>h1 {
     font-weight: 600;
 }
 
-form {
+#formulario-cadastro {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 21px;
+    gap: 15px;
 }
 
 input {
@@ -102,6 +110,6 @@ input {
     font-weight: bold;
 }
 
-a {
+#paragrafo-cadastro a {
     color: #950909;
 }
