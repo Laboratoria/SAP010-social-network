@@ -1,5 +1,4 @@
 import { loginEmail, loginGoogle } from "../../lib/authUser.js";
-//import { login, loginGoogle } from '../../configFirebase/auth';
 
 export default () => {
   const loginContainer = document.createElement('div');
@@ -9,7 +8,7 @@ export default () => {
 <div>
   <h2>Bem vinde a sua rede social de filmes</h2>
 </div>
-<form>
+<div>
 <fieldset>
   <div>
     <label for="">E-mail</label>
@@ -29,12 +28,13 @@ export default () => {
   <br>
   <button class="btn btn-escuro" id="btn-login-criar-conta">Não tem login? Crie sua conta agora</button>
 </fieldset>
-</form>
+</div>
 <footer>
 <h5>Bootcamp Laboratoria - Projeto Rede Social</h5>
 <h6>Desenvolvido por Larissa, Maila e Vitória</h6>
 <p>2023</p>
 </footer></div>`;
+
 loginContainer.id = "login";
 loginContainer.innerHTML = templateLogin;
 

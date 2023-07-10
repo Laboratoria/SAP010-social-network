@@ -1,6 +1,6 @@
 //verificação de senha
 //verificação de erro (catch e erros para fazer validação)
-//import { getAppAuth, getAuth } from "./configfirebase.js";
+
 import { app } from "./configfirebase.js";
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from "firebase/auth";
@@ -18,7 +18,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
       });
     },
   );
-    //verificar preenchimento pelo usuario de usuario e senha (antes de passar por teste de cadastro)
+    
     //verificar quais parametros vão ser vinculados ao perfil via firebase
   };  
 

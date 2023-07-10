@@ -1,4 +1,3 @@
-//import { createUserWithEmail } from '../../configFirebase/auth';
 import { cadastroUsuarioSenha } from "../../lib/authUser.js";
 
 export default () => {
@@ -39,28 +38,22 @@ export default () => {
     <h6>Desenvolvido por Larissa, Maila e Vitória</h6>
     <p>2023</p>
   </footer></div>`;
-  cadastroContainer.id ="login"
+
+  cadastroContainer.id ="login" //CSS
   cadastroContainer.innerHTML = templateCadastro;
 
   // Informações preenchidas pelo usuário
-  const nomeEntrada = cadastroContainer.querySelector('#nome-completo');
+  const nomeEntrada = cadastroContainer.querySelector('#nome-completo');//pq todos ids tem que ter #?
   const nomeUsuarioEntrada = cadastroContainer.querySelector('#usuario');
   const emailEntrada = cadastroContainer.querySelector('#email');
-  const senhaEntrada = cadastroContainer.querySelector('#senha');
+  const senhaEntrada = cadastroContainer.querySelector('#senha');//document.getElementById?
 
   // Botões para cadastrar
   const botaoCadastrar = cadastroContainer.querySelector('#btn-cad-concluir');
   const botaoVoltar = cadastroContainer.querySelector('#btn-cad-voltar');
 
-/*   botaoCadastrar.addEventListener("click", () => {
-    window.location.hash = "#feed";
-  });
 
-  botaoVoltar.addEventListener("click", () => {
-    window.location.hash = "#voltar";
-  }); */
-
-
+  //Função Registrar
   const registerUser = (event) => {
     event.preventDefault();
     const nomeCompleto = nomeEntrada.value;
@@ -92,13 +85,11 @@ export default () => {
             break;
   
           case 'auth/invalid-password':
-            errorMessage.textContent = 'A senha é inválida, precisa ter pelo menos 6 caracteres.';
+            errorMessage.textContent = 'Senha inválida';
             errorMessage.style.display = 'block';
             break;
         }
       });
-
-    // Teste cadastro
     console.log(`Nome: ${nomeCompleto} Usuário: ${usuario} Email: ${email} Senha: ${senha}`);
   };
 
