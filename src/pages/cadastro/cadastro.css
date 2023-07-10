@@ -19,7 +19,7 @@ main {
 }
 
 #menina-cadastro {
-    height: 359px;
+    height: 325px;
 }
 
 #picture-cadastro {
@@ -94,7 +94,7 @@ input {
     box-shadow: 0px 4px 0px 0px #520000;
 }
 
-p {
+#paragrafo-cadastro {
     display: flex;
     align-items: center;
     justify-content: center;
