@@ -49,7 +49,7 @@ h1 {
     flex-direction: column;
 }
 
-#btn-cinza {
+#btn-cinza-home {
     display: flex;
     width: 320px;
     height: 40px;
@@ -84,7 +84,7 @@ h1 {
     font-family: 'Poppins', sans-serif;
 }
 
-#btn-cinza a {
+#btn-cinza-home a {
     text-decoration: none;
     color: #FFFF;
     padding: 10px 138px;

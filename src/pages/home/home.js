@@ -1,8 +1,8 @@
 export default () => {
-    const container = document.createElement('div');
-    container.id = "csshome";
+  const container = document.createElement('div');
+  container.id = 'csshome';
 
-    const template = `
+  const template = `
     <picture id="picture-home">
     <img src="imagens/menina.png" alt="menina fazendo movimento de arte marcial" id="menina-home">
     </picture>
@@ -14,12 +14,11 @@ export default () => {
        alimente seu conhecimento em defesa pessoal.</p>
     </article>
     <div class="botoes">
-    <button id="btn-cinza"><a href="/#login">Entrar</a></button>
+    <button id="btn-cinza-home"><a href="/#login">Entrar</a></button>
     <button id="btn-branco"><a href="/#cadastro">Cadastrar</a></button>
     </div>`;
 
-    container.innerHTML = template;
+  container.innerHTML = template;
 
-    return container;
-
-}
+  return container;
+};
