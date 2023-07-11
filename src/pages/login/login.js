@@ -16,7 +16,7 @@ export default () => {
 <input type="email" id="input-email" name="email" placeholder="Email">
 <input type="password" id="input-senha" name="senha" placeholder="Senha">
 <button id="btn-cinza-login">Entrar</button>
-<p id="paragrafo-login">Ainda não tem uma conta??&nbsp;<a href="/#cadastro">Cadastre-se</a></p>
+<p id="paragrafo-login">Ainda não tem uma conta?&nbsp;<a href="/#cadastro">Cadastre-se</a></p>
   </form>`;
 
   container.innerHTML = template;
