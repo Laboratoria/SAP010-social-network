@@ -11,16 +11,21 @@ export default () => {
 <div>
 <fieldset>
   <div>
-    <label for="">E-mail</label>
-    <br>
-    <input type="text" class="email" id="email">
+    <label for="email" id="emailLabel">
+      <p>E-mail</p>
+      <span></span>
+      <input type="text" name="email" class="email" id="email">
+    </label>
   </div>
   <div>
-    <label for="">Senha</label>
-    <br>
-    <input type="password" class="senha" id="senha">
+    <label for="senha" id="senhaLabel">
+    <p>Senha</p>
+    <span></span>
+      <input type="password" name="senha" class="senha" id="senha">
+    </label>
   </div>
   <button class="btn" id="btn-login-entrar">Entrar</button>
+  <div id="errorMessage"></div>
   <br>
   <button class="btn btn-transparente" id="btn-login-esq-senha">Esqueceu a senha?</button>
   <br>
@@ -59,6 +64,7 @@ loginContainer.innerHTML = templateLogin;
         window.location.hash = '#feed';
       })
       .catch(() => {
+        console.log("entrei")
         const errorMessage = loginContainer.querySelector('#errorMessage');
         errorMessage.textContent = 'Informações de e-mail ou senha incorretas';
         errorMessage.style.display = 'block';
