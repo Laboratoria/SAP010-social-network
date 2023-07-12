@@ -13,7 +13,7 @@ export default () => {
             <img src="imagens/fightback-logo.png" alt="logo do app">
           </picture>
         </header>
-        <input type="text" id="input-name" name="name" placeholder="Nome">
+        <input type="text" id="input-name" name="name" placeholder="Nome" autocomplete="off">
         <input type="email" id="input-email" name="email" placeholder="Email">
         <input type="password" id="input-senha" name="senha" placeholder="Senha">
         <button id="btn-vermelho">Cadastrar</button>
@@ -24,3 +24,4 @@ export default () => {
 
   return container;
 };
+

@@ -6,6 +6,7 @@
 import home from './pages/home/home';
 import cadastro from './pages/cadastro/cadastro';
 import login from './pages/login/login';
+import { cadastrarUsuario } from './lib/firebase';
 
 const principal = document.querySelector('#principal');
 
@@ -34,3 +35,8 @@ window.addEventListener('load', () => {
   principal.appendChild(home());
   init();
 });
+
+const email = "";
+const senha = "12345678";
+
+cadastrarUsuario(email, senha);

@@ -13,7 +13,7 @@ export default () => {
 <img src="imagens/fightback-logo.png" alt="logo do app">
 </picture>
 </header>
-<input type="email" id="input-email" name="email" placeholder="Email">
+<input type="email" id="input-email" name="email" placeholder="Email" autocomplete="off">
 <input type="password" id="input-senha" name="senha" placeholder="Senha">
 <button id="btn-cinza-login">Entrar</button>
 <p id="paragrafo-login">Ainda não tem uma conta?&nbsp;<a href="/#cadastro">Cadastre-se</a></p>
