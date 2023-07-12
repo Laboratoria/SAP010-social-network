@@ -1,15 +1,5 @@
 //import { myFunction } from './lib/firebase.js';
 
-/* // Versão ANTIGA - NAO USAR - CUIDADO! FOGE! CORRE!
-firebase.auth().qualquerCoisa()
-  .then(....) 
-  .catch(....)
-
-firebase.firestore().qualquerCoisa()
-  .then(....) 
-  .catch(....) */
-  
-//myFunction();
 
 // Import the functions you need from the SDKs you need
 //import { getFirestore } from 'firebase/firestore';

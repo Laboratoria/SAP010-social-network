@@ -21,10 +21,7 @@ import feed from "./pages/Feed/feed.js";
           break;
         case '#feed':
           main.appendChild(feed());
-          break;
-          /*         case '#concluir':
-          main.appendChild(feed());
-          break; */
+          break;          
         default:
           main.appendChild(login());
       }

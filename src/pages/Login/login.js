@@ -72,10 +72,9 @@ loginContainer.innerHTML = templateLogin;
   entrarLoginBotao.addEventListener('click', firstLogin);  
 
   // Login Google
-  criarLoginGoogleBotao.addEventListener('click', () => {
-    console.log("entrei");
-    loginGoogle().then(() => {
-      console.log("entrei no then")
+  criarLoginGoogleBotao.addEventListener('click', () => {    
+    loginGoogle()
+      .then(() => {      
       window.location.hash = '#feed';
     }).catch((error) => {
       console.log(error);

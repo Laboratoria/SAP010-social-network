@@ -12,12 +12,12 @@ export default () => {
         <nav> 
           <ul>
             <li>
-              <a href="">Comente um filme</a>
-              <a href="">Feed</a>
+              <button>Comente um filme</button>
+              <button>Feed</button>
             </li>
           </ul>
         </nav>
-
+       </div> 
   </header>
   <div>
       <img></img>

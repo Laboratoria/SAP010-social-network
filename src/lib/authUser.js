@@ -2,15 +2,13 @@
 //verificação de erro (catch e erros para fazer validação)
 
 import { app } from "./configfirebase.js";
-
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from "firebase/auth";
 
   //Criar Usuário
   export function cadastroUsuarioSenha(nomeCompleto, usuario, email, senha){
     const auth = getAppAuth();
   return createUserWithEmailAndPassword(auth, email, senha).then(
-    (userCredential) => {
-      console.log("entrei");
+    (userCredential) => {      
       const user = userCredential.user;
       window.location.hash = '#feed';
       updateProfile(user, {
@@ -53,3 +51,6 @@ export const getUserId = () => {
   const auth = getAppAuth();
   return auth.currentUser.uid;
 };
+
+
+
