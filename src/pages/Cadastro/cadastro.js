@@ -13,11 +13,11 @@ export default () => {
       <fieldset>
         <legend>Cadastre-se</legend>
         <div>
-          <label for="nome-completo">Nome completo</label>
-          <input type="text" class="nome-completo" id="nome-completo">
+          <label for="nome">Nome</label>
+          <input type="text" class="nome" id="nome">
         </div>
         <div>
-          <label for="usuario">Nome do usuário</label>
+          <label for="usuario">Usuário</label>
           <input type="text" class="usuario" id="usuario">
         </div>
         <div>

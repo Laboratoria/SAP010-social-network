@@ -88,3 +88,51 @@ background-color: transparent;
     display: none;
 }
 }
+
+#emailLabel,#senhaLabel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    margin-bottom: 3px;
+}
+
+#emailLabel p,#senhaLabel p {
+    width: 100%;
+}
+
+#emailLabel > span {    
+    background: url("./img/icons/icones-email.svg");
+    background-size: 26px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 26px;
+  }
+
+  #senhaLabel > span {
+    background: url("./img/icons/icones-password.svg");
+    background-size: 22px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 26px;
+  }
+
+#email,#senha,#nome,#usuario, input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+    background: transparent;
+    max-width: 300px;
+    width: 100%;
+    font-size: 15px;
+    color: white;
+    border: none;
+    border-bottom: 1px #5FEA4B solid;
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: none;
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+#errorMessage{
+color:#F68D10;
+font-size: 20px;
+
+}
