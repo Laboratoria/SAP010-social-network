@@ -36,7 +36,7 @@ export default () => {
 </div>
 <footer>
 <h5>Bootcamp Laboratoria - Projeto Rede Social</h5>
-<h6>Desenvolvido por Larissa, Maila e Vitória</h6>
+<h6>Desenvolvido por Larissa,Maila e Vitória</h6>
 <p>2023</p>
 </footer></div>`;
 
