@@ -87,6 +87,7 @@ export default () => {
       });
     //console.log(`Usuário: ${usuario} Email: ${email} Senha: ${senha}`);
   };
+  //fazer um novo case para quando não há nada preenchido
 
   botaoCadastrar.addEventListener('click', registerUser);
 
