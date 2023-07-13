@@ -13,7 +13,11 @@ export default () => {
 </header>
 <input type="text" id="input-name" name="name" placeholder="Nome">
 <input type="email" id="input-email" name="email" placeholder="Email">
-<input type="password" id="input-senha" name="senha" placeholder="Senha">
+<div class="cadastro-check">
+  <input type="checkbox" id="check-cadastro" class="onoff">
+  <label for="check-cadastro" class="check-btncadastro"></label>
+  <input type="password" id="input-senha" name="senha" placeholder="Senha">
+</div>
 <button id="btn-vermelho">Cadastrar</button>
 <p id="paragrafo-cadastro">Já tem uma conta?&nbsp;<a href="/#login">Entrar</a></p>
 </form>`;

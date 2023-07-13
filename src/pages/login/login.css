@@ -69,3 +69,46 @@ nav {
     margin-top: 12px;
     font-weight: bold;
 }
+
+/* botão on-off*/
+.senha-check{
+    position: relative;
+
+}
+.on-off {
+    display: flex;
+    height: 0px;
+    width: 0px;
+  }
+  
+  .check-btn {
+    position: absolute;
+    display: inline-block;
+    margin-top: 20px;
+    width: 40px;
+    height: 20px;
+    left: 260px;
+    background-color: #666262;
+    border-radius: 17px;
+    cursor: pointer;
+  }
+  
+  .check-btn::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    top: 0px;
+    left: 1px;
+    transition: transform 0.3s;
+  }
+  
+  #check:checked + .check-btn {
+    background-color: #f32121;
+  }
+  
+  #check:checked + .check-btn::after {
+    transform: translateX(18px);
+  }
