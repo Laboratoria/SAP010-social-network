@@ -11,11 +11,7 @@ export default () => {
   </div>
     <form action="">
       <fieldset>
-        <legend>Cadastre-se</legend>
-        <div>
-          <label for="nome">Nome</label>
-          <input type="text" class="nome" id="nome">
-        </div>
+        <legend>Cadastre-se</legend>      
         <div>
           <label for="usuario">Usuário</label>
           <input type="text" class="usuario" id="usuario">
@@ -43,7 +39,7 @@ export default () => {
   cadastroContainer.innerHTML = templateCadastro;
 
   // Informações preenchidas pelo usuário
-  const nomeEntrada = cadastroContainer.querySelector('#nome-completo');//pq todos ids tem que ter #?
+  
   const nomeUsuarioEntrada = cadastroContainer.querySelector('#usuario');
   const emailEntrada = cadastroContainer.querySelector('#email');
   const senhaEntrada = cadastroContainer.querySelector('#senha');//document.getElementById?
@@ -55,14 +51,13 @@ export default () => {
 
   //Função Registrar
   const registerUser = (event) => {
-    event.preventDefault();
-    const nomeCompleto = nomeEntrada.value;
+    event.preventDefault();    
     const usuario = nomeUsuarioEntrada.value;
     const email = emailEntrada.value;
     const senha = senhaEntrada.value;
 
     // Chamada para a função createUserWithEmail
-    cadastroUsuarioSenha(nomeCompleto, usuario, email, senha)
+    cadastroUsuarioSenha(usuario, email, senha)
       
       .catch((error) => {
         // Lidar com erros durante o cadastro
@@ -87,10 +82,10 @@ export default () => {
           case 'auth/invalid-password':
             errorMessage.textContent = 'Senha inválida';
             errorMessage.style.display = 'block';
-            break;
+            break;          
         }
       });
-    console.log(`Nome: ${nomeCompleto} Usuário: ${usuario} Email: ${email} Senha: ${senha}`);
+    //console.log(`Usuário: ${usuario} Email: ${email} Senha: ${senha}`);
   };
 
   botaoCadastrar.addEventListener('click', registerUser);

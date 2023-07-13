@@ -1,5 +1,4 @@
 import login from "./pages/Login/login.js";
-import perfil from "./pages/Perfil/perfil.js";
 import cadastro from "./pages/Cadastro/cadastro.js";
 import feed from "./pages/Feed/feed.js";
 
@@ -15,16 +14,10 @@ import feed from "./pages/Feed/feed.js";
           break;
         case '#cadastro':
           main.appendChild(cadastro());
-          break;
-        case '#perfil':
-          main.appendChild(perfil());
-          break;
+          break;        
         case '#feed':
           main.appendChild(feed());
-          break;
-          /*         case '#concluir':
-          main.appendChild(feed());
-          break; */
+          break;          
         default:
           main.appendChild(login());
       }

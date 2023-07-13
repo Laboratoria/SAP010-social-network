@@ -8,16 +8,16 @@ export default () => {
       <div>
         <img></img>
         <h3> Feed </h3>
-        <h2> Nome do Usuário </h2>
+        <h2 id="usuario">  </h2>
         <nav> 
           <ul>
             <li>
-              <a href="">Comente um filme</a>
-              <a href="">Feed</a>
+              <button>Comente um filme</button>
+              <button>Feed</button>
             </li>
           </ul>
         </nav>
-
+       </div> 
   </header>
   <div>
       <img></img>

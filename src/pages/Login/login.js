@@ -40,8 +40,8 @@ export default () => {
 <p>2023</p>
 </footer></div>`;
 
-loginContainer.id = "login";
-loginContainer.innerHTML = templateLogin;
+  loginContainer.id = "login";
+  loginContainer.innerHTML = templateLogin;
 
   // Informações preenchidas pelo usuário
   const emailEntrada = loginContainer.querySelector("#email");
@@ -64,28 +64,23 @@ loginContainer.innerHTML = templateLogin;
         window.location.hash = '#feed';
       })
       .catch(() => {
-        console.log("entrei")
         const errorMessage = loginContainer.querySelector('#errorMessage');
         errorMessage.textContent = 'Informações de e-mail ou senha incorretas';
         errorMessage.style.display = 'block';
-      });
-    
-    // teste login
-    console.log(`Usuário: ${email} Senha: ${senha}`);
+      });    
     return false;
   };
 
-  entrarLoginBotao.addEventListener('click', firstLogin);  
+  entrarLoginBotao.addEventListener('click', firstLogin);
 
   // Login Google
   criarLoginGoogleBotao.addEventListener('click', () => {
-    console.log("entrei");
-    loginGoogle().then(() => {
-      console.log("entrei no then")
-      window.location.hash = '#feed';
-    }).catch((error) => {
-      console.log(error);
-    });
+    loginGoogle()
+      .then(() => {
+        window.location.hash = '#feed';
+      }).catch((error) => {
+        console.log(error);
+      });
   });
 
 
