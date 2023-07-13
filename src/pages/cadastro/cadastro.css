@@ -1,0 +1,151 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#csscadastro {
+    background-color: #ffff;
+    height: 100vh;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+}
+
+main {
+    height: 100vh;
+}
+
+#menina-cadastro {
+    height: 325px;
+}
+
+#picture-cadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e1e;
+    border-radius: 0 0 32px 32px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+header>h1 {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 21px;
+}
+
+input {
+    width: 279px;
+    height: 50px;
+    font-size: 24px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+#input-name {
+    background: url(/imagens/icon-user.png) no-repeat left / 1em;
+    padding-left: 1.4em;
+}
+
+#input-email {
+    background: url(/imagens/icon-email.png) no-repeat left / 1em;
+    padding-left: 1.4em;
+}
+
+#input-senha {
+    background: url(/imagens/icon-lock.png) no-repeat left / 1em;
+    padding-left: 1.4em;
+}
+
+#btn-vermelho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 328px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 800;
+    border-radius: 8px;
+    background-color: #950909;
+    color: #ffff;
+    margin-top: 23px;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    border: currentColor;
+    box-shadow: 0px 4px 0px 0px #520000;
+}
+
+#paragrafo-cadastro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+a {
+    color: #950909;
+}
+
+/* botão on-off*/
+.cadastro-check {
+    position: relative;
+  }
+  
+  .onoff {
+    display: flex;
+    height: 0px;
+    width: 0px;
+  }
+  
+  .check-btncadastro {
+    position: absolute;
+    display: inline-block;
+    margin-top: 20px;
+    width: 40px;
+    height: 20px;
+    left: 260px;
+    background-color: #666262;
+    border-radius: 17px;
+    cursor: pointer;
+  }
+  
+  .check-btncadastro::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    top: 0px;
+    left: 1px;
+    transition: transform 0.3s;
+  }
+  
+  #check-cadastro:checked + .check-btncadastro {
+    background-color: #f32121;
+  }
+  
+  #check-cadastro:checked + .check-btncadastro::after {
+    transform: translateX(18px);
+  }
+  

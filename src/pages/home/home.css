@@ -4,16 +4,25 @@
 }
 
 body {
-    background-color: #930909;
     font-family: 'Open Sans', sans-serif;
     font-family: 'Poppins', sans-serif;
+    height: 100vh;
+}
+
+#csshome {
+    background-color: #930909;
+    height: 100vh;
+}
+
+main {
+    height: 100vh;
 }
 
 #menina-home {
     height: 359px;
 }
 
-picture {
+#picture-home {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,7 +49,7 @@ h1 {
     flex-direction: column;
 }
 
-#btn-cinza {
+#btn-cinza-home {
     display: flex;
     width: 320px;
     height: 40px;
@@ -54,6 +63,8 @@ h1 {
     color: #FFFF;
     border: currentColor;
     cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 #btn-branco {
@@ -69,9 +80,11 @@ h1 {
     box-shadow: 0px 4px 0px 0px #afafaf;
     border: currentColor;
     cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-#btn-cinza a {
+#btn-cinza-home a {
     text-decoration: none;
     color: #FFFF;
     padding: 10px 138px;
