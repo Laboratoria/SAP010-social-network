@@ -46,6 +46,16 @@ main {
     gap: 24px;
 }
 
+#input-email-login {
+    background: url(/imagens/icon-email.png) no-repeat left / 1em;
+    padding-left: 1.4em;
+}
+
+#input-senha-login {
+    background: url(/imagens/icon-lock.png) no-repeat left / 1em;
+    padding-left: 1.4em;
+}
+
 #btn-cinza-login {
     display: flex;
     width: 320px;

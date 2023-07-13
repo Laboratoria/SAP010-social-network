@@ -5,7 +5,7 @@
 //   console.log('Hola mundo!');
 // };
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { app, auth } from "./firebase-config.js";
 
 export function cadastrarUsuario(email, senha) {
@@ -22,4 +22,11 @@ export function cadastrarUsuario(email, senha) {
             const errorMessage = error.message;
             console.error(`${errorCode} - ${errorMessage}`)
         });
+}
+
+export function loginUsuario(email, senha) {
+
+    const auth = getAuth();
+    return signInWithEmailAndPassword(auth, email, senha);
+
 }
