@@ -5,6 +5,7 @@ export default () => {
   container.id = 'csscadastro';
 
   const template = `<picture id="picture-cadastro">
+  <nav><a href=""><img src="imagens/icon-voltar-branco.png"></a></nav>
 <img src="imagens/menina.png" alt="menina fazendo movimento de arte marcial" id="menina-cadastro">
 </picture>
 <form id="formulario-cadastro" autocomplete="off">
@@ -14,11 +15,11 @@ export default () => {
 </picture>
 </header>
 <input type="text" id="input-name" name="name" placeholder="Nome">
-<input type="email" id="input-email" name="email" placeholder="Email">
+<input type="email" id="input-email-cadastro" name="email" placeholder="Email">
 <div class="cadastro-check">
   <input type="checkbox" id="check-cadastro" class="onoff">
   <label for="check-cadastro" class="check-btncadastro"></label>
-  <input type="password" id="input-senha" name="senha" placeholder="Senha">
+  <input type="password" id="input-senha-cadastro" name="senha" placeholder="Senha">
 </div>
 <button id="btn-vermelho">Cadastrar</button>
 <p id="paragrafo-cadastro">Já tem uma conta?&nbsp;<a href="/#login">Entrar</a></p>
@@ -27,8 +28,8 @@ export default () => {
   container.innerHTML = template;
 
   const botaoCadastrar = container.querySelector('#btn-vermelho');
-  const inputEmail = container.querySelector("#input-email");
-  const inputSenha = container.querySelector("#input-senha");
+  const inputEmail = container.querySelector("#input-email-cadastro");
+  const inputSenha = container.querySelector("#input-senha-cadastro");
 
   botaoCadastrar.addEventListener('click', (event) => {
     event.preventDefault();
