@@ -19,7 +19,7 @@ export default () => {
   <input type="password" id="senha" class="input centro" placeholder="SENHA" required>
   <input type="password" id="confirmarSenha" class="input centro" placeholder="CONFIRMAR SENHA" required>
   <p class="erro" id="erro"></p>
-  <input type="radio" id="paciente" class="opção" name="opcaoPerfil" value="paciente">SOU PACIENTE</input>
+  <input type="radio" id="paciente" class="opção" name="opcaoPerfil" value="paciente" checked >SOU PACIENTE</input>
   <input type="radio" id="prescritor" class="opção" name="opcaoPerfil" value="prescritor">SOU PRESCRITOR</input>
   <button type="submit" id="btnCriar" class="entrar centro" >CRIAR CONTA</button>
   
