@@ -23,9 +23,9 @@ export default () => {
 </form>`;
 
   container.innerHTML = template;
+  
 
   return container;
 };
 
-// const inputEmail = document.querySelector("#input-email");
-// const inputSenha = document.querySelector("#input-senha");
+
