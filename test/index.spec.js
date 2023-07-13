@@ -1,6 +1,5 @@
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-
-import { createUser } from '../src/pages/serviceFirebase/firebaseAuth.js';
+import { createUserWithEmailAndPassword, getAuth, signInWithPopup } from 'firebase/auth';
+import { createUser, loginGoogle } from '../src/pages/serviceFirebase/firebaseAuth.js';
 
 jest.mock('firebase/auth');
 
@@ -25,5 +24,18 @@ describe('createUser is a function', () => {
     await createUser(nome, email, senha);
 
     expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(authMock, email, senha);
+  });
+});
+
+describe('Login com o Google', () => {
+  it('deveria ser uma função', () => {
+    expect(typeof loginGoogle).toBe('function');
+  });
+
+  it('Deveria logar com o Google', async () => {
+    signInWithPopup.mockResolvedValueOnce();
+    // permite que defina o valor de retorno de uma função mockada como uma Promise resolvida
+    await loginGoogle();
+    expect(signInWithPopup).toHaveBeenCalledTimes(1);
   });
 });
