@@ -13,7 +13,6 @@ const principal = document.querySelector('#principal');
 const init = () => {
   window.addEventListener('hashchange', () => {
     principal.innerHTML = '';
-    // console.log(window.location.hash);
     switch (window.location.hash) {
       case '':
         principal.appendChild(home());
@@ -21,12 +20,12 @@ const init = () => {
       case '#login':
         principal.appendChild(login());
         break;
+      case '#cadastro':
+        principal.appendChild(cadastro());
+        break;
       default:
-        if (window.location.hash.includes('cadastro')) {
-          principal.appendChild(cadastro());
-        } else {
-          principal.appendChild(home());
-        }
+        principal.appendChild(home());
+        break;
     }
   });
 };
