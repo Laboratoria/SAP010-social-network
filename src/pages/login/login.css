@@ -130,7 +130,3 @@ main {
   #check:checked + .check-btn::after {
     transform: translateX(18px);
   }
-
-  #paragrafo-login a {
-    color: #950909;
-}
