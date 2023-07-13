@@ -6,7 +6,7 @@
 // };
 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { app, auth } from "./firebase-config";
+import { app, auth } from "./firebase-config.js";
 
 export function cadastrarUsuario(email, senha) {
     const auth = getAuth();

@@ -31,12 +31,19 @@ const init = () => {
   });
 };
 
+const botaoCadastrar = document.querySelector('#btn-vermelho');
+
 window.addEventListener('load', () => {
   principal.appendChild(home());
   init();
+
+  if (window.location.hash === '#cadastro') {
+    const email = document.querySelector("#input-email");
+    const senha = document.querySelector("#input-senha");
+    cadastrarUsuario(email, senha);
+  }
 });
 
-const email = "";
-const senha = "12345678";
 
-cadastrarUsuario(email, senha);
+
+
