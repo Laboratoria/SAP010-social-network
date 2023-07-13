@@ -3,7 +3,6 @@
 // import { myFunction } from './lib/index.js';
 
 // myFunction();
-
 import home from './pages/home/home';
 import cadastro from './pages/cadastro/cadastro';
 import login from './pages/login/login';
@@ -29,6 +28,7 @@ const init = () => {
     }
   });
 };
+
 
 
 window.addEventListener('load', () => {

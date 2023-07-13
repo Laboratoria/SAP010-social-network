@@ -18,7 +18,7 @@ main {
     height: 100vh;
 }
 
-nav {
+#picture-login nav {
     background-color: #950909;
     position: relative;
     right: 45%;
@@ -36,6 +36,14 @@ nav {
 
 #menina-login {
     height: 325px;
+}
+
+#formulario-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
 }
 
 #btn-cinza-login {
@@ -112,3 +120,7 @@ nav {
   #check:checked + .check-btn::after {
     transform: translateX(18px);
   }
+
+  #paragrafo-login a {
+    color: #950909;
+}

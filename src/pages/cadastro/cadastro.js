@@ -1,3 +1,5 @@
+import { cadastrarUsuario } from "../../lib/firebase";
+
 export default () => {
   const container = document.createElement('div');
   container.id = 'csscadastro';
@@ -24,5 +26,17 @@ export default () => {
 
   container.innerHTML = template;
 
+  const botaoCadastrar = container.querySelector('#btn-vermelho');
+  const inputEmail = container.querySelector("#input-email");
+  const inputSenha = container.querySelector("#input-senha");
+
+  botaoCadastrar.addEventListener('click', (event) => {
+    event.preventDefault();
+    const emailDoUsuario = inputEmail.value;
+    const senhaDoUsuario = inputSenha.value;
+    cadastrarUsuario(emailDoUsuario, senhaDoUsuario);
+  })
+
   return container;
 };
+
