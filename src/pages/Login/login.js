@@ -1,6 +1,15 @@
 import { loginEmail, loginGoogle } from "../../lib/authUser.js";
+/*<link rel="stylesheet" type="text/css" href="pages/Login/login.css">*/
 
 export default () => {
+  const oldStyles = document.getElementsByTagName("link");
+  if(oldStyles.length > 1) oldStyles[1].remove();
+  const stylesheet = document.createElement('link');
+  stylesheet.setAttribute('rel', 'stylesheet');
+  stylesheet.setAttribute('type', 'text/css');
+  stylesheet.setAttribute('href','pages/Login/login.css');
+  document.head.appendChild(stylesheet);
+
   const loginContainer = document.createElement('div');
   const templateLogin = `<div id="loginBackground"></div><div><header>
   <picture><img class="logo" src="./img/logo_contraplano.png"></picture>

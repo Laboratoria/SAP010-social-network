@@ -1,4 +1,10 @@
 export default () => {
+  const stylesheet = document.createElement('link');
+  stylesheet.setAttribute('rel', 'stylesheet');
+  stylesheet.setAttribute('type', 'text/css');
+  stylesheet.setAttribute('href','pages/Perfil/perfil.css');
+  document.head.appendChild(stylesheet);
+
   const perfilContainer = document.createElement('div');
   const templatePerfil = `
   <header>

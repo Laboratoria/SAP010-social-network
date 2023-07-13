@@ -1,0 +1,23 @@
+#emailLabel,#senhaLabel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    margin-bottom: 3px;
+}
+
+
+#emailLabel > span {    
+    background: url("../../img/icons/icones-email.svg");
+    background-size: 26px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 26px;
+  }
+
+  #senhaLabel > span {
+    background: url("./img/icons/icones-password.svg");
+    background-size: 22px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 26px;
+  }

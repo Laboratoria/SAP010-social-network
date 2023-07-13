@@ -1,6 +1,12 @@
 //import {  } from "../../lib/authUser.js";
 
 export default () => {
+  const stylesheet = document.createElement('link');
+  stylesheet.setAttribute('rel', 'stylesheet');
+  stylesheet.setAttribute('type', 'text/css');
+  stylesheet.setAttribute('href','pages/Feed/feed.css');
+  document.head.appendChild(stylesheet);
+
   const feedContainer = document.createElement('div');
   const templateFeed = `
   <header>
