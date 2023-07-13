@@ -36,7 +36,18 @@ export default () => {
     event.preventDefault();
     const emailDoUsuario = inputEmail.value;
     const senhaDoUsuario = inputSenha.value;
-    loginUsuario(emailDoUsuario, senhaDoUsuario);
+    loginUsuario(emailDoUsuario, senhaDoUsuario)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      console.log('usuário logado com sucesso')
+      console.log(user)
+  })
+  .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error(`${errorCode} - ${errorMessage}`)
+  });
   })
 
   return container;

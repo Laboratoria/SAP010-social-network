@@ -27,17 +27,6 @@ export function cadastrarUsuario(email, senha) {
 export function loginUsuario(email, senha) {
 
     const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, senha)
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            console.log('usuário logado com sucesso')
-            console.log(user)
-            console.log(typeof then())
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.error(`${errorCode} - ${errorMessage}`)
-        });
+    return signInWithEmailAndPassword(auth, email, senha);
+
 }
