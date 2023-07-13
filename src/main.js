@@ -3,10 +3,10 @@
 // import { myFunction } from './lib/index.js';
 
 // myFunction();
-
 import home from './pages/home/home';
 import cadastro from './pages/cadastro/cadastro';
 import login from './pages/login/login';
+import { cadastrarUsuario } from './lib/firebase';
 
 const principal = document.querySelector('#principal');
 
@@ -30,8 +30,19 @@ const init = () => {
   });
 };
 
+const botaoCadastrar = document.querySelector('#btn-vermelho');
 
 window.addEventListener('load', () => {
   principal.appendChild(home());
   init();
+
+  if (window.location.hash === '#cadastro') {
+    const email = document.querySelector("#input-email");
+    const senha = document.querySelector("#input-senha");
+    cadastrarUsuario(email, senha);
+  }
 });
+
+
+
+
