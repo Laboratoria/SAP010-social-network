@@ -16,6 +16,8 @@
     background-repeat: no-repeat;
     background-position: center;
     width: 26px;
+    border: 9px #7e2ac2b6 solid;
+    border-radius: 50px;
   }
 
   #senhaLabel > span {
@@ -24,6 +26,6 @@
     background-repeat: no-repeat;
     background-position: center;
     width: 26px;
-    border: 1px #7d2ac2 solid;
+    border: 9px #e210104b solid;
     border-radius: 50px;
   }

@@ -8,10 +8,12 @@
 
 #emailLabel > span {    
     background: url("../../img/icons/icones-email.svg");
-    background-size: 26px;
+    background-size: 18px;
     background-repeat: no-repeat;
     background-position: center;
     width: 26px;
+    border: 5px #7e2ac2b6 solid;
+    border-radius: 50px;
   }
 
   #senhaLabel > span {
