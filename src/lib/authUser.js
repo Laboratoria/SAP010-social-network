@@ -1,34 +1,36 @@
-//verificação de senha
-//verificação de erro (catch e erros para fazer validação)
+// verificação de senha
+// verificação de erro (catch e erros para fazer validação)
 
-import { app } from "./configfirebase.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from "firebase/auth";
+import {
+  getAuth, createUserWithEmailAndPassword,
+  signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile,
+} from 'firebase/auth';
+import { app } from './configfirebase.js';
 
-//Criar Usuário
+export const getAppAuth = () => getAuth(app);
+// Criar Usuário
 export function cadastroUsuarioSenha(usuario, email, senha) {
   const auth = getAppAuth();
-  return createUserWithEmailAndPassword(auth, email, senha).then(
-    (userCredential) => {
-      const user = userCredential.user;
-      window.location.hash = '#feed';
-      updateProfile(user, {
-        displayName: `${usuario}`,        
-      });
-      console.log(usuario);
-    },
-  );
+  return createUserWithEmailAndPassword(auth, email, senha)
+    .then(
+      (userCredential) => {
+        const user = userCredential.user;
+        window.location.hash = '#feed';
+        updateProfile(user, {
+          displayName: `${usuario}`,
+        });
+      },
+    );
+  // verificar quais parametros vão ser vinculados ao feed via firebase
+}
 
-  //verificar quais parametros vão ser vinculados ao perfil via firebase
-};
-
-//Login
+// Login
 export function loginEmail(email, senha) {
   const auth = getAppAuth();
-  return signInWithEmailAndPassword(auth, email, senha)  
-};
+  return signInWithEmailAndPassword(auth, email, senha);
+}
 
 // login google
-export const getAppAuth = () => getAuth(app);
 
 export const loginGoogle = () => {
   const provider = new GoogleAuthProvider();
@@ -36,20 +38,17 @@ export const loginGoogle = () => {
   return signInWithPopup(auth, provider);
 };
 
-/*export const getUserName = () => {
+/* export const getUserName = () => {
   const auth = getAppAuth();
   const user = auth.currentUser;
   if (user) {
     return user.displayName;
   }
   return null;
-};*/
+}; */
 
 // id do usuario no firebase
 export const getUserId = () => {
   const auth = getAppAuth();
   return auth.currentUser.uid;
 };
-
-
-

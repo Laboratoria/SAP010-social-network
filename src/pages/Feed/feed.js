@@ -1,4 +1,4 @@
-//import {  } from "../../lib/authUser.js";
+// import {  } from "../../lib/authUser.js";
 
 export default () => {
   const feedContainer = document.createElement('div');
@@ -8,7 +8,7 @@ export default () => {
       <div>
         <img></img>
         <h3> Feed </h3>
-        <h2 id="usuario">  </h2>
+        <h2 id="usuario"></h2>
         <nav> 
           <ul>
             <li>
@@ -36,4 +36,4 @@ export default () => {
 
   return feedContainer;
 };
-//chamar função getAuth para conseguir
+
