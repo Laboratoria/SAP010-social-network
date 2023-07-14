@@ -2,3 +2,11 @@
     margin-top: 10%;
     align-items: center;    
 }
+ .erro {
+    color: #e63636;
+    font-size: 12px;
+ }
+
+ .borda-vermelha {
+    border: 2px solid #e63636;
+ }

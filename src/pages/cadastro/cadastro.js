@@ -15,12 +15,22 @@ export default () => {
   </nav>
   <form>
   <input type="text" id="nome" class="input centro" placeholder="NOME" required>
+  <span class="erro" id="erro-nome"></span>
+
   <input type="email" id="email" class="input centro" placeholder="E-MAIL" required> 
+  <span class="erro" id="erro-email"></span>
+
   <input type="password" id="senha" class="input centro" placeholder="SENHA" required>
+  <span class="erro" id="erro-senha"></span>
+
   <input type="password" id="confirmarSenha" class="input centro" placeholder="CONFIRMAR SENHA" required>
-  <p class="erro" id="erro"></p>
-  <input type="radio" id="paciente" class="opção" name="opcaoPerfil" value="paciente" checked >SOU PACIENTE</input>
-  <input type="radio" id="prescritor" class="opção" name="opcaoPerfil" value="prescritor">SOU PRESCRITOR</input>
+  <span class="erro" id="erro-confirmarsenha"></span>
+
+  <input type="radio" id="paciente" class="opção" name="opcaoPerfil" value="paciente" checked >SOU PACIENTE
+  <input type="radio" id="prescritor" class="opção" name="opcaoPerfil" value="prescritor">SOU PRESCRITOR
+
+  <p class="erro-cadastro" id="erro-cadastro"></p>
+
   <button type="submit" id="btnCriar" class="entrar centro" >CRIAR CONTA</button>
   
   </form
@@ -36,29 +46,45 @@ export default () => {
   const senha = containerCadastro.querySelector('#senha');
   const confirmarSenha = containerCadastro.querySelector('#confirmarSenha');
   const btnCriar = containerCadastro.querySelector('#btnCriar');
-  const mensagemErro = containerCadastro.querySelector('#erro');
+  const mensagemErro = containerCadastro.querySelector('#erro-cadastro');
 
   btnCriar.addEventListener('click', (e) => {
     e.preventDefault();
-    if (nome.value === '') {
-      mensagemErro.innerHTML = 'Preencha o campo nome!';
-      return;
+    const erronome = document.getElementById('erro-nome');
+    if (nome.value.length < 1) {
+      erronome.innerHTML = 'Preencha o campo nome!';
+      nome.classList.add('borda-vermelha');
+    } else {
+      erronome.hidden = true;
+      nome.classList.remove('borda-vermelha');
     }
-    if (email.value === '') {
-      mensagemErro.innerHTML = 'Preencha o campo email!';
-      return;
+
+    const erroemail = document.getElementById('erro-email');
+    if (email.value.length < 1) {
+      erroemail.innerHTML = 'Preencha o campo email!';
+      email.classList.add('borda-vermelha');
+    } else {
+      erroemail.hidden = true;
+      email.classList.remove('borda-vermelha');
     }
-    if (senha.value === '') {
-      mensagemErro.innerHTML = 'Preencha o campo senha!';
-      return;
+
+    const errosenha = document.getElementById('erro-senha');
+    if (senha.value.length < 1) {
+      errosenha.innerHTML = 'Preencha o campo senha!';
+      senha.classList.add('borda-vermelha');
+    } else {
+      errosenha.hidden = true;
+      senha.classList.remove('borda-vermelha');
     }
+
+    const erroconfirmarsenha = document.getElementById('erro-confirmarsenha');
     if (senha.value !== confirmarSenha.value) {
-      mensagemErro.innerHTML = 'As senhas não conferem ';
-      return;
+      confirmarSenha.classList.add('borda-vermelha');
+      erroconfirmarsenha.innerHTML = 'As senhas não conferem';
+    } else {
+      erroconfirmarsenha.hidden = true;
+      confirmarSenha.classList.remove('borda-vermelha');
     }
-    // if (perfilPaciente.value === '' && perfilPrescritor.value === '') {
-    //   mensagemErro.innerHTML = 'Selecione um perfil!';
-    // }
 
     createUser(nome.value, email.value, senha.value)
       .then(() => {
@@ -66,7 +92,7 @@ export default () => {
         window.location.href = '/#perfil';
       })
       .catch((error) => {
-        mensagemErro.innerHTML = 'não cadastrado';
+        mensagemErro.innerHTML = 'Usuário não cadastrado';
         console.log(error);
       });
     // if (Auth.currentUser) {
