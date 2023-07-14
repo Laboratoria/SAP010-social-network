@@ -1,4 +1,4 @@
-import { loginEmail, loginGoogle } from "../../lib/authUser.js";
+import { loginEmail, loginGoogle } from '../../lib/authUser.js';
 
 export default () => {
   const loginContainer = document.createElement('div');
@@ -40,17 +40,17 @@ export default () => {
 <p>2023</p>
 </footer></div>`;
 
-  loginContainer.id = "login";
+  loginContainer.id = 'login';
   loginContainer.innerHTML = templateLogin;
 
   // Informações preenchidas pelo usuário
-  const emailEntrada = loginContainer.querySelector("#email");
-  const senhaEntrada = loginContainer.querySelector("#senha");
+  const emailEntrada = loginContainer.querySelector('#email');
+  const senhaEntrada = loginContainer.querySelector('#senha');
 
   // Botões
-  const entrarLoginBotao = loginContainer.querySelector("#btn-login-entrar");
-  const criarLoginBotao = loginContainer.querySelector("#btn-login-criar-conta");
-  const criarLoginGoogleBotao = loginContainer.querySelector("#btn-login-google");
+  const entrarLoginBotao = loginContainer.querySelector('#btn-login-entrar');
+  const criarLoginBotao = loginContainer.querySelector('#btn-login-criar-conta');
+  const criarLoginGoogleBotao = loginContainer.querySelector('#btn-login-google');
 
   // Função de login
   const firstLogin = (event) => {
@@ -67,7 +67,7 @@ export default () => {
         const errorMessage = loginContainer.querySelector('#errorMessage');
         errorMessage.textContent = 'Informações de e-mail ou senha incorretas';
         errorMessage.style.display = 'block';
-      });    
+      });
     return false;
   };
 
@@ -78,11 +78,12 @@ export default () => {
     loginGoogle()
       .then(() => {
         window.location.hash = '#feed';
-      }).catch((error) => {
-        console.log(error);
+      }).catch(() => {
+        const errorMessage = loginContainer.querySelector('#errorMessage');
+        errorMessage.textContent = 'Não foi possível logar com o Google';
+        errorMessage.style.display = 'block';
       });
   });
-
 
   criarLoginBotao.addEventListener('click', (event) => {
     event.preventDefault();

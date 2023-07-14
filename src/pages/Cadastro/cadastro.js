@@ -1,4 +1,4 @@
-import { cadastroUsuarioSenha } from "../../lib/authUser.js";
+import { cadastroUsuarioSenha } from '../../lib/authUser.js';
 
 export default () => {
   const cadastroContainer = document.createElement('div');
@@ -35,35 +35,34 @@ export default () => {
     <p>2023</p>
   </footer></div>`;
 
-  cadastroContainer.id ="login" //CSS
+  cadastroContainer.id = 'login'; // CSS
   cadastroContainer.innerHTML = templateCadastro;
 
   // Informações preenchidas pelo usuário
-  
+
   const nomeUsuarioEntrada = cadastroContainer.querySelector('#usuario');
   const emailEntrada = cadastroContainer.querySelector('#email');
-  const senhaEntrada = cadastroContainer.querySelector('#senha');//document.getElementById?
+  const senhaEntrada = cadastroContainer.querySelector('#senha');
 
   // Botões para cadastrar
   const botaoCadastrar = cadastroContainer.querySelector('#btn-cad-concluir');
   const botaoVoltar = cadastroContainer.querySelector('#btn-cad-voltar');
 
-
-  //Função Registrar
+  // Função Registrar
   const registerUser = (event) => {
-    event.preventDefault();    
+    event.preventDefault();
     const usuario = nomeUsuarioEntrada.value;
     const email = emailEntrada.value;
     const senha = senhaEntrada.value;
 
     // Chamada para a função createUserWithEmail
     cadastroUsuarioSenha(usuario, email, senha)
-      
+
       .catch((error) => {
         // Lidar com erros durante o cadastro
         const errorMessage = cadastroContainer.querySelector('#errorMessage');
         errorMessage.style.display = 'block';
-        switch(error.code){
+        switch (error.code) {
           case 'auth/missing-email':
             errorMessage.textContent = 'Preencha o e-mail!';
             errorMessage.style.display = 'block';
@@ -78,17 +77,19 @@ export default () => {
             errorMessage.textContent = 'Preencha a senha!';
             errorMessage.style.display = 'block';
             break;
-  
+
           case 'auth/invalid-password':
             errorMessage.textContent = 'Senha inválida';
             errorMessage.style.display = 'block';
-            break;          
+            break;
+          default:
+            errorMessage.textContent = 'Confira os dados inseridos';
+            errorMessage.style.display = 'block';
         }
       });
-    //console.log(`Usuário: ${usuario} Email: ${email} Senha: ${senha}`);
+    // console.log(`Usuário: ${usuario} Email: ${email} Senha: ${senha}`);
   };
-  //fazer um novo case para quando não há nada preenchido
-
+  
   botaoCadastrar.addEventListener('click', registerUser);
 
   botaoVoltar.addEventListener('click', (event) => {
