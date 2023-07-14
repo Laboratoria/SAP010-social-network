@@ -1,5 +1,7 @@
-import { createUserWithEmailAndPassword, getAuth, signInWithPopup } from 'firebase/auth';
-import { createUser, loginGoogle } from '../src/pages/serviceFirebase/firebaseAuth.js';
+/* eslint-disable no-unused-vars */
+
+import { createUserWithEmailAndPassword, getAuth, signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUser, loginGoogle, login } from '../src/pages/serviceFirebase/firebaseAuth.js';
 
 jest.mock('firebase/auth');
 
@@ -24,6 +26,17 @@ describe('createUser is a function', () => {
     await createUser(nome, email, senha);
 
     expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(authMock, email, senha);
+  });
+});
+
+describe('signInWithEmailAndPassword', () => {
+  it('deve logar com o usuario criado', async () => {
+    signInWithEmailAndPassword.mockResolvedValueOnce();
+    const email = 'email@aleatorio.com';
+    const senha = 'senhaaleatoria';
+    await login(email, senha);
+    expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
+    expect(signInWithEmailAndPassword).toHaveBeenCalledWith(undefined, email, senha);
   });
 });
 
