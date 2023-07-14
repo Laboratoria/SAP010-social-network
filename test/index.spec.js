@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
-
-import { createUserWithEmailAndPassword, getAuth, signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword, getAuth, signInWithPopup, signInWithEmailAndPassword,
+} from 'firebase/auth';
 import { createUser, loginGoogle, login } from '../src/pages/serviceFirebase/firebaseAuth.js';
 
 jest.mock('firebase/auth');
