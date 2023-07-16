@@ -41,5 +41,17 @@
     "createdAt": "2023-05-16T13:46:37.371Z",
     "version": "6.2.0",
     "commit": "6a23c58a18f96b4dc3b7b1566dcac06ca9c3ec14"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alinelandeira/SAP010-social-network.git"
+  },
+  "author": "Aline Landeira, Dara Souza, Priscilla Barreto",
+  "bugs": {
+    "url": "https://github.com/alinelandeira/SAP010-social-network/issues"
+  },
+  "homepage": "https://github.com/alinelandeira/SAP010-social-network#readme"
 }
