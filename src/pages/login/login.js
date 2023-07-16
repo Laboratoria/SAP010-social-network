@@ -43,11 +43,14 @@ export default () => {
       const user = userCredential.user;
       console.log('usuário logado com sucesso')
       console.log(user)
+      window.location.hash = '#feed'
   })
+  
   .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.error(`${errorCode} - ${errorMessage}`)
+      alert("Você ainda não tem uma conta. Cadastre-se.")
   });
   })
 
