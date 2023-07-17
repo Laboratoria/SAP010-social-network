@@ -11,7 +11,7 @@ export default () => {
   <figure><img class="img-CBD1" src=${CBD} alt="logo app" title="Logo CBD Connection"></figure>
   <div class="container">
   <nav>
-  <a href="#login" id="login" class="texto1 centro">Já possuo uma conta</a>
+  <a href="#login" id="retornaLogin" class="texto1 centro">Já possuo uma conta</a>
   </nav>
   <form>
   <input type="text" id="nome" class="input centro" placeholder="NOME" required>
@@ -47,6 +47,7 @@ export default () => {
   const confirmarSenha = containerCadastro.querySelector('#confirmarSenha');
   const btnCriar = containerCadastro.querySelector('#btnCriar');
   const mensagemErro = containerCadastro.querySelector('#erro-cadastro');
+  // const btnRetornaLogin = containerCadastro.querySelector('#retornaLogin');
 
   btnCriar.addEventListener('click', (e) => {
     e.preventDefault();
@@ -88,13 +89,18 @@ export default () => {
 
     createUser(nome.value, email.value, senha.value)
       .then(() => {
-      // usuário cadastrado com sucesso
+        // usuário cadastrado com sucesso
         window.location.href = '/#perfil';
       })
       .catch((error) => {
         mensagemErro.innerHTML = 'Usuário não cadastrado';
         console.log(error);
       });
+
+    // btnRetornaLogin.addEventListener('click', () => {
+    //   console.log(btnRetornaLogin);
+    //   // window.location.hash = '#login';
+    // });
     // if (Auth.currentUser) {
     //   window.location.href = '#feed';
     /* aqui ele não está autenticando e já vai para a tela de feed */

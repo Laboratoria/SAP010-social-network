@@ -14,7 +14,7 @@ export default () => {
     <a href="#perfil" id="feed" class="centro nome-usuario">Nome</a>
   </nav>
   <figure>
-    <img class="img-loguinho" src=${loguinho} alt="Logo app" title="Logo CBD Connection">
+    <img id="ir-infopage" class="img-loguinho" src=${loguinho} alt="Logo app" title="Logo CBD Connection">
   </figure>
 </header>
 
@@ -34,6 +34,12 @@ export default () => {
   `;
 
   containerFeed.innerHTML = templateFeed;
+
+  const btnloguinho = containerFeed.querySelector('#ir-infopage');
+
+  btnloguinho.addEventListener('click', () => {
+    window.location.hash = '#infopage';
+  });
 
   return containerFeed;
 };

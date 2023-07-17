@@ -35,7 +35,7 @@ const init = () => {
       case '#novoPost':
         main.appendChild(novoPost());
         break;
-        case '#infopage':
+      case '#infopage':
         main.appendChild(infopage());
         break;
       default:

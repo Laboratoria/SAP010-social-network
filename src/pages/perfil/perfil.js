@@ -10,7 +10,7 @@ export default () => {
   containerPerfil.classList.add('container-perfil');
 
   const templatePerfil = `
-  <figure><img class="img-loguinho" src=${loguinho} alt="logo app" title="Logo CBD Connection"></figure>
+  <figure><img id="ir-infopage1'" class="img-loguinho" src=${loguinho} alt="logo app" title="Logo CBD Connection"></figure>
   <p> Tela de Perfil </p>
 
  <a href="#feed" id="iconeVoltar"><img src=${voltar} alt="icone voltar" title="Ícone para Voltar"></a>
@@ -24,6 +24,12 @@ export default () => {
   `;
 
   containerPerfil.innerHTML = templatePerfil;
+
+  const btnloguinho = containerPerfil.querySelector('#ir-infopage1');
+
+  btnloguinho.addEventListener('click', () => {
+    window.location.hash = '#infopage';
+  });
 
   return containerPerfil;
 };
