@@ -63,6 +63,11 @@ export default () => {
       return;
     }
 
+    senha.addEventListener('input', () => {
+      mensagemErroSenha.innerHTML = ''; // Limpa a mensagem de erro
+      senha.classList.remove('borda-vermelha'); // Remove a classe 'borda-vermelha'
+    });
+
     login(email.value, senha.value)
       .then((user) => {
         window.location.hash = '#feed';
