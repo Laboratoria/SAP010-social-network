@@ -86,12 +86,10 @@
     padding: 8px;
 }
 
-.lista-menu-mobile > li > picture > label {
+.lista-menu-mobile > li > a {
     display: flex;
     align-items: center;
-}
-
-.lista-menu-mobile > li > picture > label > p {
+    text-decoration: none;
     color: #FFFF;
 }
 
