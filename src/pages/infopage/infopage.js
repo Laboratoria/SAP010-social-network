@@ -10,7 +10,7 @@ export default () => {
   containerInfopage.classList.add('container-infopage');
 
   const templateInfopage = `
-    <img class="img-voltar" src=${voltar} alt="btnVoltar">
+    <a href="#feed" class="img-voltar" id="iconeVoltar"><img src=${voltar} alt="icone voltar" title="Ícone para Voltar"></a>
    
      
      <section class="info-devs">
