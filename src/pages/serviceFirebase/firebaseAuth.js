@@ -8,11 +8,11 @@ import { app } from '../../firebaseInit.config.js';
 // GoogleAuthProvider,  signInWithPopup, updateProfile,  signOut,
 // createUserWithEmailAndPassword, import { app } from "../firebaseInit.js";
 
-export const Auth = getAuth(app);
+export const auth = getAuth(app);
 
 // cadastro de usuarios novos
 
-const createUser = (nome, email, senha) => createUserWithEmailAndPassword(Auth, email, senha);
+const createUser = (nome, email, senha) => createUserWithEmailAndPassword(auth, email, senha);
 // comentei esta parte porque aindo não iremos usar
 // .then((userCredential) => {
 //   // Signed in
@@ -20,12 +20,12 @@ const createUser = (nome, email, senha) => createUserWithEmailAndPassword(Auth, 
 //   return updateProfile(user, { nome });
 // });
 
-const login = (email, senha) => signInWithEmailAndPassword(Auth, email, senha);
-const addonAuthStateChanged = (callback) => onAuthStateChanged(Auth, callback);
+const login = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
+const addonAuthStateChanged = (callback) => onAuthStateChanged(auth, callback);
 
 const loginGoogle = () => {
   const provider = new GoogleAuthProvider();
-  return signInWithPopup(Auth, provider);
+  return signInWithPopup(auth, provider);
 };
 // const provider = new GoogleAuthProvider() => signInWithPopup(auth, provider);
 
