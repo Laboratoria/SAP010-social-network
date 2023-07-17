@@ -24,6 +24,33 @@ export default () => {
   <span class="nomeUsuario"></span>
   <span class="tipoUsuario"></span>
   </div>
+  <div class="infoUserPost">
+          <div class="imgUserPost"></div>
+
+          <div class="nameAndHour">
+            <strong>Douglas Pujol</strong>
+            <p>hora</p>
+          </div>
+        </div>
+
+        <p>
+         hora
+        </p>
+
+        <div class="actionBtnPost">
+          <button type="button" class="filesPost like">
+            <img src="./assets/heart.svg" alt="Curtir">
+            Curtir
+          </button>
+          <button type="button" class="filesPost comment">
+            <img src="./assets/comment.svg" alt="Comentar">
+            Comentar
+          </button>
+          <button type="button" class="filesPost share">
+            <img src="./assets/share.svg" alt="Compartilhar">
+            Compartilhar
+          </button>
+        </div>
   <footer>
   <a href="#perfil" id="iconePerfil"><img class="iconesFooter" src=${perfil} alt="icone perfil" title="Ícone Perfil"></a>
   <a href="#novoPost" id="iconeNovoPost"><img class="iconesFooter" src=${novoPost} alt="icone criar nova postagem" title="Ícone para Nova Postagem"></a>

@@ -7,10 +7,13 @@ import sair from '../imagens/icones/sair.png';
 export default () => {
   const containerNovoPost = document.createElement('section');
   containerNovoPost.classList.add('container-novoPost');
+  // const time = this.getTime();
 
   const templateNovoPost = `
   <figure><img class="img-loguinho" src=${loguinho} alt="logo app" title="Logo CBD Connection"></figure>
   <p> Tela nova Postagem </p>
+
+  
 
    <footer>
   <a href="#perfil" id="iconePerfil"><img class="iconesFooter" src=${perfil} alt="icone perfil" title="Ícone Perfil"></a>
@@ -21,6 +24,13 @@ export default () => {
   `;
 
   containerNovoPost.innerHTML = templateNovoPost;
+
+  // getTime() {
+  //   const time = new Date();
+  //   const hour = time.getHours();
+  //   const minutes = time.getMinutes();
+  //   return `${hour}h ${minutes}min`;
+  // }
 
   return containerNovoPost;
 };
