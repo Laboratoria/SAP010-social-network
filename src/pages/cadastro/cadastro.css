@@ -38,7 +38,7 @@ main {
     border-radius: 0 0 32px 32px;
 }
 
-header {
+#cadastrocss header {
     display: flex;
     align-items: center;
     justify-content: center;
