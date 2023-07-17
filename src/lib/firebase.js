@@ -10,18 +10,8 @@ import { app, auth } from "./firebase-config.js";
 
 export function cadastrarUsuario(email, senha) {
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, senha)
-        .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-            console.log('usuário cadastrado com sucesso')
-            console.log(user)
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.error(`${errorCode} - ${errorMessage}`)
-        });
+    return createUserWithEmailAndPassword(auth, email, senha);
+
 }
 
 export function loginUsuario(email, senha) {
