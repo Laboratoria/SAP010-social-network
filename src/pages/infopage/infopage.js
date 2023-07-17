@@ -6,7 +6,7 @@ import linkedin from '../imagens/icones/linkedin.png';
 
 export default () => {
   const containerInfopage = document.createElement('section');
-  containerInfopage.classList.add('container-login');
+  containerInfopage.classList.add('container-Infopage');
 
   const templateInfopage = `
     <p> Terceiro projeto desenvolvido para o Bootcamp Laboratoria - Turma SAP010 com o objetivo de por em
