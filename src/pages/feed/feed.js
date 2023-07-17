@@ -4,7 +4,7 @@ export default () => {
 
     const template = `
   <div>
-   <menu id="menu">
+   <nav id="menu">
      <h1>FIGHT BACK</h1>
      <ul class="lista-menu">
       <li><picture> 
@@ -24,15 +24,7 @@ export default () => {
        <label for="check">
        <img src="imagens/icon-sair.png" class="icon-sair" alt="imagem para sair "></picture></li>
      </ul> 
-    </menu>
-    <nav id="navegaçao">
-       <ul class="lista-navegaçao">
-        <li>Perfil</li>
-        <li>Feed</li>
-        <li>Suporte</li>
-        <li>Sair</li>
-        </ul>
-     </nav>
+    </nav>
    </div>
     <header>
      <picture id="mulher-feed"><img src="imagens/menina-feed.png"></picture>
