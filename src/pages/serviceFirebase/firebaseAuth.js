@@ -5,6 +5,7 @@ import {
   onAuthStateChanged, GoogleAuthProvider, signInWithPopup,
 } from 'firebase/auth';
 import { app } from '../../firebaseInit.config.js';
+
 // GoogleAuthProvider,  signInWithPopup, updateProfile,  signOut,
 // createUserWithEmailAndPassword, import { app } from "../firebaseInit.js";
 
