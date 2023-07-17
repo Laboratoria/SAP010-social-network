@@ -3,27 +3,17 @@
 
 import {
   getAuth, createUserWithEmailAndPassword,
-  signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile,
+  signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider,
 } from 'firebase/auth';
 import { app } from './configfirebase.js';
 
 export const getAppAuth = () => getAuth(app);
 // Criar Usuário
-export function cadastroUsuarioSenha(usuario, email, senha) {
+export function cadastroUsuarioSenha(email, senha) {
   const auth = getAppAuth();
-  return createUserWithEmailAndPassword(auth, email, senha)
-    .then(
-      (userCredential) => {
-        const user = userCredential.user;
-        window.location.hash = '#feed';
-        updateProfile(user, {
-          displayName: `${usuario}`,
-        });
-      },
-    );
+  return createUserWithEmailAndPassword(auth, email, senha);    
   // verificar quais parametros vão ser vinculados ao feed via firebase
 }
-
 // Login
 export function loginEmail(email, senha) {
   const auth = getAppAuth();
@@ -31,7 +21,6 @@ export function loginEmail(email, senha) {
 }
 
 // login google
-
 export const loginGoogle = () => {
   const provider = new GoogleAuthProvider();
   const auth = getAppAuth();

@@ -1,4 +1,5 @@
 import { cadastroUsuarioSenha } from '../../lib/authUser.js';
+import {updateProfile} from 'firebase/auth';
 
 export default () => {
   const cadastroContainer = document.createElement('div');
@@ -56,8 +57,16 @@ export default () => {
     const senha = senhaEntrada.value;
 
     // Chamada para a função createUserWithEmail
-    cadastroUsuarioSenha(usuario, email, senha)
-
+    cadastroUsuarioSenha(email, senha)
+      .then(
+        (userCredential) => {
+          const user = userCredential.user;
+          window.location.hash = '#feed';
+          updateProfile(user, {
+            displayName: `${usuario}`,
+          });
+        },
+      )
       .catch((error) => {
         // Lidar com erros durante o cadastro
         const errorMessage = cadastroContainer.querySelector('#errorMessage');
@@ -86,10 +95,9 @@ export default () => {
             errorMessage.textContent = 'Confira os dados inseridos';
             errorMessage.style.display = 'block';
         }
-      });
-    // console.log(`Usuário: ${usuario} Email: ${email} Senha: ${senha}`);
+      });    
   };
-  
+
   botaoCadastrar.addEventListener('click', registerUser);
 
   botaoVoltar.addEventListener('click', (event) => {
