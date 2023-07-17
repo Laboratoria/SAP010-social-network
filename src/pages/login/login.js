@@ -16,6 +16,7 @@ export default () => {
   <input class="input centro" type="email" name="email" id="email" placeholder="E-MAIL" >
   <span id="email-alert" class="input-error"></span>
   <input class="input centro" type="password" name="senha" id="senha" placeholder="SENHA" >
+  <span id="pass-alert" class="input-error"></span>
   <button type="submit" id="btnEntrar" class="entrar centro" >ENTRAR</button>
   <p class="loginErro" id="erro"></p>
   </form>
@@ -25,7 +26,7 @@ export default () => {
   <img id="entrarGoogle"class="img-google" src=${google} alt="logo Google">
  
   </div>
-  <span id="pass-alert" class="input-error"></span>
+  
   <span id="user-alert" class="input-error"></span>
   <span class="texto1 centro">Ainda não tem conta?</span>
   <nav>
@@ -48,6 +49,7 @@ export default () => {
   const senha = containerLogin.querySelector('#senha');
   const mensagemErroLogin = containerLogin.querySelector('#loginErro');
   const btnGoogle = containerLogin.querySelector('#entrarGoogle');
+  const mensagemErroSenha = containerLogin.querySelector('#pass-alert');
 
   // Adicionar evento de clique no botão para validar os inputs email e senha
   btnLogin.addEventListener('click', async (e) => {
@@ -67,6 +69,14 @@ export default () => {
         console.log(user);
       })
       .catch((error) => {
+        if (error.code === 'auth/wrong-password') {
+          mensagemErroSenha.innerHTML = 'Senha incorreta!';
+          senha.classList.add('borda-vermelha');
+        } else {
+          mensagemErroSenha.innerHTML = error.message;
+          mensagemErroSenha.hidden = true;
+          senha.classList.remove('borda-vermelha'); // Exibe a mensagem de erro padrão
+        }
         console.log('Erro ao fazer o login:', error);
       });
   });
@@ -85,6 +95,13 @@ export default () => {
   return containerLogin;
 };
 
+// const passAlert = containerLogin.querySelector('#pass-alert');
+
+// function validarSenha() {
+//   const passInputValue = senha.value;
+//   if (!passInputValue) {
+//     passAlert.textContent = 'Senha inválida';
+//   };
 // const buttonLogin = containerLogin.querySelector("#btnEntrar");
 // buttonLogin.addEventListener("click", () => {
 //   const email = containerLogin.querySelector("#email");
