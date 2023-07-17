@@ -1,0 +1,43 @@
+.container-infopage {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    background-image: url(../imagens/backgroundMob.png);
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.img-voltar {
+    width: 44px;
+    height: 44px;
+    margin-top: 6%;
+    margin-left: 4%;
+}
+
+.linkedin {
+    width: 20px;
+    height: 20px;
+
+}
+
+.info-devs {
+    flex-direction: column;
+    display: flex;
+    margin-top: 50%;
+}
+
+.texto2, a {
+    font-size: 12px;
+    text-align: center;
+    color: #F6F2E2;
+    text-align: center;
+    font-family: "inter", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
