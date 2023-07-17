@@ -36,7 +36,22 @@ export default () => {
     event.preventDefault();
     const emailDoUsuario = inputEmail.value;
     const senhaDoUsuario = inputSenha.value;
-    cadastrarUsuario(emailDoUsuario, senhaDoUsuario);
+
+    cadastrarUsuario(emailDoUsuario, senhaDoUsuario)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log('usuário cadastrado com sucesso')
+        console.log(user)
+        alert("Cadastro realizado com sucesso! Faça o login.")
+        window.location.hash = '#login'
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(`${errorCode} - ${errorMessage}`)
+        alert("Usuário já cadastrado. Tente outro email.")
+      });
   })
 
 
