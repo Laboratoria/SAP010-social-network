@@ -16,15 +16,11 @@ export const auth = getAuth(app);
 
 // cadastro de usuarios novos
 
-// Fizemos essa função com as meninas no intuito de criar um db no firestore
-// Do projeto para o firebase
-// acredito q precisamos linkar com a função lá na página de cadastro
-// com os dados do form de cadastro
 const createUser = async (nome, email, senha) => {
   await createUserWithEmailAndPassword(auth, email, senha);
-  await setDoc(doc(db, 'User', `${email}`), {
-    nome: '',
-    email: '',
+  await setDoc(doc(db, 'User', email), {
+    nome,
+    email,
   });
 };
 
@@ -47,7 +43,7 @@ const loginGoogle = () => {
 // essa função nos permite ler o banco de dados que fizemos direto no firebase
 // Fizemos com a Nury
 const fetchData = async () => {
-  const q = query(collection(db, 'Post'));
+  const q = query(collection(db, 'POst'));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((docs) => {
     // doc.data() is never undefined for query doc snapshots
