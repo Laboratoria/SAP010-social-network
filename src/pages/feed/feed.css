@@ -56,16 +56,12 @@
     z-index: -1;
 }
 
-#check-perfil,
 #check-feed,
 #check-sos,
 #check-sair {
     display: none;
 }
 
-
-
-.icon-perfil,
 .icon-feed,
 .icon-sos,
 .icon-sair {

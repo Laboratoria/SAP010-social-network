@@ -15,7 +15,7 @@ export default () => {
 <img src="imagens/fightback-logo.png" alt="logo do app">
 </picture>
 </header>
-<input type="email" id="input-email-login" name="email" placeholder="Email">
+<input type="email" id="input-email-login" name="email" placeholder="Email" autocomplete="off">
 <div class="senha-check">
 <input type="checkbox" id="check" class="on-off">
  <label for="check" class="check-btn"></label>
@@ -32,25 +32,50 @@ export default () => {
   const inputEmail = container.querySelector("#input-email-login");
   const inputSenha = container.querySelector("#input-senha-login");
 
+  const checkBtn = container.querySelector("#check");
+
+  function mostrarSenha() {
+    if (checkBtn.checked) {
+      inputSenha.type = "text";
+    } else {
+      inputSenha.type = "password";
+    }
+  }
+
+  checkBtn.addEventListener("change", mostrarSenha);
+
   botaoEntrar.addEventListener('click', (event) => {
+
     event.preventDefault();
     const emailDoUsuario = inputEmail.value;
     const senhaDoUsuario = inputSenha.value;
+    
     loginUsuario(emailDoUsuario, senhaDoUsuario)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      console.log('usuário logado com sucesso')
-      console.log(user)
-      window.location.hash = '#feed'
-  })
-  
-  .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error(`${errorCode} - ${errorMessage}`)
-      alert("Você ainda não tem uma conta. Cadastre-se.")
-  });
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log('usuário logado com sucesso')
+        console.log(user)
+        window.location.hash = '#feed'
+      })
+
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(`${errorCode} - ${errorMessage}`)
+        if (errorCode === "auth/invalid-email") {
+          alert("Email inválido.")
+        }
+        else if (errorCode === "auth/missing-password") {
+          alert("Por favor, insira sua senha.")
+        }
+        else if (errorCode === "auth/wrong-password") {
+          alert("Senha incorreta. Tente novamente.")
+        }
+        else {
+          alert("Você ainda não tem uma conta. Cadastre-se.")
+        }
+      });
   })
 
   return container;
