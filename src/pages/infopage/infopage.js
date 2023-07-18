@@ -13,51 +13,56 @@ export default () => {
     <a href="#feed" class="img-voltar" id="iconeVoltar"><img src=${voltar} alt="icone voltar" title="Ícone para Voltar"></a>
    
      
-     <section class="info-devs">
-     <p class="texto2"> Terceiro projeto desenvolvido para o Bootcamp Laboratoria - Turma SAP010 com o objetivo de por em
-     prática e aferir as habilidades das alunas: </p> <br>
-     <p class="texto2">Camila Gonçalves:
-     <a href="https://github.com/CamilaVerso/" target="_blank">
-     <figure>
-     <img id="githubCamila" class="linkedin" src=${githubicon} alt="logo para o perfil do GitHub da desenvolvedora Camila Gonçalves" title="GitHub Camila Gonçalves">
-     </figure>
-     </a>
-     <a href="https://www.linkedin.com/in/camilanpgoncalves/" target="_blank">
-     <figure>
-     <img id="linkedinCamila" class="linkedin" src=${linkedin} alt="logo para o perfil do Linkedin da desenvolvedora Camila Gonçalves" title="Linkedin Camila Gonçalves">
-     </figure>
-     </a>
-     </p>
+    <section class="info-devs">
+    <p class="texto2">Terceiro projeto desenvolvido para o Bootcamp Laboratoria - Turma SAP010 com o objetivo de por em prática e aferir as habilidades das alunas:</p>
     <br>
 
-    <p class="texto2">Diulianne Oliveira: 
-     <a href="https://github.com/Diulianne/" target="_blank">
-     <figure>
-     <img id="githubDiulianne" class="linkedin" src=${githubicon} alt="logo para o perfil do GitHub da desenvolvedora Diulianne" title="GitHub Diulianne">
-     </figure>
-     </a>
-     <a href="https://www.linkedin.com/in/diulianneoliveira/" target="_blank">
-     <figure>
-     <img id="linkedinDiulianne" class="linkedin" src=${linkedin} alt="logo para o perfil do Linkedin da desenvolvedora Diulianne" title="Linkedin Diulianne">
-     </figure>
-     </a>
-     </p>
+    <div class="dev-info">
+        <div class="dev-item">
+            <p class="texto2">Camila Gonçalves</p>
+            <div class="dev-icons">
+                <a href="https://github.com/CamilaVerso/" target="_blank">
+                    <img id="githubCamila" class="linkedin" src=${githubicon} alt="logo para o perfil do GitHub da desenvolvedora Camila Gonçalves" title="GitHub Camila Gonçalves">
+                </a>
+                <a href="https://www.linkedin.com/in/camilanpgoncalves/" target="_blank">
+                    <img id="linkedinCamila" class="linkedin" src=${linkedin} alt="logo para o perfil do Linkedin da desenvolvedora Camila Gonçalves" title="Linkedin Camila Gonçalves">
+                </a>
+            </div>
+        </div>
+    </div>
     <br>
 
-    <p class="texto2">Marianna Esteves: 
-     <a href="https://github.com/maristvs" target="_blank">
-     <figure>
-     <img id="githubMariannaEsteves" class="linkedin" src=${githubicon} alt="logo para o perfil do GitHub da desenvolvedora Marianna Esteves" title="GitHub Marianna Esteves">
-     </figure>
-     </a>
-     <a href="https://www.linkedin.com/in/marianna-esteves-43bb6a274/" target="_blank">
-     <figure>
-     <img id="linkedinMariannaEsteves" class="linkedin" src=${linkedin} alt="logo para o perfil do Linkedin da desenvolvedora Marianna Esteves" title="Linkedin Marianna Esteves">
-     </figure>
-     </a>
-     </p>
+    <div class="dev-info">
+        <div class="dev-item">
+            <p class="texto2">Diulianne Oliveira</p>
+            <div class="dev-icons">
+                <a href="https://github.com/Diulianne/" target="_blank">
+                    <img id="githubDiulianne" class="linkedin" src=${githubicon} alt="logo para o perfil do GitHub da desenvolvedora Diulianne" title="GitHub Diulianne">
+                </a>
+                <a href="https://www.linkedin.com/in/diulianneoliveira/" target="_blank">
+                    <img id="linkedinDiulianne" class="linkedin" src=${linkedin} alt="logo para o perfil do Linkedin da desenvolvedora Diulianne" title="Linkedin Diulianne">
+                </a>
+            </div>
+        </div>
+    </div>
     <br>
-    </section>
+
+    <div class="dev-info">
+        <div class="dev-item">
+            <p class="texto2">Marianna Esteves</p>
+            <div class="dev-icons">
+                <a href="https://github.com/maristvs" target="_blank">
+                    <img id="githubMariannaEsteves" class="linkedin" src=${githubicon} alt="logo para o perfil do GitHub da desenvolvedora Marianna Esteves" title="GitHub Marianna Esteves">
+                </a>
+                <a href="https://www.linkedin.com/in/marianna-esteves-43bb6a274/" target="_blank">
+                    <img id="linkedinMariannaEsteves" class="linkedin" src=${linkedin} alt="logo para o perfil do Linkedin da desenvolvedora Marianna Esteves" title="Linkedin Marianna Esteves">
+                </a>
+            </div>
+        </div>
+    </div>
+    <br>
+</section>
+
     
      <p class="texto2"> Entre em contato conosco nas redes sociais acima. </p>
      <br>

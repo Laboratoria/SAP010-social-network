@@ -19,15 +19,15 @@
     margin-left: 4%;
 }
 
-.linkedin {
+.linkedin { /* imagens do linkedin e github */
     width: 20px;
     height: 20px;
-
 }
 
 .info-devs {
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 50%;
 }
 
@@ -40,4 +40,44 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+}
+
+.dev-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3%;
+}
+
+.dev-item {
+    display: flex;
+    align-items: center;
+}
+
+.dev-icons {
+    display: flex;
+    align-items: center;
+}
+
+.dev-icons a {
+    margin-left: 6%;
+}
+
+@media screen and (min-width: 768px) {
+    /* .info-devs {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        margin-top: 5%;
+      } */
+      .info-devs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10%;
+    }
+    
+      .dev-info {
+        margin-bottom: 2%;
+      }
 }
