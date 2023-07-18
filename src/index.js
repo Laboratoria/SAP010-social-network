@@ -6,7 +6,7 @@ import feed from './pages/Feed/feed.js';
 const main = document.querySelector('#root');
 
 const init = () => {
-  window.addEventListener('hashchange', () => {
+  window.addEventListener('hashchange', async () => {
     main.innerHTML = '';
     switch (window.location.hash) {
       case '':
@@ -44,12 +44,13 @@ window.addEventListener('load', () => {
 /* window.addEventListener('load', async () => {
   const userLogged = await userAuthCheck();
   if (userLogged) {
-    main.appendChild(timeline());
+    main.appendChild(feed());
   } else {
     window.location.hash = '#login';
     main.appendChild(login());
   }
   init();
-}); */
+});
+ */
 
 // incluir validação para redirecionamento da pagina (main) video palomita
