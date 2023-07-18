@@ -14,17 +14,17 @@ export default () => {
   const templateFeed = `
   <header>
   <nav>
-    <a href="#perfil" id="feed" class="centro nome-usuario">Nome</a>
+    <a href="#perfil" id="feed" class="nome-usuario">Imagem e Nome</a>
   </nav>
   <figure>
     <img id="ir-infopage" class="img-loguinho" src=${loguinho} alt="Logo app" title="Logo CBD Connection">
   </figure>
 </header>
 
-  <p>Tela de Feed </p>
+  
   <span class="tipoUsuario1"></span>
   <div class="containerVerdeFeed">
-  <span class="nomeUsuario"></span>
+  <span class="NomeUsuario"></span>
   <span class="tipoUsuario"></span>
   </div>
   <div class="containerPostVerde">
@@ -34,11 +34,10 @@ export default () => {
             <p>tipo</p>
           </div>
 
-             <textarea name="postagem" id="text-mensagem" cols="30" rows="10"></textarea>
-
-          <button type="submit" id="btnPublicar" class="entrar centro">Publicar</button>
-
+             <textarea class="text-area" name="postagem" id="text-mensagem" cols="30" rows="10"></textarea>
+          
         <div class="actionBtnPost">
+
           <button type="button" class="filesPost like">
             <img src=${coracao} alt="Curtir" title="Curtir">
           </button>
@@ -50,6 +49,7 @@ export default () => {
           <button type="button" class="filesPost share">
             <img src=${excluir} alt="Excluir" title="Excluir">
           </button>
+          <button type="submit" id="btnPublicar" class="btnPubli">Publicar</button>
         </div>
   </div>
   <footer>
