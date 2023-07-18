@@ -31,36 +31,36 @@ export default () => {
 
 
   // Informações preenchidas pelo usuário
-  const textoPostagem = loginContainer.querySelector('#textoMensagem');
+  const textoPostagem = feedContainer.querySelector('#textoMensagem');
 
   // Botões
   const btnPost = feedContainer.querySelector('#btn-send-post');
   const btnLogout = feedContainer.querySelector('#btn-logout');
 
- // botão função de logout
-btnLogout.addEventListener('click', () => {
-  userLogout()
-    .then(() => {
-      window.location.hash = '#login';
-    }).catch(() => {
-      alert('Ocorreu um erro, tente novamente.');
-    });
-});
+  // botão função de logout
+  btnLogout.addEventListener('click', () => {
+    userLogout()
+      .then(() => {
+        window.location.hash = '#login';
+      }).catch(() => {
+        alert('Ocorreu um erro, tente novamente.');
+      });
+  });
 
-// montagem do post
-const createPostElement = (
-  nameUser,
-  date,
-  textPost,
-  postId,
-  uidUser,
-  whoLiked,
-) => {
-  const datePost = new Date(date);
-  const createdAtFormattedDate = createdAtDate.toLocaleDateString('pt-BR');
-  const createdAtFormatted = `${createdAtFormattedDate} ~ ${createdAtFormattedTime}`;
-  const postElement = document.createElement('div');
-  postElement.innerHTML = `
+  // montagem do post
+  const createPostElement = (
+    nameUser,
+    date,
+    textPost,
+    postId,
+    uidUser,
+    whoLiked,
+  ) => {
+    const datePost = new Date(date);
+    const createdAtFormattedDate = createdAtDate.toLocaleDateString('pt-BR');
+    const createdAtFormatted = `${createdAtFormattedDate} ~ ${createdAtFormattedTime}`;
+    const postElement = document.createElement('div');
+    postElement.innerHTML = `
     <div class='post-container'>
       <div class='nameUser'>
         <p class='userName'>${nameUser}</p>
@@ -72,12 +72,12 @@ const createPostElement = (
             <a class='icon-post' id='icons-post'><img src='${likeAdd}' 
           </button>`;
 
-  return postElement;
-};
+    return postElement;
+  };
 
-//publicações aqui
+  //publicações aqui
 
-return feedContainer;
+  return feedContainer;
 
 };
 
