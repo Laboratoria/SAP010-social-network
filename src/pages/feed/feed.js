@@ -8,10 +8,6 @@ export default () => {
      <h1>FIGHT BACK</h1>
      <ul class="lista-menu">
       <li><picture> 
-      <input type="checkbox" id="check-perfil">
-      <label for="check">
-       <img src="imagens/icon-perfil.png" class="icon-perfil" alt="imagem para acessar o perfil"></label></picture></li>
-      <li><picture> 
       <input type="checkbox" id="check-feed">
       <label for="check">
        <img src="imagens/icon-feed.png" class="icon-feed" alt="imagem para acessar o feed"></picture></li>
@@ -28,7 +24,6 @@ export default () => {
     </nav>
 
     <ul class="lista-menu-mobile">
-      <li><a href="/#perfil"><img src="imagens/icon-perfil.png" class="icon-perfil" alt="imagem para acessar o perfil"><p>Perfil</p></a></li>
       <li><a href="/#feed"><img src="imagens/icon-feed.png" class="icon-feed" alt="imagem para acessar o feed"><p>Feed</p></a></li>
       <li><a href="/#sos"><img src="imagens/icon-sos.png" class="icon-sos" alt="imagem para solicitar suporte"><p>Suporte</p></a></li>
       <li><a href="/#"><img src="imagens/icon-sair.png" class="icon-sair" alt="imagem para sair "><p>Sair</p></a></li>
