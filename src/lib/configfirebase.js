@@ -1,6 +1,7 @@
-// import { getFirestore } from 'firebase/firestore';
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import 'firebase/compat/storage';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBM8SWdcckahTdJcmCb_jMlO74O6HaTb38',
@@ -12,11 +13,9 @@ const firebaseConfig = {
   measurementId: 'G-Y6MQJS60R4',
 };
 
-// Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-
-// Initialize Firebase Authentication and get a reference to the service
-export const auth = getAuth(app);
-
-// para o feed usar db
-// export const db = getFirestore(app);
+firebase.initializeApp(firebaseConfig);
+// Inicialização do Firebase
+export const app = firebase.app();
+export const auth = firebase.auth();
+export const db = firebase.firestore();
+export const storage = firebase.storage();
