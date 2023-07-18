@@ -4,7 +4,10 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged, GoogleAuthProvider, signInWithPopup,
 } from 'firebase/auth';
-import { app } from '../../firebaseInit.config.js';
+import {
+  setDoc, doc, collection, query, getDocs,
+} from 'firebase/firestore';
+import { app, db } from '../../firebaseInit.config.js';
 
 // GoogleAuthProvider,  signInWithPopup, updateProfile,  signOut,
 // createUserWithEmailAndPassword, import { app } from "../firebaseInit.js";
@@ -13,7 +16,18 @@ export const auth = getAuth(app);
 
 // cadastro de usuarios novos
 
-const createUser = (nome, email, senha) => createUserWithEmailAndPassword(auth, email, senha);
+// Fizemos essa função com as meninas no intuito de criar um db no firestore
+// Do projeto para o firebase
+// acredito q precisamos linkar com a função lá na página de cadastro
+// com os dados do form de cadastro
+const createUser = async (nome, email, senha) => {
+  await createUserWithEmailAndPassword(auth, email, senha);
+  await setDoc(doc(db, 'User', `${email}`), {
+    nome: '',
+    email: '',
+  });
+};
+
 // comentei esta parte porque aindo não iremos usar
 // .then((userCredential) => {
 //   // Signed in
@@ -29,6 +43,23 @@ const loginGoogle = () => {
   return signInWithPopup(auth, provider);
 };
 // const provider = new GoogleAuthProvider() => signInWithPopup(auth, provider);
+
+// essa função nos permite ler o banco de dados que fizemos direto no firebase
+// Fizemos com a Nury
+const fetchData = async () => {
+  const q = query(collection(db, 'Post'));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((docs) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(docs.id, '=>', docs.data());
+  });
+};
+
+fetchData();
+
+// const criarPost = async(mensagemPost, user) => {
+//   const uid =
+// };
 
 export {
   createUser, login, addonAuthStateChanged, loginGoogle, createUserWithEmailAndPassword,

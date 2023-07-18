@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import {
-  getFirestore, collection, query, getDocs,
+  getFirestore, collection, addDoc,
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -16,15 +16,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const fetchData = async () => {
-  const q = query(collection(db, 'Post'));
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, '=>', doc.data());
-  });
-};
 
-fetchData();
-
-export { auth, app, db }; /* db data base */
+export {
+  auth, app, db, collection, addDoc,
+}; /* db data base */

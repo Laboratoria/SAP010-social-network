@@ -47,6 +47,7 @@ export default () => {
   const confirmarSenha = containerCadastro.querySelector('#confirmarSenha');
   const btnCriar = containerCadastro.querySelector('#btnCriar');
   const mensagemErro = containerCadastro.querySelector('#erro-cadastro');
+
   // const btnRetornaLogin = containerCadastro.querySelector('#retornaLogin');
 
   btnCriar.addEventListener('click', (e) => {
@@ -89,6 +90,9 @@ export default () => {
 
     createUser(nome.value, email.value, senha.value)
       .then(() => {
+        // precisamos colocar uma função para coletar as informações
+        // cadastradas com o createUser para incluir lá na nossa collection
+        // os dados de email,nome e talvez o id gerado
         // usuário cadastrado com sucesso
         window.location.href = '/#perfil';
       })
