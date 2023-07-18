@@ -53,5 +53,8 @@
   "bugs": {
     "url": "https://github.com/alinelandeira/SAP010-social-network/issues"
   },
-  "homepage": "https://github.com/alinelandeira/SAP010-social-network#readme"
+  "homepage": "https://github.com/alinelandeira/SAP010-social-network#readme",
+  "dependencies": {
+    "firebase": "^10.0.0"
+  }
 }
