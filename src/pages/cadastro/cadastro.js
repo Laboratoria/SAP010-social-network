@@ -1,4 +1,5 @@
 import './cadastro.css';
+
 import CBD from '../imagens/CBDCNNCT-IMG/logodesktopsemsombra.png';
 import { createUser } from '../serviceFirebase/firebaseAuth.js';
 
@@ -90,9 +91,6 @@ export default () => {
 
     createUser(nome.value, email.value, senha.value)
       .then(() => {
-        // precisamos colocar uma função para coletar as informações
-        // cadastradas com o createUser para incluir lá na nossa collection
-        // os dados de email,nome e talvez o id gerado
         // usuário cadastrado com sucesso
         window.location.href = '/#perfil';
       })
