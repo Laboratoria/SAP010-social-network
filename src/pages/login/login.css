@@ -46,6 +46,17 @@ main {
     gap: 20px;
 }
 
+#csslogin input {
+    width: 279px;
+    height: 50px;
+    font-size: 24px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
 #input-email-login {
     background: url(/imagens/icon-email.png) no-repeat left / 1em;
     padding-left: 1.4em;
@@ -98,6 +109,10 @@ main {
     height: 0px;
     width: 0px;
   }
+
+  #check {
+    display: none;
+  }
   
   .check-btn {
     position: absolute;
@@ -137,4 +152,5 @@ main {
 
 #csslogin form > #redefinir-senha {
     border: none;
+    cursor: pointer;
 }

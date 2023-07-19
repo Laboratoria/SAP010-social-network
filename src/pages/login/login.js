@@ -1,5 +1,4 @@
 import { loginUsuario } from "../../lib/firebase";
-import { redefinirSenha } from "../../lib/firebase";
 
 export default () => {
   const container = document.createElement('div');
@@ -23,7 +22,7 @@ export default () => {
  <input type="password" id="input-senha-login" name="senha" placeholder="Senha">
  
  </div>
- <button id="redefinir-senha">Esqueceu sua senha?</button>
+ <button id="redefinir-senha" href="/#redefinir-senha">Esqueceu sua senha?</button>
 <button id="btn-cinza-login">Entrar</button>
 
 <p id="paragrafo-login">Ainda não tem uma conta??&nbsp;<a href="/#cadastro">Cadastre-se</a></p>
@@ -49,19 +48,7 @@ export default () => {
 
   btnRedefSenha.addEventListener('click', (event) => {
     event.preventDefault();
-    const emailDoUsuario = inputEmail.value;
-    redefinirSenha(emailDoUsuario)
-      .then(() => {
-        // Password reset email sent!
-        // ..
-        alert("Email de redefinição de senha enviado com sucesso. Verifique sua caixa de entrada.")
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error(`${errorCode} - ${errorMessage}`)
-        // ..
-      });
+    window.location.hash = "#redefinir-senha"
   })
 
   botaoEntrar.addEventListener('click', (event) => {
