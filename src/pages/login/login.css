@@ -43,7 +43,7 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
 }
 
 #input-email-login {
@@ -124,7 +124,7 @@ main {
   }
   
   #check:checked + .check-btn {
-    background-color: #f32121;
+    background-color: #950909;
   }
   
   #check:checked + .check-btn::after {
@@ -133,4 +133,8 @@ main {
 
   #paragrafo-login a {
     color: #950909;
+}
+
+#csslogin form > #redefinir-senha {
+    border: none;
 }

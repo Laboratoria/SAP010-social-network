@@ -1,4 +1,5 @@
 import { loginUsuario } from "../../lib/firebase";
+import { redefinirSenha } from "../../lib/firebase";
 
 export default () => {
   const container = document.createElement('div');
@@ -20,7 +21,9 @@ export default () => {
 <input type="checkbox" id="check" class="on-off">
  <label for="check" class="check-btn"></label>
  <input type="password" id="input-senha-login" name="senha" placeholder="Senha">
+ 
  </div>
+ <button id="redefinir-senha">Esqueceu sua senha?</button>
 <button id="btn-cinza-login">Entrar</button>
 
 <p id="paragrafo-login">Ainda não tem uma conta??&nbsp;<a href="/#cadastro">Cadastre-se</a></p>
@@ -31,7 +34,7 @@ export default () => {
   const botaoEntrar = container.querySelector('#btn-cinza-login');
   const inputEmail = container.querySelector("#input-email-login");
   const inputSenha = container.querySelector("#input-senha-login");
-
+  const btnRedefSenha = container.querySelector('#redefinir-senha');
   const checkBtn = container.querySelector("#check");
 
   function mostrarSenha() {
@@ -44,27 +47,37 @@ export default () => {
 
   checkBtn.addEventListener("change", mostrarSenha);
 
+  btnRedefSenha.addEventListener('click', (event) => {
+    event.preventDefault();
+    const emailDoUsuario = inputEmail.value;
+    redefinirSenha(emailDoUsuario)
+      .then(() => {
+        // Password reset email sent!
+        // ..
+        alert("Email de redefinição de senha enviado com sucesso. Verifique sua caixa de entrada.")
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(`${errorCode} - ${errorMessage}`)
+        // ..
+      });
+  })
+
   botaoEntrar.addEventListener('click', (event) => {
 
     event.preventDefault();
     const emailDoUsuario = inputEmail.value;
     const senhaDoUsuario = inputSenha.value;
-    
+
     loginUsuario(emailDoUsuario, senhaDoUsuario)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        console.log('usuário logado com sucesso')
-        console.log(user)
-        window.location.hash = '#feed'
-      })
 
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error(`${errorCode} - ${errorMessage}`)
         if (errorCode === "auth/invalid-email") {
-          alert("Email inválido.")
+          alert("Email inválido. Verifique o campo e tente novamente.")
         }
         else if (errorCode === "auth/missing-password") {
           alert("Por favor, insira sua senha.")
@@ -75,7 +88,17 @@ export default () => {
         else {
           alert("Você ainda não tem uma conta. Cadastre-se.")
         }
-      });
+      })
+
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log('usuário logado com sucesso')
+        console.log(user)
+        window.location.hash = '#feed'
+      })
+
+
   })
 
   return container;
