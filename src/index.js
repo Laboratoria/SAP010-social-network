@@ -2,6 +2,7 @@ import login from './pages/Login/login.js';
 import cadastro from './pages/Cadastro/cadastro.js';
 import feed from './pages/Feed/feed.js';
 //import { userAuthCheck } from '../src/lib/authUser.js';
+//import { userAuthCheck } from '../src/lib/authUser.js';
 
 const main = document.querySelector('#root');
 

@@ -1,13 +1,14 @@
-import {
-  collection,
-  db,
-  auth,
-  addDoc,
-  getDoc,
-  updateDoc,
-  getDocs,
-  doc
-} from './configfirebase.js';
+import { collection, addDoc, getDocs } from 'firebase/compat/firestore';
+import { auth } from './configfirebase.js';
+
+/* collection,
+db,
+auth,
+addDoc,
+getDoc,
+updateDoc,
+getDocs,
+doc */
 
 export const posts = async (postagem) => {
   const timestamp = new Date().getTime();

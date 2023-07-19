@@ -1,5 +1,5 @@
 import { userLogout } from '../../lib/authUser.js';
-//import {posts, exibAllPosts } from '../../lib/feedPost.js';
+import {posts, exibAllPosts } from '../../lib/feedPost.js';
 
 export default () => {
   const feedContainer = document.createElement('div');
@@ -31,7 +31,7 @@ export default () => {
 
 
   // Informações preenchidas pelo usuário
-  const textoPostagem = feedContainer.querySelector('#textoMensagem');
+  //const textoPostagem = feedContainer.querySelector('#textoMensagem');
 
   // Botões
   const btnPost = feedContainer.querySelector('#btn-send-post');
@@ -46,6 +46,20 @@ export default () => {
         alert('Ocorreu um erro, tente novamente.');
       });
   });
+
+  btnPost.addEventListener('click', () =>{
+    const textoPostagem = feedContainer.querySelector('#textoMensagem');
+    if(){
+      //testar se mensagem foi digitada
+    } 
+    posts()
+      .then(() => {
+        
+      }).catch(() => {
+        
+    });
+      //limpar campo de input após a postagem
+  })
 
   // montagem do post
   const createPostElement = (
