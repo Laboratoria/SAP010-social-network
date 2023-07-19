@@ -1,32 +1,22 @@
-// aqui exportaras las funciones que necesites
+// // aqui exportaras las funciones que necesites
 
-export const myFunction = () => {
-  // aqui tu codigo
-  console.log('Hola mundo!');
-};
+// import { initializeApp } from 'firebase/app';
+// import { getAuth } from 'firebase/auth';
 
-export function start() {
-  const startElement = document.createElement('section');
-  startElement.setAttribute('id', 'starting');
-  startElement.setAttribute('class', 'starting');
-  startElement.innerHTML = '<h2>Welcome</h2><img src="./images/bem-vindes.gif">';
-  document.body.appendChild(startElement);
-}
+// const firebaseConfig = {
+//   apiKey: 'AIzaSyA5-EC7w2kyAubzcvG9-lS0grc_S9myUuA',
+//   authDomain: 'papo-privado.firebaseapp.com',
+//   projectId: 'papo-privado',
+//   storageBucket: 'papo-privado.appspot.com',
+//   messagingSenderId: '828549193141',
+//   appId: '1:828549193141:web:9fc053a22f83d370154dfc',
+//   measurementId: 'G-F4G0BBHMK0',
+// };
 
-export function stop() {
-}
+// const app = initializeApp(firebaseConfig);
+// const auth = getAuth(app);
 
-export function newElement(element) {
-  const makeElement = document.createElement('section');
-  // cria uma section
-  makeElement.innerHTML = element;
-  // inclui o elemento recebido na estrutura do HTML
-  document.body.appendChild(makeElement);
-  // inclui o elemento no HTML
-}
-
-export function removeElement(element) {
-  document.body.removeChild();
-  // é possível criar um objeto bom tags HTML
-  // para que eu selecione o valor do id da tag criada pra conseguir excluir?
-}
+// export const myFunction = () => {
+//   // aqui tu codigo
+//   console.log('Hola mundo!');
+// };
