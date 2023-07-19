@@ -7,6 +7,7 @@ import home from './pages/home/home';
 import cadastro from './pages/cadastro/cadastro';
 import login from './pages/login/login';
 import feed from './pages/feed/feed';
+import senha from './pages/redefinicao-de-senha/senha';
 
 const principal = document.querySelector('#principal');
 
@@ -25,6 +26,9 @@ const init = () => {
         break;
       case '#feed':
         principal.appendChild(feed());
+        break;
+      case '#redefinir-senha':
+        principal.appendChild(senha());
         break;
       default:
         principal.appendChild(home());
