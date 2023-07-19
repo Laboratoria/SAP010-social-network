@@ -10,7 +10,7 @@ export function intro() {
         discutir saúde íntima, compartilhar experiências, dúvidas, buscar e oferecer suporte.<br>
         Viva o poder da sororidade!<br>
         Entre e sinta-se em casa.</p>
-    <input type="button" class="comecar" id="comecar">
+    <p><input type="image" class="button-coffee" id="start-coffee" src="./images/coffee.gif" button></p>
     </article>
 `;
 
