@@ -1,4 +1,5 @@
-import { userLogout } from '../../lib/authUser.js';
+import './feed.css';
+import { userLogout, getUserName } from '../../lib/authUser.js';
 import {posts, exibAllPosts } from '../../lib/firestore.js';
 
 export default () => {
@@ -9,19 +10,23 @@ export default () => {
       <div>
         <img></img>
         <h3> Feed </h3>
-        <div id="usuario">
+        <p class='userName'>Olá, ${getUserName()}! Vamos comentar sobre filmes e séries?</p>
+        <div id="usuario"></div>
       </div>
-      <button class="btn-logout" id="btn-logout">Log Out</button>
   <section class="inicioFeed">
   </section>
   <div class="postagens">
     <textarea class="inputMensagem" id="textoMensagem" placeholder="Compartilhe comentários sobre os filmes e séries do momento" rows="8" cols="50"></textarea>
-    <button class="btn-post" id="btn-send-post">Postar</button>
+    <button class="btn-delete" id="btn-delete"><img class="" src="./img/icons/icones-delete.svg">Cancel</button>
+    <button class="btn-post" id="btn-send-post"><img class="" src="./img/icons/icones-send.svg">Post</button>
     <div id="mensagemErro" class="error"></div>
   </div>
 
   <section id="postagem" class="posts">
-
+  </section>
+  <section>
+    <button class="btn-perfil" id="btn-perfil"><img class="" src="./img/icons/icones-user1.svg">Perfil</button>
+    <button class="btn-logout" id="btn-logout"><img class="" src="./img/icons/icones-logout.svg">Log Out</button>
   </section>
   <footer>
       
@@ -31,7 +36,7 @@ export default () => {
 
 
   // Informações preenchidas pelo usuário
-  //const textoPostagem = feedContainer.querySelector('#textoMensagem');
+  //const textoPostagemEntrada = feedContainer.querySelector('#textoMensagem');
 
   // Botões
   const btnPost = feedContainer.querySelector('#btn-send-post');
@@ -52,7 +57,7 @@ export default () => {
 
     if(true){
       //testar se mensagem foi digitada
-      //textoPostagem = mensagemPost.value;
+      //textoPostagemEntrada = textoPostagem.value;
       //console.log(textoPostagem);
     } 
     posts()
@@ -78,16 +83,16 @@ export default () => {
     const createdAtFormatted = `${createdAtFormattedDate}`;
     const postElement = document.createElement('div');
     postElement.innerHTML = `
-    <div class='post-container'>
+    <section class="post-container">
       <div class='nameUser'>
         <p class='userName'>${nameUser}</p>
-        <p class='dataPost'>${createdAtFormatted}</p>
-      </div>
-      <p class='textPost'>${textPost}</p>
+        <p class='dataPost'>Data: ${createdAtFormatted}</p>
+        <p class='textPost'>${textPost}</p>
         <div class='image-icons'>
           <button type='button' class='icons-post' id='like-Post' data-post-id='${postId}'>
-            <a class='icon-post' id='icons-post'><img src=''/></a> 
-          </button>`;
+            <a class='icon-post' id='icons-post'><img src=''/>LIKE</a> 
+          </button>
+      </section>`;
 
     return postElement;
   };

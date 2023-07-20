@@ -37,6 +37,7 @@ export const getUserName = () => {
   const user = auth.currentUser;
   if (user) {
     return user.displayName;
+  //  return user.photoURL;
   }
   return null;
 };
