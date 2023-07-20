@@ -1,5 +1,5 @@
 import { userLogout } from '../../lib/authUser.js';
-//import {posts, exibAllPosts } from '../../lib/feedPost.js';
+import {posts, exibAllPosts } from '../../lib/firestore.js';
 
 export default () => {
   const feedContainer = document.createElement('div');
@@ -31,7 +31,7 @@ export default () => {
 
 
   // Informações preenchidas pelo usuário
-  const textoPostagem = feedContainer.querySelector('#textoMensagem');
+  //const textoPostagem = feedContainer.querySelector('#textoMensagem');
 
   // Botões
   const btnPost = feedContainer.querySelector('#btn-send-post');
@@ -47,6 +47,21 @@ export default () => {
       });
   });
 
+  btnPost.addEventListener('click', () =>{
+    const textoPostagem = feedContainer.querySelector('#textoMensagem');
+    if(true){
+      //testar se mensagem foi digitada
+    } 
+    posts()
+      .then(() => {
+        
+      }).catch((error) => {
+        console.log(error);
+    });
+      //limpar campo de input após a postagem
+      // puxar função inicio depois da criação do post para que seja exibido
+  })
+
   // montagem do post
   const createPostElement = (
     nameUser,
@@ -54,28 +69,42 @@ export default () => {
     textPost,
     postId,
     uidUser,
-    whoLiked,
   ) => {
-    const datePost = new Date(date);
+    const createdAtDate = new Date(date);
     const createdAtFormattedDate = createdAtDate.toLocaleDateString('pt-BR');
-    const createdAtFormatted = `${createdAtFormattedDate} ~ ${createdAtFormattedTime}`;
+    const createdAtFormatted = `${createdAtFormattedDate}`;
     const postElement = document.createElement('div');
     postElement.innerHTML = `
     <div class='post-container'>
       <div class='nameUser'>
         <p class='userName'>${nameUser}</p>
-        <p class='dataPost'>${date}</p>
+        <p class='dataPost'>${createdAtFormatted}</p>
       </div>
       <p class='textPost'>${textPost}</p>
         <div class='image-icons'>
           <button type='button' class='icons-post' id='like-Post' data-post-id='${postId}'>
-            <a class='icon-post' id='icons-post'><img src='${likeAdd}' 
+            <a class='icon-post' id='icons-post'><img src=''/></a> 
           </button>`;
 
     return postElement;
   };
 
+
   //publicações aqui
+  const inicio = () => {
+    const postagemElement = feedContainer.querySelector('#postagem');
+    exibAllPosts()
+      .then((listaPosts) => {
+        for(let i = 0; i < listaPosts.length; i++){
+        const itemPost = createPostElement(listaPosts[i].nameUser, listaPosts[i].date, listaPosts[i].textPost, listaPosts[i].postId)
+          postagemElement.appendChild(itemPost);
+        } 
+      }).catch((error) => {
+      console.log(error);
+    });
+  }
+  
+  inicio();
 
   return feedContainer;
 

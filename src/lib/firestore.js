@@ -1,22 +1,23 @@
-import {
-  collection,
-  db,
-  auth,
-  addDoc,
-  getDoc,
-  updateDoc,
-  getDocs,
-  doc
-} from './configfirebase.js';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { auth, db } from './configfirebase.js';
+
+/* collection,
+db,
+auth,
+addDoc,
+getDoc,
+updateDoc,
+getDocs,
+doc */
 
 export const posts = async (postagem) => {
   const timestamp = new Date().getTime();
   const document = await addDoc(collection(db, 'posts'), {
     nameUser: auth.currentUser.displayName,
-    uid: auth.currentUser.uid,
+    uidUser: auth.currentUser.uid,
     date: timestamp,
     textPost: postagem,
-    likes: [], timestamp
+    like: []
   });
   return document;
 };
