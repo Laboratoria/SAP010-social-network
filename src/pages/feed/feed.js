@@ -7,6 +7,8 @@ import coracao from '../imagens/icones/coracao.png';
 import editar from '../imagens/icones/editar.png';
 import excluir from '../imagens/icones/excluir.png';
 
+import { criarPost } from '../serviceFirebase/firebaseAuth';
+
 export default () => {
   const containerFeed = document.createElement('section');
   containerFeed.classList.add('container-feed');
@@ -75,6 +77,7 @@ export default () => {
     e.preventDefault();
     const msg = mensagemPost.value;
     console.log(msg);
+    criarPost(msg);
   });
 
   return containerFeed;
