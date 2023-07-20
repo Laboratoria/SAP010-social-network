@@ -22,7 +22,9 @@ export default () => {
  <input type="password" id="input-senha-login" name="senha" placeholder="Senha">
  
  </div>
+
  <button id="redefinir-senha" href="/#redefinir-senha">Esqueceu sua senha?</button>
+
 <button id="btn-cinza-login">Entrar</button>
 
 <p id="paragrafo-login">Ainda não tem uma conta??&nbsp;<a href="/#cadastro">Cadastre-se</a></p>

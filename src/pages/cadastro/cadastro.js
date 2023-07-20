@@ -27,6 +27,7 @@ export default () => {
 
   container.innerHTML = template;
 
+
   const botaoCadastrar = container.querySelector('#btn-vermelho');
   const inputEmail = container.querySelector("#input-email-cadastro");
   const inputSenha = container.querySelector("#input-senha-cadastro");
@@ -75,6 +76,10 @@ export default () => {
       });
   })
 
+
+
   return container;
 };
 
+// const inputEmail = document.querySelector("#input-email");
+// const inputSenha = document.querySelector("#input-senha");
