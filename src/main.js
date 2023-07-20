@@ -37,8 +37,6 @@ const init = () => {
   });
 };
 
-
-
 window.addEventListener('load', () => {
   principal.appendChild(home());
   init();

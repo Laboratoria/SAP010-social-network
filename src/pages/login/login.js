@@ -1,4 +1,4 @@
-import { loginUsuario } from "../../lib/firebase";
+import { loginUsuario } from '../../lib/firebase';
 
 export default () => {
   const container = document.createElement('div');
@@ -33,28 +33,27 @@ export default () => {
   container.innerHTML = template;
 
   const botaoEntrar = container.querySelector('#btn-cinza-login');
-  const inputEmail = container.querySelector("#input-email-login");
-  const inputSenha = container.querySelector("#input-senha-login");
+  const inputEmail = container.querySelector('#input-email-login');
+  const inputSenha = container.querySelector('#input-senha-login');
   const btnRedefSenha = container.querySelector('#redefinir-senha');
-  const checkBtn = container.querySelector("#check");
+  const checkBtn = container.querySelector('#check');
 
   function mostrarSenha() {
     if (checkBtn.checked) {
-      inputSenha.type = "text";
+      inputSenha.type = 'text';
     } else {
-      inputSenha.type = "password";
+      inputSenha.type = 'password';
     }
   }
 
-  checkBtn.addEventListener("change", mostrarSenha);
+  checkBtn.addEventListener('change', mostrarSenha);
 
   btnRedefSenha.addEventListener('click', (event) => {
     event.preventDefault();
-    window.location.hash = "#redefinir-senha"
-  })
+    window.location.hash = '#redefinir-senha';
+  });
 
   botaoEntrar.addEventListener('click', (event) => {
-
     event.preventDefault();
     const emailDoUsuario = inputEmail.value;
     const senhaDoUsuario = inputSenha.value;
@@ -64,31 +63,26 @@ export default () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.error(`${errorCode} - ${errorMessage}`)
-        if (errorCode === "auth/invalid-email") {
-          alert("Email inválido. Verifique o campo e tente novamente.")
-        }
-        else if (errorCode === "auth/missing-password") {
-          alert("Por favor, insira sua senha.")
-        }
-        else if (errorCode === "auth/wrong-password") {
-          alert("Senha incorreta. Tente novamente.")
-        }
-        else {
-          alert("Você ainda não tem uma conta. Cadastre-se.")
+        console.error(`${errorCode} - ${errorMessage}`);
+        if (errorCode === 'auth/invalid-email') {
+          alert('Email inválido. Verifique o campo e tente novamente.');
+        } else if (errorCode === 'auth/missing-password') {
+          alert('Por favor, insira sua senha.');
+        } else if (errorCode === 'auth/wrong-password') {
+          alert('Senha incorreta. Tente novamente.');
+        } else {
+          alert('Você ainda não tem uma conta. Cadastre-se.');
         }
       })
 
       .then((userCredential) => {
-        // Signed in 
+        // Signed in
         const user = userCredential.user;
-        console.log('usuário logado com sucesso')
-        console.log(user)
-        window.location.hash = '#feed'
-      })
-
-
-  })
+        console.log('usuário logado com sucesso');
+        console.log(user);
+        window.location.hash = '#feed';
+      });
+  });
 
   return container;
 };

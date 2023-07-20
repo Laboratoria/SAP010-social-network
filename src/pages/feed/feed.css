@@ -21,7 +21,6 @@
 }
 
 .lista-menu {
-    display: flex;
     flex-direction: row;
     list-style: none;
     display: none;
@@ -37,17 +36,17 @@
     height: 30px;
 }
 
+#cssfeed>header>picture>img {
+    width: 100vw;
+    background-color: #ffff;
+    position: relative;
+}
+
 #menu .lista-menu>li>picture>img {
     height: 25px;
     width: 25px;
     padding: 5px 10px;
 
-}
-
-#cssfeed>header>picture>img {
-    width: 100vw;
-    background-color: #ffff;
-    position: relative;
 }
 
 #cssfeed>header>picture>img::before {
