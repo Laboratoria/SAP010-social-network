@@ -8,11 +8,18 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
+  updateProfile,
 } from 'firebase/auth';
 import { auth } from './firebase-config.js';
 
 export function cadastrarUsuario(email, senha) {
   return createUserWithEmailAndPassword(auth, email, senha);
+}
+
+export function atualizarNomeDoUsuario(nome) {
+  return updateProfile(auth.currentUser, {
+    displayName: nome, photoURL: 'https://static.thenounproject.com/png/5034901-200.png',
+  });
 }
 
 export function loginUsuario(email, senha) {
