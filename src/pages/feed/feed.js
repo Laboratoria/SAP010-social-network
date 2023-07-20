@@ -32,27 +32,25 @@ export default () => {
     <header>
      <picture id="mulher-feed"><img src="imagens/menina-feed.png"></picture>
     </header>
-     `
-
+     `;
 
   container.innerHTML = template;
 
-  const botaoMenu = container.querySelector("#btn-menu");
-
-  botaoMenu.addEventListener("click", abrirMenu);
+  const botaoMenu = container.querySelector('#btn-menu');
 
   function abrirMenu() {
-    const listaMenu = container.querySelector(".lista-menu-mobile");
+    const listaMenu = container.querySelector('.lista-menu-mobile');
 
-    if (listaMenu.style.display === "none") {
-      listaMenu.style.display = "block";
+    if (listaMenu.style.display === 'none') {
+      listaMenu.style.display = 'block';
     } else if (document.body.clientWidth >= 768) {
-      listaMenu.style.display = "none";
-    }
-    else {
-      listaMenu.style.display = "none";
+      listaMenu.style.display = 'none';
+    } else {
+      listaMenu.style.display = 'none';
     }
   }
 
+  botaoMenu.addEventListener('click', abrirMenu);
+
   return container;
-}
+};

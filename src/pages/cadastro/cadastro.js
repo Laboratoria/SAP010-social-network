@@ -1,4 +1,4 @@
-import { cadastrarUsuario } from "../../lib/firebase";
+import { cadastrarUsuario } from '../../lib/firebase';
 
 export default () => {
   const container = document.createElement('div');
@@ -27,23 +27,22 @@ export default () => {
 
   container.innerHTML = template;
 
-
   const botaoCadastrar = container.querySelector('#btn-vermelho');
-  const inputEmail = container.querySelector("#input-email-cadastro");
-  const inputSenha = container.querySelector("#input-senha-cadastro");
+  const inputEmail = container.querySelector('#input-email-cadastro');
+  const inputSenha = container.querySelector('#input-senha-cadastro');
   const inputNome = container.querySelector('#input-name');
 
-  const checkBtn = container.querySelector("#check-cadastro");
- 
-   function mostrarSenha() {
-     if (checkBtn.checked) {
-       inputSenha.type = "text";
-     } else {
-       inputSenha.type = "password";
-     }
-   }
- 
-   checkBtn.addEventListener("change", mostrarSenha);
+  const checkBtn = container.querySelector('#check-cadastro');
+
+  function mostrarSenha() {
+    if (checkBtn.checked) {
+      inputSenha.type = 'text';
+    } else {
+      inputSenha.type = 'password';
+    }
+  }
+
+  checkBtn.addEventListener('change', mostrarSenha);
 
   botaoCadastrar.addEventListener('click', (event) => {
     event.preventDefault();
@@ -55,28 +54,26 @@ export default () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log('usuário cadastrado com sucesso')
-        console.log(user)
-        alert("Cadastro realizado com sucesso! Faça o login.")
-        window.location.hash = '#login'
+        console.log('usuário cadastrado com sucesso');
+        console.log(user);
+        alert('Cadastro realizado com sucesso! Faça o login.');
+        window.location.hash = '#login';
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.error(`${errorCode} - ${errorMessage}`)
+        console.error(`${errorCode} - ${errorMessage}`);
         if (nomeDoUsuario === '') {
-          alert("Por favor, insira seu nome.")
+          alert('Por favor, insira seu nome.');
         } else if (emailDoUsuario === '') {
-          alert("Por favor, insira um email.")
+          alert('Por favor, insira um email.');
         } else if (senhaDoUsuario === '') {
-          alert ("Por favor, insira uma senha.")
+          alert('Por favor, insira uma senha.');
         } else {
-        alert("Usuário já cadastrado. Tente outro email.")
+          alert('Usuário já cadastrado. Tente outro email.');
         }
       });
-  })
-
-
+  });
 
   return container;
 };
