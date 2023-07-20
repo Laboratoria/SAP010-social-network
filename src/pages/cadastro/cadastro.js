@@ -1,4 +1,4 @@
-import { cadastrarUsuario } from '../../lib/firebase';
+import { cadastrarUsuario, atualizarNomeDoUsuario } from '../../lib/firebase';
 
 export default () => {
   const container = document.createElement('div');
@@ -56,8 +56,8 @@ export default () => {
         const user = userCredential.user;
         console.log('usuário cadastrado com sucesso');
         console.log(user);
-        alert('Cadastro realizado com sucesso! Faça o login.');
-        window.location.hash = '#login';
+        alert('Cadastro realizado com sucesso!');
+        window.location.hash = '#feed';
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -72,6 +72,18 @@ export default () => {
         } else {
           alert('Usuário já cadastrado. Tente outro email.');
         }
+      });
+
+    atualizarNomeDoUsuario(nomeDoUsuario)
+      .then(() => {
+        // Profile updated!
+        // ...
+      })
+      .catch((error) => {
+        // An error occurred
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(`${errorCode} - ${errorMessage}`);
       });
   });
 
