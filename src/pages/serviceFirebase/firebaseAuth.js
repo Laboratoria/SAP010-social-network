@@ -5,7 +5,7 @@ import {
   onAuthStateChanged, GoogleAuthProvider, signInWithPopup,
 } from 'firebase/auth';
 import {
-  setDoc, doc, collection, query, getDocs,
+  setDoc, doc, collection, addDoc,
 } from 'firebase/firestore';
 import { app, db } from '../../firebaseInit.config.js';
 
@@ -38,27 +38,53 @@ const loginGoogle = () => {
   const provider = new GoogleAuthProvider();
   return signInWithPopup(auth, provider);
 };
-// const provider = new GoogleAuthProvider() => signInWithPopup(auth, provider);
 
 // essa função nos permite ler o banco de dados que fizemos direto no firebase
 // Fizemos com a Nury
-const fetchData = async () => {
-  const q = query(collection(db, 'POst'));
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((docs) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(docs.id, '=>', docs.data());
-  });
-};
-
-fetchData();
-
-// const criarPost = async(mensagemPost, user) => {
-//   const uid =
+// const fetchData = async () => {
+//   const q = query(collection(db, 'Post'));
+//   const querySnapshot = await getDocs(q);
+//   querySnapshot.forEach((docs) => {
+//     // doc.data() is never undefined for query doc snapshots
+//     console.log(docs.id, '=>', docs.data());
+//   });
 // };
 
+// fetchData();
+
+const auth1 = getAuth();
+
+// Função para obter o usuário atual autenticado
+const getCurrentUser = () => new Promise((resolve, reject) => {
+  const unsubscribe = onAuthStateChanged(auth1, (user) => {
+    unsubscribe();
+    resolve(user);
+  }, reject);
+});
+
+const criarPost = async (mensagem) => {
+  try {
+    const user = await getCurrentUser();
+    if (!user) {
+      console.log('Usuário não autenticado');
+      return;
+    }
+
+    // Dados do novo post que você deseja criar
+    const novoPost = {
+      mensagem,
+      user_id: user.uid, // Use user.uid para obter o ID do usuário
+      likes: 0,
+    };
+
+    await addDoc(collection(db, 'Post'), novoPost);
+  } catch (error) {
+    console.error('Erro ao criar o post:', error);
+  }
+};
+
 export {
-  createUser, login, addonAuthStateChanged, loginGoogle, createUserWithEmailAndPassword,
+  createUser, login, addonAuthStateChanged, loginGoogle, createUserWithEmailAndPassword, criarPost,
 };
 // export const googleLogin = () => {
 //   const provider = new GoogleAuthProvider();
