@@ -27,9 +27,9 @@ export async function userLogout() {
   await signOut(authLogOut);
 }
 //verifica se esta logado
-export async function userAuthCheck(callback) {
+export function userAuthCheck(callback) {
   const authLogin = getAuth(app);
-  onAuthStateChanged(authLogin, callback);
+  return onAuthStateChanged(authLogin, callback);
 }
 // retorno do usuario autenticado
 export const getUserName = () => {

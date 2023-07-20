@@ -49,8 +49,11 @@ export default () => {
 
   btnPost.addEventListener('click', () =>{
     const textoPostagem = feedContainer.querySelector('#textoMensagem');
+
     if(true){
       //testar se mensagem foi digitada
+      //textoPostagem = mensagemPost.value;
+      //console.log(textoPostagem);
     } 
     posts()
       .then(() => {
