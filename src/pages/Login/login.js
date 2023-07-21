@@ -57,6 +57,7 @@ export default () => {
   const firstLogin = (event) => {
     event.preventDefault();
     errorMessage.textContent = '';
+    //ajustar mensagem de erro
     const email = emailEntrada.value;
     const senha = senhaEntrada.value;
     // Chamada para a função de login

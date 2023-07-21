@@ -1,7 +1,6 @@
 import login from './pages/Login/login.js';
 import cadastro from './pages/Cadastro/cadastro.js';
 import feed from './pages/Feed/feed.js';
-// import { userAuthCheck } from '../src/lib/authUser.js';
 import { userAuthCheck } from './lib/authUser.js';
 const main = document.querySelector('#root');
 const init = async () => {
@@ -15,9 +14,6 @@ const init = async () => {
       case '#cadastro':
         main.appendChild(cadastro());
         break;
-      // case '#feed':
-      //   main.appendChild(feed());
-      //   break;
       case '#feed': {
         await verificarLogin();
         break;
@@ -47,7 +43,6 @@ async function verificarLogin() {
 window.addEventListener('load', async () => {
   verificarLogin();
 });
-// incluir validação para redirecionamento da pagina (main) video palomita
 
 
 
