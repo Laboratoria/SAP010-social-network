@@ -26,11 +26,12 @@ export default () => {
 
   <input type="password" id="confirmarSenha" class="input centro" placeholder="CONFIRMAR SENHA" required>
   <span class="erro" id="erro-confirmarsenha"></span>
+  <p class="erro" id="erro-cadastro"></p>
 
   <input type="radio" id="paciente" class="opção" name="opcaoPerfil" value="paciente" checked >SOU PACIENTE
   <input type="radio" id="prescritor" class="opção" name="opcaoPerfil" value="prescritor">SOU PRESCRITOR
 
-  <p class="erro-cadastro" id="erro-cadastro"></p>
+  
 
   <button type="submit" id="btnCriar" class="entrar centro" >CRIAR CONTA</button>
   
@@ -62,6 +63,11 @@ export default () => {
       nome.classList.remove('borda-vermelha');
     }
 
+    nome.addEventListener('focus', () => {
+      erronome.hidden = true;
+      nome.classList.remove('borda-vermelha');
+    });
+
     const erroemail = document.getElementById('erro-email');
     if (email.value.length < 1) {
       erroemail.innerHTML = 'Preencha o campo email!';
@@ -70,6 +76,11 @@ export default () => {
       erroemail.hidden = true;
       email.classList.remove('borda-vermelha');
     }
+
+    email.addEventListener('focus', () => {
+      erroemail.hidden = true;
+      email.classList.remove('borda-vermelha');
+    });
 
     const errosenha = document.getElementById('erro-senha');
     if (senha.value.length < 1) {
@@ -80,6 +91,11 @@ export default () => {
       senha.classList.remove('borda-vermelha');
     }
 
+    senha.addEventListener('focus', () => {
+      errosenha.hidden = true;
+      senha.classList.remove('borda-vermelha');
+    });
+
     const erroconfirmarsenha = document.getElementById('erro-confirmarsenha');
     if (senha.value !== confirmarSenha.value) {
       confirmarSenha.classList.add('borda-vermelha');
@@ -89,16 +105,24 @@ export default () => {
       confirmarSenha.classList.remove('borda-vermelha');
     }
 
+    confirmarSenha.addEventListener('focus', () => {
+      erroconfirmarsenha.hidden = true;
+      confirmarSenha.classList.remove('borda-vermelha');
+    });
+
     createUser(nome.value, email.value, senha.value)
       .then(() => {
         // usuário cadastrado com sucesso
         window.location.href = '/#perfil';
       })
       .catch((error) => {
-        mensagemErro.innerHTML = 'Usuário não cadastrado';
-        console.log(error);
+        if (error.code === 'auth/email-already-in-use') {
+          mensagemErro.innerHTML = 'Este e-mail já foi utilizado';
+        } else {
+          mensagemErro.innerHTML = 'Usuário não cadastrado';
+          console.log(error);
+        }
       });
-
     // btnRetornaLogin.addEventListener('click', () => {
     //   console.log(btnRetornaLogin);
     //   // window.location.hash = '#login';
