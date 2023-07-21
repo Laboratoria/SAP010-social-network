@@ -27,6 +27,12 @@ window.addEventListener('load', () => {
   main.appendChild(login());
   init();
 });
+
+window.addEventListener('feed', ()  => {
+  setTimeout(verificarLogin, 2000);
+});
+//setTimeout(verificarLogin, 2000);
+
 async function verificarLogin() {
   return userAuthCheck((userLogged) => {
     main.innerHTML = '';

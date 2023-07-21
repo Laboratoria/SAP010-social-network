@@ -56,8 +56,6 @@ export default () => {
   // Função de login
   const firstLogin = (event) => {
     event.preventDefault();
-    errorMessage.textContent = '';
-    //ajustar mensagem de erro
     const email = emailEntrada.value;
     const senha = senhaEntrada.value;
     // Chamada para a função de login
@@ -67,7 +65,7 @@ export default () => {
         window.location.hash = '#feed';
       })
       .catch(() => {
-        errorMessage.textContent = 'Informações de e-mail ou senha incorretas';
+        errorMessage.textContent = 'Informações de e-mail ou senha incorretas. Tente novamente';
         errorMessage.style.display = 'block';
       });
     return false;
@@ -75,10 +73,16 @@ export default () => {
 
   entrarLoginBotao.addEventListener('click', firstLogin);
 
+  //evento para ouvir quando a mensagem estiver começando a ser digitada e limpar campo de erro
+    emailEntrada.addEventListener('input', () => {
+      errorMessage.textContent = '';
+    });
+    senhaEntrada.addEventListener('input', () => {
+      errorMessage.textContent = '';
+    });
+
   // Login Google
   criarLoginGoogleBotao.addEventListener('click', () => {
-    errorMessage.textContent = '';
-    //limpar aqui o campo de erro (mesmo jeito do
     loginGoogle()
       .then(() => {
         window.location.hash = '#feed';
