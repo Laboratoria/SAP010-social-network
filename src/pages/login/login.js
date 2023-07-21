@@ -16,9 +16,9 @@ export default () => {
   <input class="input centro" type="email" name="email" id="email" placeholder="E-MAIL" >
   <span id="email-alert" class="input-error"></span>
   <input class="input centro" type="password" name="senha" id="senha" placeholder="SENHA" >
-  <span id="pass-alert" class="input-error"></span>
+  <span id="pass-alert" class="erroLogin"></span>
   <button type="submit" id="btnEntrar" class="entrar centro" >ENTRAR</button>
-  <p class="loginErro" id="erro"></p>
+  <p class="erroLogin" id="loginErro"></p>
   </form>
   <div class="ou-box">
   <span class="ou">OU</span>
@@ -47,8 +47,8 @@ export default () => {
   const btnLogin = containerLogin.querySelector('#btnEntrar');
   const email = containerLogin.querySelector('#email');
   const senha = containerLogin.querySelector('#senha');
-  const mensagemErroLogin = containerLogin.querySelector('#loginErro');
   const btnGoogle = containerLogin.querySelector('#entrarGoogle');
+  const mensagemErroLogin = containerLogin.querySelector('#loginErro');
   const mensagemErroSenha = containerLogin.querySelector('#pass-alert');
 
   // Adicionar evento de clique no botão para validar os inputs email e senha
@@ -82,9 +82,12 @@ export default () => {
           mensagemErroSenha.hidden = true;
           senha.classList.remove('borda-vermelha'); // Exibe a mensagem de erro padrão
         }
+
         console.log('Erro ao fazer o login:', error);
       });
   });
+
+  // auth / invalid - email - Precisamos tratar este erro aqui tbm
 
   btnGoogle.addEventListener('click', async () => {
     loginGoogle().then((user) => {

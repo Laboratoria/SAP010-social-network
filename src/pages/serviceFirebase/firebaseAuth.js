@@ -2,7 +2,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  onAuthStateChanged, GoogleAuthProvider, signInWithPopup,
+  onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut,
 } from 'firebase/auth';
 import {
   setDoc, doc, collection, addDoc,
@@ -33,6 +33,10 @@ const createUser = async (nome, email, senha) => {
 
 const login = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
 const addonAuthStateChanged = (callback) => onAuthStateChanged(auth, callback);
+
+const deslogar = async () => {
+  await signOut(auth);
+};
 
 const loginGoogle = () => {
   const provider = new GoogleAuthProvider();
@@ -85,6 +89,7 @@ const criarPost = async (mensagem) => {
 
 export {
   createUser, login, addonAuthStateChanged, loginGoogle, createUserWithEmailAndPassword, criarPost,
+  deslogar,
 };
 // export const googleLogin = () => {
 //   const provider = new GoogleAuthProvider();

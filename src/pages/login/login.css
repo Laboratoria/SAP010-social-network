@@ -25,10 +25,10 @@ body {
   flex-direction: column;
 }
 
- nav {
+nav {
   display: flex;
   justify-content: center;
-} 
+}
 
 ul {
   display: inline-block;
@@ -67,7 +67,8 @@ ul {
   top: 17%;
   left: 50%;
   transform: translate(-50%, -50%);
-  flex-shrink: 0; /* Alterei para flex-shrink: 0 para evitar encolhimento */
+  flex-shrink: 0;
+  /* Alterei para flex-shrink: 0 para evitar encolhimento */
   /* display: flex;
 	justify-content: center;
 	margin-bottom: 1rem;
@@ -127,17 +128,23 @@ ul {
 }
 
 .texto1 {
-	color: rgba(24, 119, 242, 0.99);
-	text-align: center;
-	font-size: 12px;
-	font-family: "Inter", sans-serif;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
+  color: rgba(24, 119, 242, 0.99);
+  text-align: center;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .login-redes {
   display: flex;
   justify-content: space-around;
   margin-bottom: 2rem;
+}
+
+.erroLogin {
+  color: #e63636;
+  font-size: 12px;
+  margin-right: 30px
 }

@@ -7,7 +7,7 @@ import coracao from '../imagens/icones/coracao.png';
 import editar from '../imagens/icones/editar.png';
 import excluir from '../imagens/icones/excluir.png';
 
-import { criarPost } from '../serviceFirebase/firebaseAuth';
+import { criarPost, deslogar } from '../serviceFirebase/firebaseAuth';
 
 export default () => {
   const containerFeed = document.createElement('section');
@@ -57,7 +57,8 @@ export default () => {
   <footer>
   <a href="#perfil" id="iconePerfil"><img class="iconesFooter" src=${perfil} alt="icone perfil" title="Ícone Perfil"></a>
   <a href="#novoPost" id="iconeNovoPost"><img class="iconesFooter" src=${novoPost} alt="icone criar nova postagem" title="Ícone para Nova Postagem"></a>
-  <a href="#home" id="iconeSair"><img class="iconesFooter" src=${sair} alt="icone sair" title="Ícone para Deslogar"></a>
+
+  <img class="iconesFooter" id="iconeSair" src=${sair} alt="icone sair" title="Ícone para Deslogar">
   </footer>
 
 
@@ -68,6 +69,7 @@ export default () => {
   const mensagemPost = containerFeed.querySelector('#text-mensagem');
   const btnloguinho = containerFeed.querySelector('#ir-infopage');
   const btnPublicar = containerFeed.querySelector('#btnPublicar');
+  const btnDeslogar = containerFeed.querySelector('#iconeSair');
 
   btnloguinho.addEventListener('click', () => {
     window.location.hash = '#infopage';
@@ -78,6 +80,12 @@ export default () => {
     const msg = mensagemPost.value;
     console.log(msg);
     criarPost(msg);
+  });
+
+  btnDeslogar.addEventListener('click', async () => {
+    await deslogar();
+    console.log('deslogou');
+    window.location.href = '#home';
   });
 
   return containerFeed;
