@@ -52,6 +52,8 @@ export default () => {
   // Função Registrar
   const registerUser = (event) => {
     event.preventDefault();
+    errorMessage.textContent = '';
+    //limpar aqui o campo de erro (mesmo jeito do)
     const usuario = nomeUsuarioEntrada.value;
     const email = emailEntrada.value;
     const senha = senhaEntrada.value;

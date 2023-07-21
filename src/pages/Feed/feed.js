@@ -11,7 +11,6 @@ export default () => {
         <img></img>
         <h3> Feed </h3>
         <p class='userName'>Olá, ${getUserName()}! Vamos comentar sobre filmes e séries?</p>
-        <div id="usuario"></div>
       </div>
   <section class="inicioFeed">
   </section>

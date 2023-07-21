@@ -24,9 +24,9 @@ export const posts = async (postagem) => {
 
 export const exibAllPosts = async () => {
   const allPosts = [];
-  const querySnapshot = await getDocs(collection(db, 'posts'));
+  const listCollectionPosts = await getDocs(collection(db, 'posts'));
 
-  querySnapshot.forEach((post) => {
+  listCollectionPosts.forEach((post) => {
     allPosts.push({ ...post.data(), id: post.id });
   });
 
