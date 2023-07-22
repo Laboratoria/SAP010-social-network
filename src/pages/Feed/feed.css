@@ -1,0 +1,8 @@
+.post-container{
+  background-color: purple;
+  border: 2px solid white;
+  border-radius: 35px;
+  margin: 10px;
+  text-align: left;
+  padding: 20px;
+}

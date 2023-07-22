@@ -46,6 +46,7 @@ export default () => {
   // Informações preenchidas pelo usuário
   const emailEntrada = loginContainer.querySelector('#email');
   const senhaEntrada = loginContainer.querySelector('#senha');
+  const errorMessage = loginContainer.querySelector('#errorMessage');
 
   // Botões
   const entrarLoginBotao = loginContainer.querySelector('#btn-login-entrar');
@@ -57,15 +58,14 @@ export default () => {
     event.preventDefault();
     const email = emailEntrada.value;
     const senha = senhaEntrada.value;
-
     // Chamada para a função de login
     loginEmail(email, senha)
+
       .then(() => {
         window.location.hash = '#feed';
       })
       .catch(() => {
-        const errorMessage = loginContainer.querySelector('#errorMessage');
-        errorMessage.textContent = 'Informações de e-mail ou senha incorretas';
+        errorMessage.textContent = 'Informações de e-mail ou senha incorretas. Tente novamente';
         errorMessage.style.display = 'block';
       });
     return false;
@@ -73,13 +73,20 @@ export default () => {
 
   entrarLoginBotao.addEventListener('click', firstLogin);
 
+  //evento para ouvir quando a mensagem estiver começando a ser digitada e limpar campo de erro
+    emailEntrada.addEventListener('input', () => {
+      errorMessage.textContent = '';
+    });
+    senhaEntrada.addEventListener('input', () => {
+      errorMessage.textContent = '';
+    });
+
   // Login Google
   criarLoginGoogleBotao.addEventListener('click', () => {
     loginGoogle()
       .then(() => {
         window.location.hash = '#feed';
       }).catch(() => {
-        const errorMessage = loginContainer.querySelector('#errorMessage');
         errorMessage.textContent = 'Não foi possível logar com o Google';
         errorMessage.style.display = 'block';
       });

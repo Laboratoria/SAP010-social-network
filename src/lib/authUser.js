@@ -22,9 +22,9 @@ export const loginGoogle = () => {
   return signInWithPopup(auth, provider);
 };
 // deslogar
-export async function userLogout() {
+export function userLogout() {
   const authLogOut = getAuth();
-  await signOut(authLogOut);
+  return signOut(authLogOut);
 }
 //verifica se esta logado
 export function userAuthCheck(callback) {
@@ -35,10 +35,11 @@ export function userAuthCheck(callback) {
 export const getUserName = () => {
   const auth = getAppAuth();
   const user = auth.currentUser;
-  if (user) {
+  if (user.displayName) {
     return user.displayName;
+  //  return user.photoURL;
   }
-  return null;
+  return "Anônimo";
 };
 // id do usuario no firebase
 export const getUserId = () => {

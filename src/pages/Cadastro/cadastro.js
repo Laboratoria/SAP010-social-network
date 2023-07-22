@@ -62,8 +62,9 @@ export default () => {
         (userCredential) => {
           const user = userCredential.user;
           window.location.hash = '#feed';
+          //window.location.reload();
           updateProfile(user, {
-            displayName: `${usuario}`,
+            displayName: `${user.displayName}`,
           });
         },
       )
@@ -92,13 +93,21 @@ export default () => {
             errorMessage.style.display = 'block';
             break;
           default:
-            errorMessage.textContent = 'Confira os dados inseridos';
+            errorMessage.textContent = 'Confira os dados inseridos. E-mail e senha incorretos ou em branco.';
             errorMessage.style.display = 'block';
         }
       });    
   };
 
   botaoCadastrar.addEventListener('click', registerUser);
+
+    //evento para ouvir quando a mensagem estiver começando a ser digitada e limpar campo de erro
+    emailEntrada.addEventListener('input', () => {
+      errorMessage.textContent = '';
+    });
+    senhaEntrada.addEventListener('input', () => {
+      errorMessage.textContent = '';
+    });
 
   botaoVoltar.addEventListener('click', (event) => {
     event.preventDefault();
