@@ -5,7 +5,7 @@ import {
   onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut,
 } from 'firebase/auth';
 import {
-  setDoc, doc, collection, addDoc,
+  setDoc, doc, collection, addDoc, query, getDocs,
 } from 'firebase/firestore';
 import { app, db } from '../../firebaseInit.config.js';
 
@@ -43,18 +43,18 @@ const loginGoogle = () => {
   return signInWithPopup(auth, provider);
 };
 
-// essa função nos permite ler o banco de dados que fizemos direto no firebase
+// essa função nos permite ler o banco de dados
 // Fizemos com a Nury
-// const fetchData = async () => {
-//   const q = query(collection(db, 'Post'));
-//   const querySnapshot = await getDocs(q);
-//   querySnapshot.forEach((docs) => {
-//     // doc.data() is never undefined for query doc snapshots
-//     console.log(docs.id, '=>', docs.data());
-//   });
-// };
+const fetchData = async () => {
+  const q = query(collection(db, 'Post'));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((docs) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(docs.id, '=>', docs.data());
+  });
+};
 
-// fetchData();
+fetchData();
 
 const auth1 = getAuth();
 
@@ -89,7 +89,7 @@ const criarPost = async (mensagem) => {
 
 export {
   createUser, login, addonAuthStateChanged, loginGoogle, createUserWithEmailAndPassword, criarPost,
-  deslogar,
+  deslogar, fetchData,
 };
 // export const googleLogin = () => {
 //   const provider = new GoogleAuthProvider();
