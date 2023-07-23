@@ -4,6 +4,12 @@
 header{
 	display: flex;
 	justify-content: space-between;
+	text-align: center;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	padding: 5%;
 }
 
 .nome-usuario{
@@ -61,11 +67,16 @@ header{
 	
  }
 
- footer {
+ .footer {
 	display: flex;
 	justify-content: space-between;
-	margin: 3%;
- }
+	align-items: center;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 10%;
+  }
 
  .iconesFooter{
 	cursor: pointer;

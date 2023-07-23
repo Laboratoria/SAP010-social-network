@@ -23,8 +23,15 @@ export default () => {
   </figure>
 </header>
 
-  
-  <span class="tipoUsuario1"></span>
+  <footer class="footer">
+  <a href="#perfil" id="iconePerfil"><img class="iconesFooter" src=${perfil} alt="icone perfil" title="Ícone Perfil"></a>
+  <a href="#novoPost" id="iconeNovoPost"><img class="iconesFooter" src=${novoPost} alt="icone criar nova postagem" title="Ícone para Nova Postagem"></a>
+
+  <img class="iconesFooter" id="iconeSair" src=${sair} alt="icone sair" title="Ícone para Deslogar">
+  </footer>
+  `;
+
+  const containerPost = `<span class="tipoUsuario1"></span>
   <div class="containerVerdeFeed">
   <span class="NomeUsuario"></span>
   <span class="tipoUsuario"></span>
@@ -54,17 +61,9 @@ export default () => {
           <button type="submit" id="btnPublicar" class="btnPubli">Publicar</button>
         </div>
   </div>
-  <footer>
-  <a href="#perfil" id="iconePerfil"><img class="iconesFooter" src=${perfil} alt="icone perfil" title="Ícone Perfil"></a>
-  <a href="#novoPost" id="iconeNovoPost"><img class="iconesFooter" src=${novoPost} alt="icone criar nova postagem" title="Ícone para Nova Postagem"></a>
-
-  <img class="iconesFooter" id="iconeSair" src=${sair} alt="icone sair" title="Ícone para Deslogar">
-  </footer>
-
-
   `;
 
-  containerFeed.innerHTML = templateFeed;
+  containerFeed.innerHTML = templateFeed + containerPost;
 
   const mensagemPost = containerFeed.querySelector('#text-mensagem');
   const btnloguinho = containerFeed.querySelector('#ir-infopage');
