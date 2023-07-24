@@ -89,7 +89,7 @@ const criarPost = async (mensagem) => {
 
 export {
   createUser, login, addonAuthStateChanged, loginGoogle, createUserWithEmailAndPassword, criarPost,
-  deslogar, fetchData,
+  deslogar, fetchData, getCurrentUser,
 };
 // export const googleLogin = () => {
 //   const provider = new GoogleAuthProvider();

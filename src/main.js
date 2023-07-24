@@ -13,7 +13,7 @@ import infopage from './pages/infopage/infopage.js';
 
 const main = document.getElementById('root');
 const init = () => {
-  window.addEventListener('hashchange', () => {
+  window.addEventListener('hashchange', async () => {
     // console.log(window.location.hash)
     main.innerHTML = ' ';
     switch (window.location.hash) {
@@ -27,7 +27,7 @@ const init = () => {
         main.appendChild(cadastro());
         break;
       case '#feed':
-        main.appendChild(feed());
+        main.appendChild(await feed());
         break;
       case '#perfil':
         main.appendChild(perfil());
