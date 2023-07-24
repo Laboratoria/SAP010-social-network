@@ -5,11 +5,13 @@ import {
   signInWithPopup,
   GoogleAuthProvider,  
   auth,
+  signOut,
+  onAuthStateChanged
 } from 'firebase/auth';
-import { loginEmail,cadastroUsuarioSenha, loginGoogle, getUserId} from '../src/lib/authUser';
-import config from '../src/lib/configfirebase';
+import { loginEmail,cadastroUsuarioSenha, loginGoogle, getUserId, userLogout, userAuthCheck, getUserName} from '../src/lib/authUser';
+import { app } from '../src/lib/configfirebase';
 
-//jest.mock('./configfirebase.js');
+jest.mock('../src/lib/configfirebase');
 jest.mock('firebase/auth');
 
 describe('login', () => {
@@ -59,4 +61,41 @@ describe('getUserId', () => {
   });
 });
 
+describe('getUserName', () => {
+  it('deve retornar o nome de usuário se o usuário for autenticado', () => {
+    const displayName = 'Testando';
+    const authMock = {
+      currentUser: {
+        displayName,
+      },
+    };
+    getAuth.mockReturnValue(authMock);
+
+    const result = getUserName();
+
+    expect(result).toBe(displayName);
+  });
+});
+
+describe('userLogout', () => {
+  it('deve fazer logout do usuário', () => {
+    const authMock = getAuth();
+    signOut.mockResolvedValueOnce({
+      user: {},
+    });
+    userLogout();
+    expect(signOut).toHaveBeenCalledWith(authMock);
+  });
+});
+
+describe('userAuthCheck', () => {
+  it('chama onAuthStateChanged com authLogin e callback', () => {
+    const authLogin = jest.fn();
+    const callback = jest.fn();
+    getAuth.mockReturnValue(authLogin);
+    userAuthCheck(callback);
+    expect(getAuth).toHaveBeenCalledWith(app);
+    expect(onAuthStateChanged).toHaveBeenCalledWith(authLogin, callback);
+  });
+});
 
