@@ -78,7 +78,7 @@ const criarPost = async (mensagem) => {
     const novoPost = {
       mensagem,
       user_id: user.uid, // Use user.uid para obter o ID do usuário
-      likes: 0,
+      nome: user.displayName,
     };
 
     await addDoc(collection(db, 'Post'), novoPost);
