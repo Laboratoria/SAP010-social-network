@@ -2,6 +2,8 @@ import './feed.css';
 import { userLogout, getUserName } from '../../lib/authUser.js';
 import {posts, exibAllPosts } from '../../lib/firestore.js';
 
+import deleteicon from '../../img/icons/icones-delete.svg';
+
 export default () => {
   const feedContainer = document.createElement('div');
   const templateFeed = `
@@ -21,7 +23,7 @@ export default () => {
     <div id="mensagemErro" class="error"></div>
   </div>
 
-  <section id="postagem" class="posts">
+  <section id="listPosts" class="posts">
   </section>
   <section>
     <button class="btn-perfil" id="btn-perfil"><img class="" src="./img/icons/icones-user1.svg">Perfil</button>
@@ -33,43 +35,19 @@ export default () => {
 
   feedContainer.innerHTML = templateFeed;
 
+  //para funcionar os posts  
+  const listPosts = feedContainer.querySelector('#listPosts');
 
   // Informações preenchidas pelo usuário
-  //const textoPostagemEntrada = feedContainer.querySelector('#textoMensagem');
+  const textoMensagemEntrada = feedContainer.querySelector('#textoMensagem');
 
   // Botões
   const btnPost = feedContainer.querySelector('#btn-send-post');
+  const btnDeletePost = feedContainer.querySelector('#btn-delete-post');
+  const btnEditPost = feedContainer.querySelector('#btn-edit-post');
   const btnLogout = feedContainer.querySelector('#btn-logout');
 
-  // botão função de logout
-  btnLogout.addEventListener('click', () => {
-    userLogout()
-      .then(() => {
-        window.location.hash = '#login';
-      }).catch(() => {
-        alert('Ocorreu um erro, tente novamente.');
-      });
-  });
-
-  btnPost.addEventListener('click', () =>{
-    const textoPostagem = feedContainer.querySelector('#textoMensagem');
-
-    if(true){
-      //testar se mensagem foi digitada
-      //textoPostagemEntrada = textoPostagem.value;
-      //console.log(textoPostagem);
-    } 
-    posts()
-      .then(() => {
-        
-      }).catch((error) => {
-        console.log(error);
-    });
-      //limpar campo de input após a postagem
-      // puxar função inicio depois da criação do post para que seja exibido
-  })
-
-  // montagem do post
+  // montagem de unico post
   const createPostElement = (
     nameUser,
     date,
@@ -87,31 +65,68 @@ export default () => {
         <p class='userName'>${nameUser}</p>
         <p class='dataPost'>Data: ${createdAtFormatted}</p>
         <p class='textPost'>${textPost}</p>
-        <div class='image-icons'>
+      </div>
+      <div class='icons'>
           <button type='button' class='icons-post' id='like-Post' data-post-id='${postId}'>
-            <a class='icon-post' id='icons-post'><img src=''/>LIKE</a> 
+            <a class='icon-post' id='icons-post'><img alt='like icon' class='icons-post' src="./img/icons/icones-like2.svg"/>LIKE</a> 
           </button>
-      </section>`;
+          <button class="btn-post" id="btn-edit-post"><img alt='edit icon' class='icons-post' src="./img/icons/icones-edit.svg">Edit</button>
+          <button class="btn-post" id="btn-delete-post"><img alt='delete icon' class='icons-post' src="${deleteicon}">Delete</button>
+      </div>
+    </section>`;
 
     return postElement;
   };
 
-
-  //publicações aqui
-  const inicio = () => {
-    const postagemElement = feedContainer.querySelector('#postagem');
+  //lista de publicações aqui
+  const inicioPosts = () => {
     exibAllPosts()
       .then((listaPosts) => {
         for(let i = 0; i < listaPosts.length; i++){
         const itemPost = createPostElement(listaPosts[i].nameUser, listaPosts[i].date, listaPosts[i].textPost, listaPosts[i].postId)
-          postagemElement.appendChild(itemPost);
+        listPosts.appendChild(itemPost);
         } 
       }).catch((error) => {
       console.log(error);
     });
   }
   
-  inicio();
+  inicioPosts();
+
+  //ADD NOVO POST: fazer postagem nova direto do app/web
+  btnPost.addEventListener('click', () =>{
+    const textoPostagem = textoMensagemEntrada.value;
+
+    if(!textoPostagem){
+      //ajustar alerts
+      alert('preencha a mensagem antes de enviar.')
+      console.log('mensagem não digitada');
+    } else{
+      posts(textoPostagem)
+      .then(() => {
+        textoMensagem.value = '';
+        alert('Comentário publicado!')
+        //location.reload();
+        //recarregar a pagina
+      })
+      .catch((error) => {
+        alert('Ocorreu um erro na publicação. Tente novamente.')
+        console.log(error);
+    });
+    }
+  })
+
+  //DELETAR POST: selecionar e deletar comentário feito pelo proprio usuário
+
+  // botão função de logout
+  btnLogout.addEventListener('click', () => {
+    userLogout()
+      .then(() => {
+        window.location.hash = '#login';
+      }).catch(() => {
+        alert('Ocorreu um erro, tente novamente.');
+      });
+  });
 
   return feedContainer;
 
