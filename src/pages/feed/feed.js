@@ -79,6 +79,8 @@ export default () => {
     const msg = mensagemPost.value;
     console.log(msg);
     criarPost(msg);
+
+    mensagemPost.value = '';
   });
 
   btnDeslogar.addEventListener('click', async () => {
