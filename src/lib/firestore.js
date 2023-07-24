@@ -1,14 +1,7 @@
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, orderBy, doc, deleteDoc } from 'firebase/firestore';
+//onSnapshot colocar import
 import { auth, db } from './configfirebase.js';
-
-/* collection,
-db,
-auth,
-addDoc,
-getDoc,
-updateDoc,
-getDocs,
-doc */
+import { async } from 'regenerator-runtime';
 
 export const posts = async (postagem) => {
   const timestamp = new Date().getTime();
@@ -21,16 +14,35 @@ export const posts = async (postagem) => {
   });
   return document;
 };
-
 export const exibAllPosts = async () => {
   const allPosts = [];
-  const listCollectionPosts = await getDocs(collection(db, 'posts'));
+  const orderListCollectionPosts = query(collection(db, 'posts'), orderBy('date', 'desc'));
+  const trazerPost = await getDocs(orderListCollectionPosts);
 
-  listCollectionPosts.forEach((post) => {
+  trazerPost.forEach((post) => {
     allPosts.push({ ...post.data(), id: post.id });
   });
 
   return allPosts;
 };
 
+export const deletePost = async (postId) => {
+  const idRefPost = doc(db, "posts", "postId");
+  await deleteDoc(idRefPost);
+}
 
+
+
+/* export const exibAllPosts = (updateListPosts) => {
+  const allPosts = [];
+  const orderListCollectionPosts = query(collection(db, 'posts'), orderBy('date', 'desc'));
+
+  onSnapshot(orderListCollectionPosts, (querySnapshot) => {
+    allPosts.length = 0;
+    querySnapshot.forEach((post) => {
+      allPosts.push({ ...post.data(), id: post.id });
+    });
+    updateListPosts(allPosts);
+  })
+
+}; */

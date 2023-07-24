@@ -35,11 +35,11 @@ export function userAuthCheck(callback) {
 export const getUserName = () => {
   const auth = getAppAuth();
   const user = auth.currentUser;
-  if (user.displayName) {
+  if (user.displayName != null || user.displayName != undefined || user.displayName != '') {
     return user.displayName;
-   // return user.photoURL;
- }
-  //return "Anônimo";  o usuário autentica e entra, se ele não autentica, mostra mensagem de erro. 
+    //return user.photoURL;
+  }
+  return "Anônimo";  //o usuário autentica e entra, se ele não autentica, mostra mensagem de erro. 
   //Então não entendi pq essa condição de retornar anonimo?
 };
 // id do usuario no firebase

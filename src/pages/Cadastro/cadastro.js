@@ -64,7 +64,7 @@ export default () => {
           window.location.hash = '#feed';
           //window.location.reload();
           updateProfile(user, {
-            displayName: `${user.displayName}`,
+            displayName: `${usuario}`,
           });
         },
       )
