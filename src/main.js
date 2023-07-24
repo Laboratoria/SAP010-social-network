@@ -8,6 +8,8 @@ import cadastro from './pages/cadastro/cadastro';
 import login from './pages/login/login';
 import feed from './pages/feed/feed';
 import senha from './pages/redefinicao-de-senha/senha';
+// import { identificarUsuarioConectado } from './lib/firebase';
+import { auth } from './lib/firebase-config';
 
 const principal = document.querySelector('#principal');
 
@@ -25,7 +27,12 @@ const init = () => {
         principal.appendChild(cadastro());
         break;
       case '#feed':
-        principal.appendChild(feed());
+        // identificarUsuarioConectado();
+        if (auth.currentUser) {
+          principal.appendChild(feed());
+        } else {
+          window.location.hash = '#login';
+        }
         break;
       case '#redefinir-senha':
         principal.appendChild(senha());

@@ -1,5 +1,5 @@
-import { loginUsuario } from '../../lib/firebase';
-
+import {  loginUsuario } from '../../lib/firebase';
+// lerDadosTeste, teste
 export default () => {
   const container = document.createElement('div');
   container.id = 'csslogin';
@@ -81,6 +81,8 @@ export default () => {
         console.log('usuário logado com sucesso');
         console.log(user);
         window.location.hash = '#feed';
+        // teste();
+        // lerDadosTeste();
       });
   });
 
