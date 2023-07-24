@@ -7,11 +7,14 @@ import coracao from '../imagens/icones/coracao.png';
 import editar from '../imagens/icones/editar.png';
 import excluir from '../imagens/icones/excluir.png';
 
-import { criarPost, deslogar } from '../serviceFirebase/firebaseAuth';
+import { criarPost, deslogar, getCurrentUser } from '../serviceFirebase/firebaseAuth';
 
-export default () => {
+export default async () => {
   const containerFeed = document.createElement('section');
   containerFeed.classList.add('container-feed');
+
+  const dados = await getCurrentUser();
+  console.log(dados);
 
   const templateFeed = `
   <header>
@@ -32,14 +35,14 @@ export default () => {
   `;
 
   const containerPost = `<span class="tipoUsuario1"></span>
-  <div class="containerVerdeFeed">
+  <div id="containerPosts" class="containerVerdeFeed">
   <span class="NomeUsuario"></span>
   <span class="tipoUsuario"></span>
   </div>
   <div class="containerPostVerde">
 
           <div class="nomeTipo">
-            <strong>Usuário</strong>
+            <strong>${dados.displayName}</strong>
             <p>tipo</p>
           </div>
 
@@ -74,12 +77,44 @@ export default () => {
     window.location.hash = '#infopage';
   });
 
-  btnPublicar.addEventListener('click', (e) => {
+  // btnPublicar.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   const msg = mensagemPost.value;
+  //   console.log(msg);
+  //   criarPost(msg);
+
+  //   mensagemPost.value = '';
+  // });
+
+  btnPublicar.addEventListener('click', async (e) => {
     e.preventDefault();
     const msg = mensagemPost.value;
     console.log(msg);
-    criarPost(msg);
+    await criarPost(msg);
 
+    // Criar os elementos para mostrar a nova publicação
+    const novoPostElement = document.createElement('div');
+    novoPostElement.className = 'novo-post'; // Adicione a classe que desejar para estilização
+
+    // O conteúdo da nova publicação, por exemplo:
+    const postHtml = `
+    <div class="nomeTipo">
+      <strong>${dados.displayName}</strong>
+      <p>Paciente</p>
+    </div>
+    <div class="containerPostVerde">
+    <p>${msg}</p>
+    </div>
+    <!-- Resto do conteúdo do post -->
+  `;
+
+    novoPostElement.innerHTML = postHtml;
+
+    // Adicionar o novo post como o primeiro filho de containerPosts
+    const containerPosts = document.getElementById('containerPosts');
+    containerPosts.prepend(novoPostElement);
+
+    // Limpar o valor da mensagem no textarea
     mensagemPost.value = '';
   });
 
