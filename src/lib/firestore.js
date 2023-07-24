@@ -32,3 +32,5 @@ export const exibAllPosts = async () => {
 
   return allPosts;
 };
+
+
