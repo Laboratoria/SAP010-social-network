@@ -1,4 +1,4 @@
-export default () => {
+export function login () {
     const containerLogin = document.createElement("div"); 
     
     const templateLogin = `   
@@ -18,7 +18,7 @@ export default () => {
       <input type = "login"  id = "login" name="login" placeholder = "Login" requered>
       <label for="login" >Login</label>
 
-      <input type = "password"  id = "senha" name="senha" placeholder = "Senha" requered>
+      <input type = "password"  id = "senha-login" name="senha" placeholder = "Senha" requered>
       <label for="senha" >Senha</label>
 
       <a href= "#" id="recuperar-senha">Esqueci a senha</a>
