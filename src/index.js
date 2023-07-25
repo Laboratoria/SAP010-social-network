@@ -20,18 +20,15 @@ const init = async () => {
       }
       default:
         main.appendChild(login());
+        break;
     }
   });
 };
-window.addEventListener('load', () => {
-  main.appendChild(login());
-  init();
-});
 
-window.addEventListener('feed', ()  => {
+/* window.addEventListener('feed', ()  => {
   setTimeout(verificarLogin, 2000);
-});
-//setTimeout(verificarLogin, 2000);
+}); */
+
 
 async function verificarLogin() {
   return userAuthCheck((userLogged) => {
