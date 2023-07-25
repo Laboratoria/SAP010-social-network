@@ -57,6 +57,15 @@ export default () => {
         console.log('usuário cadastrado com sucesso');
         console.log(user);
         alert('Cadastro realizado com sucesso!');
+
+        atualizarNomeDoUsuario(nomeDoUsuario)
+          .catch((error) => {
+            // An error occurred
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error(`${errorCode} - ${errorMessage}`);
+          });
+
         window.location.hash = '#feed';
       })
       .catch((error) => {
@@ -74,17 +83,7 @@ export default () => {
         }
       });
 
-    atualizarNomeDoUsuario(nomeDoUsuario)
-      .then(() => {
-        // Profile updated!
-        // ...
-      })
-      .catch((error) => {
-        // An error occurred
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error(`${errorCode} - ${errorMessage}`);
-      });
+
   });
 
   return container;
