@@ -1,21 +1,23 @@
  * {
  	margin: 0;
  }
-header{
-	display: flex;
-	justify-content: space-between;
-	text-align: center;
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	padding: 5%;
-}
 
-.nome-usuario{
-	color:#7C7C7C ;
-	margin-top: 20%;
-}
+ header {
+ 	display: flex;
+ 	justify-content: space-between;
+ 	text-align: center;
+ 	position: fixed;
+ 	left: 0;
+ 	top: 0;
+ 	width: 100%;
+ 	padding: 5%;
+ }
+
+ .nome-usuario {
+ 	color: #7C7C7C;
+ 	margin-top: 20%;
+ }
+
  .containerPostVerde {
  	width: 280px;
  	height: 200px;
@@ -24,17 +26,19 @@ header{
  	border: 1px solid #AEAEAE;
  	background: #CCDFD4;
  	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+	margin: 10%;
  }
 
- .nomeTipo{
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	margin: 3%;
-	margin-left: 10%;
+ .nomeTipo {
+ 	display: flex;
+ 	flex-direction: column;
+ 	align-items: flex-start;
+ 	margin: 3%;
+ 	margin-left: 10%;
  }
 
- .text-area {
+ .text-area,
+ .espacoBranco {
  	width: 258px;
  	height: 101px;
  	flex-shrink: 0;
@@ -42,13 +46,13 @@ header{
  	border: 1px solid #AEAEAE;
  	background: #EEF4F0;
  	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-	margin-bottom: 2%;
+ 	margin-bottom: 2%;
  }
 
- .actionBtnPost{
-	display: flex;
-	justify-content: space-between;
-	margin: 0 2%;
+ .actionBtnPost {
+ 	display: flex;
+ 	justify-content: space-between;
+ 	margin: 0 2%;
  }
 
  .btnPubli {
@@ -62,22 +66,27 @@ header{
 
  }
 
- .filesPost{
-	background: #CCDFD4;
-	
+ .filesPost {
+ 	background: #CCDFD4;
+
  }
 
  .footer {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	padding: 10%;
-  }
+ 	display: flex;
+ 	justify-content: space-between;
+ 	align-items: center;
+ 	position: fixed;
+ 	left: 0;
+ 	bottom: 0;
+ 	width: 100%;
+ 	padding: 10%;
+ }
 
- .iconesFooter{
-	cursor: pointer;
+ .iconesFooter {
+ 	cursor: pointer;
+ }
+
+ .espacoBranco {
+ 	margin-left: 4%;
+	padding: 5%;
  }

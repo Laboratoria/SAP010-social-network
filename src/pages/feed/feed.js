@@ -19,7 +19,7 @@ export default async () => {
   const templateFeed = `
   <header>
   <nav>
-    <a href="#perfil" id="feed" class="nome-usuario">Imagem e Nome</a>
+    <a href="#perfil" id="feed" class="nome-usuario">Imagem ${dados.displayName}</a>
   </nav>
   <figure>
     <img id="ir-infopage" class="img-loguinho" src=${loguinho} alt="Logo app" title="Logo CBD Connection">
@@ -98,14 +98,19 @@ export default async () => {
 
     // O conteúdo da nova publicação, por exemplo:
     const postHtml = `
+    <div id="containerPosts2" class="containerPostVerde">
     <div class="nomeTipo">
       <strong>${dados.displayName}</strong>
       <p>Paciente</p>
     </div>
-    <div class="containerPostVerde">
+    <div class="espacoBranco">
     <p>${msg}</p>
     </div>
-    <!-- Resto do conteúdo do post -->
+    <div class="actionBtnPost">
+    <img src=${coracao} alt="Curtir" title="Curtir">
+    <img src=${editar} alt="Editar" title="Editar">
+    <img src=${excluir} alt="Excluir" title="Excluir">
+    </div>
   `;
 
     novoPostElement.innerHTML = postHtml;
@@ -126,3 +131,14 @@ export default async () => {
 
   return containerFeed;
 };
+
+// const postHtml = `
+//     <div class="nomeTipo">
+//       <strong>${dados.displayName}</strong>
+//       <p>Paciente</p>
+//     </div>
+//     <div class="containerPostVerde">
+//     <p>${msg}</p>
+//     </div>
+//     <!-- Resto do conteúdo do post -->
+//   `;
