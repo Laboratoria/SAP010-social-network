@@ -43,7 +43,18 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
+}
+
+#csslogin input {
+    width: 279px;
+    height: 50px;
+    font-size: 24px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 #input-email-login {
@@ -98,6 +109,10 @@ main {
     height: 0px;
     width: 0px;
   }
+
+  #check {
+    display: none;
+  }
   
   .check-btn {
     position: absolute;
@@ -124,9 +139,19 @@ main {
   }
   
   #check:checked + .check-btn {
-    background-color: #f32121;
+    background-color: #950909;
   }
   
   #check:checked + .check-btn::after {
     transform: translateX(18px);
   }
+
+  #paragrafo-login a {
+    color: #950909;
+}
+
+#csslogin form > #redefinir-senha {
+    border: none;
+    cursor: pointer;
+}
+

@@ -1,5 +1,5 @@
-import { loginUsuario } from "../../lib/firebase";
-
+import {  loginUsuario } from '../../lib/firebase';
+// lerDadosTeste, teste
 export default () => {
   const container = document.createElement('div');
   container.id = 'csslogin';
@@ -15,12 +15,15 @@ export default () => {
 <img src="imagens/fightback-logo.png" alt="logo do app">
 </picture>
 </header>
-<input type="email" id="input-email-login" name="email" placeholder="Email">
+<input type="email" id="input-email-login" name="email" placeholder="Email" autocomplete="off">
 <div class="senha-check">
 <input type="checkbox" id="check" class="on-off">
  <label for="check" class="check-btn"></label>
  <input type="password" id="input-senha-login" name="senha" placeholder="Senha">
+ 
  </div>
+
+ <button id="redefinir-senha" href="/#redefinir-senha">Esqueceu sua senha?</button>
 
 <button id="btn-cinza-login">Entrar</button>
 
@@ -30,29 +33,58 @@ export default () => {
   container.innerHTML = template;
 
   const botaoEntrar = container.querySelector('#btn-cinza-login');
-  const inputEmail = container.querySelector("#input-email-login");
-  const inputSenha = container.querySelector("#input-senha-login");
+  const inputEmail = container.querySelector('#input-email-login');
+  const inputSenha = container.querySelector('#input-senha-login');
+  const btnRedefSenha = container.querySelector('#redefinir-senha');
+  const checkBtn = container.querySelector('#check');
+
+  function mostrarSenha() {
+    if (checkBtn.checked) {
+      inputSenha.type = 'text';
+    } else {
+      inputSenha.type = 'password';
+    }
+  }
+
+  checkBtn.addEventListener('change', mostrarSenha);
+
+  btnRedefSenha.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.hash = '#redefinir-senha';
+  });
 
   botaoEntrar.addEventListener('click', (event) => {
     event.preventDefault();
     const emailDoUsuario = inputEmail.value;
     const senhaDoUsuario = inputSenha.value;
+
     loginUsuario(emailDoUsuario, senhaDoUsuario)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      console.log('usuário logado com sucesso')
-      console.log(user)
-      window.location.hash = '#feed'
-  })
-  
-  .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error(`${errorCode} - ${errorMessage}`)
-      alert("Você ainda não tem uma conta. Cadastre-se.")
+
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(`${errorCode} - ${errorMessage}`);
+        if (errorCode === 'auth/invalid-email') {
+          alert('Email inválido. Verifique o campo e tente novamente.');
+        } else if (errorCode === 'auth/missing-password') {
+          alert('Por favor, insira sua senha.');
+        } else if (errorCode === 'auth/wrong-password') {
+          alert('Senha incorreta. Tente novamente.');
+        } else {
+          alert('Você ainda não tem uma conta. Cadastre-se.');
+        }
+      })
+
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log('usuário logado com sucesso');
+        console.log(user);
+        window.location.hash = '#feed';
+        // teste();
+        // lerDadosTeste();
+      });
   });
-  })
 
   return container;
 };
