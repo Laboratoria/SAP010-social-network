@@ -58,7 +58,7 @@ header>h1 {
     gap: 15px;
 }
 
-input {
+#csscadastro input {
     width: 279px;
     height: 50px;
     font-size: 24px;
@@ -157,4 +157,8 @@ input {
   #check-cadastro:checked + .check-btncadastro::after {
     transform: translateX(18px);
   }
+  
+#check-cadastro {
+    display: none;
+}
   
