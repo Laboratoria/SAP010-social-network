@@ -1,4 +1,4 @@
-export default () => {
+export function cadastro () {
     const containerCadastro = document.createElement("div"); 
     
     const templateCadastro = `   
