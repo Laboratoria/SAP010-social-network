@@ -1,25 +1,65 @@
-#emailLabel,#senhaLabel {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:center;
-    margin-bottom: 3px;
+.inputLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3px;
 }
 
+.inputLabel p {
+  margin: 0 3px;
+}
 
-#emailLabel > span {    
-    background: url("../../img/icons/icones-email.svg");
-    background-size: 18px;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 26px;
-    border: 5px #7e2ac2b6 solid;
-    border-radius: 50px;
-  }
+.inputLabel>span>span {
+  background-size: 26px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40px;
+  height: 26px;
+  display: block;
+}
 
-  #senhaLabel > span {
-    background: url("./img/icons/icones-password.svg");
-    background-size: 22px;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 26px;
-  }
+.inputLabel>span {
+  width: 40px;
+  height: 26px;
+  border-radius: 50px;
+}
+
+#emailLabel>span>span {
+  background-image: url("../../img/icons/icones-email.svg");
+}
+
+#emailLabel>span {
+  background-color: #9e4ce0b6;
+}
+
+#senhaLabel>span>span {
+  background-image: url("../../img/icons/icones-password.svg");
+}
+
+#senhaLabel>span {
+  background-color: #e01e1eb6;
+}
+
+#nomeLabel>span>span {
+  background-image: url("../../img/icons/icones-user1.svg");
+}
+
+#nomeLabel>span {
+  background-color: #9e4ce0b6;
+}
+
+#usuarioLabel>span>span {
+  background-image: url("../../img/icons/icones-user2.svg");
+}
+
+#usuarioLabel>span {
+  background-color: #51e07cb6;
+}
+
+fieldset > div {
+  display: flex;
+  justify-content: start; 
+  max-width: 280px;
+  margin: auto;
+  margin-bottom: 10px;
+}

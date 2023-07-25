@@ -20,16 +20,16 @@ export default () => {
 <div>
 <fieldset>
   <div>
-    <label for="email" id="emailLabel">
+    <label for="email" id="emailLabel" class="inputLabel">
       <p>E-mail</p>
-      <span></span>
+      <span><span></span></span>
       <input type="text" name="email" class="email" id="email">
     </label>
   </div>
   <div>
-    <label for="senha" id="senhaLabel">
+    <label for="senha" id="senhaLabel" class="inputLabel">
     <p>Senha</p>
-    <span></span>
+    <span><span></span></span>
       <input type="password" name="senha" class="senha" id="senha">
     </label>
   </div>

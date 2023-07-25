@@ -12,6 +12,8 @@ import editicon from '../../img/icons/icones-edit.svg';
 import deleteicon from '../../img/icons/icones-delete.svg';;
 
 export default () => {
+  const oldStyles = document.getElementsByTagName("link");
+  if(oldStyles.length > 1) oldStyles[1].remove();
   const stylesheet = document.createElement('link');
   stylesheet.setAttribute('rel', 'stylesheet');
   stylesheet.setAttribute('type', 'text/css');
@@ -20,13 +22,17 @@ export default () => {
 
   const feedContainer = document.createElement('div');
   const templateFeed = `
-  <header>
-      <picture><img class="logo" src="${logocontraplano}"></picture>
+  <header class="headerfeed">
+      <picture><img class="logofeed" src="${logocontraplano}"></picture>
       <div>
         <img></img>
         <h3> Feed </h3>
         <p>Olá, ${getUserName()}! Vamos comentar sobre filmes e séries?</p>
       </div>
+  <section>
+    <button class="btn-perfil" id="btn-perfil"><img class="icon" src="${perfilicon}"></button>
+    <button class="btn-logout" id="btn-logout"><img class="icon" src="${logouticon}"></button>
+  </section>
   </header>
   <section class="inicioFeed">
   </section>
@@ -36,20 +42,17 @@ export default () => {
   </button>
   </div>
   <div id="postagens" class="hidden">
-      <textarea class="inputMensagem" id="textoMensagem" placeholder="Ei, me conta o que você tem assistido..." rows="8" cols="40"></textarea>
-      <button class="btn-delete" id="btn-clean-delete"><img class="icon" alt='clean area icon' src="${deleteicon}"></button>
-      <button class="btn-post" id="btn-send-post"><img class="icon" alt='new post icon' src="${newposticon}"></button>
-      <div id="mensagemErro" class="error"></div>
-    </div>
-  <section id="listPosts" class="posts">
-  </section>
-  <section>
-    <button class="btn-perfil" id="btn-perfil"><img class="icon" src="${perfilicon}"></button>
-    <button class="btn-logout" id="btn-logout"><img class="icon" src="${logouticon}"></button>
-  </section>
+    <textarea class="inputMensagem" id="textoMensagem" placeholder="Ei, me conta o que você tem assistido..." rows="8" cols="40"></textarea>
+    <button class="btn-delete" id="btn-clean-delete"><img class="icon" alt='clean area icon' src="${deleteicon}"></button>
+    <button class="btn-post" id="btn-send-post"><img class="icon" alt='new post icon' src="${newposticon}"></button>
+    <div id="mensagemErro" class="error"></div>
+  </div>
+    <section id="listPosts" class="posts">
+    </section>
   <footer>
       
   </footer>`;
+  
 
   feedContainer.innerHTML = templateFeed;
 
@@ -115,6 +118,7 @@ export default () => {
           const itemPost = createPostElement(listaPosts[i].nameUser, listaPosts[i].date, listaPosts[i].textPost, listaPosts[i].id, listaPosts[i].uidUser)
           listPosts.appendChild(itemPost);
         }
+        listPosts.style.maxHeight = `${listPosts.offsetHeight - window.innerHeight}px`
       })
       .catch((error) => {
         console.log(error);

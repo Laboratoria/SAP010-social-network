@@ -22,24 +22,32 @@ export default () => {
       <fieldset>
         <legend>Cadastre-se</legend>
         <div>
-          <label for="nome" id="nome">Nome</label>
+          <label for="nome" id="nomeLabel" class="inputLabel">
+          <span><span></span></span>
+          <p>Nome</p>
           <input type="text" class="nome" id="nome">
+          </label>
         </div>
         <div>
-          <label for="usuario" id="usuario">Usuário
+          <label for="usuario" id="usuarioLabel" class="inputLabel">
+          <span><span></span></span>
+          <p>Usuário</p>
           <input type="text" class="usuario" id="usuario">
           </label>
         </div>
         <div>
-        <label for="email" id="emailLabel">
-          <span></span>
+        <label for="email" id="emailLabel" class="inputLabel">
+          <span><span></span></span>
           <p>Email</p>
           <input type="text" name="email" class="email" id="email">
         </label>
         </div>
         <div>
-          <label for="senha" id="senha">Senha</label>
+          <label for="senha" id="senhaLabel" class="inputLabel">
+          <span><span></span></span>
+          <p>Senha</p>
           <input type="password" class="senha" id="senha">
+          </label>
         </div>
         <button class="btn" id="btn-cad-voltar">Voltar</button>
         <button class="btn" id="btn-cad-concluir">Concluir cadastro</button>
