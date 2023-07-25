@@ -117,7 +117,7 @@ export default async () => {
 
     // Adicionar o novo post como o primeiro filho de containerPosts
     const containerPosts = document.getElementById('containerPosts');
-    containerPosts.prepend(novoPostElement);
+    containerPosts.appendChild(novoPostElement);
 
     // Limpar o valor da mensagem no textarea
     mensagemPost.value = '';
