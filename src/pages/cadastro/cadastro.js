@@ -1,7 +1,7 @@
 import './cadastro.css';
 
 import CBD from '../imagens/CBDCNNCT-IMG/logodesktopsemsombra.png';
-import { createUser } from '../serviceFirebase/firebaseAuth.js';
+import { createUser, atualizaPerfil } from '../serviceFirebase/firebaseAuth.js';
 
 export default () => {
   const containerCadastro = document.createElement('section');
@@ -49,8 +49,6 @@ export default () => {
   const confirmarSenha = containerCadastro.querySelector('#confirmarSenha');
   const btnCriar = containerCadastro.querySelector('#btnCriar');
   const mensagemErro = containerCadastro.querySelector('#erro-cadastro');
-
-  // const btnRetornaLogin = containerCadastro.querySelector('#retornaLogin');
 
   btnCriar.addEventListener('click', (e) => {
     e.preventDefault();
@@ -112,6 +110,7 @@ export default () => {
 
     createUser(nome.value, email.value, senha.value)
       .then(() => {
+        atualizaPerfil(nome.value);
         // usuário cadastrado com sucesso
         window.location.href = '/#perfil';
       })
@@ -123,20 +122,6 @@ export default () => {
           console.log(error);
         }
       });
-    // btnRetornaLogin.addEventListener('click', () => {
-    //   console.log(btnRetornaLogin);
-    //   // window.location.hash = '#login';
-    // });
-    // if (Auth.currentUser) {
-    //   window.location.href = '#feed';
-    /* aqui ele não está autenticando e já vai para a tela de feed */
-    // .then((user) => {
-    //   console.log(user);
-    // }.catch((erro) => {
-    //   mensagemErro.innerHTML = 'não cadastrado';
-    //   console.log(erro);
   });
   return containerCadastro;
 };
-
-/* <a id="btnCriar" class="entrar centro" href="/#feed">CRIAR CONTA</a>  */

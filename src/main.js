@@ -49,6 +49,10 @@ window.addEventListener('load', () => {
   init();
 });
 
+window.addEventListener('click', (e) => {
+  console.log(e.target);
+});
+
 // const novaConta = document.getElementById('cadastro'); /* evento para criar nova conta */
 // window.onload = function () {
 //   novaConta.addEventListener('click', () => {
