@@ -49,54 +49,57 @@ export default () => {
 <p>2023</p>
 </footer></div>`;
 
-loginContainer.id = "login";
-loginContainer.innerHTML = templateLogin;
+  loginContainer.id = 'login';
+  loginContainer.innerHTML = templateLogin;
 
   // Informações preenchidas pelo usuário
-  const emailEntrada = loginContainer.querySelector("#email");
-  const senhaEntrada = loginContainer.querySelector("#senha");
+  const emailEntrada = loginContainer.querySelector('#email');
+  const senhaEntrada = loginContainer.querySelector('#senha');
+  const errorMessage = loginContainer.querySelector('#errorMessage');
 
   // Botões
-  const entrarLoginBotao = loginContainer.querySelector("#btn-login-entrar");
-  const criarLoginBotao = loginContainer.querySelector("#btn-login-criar-conta");
-  const criarLoginGoogleBotao = loginContainer.querySelector("#btn-login-google");
+  const entrarLoginBotao = loginContainer.querySelector('#btn-login-entrar');
+  const criarLoginBotao = loginContainer.querySelector('#btn-login-criar-conta');
+  const criarLoginGoogleBotao = loginContainer.querySelector('#btn-login-google');
 
   // Função de login
   const firstLogin = (event) => {
     event.preventDefault();
     const email = emailEntrada.value;
     const senha = senhaEntrada.value;
-
     // Chamada para a função de login
     loginEmail(email, senha)
+
       .then(() => {
         window.location.hash = '#feed';
       })
       .catch(() => {
-        console.log("entrei")
-        const errorMessage = loginContainer.querySelector('#errorMessage');
-        errorMessage.textContent = 'Informações de e-mail ou senha incorretas';
+        errorMessage.textContent = 'Informações de e-mail ou senha incorretas. Tente novamente';
         errorMessage.style.display = 'block';
       });
-    
-    // teste login
-    console.log(`Usuário: ${email} Senha: ${senha}`);
     return false;
   };
 
-  entrarLoginBotao.addEventListener('click', firstLogin);  
+  entrarLoginBotao.addEventListener('click', firstLogin);
+
+  //evento para ouvir quando a mensagem estiver começando a ser digitada e limpar campo de erro
+    emailEntrada.addEventListener('input', () => {
+      errorMessage.textContent = '';
+    });
+    senhaEntrada.addEventListener('input', () => {
+      errorMessage.textContent = '';
+    });
 
   // Login Google
   criarLoginGoogleBotao.addEventListener('click', () => {
-    console.log("entrei");
-    loginGoogle().then(() => {
-      console.log("entrei no then")
-      window.location.hash = '#feed';
-    }).catch((error) => {
-      console.log(error);
-    });
+    loginGoogle()
+      .then(() => {
+        window.location.hash = '#feed';
+      }).catch(() => {
+        errorMessage.textContent = 'Não foi possível logar com o Google';
+        errorMessage.style.display = 'block';
+      });
   });
-
 
   criarLoginBotao.addEventListener('click', (event) => {
     event.preventDefault();

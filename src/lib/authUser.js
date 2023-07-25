@@ -1,53 +1,47 @@
-//verificação de senha
-//verificação de erro (catch e erros para fazer validação)
+import {
+  getAuth, createUserWithEmailAndPassword,
+  signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut,
+  onAuthStateChanged } from 'firebase/auth';
+import { app } from './configfirebase.js';
 
-import { app } from "./configfirebase.js";
-
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from "firebase/auth";
-
-  //Criar Usuário
-  export function cadastroUsuarioSenha(nomeCompleto, usuario, email, senha){
-    const auth = getAppAuth();
-  return createUserWithEmailAndPassword(auth, email, senha).then(
-    (userCredential) => {
-      console.log("entrei");
-      const user = userCredential.user;
-      window.location.hash = '#feed';
-      updateProfile(user, {
-        displayName: `${usuario}`,
-      });
-    },
-  );
-    
-    //verificar quais parametros vão ser vinculados ao perfil via firebase
-  };  
-
-  //Login
-  export function loginEmail(email, senha){
-        const auth = getAppAuth();
-        return signInWithEmailAndPassword(auth, email, senha)
-        //verificar preenchimento pelo usuario de usuario e senha (antes de passar por teste de login)
-        //INVALID_EMAIL (usar para criar função de verificação)    
-    };
-        
- // login google
 export const getAppAuth = () => getAuth(app);
+// Criar Usuário
+export function cadastroUsuarioSenha(email, senha) {
+  const auth = getAppAuth();
+  return createUserWithEmailAndPassword(auth, email, senha);    
+}
+// Login
+export function loginEmail(email, senha) {
+  const auth = getAppAuth();
+  return signInWithEmailAndPassword(auth, email, senha);
+}
+// login google
 export const loginGoogle = () => {
   const provider = new GoogleAuthProvider();
   const auth = getAppAuth();
   return signInWithPopup(auth, provider);
-}; 
-
-// autenticacao usuario testando
+};
+// deslogar
+export function userLogout() {
+  const authLogOut = getAuth();
+  return signOut(authLogOut);
+}
+//verifica se esta logado
+export function userAuthCheck(callback) {
+  const authLogin = getAuth(app);
+  return onAuthStateChanged(authLogin, callback);
+}
+// retorno do usuario autenticado
 export const getUserName = () => {
   const auth = getAppAuth();
   const user = auth.currentUser;
-  if (user) {
+  if (user.displayName) {
     return user.displayName;
+    //return user.photoURL;
   }
-  return null;
+  return "Anônimo";  //o usuário autentica e entra, se ele não autentica, mostra mensagem de erro. 
+  //Então não entendi pq essa condição de retornar anonimo?
 };
-
 // id do usuario no firebase
 export const getUserId = () => {
   const auth = getAppAuth();

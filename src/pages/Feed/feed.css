@@ -1,0 +1,82 @@
+.post-container{
+  background-color: #5FEA4B;
+  border-radius: 25px;
+  margin: 15px;
+  text-align: left;
+  padding: 10px;
+  color: #ffffff;
+}
+
+textarea{
+  background-color: #ba19ff9a;
+  border: 2px solid #BA19FF;
+  border-radius: 25px;
+  padding: 10px;
+  color: #ffffff;
+  resize: none;
+}
+
+textarea::placeholder{
+  color: #bdbdbd;
+  font-style: italic;
+}
+
+.icon{
+  width: 20px;
+}
+
+button{
+  border: none;
+  background-color: #64008e ;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.userName{
+  font-weight: bold;
+  color: #BA19FF;
+}
+
+.posts {
+  height: 280px;
+  overflow-y: scroll;
+  margin: 10px;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #60ea4b5c;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #5FEA4B;
+  border-radius: 20px;
+  border: 2px solid #5FEA4B;
+}
+
+.logo{
+  width: 60px;
+  margin: 10px;
+  display: flex;
+}
+
+header{
+  display: flex;
+}
+
+/* Botão novo comentário */
+#new-comment{
+  margin: 10px;
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}

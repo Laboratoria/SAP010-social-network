@@ -1,4 +1,5 @@
-import { cadastroUsuarioSenha } from "../../lib/authUser.js";
+import { cadastroUsuarioSenha } from '../../lib/authUser.js';
+import {updateProfile} from 'firebase/auth';
 
 export default () => {
   const oldStyles = document.getElementsByTagName("link");
@@ -51,36 +52,43 @@ export default () => {
     <p>2023</p>
   </footer></div>`;
 
-  cadastroContainer.id ="login" //CSS
+  cadastroContainer.id = 'login'; // CSS
   cadastroContainer.innerHTML = templateCadastro;
 
   // Informações preenchidas pelo usuário
-  const nomeEntrada = cadastroContainer.querySelector('#nome-completo');//pq todos ids tem que ter #?
+
   const nomeUsuarioEntrada = cadastroContainer.querySelector('#usuario');
   const emailEntrada = cadastroContainer.querySelector('#email');
-  const senhaEntrada = cadastroContainer.querySelector('#senha');//document.getElementById?
+  const senhaEntrada = cadastroContainer.querySelector('#senha');
 
   // Botões para cadastrar
   const botaoCadastrar = cadastroContainer.querySelector('#btn-cad-concluir');
   const botaoVoltar = cadastroContainer.querySelector('#btn-cad-voltar');
 
-
-  //Função Registrar
+  // Função Registrar
   const registerUser = (event) => {
     event.preventDefault();
-    const nomeCompleto = nomeEntrada.value;
     const usuario = nomeUsuarioEntrada.value;
     const email = emailEntrada.value;
     const senha = senhaEntrada.value;
 
     // Chamada para a função createUserWithEmail
-    cadastroUsuarioSenha(nomeCompleto, usuario, email, senha)
-      
+    cadastroUsuarioSenha(email, senha)
+      .then(
+        (userCredential) => {
+          const user = userCredential.user;
+          window.location.hash = '#feed';
+          //window.location.reload();
+          updateProfile(user, {
+            displayName: `${usuario}`,
+          });
+        },
+      )
       .catch((error) => {
         // Lidar com erros durante o cadastro
         const errorMessage = cadastroContainer.querySelector('#errorMessage');
         errorMessage.style.display = 'block';
-        switch(error.code){
+        switch (error.code) {
           case 'auth/missing-email':
             errorMessage.textContent = 'Preencha o e-mail!';
             errorMessage.style.display = 'block';
@@ -95,17 +103,27 @@ export default () => {
             errorMessage.textContent = 'Preencha a senha!';
             errorMessage.style.display = 'block';
             break;
-  
+
           case 'auth/invalid-password':
             errorMessage.textContent = 'Senha inválida';
             errorMessage.style.display = 'block';
             break;
+          default:
+            errorMessage.textContent = 'Confira os dados inseridos. E-mail e senha incorretos ou em branco.';
+            errorMessage.style.display = 'block';
         }
-      });
-    console.log(`Nome: ${nomeCompleto} Usuário: ${usuario} Email: ${email} Senha: ${senha}`);
+      });    
   };
 
   botaoCadastrar.addEventListener('click', registerUser);
+
+    //evento para ouvir quando a mensagem estiver começando a ser digitada e limpar campo de erro
+    emailEntrada.addEventListener('input', () => {
+      errorMessage.textContent = '';
+    });
+    senhaEntrada.addEventListener('input', () => {
+      errorMessage.textContent = '';
+    });
 
   botaoVoltar.addEventListener('click', (event) => {
     event.preventDefault();
