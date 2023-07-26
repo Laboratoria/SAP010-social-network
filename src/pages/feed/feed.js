@@ -7,7 +7,9 @@ import coracao from '../imagens/icones/coracao.png';
 import editar from '../imagens/icones/editar.png';
 import excluir from '../imagens/icones/excluir.png';
 
-import { criarPost, deslogar, getCurrentUser } from '../serviceFirebase/firebaseAuth';
+import {
+  criarPost, deslogar, getCurrentUser,
+} from '../serviceFirebase/firebaseAuth';
 
 export default async () => {
   const containerFeed = document.createElement('section');
@@ -61,7 +63,7 @@ export default async () => {
           <button type="button" class="filesPost share">
             <img src=${excluir} alt="Excluir" title="Excluir">
           </button>
-          <button type="submit" id="btnPublicar" class="btnPubli">Publicar</button>
+          <button type="submit" id="btnPublicar" class="btnPubli">PUBLICAR</button>
         </div>
   </div>
   `;

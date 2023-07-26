@@ -10,12 +10,20 @@
  	left: 0;
  	top: 0;
  	width: 100%;
- 	padding: 5%;
+ 	padding: 2%;
+ 	background-color: #F6F2E2;
  }
 
  .nome-usuario {
  	color: #7C7C7C;
  	margin-top: 20%;
+ 	display: inline-block;
+ 	white-space: nowrap;
+ 	margin-left: 10px;
+ }
+
+ .img-loguinho {
+ 	margin-right: 10px;
  }
 
  .containerPostVerde {
@@ -26,7 +34,7 @@
  	border: 1px solid #AEAEAE;
  	background: #CCDFD4;
  	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-	margin: 10%;
+ 	margin-top: 10%;
  }
 
  .nomeTipo {
@@ -68,7 +76,6 @@
 
  .filesPost {
  	background: #CCDFD4;
-
  }
 
  .footer {
@@ -79,7 +86,8 @@
  	left: 0;
  	bottom: 0;
  	width: 100%;
- 	padding: 1%;
+ 	padding: 7%;
+ 	background-color: #F6F2E2;
  }
 
  .iconesFooter {
@@ -88,5 +96,82 @@
 
  .espacoBranco {
  	margin-left: 4%;
-	padding: 5%;
+ 	padding: 5%;
+ }
+
+ .container-feed {
+ 	padding-top: 20%;
+ 	padding-bottom: 37%;
+ }
+
+ @media screen and (min-width: 768px) {
+ 	header {
+		background-color: #f6f2e200;
+ 	}
+
+ 	.container-feed {
+ 		background-image: url(../imagens/CBDCNNCT-IMG/BG_feedDesktop.png);
+ 		background-repeat: no-repeat;
+ 		width: 100vw;
+ 		height: 100vh;
+ 		/* position: relative; */
+ 		background-size: cover;
+ 		background-position: center;
+		background-attachment: fixed; /* Fixa a imagem de background */
+		overflow-y: auto;
+ 	}
+
+ 	.img-loguinho {
+ 		margin-top: 8vw;
+ 		margin-right: 15vw;
+ 	}
+
+ 	.containerPostVerde {
+ 		width: 75vw;
+ 		height: 25vw;
+ 		margin-left: auto;
+ 		margin-right: auto;
+ 	}
+
+ 	.text-area,
+ 	.espacoBranco {
+ 		width: 70vw;
+ 		height: 40%;
+ 	}
+
+ 	.nome-usuario {
+ 		color: #F6F2E2;
+ 		margin-top: 10vw;
+ 		margin-left: 15vw;
+ 		font-size: 20px;
+ 	}
+
+	 .footer {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		position: fixed;
+		left: 0;
+		top: 13%;
+		bottom: 40%;
+		width: 10%;
+		padding: 10px; 
+		background-color: #f6f2e200;
+	}
+
+	.actionBtnPost {
+		display: flex;
+		justify-content: space-between;
+		margin-left: 5%;
+		
+	}
+
+	.nomeTipo {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		margin: 3%;
+		margin-left: 7%;
+		
+	}
  }
