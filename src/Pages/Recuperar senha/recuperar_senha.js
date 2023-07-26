@@ -6,7 +6,10 @@ export function recuperarSenha () {
     <header></header>
 
    <main>
+
      <div class = "container-recuperação">
+
+     <img src= "logo_mundo_azul.jpg" alt = "Logo da página"> 
 
       <p>Informe o e-mail ultilizado no cadastrado e enviaremos em instantes um e-mail para
        a recuperação da sua senha.</p>
@@ -19,6 +22,10 @@ export function recuperarSenha () {
      </div>
 
    </main>
+
+   <footer>
+     <p> Desenvolvido por Carolina Menezes e Lilian Damadi</p>
+   </footer>
 `;
 containerRecuperação.innerHTML= templateRecuperação;
 return containerRecuperação;
