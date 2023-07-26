@@ -11,33 +11,44 @@ import excluir from '../imagens/icones/excluir.png';
 import {
   criarPost, deslogar, getCurrentUser, fetchData,
 } from '../serviceFirebase/firebaseAuth';
+// const handleHashChange = async () => {
+//   // Renderizar as postagens sempre que a hash mudar
+//   await renderPosts();
+// };
 
-const renderPosts = async () => {
-  console.log('Renderizando posts...');
+export default async () => {
+  const containerFeed = document.createElement('section');
+  containerFeed.classList.add('container-feed');
+
   const dados = await getCurrentUser();
-  const posts = await fetchData();
-  console.log(posts);
+  console.log(dados);
 
-  const containerPosts = document.getElementById('containerPosts');
+  const renderPosts = async () => {
+    console.log('Renderizando posts...');
+    // const dados = await getCurrentUser();
+    const posts = await fetchData();
+    console.log(posts);
 
-  if (!containerPosts) {
-    // Caso o elemento não exista, não há postagens para renderizar
-    return;
-  }
+    const containerPostsElement = containerFeed.querySelector('#containerPosts');
 
-  // Limpar o conteúdo do container antes de renderizar novamente as postagens
-  containerPosts.innerHTML = '';
+    if (!containerPostsElement) {
+      // Caso o elemento não exista, não há postagens para renderizar
+      return;
+    }
 
-  // Agora, iteramos pelo array de posts e criamos os elementos para renderizar as postagens
-  posts.forEach((postagem) => {
-    const novoPostElement = document.createElement('div');
-    novoPostElement.className = 'novo-post';
+    // Limpar o conteúdo do container antes de renderizar novamente as postagens
+    containerPostsElement.innerHTML = '';
 
-    // O conteúdo da nova publicação, por exemplo:
-    const postHtml = `
+    // Agora, iteramos pelo array de posts e criamos os elementos para renderizar as postagens
+    posts.forEach((postagem) => {
+      const novoPostElement = document.createElement('div');
+      novoPostElement.className = 'novo-post';
+
+      // O conteúdo da nova publicação, por exemplo:
+      const postHtml = `
       <div id="containerPosts2" class="containerPostVerde">
         <div class="nomeTipo">
-          <strong>${dados.displayName}</strong>
+          <strong>${postagem.nome}</strong>
           <p>Paciente</p>
         </div>
         <div class="espacoBranco">
@@ -51,32 +62,35 @@ const renderPosts = async () => {
       </div>
     `;
 
-    novoPostElement.innerHTML = postHtml;
-    containerPosts.prepend(novoPostElement);
-  });
-};
+      novoPostElement.innerHTML = postHtml;
+      containerPostsElement.appendChild(novoPostElement);
+    });
+  };
 
-const handleHashChange = async () => {
-  // Renderizar as postagens sempre que a hash mudar
-  await renderPosts();
-};
-
-export default async () => {
-  const containerFeed = document.createElement('section');
-  containerFeed.classList.add('container-feed');
-
-  const dados = await getCurrentUser();
-  console.log(dados);
+  const containerPublicacaoPost = `
+   <div class="containerPostVerde">
+      <div class="nomeTipo">
+        <strong>${dados.displayName}</strong>
+        <p>Paciente</p>
+      </div>
+      <textarea class="text-area" name="postagem" id="text-mensagem" cols="30" rows="10"></textarea>
+      <button type="submit" id="btnPublicar" class="btnPubli">Publicar</button>
+      </div>    
+  `;
 
   const templateFeed = `
     <header>
       <nav>
         <a href="#perfil" id="feed" class="nome-usuario">Imagem ${dados.displayName}</a>
       </nav>
+      ${containerPublicacaoPost}
       <figure>
         <img id="ir-infopage" class="img-loguinho" src=${loguinho} alt="Logo app" title="Logo CBD Connection">
       </figure>
-    </header>
+    </header>    
+   
+      <div id="containerPosts" class="containerVerdeFeed">
+      </div>
 
     <footer class="footer">
       <a href="#perfil" id="iconePerfil"><img class="iconesFooter" src=${perfil} alt="icone perfil" title="Ícone Perfil"></a>
@@ -85,34 +99,7 @@ export default async () => {
     </footer>
   `;
 
-  const containerPost = `
-    <span class="tipoUsuario1"></span>
-    <div id="containerPosts" class="containerVerdeFeed">
-      <span class="NomeUsuario"></span>
-      <span class="tipoUsuario"></span>
-    </div>
-    <div class="containerPostVerde">
-      <div class="nomeTipo">
-        <strong>${dados.displayName}</strong>
-        <p>Paciente</p>
-      </div>
-      <textarea class="text-area" name="postagem" id="text-mensagem" cols="30" rows="10"></textarea>
-      <div class="actionBtnPost">
-        <button type="button" class="filesPost like">
-          <img src=${coracao} alt="Curtir" title="Curtir">
-        </button>
-        <button type="button" class="filesPost editar">
-          <img src=${editar} alt="Editar" title="Editar">
-        </button>
-        <button type="button" class="filesPost share">
-          <img src=${excluir} alt="Excluir" title="Excluir">
-        </button>
-        <button type="submit" id="btnPublicar" class="btnPubli">Publicar</button>
-      </div>
-    </div>
-  `;
-
-  containerFeed.innerHTML = templateFeed + containerPost;
+  containerFeed.innerHTML = templateFeed;
 
   const mensagemPost = containerFeed.querySelector('#text-mensagem');
   const btnloguinho = containerFeed.querySelector('#ir-infopage');
@@ -140,7 +127,7 @@ export default async () => {
   await renderPosts();
 
   // Registrar a função handleHashChange para o evento hashchange
-  window.addEventListener('hashchange', handleHashChange);
+  // window.addEventListener('hashchange', handleHashChange);
 
   btnDeslogar.addEventListener('click', async () => {
     await deslogar();

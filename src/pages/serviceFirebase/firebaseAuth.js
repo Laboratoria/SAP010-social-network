@@ -46,7 +46,6 @@ const loginGoogle = () => {
 // fetchData();
 
 const fetchData = async () => {
-  const posts = [];
   const q = query(collection(db, 'Post'));
   const querySnapshot = await getDocs(q);
   console.log('querySnapshot:', querySnapshot);
