@@ -22,6 +22,7 @@ export default () => {
  <input type="password" id="input-senha-login" name="senha" placeholder="Senha">
  
  </div>
+ <div id="mensagemErro"></div>
 
  <button id="redefinir-senha" href="/#redefinir-senha">Esqueceu sua senha?</button>
 
@@ -60,20 +61,24 @@ export default () => {
 
     loginUsuario(emailDoUsuario, senhaDoUsuario)
 
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error(`${errorCode} - ${errorMessage}`);
-        if (errorCode === 'auth/invalid-email') {
-          alert('Email inválido. Verifique o campo e tente novamente.');
-        } else if (errorCode === 'auth/missing-password') {
-          alert('Por favor, insira sua senha.');
-        } else if (errorCode === 'auth/wrong-password') {
-          alert('Senha incorreta. Tente novamente.');
-        } else {
-          alert('Você ainda não tem uma conta. Cadastre-se.');
-        }
-      })
+    
+
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error(`${errorCode} - ${errorMessage}`);
+      if (errorCode === 'auth/invalid-email') {
+          exibirErro('Email inválido. Verifique o campo e tente novamente.');
+      } else if (errorCode === 'auth/missing-password') {
+          exibirErro('Por favor, insira sua senha.');
+      } else if (errorCode === 'auth/wrong-password') {
+          exibirErro('Senha incorreta. Tente novamente.');
+      } else {
+          exibirErro('Você ainda não tem uma conta. Cadastre-se.');
+      }
+  })
+
+
 
       .then((userCredential) => {
         // Signed in
@@ -85,6 +90,12 @@ export default () => {
         // lerDadosTeste();
       });
   });
+  function exibirErro(errorCode) {
+    const mensagemErroDiv = document.getElementById('mensagemErro');
+    const mensagemFormatada = document.createElement('p');
+    mensagemFormatada.textContent = `${errorCode}`;
+    mensagemErroDiv.appendChild(mensagemFormatada);
+}
 
   return container;
 };
