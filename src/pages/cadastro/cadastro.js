@@ -82,8 +82,6 @@ export default () => {
           alert('Usuário já cadastrado. Tente outro email.');
         }
       });
-
-
   });
 
   return container;

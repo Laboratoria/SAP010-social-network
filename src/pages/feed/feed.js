@@ -1,4 +1,4 @@
-import { sairDaConta } from "../../lib/firebase";
+import { sairDaConta } from '../../lib/firebase';
 
 export default () => {
   const container = document.createElement('div');
@@ -69,17 +69,17 @@ export default () => {
 
   botaoSair.addEventListener('click', () => {
     sairDaConta()
-    .then(() => {
+      .then(() => {
       // Sign-out successful.
-      alert('Voce saiu')
-      window.location.hash = '';
-    })
-    .catch((error) => {
+        alert('Voce saiu');
+        window.location.hash = '';
+      })
+      .catch((error) => {
       // An error happened.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error(`${errorCode} - ${errorMessage}`);
-    });
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(`${errorCode} - ${errorMessage}`);
+      });
   });
 
   return container;
