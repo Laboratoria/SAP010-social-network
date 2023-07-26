@@ -79,9 +79,6 @@
 
 .lista-menu-mobile > li {
     padding: 8px;
-}
-
-.lista-menu-mobile > li {
     display: flex;
     align-items: center;
     text-decoration: none;

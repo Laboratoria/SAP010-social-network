@@ -49,7 +49,7 @@ export function sairDaConta() {
 
 export function redefinirSenha(email) {
   return sendPasswordResetEmail(auth, email);
-};
+}
 
 // export async function teste() {
 //   try {

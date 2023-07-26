@@ -1,4 +1,4 @@
-import {  loginUsuario } from '../../lib/firebase';
+import { loginUsuario } from '../../lib/firebase';
 // lerDadosTeste, teste
 export default () => {
   const container = document.createElement('div');
