@@ -11,10 +11,6 @@ import excluir from '../imagens/icones/excluir.png';
 import {
   criarPost, deslogar, getCurrentUser, fetchData,
 } from '../serviceFirebase/firebaseAuth';
-// const handleHashChange = async () => {
-//   // Renderizar as postagens sempre que a hash mudar
-//   await renderPosts();
-// };
 
 export default async () => {
   const containerFeed = document.createElement('section');
@@ -74,6 +70,7 @@ export default async () => {
         <p>Paciente</p>
       </div>
       <textarea class="text-area" name="postagem" id="text-mensagem" cols="30" rows="10"></textarea>
+      <span class="erro" id="erro-post-vazio"></span>
       <button type="submit" id="btnPublicar" class="btnPubli">Publicar</button>
       </div>    
   `;
@@ -81,7 +78,7 @@ export default async () => {
   const templateFeed = `
     <header>
       <nav>
-        <a href="#perfil" id="feed" class="nome-usuario">Imagem ${dados.displayName}</a>
+        <a href="#perfil" id="feed" class="nome-usuario">${dados.displayName}</a>
       </nav>
       ${containerPublicacaoPost}
       <figure>
@@ -105,22 +102,23 @@ export default async () => {
   const btnloguinho = containerFeed.querySelector('#ir-infopage');
   const btnPublicar = containerFeed.querySelector('#btnPublicar');
   const btnDeslogar = containerFeed.querySelector('#iconeSair');
+  const erroMensagemVazia = containerFeed.querySelector('#erro-post-vazio');
 
   btnloguinho.addEventListener('click', () => {
     window.location.hash = '#infopage';
   });
 
-  btnPublicar.addEventListener('click', async (e) => {
-    e.preventDefault();
+  btnPublicar.addEventListener('click', async () => {
     const msg = mensagemPost.value;
-    console.log(msg);
-    await criarPost(msg);
-
-    // Renderizar novamente as postagens após criar uma nova
-    await renderPosts();
-
-    // Limpar o valor da mensagem no textarea
-    mensagemPost.value = '';
+    if (mensagemPost.value.length > 1) {
+      await criarPost(msg);
+      mensagemPost.value = '';
+      // Renderizar novamente as postagens após criar uma nova
+      await renderPosts();
+    } else {
+      erroMensagemVazia.innerHTML = 'Insira um mensagem para ser publicada';
+      console.log('mensagem vazia');
+    }
   });
 
   // Renderizar as postagens no carregamento inicial da página
