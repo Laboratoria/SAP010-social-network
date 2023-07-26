@@ -20,12 +20,11 @@ export default () => {
 <input type="checkbox" id="check" class="on-off">
  <label for="check" class="check-btn"></label>
  <input type="password" id="input-senha-login" name="senha" placeholder="Senha">
- 
  </div>
-
- <button id="redefinir-senha" href="/#redefinir-senha">Esqueceu sua senha?</button>
-
+ <div id="mensagemErro"></div>
 <button id="btn-cinza-login">Entrar</button>
+<button id="redefinir-senha" href="/#redefinir-senha">Esqueceu sua senha?</button>
+
 
 <p id="paragrafo-login">Ainda não tem uma conta??&nbsp;<a href="/#cadastro">Cadastre-se</a></p>
   </form>`;
@@ -60,20 +59,24 @@ export default () => {
 
     loginUsuario(emailDoUsuario, senhaDoUsuario)
 
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error(`${errorCode} - ${errorMessage}`);
-        if (errorCode === 'auth/invalid-email') {
-          alert('Email inválido. Verifique o campo e tente novamente.');
-        } else if (errorCode === 'auth/missing-password') {
-          alert('Por favor, insira sua senha.');
-        } else if (errorCode === 'auth/wrong-password') {
-          alert('Senha incorreta. Tente novamente.');
-        } else {
-          alert('Você ainda não tem uma conta. Cadastre-se.');
-        }
-      })
+    
+
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error(`${errorCode} - ${errorMessage}`);
+      if (errorCode === 'auth/invalid-email') {
+          exibirErro('Email inválido. Verifique o campo e tente novamente.');
+      } else if (errorCode === 'auth/missing-password') {
+          exibirErro('Por favor, insira sua senha.');
+      } else if (errorCode === 'auth/wrong-password') {
+          exibirErro('Senha incorreta. Tente novamente.');
+      } else {
+          exibirErro('Você ainda não tem uma conta. Cadastre-se.');
+      }
+  })
+
+
 
       .then((userCredential) => {
         // Signed in
@@ -85,6 +88,12 @@ export default () => {
         // lerDadosTeste();
       });
   });
+  function exibirErro(errorCode) {
+    const mensagemErroDiv = document.getElementById('mensagemErro');
+    mensagemFormatada.textContent = `${errorCode}`;
+    mensagemErroDiv.appendChild(mensagemFormatada);
+}
+const mensagemFormatada = document.createElement('p');
 
   return container;
 };

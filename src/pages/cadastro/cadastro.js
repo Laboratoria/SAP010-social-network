@@ -21,6 +21,10 @@ export default () => {
   <label for="check-cadastro" class="check-btncadastro"></label>
   <input type="password" id="input-senha-cadastro" name="senha" placeholder="Senha">
 </div>
+<dialog id="caixaDeTexto">
+  <p>Usuario cadastrado com sucesso!</p>
+</dialog>
+<div id="mensagemErro"></div>
 <button id="btn-vermelho">Cadastrar</button>
 <p id="paragrafo-cadastro">Já tem uma conta?&nbsp;<a href="/#login">Entrar</a></p>
 </form>`;
@@ -56,7 +60,7 @@ export default () => {
         const user = userCredential.user;
         console.log('usuário cadastrado com sucesso');
         console.log(user);
-        alert('Cadastro realizado com sucesso!');
+       setTimeout(caixaDeTexto.show(),5000);
 
         atualizarNomeDoUsuario(nomeDoUsuario)
           .catch((error) => {
@@ -73,16 +77,25 @@ export default () => {
         const errorMessage = error.message;
         console.error(`${errorCode} - ${errorMessage}`);
         if (nomeDoUsuario === '') {
-          alert('Por favor, insira seu nome.');
-        } else if (emailDoUsuario === '') {
-          alert('Por favor, insira um email.');
-        } else if (senhaDoUsuario === '') {
-          alert('Por favor, insira uma senha.');
-        } else {
-          alert('Usuário já cadastrado. Tente outro email.');
+          exibirErro('Por favor,insira seu nome'); 
+        } else if (errorCode === 'auth/invalid-email') {
+          exibirErro('Email inválido. Verifique o campo e tente novamente.');
+        }  else if (errorCode === 'auth/missing-password') {
+          exibirErro('Por favor, insira sua senha.');
+        } else if (errorCode === 'auth/weak-password') {
+          exibirErro('Sua senha deve ter no mínimo 6 dígitos.');
+        } else if (errorCode === 'auth/email-already-in-use') {
+          exibirErro('Usuário já cadastrado. Tente outro email.');
         }
       });
   });
+
+  function exibirErro(errorCode) {
+    const mensagemErroDiv = document.getElementById('mensagemErro');
+    mensagemFormatada.textContent = `${errorCode}`;
+    mensagemErroDiv.appendChild(mensagemFormatada);
+}
+const mensagemFormatada = document.createElement('p');
 
   return container;
 };

@@ -151,7 +151,7 @@ header>h1 {
   }
   
   #check-cadastro:checked + .check-btncadastro {
-    background-color: #f32121;
+    background-color: #950909;
   }
   
   #check-cadastro:checked + .check-btncadastro::after {
@@ -162,3 +162,9 @@ header>h1 {
     display: none;
 }
   
+#mensagemErro{
+    color: #950909;
+    font-weight: bolder;
+    font-size: 13px;
+
+}
