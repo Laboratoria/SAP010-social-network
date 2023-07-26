@@ -34,16 +34,31 @@ const loginGoogle = () => {
 
 // essa função nos permite ler o banco de dados
 // Fizemos com a Nury
+// const fetchData = async () => {
+//   const q = query(collection(db, 'Post'));
+//   const querySnapshot = await getDocs(q);
+//   querySnapshot.forEach((docs) => {
+//     // doc.data() is never undefined for query doc snapshots
+//     console.log(docs.id, '=>', docs.data());
+//   });
+// };
+
+// fetchData();
+
 const fetchData = async () => {
   const q = query(collection(db, 'Post'));
   const querySnapshot = await getDocs(q);
+  console.log('querySnapshot:', querySnapshot);
+  const posts = []; // Array para armazenar os dados das postagens
+
   querySnapshot.forEach((docs) => {
     // doc.data() is never undefined for query doc snapshots
-    console.log(docs.id, '=>', docs.data());
+    const postData = docs.data();
+    posts.push(postData); // Adiciona cada postagem no array de posts
   });
-};
 
-fetchData();
+  return posts; // Retorna o array com os dados das postagens
+};
 
 const auth1 = getAuth();
 
