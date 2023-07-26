@@ -53,49 +53,53 @@ export default () => {
     const emailDoUsuario = inputEmail.value;
     const senhaDoUsuario = inputSenha.value;
     const nomeDoUsuario = inputNome.value;
+    const caixaDeTexto = container.querySelector('#caixaDeTexto');
 
-    cadastrarUsuario(emailDoUsuario, senhaDoUsuario)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log('usuário cadastrado com sucesso');
-        console.log(user);
-       setTimeout(caixaDeTexto.show(),5000);
+    const mensagemFormatada = document.createElement('p');
 
-        atualizarNomeDoUsuario(nomeDoUsuario)
-          .catch((error) => {
-            // An error occurred
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.error(`${errorCode} - ${errorMessage}`);
-          });
+    function exibirErro(errorCode) {
+      const mensagemErroDiv = document.getElementById('mensagemErro');
+      mensagemFormatada.textContent = `${errorCode}`;
+      mensagemErroDiv.appendChild(mensagemFormatada);
+    }
 
-        window.location.hash = '#feed';
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error(`${errorCode} - ${errorMessage}`);
-        if (nomeDoUsuario === '') {
-          exibirErro('Por favor,insira seu nome'); 
-        } else if (errorCode === 'auth/invalid-email') {
-          exibirErro('Email inválido. Verifique o campo e tente novamente.');
-        }  else if (errorCode === 'auth/missing-password') {
-          exibirErro('Por favor, insira sua senha.');
-        } else if (errorCode === 'auth/weak-password') {
-          exibirErro('Sua senha deve ter no mínimo 6 dígitos.');
-        } else if (errorCode === 'auth/email-already-in-use') {
-          exibirErro('Usuário já cadastrado. Tente outro email.');
-        }
-      });
+    if (nomeDoUsuario === '') {
+      exibirErro('Por favor,insira seu nome');
+    } else {
+      cadastrarUsuario(emailDoUsuario, senhaDoUsuario)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log('usuário cadastrado com sucesso');
+          console.log(user);
+          setTimeout(caixaDeTexto.show(), 5000);
+
+          atualizarNomeDoUsuario(nomeDoUsuario)
+            .catch((error) => {
+              // An error occurred
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.error(`${errorCode} - ${errorMessage}`);
+            });
+
+          window.location.hash = '#feed';
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.error(`${errorCode} - ${errorMessage}`);
+          if (errorCode === 'auth/invalid-email') {
+            exibirErro('Email inválido. Verifique o campo e tente novamente.');
+          } else if (errorCode === 'auth/missing-password') {
+            exibirErro('Por favor, insira sua senha.');
+          } else if (errorCode === 'auth/weak-password') {
+            exibirErro('Sua senha deve ter no mínimo 6 dígitos.');
+          } else if (errorCode === 'auth/email-already-in-use') {
+            exibirErro('Usuário já cadastrado. Tente outro email.');
+          }
+        });
+    }
   });
-
-  function exibirErro(errorCode) {
-    const mensagemErroDiv = document.getElementById('mensagemErro');
-    mensagemFormatada.textContent = `${errorCode}`;
-    mensagemErroDiv.appendChild(mensagemFormatada);
-}
-const mensagemFormatada = document.createElement('p');
 
   return container;
 };

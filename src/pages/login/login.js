@@ -57,26 +57,30 @@ export default () => {
     const emailDoUsuario = inputEmail.value;
     const senhaDoUsuario = inputSenha.value;
 
+    const mensagemFormatada = document.createElement('p');
+
+    function exibirErro(errorCode) {
+      const mensagemErroDiv = document.getElementById('mensagemErro');
+      mensagemFormatada.textContent = `${errorCode}`;
+      mensagemErroDiv.appendChild(mensagemFormatada);
+    }
+
     loginUsuario(emailDoUsuario, senhaDoUsuario)
 
-    
-
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error(`${errorCode} - ${errorMessage}`);
-      if (errorCode === 'auth/invalid-email') {
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(`${errorCode} - ${errorMessage}`);
+        if (errorCode === 'auth/invalid-email') {
           exibirErro('Email inválido. Verifique o campo e tente novamente.');
-      } else if (errorCode === 'auth/missing-password') {
+        } else if (errorCode === 'auth/missing-password') {
           exibirErro('Por favor, insira sua senha.');
-      } else if (errorCode === 'auth/wrong-password') {
+        } else if (errorCode === 'auth/wrong-password') {
           exibirErro('Senha incorreta. Tente novamente.');
-      } else {
+        } else {
           exibirErro('Você ainda não tem uma conta. Cadastre-se.');
-      }
-  })
-
-
+        }
+      })
 
       .then((userCredential) => {
         // Signed in
@@ -88,12 +92,6 @@ export default () => {
         // lerDadosTeste();
       });
   });
-  function exibirErro(errorCode) {
-    const mensagemErroDiv = document.getElementById('mensagemErro');
-    mensagemFormatada.textContent = `${errorCode}`;
-    mensagemErroDiv.appendChild(mensagemFormatada);
-}
-const mensagemFormatada = document.createElement('p');
 
   return container;
 };
