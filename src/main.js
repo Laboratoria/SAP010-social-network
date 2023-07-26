@@ -10,6 +10,7 @@ import feed from './pages/feed/feed.js';
 import perfil from './pages/perfil/perfil.js';
 import novoPost from './pages/novoPost/novoPost.js';
 import infopage from './pages/infopage/infopage.js';
+import { manipularMudancaHash } from './pages/serviceFirebase/firebaseAuth.js';
 
 const main = document.getElementById('root');
 const init = () => {
@@ -48,6 +49,8 @@ window.addEventListener('load', () => {
   main.appendChild(home());
   init();
 });
+
+window.addEventListener('hashchange', manipularMudancaHash);
 
 window.addEventListener('click', (e) => {
   console.log(e.target);
