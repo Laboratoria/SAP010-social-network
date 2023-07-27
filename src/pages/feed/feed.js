@@ -108,11 +108,16 @@ export default async () => {
     window.location.hash = '#infopage';
   });
 
+  mensagemPost.addEventListener('input', () => {
+    erroMensagemVazia.innerHTML = '';
+  });
+
   btnPublicar.addEventListener('click', async () => {
     const msg = mensagemPost.value;
-    if (mensagemPost.value.length > 1) {
+    if (mensagemPost.valuelength > 1) {
       await criarPost(msg);
       mensagemPost.value = '';
+      // erroMensagemVazia.innerHTML = ''; // Limpar a mensagem de erro
       // Renderizar novamente as postagens após criar uma nova
       await renderPosts();
     } else {
