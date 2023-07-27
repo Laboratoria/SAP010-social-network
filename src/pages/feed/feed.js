@@ -53,7 +53,7 @@ export default async () => {
         <div class="actionBtnPost">
           <img src=${coracao} alt="Curtir" title="Curtir">
           <img src=${editar} alt="Editar" title="Editar">
-          <img src=${excluir} alt="Excluir" title="Excluir">
+          <img src=${excluir} alt="Excluir" title="Excluir" >
         </div>
       </div>
     `;
@@ -120,7 +120,7 @@ export default async () => {
 
   btnPublicar.addEventListener('click', async () => {
     const msg = mensagemPost.value;
-    if (mensagemPost.valuelength > 1) {
+    if (mensagemPost.value.length > 1) {
       await criarPost(msg);
       mensagemPost.value = '';
       // erroMensagemVazia.innerHTML = ''; // Limpar a mensagem de erro
