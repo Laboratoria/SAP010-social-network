@@ -70,6 +70,7 @@ export default async () => {
         <p>Paciente</p>
       </div>
       <textarea class="text-area" name="postagem" id="text-mensagem" cols="30" rows="10"></textarea>
+      <img src=${excluir} alt="Excluir" title="Excluir" id="apagaTexto">
       <span class="erro" id="erro-post-vazio"></span>
       <button type="submit" id="btnPublicar" class="btnPubli">Publicar</button>
       </div>    
@@ -81,6 +82,7 @@ export default async () => {
         <a href="#perfil" id="feed" class="nome-usuario">${dados.displayName}</a>
       </nav>
       ${containerPublicacaoPost}
+      
       <figure>
         <img id="ir-infopage" class="img-loguinho" src=${loguinho} alt="Logo app" title="Logo CBD Connection">
       </figure>
@@ -102,6 +104,7 @@ export default async () => {
   const btnloguinho = containerFeed.querySelector('#ir-infopage');
   const btnPublicar = containerFeed.querySelector('#btnPublicar');
   const btnDeslogar = containerFeed.querySelector('#iconeSair');
+  const btnApagaTexto = containerFeed.querySelector('#apagaTexto');
   const erroMensagemVazia = containerFeed.querySelector('#erro-post-vazio');
 
   btnloguinho.addEventListener('click', () => {
@@ -111,6 +114,11 @@ export default async () => {
   mensagemPost.addEventListener('input', () => {
     erroMensagemVazia.innerHTML = '';
   });
+
+  const limpaTextarea = () => {
+    mensagemPost.value = '';
+  };
+  btnApagaTexto.addEventListener('click', limpaTextarea);
 
   btnPublicar.addEventListener('click', async () => {
     const msg = mensagemPost.value;
