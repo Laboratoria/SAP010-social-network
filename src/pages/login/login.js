@@ -85,7 +85,6 @@ export default () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log('usuário logado com sucesso');
         console.log(user);
         window.location.hash = '#feed';
         // teste();

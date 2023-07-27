@@ -9,6 +9,9 @@ export default () => {
 <img src="imagens/menina.png" alt="menina fazendo movimento de arte marcial" id="menina-cadastro">
 </picture>
 <form id="formulario-cadastro" autocomplete="off">
+<dialog id="caixaDeTexto">
+  <p>Usuario cadastrado com sucesso!</p>
+</dialog>
 <header><h1>CADASTRE-SE</h1>
 <picture>
 <img src="imagens/fightback-logo.png" alt="logo do app">
@@ -21,9 +24,6 @@ export default () => {
   <label for="check-cadastro" class="check-btncadastro"></label>
   <input type="password" id="input-senha-cadastro" name="senha" placeholder="Senha">
 </div>
-<dialog id="caixaDeTexto">
-  <p>Usuario cadastrado com sucesso!</p>
-</dialog>
 <div id="mensagemErro"></div>
 <button id="btn-vermelho">Cadastrar</button>
 <p id="paragrafo-cadastro">Já tem uma conta?&nbsp;<a href="/#login">Entrar</a></p>
@@ -70,9 +70,9 @@ export default () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log('usuário cadastrado com sucesso');
+          console.log('Cadastrado realizado com sucesso!');
           console.log(user);
-          setTimeout(caixaDeTexto.show(), 5000);
+          caixaDeTexto.show();
 
           atualizarNomeDoUsuario(nomeDoUsuario)
             .catch((error) => {
@@ -81,8 +81,10 @@ export default () => {
               const errorMessage = error.message;
               console.error(`${errorCode} - ${errorMessage}`);
             });
-
-          window.location.hash = '#feed';
+          function mostrarFeed() {
+            window.location.hash = '#feed';
+          }
+          setTimeout(mostrarFeed, 2000);
         })
         .catch((error) => {
           const errorCode = error.code;
