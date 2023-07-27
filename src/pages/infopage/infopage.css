@@ -1,3 +1,6 @@
+* {
+    overflow-y: hidden;
+}
 .container-infopage {
     display: flex;
     flex-direction: column;
@@ -64,22 +67,30 @@ a {
     margin-left: 6%;
 }
 
+
 @media screen and (min-width: 768px) {
 
-    /* .info-devs {
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: center;
-        margin-top: 5%;
-      } */
+    .container-infopage {
+        background-image: url(../imagens/CBDCNNCT-IMG/BG_feedDesktop.png);
+    }
+
     .info-devs {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: 10%;
+        
     }
 
     .dev-info {
         margin-bottom: 2%;
+    }
+
+    .img-voltar {
+        overflow-y: hidden;
+    }
+
+    footer {
+        display: none;
     }
 }

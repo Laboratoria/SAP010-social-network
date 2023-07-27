@@ -68,7 +68,7 @@ export default async () => {
   };
 
   const containerPublicacaoPost = `
-   <div class="containerPostVerde">
+   <div class="containerPostVerde fixo">
       <div class="nomeTipo">
         <strong>${dados.displayName}</strong>
         <p>Paciente</p>
@@ -79,16 +79,15 @@ export default async () => {
   `;
 
   const templateFeed = `
-    <header>
+    <header class='header'>
       <nav>
-        <a href="#perfil" id="feed" class="nome-usuario">Imagem ${dados.displayName}</a>
+        <a href="#perfil" id="feed" class="nome-usuario">${dados.displayName}</a>
       </nav>
-      ${containerPublicacaoPost}
       <figure>
         <img id="ir-infopage" class="img-loguinho" src=${loguinho} alt="Logo app" title="Logo CBD Connection">
       </figure>
     </header>    
-   
+    ${containerPublicacaoPost}
       <div id="containerPosts" class="containerVerdeFeed">
       </div>
 

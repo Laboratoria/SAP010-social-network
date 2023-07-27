@@ -1,10 +1,12 @@
  * {
  	margin: 0;
+	overflow-x: hidden;
+
  }
 
- header {
+ .header {
  	display: flex;
- 	justify-content: space-between;
+ 	justify-content: space-around;
  	text-align: center;
  	position: fixed;
  	left: 0;
@@ -14,12 +16,12 @@
  	background-color: #F6F2E2;
  }
 
- .nome-usuario {
+  .nome-usuario {
  	color: #7C7C7C;
  	margin-top: 20%;
  	display: inline-block;
  	white-space: nowrap;
- 	margin-left: 10px;
+ 	margin-left: 15px;
  }
 
  .img-loguinho {
@@ -34,7 +36,7 @@
  	border: 1px solid #AEAEAE;
  	background: #CCDFD4;
  	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
- 	margin-top: 10%;
+ 	margin-top: 15%;
  }
 
  .nomeTipo {
@@ -44,8 +46,7 @@
  	margin: 3%;
  	margin-left: 10%;
  }
-
- .text-area,
+  .text-area,
  .espacoBranco {
  	width: 258px;
  	height: 101px;
@@ -55,7 +56,7 @@
  	background: #EEF4F0;
  	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
  	margin-bottom: 2%;
- }
+ }  
 
  .actionBtnPost {
  	display: flex;
@@ -104,9 +105,26 @@
  	padding-bottom: 37%;
  }
 
+ 
+	::-webkit-scrollbar {
+	width: 12px; 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+	background-color: #8AB00F; 
+	border-radius: 6px; 
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+	background-color: #66820a; 
+  }
+
+
  @media screen and (min-width: 768px) {
- 	header {
-		background-color: #f6f2e200;
+ 	.header {
+ 		background-color: #3B5A2B;
+ 		justify-content: space-between;
+		padding: 2%;
  	}
 
  	.container-feed {
@@ -117,61 +135,66 @@
  		/* position: relative; */
  		background-size: cover;
  		background-position: center;
-		background-attachment: fixed; /* Fixa a imagem de background */
-		overflow-y: auto;
+ 		background-attachment: fixed;
+ 		/* Fixa a imagem de background */
+ 		overflow-y: auto;
+		/* margin-top: 10vh; */
  	}
 
  	.img-loguinho {
- 		margin-top: 8vw;
- 		margin-right: 15vw;
+ 		margin-top: 0vw;
+ 		margin-right: 19vw;
  	}
 
  	.containerPostVerde {
  		width: 75vw;
- 		height: 25vw;
+ 		height: 20vw;
  		margin-left: auto;
  		margin-right: auto;
+		margin-top: 6vh;
  	}
 
  	.text-area,
  	.espacoBranco {
  		width: 70vw;
  		height: 40%;
+		overflow-y: hidden;
+
  	}
 
  	.nome-usuario {
  		color: #F6F2E2;
- 		margin-top: 10vw;
+ 		margin-top: 1.5vw;
  		margin-left: 15vw;
  		font-size: 20px;
  	}
 
-	 .footer {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		position: fixed;
-		left: 0;
-		top: 13%;
-		bottom: 40%;
-		width: 10%;
-		padding: 10px; 
-		background-color: #f6f2e200;
-	}
+ 	.footer {
+ 		display: flex;
+ 		flex-direction: column;
+ 		align-items: flex-start;
+ 		position: fixed;
+ 		left: 0;
+ 		top: 13%;
+ 		bottom: 40%;
+ 		width: 10%;
+ 		padding: 10px;
+ 		background-color: #f6f2e200;
+ 	}
 
-	.actionBtnPost {
-		display: flex;
-		justify-content: space-between;
-		margin-left: 5%;
-		
-	}
+ 	.actionBtnPost {
+ 		display: flex;
+ 		justify-content: space-between;
+ 		margin-left: 5%;
 
-	.nomeTipo {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		margin: 3%;
-		margin-left: 7%;
-		
-	}
+ 	}
+
+ 	.nomeTipo {
+ 		display: flex;
+ 		flex-direction: column;
+ 		align-items: flex-start;
+ 		margin: 3%;
+ 		margin-left: 7%;
+
+ 	}
  }
