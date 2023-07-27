@@ -1,7 +1,6 @@
  * {
  	margin: 0;
 	overflow-x: hidden;
-
  }
 
  .header {
@@ -105,8 +104,7 @@
  	padding-bottom: 37%;
  }
 
- 
-	::-webkit-scrollbar {
+ ::-webkit-scrollbar {
 	width: 12px; 
   }
   
