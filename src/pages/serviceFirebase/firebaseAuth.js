@@ -6,7 +6,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import {
-  collection, addDoc, query, getDocs,
+  collection, addDoc, query, getDocs, orderBy,
 } from 'firebase/firestore';
 import { app, db } from '../../firebaseInit.config.js';
 
@@ -46,7 +46,7 @@ const loginGoogle = () => {
 // fetchData();
 
 const fetchData = async () => {
-  const q = query(collection(db, 'Post'));
+  const q = query(collection(db, 'Post'), orderBy('data', 'desc'));
   const querySnapshot = await getDocs(q);
   console.log('querySnapshot:', querySnapshot);
   const posts = []; // Array para armazenar os dados das postagens
@@ -77,12 +77,18 @@ const criarPost = async (mensagem) => {
       console.log('Usuário não autenticado');
       return;
     }
+    // estas const nos possibilita pegar a hora e o minuto que o post foi gerado
+    // const tempo = new Date('julho 27, 2023 16:42:00');
+    // const horas = tempo.toLocaleTimeString('pt-BR');
+    // para fazer dessa maneira eu teria que fazer mais linhas de código
+    // então resolvi deixar no mais simples
 
     // Dados do novo post que você deseja criar
     const novoPost = {
       mensagem,
       user_id: user.uid, // Use user.uid para obter o ID do usuário
       nome: user.displayName,
+      data: new Date(),
     };
 
     await addDoc(collection(db, 'Post'), novoPost);
