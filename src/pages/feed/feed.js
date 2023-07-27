@@ -81,9 +81,6 @@ export default async () => {
       <nav>
         <a href="#perfil" id="feed" class="nome-usuario">${dados.displayName}</a>
       </nav>
-      
-      ${containerPublicacaoPost}
-      
       <figure>
         <img id="ir-infopage" class="img-loguinho" src=${loguinho} alt="Logo app" title="Logo CBD Connection">
       </figure>
