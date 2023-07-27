@@ -1,3 +1,4 @@
+import logo_mundo_azul from "../Imagens/Mundo_azul_logo.png"
 export default () => {
     const containerHome = document.createElement('div');
     const templateHome = `
@@ -20,7 +21,7 @@ export default () => {
    
      <div class = container-Home>
      
-     <img src="logo_mundo_azul.jpg" alt="Logo da página">
+     <img src= ${logo_mundo_azul} alt="Logo da página">
      
 
      <p>
