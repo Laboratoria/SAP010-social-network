@@ -91,7 +91,23 @@ const criarPost = async (mensagem) => {
   }
 };
 
+const verificaSeUsuarioEstaLogado = async () => {
+  const user = await getCurrentUser();
+  return !!user; // Retorna true se o usuário estiver logado, caso contrário, retorna false
+};
+
+const manipularMudancaHash = async () => {
+  const isLoggedIn = await verificaSeUsuarioEstaLogado();
+  const newHash = window.location.hash;
+
+  if (!isLoggedIn && newHash !== '#login') {
+    // Se o usuário não estiver logado e a nova hash não for "#login",
+    // redireciona para a página de login
+    window.location.hash = '#login';
+  }
+};
+
 export {
   createUser, login, addonAuthStateChanged, loginGoogle, createUserWithEmailAndPassword, criarPost,
-  deslogar, fetchData, getCurrentUser, atualizaPerfil,
+  deslogar, fetchData, getCurrentUser, atualizaPerfil, manipularMudancaHash,
 };
