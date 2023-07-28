@@ -38,6 +38,7 @@ export function redefinirSenha(email) {
 
 export async function adicionarPost(username, conteudo) {
   try {
+
     const docRef = await addDoc(collection(db, "posts"), {
       username: auth.currentUser.displayName,
       uid: auth.currentUser.uid,
@@ -52,17 +53,22 @@ export async function adicionarPost(username, conteudo) {
 
 export async function exibirPosts() {
   try {
-  const feedElement = document.querySelector('.post');
-  const querySnapshot = await getDocs(collection(db, "posts"));
-  querySnapshot.forEach((doc) => {
-    const post = doc.data();
-    const postElement= document.createElement('div');
-    postElement.innerHTML = `<h2>${post.username}</h2>
-    <p>${post.conteudo}</p>`;
-    feedElement.appendChild(postElement);
-    console.log(`teste1 ${doc.id} => ${doc.data()}`);
-  });
-} catch (error) {
-  console.error('erro ao obter os posts', error);
-}
+    const querySnapshot = await getDocs(collection(db, "posts"));
+    const feedElement = document.querySelector('.post');
+    feedElement.innerHTML = '';
+    const array = [];
+    querySnapshot.forEach((doc) => {
+      //   const post = doc.data();
+      //   const postElement = document.createElement('div');
+      //   postElement.innerHTML = `<h2>${post.username}</h2>
+      // <p>${post.conteudo}</p>
+      // <hr>`;
+      //   feedElement.appendChild(postElement);
+      array.push(doc.data());
+      // console.log(`${doc.id} => ${doc.data()}`);
+    });
+    return array;
+  } catch (error) {
+    console.error('erro ao obter os posts', error);
+  }
 };
