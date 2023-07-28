@@ -6,7 +6,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import {
-  collection, addDoc, query, getDocs, orderBy,
+  collection, addDoc, query, getDocs, orderBy, deleteDoc, doc,
 } from 'firebase/firestore';
 import { app, db } from '../../firebaseInit.config.js';
 
@@ -102,6 +102,18 @@ const verificaSeUsuarioEstaLogado = async () => {
   return !!user; // Retorna true se o usuário estiver logado, caso contrário, retorna false
 };
 
+const deletarPost = async (idPostagem) => {
+  try {
+    const referenciaDaPostagem = doc(db, 'Post', idPostagem);
+    console.log('Referência do documento a ser excluído:', referenciaDaPostagem);
+    await deleteDoc(referenciaDaPostagem);
+    console.log(idPostagem);
+    console.log('Post deletado com sucesso!');
+  } catch (error) {
+    console.log('Erro ao deletar o post:', error);
+  }
+};
+
 const manipularMudancaHash = async () => {
   const isLoggedIn = await verificaSeUsuarioEstaLogado();
   const newHash = window.location.hash;
@@ -115,5 +127,5 @@ const manipularMudancaHash = async () => {
 
 export {
   createUser, login, addonAuthStateChanged, loginGoogle, createUserWithEmailAndPassword, criarPost,
-  deslogar, fetchData, getCurrentUser, atualizaPerfil, manipularMudancaHash,
+  deslogar, fetchData, getCurrentUser, atualizaPerfil, manipularMudancaHash, deletarPost,
 };

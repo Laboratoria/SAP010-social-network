@@ -9,7 +9,7 @@ import editar from '../imagens/icones/editar.png';
 import excluir from '../imagens/icones/excluir.png';
 
 import {
-  criarPost, deslogar, getCurrentUser, fetchData,
+  criarPost, deslogar, getCurrentUser, fetchData, deletarPost,
 } from '../serviceFirebase/firebaseAuth';
 
 export default async () => {
@@ -19,9 +19,11 @@ export default async () => {
   const dados = await getCurrentUser();
   console.log(dados);
 
+  // Obter o usuário logado
+  const currentUser = await getCurrentUser();
+
   const renderPosts = async () => {
     console.log('Renderizando posts...');
-    // const dados = await getCurrentUser();
     const posts = await fetchData();
     console.log(posts);
 
@@ -35,31 +37,51 @@ export default async () => {
     // Limpar o conteúdo do container antes de renderizar novamente as postagens
     containerPostsElement.innerHTML = '';
 
+    // // Obter o usuário logado
+    // const currentUser = await getCurrentUser();
+
     // Agora, iteramos pelo array de posts e criamos os elementos para renderizar as postagens
     posts.forEach((postagem) => {
       const novoPostElement = document.createElement('div');
       novoPostElement.className = 'novo-post';
 
-      // O conteúdo da nova publicação, por exemplo:
       const postHtml = `
-      <div id="containerPosts2" class="containerPostVerde">
-        <div class="nomeTipo">
-          <strong>${postagem.nome}</strong>
-          <p>Paciente</p>
-        </div>
-        <div class="espacoBranco">
-          <p>${postagem.mensagem}</p>
-        </div>
-        <div class="actionBtnPost">
-          <img src=${coracao} alt="Curtir" title="Curtir">
-          <img src=${editar} alt="Editar" title="Editar">
-          <img src=${excluir} alt="Excluir" title="Excluir" >
-        </div>
+    <div id="containerPosts2" class="containerPostVerde">
+      <div class="nomeTipo">
+        <strong>${postagem.nome}</strong>
+        <p>Paciente</p>
       </div>
-    `;
+      <div class="espacoBranco">
+        <p>${postagem.mensagem}</p>
+      </div>
+      <div class="actionBtnPost">
+        <img src=${coracao} alt="Curtir" title="Curtir">
+        <img src=${editar} alt="Editar" title="Editar">
+        ${
+  // Verificar se o usuário logado é o mesmo do usuário associado ao post
+  currentUser && currentUser.uid === postagem.user_id
+    ? `<img src=${excluir} alt="Excluir" title="Excluir" data-post-id="${postagem.user_id
+    }" class="excluirPostagem">`
+    : ''
+}
+      </div>
+    </div>
+  `;
 
       novoPostElement.innerHTML = postHtml;
       containerPostsElement.appendChild(novoPostElement);
+
+      // Event listener para o botão "Excluir", se existir
+      const btnExcluir = novoPostElement.querySelector('.excluirPostagem');
+      if (btnExcluir) {
+        btnExcluir.addEventListener('click', async (e) => {
+          e.preventDefault();
+          const postId = e.currentTarget.dataset.postId;
+          console.log('Clicou no botão de exclusão:', postId);
+          await deletarPost(postId);
+          await renderPosts(); // Atualizar a lista de posts após a exclusão
+        });
+      }
     });
   };
 
@@ -104,6 +126,7 @@ export default async () => {
   const btnDeslogar = containerFeed.querySelector('#iconeSair');
   const btnApagaTexto = containerFeed.querySelector('#apagaTexto');
   const erroMensagemVazia = containerFeed.querySelector('#erro-post-vazio');
+  // const btnExcluirPostagem = containerFeed.querySelector('.excluirPostagem');
 
   btnloguinho.addEventListener('click', () => {
     window.location.hash = '#infopage';
@@ -121,7 +144,7 @@ export default async () => {
   btnPublicar.addEventListener('click', async () => {
     const msg = mensagemPost.value;
     if (mensagemPost.value.length > 1) {
-      await criarPost(msg);
+      await criarPost(msg, currentUser.uid);
       mensagemPost.value = '';
       // erroMensagemVazia.innerHTML = ''; // Limpar a mensagem de erro
       // Renderizar novamente as postagens após criar uma nova
@@ -135,8 +158,11 @@ export default async () => {
   // Renderizar as postagens no carregamento inicial da página
   await renderPosts();
 
-  // Registrar a função handleHashChange para o evento hashchange
-  // window.addEventListener('hashchange', handleHashChange);
+  // btnExcluirPostagem.addEventListener('click', async (e) => {
+  //   const idPostagem = e.currentTarget.dataset.idPostagem;
+  //   await deletarPost(idPostagem);
+  //   await renderPosts();
+  // });
 
   btnDeslogar.addEventListener('click', async () => {
     await deslogar();
