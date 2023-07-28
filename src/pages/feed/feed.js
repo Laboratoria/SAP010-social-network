@@ -92,15 +92,41 @@ export default () => {
 
   const btnPublicar = container.querySelector('#btn-publicar');
   const textarea = container.querySelector('#story');
-  const post = container.querySelector('.post');
+  const textareaVal = textarea.value;
+  console.log(textareaVal);
+
+  // document.addEventListener('load', exibirPosts);
+  exibirPosts() // pega todos os docs ja criados e exibe na tela, como uma array de objetos // se os dados do post forem pegos, printa o post na tela.
+    .then((array) => {
+      printarPost(username, textareaVal);
+      console.log(array);
+      return array;
+    });
+
+  function printarPost(username, conteudo) { // cria um elemento div, adiciona no elemento div um h2 e p, adiciona esse conjunto
+    const postElement = document.createElement('div'); // dentro da div post e exibe na tela
+    postElement.innerHTML = `
+    <h2>${username}</h2>
+    <p>${conteudo}</p>
+    <hr>
+  `;
+    const feedElement = document.querySelector('.post');
+    feedElement.appendChild(postElement);
+  }
 
   btnPublicar.addEventListener('click', () => {
-    const conteudoDoPost = document.createElement('p');
-    conteudoDoPost.textContent = textarea.value;
-    post.appendChild(conteudoDoPost);
-    adicionarPost(username, conteudoDoPost.textContent);
+    // const conteudoDoPost = document.createElement('p');
+    // conteudoDoPost.textContent = textarea.value;
+    // post.appendChild(conteudoDoPost);
+    const texto = textarea.value;
+    adicionarPost(username, texto) // cria uma collection com username e texto. se o doc for criado com sucesso, printa o post na tela
+
+      .then((banana) => {
+        printarPost(username, texto);
+        console.log(banana);
+      })
+    // salvarPost(username, conteudoDoPost.textContent);
     textarea.value = '';
-    window.onload = exibirPosts();
   })
 
   return container;
