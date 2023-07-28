@@ -85,7 +85,7 @@
     color: #FFFF;
 }
 
-#cssfeed .post-feed {
+#cssfeed .post-publicar {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,6 +130,12 @@
     font-weight: bolder;
     border: none;
 }
+
+.post > p {
+    border: #1e1e1e;
+}
+
+
 
 @media (min-width: 768px) {
     .lista-menu {

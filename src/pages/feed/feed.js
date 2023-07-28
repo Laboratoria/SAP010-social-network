@@ -1,4 +1,5 @@
-import { sairDaConta } from '../../lib/firebase';
+import { adicionarPost, exibirPosts, sairDaConta } from '../../lib/firebase';
+import { auth } from '../../lib/firebase-config';
 
 export default () => {
   const container = document.createElement('div');
@@ -34,7 +35,7 @@ export default () => {
     <header>
      <picture id="mulher-feed"><img src="imagens/menina-feed.png"></picture>
     </header>
-    <div class="post-feed">
+    <div class="post-publicar">
     <select name="select-nivel" class="select">
     <option value="selecione" selected>Seu nível de habilidade:</option>
   <option value="iniciante">Iniciante</option>
@@ -44,6 +45,7 @@ export default () => {
       <textarea id="story" name="story" rows="5" cols="33" placeholder="Qual sua dica hoje?"></textarea>
       <button id="btn-publicar">PUBLICAR</button>
    </div>
+   <div class="post"></div>
 
      `;
 
@@ -70,17 +72,36 @@ export default () => {
   botaoSair.addEventListener('click', () => {
     sairDaConta()
       .then(() => {
-      // Sign-out successful.
+        // Sign-out successful.
         alert('Voce saiu');
         window.location.hash = '';
       })
       .catch((error) => {
-      // An error happened.
+        // An error happened.
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error(`${errorCode} - ${errorMessage}`);
       });
   });
+
+  const username = auth.currentUser.displayName;
+  // const select = container.querySelector('.select');
+  // const nivel = select.value;
+
+  // adicionarPost(username, conteudo);
+
+  const btnPublicar = container.querySelector('#btn-publicar');
+  const textarea = container.querySelector('#story');
+  const post = container.querySelector('.post');
+
+  btnPublicar.addEventListener('click', () => {
+    const conteudoDoPost = document.createElement('p');
+    conteudoDoPost.textContent = textarea.value;
+    post.appendChild(conteudoDoPost);
+    adicionarPost(username, conteudoDoPost.textContent);
+    textarea.value = '';
+    window.onload = exibirPosts();
+  })
 
   return container;
 };
