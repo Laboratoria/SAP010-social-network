@@ -20,12 +20,10 @@ export default () => {
 <input type="checkbox" id="check" class="on-off">
  <label for="check" class="check-btn"></label>
  <input type="password" id="input-senha-login" name="senha" placeholder="Senha">
+ 
  </div>
  <div id="mensagemErro"></div>
 <button id="btn-cinza-login">Entrar</button>
-<button id="redefinir-senha" href="/#redefinir-senha">Esqueceu sua senha?</button>
-
-
 <p id="paragrafo-login">Ainda não tem uma conta??&nbsp;<a href="/#cadastro">Cadastre-se</a></p>
   </form>`;
 
