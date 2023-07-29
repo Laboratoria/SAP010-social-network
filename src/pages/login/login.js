@@ -44,7 +44,7 @@ export default () => {
       inputSenha.type = 'password';
     }
   }
-
+  const mensagemFormatada = document.createElement('p');
   checkBtn.addEventListener('change', mostrarSenha);
 
   btnRedefSenha.addEventListener('click', (event) => {
@@ -57,7 +57,6 @@ export default () => {
     const emailDoUsuario = inputEmail.value;
     const senhaDoUsuario = inputSenha.value;
 
-    const mensagemFormatada = document.createElement('p');
 
     function exibirErro(errorCode) {
       const mensagemErroDiv = document.getElementById('mensagemErro');
