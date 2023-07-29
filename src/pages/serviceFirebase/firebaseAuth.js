@@ -46,7 +46,7 @@ const loginGoogle = () => {
 // fetchData();
 
 const fetchData = async () => {
-  const q = query(collection(db, 'post'), orderBy('data', 'desc'));
+  const q = query(collection(db, 'Post'), orderBy('data', 'desc'));
   const querySnapshot = await getDocs(q);
   console.log('querySnapshot:', querySnapshot);
   const posts = []; // Array para armazenar os dados das postagens
@@ -54,6 +54,7 @@ const fetchData = async () => {
   querySnapshot.forEach((docs) => {
     // doc.data() is never undefined for query doc snapshots
     const postData = docs.data();
+    postData.id = docs.id; // Definir o ID do documento como a propriedade "id"
     posts.push(postData); // Adiciona cada postagem no array de posts
   });
 
@@ -91,7 +92,7 @@ const criarPost = async (mensagem) => {
       data: new Date(),
     };
 
-    await addDoc(collection(db, 'post'), novoPost);
+    await addDoc(collection(db, 'Post'), novoPost);
   } catch (error) {
     console.error('Erro ao criar o post:', error);
   }
@@ -101,30 +102,12 @@ const verificaSeUsuarioEstaLogado = async () => {
   const user = await getCurrentUser();
   return !!user; // Retorna true se o usuário estiver logado, caso contrário, retorna false
 };
-// function removeElementById(elementId) {
-//   const element = document.getElementById(elementId);
-//   if (element) {
-//     element.parentNode.removeChild(element);
-//   }
-// }
 
 const deletarPost = async (postId) => {
-  const docRef = doc(db, 'post', postId);
+  const docRef = doc(db, 'Post', postId);
+  console.log('este é o ', postId);
   await deleteDoc(docRef);
 };
-
-// const deletarPost = async (idPostagem) => {
-//   try {
-//     const referenciaDaPostagem = doc(db, 'Post', idPostagem);
-//     console.log('Referência do documento a ser excluído:', referenciaDaPostagem);
-//     await deleteDoc(referenciaDaPostagem);
-//     console.log(idPostagem);
-//     console.log('Post deletado com sucesso!');
-//     removeElementById(`post_${idPostagem}`); // Remover o elemento do post da tela
-//   } catch (error) {
-//     console.log('Erro ao deletar o post:', error);
-//   }
-// };
 
 const manipularMudancaHash = async () => {
   const isLoggedIn = await verificaSeUsuarioEstaLogado();

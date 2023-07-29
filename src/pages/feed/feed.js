@@ -61,27 +61,15 @@ export default async () => {
         <div class="actionBtnPost">
           <img src=${coracao} alt="Curtir" title="Curtir">
           <img src=${editar} alt="Editar" title="Editar">
-          ${isCurrentUserPost ? `<img src=${excluir} alt="Excluir" title="Excluir" data-post-id="${postagem.user_id}" class="excluirPostagem">`
+          ${isCurrentUserPost ? `<img src=${excluir} alt="Excluir" title="Excluir" data-post-id="${postagem.id}" class="excluirPostagem">`
     : ''
 }
         </div>
       </div>
     `;
-
+      console.log('ID da postagem:', postagem.id);
       novoPostElement.innerHTML = postHtml;
       containerPostsElement.appendChild(novoPostElement);
-
-      // Event listener para o botão "Excluir", se existir
-      // const btnExcluir = novoPostElement.querySelector('.excluirPostagem');
-      // if (btnExcluir) {
-      //   btnExcluir.addEventListener('click', async (e) => {
-      //     e.preventDefault();
-      //     const postId = e.currentTarget.dataset.postId;
-      //     console.log('Clicou no botão de exclusão:', postId);
-      //     await deletarPost(postId);
-      //     await renderPosts(); // Atualizar a lista de posts após a exclusão
-      //   });
-      // }
     });
   };
 
@@ -126,7 +114,6 @@ export default async () => {
   const btnDeslogar = containerFeed.querySelector('#iconeSair');
   const btnApagaTexto = containerFeed.querySelector('#apagaTexto');
   const erroMensagemVazia = containerFeed.querySelector('#erro-post-vazio');
-  // const btnExcluirPostagem = containerFeed.querySelector('.excluirPostagem');
 
   btnloguinho.addEventListener('click', () => {
     window.location.hash = '#infopage';
@@ -146,29 +133,19 @@ export default async () => {
     if (mensagemPost.value.length > 1) {
       await criarPost(msg, currentUser.uid);
       mensagemPost.value = '';
-      // erroMensagemVazia.innerHTML = ''; // Limpar a mensagem de erro
-      // Renderizar novamente as postagens após criar uma nova
-      await renderPosts();
+      await renderPosts(); // Atualizar a lista de posts após criar uma nova
     } else {
       erroMensagemVazia.innerHTML = 'Insira um mensagem para ser publicada';
       console.log('mensagem vazia');
     }
   });
 
-  // Renderizar as postagens no carregamento inicial da página
-  await renderPosts();
-
-  // btnExcluirPostagem.addEventListener('click', async (e) => {
-  //   const idPostagem = e.currentTarget.dataset.idPostagem;
-  //   await deletarPost(idPostagem);
-  //   await renderPosts();
-  // });
-
   containerFeed.addEventListener('click', (event) => {
     const target = event.target;
     const deleteButton = target.closest('.excluirPostagem');
     if (deleteButton) {
       const postId = deleteButton.getAttribute('data-post-id');
+      console.log('ID da postagem:', postId); // Mostra o ID da postagem no console
       if (window.confirm('Tem certeza de que deseja excluir a publicação?')) {
         deletarPost(postId)
           .then(() => {
@@ -181,6 +158,7 @@ export default async () => {
       }
     }
   });
+
   btnDeslogar.addEventListener('click', async () => {
     await deslogar();
     console.log('deslogou');
