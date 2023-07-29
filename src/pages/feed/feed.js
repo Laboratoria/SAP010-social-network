@@ -49,85 +49,78 @@ export default () => {
 
      `;
 
-  container.innerHTML = template;
+     container.innerHTML = template;
 
-  const botaoMenu = container.querySelector('#btn-menu');
-
-  function abrirMenu() {
-    const listaMenu = container.querySelector('.lista-menu-mobile');
-
-    if (listaMenu.style.display === 'none') {
-      listaMenu.style.display = 'block';
-    } else if (document.body.clientWidth >= 768) {
-      listaMenu.style.display = 'none';
-    } else {
-      listaMenu.style.display = 'none';
-    }
-  }
-
-  botaoMenu.addEventListener('click', abrirMenu);
-
-  const botaoSair = container.querySelector('#sair');
-
-  botaoSair.addEventListener('click', () => {
-    sairDaConta()
-      .then(() => {
-        // Sign-out successful.
-        alert('Voce saiu');
-        window.location.hash = '';
-      })
-      .catch((error) => {
-        // An error happened.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error(`${errorCode} - ${errorMessage}`);
-      });
-  });
-
-  const username = auth.currentUser.displayName;
-  // const select = container.querySelector('.select');
-  // const nivel = select.value;
-
-  // adicionarPost(username, conteudo);
-
-  const btnPublicar = container.querySelector('#btn-publicar');
-  const textarea = container.querySelector('#story');
-  const textareaVal = textarea.value;
-  console.log(textareaVal);
-
-  // document.addEventListener('load', exibirPosts);
-  exibirPosts() // pega todos os docs ja criados e exibe na tela, como uma array de objetos // se os dados do post forem pegos, printa o post na tela.
-    .then((array) => {
-      printarPost(username, textareaVal);
-      console.log(array);
-      return array;
-    });
-
-  function printarPost(username, conteudo) { // cria um elemento div, adiciona no elemento div um h2 e p, adiciona esse conjunto
-    const postElement = document.createElement('div'); // dentro da div post e exibe na tela
-    postElement.innerHTML = `
-    <h2>${username}</h2>
-    <p>${conteudo}</p>
-    <hr>
-  `;
-    const feedElement = document.querySelector('.post');
-    feedElement.appendChild(postElement);
-  }
-
-  btnPublicar.addEventListener('click', () => {
-    // const conteudoDoPost = document.createElement('p');
-    // conteudoDoPost.textContent = textarea.value;
-    // post.appendChild(conteudoDoPost);
-    const texto = textarea.value;
-    adicionarPost(username, texto) // cria uma collection com username e texto. se o doc for criado com sucesso, printa o post na tela
-
-      .then((banana) => {
-        printarPost(username, texto);
-        console.log(banana);
-      })
-    // salvarPost(username, conteudoDoPost.textContent);
-    textarea.value = '';
-  })
-
-  return container;
-};
+     // Função para abrir o menu
+     function abrirMenu() {
+       const listaMenu = container.querySelector('.lista-menu-mobile');
+   
+       if (listaMenu.style.display === 'none') {
+         listaMenu.style.display = 'block';
+       } else if (document.body.clientWidth >= 768) {
+         listaMenu.style.display = 'none';
+       } else {
+         listaMenu.style.display = 'none';
+       }
+     }
+   
+     // Evento de clique no botão de menu
+     const botaoMenu = container.querySelector('#btn-menu');
+     botaoMenu.addEventListener('click', abrirMenu);
+   
+     // Evento de clique no botão de sair
+     const botaoSair = container.querySelector('#sair');
+     botaoSair.addEventListener('click', () => {
+       sairDaConta()
+         .then(() => {
+           alert('Você saiu');
+           window.location.hash = '';
+         })
+         .catch((error) => {
+           const errorCode = error.code;
+           const errorMessage = error.message;
+           console.error(`${errorCode} - ${errorMessage}`);
+         });
+     });
+   
+     // Obter o nome de usuário atual
+     const username = auth.currentUser.displayName;
+   
+     // Função para exibir um post na tela
+     function printarPost(username, conteudo) {
+       const postElement = document.createElement('div');
+       postElement.innerHTML = `
+         <h2>${username}</h2>
+         <p>${conteudo}</p>
+         <hr>
+       `;
+       const feedElement = container.querySelector('.post');
+       feedElement.appendChild(postElement);
+     }
+   
+     // Exibir todos os posts ao carregar a página
+     exibirPosts().then((array) => {
+       array.forEach((post) => {
+         printarPost(post.username, post.conteudo);
+       });
+     });
+   
+     // Evento de clique no botão de publicar
+     const btnPublicar = container.querySelector('#btn-publicar');
+     btnPublicar.addEventListener('click', () => {
+       const textarea = container.querySelector('#story');
+       const texto = textarea.value;
+       
+       adicionarPost(username, texto)
+         .then(() => {
+           printarPost(username, texto);
+         })
+         .catch((error) => {
+           console.error('Erro ao adicionar o post:', error);
+         });
+       
+       textarea.value = '';
+     });
+   
+     return container;
+   };
