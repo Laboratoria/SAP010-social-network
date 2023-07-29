@@ -45,10 +45,9 @@ export default () => {
       inputSenha.type = 'password';
     }
   }
-
+  const mensagemFormatada = document.createElement('p');
   checkBtn.addEventListener('change', mostrarSenha);
 
-  const mensagemFormatada = document.createElement('p');
 
   botaoCadastrar.addEventListener('click', (event) => {
     event.preventDefault();
@@ -57,11 +56,13 @@ export default () => {
     const nomeDoUsuario = inputNome.value;
     const caixaDeTexto = container.querySelector('#caixaDeTexto');
 
+
     function exibirErro(errorCode) {
       const mensagemErroDiv = document.getElementById('mensagemErro');
       mensagemFormatada.textContent = `${errorCode}`;
       mensagemErroDiv.appendChild(mensagemFormatada);
     }
+
 
     if (nomeDoUsuario === '') {
       exibirErro('Por favor,insira seu nome');

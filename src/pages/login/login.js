@@ -44,7 +44,7 @@ export default () => {
       inputSenha.type = 'password';
     }
   }
-
+  const mensagemFormatada = document.createElement('p');
   checkBtn.addEventListener('change', mostrarSenha);
 
   btnRedefSenha.addEventListener('click', (event) => {
@@ -52,7 +52,6 @@ export default () => {
     window.location.hash = '#redefinir-senha';
   });
 
-  const mensagemFormatada = document.createElement('p');
 
   botaoEntrar.addEventListener('click', (event) => {
     event.preventDefault();
