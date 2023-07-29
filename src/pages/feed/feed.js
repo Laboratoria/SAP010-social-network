@@ -44,44 +44,44 @@ export default async () => {
     posts.forEach((postagem) => {
       const novoPostElement = document.createElement('div');
       novoPostElement.className = 'novo-post';
+      novoPostElement.id = `post_${postagem.id}`; // Adicionar um ID único para o post
+
+      // Verificar se o usuário logado é o mesmo do usuário associado ao post
+      const isCurrentUserPost = currentUser && currentUser.uid === postagem.user_id;
 
       const postHtml = `
-    <div id="containerPosts2" class="containerPostVerde">
-      <div class="nomeTipo">
-        <strong>${postagem.nome}</strong>
-        <p>Paciente</p>
-      </div>
-      <div class="espacoBranco">
-        <p>${postagem.mensagem}</p>
-      </div>
-      <div class="actionBtnPost">
-        <img src=${coracao} alt="Curtir" title="Curtir">
-        <img src=${editar} alt="Editar" title="Editar">
-        ${
-  // Verificar se o usuário logado é o mesmo do usuário associado ao post
-  currentUser && currentUser.uid === postagem.user_id
-    ? `<img src=${excluir} alt="Excluir" title="Excluir" data-post-id="${postagem.user_id
-    }" class="excluirPostagem">`
+      <div id="containerPosts2" class="containerPostVerde">
+        <div class="nomeTipo">
+          <strong>${postagem.nome}</strong>
+          <p>Paciente</p>
+        </div>
+        <div class="espacoBranco">
+          <p>${postagem.mensagem}</p>
+        </div>
+        <div class="actionBtnPost">
+          <img src=${coracao} alt="Curtir" title="Curtir">
+          <img src=${editar} alt="Editar" title="Editar">
+          ${isCurrentUserPost ? `<img src=${excluir} alt="Excluir" title="Excluir" data-post-id="${postagem.user_id}" class="excluirPostagem">`
     : ''
 }
+        </div>
       </div>
-    </div>
-  `;
+    `;
 
       novoPostElement.innerHTML = postHtml;
       containerPostsElement.appendChild(novoPostElement);
 
       // Event listener para o botão "Excluir", se existir
-      const btnExcluir = novoPostElement.querySelector('.excluirPostagem');
-      if (btnExcluir) {
-        btnExcluir.addEventListener('click', async (e) => {
-          e.preventDefault();
-          const postId = e.currentTarget.dataset.postId;
-          console.log('Clicou no botão de exclusão:', postId);
-          await deletarPost(postId);
-          await renderPosts(); // Atualizar a lista de posts após a exclusão
-        });
-      }
+      // const btnExcluir = novoPostElement.querySelector('.excluirPostagem');
+      // if (btnExcluir) {
+      //   btnExcluir.addEventListener('click', async (e) => {
+      //     e.preventDefault();
+      //     const postId = e.currentTarget.dataset.postId;
+      //     console.log('Clicou no botão de exclusão:', postId);
+      //     await deletarPost(postId);
+      //     await renderPosts(); // Atualizar a lista de posts após a exclusão
+      //   });
+      // }
     });
   };
 
@@ -164,6 +164,23 @@ export default async () => {
   //   await renderPosts();
   // });
 
+  containerFeed.addEventListener('click', (event) => {
+    const target = event.target;
+    const deleteButton = target.closest('.excluirPostagem');
+    if (deleteButton) {
+      const postId = deleteButton.getAttribute('data-post-id');
+      if (window.confirm('Tem certeza de que deseja excluir a publicação?')) {
+        deletarPost(postId)
+          .then(() => {
+            deleteButton.closest('.novo-post').remove();
+            alert('Publicação excluída com sucesso!');
+          })
+          .catch((error) => {
+            alert('Ocorreu um erro ao excluir o post. Por favor, tente novamente mais tarde', error);
+          });
+      }
+    }
+  });
   btnDeslogar.addEventListener('click', async () => {
     await deslogar();
     console.log('deslogou');
