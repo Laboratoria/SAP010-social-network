@@ -6,7 +6,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import {
-  collection, addDoc, query, getDocs, orderBy,
+  collection, addDoc, query, getDocs, orderBy, deleteDoc, doc,
 } from 'firebase/firestore';
 import { app, db } from '../../firebaseInit.config.js';
 
@@ -54,6 +54,7 @@ const fetchData = async () => {
   querySnapshot.forEach((docs) => {
     // doc.data() is never undefined for query doc snapshots
     const postData = docs.data();
+    postData.id = docs.id; // Definir o ID do documento como a propriedade "id"
     posts.push(postData); // Adiciona cada postagem no array de posts
   });
 
@@ -102,6 +103,12 @@ const verificaSeUsuarioEstaLogado = async () => {
   return !!user; // Retorna true se o usuário estiver logado, caso contrário, retorna false
 };
 
+const deletarPost = async (postId) => {
+  const docRef = doc(db, 'Post', postId);
+  console.log('este é o ', postId);
+  await deleteDoc(docRef);
+};
+
 const manipularMudancaHash = async () => {
   const isLoggedIn = await verificaSeUsuarioEstaLogado();
   const newHash = window.location.hash;
@@ -115,5 +122,5 @@ const manipularMudancaHash = async () => {
 
 export {
   createUser, login, addonAuthStateChanged, loginGoogle, createUserWithEmailAndPassword, criarPost,
-  deslogar, fetchData, getCurrentUser, atualizaPerfil, manipularMudancaHash,
+  deslogar, fetchData, getCurrentUser, atualizaPerfil, manipularMudancaHash, deletarPost,
 };

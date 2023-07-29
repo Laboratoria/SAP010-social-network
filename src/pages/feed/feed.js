@@ -9,7 +9,7 @@ import editar from '../imagens/icones/editar.png';
 import excluir from '../imagens/icones/excluir.png';
 
 import {
-  criarPost, deslogar, getCurrentUser, fetchData,
+  criarPost, deslogar, getCurrentUser, fetchData, deletarPost,
 } from '../serviceFirebase/firebaseAuth';
 
 export default async () => {
@@ -19,9 +19,11 @@ export default async () => {
   const dados = await getCurrentUser();
   console.log(dados);
 
+  // Obter o usuário logado
+  const currentUser = await getCurrentUser();
+
   const renderPosts = async () => {
     console.log('Renderizando posts...');
-    // const dados = await getCurrentUser();
     const posts = await fetchData();
     console.log(posts);
 
@@ -35,12 +37,18 @@ export default async () => {
     // Limpar o conteúdo do container antes de renderizar novamente as postagens
     containerPostsElement.innerHTML = '';
 
+    // // Obter o usuário logado
+    // const currentUser = await getCurrentUser();
+
     // Agora, iteramos pelo array de posts e criamos os elementos para renderizar as postagens
     posts.forEach((postagem) => {
       const novoPostElement = document.createElement('div');
       novoPostElement.className = 'novo-post';
+      novoPostElement.id = `post_${postagem.id}`; // Adicionar um ID único para o post
 
-      // O conteúdo da nova publicação, por exemplo:
+      // Verificar se o usuário logado é o mesmo do usuário associado ao post
+      const isCurrentUserPost = currentUser && currentUser.uid === postagem.user_id;
+
       const postHtml = `
       <div id="containerPosts2" class="containerPostVerde">
         <div class="nomeTipo">
@@ -53,11 +61,13 @@ export default async () => {
         <div class="actionBtnPost">
           <img src=${coracao} alt="Curtir" title="Curtir">
           <img src=${editar} alt="Editar" title="Editar">
-          <img src=${excluir} alt="Excluir" title="Excluir" >
+          ${isCurrentUserPost ? `<img src=${excluir} alt="Excluir" title="Excluir" data-post-id="${postagem.id}" class="excluirPostagem">`
+    : ''
+}
         </div>
       </div>
     `;
-
+      console.log('ID da postagem:', postagem.id);
       novoPostElement.innerHTML = postHtml;
       containerPostsElement.appendChild(novoPostElement);
     });
@@ -121,22 +131,33 @@ export default async () => {
   btnPublicar.addEventListener('click', async () => {
     const msg = mensagemPost.value;
     if (mensagemPost.value.length > 1) {
-      await criarPost(msg);
+      await criarPost(msg, currentUser.uid);
       mensagemPost.value = '';
-      // erroMensagemVazia.innerHTML = ''; // Limpar a mensagem de erro
-      // Renderizar novamente as postagens após criar uma nova
-      await renderPosts();
+      await renderPosts(); // Atualizar a lista de posts após criar uma nova
     } else {
       erroMensagemVazia.innerHTML = 'Insira um mensagem para ser publicada';
       console.log('mensagem vazia');
     }
   });
 
-  // Renderizar as postagens no carregamento inicial da página
-  await renderPosts();
-
-  // Registrar a função handleHashChange para o evento hashchange
-  // window.addEventListener('hashchange', handleHashChange);
+  containerFeed.addEventListener('click', (event) => {
+    const target = event.target;
+    const deleteButton = target.closest('.excluirPostagem');
+    if (deleteButton) {
+      const postId = deleteButton.getAttribute('data-post-id');
+      console.log('ID da postagem:', postId); // Mostra o ID da postagem no console
+      if (window.confirm('Tem certeza de que deseja excluir a publicação?')) {
+        deletarPost(postId)
+          .then(() => {
+            deleteButton.closest('.novo-post').remove();
+            alert('Publicação excluída com sucesso!');
+          })
+          .catch((error) => {
+            alert('Ocorreu um erro ao excluir o post. Por favor, tente novamente mais tarde', error);
+          });
+      }
+    }
+  });
 
   btnDeslogar.addEventListener('click', async () => {
     await deslogar();
