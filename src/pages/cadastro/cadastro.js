@@ -48,6 +48,7 @@ export default () => {
   const mensagemFormatada = document.createElement('p');
   checkBtn.addEventListener('change', mostrarSenha);
 
+
   botaoCadastrar.addEventListener('click', (event) => {
     event.preventDefault();
     const emailDoUsuario = inputEmail.value;
