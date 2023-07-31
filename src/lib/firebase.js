@@ -20,7 +20,7 @@ export function cadastrarUsuario(email, senha) {
 
 export function atualizarNomeDoUsuario(nome) {
   return updateProfile(auth.currentUser, {
-    displayName: nome, photoURL: 'https://static.thenounproject.com/png/5034901-200.png',
+    displayName: nome,
   });
 }
 
@@ -36,13 +36,14 @@ export function redefinirSenha(email) {
   return sendPasswordResetEmail(auth, email);
 }
 
-export async function adicionarPost(username, conteudo) {
+export async function adicionarPost(username, conteudo, nivel) {
   try {
 
     const docRef = await addDoc(collection(db, "posts"), {
       username: auth.currentUser.displayName,
       uid: auth.currentUser.uid,
       conteudo,
+      nivel,
     });
     console.log("Document written with ID: ", docRef.id);
     return { username, conteudo };
