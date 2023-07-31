@@ -13,16 +13,15 @@ import { app, db } from '../../firebaseInit.config.js';
 
 export const auth = getAuth(app);
 
-const createUser = async (email, senha) => {
+const criarUsuario = async (email, senha) => {
   await createUserWithEmailAndPassword(auth, email, senha);
 };
 
-const atualizaPerfil = (nome) => updateProfile(auth.currentUser, {
+const atualizaPerfil = (nome) => updateProfile(auth.currentUser, { // testar
   displayName: nome,
 });
 
 const login = (email, senha) => signInWithEmailAndPassword(auth, email, senha);
-const addonAuthStateChanged = (callback) => onAuthStateChanged(auth, callback);
 
 const deslogar = async () => {
   await signOut(auth);
@@ -33,27 +32,13 @@ const loginGoogle = () => {
   return signInWithPopup(auth, provider);
 };
 
-// essa função nos permite ler o banco de dados
-// Fizemos com a Nury
-// const fetchData = async () => {
-//   const q = query(collection(db, 'Post'));
-//   const querySnapshot = await getDocs(q);
-//   querySnapshot.forEach((docs) => {
-//     // doc.data() is never undefined for query doc snapshots
-//     console.log(docs.id, '=>', docs.data());
-//   });
-// };
-
-// fetchData();
-
-const fetchData = async () => {
+const fetchData = async () => { // testar
   const q = query(collection(db, 'Post'), orderBy('data', 'desc'));
   const querySnapshot = await getDocs(q);
   console.log('querySnapshot:', querySnapshot);
   const posts = []; // Array para armazenar os dados das postagens
 
   querySnapshot.forEach((docs) => {
-    // doc.data() is never undefined for query doc snapshots
     const postData = docs.data();
     postData.id = docs.id; // Definir o ID do documento como a propriedade "id"
     posts.push(postData); // Adiciona cada postagem no array de posts
@@ -65,7 +50,7 @@ const fetchData = async () => {
 const auth1 = getAuth();
 
 // Função para obter o usuário atual autenticado
-const getCurrentUser = () => new Promise((resolve, reject) => {
+const usuarioAtual = () => new Promise((resolve, reject) => { // testar
   const unsubscribe = onAuthStateChanged(auth1, (user) => {
     unsubscribe();
     resolve(user);
@@ -73,18 +58,13 @@ const getCurrentUser = () => new Promise((resolve, reject) => {
   }, reject);
 });
 
-const criarPost = async (mensagem) => {
+const criarPost = async (mensagem) => { // testar
   try {
-    const user = await getCurrentUser();
+    const user = await usuarioAtual();
     if (!user) {
       console.log('Usuário não autenticado');
       return;
     }
-    // estas const nos possibilita pegar a hora e o minuto que o post foi gerado
-    // const tempo = new Date('julho 27, 2023 16:42:00');
-    // const horas = tempo.toLocaleTimeString('pt-BR');
-    // para fazer dessa maneira eu teria que fazer mais linhas de código
-    // então resolvi deixar no mais simples
 
     // Dados do novo post que você deseja criar
     const novoPost = {
@@ -100,13 +80,13 @@ const criarPost = async (mensagem) => {
   }
 };
 
-const deletarPost = async (postId) => {
+const deletarPost = async (postId) => { // testar
   const docRef = doc(db, 'Post', postId);
   console.log('este é o ', postId);
   await deleteDoc(docRef);
 };
 
-const editarPost = async (postId, novaMensagem) => {
+const editarPost = async (postId, novaMensagem) => { // testar
   console.log(postId, novaMensagem);
   const refDoc = doc(db, 'Post', postId);
   await updateDoc(refDoc, {
@@ -114,11 +94,11 @@ const editarPost = async (postId, novaMensagem) => {
   });
 };
 
-const manipularMudancaHash = async () => {
-  const isLoggedIn = await getCurrentUser();
-  const newHash = window.location.hash;
+const manipularMudancaHash = async () => { // testar
+  const estaLogado = await usuarioAtual();
+  const novaHash = window.location.hash;
 
-  if (!isLoggedIn && newHash !== '#login') {
+  if (!estaLogado && novaHash !== '#login') {
     // Se o usuário não estiver logado e a nova hash não for "#login",
     // redireciona para a página de login
     window.location.hash = '#login';
@@ -126,7 +106,8 @@ const manipularMudancaHash = async () => {
 };
 
 export {
-  createUser, login, addonAuthStateChanged, loginGoogle, createUserWithEmailAndPassword, criarPost,
-  deslogar, fetchData, getCurrentUser, atualizaPerfil, manipularMudancaHash, deletarPost,
+  criarUsuario, login,
+  loginGoogle, createUserWithEmailAndPassword, criarPost,
+  deslogar, fetchData, usuarioAtual, atualizaPerfil, manipularMudancaHash, deletarPost,
   editarPost,
 };

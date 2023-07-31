@@ -3,7 +3,7 @@ import {
   createUserWithEmailAndPassword, getAuth, signInWithPopup, signInWithEmailAndPassword, signOut,
 } from 'firebase/auth';
 import {
-  createUser, loginGoogle, login, deslogar,
+  criarUsuario, loginGoogle, login, deslogar,
 } from '../src/pages/serviceFirebase/firebaseAuth.js';
 
 jest.mock('firebase/auth');
@@ -16,9 +16,9 @@ const mockUser = {
   },
 };
 
-describe('createUser is a function', () => {
+describe('criarUsuario is a function', () => {
   it('É uma função', () => {
-    expect(typeof createUser).toBe('function');
+    expect(typeof criarUsuario).toBe('function');
   });
   it('Criou um novo usuário', async () => {
     const authMock = getAuth();
@@ -26,7 +26,7 @@ describe('createUser is a function', () => {
     const nome = 'Camila';
     const email = 'test@example.com';
     const senha = '123456';
-    await createUser(nome, email, senha);
+    await criarUsuario(nome, email, senha);
 
     expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(authMock, email, senha);
   });
@@ -70,17 +70,4 @@ describe('deslogar', () => {
     // Verifica se a função signOut foi chamada apenas uma vez
     expect(signOut).toHaveBeenCalledTimes(1);
   });
-
-  // it('Usuário não autenticado', async () => {
-  //   // Mock do getAuth para retornar um valor nulo (usuário não autenticado)
-  //   jest.spyOn(getAuth, 'getAuth').mockReturnValue(null);
-
-  //   const signOutMock = jest.fn();
-  //   signOut.mockResolvedValue(signOutMock);
-
-  //   await deslogar();
-
-  //   // Verifica se a função signOut não foi chamada, pois o usuário não está autenticado
-  //   expect(signOutMock).not.toHaveBeenCalled();
-  // });
 });

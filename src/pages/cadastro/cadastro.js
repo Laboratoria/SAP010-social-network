@@ -1,7 +1,7 @@
 import './cadastro.css';
 
 import CBD from '../imagens/CBDCNNCT-IMG/logodesktopsemsombra.png';
-import { createUser, atualizaPerfil } from '../serviceFirebase/firebaseAuth.js';
+import { criarUsuario, atualizaPerfil } from '../serviceFirebase/firebaseAuth.js';
 
 export default () => {
   const containerCadastro = document.createElement('section');
@@ -108,7 +108,7 @@ export default () => {
       confirmarSenha.classList.remove('borda-vermelha');
     });
 
-    createUser(nome.value, email.value, senha.value)
+    criarUsuario(nome.value, email.value, senha.value)
       .then(() => {
         atualizaPerfil(nome.value);
         // usuário cadastrado com sucesso
