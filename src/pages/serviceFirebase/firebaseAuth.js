@@ -68,6 +68,7 @@ const getCurrentUser = () => new Promise((resolve, reject) => {
   const unsubscribe = onAuthStateChanged(auth1, (user) => {
     unsubscribe();
     resolve(user);
+    return !!user;// Retorna true se o usuário estiver logado, caso contrário, retorna false
   }, reject);
 });
 
@@ -98,11 +99,6 @@ const criarPost = async (mensagem) => {
   }
 };
 
-const verificaSeUsuarioEstaLogado = async () => {
-  const user = await getCurrentUser();
-  return !!user; // Retorna true se o usuário estiver logado, caso contrário, retorna false
-};
-
 const deletarPost = async (postId) => {
   const docRef = doc(db, 'Post', postId);
   console.log('este é o ', postId);
@@ -110,7 +106,7 @@ const deletarPost = async (postId) => {
 };
 
 const manipularMudancaHash = async () => {
-  const isLoggedIn = await verificaSeUsuarioEstaLogado();
+  const isLoggedIn = await getCurrentUser();
   const newHash = window.location.hash;
 
   if (!isLoggedIn && newHash !== '#login') {

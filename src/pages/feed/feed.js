@@ -165,5 +165,6 @@ export default async () => {
     window.location.href = '#home';
   });
 
+  renderPosts();
   return containerFeed;
 };
