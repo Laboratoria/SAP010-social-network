@@ -35,7 +35,7 @@ export default () => {
 
   <button type="submit" id="btnCriar" class="entrar centro" >CRIAR CONTA</button>
   
-  </form
+  </form>
   </div>
 
   
