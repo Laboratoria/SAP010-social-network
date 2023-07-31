@@ -1,3 +1,4 @@
+import logo_mundo_azul from "../Imagens/Mundo_azul_logo.png"
 export function recuperarSenha () {
     const containerRecuperação = document.createElement("div"); 
     
@@ -9,7 +10,7 @@ export function recuperarSenha () {
 
      <div class = "container-recuperação">
 
-     <img src= "logo_mundo_azul.jpg" alt = "Logo da página"> 
+     <img src= ${logo_mundo_azul} alt="Logo da página"> 
 
       <p>Informe o e-mail ultilizado no cadastrado e enviaremos em instantes um e-mail para
        a recuperação da sua senha.</p>
