@@ -3,8 +3,6 @@ import { login, loginGoogle } from '../serviceFirebase/firebaseAuth';
 import CBD from '../imagens/CBDCNNCT-IMG/logodesktopsemsombra.png';
 import google from '../imagens/google.png';
 
-// import facebook from '../imagens/facebook.png';
-
 export default () => {
   const containerLogin = document.createElement('section');
   containerLogin.classList.add('container-login');
@@ -35,12 +33,6 @@ export default () => {
   
   </div>
   </div>`;
-
-  // <img class="img-facebook" src=${facebook} alt="logo Facebook">
-  /* <button id="btnEntrar" type="submit" class="entrar centro">
-  ENTRAR
-</button>; */
-  // <a id="btnEntrar" class="entrar centro" href="/#feed">ENTRAR</a>
 
   containerLogin.innerHTML = templateLogin;
 
@@ -102,59 +94,3 @@ export default () => {
 
   return containerLogin;
 };
-
-// const passAlert = containerLogin.querySelector('#pass-alert');
-
-// function validarSenha() {
-//   const passInputValue = senha.value;
-//   if (!passInputValue) {
-//     passAlert.textContent = 'Senha inválida';
-//   };
-// const buttonLogin = containerLogin.querySelector("#btnEntrar");
-// buttonLogin.addEventListener("click", () => {
-//   const email = containerLogin.querySelector("#email");
-//   const senha = containerLogin.querySelector("#senha");
-//   login(email.value, senha.value)
-//     .then(() => {
-//       window.location.hash = "#feed";
-//     })
-
-//     .catch((error) => {
-
-//       if (error.message === "Firebase: Error (auth/user-not-found).") {
-//         alert("Usuário não encontrado");
-//       } else if (error.message === "Firebase: Error (auth/wrong-password).") {
-//         alert("Senha incorreta");
-//       }
-//     });
-// });
-
-// const btnEntrar = containerLogin.querySelector("#btnEntrar");
-// window.onload = function () {
-//   btnEntrar.addEventListener("click", () => {
-//     const email = containerLogin.querySelector("#email");
-//     const senha = containerLogin.querySelector("#senha");
-//     login(email.value, senha.value)
-//       .then(() => {
-//         window.location.hash = "#feed";
-//       })
-//       .catch((error) => {
-//         if (error.message === "Firebase: Error (auth/user-not-found).") {
-//           alert("Usuário não encontrado.");
-//         } else if (
-//           error.message === "Firebase: Error (auth/wrong-password)."
-//         ) {
-//           alert("Senha incorreta");
-//         }
-//         // console.log("");
-//       });
-// });
-
-// const entrarGoogle = document.getElementById("entrarGoogle");
-/* evento para entrar com a conta google */
-// entrarGoogle.addEventListener("click", (e) => {
-//   const entrar = e.target.value;
-//   console.log(entrar);
-// });
-
-// <span id="cadastro" class="texto1 centro">Criar nova conta</span>

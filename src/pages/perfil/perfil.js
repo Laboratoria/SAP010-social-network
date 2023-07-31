@@ -5,10 +5,13 @@ import novoPost from '../imagens/icones/novoPost.png';
 import sair from '../imagens/icones/sair.png';
 import voltar from '../imagens/icones/voltar.png';
 import imgPerfil from '../imagens/icones/imgPerfil.png';
+import { usuarioAtual } from '../serviceFirebase/firebaseAuth';
 
-export default () => {
+export default async () => {
   const containerPerfil = document.createElement('section');
   containerPerfil.classList.add('container-perfil');
+  const dados = await usuarioAtual();
+  console.log(dados);
 
   const templatePerfil = `
   <a href="#infopage" id="iconeLoguinho">
@@ -21,8 +24,8 @@ export default () => {
   <p> SOU PACIENTE </p>
  
   <div>
-  <p class="input centro"> Camila </p>
-  <p class="input centro"> teste@teste.com </p>
+  <p class="input centro"> ${dados.displayName} </p>
+  <p class="input centro"> ${dados.email} </p>
   </div>
   
 
@@ -35,12 +38,6 @@ export default () => {
   `;
 
   containerPerfil.innerHTML = templatePerfil;
-
-  // const btnloguinho = containerPerfil.querySelector('#ir-infopage1');
-
-  // btnloguinho.addEventListener('click', () => {
-  //   window.location.hash = '#infopage';
-  // });
 
   return containerPerfil;
 };

@@ -90,8 +90,7 @@ export default () => {
   const btnDeslogar = containerInfopage.querySelector('#iconeSair');
   btnDeslogar.addEventListener('click', async () => {
     await deslogar();
-    console.log('deslogou');
-    window.location.href = '#home';
+    window.location.href = '#login';
   });
 
   return containerInfopage;

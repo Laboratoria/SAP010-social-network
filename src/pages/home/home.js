@@ -1,7 +1,6 @@
 // import CBD from "../imagens/CBD.png";
 import './home.css';
 import CBD from '../imagens/CBDCNNCT-IMG/logodesktopsombreada.png';
-// import "../../main.js";
 
 export default () => {
   const container = document.createElement('section');
@@ -20,5 +19,3 @@ export default () => {
   container.innerHTML = templateHome;
   return container;
 };
-
-// <p id="entrar"class="seta">&rarr;</p>
