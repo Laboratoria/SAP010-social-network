@@ -69,7 +69,7 @@ const getCurrentUser = () => new Promise((resolve, reject) => {
   const unsubscribe = onAuthStateChanged(auth1, (user) => {
     unsubscribe();
     resolve(user);
-    return !!user;
+    return !!user;// Retorna true se o usuário estiver logado, caso contrário, retorna false
   }, reject);
 });
 
@@ -99,11 +99,6 @@ const criarPost = async (mensagem) => {
     console.error('Erro ao criar o post:', error);
   }
 };
-
-// const verificaSeUsuarioEstaLogado = async () => {
-//   const user = await getCurrentUser();
-//   return !!user;// Retorna true se o usuário estiver logado, caso contrário, retorna false
-// };
 
 const deletarPost = async (postId) => {
   const docRef = doc(db, 'Post', postId);
