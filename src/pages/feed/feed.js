@@ -84,7 +84,7 @@ export default () => {
   });
 
   // Obter o nome de usuário atual
-  const username = auth.currentUser.displayName;
+  const nome = auth.currentUser.displayName;
 
   // Função para exibir um post na tela
   function printarPost(username, conteudo, nivel) {
@@ -93,7 +93,7 @@ export default () => {
          <header><h2>${username}</h2>
          <h3 class='nivel'>${nivel}</h3></header>
          <span><p>${conteudo}</p></span>
-       `;
+         <img src='imagens/icon-like.png'>`;
     const feedElement = container.querySelector('.post');
     feedElement.appendChild(postElement);
   }
@@ -119,15 +119,15 @@ export default () => {
     const textarea = container.querySelector('#story');
     const texto = textarea.value;
     const selectNivel = container.querySelector('.select');
-    let nivel = selectNivel.value;
+    const nivel = selectNivel.value;
 
     if (nivel === 'selecione') {
       alert('selecione seu nivel');
       event.preventDefault();
     } else {
-      adicionarPost(username, texto, nivel)
+      adicionarPost(nome, texto, nivel)
         .then(() => {
-          printarPost(username, texto, nivel);
+          printarPost(nome, texto, nivel);
         })
         .catch((error) => {
           console.error('Erro ao adicionar o post:', error);

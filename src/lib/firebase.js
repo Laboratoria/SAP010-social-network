@@ -11,8 +11,8 @@ import {
   signOut,
   sendPasswordResetEmail,
 } from 'firebase/auth';
-import { auth, db } from './firebase-config.js';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { auth, db } from './firebase-config.js';
 
 export function cadastrarUsuario(email, senha) {
   return createUserWithEmailAndPassword(auth, email, senha);
@@ -38,23 +38,22 @@ export function redefinirSenha(email) {
 
 export async function adicionarPost(username, conteudo, nivel) {
   try {
-
-    const docRef = await addDoc(collection(db, "posts"), {
+    const docRef = await addDoc(collection(db, 'posts'), {
       username: auth.currentUser.displayName,
       uid: auth.currentUser.uid,
       conteudo,
       nivel,
     });
-    console.log("Document written with ID: ", docRef.id);
-    return { username, conteudo };
+    console.log('Document written with ID: ', docRef.id);
   } catch (e) {
-    console.error("Error adding document: ", e);
+    console.error('Error adding document: ', e);
   }
-};
+  return { username, conteudo };
+}
 
 export async function exibirPosts() {
   try {
-    const querySnapshot = await getDocs(collection(db, "posts"));
+    const querySnapshot = await getDocs(collection(db, 'posts'));
     const feedElement = document.querySelector('.post');
     feedElement.innerHTML = '';
     const array = [];
@@ -67,9 +66,9 @@ export async function exibirPosts() {
       //   feedElement.appendChild(postElement);
       array.push(doc.data());
       // console.log(`${doc.id} => ${doc.data()}`);
+      return array;
     });
-    return array;
   } catch (error) {
     console.error('erro ao obter os posts', error);
   }
-};
+}
