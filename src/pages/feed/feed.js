@@ -10,6 +10,7 @@ import excluir from '../imagens/icones/excluir.png';
 
 import {
   criarPost, deslogar, getCurrentUser, fetchData, deletarPost,
+  editarPost,
 } from '../serviceFirebase/firebaseAuth';
 
 export default async () => {
@@ -60,7 +61,7 @@ export default async () => {
         </div>
         <div class="actionBtnPost">
           <img src=${coracao} alt="Curtir" title="Curtir">
-          <img src=${editar} alt="Editar" title="Editar">
+          ${isCurrentUserPost ? `<img src=${editar} alt="Editar" title="Editar" data-post-id="${postagem.id}" class="editarPostagem">` : ''}
           ${isCurrentUserPost ? `<img src=${excluir} alt="Excluir" title="Excluir" data-post-id="${postagem.id}" class="excluirPostagem">`
     : ''
 }
@@ -74,7 +75,7 @@ export default async () => {
   };
 
   const containerPublicacaoPost = `
-   <div class="containerPostVerde fixo">
+   <div class="containerPostVerde">
       <div class="nomeTipo">
         <strong>${dados.displayName}</strong>
         <p>Paciente</p>
@@ -143,6 +144,7 @@ export default async () => {
   containerFeed.addEventListener('click', (event) => {
     const target = event.target;
     const deleteButton = target.closest('.excluirPostagem');
+    const editarButton = target.closest('.editarPostagem');
     if (deleteButton) {
       const postId = deleteButton.getAttribute('data-post-id');
       console.log('ID da postagem:', postId); // Mostra o ID da postagem no console
@@ -150,12 +152,30 @@ export default async () => {
         deletarPost(postId)
           .then(() => {
             deleteButton.closest('.novo-post').remove();
+            console.log();
             alert('Publicação excluída com sucesso!');
           })
           .catch((error) => {
             alert('Ocorreu um erro ao excluir o post. Por favor, tente novamente mais tarde', error);
           });
       }
+    }
+
+    if (editarButton) {
+      const postId = editarButton.getAttribute('data-post-id');
+      const postElement = editarButton.closest('.novo-post');
+      const mensagemDoPost = postElement.querySelector('.espacoBranco p').textContent;
+      const novaMensagem = window.prompt(`Editar Post: ${mensagemDoPost}`);
+      editarPost(postId, novaMensagem)
+        .then(() => {
+          editarButton.closest('.novo-post').textContent = novaMensagem;
+          console.log();
+          alert('Publicação editada com sucesso!');
+          renderPosts();
+        })
+        .catch((error) => {
+          alert('Ocorreu um erro ao editar o post. Por favor, tente novamente mais tarde', error);
+        });
     }
   });
 
@@ -164,6 +184,8 @@ export default async () => {
     console.log('deslogou');
     window.location.href = '#home';
   });
+
+  renderPosts();
 
   return containerFeed;
 };
