@@ -7,6 +7,7 @@ import {
 } from 'firebase/auth';
 import {
   collection, addDoc, query, getDocs, orderBy, deleteDoc, doc,
+  updateDoc,
 } from 'firebase/firestore';
 import { app, db } from '../../firebaseInit.config.js';
 
@@ -105,6 +106,14 @@ const deletarPost = async (postId) => {
   await deleteDoc(docRef);
 };
 
+const editarPost = async (postId, novaMensagem) => {
+  console.log(postId, novaMensagem);
+  const refDoc = doc(db, 'Post', postId);
+  await updateDoc(refDoc, {
+    mensagem: novaMensagem,
+  });
+};
+
 const manipularMudancaHash = async () => {
   const isLoggedIn = await getCurrentUser();
   const newHash = window.location.hash;
@@ -119,4 +128,5 @@ const manipularMudancaHash = async () => {
 export {
   createUser, login, addonAuthStateChanged, loginGoogle, createUserWithEmailAndPassword, criarPost,
   deslogar, fetchData, getCurrentUser, atualizaPerfil, manipularMudancaHash, deletarPost,
+  editarPost,
 };
