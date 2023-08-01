@@ -3,7 +3,7 @@ import {
   createUserWithEmailAndPassword, getAuth, signInWithPopup, signInWithEmailAndPassword, signOut,
 } from 'firebase/auth';
 import {
-  criarUsuario, loginGoogle, login, deslogar,
+  criarUsuario, loginGoogle, login, deslogar, deletarPost,
 } from '../src/pages/serviceFirebase/firebaseAuth.js';
 
 jest.mock('firebase/auth');
@@ -23,10 +23,9 @@ describe('criarUsuario is a function', () => {
   it('Criou um novo usuário', async () => {
     const authMock = getAuth();
     createUserWithEmailAndPassword.mockResolvedValue(mockUser);
-    const nome = 'Camila';
     const email = 'test@example.com';
     const senha = '123456';
-    await criarUsuario(nome, email, senha);
+    await criarUsuario(email, senha);
 
     expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(authMock, email, senha);
   });
