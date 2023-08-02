@@ -9,6 +9,7 @@ export default () => {
     <input type="email"/>
     <p>Senha:</p>
     <input type="password"/>
+    <img src="./img/Mulheres viajando.png">
     `;
     container.innerHTML = template
   
