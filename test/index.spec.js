@@ -4,10 +4,10 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 import {
-  doc, updateDoc, db, collection, addDoc,
+  doc, updateDoc, db, collection, addDoc, deleteDoc,
 } from 'firebase/firestore';
 import {
-  criarUsuario, loginGoogle, login, deslogar, editarPost, usuarioAtual,
+  criarUsuario, loginGoogle, login, deslogar, editarPost, usuarioAtual, deletarPost,
 } from '../src/pages/serviceFirebase/firebaseAuth.js';
 
 jest.mock('firebase/auth');
@@ -93,6 +93,18 @@ describe('Editar Post', () => {
 
     expect(doc).toHaveBeenCalledWith(db, 'Post', postId);
     expect(updateDoc).toHaveBeenCalledWith('docRef_mock', { mensagem: novaMensagem });
+  });
+});
+
+describe('deletarPost', () => {
+  it('deveria ser uma função', () => {
+    expect(typeof deletarPost).toBe('function');
+  });
+
+  it('deveria deletar um post', async () => {
+    const postId = 'c5ZtMGYWOhWlIDLBUy1RHSLlCMD2'; // Substitua pelo postId válido
+    await deletarPost(postId);
+    expect(deleteDoc).toHaveBeenCalledTimes(1);
   });
 });
 
