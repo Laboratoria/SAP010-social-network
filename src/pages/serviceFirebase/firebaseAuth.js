@@ -50,7 +50,7 @@ const fetchData = async () => { // testar
 const auth1 = getAuth();
 
 // Função para obter o usuário atual autenticado
-const usuarioAtual = () => new Promise((resolve, reject) => { // testar
+const usuarioAtual = () => new Promise((resolve, reject) => { // testar Diuli
   const unsubscribe = onAuthStateChanged(auth1, (user) => {
     unsubscribe();
     resolve(user);
@@ -58,7 +58,7 @@ const usuarioAtual = () => new Promise((resolve, reject) => { // testar
   }, reject);
 });
 
-const criarPost = async (mensagem) => { // testar
+const criarPost = async (mensagem) => { // testar Diuli
   try {
     const user = await usuarioAtual();
     if (!user) {
@@ -66,10 +66,9 @@ const criarPost = async (mensagem) => { // testar
       return;
     }
 
-    // Dados do novo post que você deseja criar
     const novoPost = {
       mensagem,
-      user_id: user.uid, // Use user.uid para obter o ID do usuário
+      user_id: user.uid,
       nome: user.displayName,
       data: new Date(),
     };
@@ -86,8 +85,7 @@ const deletarPost = async (postId) => { // testar
   await deleteDoc(docRef);
 };
 
-const editarPost = async (postId, novaMensagem) => { // testar
-  console.log(postId, novaMensagem);
+const editarPost = async (postId, novaMensagem) => {
   const refDoc = doc(db, 'Post', postId);
   await updateDoc(refDoc, {
     mensagem: novaMensagem,
