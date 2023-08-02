@@ -1,6 +1,3 @@
-* {
-    /* overflow-y: hidden; */
-}
 .container-infopage {
     display: flex;
     flex-direction: column;
