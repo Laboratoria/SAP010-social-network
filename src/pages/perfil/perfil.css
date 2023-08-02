@@ -2,7 +2,27 @@
 	margin: 0;
 }
 
-.img-perfil{
+.icones-header {
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+	align-items: flex-end;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	padding: 2%;
+	background-color: #F6F2E2;
+	height: 105px;
+}
+
+.img-loguinhoP {
+	width: 85px
+		/* height:100px; */
+
+}
+
+.img-perfil {
 	width: 157px;
 	height: 157px;
 }
@@ -10,6 +30,39 @@
 .img-voltar {
 	width: 44px;
 	height: 44px;
-	margin-top: 6%;
-	margin-left: 4%;
+	/* margin-top: 6%;
+	margin-left: 4%; */
+	overflow: hidden;
+	margin: 6% 0 6.6% 4%;
+}
+
+.dados-usuario {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	width: 228px;
+	border-radius: 10px;
+
+}
+
+footer{
+	display: flex;
+	justify-content: space-between;
+	bottom: 10px;
+}
+
+
+@media screen and (min-width: 768px) {
+	.icones-header {
+		background-color: #3B5A2B;
+		justify-content: space-between;
+		padding: 2%;
+		height: 205px;
+	}
+
+	.img-voltar {
+		margin: 6% 0 3% 4%;
+	}
+
+
 }

@@ -2,13 +2,14 @@
 /* eslint-disable no-unused-vars */
 import {
   createUserWithEmailAndPassword, getAuth, signInWithPopup, signInWithEmailAndPassword, signOut,
-  onAuthStateChanged,
+  onAuthStateChanged, updateProfile,
 } from 'firebase/auth';
 import {
-  doc, updateDoc, db, collection, addDoc,
+  doc, updateDoc, db, collection, addDoc, deleteDoc,
 } from 'firebase/firestore';
 import {
-  criarUsuario, loginGoogle, login, deslogar, editarPost, usuarioAtual,
+  criarUsuario, loginGoogle, login, deslogar, editarPost, usuarioAtual, deletarPost,
+  manipularMudancaHash,
 } from '../src/pages/serviceFirebase/firebaseAuth.js';
 
 jest.mock('firebase/auth');
@@ -103,3 +104,21 @@ describe('Editar Post', () => {
       expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
     });
   });
+
+describe('deletarPost', () => {
+  it('deveria ser uma função', () => {
+    expect(typeof deletarPost).toBe('function');
+  });
+
+  it('deveria deletar um post', async () => {
+    const postId = 'c5ZtMGYWOhWlIDLBUy1RHSLlCMD2'; // Substitua pelo postId válido
+    await deletarPost(postId);
+    expect(deleteDoc).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('manipularMudancaHash ', () => {
+  it('deveria ser uma função', () => {
+    expect(typeof manipularMudancaHash).toBe('function');
+  });
+});

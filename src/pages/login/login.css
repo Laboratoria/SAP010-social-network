@@ -60,8 +60,8 @@ ul {
 }
 
 .img-CBD1 {
-  width: 231px;
-  height: 205px;
+  width: 157px;
+  height: 139px;
   background-size: cover;
   position: fixed;
   top: 17%;
@@ -84,10 +84,10 @@ ul {
   background-color: #ccdfd4;
   padding: 1%;
   display: flex;
-  margin-top: 1.7rem;
+  margin: 1.7rem 1.2rem 0 0.3rem;
   align-items: start;
-  border-radius: 8px;
-  width: 228px;
+  border-radius: 10px;
+  width: 218px;
   height: 32px;
   box-shadow: 1px 2px 5px 1px gray;
 }
@@ -98,7 +98,7 @@ ul {
 
 .entrar {
   color: rgba(0, 0, 0, 0.6);
-  margin: 2rem 3rem 2rem 0;
+  margin: 2rem 3rem 2rem 0.3rem;
   padding-top: 3.5%;
 }
 
@@ -145,7 +145,7 @@ ul {
 
 
 @media screen and (min-width: 768px) {
- body {
+  body {
     background-image: url(../imagens/CBDCNNCT-IMG/BG_feedDesktop.png);
     background-repeat: no-repeat;
     width: 100vw;
@@ -155,15 +155,27 @@ ul {
     background-attachment: fixed;
   }
 
+  .img-CBD1 {
+    width: 185px;
+    height: 164px;
+  }
+
   .container {
     background: #eef4f000;
     border: 1px solid #aeaeae00;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0);
-    
+
   }
 
   .ou {
     display: none;
   }
 
+}
+
+@media screen and (min-width: 1024px) {
+.img-CBD1 {
+    width: 231px;
+    height: 205px;
+  }
 }
