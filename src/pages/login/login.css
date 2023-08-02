@@ -46,6 +46,13 @@ main {
     gap: 20px;
 }
 
+#csslogin header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 #csslogin input {
     width: 279px;
     height: 50px;

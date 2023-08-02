@@ -1,4 +1,9 @@
-import { adicionarPost, exibirPosts, sairDaConta } from '../../lib/firebase';
+import {
+  adicionarPost,
+  exibirPosts,
+  sairDaConta,
+  deletarPost,
+} from '../../lib/firebase';
 import { auth } from '../../lib/firebase-config';
 
 export default () => {
@@ -83,35 +88,46 @@ export default () => {
       });
   });
 
-  // Obter o nome de usuário atual
-  const nome = auth.currentUser.displayName;
-
   // Função para exibir um post na tela
-  function printarPost(username, conteudo, nivel) {
-    const postElement = document.createElement('div');
+  function printarPost(username, conteudo, nivel, likes, id) {
+    const postElement = document.createElement('section');
     postElement.innerHTML = `
-         <header><h2>${username}</h2>
+        <header><h2>${username}</h2>
          <h3 class='nivel'>${nivel}</h3></header>
          <span><p>${conteudo}</p></span>
-         <img src='imagens/icon-like.png'>`;
+         <div>
+         <img src='imagens/icon-like.png' class='btn-like'>
+         <p>${likes} Curtidas</p>
+         <button class="btn-deletar" data-post-id='${id}'>Delete</button>
+         </div>`;
+
+    const btnDeletar = postElement.querySelector('.btn-deletar');
+    btnDeletar.addEventListener('click', () => {
+      if (username === auth.currentUser.displayName) {
+        deletarPost(id);
+        postElement.remove();
+        alert('post deletado');
+      } else {
+        alert('voce so pode deletar o proprio post');
+      }
+    });
+    // const btnLike = postElement.querySelector('.btn-like');
+    // btnLike.addEventListener('click', () => {
+    //   const postId = post.id;
+    //   const liked = post.liked;
+    //   if (liked) {
+    //     removerLike(postId);
+    //   } else {
+    //     adicionarLike(postId);
+    //   }
+    // });
+
     const feedElement = container.querySelector('.post');
     feedElement.appendChild(postElement);
   }
 
-  // Exibir todos os posts ao carregar a página
-  exibirPosts().then((array) => {
-    array.forEach((post) => {
-      printarPost(post.username, post.conteudo, post.nivel);
-    });
-  });
-
-  //  selectNivel.addEventListener('change', (evento) => {
-  //   const opcaoNivel = evento.target.value;
-  //   if (opcaoNivel === 'selecione') {
-  //     alert('selecione seu nivel');
-  //     evento.preventDefault();
-  //   }
-  //  })
+  // Obter o nome de usuário atual
+  const nome = auth.currentUser.displayName;
 
   // Evento de clique no botão de publicar
   const btnPublicar = container.querySelector('#btn-publicar');
@@ -136,6 +152,14 @@ export default () => {
       textarea.value = '';
     }
   });
+
+  // Exibir todos os posts ao carregar a página
+  exibirPosts()
+    .then((array) => {
+      array.forEach((post) => {
+        printarPost(post.username, post.conteudo, post.nivel, post.likes, post.id);
+      });
+    });
 
   return container;
 };

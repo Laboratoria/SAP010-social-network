@@ -32,7 +32,7 @@
     padding: 10px;
 }
 
-.post>div>img {
+.post>section> div > img {
     height: 30px;
     margin: 4px 0 0 25px;
 }
@@ -145,24 +145,24 @@
     margin: 10px;
 }
 
-.post>div {
+.post>section {
     background-color: #930909;
     border-radius: 25px;
     display: inline-block;
 }
 
-.post>div>header {
+.post>section>header {
     display: flex;
     background-color: #332F2F;
     border-radius: 25px 25px 0 0;
     justify-content: space-between;
 }
 
-.post>div>header>h2 {
+.post>section>header>h2 {
     text-indent: 1rem;
 }
 
-.post>div>header>.nivel {
+.post>section>header>.nivel {
     background-color: #ffffff;
     border-radius: 50px;
     font-size: 14px;
@@ -171,17 +171,17 @@
     margin-right: 8px;
 }
 
-.post>div>hr {
+.post>section>hr {
     color: #797979;
 }
 
-.post>div>span {
+.post>section>span {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.post>div>span>p {
+.post>section>span>p {
     background-color: #d9d9d9;
     padding: 20px;
     border-radius: 13px;
