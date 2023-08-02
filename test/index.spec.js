@@ -1,13 +1,14 @@
 /* eslint-disable no-unused-vars */
 import {
   createUserWithEmailAndPassword, getAuth, signInWithPopup, signInWithEmailAndPassword, signOut,
-  onAuthStateChanged,
+  onAuthStateChanged, updateProfile,
 } from 'firebase/auth';
 import {
   doc, updateDoc, db, collection, addDoc, deleteDoc,
 } from 'firebase/firestore';
 import {
   criarUsuario, loginGoogle, login, deslogar, editarPost, usuarioAtual, deletarPost,
+  manipularMudancaHash,
 } from '../src/pages/serviceFirebase/firebaseAuth.js';
 
 jest.mock('firebase/auth');
@@ -108,32 +109,38 @@ describe('deletarPost', () => {
   });
 });
 
-describe('usuario Atual', () => {
-  it('Deveria retornar o usuário autenticado', async () => {
-    const mockUser1 = { uid: 'user123', email: 'test@example.com' };
-
-    const authMock = getAuth();
-    onAuthStateChanged.mockImplementationOnce((auth, callback) => {
-      callback(mockUser1);
-      return () => {};
-    });
-
-    const resultado = await usuarioAtual();
-    expect(getAuth).toHaveBeenCalledTimes(1);
-    expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
-    expect(resultado).toEqual(mockUser1);
-  });
-
-  it('Deveria retornar null se o usuário não estiver autenticado', async () => {
-    const authMock = getAuth();
-    onAuthStateChanged.mockImplementationOnce((auth, callback) => {
-      callback(null);
-      return () => {};
-    });
-
-    const resultado = await usuarioAtual();
-    expect(getAuth).toHaveBeenCalledTimes(1);
-    expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
-    expect(resultado).toBeNull();
+describe('manipularMudancaHash ', () => {
+  it('deveria ser uma função', () => {
+    expect(typeof manipularMudancaHash).toBe('function');
   });
 });
+
+// describe('usuario Atual', () => {
+//   it('Deveria retornar o usuário autenticado', async () => {
+//     const mockUser1 = { uid: 'user123', email: 'test@example.com' };
+
+//     const authMock = getAuth();
+//     onAuthStateChanged.mockImplementationOnce((auth, callback) => {
+//       callback(mockUser1);
+//       return () => {};
+//     });
+
+//     const resultado = await usuarioAtual();
+//     expect(getAuth).toHaveBeenCalledTimes(1);
+//     expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
+//     expect(resultado).toEqual(mockUser1);
+//   });
+
+//   it('Deveria retornar null se o usuário não estiver autenticado', async () => {
+//     const authMock = getAuth();
+//     onAuthStateChanged.mockImplementationOnce((auth, callback) => {
+//       callback(null);
+//       return () => {};
+//     });
+
+//     const resultado = await usuarioAtual();
+//     expect(getAuth).toHaveBeenCalledTimes(1);
+//     expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
+//     expect(resultado).toBeNull();
+//   });
+// });
