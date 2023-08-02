@@ -89,38 +89,27 @@ export default () => {
   });
 
   // Função para exibir um post na tela
-  function printarPost(username, conteudo, nivel, likes, id) {
+  function printarPost(username, conteudo, nivel, id) {
     const postElement = document.createElement('section');
     postElement.innerHTML = `
         <header><h2>${username}</h2>
          <h3 class='nivel'>${nivel}</h3></header>
          <span><p>${conteudo}</p></span>
          <div>
-         <img src='imagens/icon-like.png' class='btn-like'>
-         <p>${likes} Curtidas</p>
-         <button class="btn-deletar" data-post-id='${id}'>Delete</button>
+         <button class="btn-deletar" data-post-id="${id}">Delete</button>
          </div>`;
 
     const btnDeletar = postElement.querySelector('.btn-deletar');
     btnDeletar.addEventListener('click', () => {
       if (username === auth.currentUser.displayName) {
-        deletarPost(id);
+        const postId = btnDeletar.getAttribute('data-post-id');
+        deletarPost(postId);
         postElement.remove();
         alert('post deletado');
       } else {
         alert('voce so pode deletar o proprio post');
       }
     });
-    // const btnLike = postElement.querySelector('.btn-like');
-    // btnLike.addEventListener('click', () => {
-    //   const postId = post.id;
-    //   const liked = post.liked;
-    //   if (liked) {
-    //     removerLike(postId);
-    //   } else {
-    //     adicionarLike(postId);
-    //   }
-    // });
 
     const feedElement = container.querySelector('.post');
     feedElement.appendChild(postElement);
@@ -157,7 +146,7 @@ export default () => {
   exibirPosts()
     .then((array) => {
       array.forEach((post) => {
-        printarPost(post.username, post.conteudo, post.nivel, post.likes, post.id);
+        printarPost(post.username, post.conteudo, post.nivel, post.id);
       });
     });
 

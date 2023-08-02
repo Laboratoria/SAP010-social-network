@@ -36,20 +36,19 @@ export function redefinirSenha(email) {
   return sendPasswordResetEmail(auth, email);
 }
 
-export async function adicionarPost(username, conteudo, nivel, likes) {
+export async function adicionarPost(username, conteudo, nivel) {
   try {
     const docRef = await addDoc(collection(db, 'posts'), {
       username: auth.currentUser.displayName,
       uid: auth.currentUser.uid,
       conteudo,
       nivel,
-      likes: 0,
     });
     console.log('Document written with ID: ', docRef.id);
   } catch (e) {
     console.error('Error adding document: ', e);
   }
-  return { username, conteudo, likes };
+  return { username, conteudo };
 }
 
 // export async function adicionarLike(postId) {
@@ -72,7 +71,7 @@ export async function adicionarPost(username, conteudo, nivel, likes) {
 
 export async function deletarPost(postId) {
   console.log(postId);
-  await deleteDoc(doc(db, 'posts'));
+  await deleteDoc(doc(db, 'posts', postId));
 }
 
 export async function exibirPosts() {
@@ -85,6 +84,7 @@ export async function exibirPosts() {
       const post = document.data();
       array.push({
         ...post,
+        id: document.id,
       });
       // console.log(`${doc.id} => ${doc.data()}`);
     });
