@@ -138,17 +138,17 @@ Para uma melhor experiência, foi desenvolvido um design responsivo que se adapt
 
 ## 6. Objetivos de aprendizagem e cobertura de testes unitários
 
-[X] Usar VanillaJS.
-[X] UI: É responsivo.
-[X] Passa pelo linter.
-[X] Passa pelos testes (npm test).
-[X] Ser uma Single Pages Application (SPA).
-[X] Inclui histórias de usuário no README.md.
-[X] Autenticação com Firebase e uso do Firestore.
-[X] Inclui uma definição de produto clara e informativa no README.md.
-[X] Inclui rascunho da solução (protótipo de alta fidelidade) no README.md.
-[X] Atender ao CRUD (Create, Reade, Update and Delete) utilizando o Firebase.
-[X] Testes unitários cobrem um mínimo de 70% de statements, functions, lines e branches.
+* [X] Usar VanillaJS.
+* [X] UI: É responsivo.
+* [X] Passa pelo linter.
+* [X] Passa pelos testes (npm test).
+* [X] Ser uma Single Pages Application (SPA).
+* [X] Inclui histórias de usuário no README.md.
+* [X] Autenticação com Firebase e uso do Firestore.
+* [X] Inclui uma definição de produto clara e informativa no README.md.
+* [X] Inclui rascunho da solução (protótipo de alta fidelidade) no README.md.
+* [X] Atender ao CRUD (Create, Reade, Update and Delete) utilizando o Firebase.
+* [X] Testes unitários cobrem um mínimo de 70% de statements, functions, lines e branches.
 
   
   ###  Cobertura dos testes: 
