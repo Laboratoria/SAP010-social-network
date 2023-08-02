@@ -1,12 +1,21 @@
 /* eslint-disable no-unused-vars */
 import {
   createUserWithEmailAndPassword, getAuth, signInWithPopup, signInWithEmailAndPassword, signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import {
-  criarUsuario, loginGoogle, login, deslogar, deletarPost,
+  doc, updateDoc, db, collection, addDoc,
+} from 'firebase/firestore';
+import {
+  criarUsuario, loginGoogle, login, deslogar, editarPost, usuarioAtual,
 } from '../src/pages/serviceFirebase/firebaseAuth.js';
 
 jest.mock('firebase/auth');
+jest.mock('firebase/firestore');
+
+beforeEach(() => {
+  jest.clearAllMocks();
+});
 
 const mockUser = {
   user: {
@@ -20,14 +29,15 @@ describe('criarUsuario is a function', () => {
   it('É uma função', () => {
     expect(typeof criarUsuario).toBe('function');
   });
+
   it('Criou um novo usuário', async () => {
     const authMock = getAuth();
-    createUserWithEmailAndPassword.mockResolvedValue(mockUser);
-    const email = 'test@example.com';
+    const testEmail = 'test@example.com'; // Renomeie a variável email para evitar conflito de escopo
     const senha = '123456';
-    await criarUsuario(email, senha);
+    createUserWithEmailAndPassword.mockResolvedValue(mockUser);
+    await criarUsuario(testEmail, senha);
 
-    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(authMock, email, senha);
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(authMock, testEmail, senha);
   });
 });
 
@@ -68,5 +78,50 @@ describe('deslogar', () => {
     expect(signOut).toHaveBeenCalled();
     // Verifica se a função signOut foi chamada apenas uma vez
     expect(signOut).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('Editar Post', () => {
+  it('Deveria atualizar o post do usuário', async () => {
+    const postId = 'post_id_mock';
+    const novaMensagem = 'Nova mensagem do post';
+
+    doc.mockReturnValueOnce('docRef_mock');
+    updateDoc.mockResolvedValueOnce();
+
+    await editarPost(postId, novaMensagem);
+
+    expect(doc).toHaveBeenCalledWith(db, 'Post', postId);
+    expect(updateDoc).toHaveBeenCalledWith('docRef_mock', { mensagem: novaMensagem });
+  });
+});
+
+describe('usuario Atual', () => {
+  it('Deveria retornar o usuário autenticado', async () => {
+    const mockUser1 = { uid: 'user123', email: 'test@example.com' };
+
+    const authMock = getAuth();
+    onAuthStateChanged.mockImplementationOnce((auth, callback) => {
+      callback(mockUser1);
+      return () => {};
+    });
+
+    const resultado = await usuarioAtual();
+    expect(getAuth).toHaveBeenCalledTimes(1);
+    expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
+    expect(resultado).toEqual(mockUser1);
+  });
+
+  it('Deveria retornar null se o usuário não estiver autenticado', async () => {
+    const authMock = getAuth();
+    onAuthStateChanged.mockImplementationOnce((auth, callback) => {
+      callback(null);
+      return () => {};
+    });
+
+    const resultado = await usuarioAtual();
+    expect(getAuth).toHaveBeenCalledTimes(1);
+    expect(onAuthStateChanged).toHaveBeenCalledTimes(1);
+    expect(resultado).toBeNull();
   });
 });
