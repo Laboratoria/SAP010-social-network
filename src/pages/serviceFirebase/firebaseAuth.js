@@ -48,14 +48,10 @@ const fetchData = async () => { // testar
 };
 
 const auth1 = getAuth();
-
-// Função para obter o usuário atual autenticado
-const usuarioAtual = () => new Promise((resolve, reject) => { // testar Diuli
-  const unsubscribe = onAuthStateChanged(auth1, (user) => {
-    unsubscribe();
+const usuarioAtual = () => new Promise((resolve) => {
+  onAuthStateChanged(auth1, (user) => {
     resolve(user);
-    return !!user;// Retorna true se o usuário estiver logado, caso contrário, retorna false
-  }, reject);
+  });
 });
 
 const criarPost = async (mensagem) => { // testar Diuli
