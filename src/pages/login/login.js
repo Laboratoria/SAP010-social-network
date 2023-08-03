@@ -25,7 +25,6 @@ export default () => {
 <button id="btn-cinza-login">Entrar</button>
 <button id="redefinir-senha" href="/#redefinir-senha">Esqueceu sua senha?</button>
 
-
 <p id="paragrafo-login">Ainda não tem uma conta??&nbsp;<a href="/#cadastro">Cadastre-se</a></p>
   </form>`;
 
@@ -52,12 +51,10 @@ export default () => {
     window.location.hash = '#redefinir-senha';
   });
 
-
   botaoEntrar.addEventListener('click', (event) => {
     event.preventDefault();
     const emailDoUsuario = inputEmail.value;
     const senhaDoUsuario = inputSenha.value;
-
 
     function exibirErro(errorCode) {
       const mensagemErroDiv = document.getElementById('mensagemErro');

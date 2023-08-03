@@ -42,7 +42,7 @@ main {
     position: relative;
 }
 
-#cadastrocss header {
+#csscadastro header {
     display: flex;
     align-items: center;
     justify-content: center;
