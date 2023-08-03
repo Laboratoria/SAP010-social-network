@@ -190,6 +190,15 @@
     width: -webkit-fill-available;
     text-align: center;
 }
+.btn-editar{
+    background-color: transparent;
+    border: none;
+
+}
+.btn-deletar{
+    background-color: transparent;
+    border: none;
+}
 
 @media (min-width: 768px) {
     .lista-menu {
