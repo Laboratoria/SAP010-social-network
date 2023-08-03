@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color:#e6068c;
+}
+
+.formulario-login {
+    background-color: #D4C6D0;
+    width: 265px;
+    height: 277px;
+}
+
+footer {
+    color: black;
+}
