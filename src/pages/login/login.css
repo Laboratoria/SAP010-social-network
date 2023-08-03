@@ -1,15 +1,20 @@
 body {
     margin: 0;
     padding: 0;
-    background-color:#e6068c;
+    background-color: #F5DDEC;
 }
 
 .formulario-login {
     background-color: #D4C6D0;
     width: 265px;
     height: 277px;
+    border-radius: 10px;
 }
 
-footer {
-    color: black;
+input{
+    width: 180px;
+    height: 27px;
+    border-radius: 5px;
+    border: none;
+
 }
