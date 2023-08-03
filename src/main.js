@@ -13,25 +13,25 @@ import home from './Pages/Home/index.js';
 const container = document.querySelector("#container");
 const init = () => {
     window.addEventListener("hashchange", () => {
-    main.innerHTML = "";
+    container.innerHTML = "";
     switch(window.location.hash) {
         case " ":
-            main.appendChild(home());
+            container.appendChild(home());
             break;
         case "#login":
-            main.appendChild(login());
+            container.appendChild(login());
             break;
         case "#cadastro":
-            main.appendChild(cadastro());
+            container.appendChild(cadastro());
             break;
         case "#recuperar":
-            main.appendChild(recuperarSenha());
+            container.appendChild(recuperarSenha());
             break;
         case "#cadastro-clique-aqui":
-            main.appendChild(cadastro());
+            container.appendChild(cadastro());
             break;
         default:
-            main.appendChild(home());
+            container.appendChild(home());
 
     }
   })

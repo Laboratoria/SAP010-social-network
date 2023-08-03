@@ -1,0 +1,77 @@
+* {
+    
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #96BDC0;
+}
+
+/*main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 100vh;
+} */
+
+/*.container-login {
+    max-width: 400px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }*/
+
+img {
+    width: 100%;
+    max-width: 200px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.resumo {
+    margin-bottom: 20px;
+    font-family: cursive;
+}
+
+section {
+    display: flex;
+    width: 80px;
+    height: 80px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/*input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Estilos para o botão de entrar */
+/*button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+*/
+
+
+

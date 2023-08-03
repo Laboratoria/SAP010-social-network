@@ -1,3 +1,4 @@
+import logo_mundo_azul from "../Imagens/Mundo_azul_logo.png"
 export function cadastro() {
   const containerCadastro = document.createElement("div");
 
@@ -9,7 +10,7 @@ export function cadastro() {
 
      <div class = container-cadastro>
 
-     <img src= "logo_mundo_azul.jpg" alt = "Logo da página"> 
+     <img src= ${logo_mundo_azul} alt="Logo da página"> 
 
      <p>
       O Mundo Azul, é uma rede social destinada a mães, pais e cuidadores 
@@ -41,5 +42,11 @@ export function cadastro() {
    </footer>
 `;
   containerCadastro.innerHTML = templateCadastro;
+
+  const cadastroPage = document.createElement("link");
+  cadastroPage.rel = "stylesheet";
+  cadastroPage.href = "pages/Cadastro/cadastro.css";
+  document.head.appendChild(cadastroPage);
+
   return containerCadastro;
 }
