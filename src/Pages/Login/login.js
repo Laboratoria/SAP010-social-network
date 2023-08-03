@@ -9,17 +9,21 @@ export function login () {
    <main>
 
      <div class = container-login>
+     <section class="logotipo">
 
      <img src= ${logo_mundo_azul} alt="Logo da página"> 
 
-     <p class="resumo">
+     <p class="resumo_1">
       O Mundo Azul, é uma rede social destinada a mães, pais e cuidadores 
       de pessoas com TEA (Transtorno do Espectro Autista). 
+      </p>
+      <p class="resumo_2">
       Aqui você encontrará  acolhimento, empatia e dicas importantes para 
       entender melhor sobre este mundo. 
      </p>
-      
-     <section>
+      </section>
+
+     <section class="formulario">
       <label for="login" >Login</label>
       <input type = "login" class="login" id = "login" name="login" placeholder = "" requered>
       

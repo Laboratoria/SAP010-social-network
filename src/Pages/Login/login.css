@@ -1,5 +1,5 @@
 * {
-    
+
     margin: 0;
     padding: 0;
 }
@@ -9,6 +9,7 @@ body {
     background-color: #96BDC0;
 }
 
+
 /*main {
     display: flex;
     flex-direction: column;
@@ -17,34 +18,92 @@ body {
     height: 100vh;
 } */
 
-/*.container-login {
+.container-login {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
     max-width: 400px;
     padding: 20px;
-    background-color: #ffffff;
+    /*background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }*/
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+}
+
+.logotipo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+
+}
 
 img {
-    width: 100%;
+    width: 347px;
+    height: 351px;
+    left: 21px;
+    top: 0px;
+    /*width: 100%;
     max-width: 200px;
     display: block;
-    margin: 0 auto 20px;
+    margin: 0 auto 20px;*/
 }
 
-.resumo {
+.resumo_1 {
+    margin-top: auto;
+}
+
+.resumo_1,
+.resumo_2 {
     margin-bottom: 20px;
     font-family: cursive;
+    font-size: 12px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #050820;
 }
 
-section {
+.formulario {
     display: flex;
-    width: 80px;
-    height: 80px;
-    padding: 20px;
-    background-color: #ffffff;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    box-sizing: border-box;
+    width: 243px;
+    height: 319px;
+    left: 200px;
+    background: rgba(74, 93, 148, 0.49);
+    border: 2px solid #202E56;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.formulario label,
+.formulario input,
+.formulario a,
+.formulario button {
+    margin-bottom: 10px;
+}
+
+.formulario input {
+    max-width: 100%;
+}
+
+.desenvolvedoras {
+
+    font-family: cursive;
+    font-size: 10px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #050820;
+
 }
 
 /*input {
@@ -72,6 +131,3 @@ label {
     cursor: pointer;
 }
 */
-
-
-
