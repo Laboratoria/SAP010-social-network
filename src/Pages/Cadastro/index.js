@@ -42,5 +42,11 @@ export function cadastro() {
    </footer>
 `;
   containerCadastro.innerHTML = templateCadastro;
+
+  const cadastroPage = document.createElement("link");
+  cadastroPage.rel = "stylesheet";
+  cadastroPage.href = "pages/Cadastro/cadastro.css";
+  document.head.appendChild(cadastroPage);
+
   return containerCadastro;
 }

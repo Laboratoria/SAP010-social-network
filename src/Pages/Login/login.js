@@ -12,32 +12,37 @@ export function login () {
 
      <img src= ${logo_mundo_azul} alt="Logo da página"> 
 
-     <p>
+     <p class="resumo">
       O Mundo Azul, é uma rede social destinada a mães, pais e cuidadores 
       de pessoas com TEA (Transtorno do Espectro Autista). 
       Aqui você encontrará  acolhimento, empatia e dicas importantes para 
       entender melhor sobre este mundo. 
      </p>
       
-      <input type = "login"  id = "login" name="login" placeholder = "Login" requered>
+     <section>
       <label for="login" >Login</label>
-
-      <input type = "password"  id = "senha-login" name="senha" placeholder = "Senha" requered>
+      <input type = "login" class="login" id = "login" name="login" placeholder = "" requered>
+      
       <label for="senha" >Senha</label>
-
-      <a href= "/#recuperar" id="recuperar-senha">Esqueci a senha</a>
+      <input type = "password"  class="login" id = "senha-login" name="senha" placeholder = "" requered>
+      
+      <a href= "/#recuperar" id="recuperar-senha" class="recuperar-senha">Esqueci a senha</a>
           
-      <a href = "/#feed"><button type="submit">Entrar</button></a>
-      <p>Não está cadastrado? <a href= "/#cadastro-clique-aqui" id="clique-aqui">Clique aqui!</a></p>
-
+      <a href = "/#feed"><button type="submit" class>Entrar</button></a>
+      <p class="cadastro">Não está cadastrado? <a href= "/#cadastro-clique-aqui" class="clique-aqui" id="clique-aqui">Clique aqui!</a></p>
+     </section>
      </div>
 
    </main>
 
    <footer>
-   <p> Desenvolvido por Carolina Menezes e Lilian Damadi</p>
+   <p class="desenvolvedoras"> Desenvolvido por Carolina Menezes e Lilian Damadi</p>
    </footer>
 `;
 containerLogin.innerHTML= templateLogin;
+const loginPage= document.createElement("link"); loginPage.rel = "stylesheet"; 
+loginPage.href = "pages/login/login.css";
+document.head.appendChild(loginPage);
+
 return containerLogin;
 }
