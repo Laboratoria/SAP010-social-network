@@ -11,7 +11,9 @@ body {
 
 #csshome {
     background-color: #930909;
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 main {
@@ -19,7 +21,7 @@ main {
 }
 
 #menina-home {
-    height: 359px;
+    height: 251px;
 }
 
 #picture-home {
@@ -32,8 +34,13 @@ main {
 
 article {
     color: #FFFF;
-    padding: 24px;
+    padding: 12px;
     text-align: center;
+}
+
+article>p {
+    font-size: 16px;
+    padding-bottom: 24px;
 }
 
 #csshome h1 {
@@ -47,20 +54,19 @@ article {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: auto;
+    gap: 16px;
 }
 
-#btn-cinza-home {
+#btn-cinza-home,
+#btn-branco {
     display: flex;
-    width: 320px;
+    width: 260px;
     height: 40px;
     justify-content: center;
     align-items: center;
-    margin: 0 auto 20px auto;
-    background-color: #1E1E1E;
     border-radius: 8px;
-    box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.80);
     font-weight: bolder;
-    color: #FFFF;
     border: currentColor;
     cursor: pointer;
     font-family: 'Open Sans', sans-serif;
@@ -68,30 +74,121 @@ article {
 }
 
 #btn-branco {
-    display: flex;
-    width: 320px;
-    height: 40px;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    border-radius: 8px;
-    font-weight: bolder;
-    background: #FFF;
+    background: #FFFF;
     box-shadow: 0px 4px 0px 0px #afafaf;
-    border: currentColor;
-    cursor: pointer;
-    font-family: 'Open Sans', sans-serif;
-    font-family: 'Poppins', sans-serif;
+}
+
+#btn-cinza-home {
+    background-color: #1E1E1E;
+    box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.80);
 }
 
 #btn-cinza-home a {
     text-decoration: none;
     color: #FFFF;
-    padding: 10px 138px;
+    padding: 10px 108px;
 }
 
 #btn-branco a {
     text-decoration: none;
     color: #930909;
-    padding: 10px 138px;
+    padding: 7px 95px;
+}
+
+@media (min-width: 375px) {
+
+    #menina-home {
+        height: 330px;
+    }
+
+    #csshome h1 {
+        margin: 10px;
+        font-size: 30px;
+    }
+
+    article>p {
+        font-size: 16px;
+    }
+
+}
+
+@media (min-width: 768px) {
+
+    #csshome {
+        flex-direction: row;
+    }
+
+    #menina-home {
+        padding: auto 50px;
+        width: 400px;
+        height: 100vh;
+    }
+
+    #picture-home {
+        border-radius: 0 32px 32px 0;
+    }
+
+    #csshome h1 {
+        margin-top: 160px;
+        margin-bottom: 40px;
+        font-size: 30px;
+    }
+
+    article>p {
+        font-size: 16px;
+    }
+
+    #btn-cinza-home,
+    #btn-branco {
+        width: 320px;
+        font-size: 17px;
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+    #menina-home {
+        width: 550px;
+        height: 100vh;
+        padding: 0 50px;
+    }
+
+    #csshome h1 {
+        margin: 160px 30px 40px 30px;
+        font-size: 32px;
+    }
+
+    article>p {
+        font-size: 16px;
+        margin: 0 30px;
+    }
+
+    #btn-cinza-home,
+    #btn-branco {
+        width: 320px;
+        height: 45px;
+        font-size: 19px;
+    }
+
+}
+
+@media (min-width: 1440px) {
+
+    #menina-home {
+        width: 800px;
+        height: 100vh;
+        padding: 10px 200px;
+    }
+
+    #csshome h1 {
+        margin-top: 160px;
+        margin-bottom: 52px;
+        font-size: 42px;
+    }
+
+    article>p {
+        font-size: 19px;
+    }
+
 }
