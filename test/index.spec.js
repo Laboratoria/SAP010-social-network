@@ -9,7 +9,7 @@ import {
 } from 'firebase/firestore';
 import {
   criarUsuario, loginGoogle, login, deslogar, editarPost, usuarioAtual, deletarPost,
-  manipularMudancaHash,
+  manipularMudancaHash, atualizaPerfil, auth,
 } from '../src/pages/serviceFirebase/firebaseAuth.js';
 
 jest.mock('firebase/auth');
@@ -120,5 +120,16 @@ describe('deletarPost', () => {
 describe('manipularMudancaHash ', () => {
   it('deveria ser uma função', () => {
     expect(typeof manipularMudancaHash).toBe('function');
+  });
+});
+
+describe('atualizar o perfil', () => {
+  it('deve chamar a função updateProfile e atualizar o nome do perfil', () => {
+    const nome = 'aleatorio';
+    getAuth.mockReturnValueOnce(mockUser);
+    atualizaPerfil(nome);
+    expect(updateProfile).toHaveBeenCalledWith(undefined, {
+      displayName: nome,
+    });
   });
 });
