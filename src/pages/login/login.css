@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap");
+
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+  color: #7C7C7C;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+body {
+  background-color: #f6f2e2;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  display: inline-block;
+  flex-wrap: wrap;
+  width: 100vw;
+}
+
+.centro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  text-decoration: none;
+}
+
+.container {
+  background: #eef4f0;
+  max-width: 273px;
+  min-height: 361px;
+  padding: 2rem;
+  margin-top: 50%;
+  /* border-radius: 20px; */
+  justify-content: center;
+  /* box-shadow: 2px 4px 10px 4px gray; */
+
+  border: 1px solid #aeaeae;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 17px;
+}
+
+.img-CBD1 {
+  width: 157px;
+  height: 139px;
+  background-size: cover;
+  position: fixed;
+  top: 17%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-shrink: 0;
+}
+
+.form-entrar {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  /* width: 100vw; */
+  justify-items: center;
+  /* align-items: center; */
+}
+
+.input,
+.entrar {
+  background-color: #ccdfd4;
+  padding: 1%;
+  display: flex;
+  margin: 1.7rem 1.2rem 0 0.3rem;
+  align-items: start;
+  border-radius: 10px;
+  width: 218px;
+  height: 32px;
+  box-shadow: 1px 2px 5px 1px gray;
+}
+
+.input::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.entrar {
+  color: rgba(0, 0, 0, 0.6);
+  margin: 2rem 3rem 2rem 0.3rem;
+  padding-top: 3.5%;
+}
+
+.ou-box {
+  position: relative;
+  border-top: 1px solid #000;
+  padding-top: 20px;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.ou {
+  color: #666666;
+  background-color: #eef4f0;
+  position: absolute;
+  text-align: center;
+  top: -8px;
+  width: 40px;
+  left: 90px;
+}
+
+.texto1 {
+  color: rgba(24, 119, 242, 0.99);
+  text-align: center;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.login-redes {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.erroLogin {
+  color: #e63636;
+  font-size: 12px;
+  margin-right: 30px
+}
+
+
+@media screen and (min-width: 768px) {
+  body {
+    background-image: url(../imagens/CBDCNNCT-IMG/BG_feedDesktop.png);
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .img-CBD1 {
+    width: 185px;
+    height: 164px;
+  }
+
+  .container {
+    background: #eef4f000;
+    border: 1px solid #aeaeae00;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0);
+
+  }
+
+  .ou {
+    display: none;
+  }
+
+}
+
+@media screen and (min-width: 1024px) {
+.img-CBD1 {
+    width: 231px;
+    height: 205px;
+  }
+}

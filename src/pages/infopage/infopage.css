@@ -1,0 +1,93 @@
+.container-infopage {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    background-image: url(../imagens/backgroundMob.png);
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.img-voltar {
+    width: 44px;
+    height: 44px;
+    margin-top: 6%;
+    margin-left: 4%;
+}
+
+.linkedin {
+    /* imagens do linkedin e github */
+    width: 20px;
+    height: 20px;
+}
+
+.info-devs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50%;
+}
+
+.texto2,
+a {
+    font-size: 12px;
+    text-align: center;
+    color: #F6F2E2;
+    font-family: "inter", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.dev-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3%;
+}
+
+.dev-item {
+    display: flex;
+    align-items: center;
+}
+
+.dev-icons {
+    display: flex;
+    align-items: center;
+}
+
+.dev-icons a {
+    margin-left: 6%;
+}
+
+
+@media screen and (min-width: 768px) {
+
+    .container-infopage {
+        background-image: url(../imagens/CBDCNNCT-IMG/BG_feedDesktop.png);
+    }
+
+    .info-devs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10%;
+        
+    }
+
+    .dev-info {
+        margin-bottom: 2%;
+    }
+
+    .img-voltar {
+        overflow-y: hidden;
+    }
+
+    footer {
+        display: none;
+    }
+}

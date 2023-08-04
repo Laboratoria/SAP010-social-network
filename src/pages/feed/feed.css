@@ -1,0 +1,241 @@
+ * {
+ 	margin: 0;
+ 	overflow-x: hidden;
+ }
+
+ .header {
+ 	display: flex;
+ 	justify-content: space-around;
+ 	text-align: center;
+ 	position: fixed;
+ 	left: 0;
+ 	top: 0;
+ 	width: 100%;
+ 	padding: 2%;
+ 	background-color: #F6F2E2;
+ }
+
+ .nome-usuario {
+ 	color: #7C7C7C;
+ 	margin-top: 20%;
+ 	display: inline-block;
+ 	white-space: nowrap;
+ 	margin-left: 15px;
+ }
+
+ .img-loguinho {
+ 	margin-right: 10px;
+ }
+
+ .containerPostVerde {
+ 	width: 280px;
+ 	height: 200px;
+ 	flex-shrink: 0;
+ 	border-radius: 17px;
+ 	border: 1px solid #AEAEAE;
+ 	background: #CCDFD4;
+ 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+ 	margin-top: 15%;
+ }
+
+ .nomeTipo {
+ 	display: flex;
+ 	flex-direction: column;
+ 	align-items: flex-start;
+ 	margin: 3%;
+ 	margin-left: 10%;
+ }
+
+ .text-area,
+ .espacoBranco {
+ 	width: 258px;
+ 	height: 101px;
+ 	flex-shrink: 0;
+ 	border-radius: 17px;
+ 	border: 1px solid #AEAEAE;
+ 	background: #EEF4F0;
+ 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+ 	margin-bottom: 2%;
+ 	padding: 2%;
+ }
+
+ .actionBtnPost {
+ 	display: flex;
+ 	justify-content: space-between;
+ 	margin: 0 2%;
+ }
+
+ .btnPubli {
+ 	width: 124px;
+ 	height: 34px;
+ 	flex-shrink: 0;
+ 	border-radius: 17px;
+ 	border: 1px solid #CCDFD4;
+ 	background: #EEF4F0;
+ 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+ 	cursor: pointer;
+
+ }
+
+ .filesPost {
+ 	background: #CCDFD4;
+ }
+
+ .footer {
+ 	display: flex;
+ 	justify-content: space-around;
+ 	align-items: center;
+ 	position: fixed;
+ 	left: 0;
+ 	bottom: 0;
+ 	width: 100%;
+ 	padding: 7%;
+ 	background-color: #F6F2E2;
+ }
+
+ .iconesFooter {
+ 	cursor: pointer;
+ }
+
+ .espacoBranco {
+ 	margin-left: 4%;
+ 	padding: 5%;
+ }
+
+ .container-feed {
+ 	padding-top: 20%;
+ 	padding-bottom: 37%;
+ }
+
+ ::-webkit-scrollbar {
+ 	width: 12px;
+ }
+
+ ::-webkit-scrollbar-thumb {
+ 	background-color: #8AB00F;
+ 	border-radius: 6px;
+ }
+
+ ::-webkit-scrollbar-thumb:hover {
+ 	background-color: #66820a;
+ }
+
+ #apagaTexto {
+ 	cursor: pointer;
+ }
+
+ /* Estilos para o contêiner do pop-up */
+ .popup-container {
+ 	position: fixed;
+ 	top: 0;
+ 	left: 0;
+ 	width: 100%;
+ 	height: 100%;
+ 	display: flex;
+ 	justify-content: center;
+ 	align-items: center;
+ 	background-color: rgba(0, 0, 0, 0.5);
+ 	/* Fundo escuro para dar destaque ao pop-up */
+ }
+
+ /* Estilos para o conteúdo do pop-up */
+ .popup-content {
+ 	background-color: #fff;
+ 	padding: 20px;
+ 	border-radius: 5px;
+ 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+ }
+
+ /* Estilos para o botão de fechar do pop-up */
+ .popup-content button {
+ 	margin-top: 10px;
+ 	padding: 8px 16px;
+ 	border: none;
+ 	background-color: #007bff;
+ 	color: #fff;
+ 	border-radius: 5px;
+ 	cursor: pointer;
+ }
+
+ .popup-content button:hover {
+ 	background-color: #0056b3;
+ }
+
+
+ @media screen and (min-width: 768px) {
+ 	.header {
+ 		background-color: #3B5A2B;
+ 		justify-content: space-between;
+ 		padding: 2%;
+ 	}
+
+ 	.container-feed {
+ 		background-image: url(../imagens/CBDCNNCT-IMG/BG_feedDesktop.png);
+ 		background-repeat: no-repeat;
+ 		width: 100vw;
+ 		height: 100vh;
+ 		/* position: relative; */
+ 		background-size: cover;
+ 		background-position: center;
+ 		background-attachment: fixed;
+ 		/* Fixa a imagem de background */
+ 		overflow-y: auto;
+ 		/* margin-top: 10vh; */
+ 	}
+
+ 	.img-loguinho {
+ 		margin-top: 0vw;
+ 		margin-right: 19vw;
+ 	}
+
+ 	.containerPostVerde {
+ 		width: 75vw;
+ 		height: 20vw;
+ 		margin-left: auto;
+ 		margin-right: auto;
+ 		margin-top: 6vh;
+ 	}
+
+ 	.text-area,
+ 	.espacoBranco {
+ 		width: 70vw;
+ 		height: 40%;
+ 		overflow-y: hidden;
+
+ 	}
+
+ 	.nome-usuario {
+ 		color: #F6F2E2;
+ 		margin-top: 1.5vw;
+ 		margin-left: 15vw;
+ 		font-size: 20px;
+ 	}
+
+ 	.footer {
+ 		display: flex;
+ 		flex-direction: column;
+ 		align-items: flex-start;
+ 		position: fixed;
+ 		left: 0;
+ 		top: 13%;
+ 		bottom: 40%;
+ 		width: 10%;
+ 		padding: 10px;
+ 		background-color: #f6f2e200;
+ 	}
+
+ 	.actionBtnPost {
+ 		display: flex;
+ 		justify-content: space-between;
+ 		margin-left: 5%;
+
+ 	}
+
+ 	.nomeTipo {
+ 		display: flex;
+ 		flex-direction: column;
+ 		align-items: flex-start;
+ 		margin: 3%;
+ 		margin-left: 7%;
+ 	}
+ }
