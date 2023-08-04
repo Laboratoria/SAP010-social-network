@@ -100,9 +100,6 @@ main {
 }
 
 #paragrafo-login {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-top: 12px;
     font-weight: bold;
 }
