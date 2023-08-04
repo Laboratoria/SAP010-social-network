@@ -43,7 +43,7 @@ export default () => {
     </header>
     <div class="post-publicar">
     <select name="select-nivel" class="select">
-    <option value="selecione">Seu nível de habilidade:</option>
+    <option value="selecione">Nível de habilidade:</option>
   <option value="iniciante">Iniciante</option>
   <option value="intermediário">Intermediario</option>
   <option value="avançado">Avançado</option>
@@ -96,17 +96,16 @@ export default () => {
         <header><h2>${username}</h2>
          <h3 class='nivel'>${nivel}</h3></header>
          <span><p class='conteudo'>${conteudo}</p></span>
-         <div>
-         <button class="btn-deletar" data-post-id="${id}"></button>
-         <img src="imagens/icon-deletar.png" class="icon-deletar" alt="imagem para deletar o post">
+         <div class='botoes-post'>
 
-         </div>
-         <div>
          <button class="btn-editar" data-post-id="${id}">
            <img src="imagens/icon-editar.png" class="icon-editar" alt="imagem para editar o post">
          </button>
-       </div>`;
 
+         <button class="btn-deletar" data-post-id="${id}">
+         <img src="imagens/icon-deletar.png" class="icon-deletar" alt="imagem para deletar o post">
+         </button>
+       </div>`;
 
     const btnDeletar = postElement.querySelector('.btn-deletar');
     btnDeletar.addEventListener('click', () => {
@@ -120,28 +119,27 @@ export default () => {
       }
     });
     const btnEditar = postElement.querySelector('.btn-editar');
-btnEditar.addEventListener('click', () => {
-  if (username === auth.currentUser.displayName) {
-    const postId = btnEditar.getAttribute('data-post-id');
-    const novoConteudo = prompt('Editar o post:', conteudo);
+    btnEditar.addEventListener('click', () => {
+      if (username === auth.currentUser.displayName) {
+        const postId = btnEditar.getAttribute('data-post-id');
+        const novoConteudo = prompt('Editar o post:', conteudo);
 
-    if (novoConteudo !== null) {
-      editarPost(postId, novoConteudo)
-        .then(() => {
-          conteudo = novoConteudo;
-          // Atualiza o texto exibido no post
-          const postTextoElement = postElement.querySelector('.conteudo');
-          postTextoElement.textContent = novoConteudo;
-          alert('Post editado com sucesso');
-        })
-        .catch((error) => {
-          console.error('Erro ao editar o post:', error);
-        });
-    }
-  } else {
-    alert('Você só pode editar o próprio post');
-  }
-});
+        if (novoConteudo !== null) {
+          editarPost(postId, novoConteudo)
+            .then(() => {
+              // Atualiza o texto exibido no post
+              const postTextoElement = postElement.querySelector('.conteudo');
+              postTextoElement.textContent = novoConteudo;
+              alert('Post editado com sucesso');
+            })
+            .catch((error) => {
+              console.error('Erro ao editar o post:', error);
+            });
+        }
+      } else {
+        alert('Você só pode editar o próprio post');
+      }
+    });
 
     const feedElement = container.querySelector('.post');
     feedElement.appendChild(postElement);

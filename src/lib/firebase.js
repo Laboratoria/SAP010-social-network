@@ -14,7 +14,6 @@ import {
   updateDoc,
 } from 'firebase/firestore';
 import { auth, db } from './firebase-config.js';
-import { async } from 'regenerator-runtime';
 
 export function cadastrarUsuario(email, senha) {
   return createUserWithEmailAndPassword(auth, email, senha);
@@ -93,14 +92,13 @@ export async function exibirPosts() {
     return array;
   } catch (error) {
     console.error('erro ao obter os posts', error);
+    throw Error('erro ao obter os posts', error);
   }
-  
 }
-export async function editarPost(postId, novoConteudo){
-  const docRef = doc(db, 'posts', postId)
+
+export async function editarPost(postId, novoConteudo) {
+  const docRef = doc(db, 'posts', postId);
   await updateDoc(docRef, {
     conteudo: novoConteudo,
-  })
-
-
+  });
 }
