@@ -105,7 +105,8 @@ export default () => {
          <button class="btn-editar" data-post-id="${id}">
            <img src="imagens/icon-editar.png" class="icon-editar" alt="imagem para editar o post">
          </button>
-       </div>`;
+       </div>
+       `;
 
 
     const btnDeletar = postElement.querySelector('.btn-deletar');
