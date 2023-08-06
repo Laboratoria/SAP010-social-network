@@ -5,7 +5,7 @@ export default () => {
   container.id = 'csscadastro';
 
   const template = `<picture id="picture-cadastro">
-  <nav><a href=""><img src="imagens/icon-voltar-branco.png"></a></nav>
+  <nav><a href=""><img src="imagens/icon-voltar-branco.png" class="voltar"></a></nav>
 <img src="imagens/menina.png" alt="menina fazendo movimento de arte marcial" id="menina-cadastro">
 </picture>
 <form id="formulario-cadastro" autocomplete="off">
@@ -14,7 +14,7 @@ export default () => {
 </dialog>
 <header><h1>CADASTRE-SE</h1>
 <picture>
-<img src="imagens/fightback-logo.png" alt="logo do app">
+<img src="imagens/fightback-logo.png" alt="logo do app" class="logo">
 </picture>
 </header>
 <input type="text" id="input-name" name="name" placeholder="Nome" autocomplete="off">
@@ -62,7 +62,7 @@ export default () => {
     }
 
     if (nomeDoUsuario === '') {
-      exibirErro('Por favor,insira seu nome');
+      exibirErro('Por favor, insira seu nome.');
     } else {
       cadastrarUsuario(emailDoUsuario, senhaDoUsuario)
         .then((userCredential) => {
