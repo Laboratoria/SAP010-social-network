@@ -1,11 +1,3 @@
-// importamos la funcion que vamos a testear
-// import { myFunction } from '../src/lib/index';
-
-// describe('myFunction', () => {
-//   it('debería ser una función', () => {
-//     expect(typeof myFunction).toBe('function');
-//   });
-// });
 import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
@@ -13,6 +5,7 @@ import {
   signOut,
   updateProfile,
 } from 'firebase/auth';
+
 import {
   cadastrarUsuario,
   atualizarNomeDoUsuario,
@@ -24,6 +17,7 @@ import {
 } from '../src/lib/firebase';
 
 jest.mock('firebase/auth');
+jest.mock('../src/lib/firebase-config');
 
 describe(cadastrarUsuario, () => {
   it('deve ser uma função', () => {

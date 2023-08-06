@@ -32,7 +32,12 @@
     padding: 10px;
 }
 
-.post>section> div > img {
+.btn-editar>img,
+.btn-deletar>img {
+    height: 30px;
+}
+
+.post>section>div>img {
     height: 30px;
     margin: 4px 0 0 25px;
 }
@@ -98,21 +103,24 @@
     background-color: #930909;
     height: 150px;
     border-radius: 25px;
-    margin: 0 10px;
+    margin: 10px 10px 30px 10px;
     flex-direction: column;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.81);
 }
 
 #cssfeed .select {
     background-color: #332F2F;
     color: rgb(255, 255, 255);
-    height: 35px;
+    height: 50px;
     width: 150px;
     border-radius: 20px;
-    margin: 10px;
+    margin: 8px;
     border: none;
     position: sticky;
-    left: 50%;
-    font-size: 12px;
+    left: 54%;
+    font-size: 13px;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 #cssfeed textarea {
@@ -128,8 +136,8 @@
 }
 
 #btn-publicar {
-    margin: 10px 0 5px 0;
-    height: 40px;
+    margin: 5px 0 5px 0;
+    height: 55px;
     width: 170px;
     border-radius: 25px;
     color: aliceblue;
@@ -149,6 +157,7 @@
     background-color: #930909;
     border-radius: 25px;
     display: inline-block;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.81);
 }
 
 .post>section>header {
@@ -162,13 +171,20 @@
     text-indent: 1rem;
 }
 
-.post>section>header>.nivel {
+.nivel {
     background-color: #ffffff;
     border-radius: 50px;
     font-size: 14px;
     align-self: center;
     padding: 2px;
     margin-right: 8px;
+}
+
+.btn-editar,
+.btn-deletar {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .post>section>hr {
@@ -190,14 +206,14 @@
     width: -webkit-fill-available;
     text-align: center;
 }
-.btn-editar{
-    background-color: transparent;
-    border: none;
 
-}
-.btn-deletar{
-    background-color: transparent;
-    border: none;
+.botoes-post {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 16px;
+    margin-right: 30px;
+    padding: 2px;
 }
 
 @media (min-width: 768px) {
