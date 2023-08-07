@@ -17,7 +17,14 @@ import {
 } from '../src/lib/firebase';
 
 jest.mock('firebase/auth');
-jest.mock('../src/lib/firebase-config');
+
+jest.mock('../src/lib/firebase-config', () => ({
+  auth: { currentUser: 'amandasca' },
+}));
+
+// jest.mock('../src/lib/firebase', () => {{
+//
+//   }})
 
 describe(cadastrarUsuario, () => {
   it('deve ser uma função', () => {

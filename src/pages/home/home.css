@@ -21,7 +21,7 @@ main {
 }
 
 #menina-home {
-    height: 251px;
+    height: 180px;
 }
 
 #picture-home {
@@ -39,13 +39,13 @@ article {
 }
 
 article>p {
-    font-size: 16px;
+    font-size: small;
     padding-bottom: 24px;
 }
 
 #csshome h1 {
     margin-bottom: 10px;
-    font-size: 32px;
+    font-size: x-large;
 }
 
 .botoes {
@@ -98,7 +98,7 @@ article>p {
 @media (min-width: 375px) {
 
     #menina-home {
-        height: 330px;
+        height: 230px;
     }
 
     #csshome h1 {
@@ -111,6 +111,12 @@ article>p {
     }
 
 }
+
+@media (min-width: 425px) {
+    #menina-home {
+        height: 330px;
+    }
+} 
 
 @media (min-width: 768px) {
 
