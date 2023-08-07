@@ -17,16 +17,10 @@ export default () => {
      <h1>FIGHT BACK</h1>
      <ul class="lista-menu">
       <li><picture> 
-      <input type="checkbox" id="check-feed">
-      <label for="check">
        <img src="imagens/icon-feed.png" class="icon-feed" alt="imagem para acessar o feed"></picture></li>
       <li><picture>
-      <input type="checkbox" id="check-sos">
-      <label for="check">
        <img src="imagens/icon-sos.png" class="icon-sos" alt="imagem para solicitar suporte"></picture></li>
        <li><picture>
-       <input type="checkbox" id="check-sair">
-       <label for="check">
        <img src="imagens/icon-sair.png" class="icon-sair" alt="imagem para sair "></picture></li>
      </ul>
      <button id="btn-menu"><img src="imagens/icon-menu.png"></button>
@@ -34,8 +28,8 @@ export default () => {
 
     <ul class="lista-menu-mobile">
       <li><img src="imagens/icon-feed.png" class="icon-feed" alt="imagem para acessar o feed"><p>Feed</p></li>
-      <li><img src="imagens/icon-sos.png" class="icon-sos" alt="imagem para solicitar suporte"><p>Suporte</p></li>
-      <li id="sair"><img src="imagens/icon-sair.png" class="icon-sair" alt="imagem para sair "><p>Sair</p></li>
+      <li class="suporte"><img src="imagens/icon-sos.png" class="icon-sos" alt="imagem para solicitar suporte"><p>Suporte</p></li>
+      <li class="sair"><img src="imagens/icon-sair.png" class="icon-sair" alt="imagem para sair "><p>Sair</p></li>
     </ul>
   </div>
     <header>
@@ -63,8 +57,6 @@ export default () => {
 
     if (listaMenu.style.display === 'none') {
       listaMenu.style.display = 'block';
-    } else if (document.body.clientWidth >= 768) {
-      listaMenu.style.display = 'none';
     } else {
       listaMenu.style.display = 'none';
     }
@@ -75,7 +67,7 @@ export default () => {
   botaoMenu.addEventListener('click', abrirMenu);
 
   // Evento de clique no botão de sair
-  const botaoSair = container.querySelector('#sair');
+  const botaoSair = container.querySelector('.sair');
   botaoSair.addEventListener('click', () => {
     sairDaConta()
       .then(() => {
@@ -88,7 +80,12 @@ export default () => {
         console.error(`${errorCode} - ${errorMessage}`);
       });
   });
-
+  const botaoSos = container.querySelector('.suporte');
+  botaoSos.addEventListener('click', () => {
+      window.location.hash = '#suporte';
+  });
+  
+  
   // Função para exibir um post na tela
   function printarPost(username, conteudo, nivel, id) {
     const postElement = document.createElement('section');
@@ -100,6 +97,10 @@ export default () => {
 
          <button class="btn-editar" data-post-id="${id}">
            <img src="imagens/icon-editar.png" class="icon-editar" alt="imagem para editar o post">
+         </button>
+
+         <button class="btn-deletar" data-post-id="${id}">
+         <img src="imagens/icon-deletar.png" class="icon-deletar" alt="imagem para deletar o post">
          </button>
        </div>`;
 
