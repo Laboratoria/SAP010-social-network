@@ -1,2 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+}
 
+body {
+    font-family: cursive, sans-serif;
+    background-color: #96BDC0;
+}
 
+.container-cadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logotipo_cad {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin: 5px;
+}
+
+img {
+    width: 100%;
+    /*Usar a largura total do container*/
+    max-width: 347px;
+    /*Definir o tamanho máximo*/
+    height: auto;
+    /*altura automática*/
+    /*left: 21px;
+    top: 0px;*/
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.campos_de_preenchimento {
+    display: flex;
+    flex-direction: column ;
+    gap: 10px;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    /*percentual para garantir responsividade*/
+    max-width: 243px;
+    /*height: 319px;
+    left: 200px;*/
+    background: rgba(74, 93, 148, 0.49);
+    border: 2px solid #202E56;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-weight: bold;
+
+}
+
+button {
+box-sizing: border-box;
+
+width: 131.61px;
+height: 27.47px;
+left: 129.1px;
+top: 725.63px;
+
+background: rgba(74, 93, 148, 0.49);
+border: 1px solid #202E56;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 5px;
+}
+
+.subtitulo{
+    color: #050820;
+}
+
+.formulario label,
+.formulario input,
+.formulario a,
+.formulario button {
+    margin: 10px 0 0 10px;
+
+}
+
+.formulario input {
+    max-width: 212px;
+    width: 100%;
+    /*height: 32;*/
+}
+
+.criadoras {
+
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+    
+}
+
+p.criadoras  {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-family: cursive;
+    font-size: 15px;
+    line-height: 12px;
+    color: #050820;
+}
+
+@media screen and (max-width: 600px) {
+
+    .logotipo-cad {
+        margin-top: 10px;
+        /* Adicionei um espaço superior para afastar do topo */
+    }
+
+    .campos_de_preenchimento {
+        width: 100%;
+        /* Usei a largura total da tela em telas menores */
+        max-width: none;
+        /* Remover o limite máximo para telas menores */
+    }
+}
