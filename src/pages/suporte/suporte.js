@@ -9,7 +9,7 @@ export default () => {
    <nav id="menu">
      <h1>FIGHT BACK</h1>
      <ul class="lista-menu">
-      <li><img src="imagens/icon-feed.png" class="icon-feed" alt="imagem para acessar o feed"></li>
+      <li class="feed"><img src="imagens/icon-feed.png" class="icon-feed" alt="imagem para acessar o feed"></li>
       <li><img src="imagens/icon-sos.png" class="icon-sos" alt="imagem para solicitar suporte"></li>
       <li class="sair"><img src="imagens/icon-sair.png" class="icon-sair" alt="imagem para sair "></li>
      </ul>
@@ -17,7 +17,7 @@ export default () => {
     </nav>
 
     <ul class="lista-menu-mobile">
-      <li><img src="imagens/icon-feed.png" class="icon-feed" alt="imagem para acessar o feed"><p>Feed</p></li>
+      <li class="feed"><img src="imagens/icon-feed.png" class="icon-feed" alt="imagem para acessar o feed"><p>Feed</p></li>
       <li class="suporte"><img src="imagens/icon-sos.png" class="icon-sos" alt="imagem para solicitar suporte"><p>Suporte</p></li>
       <li class="sair"><img src="imagens/icon-sair.png" class="icon-sair" alt="imagem para sair "><p>Sair</p></li>
     </ul>
@@ -51,7 +51,8 @@ export default () => {
  
    // Evento de clique no botão de sair
    const botaoSair = container.querySelectorAll('li.sair');
-   botaoSair.addEventListener('click', () => {
+   botaoSair.forEach(botao =>
+  botao.addEventListener('click', () => {
      sairDaConta()
        .then(() => {
          alert('Você saiu');
@@ -62,12 +63,13 @@ export default () => {
          const errorMessage = error.message;
          console.error(`${errorCode} - ${errorMessage}`);
        });
-   });
+   }));
    
-   const botaoFeed = container.querySelector('.feed');
-   botaoFeed.addEventListener('click', () => {
-       window.location.hash = '#feed';
-   });
+   const botaoFeed = container.querySelectorAll('li.feed');
+  botaoFeed.forEach(botao =>
+  botao.addEventListener('click', () => {
+      window.location.hash = '#feed';
+  }));
    
   
     return container;
