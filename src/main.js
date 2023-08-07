@@ -8,6 +8,7 @@ import cadastro from './pages/cadastro/cadastro';
 import login from './pages/login/login';
 import feed from './pages/feed/feed';
 import senha from './pages/redefinicao-de-senha/senha';
+import suporte from './pages/suporte/suporte';
 // import { identificarUsuarioConectado } from './lib/firebase';
 import { auth } from './lib/firebase-config';
 
@@ -36,6 +37,9 @@ const init = () => {
         break;
       case '#redefinir-senha':
         principal.appendChild(senha());
+        break;
+        case '#suporte':
+        principal.appendChild(suporte());
         break;
       default:
         principal.appendChild(home());
