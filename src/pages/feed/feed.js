@@ -12,7 +12,7 @@ export default () => {
   container.id = 'cssfeed';
 
   const template = `
-  <div>
+  <div class="container-menu">
    <nav id="menu">
      <h1>FIGHT BACK</h1>
      <ul class="lista-menu">
@@ -65,8 +65,7 @@ export default () => {
 
   // Evento de clique no botão de sair
   const botaoSair = container.querySelectorAll('li.sair');
-  botaoSair.forEach(botao =>
- botao.addEventListener('click', () => {
+  botaoSair.forEach((botao) => botao.addEventListener('click', () => {
     sairDaConta()
       .then(() => {
         alert('Você saiu');
@@ -79,14 +78,11 @@ export default () => {
       });
   }));
 
-
   const botaoSos = container.querySelectorAll('li.suporte');
-  botaoSos.forEach(botao =>
-  botao.addEventListener('click', () => {
-      window.location.hash = '#suporte';
+  botaoSos.forEach((botao) => botao.addEventListener('click', () => {
+    window.location.hash = '#suporte';
   }));
-  
-  
+
   // Função para exibir um post na tela
   function printarPost(username, conteudo, nivel, id) {
     const postElement = document.createElement('section');

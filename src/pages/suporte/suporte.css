@@ -16,6 +16,27 @@ body {
     display: flex;
     flex-direction: column;
 }
-#csssuporte > .mensagem-sos{
-    color:black;
+.mensagem-sos{
+    margin: 50px 30px 0 30px;
+    font-size: small;
+}
+
+@media (min-width: 375px) {
+    .mensagem-sos{
+        font-size: medium;
+    }
+}
+
+@media (min-width: 768px) {
+    .mensagem-sos{
+        margin: 100px 30px 0 30px;
+        font-size: large;
+    }
+}
+
+@media (min-width: 1024px) {
+    .mensagem-sos{
+        margin: 100px 30px 0 30px;
+        font-size: larger;
+    }
 }

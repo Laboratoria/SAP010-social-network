@@ -38,7 +38,7 @@ const init = () => {
       case '#redefinir-senha':
         principal.appendChild(senha());
         break;
-        case '#suporte':
+      case '#suporte':
         principal.appendChild(suporte());
         break;
       default:
