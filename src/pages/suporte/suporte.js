@@ -3,7 +3,7 @@ import { sairDaConta } from "../../lib/firebase";
 export default () => {
     const container = document.createElement('div');
     container.id = 'csssuporte';
-  
+
     const template = `
     <div>
    <nav id="menu">
@@ -33,47 +33,46 @@ export default () => {
       <a href="https://www.gov.br/mdh/pt-br/assuntos/denuncie-violencia-contra-a-mulher/violencia-contra-a-mulher" target="_blank">SOS</a>
     </button>      </div>
       </article>`;
-  
+
     container.innerHTML = template;
-     // Função para abrir o menu
-  function abrirMenu() {
-    const listaMenu = container.querySelector('.lista-menu-mobile');
+    // Função para abrir o menu
+    function abrirMenu() {
+        const listaMenu = container.querySelector('.lista-menu-mobile');
 
-    if (listaMenu.style.display === 'none') {
-      listaMenu.style.display = 'block';
-    } else {
-      listaMenu.style.display = 'none';
+        if (listaMenu.style.display === 'none') {
+            listaMenu.style.display = 'block';
+        } else {
+            listaMenu.style.display = 'none';
+        }
     }
-  }
-   // Evento de clique no botão de menu
-   const botaoMenu = container.querySelector('#btn-menu');
-   botaoMenu.addEventListener('click', abrirMenu);
- 
-   // Evento de clique no botão de sair
-   const botaoSair = container.querySelectorAll('li.sair');
-   botaoSair.forEach(botao =>
-  botao.addEventListener('click', () => {
-     sairDaConta()
-       .then(() => {
-         alert('Você saiu');
-         window.location.hash = '';
-       })
-       .catch((error) => {
-         const errorCode = error.code;
-         const errorMessage = error.message;
-         console.error(`${errorCode} - ${errorMessage}`);
-       });
-   }));
-   
-   const botaoFeed = container.querySelectorAll('li.feed');
-  botaoFeed.forEach(botao =>
-  botao.addEventListener('click', () => {
-      window.location.hash = '#feed';
-  }));
-   
-  
-    return container;
-  };
+    // Evento de clique no botão de menu
+    const botaoMenu = container.querySelector('#btn-menu');
+    botaoMenu.addEventListener('click', abrirMenu);
 
-  
-  
+    // Evento de clique no botão de sair
+    const botaoSair = container.querySelectorAll('li.sair');
+    botaoSair.forEach(botao =>
+        botao.addEventListener('click', () => {
+            sairDaConta()
+                .then(() => {
+                    alert('Você saiu');
+                    window.location.hash = '';
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error(`${errorCode} - ${errorMessage}`);
+                });
+        }));
+
+    const botaoFeed = container.querySelectorAll('li.feed');
+    botaoFeed.forEach(botao =>
+        botao.addEventListener('click', () => {
+            window.location.hash = '#feed';
+        }));
+
+
+    return container;
+};
+
+
