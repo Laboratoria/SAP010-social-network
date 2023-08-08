@@ -27,9 +27,9 @@ export function cadastro() {
       <input type = "password" class="senha" id = "senha" name="senha" placeholder = "" requered>
       
       <label for="confirme a senha">Confirme a Senha</label>
-      <input type = "password"  class="senha" id = "confirme a senha" name="confirme a senha" placeholder = '' requered>
+      <input type = "password"  class="senha" id = "confirme_a_senha" name="confirme a senha" placeholder = '' requered>
       
-      <a href = "/#"><button type="submit">Cadastrar</button></a>
+      <a href = "/#"><button type="submit" id="button">Cadastrar</button></a>
       </section>
      </div>
    </main>
@@ -44,6 +44,20 @@ export function cadastro() {
   cadastroPage.rel = "stylesheet";
   cadastroPage.href = "pages/Cadastro/cadastro.css";
   document.head.appendChild(cadastroPage);
+
+
+ function criarCadastro () {
+
+    const nome = document.getElementById("name");
+    const email = document.getElementById("email");
+    const senha = document.getElementById("senha");
+    const confirmarSenha = document.getElementById("confirme_a_senha");
+    const botaoCriarUsuario = document.getElementById("button");
+
+ }
+
+
+
 
   return containerCadastro;
 }
