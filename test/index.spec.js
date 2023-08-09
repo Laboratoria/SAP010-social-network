@@ -6,14 +6,18 @@ import {
   updateProfile,
 } from 'firebase/auth';
 
+import { addDoc, deleteDoc, /* getDocs, */ updateDoc } from 'firebase/firestore';
+
 import {
   cadastrarUsuario,
   atualizarNomeDoUsuario,
   loginUsuario,
   sairDaConta,
   redefinirSenha,
-  exibirPosts,
+  // exibirPosts,
   adicionarPost,
+  editarPost,
+  deletarPost,
 } from '../src/lib/firebase';
 
 jest.mock('firebase/auth');
@@ -22,9 +26,7 @@ jest.mock('../src/lib/firebase-config', () => ({
   auth: { currentUser: 'amandasca' },
 }));
 
-// jest.mock('../src/lib/firebase', () => {{
-//
-//   }})
+jest.mock('firebase/firestore');
 
 describe(cadastrarUsuario, () => {
   it('deve ser uma função', () => {
@@ -88,13 +90,55 @@ describe(redefinirSenha, () => {
 });
 
 describe(adicionarPost, () => {
-  it('deve adicionar o post ao firebase', () => {
+  it('deve ser uma função', () => {
     expect(typeof adicionarPost).toBe('function');
+  });
+
+  it('deve adicionar o post ao firebase', () => {
+    const nome = 'anaramartins';
+    const conteudo = 'ola, bom dia';
+    const nivel = 'intermediario';
+    adicionarPost(nome, conteudo, nivel);
+    expect(addDoc).toHaveBeenCalledTimes(1);
   });
 });
 
-describe(exibirPosts, () => {
+// describe(exibirPosts, () => {
+//   it('deve ser uma função', () => {
+//     expect(typeof exibirPosts).toBe('function');
+//   });
+
+//   it('deve exibir os posts na tela', () => {
+//     exibirPosts();
+//     expect(getDocs).toHaveBeenCalledTimes(1);
+//   });
+// });
+
+describe(editarPost, () => {
   it('deve ser uma função', () => {
-    expect(typeof exibirPosts).toBe('function');
+    expect(typeof editarPost).toBe('function');
+  });
+
+  it('deve editar o post', () => {
+    const postId = 'w6sasidbjs';
+    const novoConteudo = 'ola, boa noite';
+    editarPost(postId, novoConteudo);
+    expect(updateDoc).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe(deletarPost, () => {
+  it('deve ser uma função', () => {
+    expect(typeof deletarPost).toBe('function');
+  });
+
+  it('deve deletar o post', () => {
+    const id = 'wog5ybcj';
+    const collection = jest.fn();
+    const db = jest.fn();
+    const posts = 'posts';
+    deletarPost(id);
+    expect(deleteDoc).toHaveBeenCalledTimes(1);
+    expect(deleteDoc).toHaveBeenCalledWith(collection(db, posts));
   });
 });

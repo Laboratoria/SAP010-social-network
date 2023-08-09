@@ -112,6 +112,7 @@ export default () => {
         alert('voce so pode deletar o proprio post');
       }
     });
+
     const btnEditar = postElement.querySelector('.btn-editar');
     btnEditar.addEventListener('click', () => {
       if (username === auth.currentUser.displayName) {
