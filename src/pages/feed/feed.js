@@ -43,6 +43,12 @@ export default () => {
       <button id="btn-publicar">PUBLICAR</button>
    </div>
    <div class="post"></div>
+   <div id="modal" class="modal">
+    <div class="modal-content">
+      <p id="modal-text"></p>
+      <button id="modal-close">OK</button>
+    </div>
+  </div>
 
      `;
 
@@ -68,7 +74,6 @@ export default () => {
   botaoSair.forEach((botao) => botao.addEventListener('click', () => {
     sairDaConta()
       .then(() => {
-        alert('Você saiu');
         window.location.hash = '';
       })
       .catch((error) => {
@@ -100,19 +105,27 @@ export default () => {
          <img src="imagens/icon-deletar.png" class="icon-deletar" alt="imagem para deletar o post">
          </button>
        </div>`;
+       const modal = document.getElementById('modal');
+       const modalText = document.getElementById('modal-text');
+       const modalClose = document.getElementById('modal-close');
 
-    const btnDeletar = postElement.querySelector('.btn-deletar');
+       const btnDeletar = postElement.querySelector('.btn-deletar');
+    
+    
     btnDeletar.addEventListener('click', () => {
       if (username === auth.currentUser.displayName) {
         const postId = btnDeletar.getAttribute('data-post-id');
         deletarPost(postId);
         postElement.remove();
-        alert('post deletado');
-      } else {
-        alert('voce so pode deletar o proprio post');
+        modalText.textContent = 'Post deletado';
+    modal.style.display = 'block';
+  } else {
+    modalText.textContent = 'Você só pode deletar o seu próprio post';
+    modal.style.display = 'block';
       }
     });
-    const btnEditar = postElement.querySelector('.btn-editar');
+
+  const btnEditar = postElement.querySelector('.btn-editar');
     btnEditar.addEventListener('click', () => {
       if (username === auth.currentUser.displayName) {
         const postId = btnEditar.getAttribute('data-post-id');
@@ -124,15 +137,21 @@ export default () => {
               // Atualiza o texto exibido no post
               const postTextoElement = postElement.querySelector('.conteudo');
               postTextoElement.textContent = novoConteudo;
-              alert('Post editado com sucesso');
+              modalText.textContent = 'Post editado com sucesso!';
+              modal.style.display = 'block';
             })
             .catch((error) => {
               console.error('Erro ao editar o post:', error);
             });
         }
       } else {
-        alert('Você só pode editar o próprio post');
+        modalText.textContent ='Você só pode editar o próprio post';
+        modal.style.display = 'block';
       }
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.style.display = 'none';
     });
 
     const feedElement = container.querySelector('.post');
@@ -143,28 +162,39 @@ export default () => {
   const nome = auth.currentUser.displayName;
 
   // Evento de clique no botão de publicar
+  
   const btnPublicar = container.querySelector('#btn-publicar');
-  btnPublicar.addEventListener('click', (event) => {
-    const textarea = container.querySelector('#story');
-    const texto = textarea.value;
-    const selectNivel = container.querySelector('.select');
-    const nivel = selectNivel.value;
+btnPublicar.addEventListener('click', async (event) => {
+  event.preventDefault();
 
-    if (nivel === 'selecione') {
-      alert('selecione seu nivel');
-      event.preventDefault();
-    } else {
-      adicionarPost(nome, texto, nivel)
-        .then(() => {
-          printarPost(nome, texto, nivel);
-        })
-        .catch((error) => {
-          console.error('Erro ao adicionar o post:', error);
-        });
+  const textarea = container.querySelector('#story');
+  const texto = textarea.value.trim();
+  const selectNivel = container.querySelector('.select');
+  const nivel = selectNivel.value;
 
-      textarea.value = '';
-    }
-  });
+  if (texto === '') {
+    const modalText = document.getElementById('modal-text');
+    modalText.textContent = 'Você não pode postar um conteúdo vazio';
+    modal.style.display = 'block';
+    return;
+  }
+
+  if (nivel === 'selecione') {
+    const modalText = document.getElementById('modal-text');
+    modalText.textContent = 'Selecione seu nível';
+    modal.style.display = 'block';
+    return;
+  }
+
+  try {
+    await adicionarPost(nome, texto, nivel);
+    printarPost(nome, texto, nivel); // Exibir o post na tela
+    textarea.value = '';
+  } catch (error) {
+    console.error('Erro ao adicionar o post:', error);
+  }
+});
+
 
   // Exibir todos os posts ao carregar a página
   exibirPosts()
