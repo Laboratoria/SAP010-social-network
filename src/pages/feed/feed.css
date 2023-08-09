@@ -59,7 +59,6 @@
 }
 
 #cssfeed>header>picture>img {
-    width: 100vw;
     background-color: #ffff;
     position: relative;
     margin-top: 50px;

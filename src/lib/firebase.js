@@ -45,30 +45,11 @@ export async function adicionarPost(username, conteudo, nivel) {
       conteudo,
       nivel,
     });
-    console.log('Document written with ID: ', docRef.id);
+    return { docRef, username, conteudo };
   } catch (e) {
-    console.error('Error adding document: ', e);
+    throw Error('Error adding document: ', e);
   }
-  return { username, conteudo };
 }
-
-// export async function adicionarLike(postId) {
-//   try {
-//     const postRef = doc(db, 'posts', postId);
-//     await updateDoc(postRef, { likes: increment(1), liked: true });
-//   } catch (error) {
-//     console.error('erro ao adicionar like', error);
-//   }
-// }
-
-// export async function removerLike(postId) {
-//   try {
-//     const postRef = doc(db, 'posts', postId);
-//     await updateDoc(postRef, { likes: increment(-1), liked: false });
-//   } catch (error) {
-//     console.error('erro ao remover like', error);
-//   }
-// }
 
 export async function deletarPost(postId) {
   console.log(postId);
@@ -81,11 +62,11 @@ export async function exibirPosts() {
     const feedElement = document.querySelector('.post');
     feedElement.innerHTML = '';
     const array = [];
-    querySnapshot.forEach((document) => {
-      const post = document.data();
+    querySnapshot.forEach((documento) => {
+      const post = documento.data();
       array.push({
         ...post,
-        id: document.id,
+        id: documento.id,
       });
       // console.log(`${doc.id} => ${doc.data()}`);
     });
