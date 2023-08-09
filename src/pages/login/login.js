@@ -9,17 +9,29 @@ export default () => {
       sozinha e gosta compartilhar dicas,  experiências 
       sobre as viagens e também  fazer novas amizades.
     </p>
-    <div class="formulario-login">
+    <form>
       <h2>Login</h2>
-      <p>E-mail:</p>
-      <input type="email"/>
-      <p>Senha:</p>
-      <input type="password"/>
-      <button type="button">ENTRAR</button>
-    </div>
+      
+      <input id="email" type="text" name="email" placeholder="Seu email..."/>
+      
+      <input type="password" name="senha" placeholder="Sua senha..."/>
+      <button type="submit">ENTRAR</button>
+    </form>
     <img src="./img/Mulheres viajando.png">
+  
     `;
+
+
     container.innerHTML = template
   
+    
     return container;
+    
   }
+
+  /*const email = document.getElementById('email')
+
+    email.addEventListener('focus', ()=>{
+      email.style.borderColor = "#B31F85";
+    })
+  */

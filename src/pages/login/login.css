@@ -1,20 +1,68 @@
-body {
+* {
     margin: 0;
     padding: 0;
-    background-color: #F5DDEC;
+    box-sizing: border-box; 
 }
 
-.formulario-login {
-    background-color: #D4C6D0;
-    width: 265px;
-    height: 277px;
+body {
+  background-color: #F5DDEC;
+}
+
+ul, li, a, img {
+  width: 200px;
+  height: 200px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    opacity: 0.9;
+    align-items: center;
+    background-color: #624C84;
+    max-width: 500px;
+    width: 70%;
+    padding: 20px;
+    position: absolute;
+    left: 60%;
+    top: 50%;
     border-radius: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+ 
+form input[type=text],
+form input[type=password]{
+  background-color: #E9E7E6;
+  width: 70%;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  padding-left: 10px;
+  margin: 10px 0;
 }
 
-input{
-    width: 180px;
-    height: 27px;
-    border-radius: 5px;
-    border: none;
-
+form input[type=text]:focus{
+  outline: 0;
 }
+
+form input[type=password]:focus {
+  outline: 0;
+}
+
+
+button {
+  width: 40%;
+  height: 25px;
+  margin-top: 15px;
+  border-radius: 20px;
+  border: none;
+  color: black;
+  background-color: #B31F85;
+  cursor: pointer;
+}
+
+form button[type=submit]:hover{
+  background-color: #881764;
+  transition: 1s;
+}
+
+
