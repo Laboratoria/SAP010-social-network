@@ -54,7 +54,6 @@ export default () => {
   botaoSair.forEach((botao) => botao.addEventListener('click', () => {
     sairDaConta()
       .then(() => {
-        alert('Você saiu');
         window.location.hash = '';
       })
       .catch((error) => {
