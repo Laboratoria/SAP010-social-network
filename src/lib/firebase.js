@@ -38,17 +38,13 @@ export function redefinirSenha(email) {
 }
 
 export async function adicionarPost(username, conteudo, nivel) {
-  try {
-    const docRef = await addDoc(collection(db, 'posts'), {
-      username: auth.currentUser.displayName,
-      uid: auth.currentUser.uid,
-      conteudo,
-      nivel,
-    });
-    return { docRef, username, conteudo };
-  } catch (e) {
-    throw Error('Error adding document: ', e);
-  }
+  const docRef = await addDoc(collection(db, 'posts'), {
+    username: auth.currentUser.displayName,
+    uid: auth.currentUser.uid,
+    conteudo,
+    nivel,
+  });
+  return { docRef, username, conteudo };
 }
 
 export async function deletarPost(postId) {
@@ -59,8 +55,11 @@ export async function deletarPost(postId) {
 export async function exibirPosts() {
   try {
     const querySnapshot = await getDocs(collection(db, 'posts'));
-    const feedElement = document.querySelector('.post');
-    feedElement.innerHTML = '';
+    console.log(querySnapshot);
+    if (!querySnapshot.docs.length) {
+      console.log('A collection está vazia.');
+      return { querySnapshot, array: [] };
+    }
     const array = [];
     querySnapshot.forEach((documento) => {
       const post = documento.data();
@@ -70,6 +69,7 @@ export async function exibirPosts() {
       });
       // console.log(`${doc.id} => ${doc.data()}`);
     });
+    console.log(querySnapshot);
     return array;
   } catch (error) {
     console.error('erro ao obter os posts', error);
