@@ -137,7 +137,6 @@ export default () => {
               const postTextoElement = postElement.querySelector('.conteudo');
               postTextoElement.textContent = novoConteudo;
               modalText.textContent = 'Post editado com sucesso!';
-              modal.style.display = 'block';
             })
             .catch((error) => {
               console.error('Erro ao editar o post:', error);
