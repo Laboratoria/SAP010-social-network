@@ -1,3 +1,4 @@
+import { cadastrarEmail } from "../../lib/firebase"; /*está importando a função cadastrarEmail do arquivo localizado em firebase.js*/
 import logo_mundo_azul from "../Imagens/Mundo_azul_logo.png"
 export function cadastro() {
   const containerCadastro = document.createElement("div");
@@ -26,10 +27,8 @@ export function cadastro() {
       <label for="senha" >Senha</label>
       <input type = "password" class="senha" id = "senha" name="senha" placeholder = "" requered>
       
-      <label for="confirme a senha">Confirme a Senha</label>
-      <input type = "password"  class="senha" id = "confirme_a_senha" name="confirme a senha" placeholder = '' requered>
-      
-      <a href = "/#"><button type="submit" id="button">Cadastrar</button></a>
+      <!--retirei "confirme a senha" conforme instrução da Moni-->  
+      <button type="submit" id="button">Cadastrar</button>
       </section>
      </div>
    </main>
@@ -46,18 +45,30 @@ export function cadastro() {
   document.head.appendChild(cadastroPage);
 
 
- function criarCadastro () {
+  function criarCadastro () {
+    console.log("oi")
+    const nome = containerCadastro.querySelector("#name");
+    const email = containerCadastro.querySelector("#email");
+    const senha = containerCadastro.querySelector("#senha");
+    const confirmarSenha = containerCadastro.querySelector("#confirme_a_senha");
+    
+    console.log("ola")
+    nome.value  
+    console.log(nome.value)
+    console.log(email.value)
 
-    const nome = document.getElementById("name");
-    const email = document.getElementById("email");
-    const senha = document.getElementById("senha");
-    const confirmarSenha = document.getElementById("confirme_a_senha");
-    const botaoCriarUsuario = document.getElementById("button");
+    /*chamei a função cadastrarEmail aqui dentro da função e usnar os parametros nome e email*/
 
- }
-
-
-
-
+    const emailCadastro = email.value;/*se chamar só email, vou chamar input e não quero isso, quero chamar o valor de email*/
+    const senhaCadastro = senha.value;
+    cadastrarEmail(emailCadastro, senhaCadastro);
+  }
+  const botaoCriarUsuario = containerCadastro.querySelector("#button");
+  botaoCriarUsuario.addEventListener("click", criarCadastro);
+  
+  
   return containerCadastro;
 }
+
+
+
