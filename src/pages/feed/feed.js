@@ -6,6 +6,8 @@ import {
   editarPost,
 } from '../../lib/firebase';
 import { auth } from '../../lib/firebase-config';
+import iconfeed from '../../imagens/icon-feed.png';
+import iconsos from '../../imagens/icon-sos.png';
 
 export default () => {
   const container = document.createElement('div');
@@ -24,8 +26,8 @@ export default () => {
     </nav>
 
     <ul class="lista-menu-mobile">
-      <li><img src="imagens/icon-feed.png" class="icon-feed" alt="imagem para acessar o feed"><p>Feed</p></li>
-      <li class="suporte"><img src="imagens/icon-sos.png" class="icon-sos" alt="imagem para solicitar suporte"><p>Suporte</p></li>
+      <li><img src="${iconfeed}" class="icon-feed" alt="imagem para acessar o feed"><p>Feed</p></li>
+      <li class="suporte"><img src="${iconsos}" class="icon-sos" alt="imagem para solicitar suporte"><p>Suporte</p></li>
       <li class="sair"><img src="imagens/icon-sair.png" class="icon-sair" alt="imagem para sair "><p>Sair</p></li>
     </ul>
   </div>
