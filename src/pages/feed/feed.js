@@ -8,6 +8,11 @@ import {
 import { auth } from '../../lib/firebase-config';
 import iconfeed from '../../imagens/icon-feed.png';
 import iconsos from '../../imagens/icon-sos.png';
+import iconsair from '../../imagens/icon-sair.png';
+import meninafeed from '../../imagens/menina-feed.png';
+import iconeditar from '../../imagens/icon-editar.png';
+import icondeletar from '../../imagens/icon-deletar.png';
+import iconmenu from '../../imagens/icon-menu.png';
 
 export default () => {
   const container = document.createElement('div');
@@ -18,21 +23,21 @@ export default () => {
    <nav id="menu">
      <h1>FIGHT BACK</h1>
      <ul class="lista-menu">
-      <li><img src="imagens/icon-feed.png" class="icon-feed" alt="imagem para acessar o feed"></li>
-      <li class="suporte"><img src="imagens/icon-sos.png" class="icon-sos" alt="imagem para solicitar suporte"></li>
-       <li class="sair"><img src="imagens/icon-sair.png" class="icon-sair" alt="imagem para sair "></li>
+      <li><img src="${iconfeed}" class="icon-feed" alt="imagem para acessar o feed"></li>
+      <li class="suporte"><img src="${iconsos}" class="icon-sos" alt="imagem para solicitar suporte"></li>
+       <li class="sair"><img src="${iconsair}" class="icon-sair" alt="imagem para sair "></li>
      </ul>
-     <button id="btn-menu"><img src="imagens/icon-menu.png"></button>
+     <button id="btn-menu"><img src="${iconmenu}"></button>
     </nav>
 
     <ul class="lista-menu-mobile">
       <li><img src="${iconfeed}" class="icon-feed" alt="imagem para acessar o feed"><p>Feed</p></li>
       <li class="suporte"><img src="${iconsos}" class="icon-sos" alt="imagem para solicitar suporte"><p>Suporte</p></li>
-      <li class="sair"><img src="imagens/icon-sair.png" class="icon-sair" alt="imagem para sair "><p>Sair</p></li>
+      <li class="sair"><img src="${iconsair}" class="icon-sair" alt="imagem para sair "><p>Sair</p></li>
     </ul>
   </div>
     <header>
-     <picture id="mulher-feed"><img src="imagens/menina-feed.png"></picture>
+     <picture id="mulher-feed"><img src="${meninafeed}"></picture>
     </header>
     <div class="post-publicar">
     <select name="select-nivel" class="select">
@@ -100,11 +105,11 @@ export default () => {
          <div class='botoes-post'>
 
          <button class="btn-editar" data-post-id="${id}">
-           <img src="imagens/icon-editar.png" class="icon-editar" alt="imagem para editar o post">
+           <img src="${iconeditar}" class="icon-editar" alt="imagem para editar o post">
          </button>
 
          <button class="btn-deletar" data-post-id="${id}">
-         <img src="imagens/icon-deletar.png" class="icon-deletar" alt="imagem para deletar o post">
+         <img src="${icondeletar}" class="icon-deletar" alt="imagem para deletar o post">
          </button>
        </div>`;
     const modal = document.getElementById('modal');

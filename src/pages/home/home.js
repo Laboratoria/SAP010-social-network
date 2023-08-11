@@ -1,10 +1,12 @@
+import meninahome from '../../imagens/menina.png';
+
 export default () => {
   const container = document.createElement('div');
   container.id = 'csshome';
 
   const template = `
     <picture id="picture-home">
-    <img src="imagens/menina.png" alt="menina fazendo movimento de arte marcial" id="menina-home">
+    <img src="${meninahome}" alt="menina fazendo movimento de arte marcial" id="menina-home">
     </picture>
     <article>
     <h1>Bem-vinda ao Fight Back!</h1>

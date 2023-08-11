@@ -1,3 +1,6 @@
+import meninacadastro from '../../imagens/menina.png';
+import iconvoltar from '../../imagens/icon-voltar-branco.png';
+import logo from '../../imagens/fightback-logo.png';
 import { cadastrarUsuario, atualizarNomeDoUsuario } from '../../lib/firebase';
 
 export default () => {
@@ -5,8 +8,8 @@ export default () => {
   container.id = 'csscadastro';
 
   const template = `<picture id="picture-cadastro">
-  <nav><a href=""><img src="imagens/icon-voltar-branco.png" class="voltar"></a></nav>
-<img src="imagens/menina.png" alt="menina fazendo movimento de arte marcial" id="menina-cadastro">
+  <nav><a href=""><img src="${iconvoltar}" class="voltar"></a></nav>
+<img src="${meninacadastro}" alt="menina fazendo movimento de arte marcial" id="menina-cadastro">
 </picture>
 <form id="formulario-cadastro" autocomplete="off">
 <dialog id="caixaDeTexto">
@@ -14,7 +17,7 @@ export default () => {
 </dialog>
 <header><h1>CADASTRE-SE</h1>
 <picture>
-<img src="imagens/fightback-logo.png" alt="logo do app" class="logo">
+<img src="${logo}" alt="logo do app" class="logo">
 </picture>
 </header>
 <input type="text" id="input-name" name="name" placeholder="Nome" autocomplete="off">

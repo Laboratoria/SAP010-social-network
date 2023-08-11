@@ -1,3 +1,6 @@
+import meninalogin from '../../imagens/menina.png';
+import iconvoltar from '../../imagens/icon-voltar.png';
+import logo from '../../imagens/fightback-logo.png';
 import { loginUsuario } from '../../lib/firebase';
 // lerDadosTeste, teste
 export default () => {
@@ -6,13 +9,13 @@ export default () => {
 
   const template = `
   <picture id="picture-login">
-  <nav><a href=""><img src="imagens/icon-voltar.png" class="voltar"></a></nav>
-  <img src="imagens/menina.png" alt="menina fazendo movimento de arte marcial" id="menina-login">
+  <nav><a href=""><img src="${iconvoltar}" class="voltar"></a></nav>
+  <img src="${meninalogin}" alt="menina fazendo movimento de arte marcial" id="menina-login">
   </picture>
   <form id="formulario-login">
   <header><h1>ENTRAR</h1>
 <picture>
-<img src="imagens/fightback-logo.png" alt="logo do app" class="logo">
+<img src="${logo}" alt="logo do app" class="logo">
 </picture>
 </header>
 <input type="email" id="input-email-login" name="email" placeholder="Email" autocomplete="off">
