@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#csssenha > form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+    gap: 10px;
+}
+
+
+#csssenha > form > label {
+    text-align: center;
+}
+
+#csssenha input {
+    width: 279px;
+    height: 50px;
+    font-size: 24px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+#enviar-email {
+    display: flex;
+    width: 200px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    margin: 23px auto;
+    background-color: #1E1E1E;
+    border-radius: 8px;
+    box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.80);
+    font-weight: bolder;
+    color: #FFFF;
+    border: currentColor;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
