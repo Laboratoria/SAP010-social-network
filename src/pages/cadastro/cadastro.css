@@ -1,0 +1,244 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#csscadastro {
+    background-color: #ffff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+}
+
+main {
+    height: 100vh;
+}
+
+#menina-cadastro {
+    height: 230px;
+}
+
+#picture-cadastro nav {
+    background-color: #1e1e1e;
+    position: relative;
+    right: 43%;
+    height: 30px;
+}
+
+#picture-cadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #1e1e1e;
+    border-radius: 0 0 32px 32px;
+}
+
+#caixaDeTexto {
+    position: relative;
+}
+
+#csscadastro header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+header>h1 {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#formulario-cadastro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    width: -webkit-fill-available;
+}
+
+#csscadastro input {
+    width: 279px;
+    height: 50px;
+    font-size: 24px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+#input-name {
+    background: url(/imagens/icon-user.png) no-repeat left / 1em;
+    padding-left: 1.4em;
+}
+
+#input-email-cadastro {
+    background: url(/imagens/icon-email.png) no-repeat left / 1em;
+    padding-left: 1.4em;
+}
+
+#input-senha-cadastro {
+    background: url(/imagens/icon-lock.png) no-repeat left / 1em;
+    padding-left: 1.4em;
+}
+
+#btn-vermelho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 260px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 800;
+    border-radius: 8px;
+    background-color: #950909;
+    color: #ffff;
+    margin-top: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    border: currentColor;
+    box-shadow: 0px 4px 0px 0px #520000;
+    cursor: pointer;
+}
+
+#paragrafo-cadastro {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+#paragrafo-cadastro a {
+    color: #950909;
+}
+
+/* botão on-off*/
+.cadastro-check {
+    position: relative;
+  }
+  
+  /* .onoff {
+    display: flex;
+    height: 0px;
+    width: 0px;
+  } */
+  
+  .check-btncadastro {
+    position: absolute;
+    display: inline-block;
+    margin-top: 14px;
+    width: 42px;
+    height: 24px;
+    left: 230px;
+    background-color: #666262;
+    border-radius: 17px;
+    cursor: pointer;
+  }
+  
+  .check-btncadastro::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+  }
+  
+  #check-cadastro:checked + .check-btncadastro {
+    background-color: #950909;
+  }
+  
+  #check-cadastro:checked + .check-btncadastro::after {
+    transform: translateX(18px);
+  }
+  
+#check-cadastro {
+    display: none;
+}
+  
+#mensagemErro{
+    color: #950909;
+    font-weight: bolder;
+    font-size: 13px;
+
+}
+
+@media (min-width: 768px) {
+    #csscadastro {
+        flex-direction: row;
+    }
+
+    #menina-cadastro {
+        padding: unset;
+        width: 400px;
+        height: 100vh;
+    }
+
+    #picture-cadastro {
+        border-radius: 0 32px 32px 0;
+    }
+
+    #picture-cadastro nav {
+        top: 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    #csscadastro {
+        overflow: hidden;
+    }
+
+    #menina-cadastro {
+        width: 550px;
+        height: 100vh;
+        padding: 0 80px;
+    }
+
+    .voltar {
+        height: 60px;
+    }
+
+    header>h1 {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .logo {
+        height: 90px;
+    }
+
+    #csscadastro input {
+        width: 300px;
+        height: 60px;
+        font-size: 24px;
+    }
+
+    .check-btncadastro {
+        margin-top: 20px;
+        left: 250px;
+    }
+
+    #paragrafo-cadastro {
+        font-size: 17px;
+    }
+}
+
+@media (min-width: 1440px) {
+
+    #menina-cadastro {
+        width: 800px;
+        height: 100vh;
+        padding: 10px 200px;
+    }
+}
