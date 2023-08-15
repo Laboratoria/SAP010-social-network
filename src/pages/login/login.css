@@ -1,32 +1,33 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; 
-}
-
-body {
-  background-color: #F5DDEC;
-}
-
-ul, li, a, img {
-  width: 200px;
-  height: 200px;
-}
-
-form {
+.login form {
     display: flex;
     flex-direction: column;
     opacity: 0.9;
     align-items: center;
-    background-color: #624C84;
+    background-color: #D4C6D0;
     max-width: 500px;
-    width: 70%;
+    width: 45%;
+    height: 340px;
     padding: 20px;
-    position: absolute;
-    left: 60%;
-    top: 50%;
     border-radius: 10px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.login{
+  display: flex;
+  padding: 20px;
+}
+
+.login .descricao {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.descricao p{
+  margin-top: 79px;
+  margin-left: 25%;
+  width: 48%;
+  font-size: 21px;
 }
  
 form input[type=text],
@@ -37,7 +38,8 @@ form input[type=password]{
   border: none;
   border-radius: 5px;
   padding-left: 10px;
-  margin: 10px 0;
+  margin-top: 50px;
+  margin: 30px;
 }
 
 form input[type=text]:focus{
@@ -52,7 +54,7 @@ form input[type=password]:focus {
 button {
   width: 40%;
   height: 25px;
-  margin-top: 15px;
+  margin-top: 10%;
   border-radius: 20px;
   border: none;
   color: black;
