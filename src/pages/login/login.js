@@ -1,3 +1,4 @@
+import { entrar} from '../login/login.js'
 // aqui serão criado os templates
 
 export default () => {
@@ -29,6 +30,10 @@ export default () => {
   
     container.querySelector('#email')
     container.querySelector('#password')
+
+    entrar.addEventListener('onclick', () =>{
+      
+    })
     
     return container;
     
