@@ -18,7 +18,7 @@ export default () => {
         
         <input id="email" type="text" name="email" placeholder="Seu email..."/>
         
-        <input type="password" name="senha" placeholder="Sua senha..."/>
+        <input id="password" type="password" name="senha" placeholder="Sua senha..."/>
         <button type="submit">ENTRAR</button>
       </form>
     </div>
@@ -27,6 +27,8 @@ export default () => {
 
     container.innerHTML = template
   
+    container.querySelector('#email')
+    container.querySelector('#password')
     
     return container;
     
