@@ -1,15 +1,13 @@
-import { myFunction } from './lib/index.js';
+import {auth} from './firebase.config'
 // Este es el punto de entrada de tu aplicacion
 
 // TODO: Add SDKs for Firebase products that you want to use
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {signInWithEmailAndPassword } from "firebase/auth";
 
 // https://firebase.google.com/docs/web/setup#available-libraries
-const email = "abacate@frutas.com";
-const password = "123456";
 
-function entrar (){
-createUserWithEmailAndPassword(auth, email, password)
+export function entrar (email, password){
+signInWithEmailAndPassword(auth, email, password)
 
 .then((userCredential) => {
     // Signed in 
@@ -24,7 +22,7 @@ createUserWithEmailAndPassword(auth, email, password)
     // ..
   });
 }
-myFunction();
+
 
 /*function entrar (){
   const auth = null;

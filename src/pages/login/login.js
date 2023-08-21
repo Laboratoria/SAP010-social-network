@@ -1,4 +1,4 @@
-import { entrar} from '../login/login.js'
+import { entrar} from '../../firebase/firebase.js'
 // aqui serão criado os templates
 
 export default () => {
@@ -20,7 +20,7 @@ export default () => {
         <input id="email" type="text" name="email" placeholder="Seu email..."/>
         
         <input id="password" type="password" name="senha" placeholder="Sua senha..."/>
-        <button type="submit">ENTRAR</button>
+        <button id="botao" type="submit">ENTRAR</button>
       </form>
     </div>
     `;
@@ -31,8 +31,12 @@ export default () => {
     container.querySelector('#email')
     container.querySelector('#password')
 
-    entrar.addEventListener('onclick', () =>{
-      
+    const botao = container.querySelector('#botao')
+
+    botao.addEventListener('click', (event) =>{
+      event.preventDefault()
+      console.log('Testando botão')
+      entrar()
     })
     
     return container;
