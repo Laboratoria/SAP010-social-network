@@ -15,6 +15,7 @@ export default () => {
       event.preventDefault()
       const mensagem = container.querySelector('#campo-de-mensagem').value
       console.log('Testando botao', mensagem)
+      
     })
     return container;
   }
