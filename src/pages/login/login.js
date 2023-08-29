@@ -28,15 +28,16 @@ export default () => {
 
     container.innerHTML = template
   
-    container.querySelector('#email')
-    container.querySelector('#password')
+    
 
     const botao = container.querySelector('#botao')
 
     botao.addEventListener('click', (event) =>{
       event.preventDefault()
-      console.log('Testando botão')
-      entrar()
+      const email = container.querySelector('#email').value
+      const senha = container.querySelector('#password').value
+      console.log('Testando botão', email, senha)
+      entrar(email, senha)
     })
     
     return container;
