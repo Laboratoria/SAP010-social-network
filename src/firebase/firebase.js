@@ -1,8 +1,7 @@
-import {auth} from './firebase.config'
-// Este es el punto de entrada de tu aplicacion
-
-// TODO: Add SDKs for Firebase products that you want to use
+import {auth, db} from './firebase.config'
 import {signInWithEmailAndPassword } from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore";
+
 
 // https://firebase.google.com/docs/web/setup#available-libraries
 
