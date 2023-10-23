@@ -12,9 +12,18 @@ import {
   arrayUnion,
 } from 'firebase/firestore';
 
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL
+} from 'firebase/storage'
+
+
 import { onAuthStateChanged } from 'firebase/auth';
 
-import { db } from '../firebase/firebase';
+import { app, db } from '../firebase/firebase';
+
+import { getStorage } from 'firebase/storage';
 
 import { auth } from './index.js';
 
@@ -176,4 +185,13 @@ export const numberOfLikes = async (postId) => {
     return likesCount;
   }
   return console.log('não encontrado');
+};
+
+const storage = getStorage(app);
+
+export const uploadPhoto = async (file) => {
+  const storageRef = ref(storage, 'images/' + file.name);
+  await uploadBytes(storageRef, file);
+  const downloadURL = await getDownloadURL(storageRef);
+  return downloadURL;
 };

@@ -9,6 +9,7 @@ import {
   editPostDoc,
   addLike,
   numberOfLikes,
+  uploadPhoto,
 } from '../../lib/firestore.js';
 import { logout } from '../../lib/index.js';
 
@@ -84,6 +85,8 @@ export const feed = () => {
             
             <label for='contato' class='label-class'>Contato:</label>
             <input type='text' class='modal-input-area' id='contato' name='contato' placeholder='(xx) xxxxx-xxxx'>
+            <label for='photo-input' class='label-class'>Foto:</label>
+            <input type='file' id='photo-input' name='photo-input'> 
             
             <textarea id='mensagem' name='mensagem' rows='4' cols='20' required placeholder=' Escreva sua mensagem aqui.'></textarea>
            
@@ -147,8 +150,10 @@ export const feed = () => {
             <div class='modal-input'>${post.raca}</div>
           </div>
           <div class='container-msg'>
-           <p>${post.mensagem}</p>
+           <p>${post.mensagem}
           </div>
+           <img src="${post.imageUrl}" class='post-image' alt="Imagem do post"/></p>
+          
           <p>Contato: ${post.contato}</p>
 
           <div class='icon-container'>
@@ -322,6 +327,7 @@ export const feed = () => {
       event.preventDefault();
 
       try {
+        const file = document.getElementById('photo-input').files[0]
         const currentUser = await getCurrentUser();
         const currentUserId = await getCurrentUserId();
         const username = await getUsername(currentUser, currentUserId);
@@ -345,6 +351,8 @@ export const feed = () => {
         const postUsername = username;
         const postAuthorId = currentUserId;
         const postLikes = [];
+
+        
 
         //  trecho para validação dos inputs de radio e textarea
         let validarInputs = true;
@@ -371,6 +379,7 @@ export const feed = () => {
         }
 
         if (validarInputs) {
+          const imageUrl = await uploadPhoto(file);
           const dadosPost = {
             opcaoAdocao,
             idadePet,
@@ -380,6 +389,7 @@ export const feed = () => {
             localizacao,
             contato,
             mensagem,
+            imageUrl,
             dataAtual,
             postUsername,
             postAuthorId,
